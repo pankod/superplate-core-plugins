@@ -1,0 +1,5 @@
+{
+    "_app": {
+        "imports": "import \"tailwindcss/tailwind.css\";"
+    }
+}

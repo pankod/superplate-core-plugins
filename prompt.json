@@ -18,7 +18,8 @@
             "pageSize": 2,
             "choices": [
                 { "message": "Axios", "name": "axios" },
-                { "message": "Prettier", "name": "prettier" }
+                { "message": "Prettier", "name": "prettier" },
+                { "message": "Jest", "name": "jest" }
             ],
             "default": "none"
         }

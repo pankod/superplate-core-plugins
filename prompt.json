@@ -28,8 +28,8 @@
             "message": "Docker integration:",
             "type": "list",
             "choices": [
-              { "name": "None", "value": "none" },
-              { "name": "Dockerfile", "value": "docker" }
+              { "message": "None", "value": "none" },
+              { "message": "Dockerfile", "value": "docker" }
             ],
             "default": "none"
         }

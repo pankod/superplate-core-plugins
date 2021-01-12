@@ -22,6 +22,16 @@
                 { "message": "Jest", "name": "jest" }
             ],
             "default": "none"
+        },
+        {
+            "name": "docker",
+            "message": "Docker integration:",
+            "type": "list",
+            "choices": [
+              { "name": "None", "value": "none" },
+              { "name": "Dockerfile", "value": "docker" }
+            ],
+            "default": "none"
         }
     ]
 }

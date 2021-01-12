@@ -26,10 +26,11 @@
         {
             "name": "docker",
             "message": "Docker integration:",
-            "type": "list",
+            "type": "select",
+            "pageSize": 3,
             "choices": [
-              { "message": "None", "value": "none" },
-              { "message": "Dockerfile", "value": "docker" }
+              { "message": "None", "name": "none" },
+              { "message": "Dockerfile", "name": "Docker" }
             ],
             "default": "none"
         }

@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { increment, decrement } from "@redux/actions";
 
-import { istore } from "@redux/istore";
+import { istate } from "@redux/istate";
 
 export default function Counter() {
   const dispatch = useDispatch();
-  const count = useSelector((state: istore) => state.counter.count);
+  const count = useSelector((state: istate) => state.counter.count);
 
   return (
     <>

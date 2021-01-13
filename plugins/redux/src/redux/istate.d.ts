@@ -1,5 +1,5 @@
 import icounter from "@redux/reducers/counter/counter";
 
-export interface istore {
+export interface istate {
   counter: icounter;
 }

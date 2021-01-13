@@ -12,6 +12,17 @@
             "default": "none"
         },
         {
+            "name": "css_features",
+            "message": "CSS Features:",
+            "type": "multiselect",
+            "pageSize": 2,
+            "choices": [
+                { "message": "SASS/SCSS", "name": "sass" },
+                { "message": "LESS", "name": "less" }
+            ],
+            "default": "none"
+        },
+        {
             "name": "features",
             "message": "Features:",
             "type": "multiselect",

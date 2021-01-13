@@ -33,6 +33,17 @@
               { "message": "Dockerfile", "name": "Docker" }
             ],
             "default": "none"
+        },
+        {
+            "name": "state-management",
+            "message": "State Management:",
+            "type": "select",
+            "pageSize": 10,
+            "choices": [
+              { "message": "None", "name": "none" },
+              { "message": "Redux", "name": "redux" }
+            ],
+            "default": "none"
         }
     ]
 }

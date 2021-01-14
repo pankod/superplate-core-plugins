@@ -7,7 +7,8 @@ module.exports = {
             pageSize: 3,
             choices: [
                 { message: "None", name: "none" },
-                { message: "Tailwind CSS", name: "tailwind" }
+                { message: "Tailwind CSS", name: "tailwind" },
+                { message: "Chakra UI", name: "chakra-ui" }
             ],
             default: "none"
         },

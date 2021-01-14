@@ -50,7 +50,7 @@ module.exports = {
         {
           name: 'e2etest',
           message: 'E2E Testing framework:',
-          type: 'multiselect',
+          type: 'select',
           choices: [
             { message: 'None', name: 'none' },
             { message: 'Cypress', name: 'cypress' },

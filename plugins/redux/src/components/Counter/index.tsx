@@ -35,7 +35,7 @@ export default function Counter() {
         href="https://react-redux.js.org/"
         target="_blank"
       >
-        Go to redux documentation.
+        Go To Documentation
       </a>
     </div>
   );

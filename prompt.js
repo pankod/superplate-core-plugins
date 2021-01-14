@@ -8,7 +8,8 @@ module.exports = {
           choices: [
             { message: "None", name: "none" },
             { message: "Tailwind CSS", name: "tailwind" },
-            { message: "Chakra UI", name: "chakra-ui" }
+            { message: "Chakra UI", name: "chakra-ui" },
+            { message: "Antd", name: "antd"},
           ],
           default: "none",
         },
@@ -21,7 +22,6 @@ module.exports = {
                 { message: "None", name: "none"},
                 { message: "Sass/Scss", name: "sass" },
                 { message: "Less", name: "less"},
-                { message: "AntDesign", name: "antd"},
             ],
             default: "none"
         },

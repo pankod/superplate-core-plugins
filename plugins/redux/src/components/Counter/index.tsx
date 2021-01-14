@@ -1,20 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { increment, decrement } from "@redux/actions";
+import { increase, decrease } from "@redux/actions";
 
-import { istate } from "@redux/istate";
+import { IState } from "@redux/istate";
 
 export default function Counter() {
   const dispatch = useDispatch();
-  const count = useSelector((state: istate) => state.counter.count);
+  const count = useSelector((state: IState) => state.counter.count);
 
   return (
     <>
       <h2>Counter</h2>
-      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(increase())}>+</button>
       {count}
-      <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(decrease())}>-</button>
     </>
   );
 }

@@ -11,10 +11,10 @@ import css from "./index.less";
 export const LessExample: React.FC = () => {
   return (
     <div className={css.card}>
-      <header className={css["card--header"]}>
+      <header className={css["card__header"]}>
         <h2>LESS Example</h2>
       </header>
-      <main className={css["card--content"]}>
+      <main className={css["card__content"]}>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, officiis
           dolor eaque optio quam deserunt nesciunt tempore iste unde cum eius
@@ -28,7 +28,7 @@ export const LessExample: React.FC = () => {
           Quibusdam, nostrum cupiditate.
         </p>
       </main>
-      <footer className={css["card--footer"]}>
+      <footer className={css["card__footer"]}>
         <a
           href="http://lesscss.org/"
           target="_blank"

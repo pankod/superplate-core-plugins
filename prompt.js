@@ -8,21 +8,22 @@ module.exports = {
       choices: [
         { message: "None", name: "none" },
         { message: "Tailwind CSS", name: "tailwind" },
+        { message: "Bootstrap", name: "bootstrap" },
         { message: "Chakra UI", name: "chakra-ui" },
       ],
       default: "none",
     },
     {
       name: "css_features",
-      message: "CSS Solution:",
+      message: "CSS Preprocessor:",
       type: "select",
       pageSize: 2,
       choices: [
-        { message: "None", name: "none" },
+        { message: "Css (nextjs build-in)", name: "css" },
         { message: "Sass/Scss", name: "sass" },
         { message: "Less", name: "less" },
       ],
-      default: "none",
+      default: "css",
     },
     {
       name: "features",

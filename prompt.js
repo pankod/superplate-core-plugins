@@ -17,9 +17,9 @@ module.exports = {
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "NONE", name: "none"},
-                { message: "SASS/SCSS", name: "sass" },
-                { message: "LESS", name: "less"}
+                { message: "None", name: "none"},
+                { message: "Sass/Scss", name: "sass" },
+                { message: "Less", name: "less"}
             ],
             default: "none"
         },

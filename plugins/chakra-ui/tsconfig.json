@@ -1,7 +1,9 @@
 {
-    "compilerOptions": {
-        "paths": {
-            "@chakra/*": ["src/definitions/chakra/*"],
-          }
+    "compilerOptions":{
+       "paths": {
+          "@chakra/*":[
+             "src/definitions/chakra/*"
+          ]
+       }
     }
-}
+ }

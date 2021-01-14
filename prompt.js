@@ -31,10 +31,19 @@ module.exports = {
           pageSize: 2,
           choices: [
             { message: "Axios", name: "axios" },
-            { message: "Prettier", name: "prettier" },
-            { message: "Jest", name: "jest" },
+            { message: "Prettier", name: "prettier" }
           ],
           default: "none",
+        },
+        {
+          name: "testing",
+          message: "Testing Framework:",
+          type: "select",
+          choices: [
+            { message: "None", name: "none" },
+            { message: "Jest", name: "jest" },
+            { message: "React Testing Library", name: "react-testing-library" }
+          ]
         },
         {
           name: "docker",

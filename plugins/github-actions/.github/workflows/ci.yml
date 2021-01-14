@@ -59,3 +59,8 @@ jobs:
       - name: run e2e test
         run: npm run cy:test
      <%_ } _%>
+
+    <%_  if (e2etest.includes("webdriverio")) { _%>
+      - name: run e2e test
+        run: npm run webdriver:run
+     <%_ } _%>

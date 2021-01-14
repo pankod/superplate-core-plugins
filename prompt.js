@@ -8,6 +8,7 @@ module.exports = {
       choices: [
         { message: "None", name: "none" },
         { message: "Tailwind CSS", name: "tailwind" },
+        { message: "Bootstrap", name: "bootstrap" },
       ],
       default: "none",
     },

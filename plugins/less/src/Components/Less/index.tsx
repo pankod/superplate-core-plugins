@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./styles.less";
+import css from "./index.less";
 /**
  * This component is generated as an example to usage of LESS Modules.
  *

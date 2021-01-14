@@ -8,6 +8,11 @@ const base = {
 
 module.exports = {
   extend(answers) {
+    if (answers.includes("css")) {
+      base._app.import = [
+        'import "../node_modules/bootstrap/dist/css/bootstrap.min.css";',
+      ];
+    }
     return base;
   },
 };

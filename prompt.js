@@ -14,10 +14,13 @@ module.exports = {
     },
     {
       name: "css_features",
-      message: "CSS Solution:",
+      message: "CSS Preprocessor:",
       type: "select",
       pageSize: 2,
-      choices: [{ message: "SASS/SCSS", name: "sass" }],
+      choices: [
+        { message: "Css (Nextjs build-in)", name: "css" },
+        { message: "Sass/Scss", name: "sass" },
+      ],
       default: "none",
     },
     {

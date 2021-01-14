@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "14"
+install:
+  <%_ if (pm === 'npm') { _%>
+  - npm ci
+  <%_ } _%>
+  <%_ if (pm === 'yarn') { _%>
+  - yarn
+  <%_ } _%>

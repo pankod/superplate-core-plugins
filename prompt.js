@@ -10,6 +10,7 @@ module.exports = {
         { message: "Tailwind CSS", name: "tailwind" },
         { message: "Bootstrap", name: "bootstrap" },
         { message: "Chakra UI", name: "chakra-ui" },
+        { message: "Bulma UI", name: "bulma", disabled: true },
       ],
       default: "none",
     },
@@ -22,6 +23,8 @@ module.exports = {
         { message: "Css (nextjs build-in)", name: "css" },
         { message: "Sass/Scss", name: "sass" },
         { message: "Less", name: "less" },
+        { message: "Styled Components", name: "styled-components", disabled: true },
+        { message: "Styled System", name: "styled-system", disabled: true },
       ],
       default: "css",
     },
@@ -32,8 +35,17 @@ module.exports = {
       pageSize: 2,
       choices: [
         { message: "Axios", name: "axios" },
-        { message: "Prettier", name: "prettier" },
-        { message: "Jest", name: "jest" },
+        { message: "Prettier", name: "prettier", disabled: true },
+        { message: "ESLint", name: "eslint", disabled: true },
+        { message: "Reverse Proxy", name: "reverse-proxy", disabled: true },
+        { message: "Bundle Analyzer", name: "bundle-analyzer", disabled: true },
+        { message: "i18n", name: "i18n", disabled: true },
+        { message: "Storybook", name: "storybook", disabled: true },
+        { message: "dotenv", name: "dotenv", disabled: true },
+        { message: "fetch", name: "fetch", disabled: true },
+        { message: "Husky", name: "husky", disabled: true },
+        { message: "WebDriverIO", name: "webdriverio", disabled: true },
+        { message: "Apollo", name: "apollo", disabled: true },
       ],
       default: "none",
     },
@@ -45,8 +57,20 @@ module.exports = {
       choices: [
         { message: "None", name: "none" },
         { message: "Redux", name: "redux" },
+        { message: "Recoil", name: "recoil", disabled: true },
+        { message: "MobX", name: "mobx", disabled: true },
       ],
       default: "none",
+    },
+    {
+      name: "testing",
+      message: "Testing Framework:",
+      type: "select",
+      choices: [
+        { message: "None", name: "none" },
+        { message: "Jest", name: "jest" },
+        { message: "React Testing Library", name: "react-testing-library" }
+      ]
     },
     {
       name: "e2etest",
@@ -78,9 +102,9 @@ module.exports = {
         { message: "None", name: "none" },
         { message: "GitHub Actions", name: "github-actions" },
         { message: "Travis", name: "travis" },
+        { message: "Circle CI", name: "circle-ci", disabled: true },
       ],
       default: "none",
     },
   ],
-  default: "none",
 };

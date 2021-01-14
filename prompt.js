@@ -8,22 +8,21 @@ module.exports = {
       choices: [
         { message: "None", name: "none" },
         { message: "Tailwind CSS", name: "tailwind" },
-        { message: "Bootstrap", name: "bootstrap" },
         { message: "Chakra UI", name: "chakra-ui" },
       ],
       default: "none",
     },
     {
       name: "css_features",
-      message: "CSS Preprocessor:",
+      message: "CSS Solution:",
       type: "select",
       pageSize: 2,
       choices: [
-        { message: "Css (nextjs build-in)", name: "css" },
+        { message: "None", name: "none" },
         { message: "Sass/Scss", name: "sass" },
         { message: "Less", name: "less" },
       ],
-      default: "css",
+      default: "none",
     },
     {
       name: "features",
@@ -51,7 +50,7 @@ module.exports = {
     {
       name: "e2etest",
       message: "E2E Testing framework:",
-      type: "multiselect",
+      type: "select",
       choices: [
         { message: "None", name: "none" },
         { message: "Cypress", name: "cypress" },
@@ -82,4 +81,5 @@ module.exports = {
       default: "none",
     },
   ],
+  default: "none",
 };

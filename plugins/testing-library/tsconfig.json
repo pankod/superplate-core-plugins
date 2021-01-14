@@ -1,12 +1,12 @@
 {
-    "compilerOptions": {
-      "paths": {
+  "compilerOptions":{
+     "paths":{
         "@test/*":[
-            "test/*"
+           "test/*"
         ],
-        "@test": [
-            "test"
-        ],
-      }
-    }
+        "@test":[
+           "test"
+        ]
+     }
+  }
 }

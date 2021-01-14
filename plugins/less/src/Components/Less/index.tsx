@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./index.less";
+import styles from "./index.less";
 /**
  * This component is generated as an example to usage of LESS Modules.
  *
@@ -10,11 +10,11 @@ import css from "./index.less";
 
 export const LessExample: React.FC = () => {
   return (
-    <div className={css.card}>
-      <header className={css["card__header"]}>
+    <div className={styles.card}>
+      <header className={styles["card__header"]}>
         <h2>LESS Example</h2>
       </header>
-      <main className={css["card__content"]}>
+      <main className={styles["card__content"]}>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, officiis
           dolor eaque optio quam deserunt nesciunt tempore iste unde cum eius
@@ -28,12 +28,12 @@ export const LessExample: React.FC = () => {
           Quibusdam, nostrum cupiditate.
         </p>
       </main>
-      <footer className={css["card__footer"]}>
+      <footer className={styles["card__footer"]}>
         <a
           href="http://lesscss.org/"
           target="_blank"
           rel="noopener noreferrer"
-          className={css.btn}
+          className={styles.btn}
         >
           Go To Documentation
         </a>

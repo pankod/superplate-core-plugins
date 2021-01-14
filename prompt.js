@@ -23,7 +23,7 @@ module.exports = {
         { message: "Sass/Scss", name: "sass" },
         { message: "Less", name: "less" },
       ],
-      default: "none",
+      default: "css",
     },
     {
       name: "features",

@@ -13,12 +13,16 @@ module.exports = {
           default: "none",
         },
         {
-          name: "css_features",
-          message: "CSS Solution:",
-          type: "select",
-          pageSize: 2,
-          choices: [{ message: "SASS/SCSS", name: "sass" }],
-          default: "none",
+            name: "css_features",
+            message: "CSS Solution:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "None", name: "none"},
+                { message: "Sass/Scss", name: "sass" },
+                { message: "Less", name: "less"}
+            ],
+            default: "none"
         },
         {
           name: "features",

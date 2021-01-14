@@ -54,7 +54,8 @@ module.exports = {
       choices: [
         { message: "None", name: "none" },
         { message: "Jest", name: "jest" },
-        { message: "React Testing Library", name: "react-testing-library" }
+        { message: "React Testing Library", name: "testing-library" },
+        { message: "Enzyme", name: "enzyme" }
       ]
     },
     {

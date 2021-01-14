@@ -11,10 +11,10 @@ import styles from "./index.module.scss";
 export const SassExample: React.FC = () => {
   return (
     <div className={styles.card}>
-      <header className={styles["card--header"]}>
+      <header className={styles["card__header"]}>
         <h2>SASS/SCSS Example</h2>
       </header>
-      <main className={styles["card--content"]}>
+      <main className={styles["card__content"]}>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, officiis
           dolor eaque optio quam deserunt nesciunt tempore iste unde cum eius
@@ -28,7 +28,7 @@ export const SassExample: React.FC = () => {
           Quibusdam, nostrum cupiditate.
         </p>
       </main>
-      <footer className={styles["card--footer"]}>
+      <footer className={styles["card__footer"]}>
         <a
           href="https://sass-lang.com/"
           target="_blank"

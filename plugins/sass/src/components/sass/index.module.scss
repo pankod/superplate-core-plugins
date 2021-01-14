@@ -13,7 +13,7 @@
   margin: 2rem auto;
 }
 
-.card--header {
+.card__header {
   padding: 1rem;
   border-bottom: 1px solid green;
   h2 {
@@ -21,7 +21,7 @@
   }
 }
 
-.card--content {
+.card__content {
   padding: 1.25rem;
   p {
     margin-bottom: 1rem;
@@ -29,7 +29,7 @@
   }
 }
 
-.card--footer {
+.card__footer {
   padding: 1.5rem;
   border-top: 1px solid green;
   text-align: center;

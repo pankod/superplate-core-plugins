@@ -1,6 +1,6 @@
 {
     "scripts": {
-      "test": "jest"
+      "test": "jest -c test/jest.config.js"
     },
     "devDependencies": {
       "@testing-library/react": "^11.2.3",

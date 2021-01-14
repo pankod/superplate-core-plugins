@@ -57,7 +57,7 @@ module.exports = {
       name: "state-management",
       message: "State Management:",
       type: "select",
-      pageSize: 10,
+      pageSize: 3,
       choices: [
         { message: "None", name: "none" },
         { message: "Redux", name: "redux" },

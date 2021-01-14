@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from "@redux/actionTypes";
+import { INCREASE, DECREASE } from "@redux/actionTypes";
 
 const initialState = {
   count: 20,
@@ -6,11 +6,11 @@ const initialState = {
 
 export default function Counter(state = initialState, action) {
   switch (action.type) {
-    case INCREMENT:
+    case INCREASE:
       return {
         count: state.count + 1,
       };
-    case DECREMENT:
+    case DECREASE:
       return {
         count: state.count - 1,
       };

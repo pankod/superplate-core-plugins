@@ -54,3 +54,8 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: <%= pmRun === 'yarn' ? 'yarn' : 'npm ci' %>
+
+    <%_  if (e2etest.includes("cypress")) { _%>
+      - name: run e2e test
+        run: npm run cy:test
+     <%_ } _%>

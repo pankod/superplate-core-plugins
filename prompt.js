@@ -37,6 +37,28 @@ module.exports = {
           default: "none",
         },
         {
+          name: "state-management",
+          message: "State Management:",
+          type: "select",
+          pageSize: 3,
+          choices: [
+            { message: "None", name: "none" },
+            { message: "Redux", name: "redux" },
+          ],
+          default: "none",
+        },
+        {
+          name: 'e2etest',
+          message: 'E2E Testing framework:',
+          type: 'multiselect',
+          choices: [
+            { message: 'None', name: 'none' },
+            { message: 'Cypress', name: 'cypress' },
+            { message: 'WebdriverIO', name: 'webdriverio' },
+          ],
+          default: 'none'
+        },
+        {
           name: "docker",
           message: "Docker integration:",
           type: "select",
@@ -55,17 +77,6 @@ module.exports = {
             { message: "None", name: "none" },
             { message: "GitHub Actions", name: "github-actions" },
             { message: "Travis", name: "travis" },
-          ],
-          default: "none",
-        },
-        {
-          name: "state-management",
-          message: "State Management:",
-          type: "select",
-          pageSize: 3,
-          choices: [
-            { message: "None", name: "none" },
-            { message: "Redux", name: "redux" },
           ],
           default: "none",
         },

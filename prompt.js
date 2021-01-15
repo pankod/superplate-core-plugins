@@ -50,6 +50,18 @@ module.exports = {
             default: "none",
         },
         {
+            name: "linter",
+            message: "Linting tools:",
+            type: "multiselect",
+            pageSize: 10,
+            choices: [
+                { message: "ESLint", name: "eslint" },
+                { message: "Prettier", name: "prettier" },
+                { message: "Lint staged files", name: "lint-staged" },
+            ],
+            default: [],
+        },
+        {
             name: "testing",
             message: "Testing Framework:",
             type: "select",

@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    <%_  if (linter.includes("prettier")) { _%>
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended" 
+    <%_ } _%>
+  ]
+}

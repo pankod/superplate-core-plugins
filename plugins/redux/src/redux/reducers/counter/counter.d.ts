@@ -1,3 +1,3 @@
 export default interface icounter {
-  count: number;
+    count: number;
 }

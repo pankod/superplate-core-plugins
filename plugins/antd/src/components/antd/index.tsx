@@ -1,8 +1,6 @@
 import React from "react";
 import { Row, Col, Card, Button, Space } from 'antd';
 
-import "./ant.less";
-
 export const AntdExample: React.FC = () => {
     return (
         <Space direction="vertical" style={{ height: 500, justifyContent: "center" }} >

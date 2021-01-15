@@ -1,5 +1,11 @@
 import React, { ReactNode } from "react";
 import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
+<%- _app.import.join("\n") %>
+<%
+    var half = Math.floor(_app.wrapper.length / 2)
+    var openings = _app.wrapper.slice(0, half);
+    var closings = _app.wrapper.slice(half);
+%>
 
 /**
  * Custom renderer example with enzyme
@@ -10,8 +16,17 @@ import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
  */
 
 const AllTheProviders = ({ children }) => {
-  return <>{children}</>;
+    <%- _app.inner.join("\n") %>
+
+    return (
+        <>
+            <%- openings.join("\n") %>
+                {children}
+            <%- closings.join("\n") %>
+        </>
+    );
 };
+
 
 const mount: (node: ReactNode, options?: MountRendererProps) => ReactWrapper = (
   node,

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@definitions/*": ["src/definitions/*"],
+      "@definitions": ["src/definitions"],
+    }
+  }
+}

@@ -10,6 +10,7 @@ module.exports = {
         { message: "Tailwind CSS", name: "tailwind" },
         { message: "Bootstrap", name: "bootstrap" },
         { message: "Chakra UI", name: "chakra-ui" },
+        { message: "Antd", name: "antd"},
       ],
       default: "none",
     },

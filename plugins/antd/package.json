@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "antd": "^4.10.2",
+        "less": "^4.1.0",
+        "@zeit/next-less": "^1.0.1"
+    }
+}

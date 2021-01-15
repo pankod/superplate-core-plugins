@@ -10,7 +10,7 @@ module.exports = {
         { message: "Tailwind CSS", name: "tailwind" },
         { message: "Bootstrap", name: "bootstrap" },
         { message: "Chakra UI", name: "chakra-ui" },
-        { message: "Antd", name: "antd"},
+        { message: "Antd", name: "antd" },
       ],
       default: "none",
     },
@@ -33,7 +33,8 @@ module.exports = {
       pageSize: 2,
       choices: [
         { message: "Axios", name: "axios" },
-        { message: "Prettier", name: "prettier" }
+        { message: "Prettier", name: "prettier" },
+        { message: "Storybook", name: "storybook" },
       ],
       default: "none",
     },
@@ -56,8 +57,8 @@ module.exports = {
         { message: "None", name: "none" },
         { message: "Jest", name: "jest" },
         { message: "React Testing Library + Jest", name: "testing-library" },
-        { message: "Enzyme + Jest", name: "enzyme" }
-      ]
+        { message: "Enzyme + Jest", name: "enzyme" },
+      ],
     },
     {
       name: "e2etest",

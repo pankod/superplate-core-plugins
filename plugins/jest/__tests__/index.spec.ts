@@ -5,6 +5,7 @@
  * please visit https://jestjs.io/docs
  */
 
+// @ts-ignore
 describe("example test suite", () => {
   it("unit test 1", () => {
     const num = 5;
@@ -12,5 +13,3 @@ describe("example test suite", () => {
     expect(num).toEqual(5);
   });
 });
-
-export {};

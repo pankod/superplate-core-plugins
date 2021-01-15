@@ -20,7 +20,7 @@ module.exports = {
       type: "select",
       pageSize: 2,
       choices: [
-        { message: "Css (nextjs build-in)", name: "css" },
+        { message: "Css (next.js built-in)", name: "css" },
         { message: "Sass/Scss", name: "sass" },
         { message: "Less", name: "less" },
       ],
@@ -33,8 +33,7 @@ module.exports = {
       pageSize: 2,
       choices: [
         { message: "Axios", name: "axios" },
-        { message: "Prettier", name: "prettier" },
-        { message: "Jest", name: "jest" },
+        { message: "Prettier", name: "prettier" }
       ],
       default: "none",
     },
@@ -48,6 +47,17 @@ module.exports = {
         { message: "Redux", name: "redux" },
       ],
       default: "none",
+    },
+    {
+      name: "testing",
+      message: "Testing Framework:",
+      type: "select",
+      choices: [
+        { message: "None", name: "none" },
+        { message: "Jest", name: "jest" },
+        { message: "React Testing Library + Jest", name: "testing-library" },
+        { message: "Enzyme + Jest", name: "enzyme" }
+      ]
     },
     {
       name: "e2etest",

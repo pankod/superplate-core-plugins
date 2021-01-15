@@ -29,10 +29,10 @@ const AllTheProviders = ({ children }) => {
 
 
 const mount: (node: ReactNode, options?: MountRendererProps) => ReactWrapper = (
-  node,
-  options
+    node,
+    options,
 ) => {
-  return mountBase(<AllTheProviders>{node}</AllTheProviders>, options);
+    return mountBase(<AllTheProviders>{node}</AllTheProviders>, options);
 };
 
 // override render method

@@ -9,17 +9,17 @@ import { EnzymeExample } from "./index";
  */
 
 describe("Component testing with enzyme", () => {
-  it("renders without crashing", () => {
-    const wrapper = mount(<EnzymeExample onClick={() => {}} />);
-    expect(wrapper.find("button")).toBeDefined();
-  });
-  it("button is clickable", () => {
-    const mockFn = jest.fn();
-    const wrapper = mount(<EnzymeExample onClick={mockFn} />);
+    it("renders without crashing", () => {
+        const wrapper = mount(<EnzymeExample onClick={() => {}} />);
+        expect(wrapper.find("button")).toBeDefined();
+    });
+    it("button is clickable", () => {
+        const mockFn = jest.fn();
+        const wrapper = mount(<EnzymeExample onClick={mockFn} />);
 
-    const btn = wrapper.find("button");
-    btn.simulate("click");
+        const btn = wrapper.find("button");
+        btn.simulate("click");
 
-    expect(mockFn).toHaveBeenCalledTimes(1);
-  });
+        expect(mockFn).toHaveBeenCalledTimes(1);
+    });
 });

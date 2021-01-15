@@ -1,18 +1,19 @@
 const base = {
-  _app: {
-    import: ['import "@styles/app.scss";'],
-    inner: [],
-    wrapper: [],
-  },
+    _app: {
+        import: ['import "@styles/app.scss";'],
+        inner: [],
+        wrapper: [],
+    },
 };
 
 module.exports = {
-  extend(answers) {
-    if (answers.includes("css")) {
-      base._app.import = [
-        'import "../node_modules/bootstrap/dist/css/bootstrap.min.css";',
-      ];
-    }
-    return base;
-  },
+    extend(answers) {
+        console.log(answers);
+        if (!answers.includes("sass")) {
+            base._app.import = [
+                'import "../node_modules/bootstrap/dist/css/bootstrap.min.css";',
+            ];
+        }
+        return base;
+    },
 };

@@ -1,0 +1,31 @@
+{
+  "name": "next-cli-core-plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "prompt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pankod/next-cli-core-plugins.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pankod/next-cli-core-plugins/issues"
+  },
+  "homepage": "https://github.com/pankod/next-cli-core-plugins#readme",
+  "husky": {
+    "hooks": {
+        "pre-commit": "lint-staged"
+    }
+},
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+        "eslint --quiet --fix",
+        "prettier '**/*.{js,ts,tsx}' --write",
+        "git add"
+    ]
+}
+}

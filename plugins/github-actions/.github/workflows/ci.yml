@@ -20,10 +20,10 @@ jobs:
         node: [14]
 
     steps:
-      - name: Checkout 🛎
+      - name: Checkout
         uses: actions/checkout@master
 
-      - name: Setup node env 🏗
+      - name: Setup node env
         uses: actions/setup-node@v2.1.2
         with:
           node-version: ${{ matrix.node }}
@@ -33,7 +33,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Cache node_modules 📦
+      - name: Cache node_modules
         uses: actions/cache@v2
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
@@ -43,7 +43,7 @@ jobs:
             ${{ runner.os }}-yarn-
       <%_ } _%>
       <%_ if (pm === 'npm') { _%>
-      - name: Cache node_modules 📦
+      - name: Cache node_modules 
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -55,12 +55,17 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: <%= pmRun === 'yarn' ? 'yarn' : 'npm ci' %>
 
+    <%_  if (testing) { _%>
+      - name: Run tests
+        run: <%= pmRun === 'yarn' ? 'yarn test' : 'npm run test' %>
+     <%_ } _%>
+
     <%_  if (e2etest.includes("cypress")) { _%>
-      - name: run e2e test
-        run: npm run cy:test
+      - name: Run e2e test
+        run: <%= pmRun === 'yarn' ? 'yarn cypress:test' : 'npm run cypress:test' %>
      <%_ } _%>
 
     <%_  if (e2etest.includes("webdriverio")) { _%>
-      - name: run e2e test
-        run: npm run webdriver:run
+      - name: Run e2e test
+        run: <%= pmRun === 'yarn' ? 'yarn webdriver:run' : 'npm run webdriver:run' %>
      <%_ } _%>

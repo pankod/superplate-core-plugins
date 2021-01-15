@@ -8,3 +8,12 @@ install:
   <%_ if (pm === 'yarn') { _%>
   - yarn
   <%_ } _%>
+  <%_  if (testing) { _%>
+  - <%= pmRun === 'yarn' ? 'yarn test' : 'npm run test' %>
+  <%_ } _%>
+  <%_  if (e2etest.includes("cypress")) { _%>
+  - <%= pmRun === 'yarn' ? 'yarn cypress:test' : 'npm run cypress:test' %>
+  <%_ } _%>
+  <%_  if (e2etest.includes("webdriverio")) { _%>
+  - <%= pmRun === 'yarn' ? 'yarn webdriver:run' : 'npm run webdriver:run' %>
+  <%_ } _%>

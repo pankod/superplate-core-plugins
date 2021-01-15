@@ -1,0 +1,12 @@
+{
+  "compilerOptions":{
+     "paths":{
+        "@recoil/*":[
+           "src/recoil/*"
+        ],
+        "@recoil":[
+           "src/recoil"
+        ]
+     }
+  }
+}

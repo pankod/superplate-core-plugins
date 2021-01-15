@@ -45,6 +45,7 @@ module.exports = {
             choices: [
                 { message: "None", name: "none" },
                 { message: "Redux", name: "redux" },
+                { message: "Recoil", name: "recoil" },
             ],
             default: "none",
         },
@@ -96,5 +97,4 @@ module.exports = {
             default: "none",
         },
     ],
-    default: "none",
 };

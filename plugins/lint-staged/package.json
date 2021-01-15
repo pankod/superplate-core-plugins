@@ -1,0 +1,15 @@
+{
+    "devDependencies": {
+        "husky": "^4.3.7"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "npm run lint -- --quiet --fix"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
+}

@@ -1,4 +1,7 @@
 {
+    "scripts": {
+        "prettier": "prettier '**/*.{js,jsx,ts,tsx}'"
+    },
     "dependencies": {
         "prettier": "^2.2.1"
     }

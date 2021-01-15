@@ -8,7 +8,7 @@ const base = {
 
 module.exports = {
   extend(answers) {
-    if (answers.includes("css")) {
+    if (!answers.includes("less")) {
       base._app.import = ['import "antd/dist/antd.css";'];
     }
     return base;

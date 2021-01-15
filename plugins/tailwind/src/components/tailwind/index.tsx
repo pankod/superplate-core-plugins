@@ -8,7 +8,7 @@ import React from "react";
  *
  */
 
-export const TailwindComponent: React.FC = () => {
+export const TailwindExample: React.FC = () => {
   return (
     <div className="bg-green-100 app mx-auto m-4 rounded-lg max-w-sm">
       <header className="border-b border-green-500 p-3">

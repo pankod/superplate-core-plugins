@@ -4,6 +4,12 @@ import {
   RenderOptions,
   RenderResult,
 } from "@testing-library/react";
+<%- _app.import.join("\n") %>
+<%
+    var half = Math.floor(_app.wrapper.length / 2)
+    var openings = _app.wrapper.slice(0, half);
+    var closings = _app.wrapper.slice(half);
+%>
 
 /**
  * Custom renderer example with @testing-library/react
@@ -14,7 +20,15 @@ import {
  */
 
 const AllTheProviders = ({ children }) => {
-  return <>{children}</>;
+    <%- _app.inner.join("\n") %>
+
+    return (
+        <>
+            <%- openings.join("\n") %>
+                {children}
+            <%- closings.join("\n") %>
+        </>
+    );
 };
 
 const render = (ui: ReactElement, options?: Omit<RenderOptions, "queries">) =>

@@ -3,7 +3,7 @@ import { Row, Col, Card, Button, Space } from 'antd';
 
 import "./ant.less";
 
-export default function Home() {
+export const AntdExample: React.FC = () => {
     return (
         <Space direction="vertical" style={{ height: 500, justifyContent: "center" }} >
             <Row gutter={[16, 16]} justify="center">

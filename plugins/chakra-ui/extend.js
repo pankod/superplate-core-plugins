@@ -9,8 +9,7 @@ const base = {
     },
     _document: {
         import: [],
-        inner: [],
-        wrapper: [],
+        initialProps: [],
     },
 };
 

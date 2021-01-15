@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+      "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+      "babel-plugin-styled-components": "^1.12.0"
+    }
+  }
+  

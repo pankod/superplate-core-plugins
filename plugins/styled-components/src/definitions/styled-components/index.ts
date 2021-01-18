@@ -2,15 +2,14 @@ export * from "./common";
 export * from "./dark";
 export * from "./light";
 
-import React, { useState } from 'react';
+import { useState } from "react";
+import { dark } from "./dark";
+import { light } from "./light";
 
 export const useDarkMode = () => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState("light");
     const toggleTheme = () => {
-      if (theme === 'light') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    }
+        setTheme((theme) => (theme === "light" ? "dark" : "light"));
+    };
+    return theme === "light" ? light : dark;
 };

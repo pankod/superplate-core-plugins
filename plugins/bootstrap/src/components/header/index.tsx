@@ -2,8 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { Logo, Container, A } from "@components";
-
-import styles from "./index.module.scss";
+import styles from "./index.module.<%= css_features %>";
 
 export const Header: React.FC = () => {
     return (

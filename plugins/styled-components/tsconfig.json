@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@definitions/*": ["src/definitions/*"],
+            "@definitions": ["src/definitions"],
+            "@interfaces/*": ["src/interfaces/*"],
+            "@interfaces": ["src/interfaces"]
+        }
+    }
+}

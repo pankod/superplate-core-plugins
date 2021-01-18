@@ -62,7 +62,11 @@ export const Cards: React.FC = () => {
             <Row>
                 {data.map((item) => (
                     <Col md={3}>
-                        <Card title={item.title} content={item.content} />
+                        <Card
+                            key={item.title}
+                            title={item.title}
+                            content={item.content}
+                        />
                     </Col>
                 ))}
             </Row>

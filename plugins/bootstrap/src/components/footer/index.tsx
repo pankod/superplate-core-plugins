@@ -3,7 +3,7 @@ import cx from "classnames";
 import Image from "next/image";
 
 import { Container } from "@components";
-import styles from "./index.module.<%= css_features %>";
+import styles from "./index.module.scss";
 
 export const Footer: React.FC = () => {
     return (

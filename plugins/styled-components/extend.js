@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             'import { ThemeProvider } from "styled-components";',
-            'import { useDarkMode } from "@definitions/styled-components/index";',
+            'import { useDarkMode } from "@definitions/styled-components";',
         ],
         inner: [
             'const theme = useDarkMode();',

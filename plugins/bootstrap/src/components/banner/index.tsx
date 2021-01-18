@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 
 import { Container, Button } from "@components";
-import styles from "./index.module.scss";
+import styles from "./index.module.<%= css_features %>";
 
 export const Banner: React.FC = () => {
     return (

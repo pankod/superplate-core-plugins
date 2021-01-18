@@ -1,12 +1,12 @@
 // #region Global Imports
-import { DefaultTheme } from "styled-components";
+import { BaseTheme } from "styled-components";
 // #endregion Global Imports
 
-const theme: DefaultTheme = {
+const common: BaseTheme = {
     colors: {
         transparent: "transparent",
         red: "#ff2a44",
     },
 };
 
-export { theme };
+export { common };

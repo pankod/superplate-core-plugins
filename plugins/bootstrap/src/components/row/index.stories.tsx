@@ -5,20 +5,20 @@ import { Row } from "./index";
 import { Col } from "../col/index";
 
 export default {
-    title: "Row",
-    component: Row,
-    decorators: [withKnobs],
+  title: "Row",
+  component: Row,
+  decorators: [withKnobs],
 };
 
 export const Basic = () => {
-    return (
-        <Row>
-            <Col sm={6}>
-                <div style={{ backgroundColor: "#ccc" }}>col-sm-6</div>
-            </Col>
-            <Col sm={6}>
-                <div style={{ backgroundColor: "#ccc" }}>col-sm-6</div>
-            </Col>
-        </Row>
-    );
+  return (
+    <Row>
+      <Col sm={6}>
+        <div style={{ backgroundColor: "#ccc" }}>col-sm-6</div>
+      </Col>
+      <Col sm={6}>
+        <div style={{ backgroundColor: "#ccc" }}>col-sm-6</div>
+      </Col>
+    </Row>
+  );
 };

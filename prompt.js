@@ -36,6 +36,7 @@ module.exports = {
                 { message: "Axios", name: "axios" },
                 { message: "Prettier", name: "prettier" },
                 { message: "Storybook", name: "storybook" },
+                { message: "SVGR", name: "svgr" },
             ],
             default: "none",
         },

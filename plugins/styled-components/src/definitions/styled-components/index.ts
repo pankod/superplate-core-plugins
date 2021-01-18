@@ -8,9 +8,9 @@ export const useDarkMode = () => {
     const [theme, setTheme] = useState('light');
     const toggleTheme = () => {
       if (theme === 'light') {
-        setTheme('dark');
-      } else {
         setTheme('light');
+      } else {
+        setTheme('dark');
       }
     }
 };

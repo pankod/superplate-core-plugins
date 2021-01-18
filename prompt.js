@@ -23,7 +23,7 @@ module.exports = {
                 { message: "Css (next.js built-in)", name: "css" },
                 { message: "Sass/Scss", name: "sass" },
                 { message: "Less", name: "less" },
-                { message: "Styled-Components", name: "styled-components" },
+                { message: "styled-components", name: "styled-components" },
             ],
             default: "css",
         },

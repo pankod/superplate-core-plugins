@@ -47,6 +47,7 @@ module.exports = {
                 { message: "None", name: "none" },
                 { message: "Redux", name: "redux" },
                 { message: "Recoil", name: "recoil" },
+                { message: "MobX", name: "mobx" },
             ],
             default: "none",
         },

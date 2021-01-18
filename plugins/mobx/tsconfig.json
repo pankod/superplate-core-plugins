@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "paths": {
+        "@mobx/*": ["src/mobx/*"],
+        "@mobx": ["src/mobx"]
+      }
+    }
+  }
+  

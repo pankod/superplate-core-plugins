@@ -34,7 +34,7 @@ module.exports = {
             choices: [
                 { message: "Axios", name: "axios" },
                 { message: "Prettier", name: "prettier" },
-                { message: "StoryBook", name: "storybook" },
+                { message: "Storybook", name: "storybook" },
             ],
             default: "none",
         },

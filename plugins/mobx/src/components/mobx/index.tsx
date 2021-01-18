@@ -3,6 +3,13 @@ import { useRootStore } from "@mobx";
 
 import styles from "./index.module.css";
 
+/**
+ * This component is provided as an example usage of MobX in components
+ *
+ * To learn more about MobX and state management
+ * please visit https://mobx.js.org/README.html
+ */
+
 export const MobxExample: React.FC = observer(() => {
     const { counterStore } = useRootStore();
     const { count, increase, decrease } = counterStore;
@@ -34,7 +41,7 @@ export const MobxExample: React.FC = observer(() => {
 
             <a
                 className={styles["link"]}
-                href="https://react-redux.js.org/"
+                href="https://mobx.js.org"
                 target="_blank"
             >
                 Go To Documentation

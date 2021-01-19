@@ -45,7 +45,7 @@ export const NextTranslateExample: React.FC<{ defaultNamespace: string }> = ({
             <footer className={styles.footer}>
                 <a
                     className={styles.button}
-                    href=""
+                    href="https://github.com/vinissimus/next-translate"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

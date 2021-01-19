@@ -51,7 +51,7 @@ module.exports = {
                 { message: "React Query", name: "react-query", disabled: true },
                 { message: "React Use", name: "react-use", disabled: true },
             ],
-            default: "none"
+            default: "none",
         },
         {
             name: "state-management",

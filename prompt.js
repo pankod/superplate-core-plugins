@@ -83,6 +83,7 @@ module.exports = {
             message: "i18n - Internationalization",
             type: "select",
             choices: [
+                { message: "None", name: "none" },
                 { message: "next-translate", name: "next-translate" },
                 { message: "next-i18next", name: "next-i18next" },
             ],

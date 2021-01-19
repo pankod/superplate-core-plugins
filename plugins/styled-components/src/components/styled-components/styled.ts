@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Card = styled.div`
   max-width: 20rem;
   border-radius: 0.5rem;
-  background-color: wheat;
+  background-color: ${({ theme }) => theme.colors.background};
   margin: 2rem auto;
 `
 

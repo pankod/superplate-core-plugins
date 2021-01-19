@@ -5,7 +5,7 @@ import { common } from "./common";
 
 const dark: DefaultTheme = {
     colors: {
-        background: "#000000",
+        background: "#d5b0f5",
         textColor: "#ffffff",
         ...common.colors,
     }

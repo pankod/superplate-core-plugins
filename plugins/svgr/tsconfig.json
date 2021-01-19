@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@components/icons/*": ["src/components/icons/*"],
+      "@components/icons": ["src/components/icons"]
+    }
+  }
+}

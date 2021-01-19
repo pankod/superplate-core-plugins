@@ -4,6 +4,13 @@ import { withTranslation, i18n } from "@/i18n";
 
 import styles from "./index.module.css";
 
+/**
+ * This component is generated as en example usage of next-i18next
+ *
+ * To learn more about next-i18next and i18n
+ * please visit https://github.com/isaachinman/next-i18next
+ */
+
 const I18NExampleComponent: React.FC<{ t: any }> = ({ t }) => {
     const changeLanguage = () => {
         i18n.changeLanguage(i18n.language === "tr" ? "en" : "tr");
@@ -42,7 +49,7 @@ const I18NExampleComponent: React.FC<{ t: any }> = ({ t }) => {
             <footer className={styles.footer}>
                 <a
                     className={styles.button}
-                    href=""
+                    href="https://github.com/isaachinman/next-i18next"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

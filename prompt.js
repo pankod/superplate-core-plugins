@@ -149,15 +149,5 @@ module.exports = {
             ],
             default: "none",
         },
-        {
-            name: "services",
-            message: "Services:",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Graphql", name: "graphql" },
-            ],
-            default: "none",
-        },
     ],
 };

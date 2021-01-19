@@ -1,7 +1,5 @@
 import React from "react";
-import { Row, Col } from "antd";
-
-import { Card } from "@components";
+import { Row, Col, Container, Card } from "react-bootstrap";
 
 export const Cards: React.FC = () => {
     const data: { title: string; content: string }[] = [
@@ -58,12 +56,19 @@ export const Cards: React.FC = () => {
     ];
 
     return (
-        <Row>
-            {data.map((item) => (
-                <Col md={6} key={item.title}>
-                    <Card title={item.title}>{item.content}</Card>
-                </Col>
-            ))}
-        </Row>
+        <Container className="my-5">
+            <Row>
+                {data.map((item) => (
+                    <Col md={4} key={item.title} className="mb-3">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>{item.title}</Card.Title>
+                                <Card.Text>{item.content}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </Container>
     );
 };

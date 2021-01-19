@@ -1,11 +1,18 @@
 .footer {
-    background-color: #282c34;
-    color: #fff;
-    text-align: center;
-    padding: 32px 0;
+  background-color: #282c34;
+  color: #fff;
+  text-align: center;
+  padding: 32px 0;
+}
 
-    &__icon {
-        font-size: 22px;
-        color: #fff;
-    }
+.social {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30px;
+
+  &__item {
+    margin: 0 8px;
+  }
 }

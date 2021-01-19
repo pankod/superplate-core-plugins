@@ -2,7 +2,11 @@ import React, { CSSProperties } from "react";
 import { Container } from "react-bootstrap";
 
 import { Button } from "@components";
-import styles from "./index.module.css";
+<%_ if (css_features === "styled-components") { _%>
+// TODO: import styled file
+<%_ } else { _%>
+import styles from "./index.module.<%= css_features %>";
+<%_ } _%>
 
 export const Main: React.FC = () => {
     return (

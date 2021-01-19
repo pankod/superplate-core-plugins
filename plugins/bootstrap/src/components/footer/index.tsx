@@ -1,7 +1,11 @@
 import React, { CSSProperties } from "react";
 import Image from "next/image";
 
-import styles from "./index.module.css";
+<%_ if (css_features === "styled-components") { _%>
+// TODO: import styled file
+<%_ } else { _%>
+import styles from "./index.module.<%= css_features %>";
+<%_ } _%>
 
 export const Footer: React.FC = () => {
     return (

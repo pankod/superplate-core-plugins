@@ -8,6 +8,10 @@ module.exports = {
             pkg.devDependencies["sass-loader"] = "^10.1.1";
         }
 
+        if (answers.includes("styled-components")) {
+            pkg.devDependencies["storybook-addon-styled-component-theme"] = "^1.3.0";
+        }
+        
         return pkg;
     },
 };

@@ -5,7 +5,7 @@ import { common } from "./common";
 
 const light: DefaultTheme = {
     colors: {
-        background: "#ffffff",
+        background: "#f5deb3",
         textColor: "#000000",
         ...common.colors,
     }

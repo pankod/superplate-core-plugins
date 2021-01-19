@@ -9,5 +9,6 @@ module.exports = {
         "@storybook/preset-scss",
         "@storybook/addon-controls",
         "@storybook/addon-knobs",
+        "storybook-addon-styled-component-theme/dist/register"
     ],
 };

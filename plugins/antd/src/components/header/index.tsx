@@ -1,5 +1,4 @@
 import React from "react";
-import { Layout } from "antd";
 
 import { Logo } from "@components";
 <%_ if (css_features === "styled-components") { _%>

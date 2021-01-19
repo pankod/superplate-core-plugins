@@ -3,7 +3,7 @@ import styles from "../src/styles/app.scss";
 <%_ } _%>
 
 <%_ if (ui.includes("antd")) { _%>
-import styles from "../src/styles/antd.less";
+import "antd/dist/antd.css";
 <%_ } _%>
 
 export const parameters = {

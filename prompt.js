@@ -47,6 +47,7 @@ module.exports = {
                 { message: "Axios", name: "axios" },
                 { message: "Prettier", name: "prettier" },
                 { message: "Storybook", name: "storybook" },
+                { message: "SVGR", name: "svgr" },
                 { message: "Environment Variables", name: "env" },
                 { message: "Reverse Proxy", name: "reverse-proxy" },
                 { message: "Bundle Analyzer", name: "bundle-analyzer" },

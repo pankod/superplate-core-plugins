@@ -1,43 +1,42 @@
 import styled from "styled-components";
-import { border, color, layout, space, typography } from 'styled-system';
-
+import { border, color, layout, space, typography } from "styled-system";
 
 export const Card = styled.div`
-  ${border}
-  ${color}
+    ${border}
+    ${color}
   ${layout}
   ${space}
 `;
 
 export const CardHeader = styled.header`
-  h2 {
-    font-weight: 600;
-  }
+    h2 {
+        font-weight: 600;
+    }
 
-  ${border}
-  ${space}
+    ${border}
+    ${space}
 `;
 
 export const CardContent = styled.main`
-  p {
-    margin-bottom: 1rem;
-    color: darkslategrey;
-  }
-  
-  ${space}
+    p {
+        margin-bottom: 1rem;
+        color: darkslategrey;
+    }
+
+    ${space}
 `;
 
 export const CardFooter = styled.footer`
-  ${border}
-  ${space}
+    ${border}
+    ${space}
   ${typography}
 `;
 
 export const Button = styled.a`
-  text-decoration: none;
+    text-decoration: none;
 
-  ${border}
-  ${color}
+    ${border}
+    ${color}
   ${space}
   ${typography}
 `;

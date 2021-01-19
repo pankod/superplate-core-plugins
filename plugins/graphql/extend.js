@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            'import { initializeApollo } from "@services";',
+            'import { initializeApollo } from "@services/graphql";',
             'import { ApolloProvider } from "@apollo/client";',
         ],
         inner: ["const apolloClient = initializeApollo();"],

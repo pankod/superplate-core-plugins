@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@services/*": ["src/services/*"],
+            "@services": ["src/services"],
+            "@graphqlTypes/*": ["__generated__/*"],
+            "@graphqlTypes": ["__generated__"]
+        }
+    }
+}

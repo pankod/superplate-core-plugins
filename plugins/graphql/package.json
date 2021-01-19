@@ -1,0 +1,12 @@
+{
+    "scripts": {
+        "apollo:download-schema": "apollo client:download-schema schema.graphql",
+        "apollo:generate-types": "rm -rf __generated__ && apollo client:codegen --target typescript --outputFlat",
+        "apollo:sync": "npm run apollo:download-schema && npm run apollo:generate-types"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.3.7",
+        "apollo": "^2.32.1",
+        "graphql": "^15.4.0"
+    }
+}

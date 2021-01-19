@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import { GET_LAUNCHES } from "./query";
 import styles from "./index.module.css";
-import { GetLaunches, GetLaunchesVariables } from "@GraphqlTypes/GetLaunches";
+import { GetLaunches, GetLaunchesVariables } from "@graphqlTypes/GetLaunches";
 
 export const GraphQLExample: React.FC = () => {
     const { data, loading, error } = useQuery<

@@ -28,6 +28,17 @@ module.exports = {
             default: "css",
         },
         {
+            name: "styled_specific",
+            message: "Do you also want to add styled-system ?",
+            type: "select",
+            choices: [
+                { message: "None", name: "none" },
+                { message: "styled-system", name: "styled-system" },
+            ],
+            skip: ({ answers }) => answers.css_features !== "styled-components",
+            default: "none",
+        },
+        {
             name: "features",
             message: "Features:",
             type: "multiselect",
@@ -37,6 +48,20 @@ module.exports = {
                 { message: "Prettier", name: "prettier" },
                 { message: "Storybook", name: "storybook" },
                 { message: "SVGR", name: "svgr" },
+                { message: "Environment Variables", name: "env" },
+                { message: "Reverse Proxy", name: "reverse-proxy" },
+                { message: "Bundle Analyzer", name: "bundle-analyzer" },
+            ],
+            default: "none",
+        },
+        {
+            name: "hooks",
+            message: "Hooks",
+            type: "multiselect",
+            choices: [
+                { message: "SWR", name: "swr" },
+                { message: "React Query", name: "react-query", disabled: true },
+                { message: "React Use", name: "react-use", disabled: true },
             ],
             default: "none",
         },

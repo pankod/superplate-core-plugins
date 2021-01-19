@@ -1,12 +1,15 @@
 import React, { CSSProperties } from "react";
-import { Layout } from "antd";
 
 import { Button } from "@components";
-import styles from "./index.module.css";
+<%_ if (css_features === "styled-components") { _%>
+// TODO: import styled file
+<%_ } else { _%>
+import styles from "./index.module.<%= css_features %>";
+<%_ } _%>
 
 export const Main: React.FC = () => {
     return (
-        <Layout.Content className={styles.main}>
+        <div className={styles.main}>
             <h1 className={styles.main__title}>next-cli</h1>
             <p className={styles.main__description}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -15,6 +18,6 @@ export const Main: React.FC = () => {
             <Button type="primary" size="large">
                 Docs
             </Button>
-        </Layout.Content>
+        </div>
     );
 };

@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
         "paths": {
+            "@components/*": ["src/components/*"],
+            "@components": ["src/components"],
             "@services/*": ["src/services/*"],
             "@services": ["src/services"],
             "@graphqlTypes/*": ["__generated__/*"],

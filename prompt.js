@@ -28,6 +28,17 @@ module.exports = {
             default: "css",
         },
         {
+            name: "styled_specific",
+            message: "Do you also want to add styled-system ?",
+            type: "select",
+            choices: [
+                { message: "None", name: "none" },
+                { message: "styled-system", name: "styled-system" },
+            ],
+            skip: ({ answers }) => answers.css_features !== "styled-components",
+            default: "none",
+        },
+        {
             name: "features",
             message: "Features:",
             type: "multiselect",

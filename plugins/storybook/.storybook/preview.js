@@ -15,8 +15,8 @@ export const parameters = {
 
 <%_ if (css_features.includes("styled-components")) { _%>
 
-  const defaultTheme = {
-    name: "DEFAULT",
+  const lightTheme = {
+    name: "LIGHT",
     ...light
   };
   
@@ -26,7 +26,7 @@ export const parameters = {
   };
 
   export const getAllThemes = () => {
-    return [defaultTheme, darkTheme];
+    return [lightTheme, darkTheme];
   };
   
   addDecorator(withThemesProvider(getAllThemes()));

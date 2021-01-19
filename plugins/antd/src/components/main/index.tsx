@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 
 import { Button } from "@components";
 <%_ if (css_features === "styled-components") { _%>

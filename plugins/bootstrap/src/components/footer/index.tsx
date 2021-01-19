@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import Image from "next/image";
 
 <%_ if (css_features === "styled-components") { _%>

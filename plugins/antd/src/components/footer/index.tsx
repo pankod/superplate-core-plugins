@@ -1,6 +1,6 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import Image from "next/image";
-import { Layout, Space } from "antd";
+import { Space } from "antd";
 import {
     GithubOutlined,
     TwitterOutlined,

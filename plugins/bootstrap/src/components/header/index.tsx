@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 
 import { Logo } from "@components";
 <%_ if (css_features === "styled-components") { _%>

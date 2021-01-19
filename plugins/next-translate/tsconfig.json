@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@i18n": ["./i18n.json"]
+        }
+    }
+}

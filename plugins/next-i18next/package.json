@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "next-i18next": "^7.0.1"
+    }
+}

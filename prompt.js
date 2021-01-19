@@ -44,6 +44,7 @@ module.exports = {
             type: "multiselect",
             pageSize: 2,
             choices: [
+                { message: "Fetch (next.js built-in)", name: "fetch" },
                 { message: "Axios", name: "axios" },
                 { message: "Prettier", name: "prettier" },
                 { message: "Storybook", name: "storybook" },

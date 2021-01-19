@@ -43,6 +43,16 @@ module.exports = {
             default: "none",
         },
         {
+            name: "hooks",
+            message: "Hooks",
+            type: "multiselect",
+            choices: [
+                { message: "SWR", name: "swr" },
+                { message: "React Query", name: "react-query", disabled: true },
+                { message: "React Use", name: "react-use", disabled: true },
+            ]
+        }
+        {
             name: "state-management",
             message: "State Management:",
             type: "select",

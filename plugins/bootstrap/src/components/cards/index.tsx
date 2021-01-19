@@ -1,7 +1,7 @@
 import React from "react";
+import { Row, Col } from "antd";
 
-import { Card, Container, Row, Col } from "@components";
-import { ICard } from "@components/card";
+import { Card } from "@components";
 
 export const Cards: React.FC = () => {
     const data: { title: string; content: string }[] = [
@@ -58,18 +58,12 @@ export const Cards: React.FC = () => {
     ];
 
     return (
-        <Container>
-            <Row>
-                {data.map((item) => (
-                    <Col md={3}>
-                        <Card
-                            key={item.title}
-                            title={item.title}
-                            content={item.content}
-                        />
-                    </Col>
-                ))}
-            </Row>
-        </Container>
+        <Row>
+            {data.map((item) => (
+                <Col md={6} key={item.title}>
+                    <Card title={item.title}>{item.content}</Card>
+                </Col>
+            ))}
+        </Row>
     );
 };

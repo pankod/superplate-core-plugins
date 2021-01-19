@@ -1,17 +1,11 @@
 import React from "react";
+import { Card as AntdCard } from "antd";
+import { CardProps } from "antd/lib/card";
 
-import styles from "./index.module.<%= css_features %>";
-
-export interface ICard {
-    title: string;
-    content: string;
-}
-
-export const Card: React.FC<ICard> = ({ title, content }) => {
+export const Card: React.FC<CardProps> = ({ title, children, ...rest }) => {
     return (
-        <div className={styles.card}>
-            <h3>{title}</h3>
-            <p>{content}</p>
-        </div>
+        <AntdCard title={title} bordered={false}>
+            {children}
+        </AntdCard>
     );
 };

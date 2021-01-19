@@ -1,16 +1,13 @@
 const base = {
     _app: {
-        import: ['import "@styles/antd.less";'],
+        import: ['import "antd/dist/antd.css";'],
         inner: [],
         wrapper: [],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (!answers.includes("less")) {
-            base._app.import = ['import "antd/dist/antd.css";'];
-        }
+    extend() {
         return base;
     },
 };

@@ -10,23 +10,6 @@ module.exports = {
         "@storybook/addon-knobs",
     ],
     webpackFinal: async (config) => {
-        <%_ if (css_features === "less") { _%>
-        config.module.rules.push({
-            test: /.*\.less$/,
-            use: [
-                "style-loader",
-                {
-                    loader: "less-loader",
-                    options: {
-                        lessOptions: {
-                            javascriptEnabled: true,
-                        },
-                    },
-                },
-            ],
-        });
-        <%_ } _%>
-
         <%_ if (css_features === "sass") { _%>
         config.module.rules.push({
             // this is for both less and scss

@@ -50,8 +50,9 @@ module.exports = {
                 { message: "SWR", name: "swr" },
                 { message: "React Query", name: "react-query", disabled: true },
                 { message: "React Use", name: "react-use", disabled: true },
-            ]
-        }
+            ],
+            default: "none"
+        },
         {
             name: "state-management",
             message: "State Management:",

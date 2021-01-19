@@ -4,7 +4,7 @@ module.exports = {
             pkg.devDependencies["css-loader"] = "^5.0.1";
         }
 
-        if (answers.includes("sass")) {
+        if (answers.includes("scss")) {
             pkg.devDependencies["sass-loader"] = "^10.1.1";
         }
 

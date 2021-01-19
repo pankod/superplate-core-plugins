@@ -21,7 +21,7 @@ module.exports = {
             pageSize: 2,
             choices: [
                 { message: "css (next.js built-in)", name: "css" },
-                { message: "sass/scss", name: "sass" },
+                { message: "sass/scss", name: "scss" },
                 { message: "styled-components", name: "styled-components" },
             ],
             default: "css",

@@ -9,7 +9,7 @@ const base = {
 module.exports = {
     extend(answers) {
         console.log(answers);
-        if (!answers.includes("sass")) {
+        if (!answers.includes("scss")) {
             base._app.import = [
                 'import "../node_modules/bootstrap/dist/css/bootstrap.min.css";',
             ];

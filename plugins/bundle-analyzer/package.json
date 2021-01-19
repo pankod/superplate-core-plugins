@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "build:analyze": "ANALYZE=true npm run build"
+        },
+        "dependencies": {
+        "@next/bundle-analyzer": "^10.0.5"
+        }
+}

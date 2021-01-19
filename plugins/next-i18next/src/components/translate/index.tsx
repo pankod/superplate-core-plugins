@@ -1,6 +1,6 @@
 import React from "react";
 
-import { withTranslation, i18n } from "@/i18n";
+import { withTranslation, i18n } from "@i18n";
 
 import styles from "./index.module.css";
 

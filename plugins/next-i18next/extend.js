@@ -1,7 +1,7 @@
 const base = {
     _app: {
       import: [
-        "import { appWithTranslation } from '@/i18n';",
+        "import { appWithTranslation } from '@i18n';",
       ],
       inner: [],
       wrapper: [],

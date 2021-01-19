@@ -51,7 +51,7 @@ module.exports = {
                 { message: "Environment Variables", name: "env" },
                 { message: "Reverse Proxy", name: "reverse-proxy" },
                 { message: "Bundle Analyzer", name: "bundle-analyzer" },
-                { message: "Graphql", name: "graphql" },
+                { message: "GraphQL", name: "graphql" },
             ],
             default: "none",
         },

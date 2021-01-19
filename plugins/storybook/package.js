@@ -8,10 +8,6 @@ module.exports = {
             pkg.devDependencies["sass-loader"] = "^10.1.1";
         }
 
-        if (answers.includes("less")) {
-            pkg.devDependencies["less-loader"] = "^5.0.0";
-        }
-
         return pkg;
     },
 };

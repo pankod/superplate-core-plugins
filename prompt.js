@@ -78,6 +78,16 @@ module.exports = {
             default: "none",
         },
         {
+            name: "i18n",
+            message: "i18n - Internationalization",
+            type: "select",
+            choices: [
+                { message: "next-translate", name: "next-translate" },
+                { message: "next-i18next", name: "next-i18next" },
+            ],
+            default: "none",
+        },
+        {
             name: "linter",
             message: "Linting tools:",
             type: "multiselect",

@@ -11,6 +11,7 @@ import { TestingLibraryExample } from "./index";
 describe("Component testing with testing-library", () => {
     it("renders without crashing", () => {
         const { getByText } = render(
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             <TestingLibraryExample onClick={() => {}} />,
         );
         expect(getByText("Click Me!")).toBeDefined();

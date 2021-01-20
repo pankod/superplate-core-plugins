@@ -1,1 +1,13 @@
 node_modules
+next.config.js
+<%_  if (features.includes("graphql")) { _%>
+apollo.config.js
+__generated__
+<%_ } _%>
+<%_  if (testing !== "none") { _%>
+jest.config.js
+<%_ } _%>
+<%_  if (ui !== "tailwind") { _%>
+tailwind.config.js
+postcss.config.js
+<%_ } _%>

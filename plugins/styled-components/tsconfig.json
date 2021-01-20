@@ -4,7 +4,11 @@
             "@definitions/*": ["src/definitions/*"],
             "@definitions": ["src/definitions"],
             "@interfaces/*": ["src/interfaces/*"],
-            "@interfaces": ["src/interfaces"]
+            "@interfaces": ["src/interfaces"],
+            "@components/*": ["src/components/*"],
+            "@components": ["src/components"],
+            "@styles/*": ["src/styles/*"],
+            "@styles": ["src/styles"]
         }
     }
 }

@@ -2,8 +2,14 @@
     "compilerOptions":{
        "paths": {
           "@definitions/*":[
-             "src/definitions/*"
-          ]
+             "src/definitions/*",
+          ],
+          "@components/*": [
+            "src/components/*"
+         ],
+         "@components": [
+            "src/components"
+         ]
        }
     }
  }

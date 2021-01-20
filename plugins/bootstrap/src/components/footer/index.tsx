@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
                     <%_ if (features.includes("svgr")) { _%>
                     <LinkedinIcon color="white" width="28" height="32" />
                     <%_ } else { _%>
-                    <Image src="/icons/linkedin-icon.svg" alt="nextjs" width="28" height="32" />
+                    <Image src="/icons/linkedin-icon.svg" alt="linkedin" width="28" height="32" />
                     <%_ } _%>
                 </li>
             </ul>

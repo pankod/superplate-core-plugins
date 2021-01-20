@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
     <div className="text-center py-5 bg-gray-800">
       <a href="http://pankod.com" target="_blank" className="block mb-3">
           <%_ if (features.includes("svgr")) { _%>
-              <PankodIcon color="white" width="140" height="28" />
+              <PankodIcon className="text-white mx-auto" width="140" height="28" />
           <%_ } else { _%>
               <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
           <%_ } _%>

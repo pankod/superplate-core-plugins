@@ -19,7 +19,7 @@ import {
  * please visit https://testing-library.com/docs/react-testing-library/setup
  */
 
-const AllTheProviders = ({ children }) => {
+export const AllTheProviders = ({ children }) => {
     <%- _app.inner.join("\n") %>
 
     return (

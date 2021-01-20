@@ -1,12 +1,12 @@
 import * as React from "react";
 
-function SvgYoutube(props: React.SVGProps<SVGSVGElement>) {
+function SvgYoutubeIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             aria-hidden="true"
             data-prefix="fab"
             data-icon="youtube"
-            className="youtube_svg__svg-inline--fa youtube_svg__fa-youtube youtube_svg__fa-w-18"
+            className="youtube-icon_svg__svg-inline--fa youtube-icon_svg__fa-youtube youtube-icon_svg__fa-w-18"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
             width="1em"
@@ -21,4 +21,4 @@ function SvgYoutube(props: React.SVGProps<SVGSVGElement>) {
     );
 }
 
-export default SvgYoutube;
+export default SvgYoutubeIcon;

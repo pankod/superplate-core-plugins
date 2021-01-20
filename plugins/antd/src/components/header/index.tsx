@@ -4,7 +4,7 @@ import { Logo } from "@components";
 
 export const Header: React.FC = () => {
     return (
-        <div className="text-center" style={{ backgroundColor: "#20232a" }}>
+        <div style={{ backgroundColor: "#20232a", textAlign: "center" }}>
             <Logo />
         </div>
     );

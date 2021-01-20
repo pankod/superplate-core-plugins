@@ -1,7 +1,5 @@
 import React from "react";
-
-import { Card, Container, Row, Col } from "@components";
-import { ICard } from "@components/card";
+import { Row, Col, Container, Card } from "react-bootstrap";
 
 export const Cards: React.FC = () => {
     const data: { title: string; content: string }[] = [
@@ -58,15 +56,16 @@ export const Cards: React.FC = () => {
     ];
 
     return (
-        <Container>
+        <Container className="my-5">
             <Row>
                 {data.map((item) => (
-                    <Col md={3}>
-                        <Card
-                            key={item.title}
-                            title={item.title}
-                            content={item.content}
-                        />
+                    <Col md={4} key={item.title} className="mb-3">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>{item.title}</Card.Title>
+                                <Card.Text>{item.content}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 ))}
             </Row>

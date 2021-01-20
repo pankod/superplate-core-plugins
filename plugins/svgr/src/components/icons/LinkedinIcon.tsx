@@ -1,12 +1,12 @@
 import * as React from "react";
 
-function SvgLinkedin(props: React.SVGProps<SVGSVGElement>) {
+function SvgLinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             aria-hidden="true"
             data-prefix="fab"
             data-icon="linkedin"
-            className="linkedin_svg__svg-inline--fa linkedin_svg__fa-linkedin linkedin_svg__fa-w-14"
+            className="linkedin-icon_svg__svg-inline--fa linkedin-icon_svg__fa-linkedin linkedin-icon_svg__fa-w-14"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
             width="1em"
@@ -21,4 +21,4 @@ function SvgLinkedin(props: React.SVGProps<SVGSVGElement>) {
     );
 }
 
-export default SvgLinkedin;
+export default SvgLinkedinIcon;

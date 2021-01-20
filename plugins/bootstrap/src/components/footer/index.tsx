@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                     <%_ if (features.includes("svgr")) { _%>
                     <GithubIcon color="white" width="28" height="29" />
                     <%_ } else { _%>
-                    <Image src="/icons/github-icon.svg" alt="nextjs" width="28" height="29" />
+                    <Image src="/icons/github-icon.svg" alt="github" width="28" height="29" />
                     <%_ } _%>
                 </li>
                 <li className="mx-2">

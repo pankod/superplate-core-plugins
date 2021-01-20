@@ -61,7 +61,7 @@ module.exports = {
             type: "multiselect",
             choices: [
                 { message: "SWR", name: "swr" },
-                { message: "React Query", name: "react-query", disabled: true },
+                { message: "React Query", name: "react-query" },
                 { message: "React Use", name: "react-use" },
             ],
             default: "none",

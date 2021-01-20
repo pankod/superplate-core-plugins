@@ -1,17 +1,20 @@
 import React from "react";
 
 import { Button } from "@components";
-<%_ if (css_features === "styled-components") { _%>
-// TODO: import styled file
-<%_ } else { _%>
-import styles from "./index.module.<%= css_features %>";
-<%_ } _%>
 
 export const Main: React.FC = () => {
     return (
-        <div className={styles.main}>
-            <h1 className={styles.main__title}>next-cli</h1>
-            <p className={styles.main__description}>
+        <div
+            style={{
+                backgroundColor: "#282c34",
+                color: "#fff",
+                textAlign: "center",
+                paddingTop: 32,
+                paddingBottom: 32,
+            }}
+        >
+            <h1 style={{ color: "#fff", fontSize: 46 }}>next-cli</h1>
+            <p style={{ fontSize: 18 }}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
             </p>

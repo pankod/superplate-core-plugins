@@ -12,6 +12,7 @@ export const GET_LAUNCHES = gql`
             rocket {
                 rocket_name
             }
+            id
         }
     }
 `;

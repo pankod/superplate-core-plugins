@@ -2,10 +2,7 @@ export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
     [K in keyof T]: T[K];
 };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
-    { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
-    { [SubKey in K]: Maybe<T[SubKey]> };
+
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
     ID: string;
@@ -19,8 +16,6 @@ export type Scalars = {
     ObjectID: any;
 };
 
-/** select columns of table "users" */
-
 export type GetLaunchesQueryVariables = Exact<{
     limit?: Maybe<Scalars["Int"]>;
 }>;
@@ -33,6 +28,7 @@ export type GetLaunchesQuery = {
                 __typename?: "Launch";
                 mission_name?: Maybe<string>;
                 launch_year?: Maybe<string>;
+                id?: Maybe<string>;
                 links?: Maybe<{
                     __typename?: "LaunchLinks";
                     mission_patch_small?: Maybe<string>;

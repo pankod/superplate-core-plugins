@@ -1,5 +1,11 @@
 import React from "react";
+<%_ if (!features.includes("svgr")) { _%>
 import Image from "next/image";
+<%_ } _%>
+
+<%_ if (features.includes("svgr")) { _%>
+import { PankodIcon, GithubIcon, TwitterIcon, YoutubeIcon, LinkedinIcon } from "@components/icons";
+<%_ } _%>
 
 export const Footer: React.FC = () => {
     return (
@@ -12,41 +18,41 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 className="d-block mb-3"
             >
-                <Image src="/pankod.svg" alt="pankod" width="140" height="28" />
+                <%_ if (!features.includes("svgr")) { _%>
+                <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
+                <%_ } else { _%>
+                <PankodIcon color="white" width="140" height="28" />
+                <%_ } _%>
             </a>
 
             <ul className="d-flex justify-content-center list-unstyled p-0 m-0">
                 <li className="mx-2">
-                    <Image
-                        src="/icons/github.svg"
-                        alt="nextjs"
-                        width="28"
-                        height="29"
-                    />
+                    <%_ if (!features.includes("svgr")) { _%>
+                    <Image src="/icons/github-icon.svg" alt="nextjs" width="28" height="29" />
+                    <%_ } else { _%>
+                    <GithubIcon color="white" width="28" height="29" />
+                    <%_ } _%>
                 </li>
                 <li className="mx-2">
-                    <Image
-                        src="/icons/twitter.svg"
-                        alt="nextjs"
-                        width="28"
-                        height="28"
-                    />
+                    <%_ if (!features.includes("svgr")) { _%>
+                    <Image src="/icons/twitter-icon.svg" alt="nextjs" width="28" height="28" />
+                    <%_ } else { _%>
+                    <TwitterIcon color="white" width="28" height="28" />
+                    <%_ } _%>
                 </li>
                 <li className="mx-2">
-                    <Image
-                        src="/icons/youtube.svg"
-                        alt="nextjs"
-                        width="28"
-                        height="29"
-                    />
+                    <%_ if (!features.includes("svgr")) { _%>
+                    <Image src="/icons/youtube-icon.svg" alt="nextjs" width="28" height="29" />
+                    <%_ } else { _%>
+                    <YoutubeIcon color="white" width="28" height="29" />
+                    <%_ } _%>
                 </li>
                 <li className="mx-2">
-                    <Image
-                        src="/icons/linkedin.svg"
-                        alt="nextjs"
-                        width="28"
-                        height="32"
-                    />
+                    <%_ if (!features.includes("svgr")) { _%>
+                    <Image src="/icons/linkedin-icon.svg" alt="nextjs" width="28" height="32" />
+                    <%_ } else { _%>
+                    <LinkedinIcon color="white" width="28" height="32" />
+                    <%_ } _%>
                 </li>
             </ul>
         </div>

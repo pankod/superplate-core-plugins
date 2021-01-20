@@ -1,5 +1,7 @@
 import React, { CSSProperties } from "react";
+<%_ if (!features.includes("svgr")) { _%>
 import Image from "next/image";
+<%_ } _%>
 import { Space } from "antd";
 import {
     GithubOutlined,
@@ -7,6 +9,10 @@ import {
     YoutubeOutlined,
     LinkedinOutlined,
 } from "@ant-design/icons";
+
+<%_ if (features.includes("svgr")) { _%>
+import { PankodIcon } from "@components/icons";
+<%_ } _%>
 
 export const Footer: React.FC = () => {
     const iconStyle: CSSProperties = {
@@ -24,7 +30,12 @@ export const Footer: React.FC = () => {
             }}
         >
             <Space direction="vertical" size="large">
-                <Image src="/pankod.svg" alt="nextjs" width="140" height="28" />
+                <%_ if (!features.includes("svgr")) { _%>
+                <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
+                <%_ } _%>
+                <%_ if (features.includes("svgr")) { _%>
+                <PankodIcon color="white" width="140" height="28" />
+                <%_ } _%>
                 <Space align="center" size="middle">
                     <a
                         href="https://github.com/pankod"

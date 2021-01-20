@@ -1,5 +1,4 @@
 import React from "react";
-//import useSWR, { mutate } from "swr";
 import { useQuery } from "react-query";
 
 import styles from "./index.module.css";

@@ -1,8 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
 
-import styles from "./index.module.css";
-
 /**
  * This component is generated as an example for useQuery hook
  *

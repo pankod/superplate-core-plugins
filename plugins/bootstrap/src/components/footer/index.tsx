@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
                     <%_ if (features.includes("svgr")) { _%>
                     <TwitterIcon color="white" width="28" height="28" />
                     <%_ } else { _%>
-                    <Image src="/icons/twitter-icon.svg" alt="nextjs" width="28" height="28" />
+                    <Image src="/icons/twitter-icon.svg" alt="twitter" width="28" height="28" />
                     <%_ } _%>
                 </li>
                 <li className="mx-2">

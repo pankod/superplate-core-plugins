@@ -21,7 +21,6 @@ export const AxiosExample = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
 
-    console.log("data: ", data);
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
@@ -48,29 +47,31 @@ export const AxiosExample = () => {
 
     if (error) {
         return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return <div>Loading...</div>;
-    } else {
-        return (
-            <div>
-                <header>
-                    <h2>Fetch Data Fetching Example</h2>
-                </header>
-                <main>
-                    <p>Programmer Jokes {`#${data[0].id}`}</p>
-                    <p>{data[0].setup}</p>
-                    <p>{data[0].punchline}</p>
-                </main>
-                <footer>
-                    <a
-                        href="https://github.com/axios/axios"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Go To Documentation
-                    </a>
-                </footer>
-            </div>
-        );
     }
+
+    if (!isLoaded) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div>
+            <header>
+                <h2>Fetch Data Fetching Example</h2>
+            </header>
+            <main>
+                <p>Programmer Jokes {`#${data[0].id}`}</p>
+                <p>{data[0].setup}</p>
+                <p>{data[0].punchline}</p>
+            </main>
+            <footer>
+                <a
+                    href="https://github.com/axios/axios"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Go To Documentation
+                </a>
+            </footer>
+        </div>
+    );
 };

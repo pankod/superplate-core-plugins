@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
                     <%_ if (features.includes("svgr")) { _%>
                     <YoutubeIcon color="white" width="28" height="29" />
                     <%_ } else { _%>
-                    <Image src="/icons/youtube-icon.svg" alt="nextjs" width="28" height="29" />
+                    <Image src="/icons/youtube-icon.svg" alt="youtube" width="28" height="29" />
                     <%_ } _%>
                 </li>
                 <li className="mx-2">

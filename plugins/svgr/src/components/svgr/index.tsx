@@ -4,6 +4,8 @@ import {
     LinkedinIcon,
     TwitterIcon,
     YoutubeIcon,
+    NextjsIcon,
+    PankodIcon,
 } from "@components/icons";
 
 export const SvgrExample: React.FC = () => {

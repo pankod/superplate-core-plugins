@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 
 import { GET_LAUNCHES } from "./query";
-import styles from "./index.module.css";
 import { GetLaunches, GetLaunchesVariables } from "@graphqlTypes/GetLaunches";
 
 export const GraphQLExample: React.FC = () => {
@@ -18,20 +17,20 @@ export const GraphQLExample: React.FC = () => {
     if (!data) return <p>Not found</p>;
 
     return (
-        <div className={styles.app}>
-            <div className={styles.header}>Last 2 Space-X Launches</div>
-            <div className={styles.container}>
+        <div>
+            <div>Last 2 Space-X Launches</div>
+            <div>
                 {data.launchesPast.map((val) => (
-                    <div className={styles.card}>
+                    <div>
                         <img src={val.links.mission_patch_small} />
-                        <div className={styles.content}>
+                        <div>
                             <h3>{val.mission_name}</h3>
-                            <div className="">
-                                <div className={styles.info}>
+                            <div>
+                                <div>
                                     <h4>Rocket:</h4>
                                     <span>{val.rocket.rocket_name}</span>
                                 </div>
-                                <div className={styles.info}>
+                                <div>
                                     <h4>Launch year:</h4>
                                     <span>{val.launch_year}</span>
                                 </div>

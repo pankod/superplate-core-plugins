@@ -63,7 +63,7 @@ export const AxiosExample = () => {
                 </main>
                 <footer>
                     <a
-                        href="https://swr.vercel.app/"
+                        href="https://github.com/axios/axios"
                         target="_blank"
                         rel="noopener noreferrer"
                     >

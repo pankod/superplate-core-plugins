@@ -29,23 +29,22 @@ export const ReactQueryExample = () => {
 
   if (data) {
     return (
-      <div className={styles.app}>
-        <header className={styles.header}>
+      <div>
+        <header>
           <h2>React Query Data Fetching Example</h2>
         </header>
-        <main className={styles.content}>
-          <p className={styles.title}>Programmer Jokes {`#${data[0].id}`}</p>
-          <p className={styles.setup}>{data[0].setup}</p>
-          <p className={styles.punchline}>{data[0].punchline}</p>
-          <p className={styles.randomContainer}>
-            <button className={styles.button} onClick={handleClick}>
+        <main>
+          <p>Programmer Jokes {`#${data[0].id}`}</p>
+          <p>{data[0].setup}</p>
+          <p>{data[0].punchline}</p>
+          <p>
+            <button onClick={handleClick}>
               Give me another
             </button>
           </p>
         </main>
-        <footer className={styles.footer}>
+        <footer>
           <a
-            className={styles.button}
             href="https://react-query.tanstack.com/"
             target="_blank"
             rel="noopener noreferrer"

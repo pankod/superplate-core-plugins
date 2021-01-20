@@ -5,10 +5,10 @@ import { useQuery } from "react-query";
 import styles from "./index.module.css";
 
 /**
- * This component is generated as an example for useSWR hook
+ * This component is generated as an example for useQuery hook
  *
- * To learn more about SWR and data fetching,
- * please visit https://swr.vercel.app/
+ * To learn more about React Query and data fetching,
+ * please visit https://react-query.tanstack.com/
  */
 
 const API_URL =

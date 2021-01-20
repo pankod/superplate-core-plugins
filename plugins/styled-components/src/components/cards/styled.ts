@@ -34,7 +34,7 @@ export const CardTitle = styled.h3`
 `;
 
 export const CardText = styled.p`
-    margin-top: 0;
-    margin-bottom: 1rem;
+    margin-top: 8px;
+    margin-bottom: 16px;
     line-height: 24px;
 `;

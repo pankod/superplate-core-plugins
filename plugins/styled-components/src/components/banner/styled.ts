@@ -16,6 +16,7 @@ export const Container = styled.div`
         font-size: 5.5rem;
         font-weight: 300;
         line-height: 1.2px;
+        padding-bottom: 12px;
     }
     p {
         font-size: 1.25rem;

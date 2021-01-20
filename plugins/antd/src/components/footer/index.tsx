@@ -30,11 +30,10 @@ export const Footer: React.FC = () => {
             }}
         >
             <Space direction="vertical" size="large">
-                <%_ if (!features.includes("svgr")) { _%>
-                <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
-                <%_ } _%>
                 <%_ if (features.includes("svgr")) { _%>
                 <PankodIcon color="white" width="140" height="28" />
+                <%_ } else { _%>    
+                <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
                 <%_ } _%>
                 <Space align="center" size="middle">
                     <a

@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@components/*": ["src/components/*"],
+            "@components": ["src/components"],
+            "@graphqlTypes/*": ["__generated__/*"],
+            "@graphqlTypes": ["__generated__"]
+        }
+    }
+}

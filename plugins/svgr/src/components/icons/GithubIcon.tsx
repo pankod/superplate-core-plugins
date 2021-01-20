@@ -1,12 +1,12 @@
 import * as React from "react";
 
-function SvgGithub(props: React.SVGProps<SVGSVGElement>) {
+function SvgGithubIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             aria-hidden="true"
             data-prefix="fab"
             data-icon="github"
-            className="github_svg__svg-inline--fa github_svg__fa-github github_svg__fa-w-16"
+            className="github-icon_svg__svg-inline--fa github-icon_svg__fa-github github-icon_svg__fa-w-16"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 496 512"
             width="1em"
@@ -21,4 +21,4 @@ function SvgGithub(props: React.SVGProps<SVGSVGElement>) {
     );
 }
 
-export default SvgGithub;
+export default SvgGithubIcon;

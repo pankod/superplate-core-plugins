@@ -1,12 +1,12 @@
 import * as React from "react";
 
-function SvgTwitter(props: React.SVGProps<SVGSVGElement>) {
+function SvgTwitterIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             aria-hidden="true"
             data-prefix="fab"
             data-icon="twitter"
-            className="twitter_svg__svg-inline--fa twitter_svg__fa-twitter twitter_svg__fa-w-16"
+            className="twitter-icon_svg__svg-inline--fa twitter-icon_svg__fa-twitter twitter-icon_svg__fa-w-16"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             width="1em"
@@ -21,4 +21,4 @@ function SvgTwitter(props: React.SVGProps<SVGSVGElement>) {
     );
 }
 
-export default SvgTwitter;
+export default SvgTwitterIcon;

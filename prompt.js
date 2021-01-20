@@ -52,6 +52,7 @@ module.exports = {
                 { message: "Reverse Proxy", name: "reverse-proxy" },
                 { message: "Bundle Analyzer", name: "bundle-analyzer" },
                 { message: "GraphQL", name: "graphql" },
+                { message: "graphql-request", name: "graphql-request" },
             ],
             default: "none",
         },

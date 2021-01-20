@@ -45,7 +45,6 @@ module.exports = {
             choices: [
                 { message: "Fetch (next.js built-in)", name: "fetch" },
                 { message: "Axios", name: "axios" },
-                { message: "Prettier", name: "prettier" },
                 { message: "Storybook", name: "storybook" },
                 { message: "SVGR", name: "svgr" },
                 { message: "Environment Variables", name: "env" },

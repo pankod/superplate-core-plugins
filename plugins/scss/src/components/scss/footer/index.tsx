@@ -24,7 +24,6 @@ export const Footer: React.FC = () => {
         <%_ } else { _%>
         <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
         <%_ } _%>
-      <Image src="/pankod.svg" alt="nextjs" width="140" height="28" />
       <div className={styles.icons}>
         <a href="https://github.com/pankod" target="_blank" >
         <%_ if (features.includes("svgr")) { _%>

@@ -56,7 +56,7 @@ export const Cards: React.FC = () => {
     ];
 
     return (
-        <SimpleGrid columns={4} spacing={10} px={20} pt={10}>
+        <SimpleGrid columns={4} spacing={10} px={20} py={10}>
             {data.map((item) => (
                 <Box>
                     <Heading fontSize={16} fontWeight={500} py={5}>

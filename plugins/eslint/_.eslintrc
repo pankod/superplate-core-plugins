@@ -1,9 +1,20 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
+  "plugins": ["@typescript-eslint"],
+  "overrides": [
+      {
+          "files": ["*.js"],
+          "rules": {
+              "@typescript-eslint/no-var-requires": "off"
+          }
+      }
   ],
+  "env": {
+      "node": true,
+      "browser": true,
+      "amd": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",

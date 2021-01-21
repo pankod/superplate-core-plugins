@@ -5,7 +5,10 @@ import { BaseTheme } from "styled-components";
 const common: BaseTheme = {
     colors: {
         transparent: "transparent",
-        red: "#ff2a44",
+        darkGrey: "#282c34",
+        blackGrey: "20232a",
+        white: "#ffffff",
+        dodgerBlue: "#007bff"
     },
 };
 

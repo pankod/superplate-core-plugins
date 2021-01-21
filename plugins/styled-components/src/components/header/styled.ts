@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderWrapper = styled.div`
     display: flex;
     justify-content: center;
-    background-color: #20232a;
+    background-color: ${({ theme }) => theme.colors.blackGrey};
     padding: 0 150px;
 `;
 
@@ -29,10 +29,9 @@ export const Menu = styled.div`
 
 export const MenuItem = styled.a`
     text-decoration: none;
-    color: #fff;
+    color: ${({ theme }) => theme.colors.white};
 
     &:hover {
-        color: #fff;
         text-decoration: underline;
     }
 `;

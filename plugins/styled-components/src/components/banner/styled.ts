@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    background-color: #282c34;
+    background-color: ${({ theme }) => theme.colors.darkGrey};
     padding: 32px 0;
-    color: #fff;
+    color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Container = styled.div`

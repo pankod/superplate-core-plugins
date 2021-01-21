@@ -1,13 +1,11 @@
 const base = {
     _app: {
         import: [
-            'import { ThemeProvider } from "styled-components";',
-            'import { useDarkMode } from "@definitions/styled-components";',
+            '',
+            'import { StyledThemeProvider } from "@definitions/styled-components";',
         ],
-        inner: [
-            'const theme = useDarkMode();',
-        ],
-        wrapper: ["<ThemeProvider theme={theme}>", "</ThemeProvider>"],
+        inner: [],
+        wrapper: ["<StyledThemeProvider>", "</StyledThemeProvider>"],
     },
     _document: {
         import: ['import { ServerStyleSheet } from "styled-components";'],

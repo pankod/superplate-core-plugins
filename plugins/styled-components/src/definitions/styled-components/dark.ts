@@ -4,11 +4,15 @@ import { DefaultTheme } from "styled-components";
 import { common } from "./common";
 
 const dark: DefaultTheme = {
-    colors: {
-        background: "#d5b0f5",
-        textColor: "#ffffff",
-        ...common.colors,
-    }
+  colors: {
+    body: '#363537',
+    toggleBorder: '#556678',
+    gradient: 'linear-gradient(#091236, #1e215d)',
+    
+    background: "#808080",
+    textColor: "#ffffff",
+    ...common.colors,
+  },
 };
 
 export { dark };

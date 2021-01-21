@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from "next/image";
 
-import { ToggleContainer } from "./styled";
 import { useTheme } from '@definitions/styled-components';
+import { ToggleContainer } from "./styled";
 
 export const Toggle: React.FC = () => {
 

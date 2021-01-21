@@ -3,9 +3,10 @@ export * from "./dark";
 export * from "./light";
 
 import React from "react";
+import { ThemeProvider } from "styled-components";
+
 import { dark } from "./dark";
 import { light } from "./light";
-import { ThemeProvider } from "styled-components";
 
 export const ThemeContext = React.createContext({
   theme: "light",

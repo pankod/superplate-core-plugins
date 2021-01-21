@@ -1,0 +1,5 @@
+{
+    "name": "lint-staged",
+    "description": " The concept of lint-staged is to run configured linter (or other) tasks on files that are staged in git.",
+    "url": "https://github.com/okonet/lint-staged"
+}

@@ -1,0 +1,5 @@
+{
+    "name": "graphql-request",
+    "description": "Minimal GraphQL client supporting Node and browsers for scripts or simple apps",
+    "url": "https://github.com/prisma-labs/graphql-request"
+}

@@ -1,0 +1,5 @@
+{
+    "name": "SWR",
+    "description": "React Hooks library for data fetching from Vercel",
+    "url": "https://swr.vercel.app/"
+}

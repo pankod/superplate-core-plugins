@@ -9,6 +9,9 @@ export default {
                 fontWeight: 500,
                 marginBottom: "0.5em",
             },
+            p: {
+                marginBottom: "1em",
+            },
         },
     },
 } as GlobalStyles;

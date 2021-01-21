@@ -12,7 +12,7 @@ export const Main: React.FC = () => {
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
             </p>
-            <Button type="primary" size="large">
+            <Button colorScheme="blue" variant="solid" size="md">
                 Docs
             </Button>
         </Box>

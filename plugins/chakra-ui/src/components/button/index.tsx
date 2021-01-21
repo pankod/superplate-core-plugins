@@ -1,6 +1,5 @@
 import React from "react";
-import { Button as BaseButton } from "antd";
-import { ButtonProps } from "antd/lib/button";
+import { Button as BaseButton, ButtonProps } from "@chakra-ui/react";
 
 export type IButton = ButtonProps;
 

@@ -6,7 +6,7 @@ const common: BaseTheme = {
     colors: {
         transparent: "transparent",
         darkGrey: "#282c34",
-        blackGrey: "20232a",
+        blackGrey: "#20232a",
         white: "#ffffff",
         dodgerBlue: "#007bff"
     },

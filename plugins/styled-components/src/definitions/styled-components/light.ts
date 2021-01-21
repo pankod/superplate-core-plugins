@@ -9,7 +9,7 @@ const light: DefaultTheme = {
     toggleBorder: '#ABB7C4',
     gradient: 'linear-gradient(#39598A, #79D7ED)',
     
-    background: "#ffffff",
+    background: "#FFFFFF",
     textColor: "#000000",
     ...common.colors,
   },

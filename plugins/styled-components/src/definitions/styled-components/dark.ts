@@ -7,10 +7,10 @@ const dark: DefaultTheme = {
   colors: {
     body: '#363537',
     toggleBorder: '#556678',
-    gradient: 'linear-gradient(#091236, #1e215d)',
+    gradient: 'linear-gradient(#091236, #1E215D)',
     
     background: "#808080",
-    textColor: "#ffffff",
+    textColor: "#FFFFFF",
     ...common.colors,
   },
 };

@@ -2,7 +2,9 @@
     "compilerOptions": {
         "paths": {
             "@components/*": ["src/components/*"],
-            "@components": ["src/components"]
+            "@components": ["src/components"],
+            "@public/*": ["public/*"],
+            "@public": ["public"]
         }
     }
 }

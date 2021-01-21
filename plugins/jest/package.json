@@ -1,9 +1,10 @@
 {
     "scripts": {
-      "test": "jest -c test/jest.config.js"
+        "test": "jest -c test/jest.config.js"
     },
     "devDependencies": {
-      "jest": "^26.6.3",
-      "ts-jest": "^26.4.4"
-      }
-  }
+        "jest": "^26.6.3",
+        "ts-jest": "^26.4.4",
+        "identity-obj-proxy": "^3.0.0"
+    }
+}

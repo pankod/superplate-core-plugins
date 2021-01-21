@@ -1,7 +1,5 @@
 import React from "react";
-import { Row, Col } from "antd";
-
-import { Card } from "@components";
+import { SimpleGrid, Box, Heading, Text } from "@chakra-ui/react";
 
 export const Cards: React.FC = () => {
     const data: { title: string; content: string }[] = [
@@ -58,12 +56,15 @@ export const Cards: React.FC = () => {
     ];
 
     return (
-        <Row>
+        <SimpleGrid columns={4} spacing={10} px={20} pt={10}>
             {data.map((item) => (
-                <Col md={6} key={item.title}>
-                    <Card title={item.title}>{item.content}</Card>
-                </Col>
+                <Box>
+                    <Heading fontSize={16} fontWeight={500} py={5}>
+                        {item.title}
+                    </Heading>
+                    <Text fontSize={14}>{item.content}</Text>
+                </Box>
             ))}
-        </Row>
+        </SimpleGrid>
     );
 };

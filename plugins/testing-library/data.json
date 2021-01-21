@@ -1,0 +1,5 @@
+{
+    "name": "Testing Library",
+    "description": "The React Testing Library is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils.",
+    "url": "https://testing-library.com/docs/"
+}

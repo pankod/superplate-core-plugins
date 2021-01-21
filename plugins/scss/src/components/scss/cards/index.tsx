@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 
-import { Card } from "@components";
+import { Card } from "@components/scss";
 
 export const Cards: React.FC = () => {
     const data: { title: string; content: string }[] = [

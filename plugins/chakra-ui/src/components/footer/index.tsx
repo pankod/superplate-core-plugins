@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Flex, Center } from "@chakra-ui/react"
 
 <%_ if (features.includes("svgr")) { _%>
-import { PankodIcon } from "@components/icons";
+import { PankodIcon, GithubIcon, TwitterIcon, YoutubeIcon, LinkedinIcon } from "@components/icons";
 <%_ } _%>
 
 export const Footer: React.FC = () => {

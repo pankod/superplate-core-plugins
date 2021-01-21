@@ -4,7 +4,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-item: center;
-    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    background-color: ${({ theme }) => theme.colors.background}
 `;
 
 export const Row = styled.div`
@@ -32,10 +33,12 @@ export const CardTitle = styled.h3`
     font-size: 1.75rem;
     margin-bottom: .5rem;
     font-weight: 500;
+    color: ${({ theme }) => theme.colors.textColor};
 `;
 
 export const CardText = styled.p`
     margin-top: .5rem;
     margin-bottom: 1rem;
     line-height: 1.5rem;
+    color: ${({ theme }) => theme.colors.textColor};
 `;

@@ -12,7 +12,7 @@ export const Logo: React.FC = () => {
     <%_ if (features.includes("svgr")) { _%>
     <NextjsIcon color="white" width="96" height="58" />
     <%_ } else { _%>
-    <Image src="/icons/nextjs-icon.svg" alt="nextjs" width="96" height="58" />;
+    <Image src="/icons/nextjs-icon.svg" alt="nextjs" width="96" height="58" />
     <%_ } _%>
   )
 };

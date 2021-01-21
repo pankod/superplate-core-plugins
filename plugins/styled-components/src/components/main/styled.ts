@@ -4,19 +4,19 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     background-color: ${({ theme }) => theme.colors.darkGrey};
-    padding: 32px 0;
+    padding: 2rem 0;
     color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Container = styled.div`
     text-align: center;
-    max-width: 1140px;
+    max-width: 71rem;
 
     h1 {
         font-size: 5.5rem;
         font-weight: 300;
-        line-height: 1.2px;
-        padding-bottom: 12px;
+        line-height: 1.2rem;
+        padding-bottom: .75rem;
     }
     p {
         font-size: 1.25rem;

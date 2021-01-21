@@ -4,12 +4,13 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-item: center;
+    margin-bottom: 3rem;
 `;
 
 export const Row = styled.div`
     display: flex;
     flex-wrap: wrap;
-    max-width: 1140px;
+    max-width: 71rem;
 `;
 
 export const Col = styled.div`
@@ -18,7 +19,7 @@ export const Col = styled.div`
 `;
 
 export const Card = styled.div`
-    padding: 16px 15px;
+    padding: 1rem;
     box-sizing: border-box;
 `;
 
@@ -34,7 +35,7 @@ export const CardTitle = styled.h3`
 `;
 
 export const CardText = styled.p`
-    margin-top: 8px;
-    margin-bottom: 16px;
-    line-height: 24px;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    line-height: 1.5rem;
 `;

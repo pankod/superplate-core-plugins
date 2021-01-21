@@ -3,7 +3,10 @@ import "styled-components";
 // #endregion Global Imports
 type CommonColors =
     | "transparent"
-    | "red"
+    | "darkGrey"
+    | "blackGrey"
+    | "dodgerBlue"
+    | "white"
 ;
 
 type ExtendedColors =

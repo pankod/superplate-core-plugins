@@ -11,7 +11,7 @@ import { TestingLibraryExample } from "./index";
 describe("Component testing with testing-library", () => {
     it("renders without crashing", () => {
         const { getByText } = render(
-            <TestingLibraryExample onClick={() => {}} />,
+            <TestingLibraryExample onClick={() => undefined} />,
         );
         expect(getByText("Click Me!")).toBeDefined();
     });

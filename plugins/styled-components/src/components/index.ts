@@ -1,5 +1,5 @@
 export { Header } from "./header";
-export { Banner } from "./banner";
+export { Main } from "./main";
 export { Logo } from "./logo";
 export { Button } from "./button";
 export { Cards } from "./cards";

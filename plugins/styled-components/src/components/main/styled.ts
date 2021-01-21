@@ -23,9 +23,3 @@ export const Container = styled.div`
         font-weight: 300;
     }
 `;
-
-export const Text = styled.span`
-    display: block;
-    font-size: 12px;
-    font-weight: 400;
-`;

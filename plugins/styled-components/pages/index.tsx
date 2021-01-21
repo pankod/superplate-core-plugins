@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Banner, Footer, Cards } from "@components";
+import { Header, Main, Footer, Cards } from "@components";
 import GlobalStyle from "@styles/globalStyles";
 
 const Home: React.FC = () => {
@@ -8,7 +8,7 @@ const Home: React.FC = () => {
         <>
             <GlobalStyle />
             <Header />
-            <Banner />
+            <Main />
             <Cards />
             <Footer />
         </>

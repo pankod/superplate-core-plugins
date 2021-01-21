@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Button } from "@components";
-import { Wrapper, Container, Text } from "./styled";
+import { Wrapper, Container } from "./styled";
 
-export const Banner: React.FC = () => {
+export const Main: React.FC = () => {
   return (
     <Wrapper>
       <Container>
@@ -12,10 +12,7 @@ export const Banner: React.FC = () => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </p>
-        <Button>
-          Docs
-        </Button>
-        <Text>Current Version: 0.0.1</Text>
+        <Button>Docs</Button>
       </Container>
     </Wrapper>
   );

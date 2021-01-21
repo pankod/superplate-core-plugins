@@ -1,0 +1,5 @@
+{
+    "name": "Fetch",
+    "description": "Next.js has a built-in polyfill for the fetch API. You don't need to worry about using it on either server or client side.",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+}

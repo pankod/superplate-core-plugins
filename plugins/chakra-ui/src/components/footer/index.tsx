@@ -20,9 +20,9 @@ export const Footer: React.FC = () => {
             <Flex flexDirection="column">
                 <a href="http://pankod.com" target="_blank">
                     <%_ if (features.includes("svgr")) { _%>
-                    <PankodIcon color="white" width="140" height="28" />
+                    <PankodIcon data-test="icon" color="white" width="140" height="28" />
                     <%_ } else { _%>    
-                    <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
+                    <Image data-test="icon" src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
                     <%_ } _%>
                 </a>
                 <Flex mt={5} >
@@ -32,9 +32,9 @@ export const Footer: React.FC = () => {
                         style={iconStyle}
                     >
                         <%_ if (features.includes("svgr")) { _%>
-                        <GithubIcon color="white" width="28" height="29" />
+                        <GithubIcon data-test="icon" color="white" width="28" height="29" />
                         <%_ } else { _%>
-                        <Image src="/icons/github-icon.svg" alt="github" width="28" height="29" />
+                        <Image data-test="icon" src="/icons/github-icon.svg" alt="github" width="28" height="29" />
                         <%_ } _%>
                     </a>
                     <a
@@ -43,9 +43,9 @@ export const Footer: React.FC = () => {
                         style={iconStyle}
                     >
                         <%_ if (features.includes("svgr")) { _%>
-                        <TwitterIcon color="white" width="28" height="28" />
+                        <TwitterIcon data-test="icon" color="white" width="28" height="28" />
                         <%_ } else { _%>
-                        <Image src="/icons/twitter-icon.svg" alt="twitter" width="28" height="28" />
+                        <Image data-test="icon" src="/icons/twitter-icon.svg" alt="twitter" width="28" height="28" />
                         <%_ } _%>
                         </a>
                     <a
@@ -54,9 +54,9 @@ export const Footer: React.FC = () => {
                         style={iconStyle}
                     >
                         <%_ if (features.includes("svgr")) { _%>
-                        <YoutubeIcon color="white" width="28" height="29" />
+                        <YoutubeIcon data-test="icon" color="white" width="28" height="29" />
                         <%_ } else { _%>
-                        <Image src="/icons/youtube-icon.svg" alt="youtube" width="28" height="29" />
+                        <Image data-test="icon" src="/icons/youtube-icon.svg" alt="youtube" width="28" height="29" />
                         <%_ } _%>
                     </a>
                     <a
@@ -65,9 +65,9 @@ export const Footer: React.FC = () => {
                         style={iconStyle}
                     >
                         <%_ if (features.includes("svgr")) { _%>
-                        <LinkedinIcon color="white" width="28" height="32" />
+                        <LinkedinIcon data-test="icon" color="white" width="28" height="32" />
                         <%_ } else { _%>
-                        <Image src="/icons/linkedin-icon.svg" alt="linkedin" width="28" height="32" />
+                        <Image data-test="icon" src="/icons/linkedin-icon.svg" alt="linkedin" width="28" height="32" />
                         <%_ } _%>
                     </a>
                 </Flex>

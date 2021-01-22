@@ -19,7 +19,11 @@ export const ToggleContainer = styled.button<{ themeName: string }>`
     outline: none;
   }
 
-  div {
+  <%_ if (features.includes("svgr")) { _%>
+    svg
+  <%_ } else { _%>
+    div
+  <%_ } _%> {
     height: auto;
     width: 2.5rem;
     transition: all 0.3s linear;

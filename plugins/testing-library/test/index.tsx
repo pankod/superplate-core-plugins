@@ -4,7 +4,10 @@ import {
     RenderOptions,
     RenderResult,
 } from "@testing-library/react";
-<%- _app.import.join("\n") %>
+<%
+    const testImports = _app.import.filter(el => el.match(/\.(sc|sa|le|c)ss/ig) === null);
+%>
+<%- testImports.join("\n") %>
 <%
     var half = Math.floor(_app.wrapper.length / 2)
     var openings = _app.wrapper.slice(0, half);

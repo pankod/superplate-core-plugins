@@ -6,7 +6,7 @@ import data from "@public/meta.json";
 export const Cards: React.FC = () => {
 
   return (
-    <Container className="my-5">
+    <Container className="my-5 flex-grow-1">
       <Row>
         {(data?.plugins ?? []).map((plugin) => (
           <Col md={4} key={plugin.name} className="mb-3">

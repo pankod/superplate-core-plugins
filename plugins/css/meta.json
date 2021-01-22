@@ -1,0 +1,5 @@
+{
+    "name": "CSS / styled-jsx",
+    "description": "Next.js comes with built-in support for CSS and styled-jsx. Styled-jsx is full, scoped and component-friendly CSS support for JSX (rendered on the server or the client).",
+    "url": "https://github.com/vercel/styled-jsx"
+}

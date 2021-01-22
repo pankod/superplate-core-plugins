@@ -1,0 +1,5 @@
+{
+    "name": "Bundle Analyzer",
+    "description": "Use webpack-bundle-analyzer in your Next.js project. Visualize size of webpack output files with an interactive zoomable treemap.",
+    "url": "https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer"
+}

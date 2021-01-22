@@ -1,6 +1,9 @@
 import React, { ReactNode } from "react";
 import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
-<%- _app.import.join("\n") %>
+<%
+    const testImports = _app.import.filter(el => el.match(/\.(sc|sa|le|c)ss/ig) === null);
+%>
+<%- testImports.join("\n") %>
 <%
     var half = Math.floor(_app.wrapper.length / 2)
     var openings = _app.wrapper.slice(0, half);

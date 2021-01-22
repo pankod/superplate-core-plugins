@@ -31,9 +31,9 @@ export const Footer: React.FC = () => {
         >
             <Space direction="vertical" size="large">
                 <%_ if (features.includes("svgr")) { _%>
-                <PankodIcon color="white" width="140" height="28" />
+                <PankodIcon data-test="icon" color="white" width="140" height="28" />
                 <%_ } else { _%>    
-                <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
+                <Image data-test="icon" src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
                 <%_ } _%>
                 <Space align="center" size="middle">
                     <a
@@ -41,28 +41,28 @@ export const Footer: React.FC = () => {
                         target="_blank"
                         style={iconStyle}
                     >
-                        <GithubOutlined />
+                        <GithubOutlined data-test="icon"/>
                     </a>
                     <a
                         href="https://twitter.com/PankodDev"
                         target="_blank"
                         style={iconStyle}
                     >
-                        <TwitterOutlined />
+                        <TwitterOutlined data-test="icon"/>
                     </a>
                     <a
                         href="https://www.youtube.com/channel/UCBGOeQkv1XW3ptryLWlQbAQ"
                         target="_blank"
                         style={iconStyle}
                     >
-                        <YoutubeOutlined />
+                        <YoutubeOutlined data-test="icon"/>
                     </a>
                     <a
                         href="https://www.linkedin.com/company/pankod-yazilim-ve-danismanlik/"
                         target="_blank"
                         style={iconStyle}
                     >
-                        <LinkedinOutlined />
+                        <LinkedinOutlined data-test="icon"/>
                     </a>
                 </Space>
             </Space>

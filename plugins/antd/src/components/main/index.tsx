@@ -13,7 +13,7 @@ export const Main: React.FC = () => {
                 paddingBottom: 32,
             }}
         >
-            <h1 style={{ color: "#fff", fontSize: 46 }}>next-cli</h1>
+            <h1 style={{ color: "#fff", fontSize: 46 }}>electio</h1>
             <p style={{ fontSize: 18 }}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.

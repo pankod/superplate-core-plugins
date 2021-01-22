@@ -5,13 +5,12 @@ import { common } from "./common";
 
 const light: DefaultTheme = {
   colors: {
+    ...common.colors,
     body: '#E2E2E2',
     toggleBorder: '#ABB7C4',
     gradient: 'linear-gradient(#39598A, #79D7ED)',
-    
     background: "#FFFFFF",
     textColor: "#000000",
-    ...common.colors,
   },
 };
 

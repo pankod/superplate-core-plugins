@@ -38,7 +38,5 @@ export const ToggleContainer = styled.button<{ themeName: string }>`
       transform: ${({ themeName }) => (themeName === "light" ? 'translateY(-100px)' : 'translateY(0)')};
     }
   }
-
-
 `;
 

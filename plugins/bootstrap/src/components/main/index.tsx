@@ -10,7 +10,7 @@ export const Main: React.FC = () => {
             style={{ backgroundColor: "#282c34" }}
         >
             <Container>
-                <h1 data-test="main-heading" className="display-2 text-white">
+                <h1 <% if(!(e2etest === "none")) { %>  data-test="main-heading" <% } %> className="display-2 text-white">
                     electio
                 </h1>
                 <p className="lead text-white">
@@ -19,7 +19,7 @@ export const Main: React.FC = () => {
                 </p>
                 <Button type="primary" size="lg">
                     <a
-                        data-test="docs-btn-anchor"
+                        <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
                         href="https://pankod.github.io/electio/"
                         target="_blank"
                     >

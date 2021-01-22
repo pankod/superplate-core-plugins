@@ -14,7 +14,7 @@ export const Main: React.FC = () => {
             }}
         >
             <h1
-                data-test="main-heading"
+                <% if(!(e2etest === "none")) { %>  data-test="main-heading" <% } %>
                 style={{ color: "#fff", fontSize: 46 }}
             >
                 electio
@@ -25,7 +25,7 @@ export const Main: React.FC = () => {
             </p>
             <Button type="primary" size="large">
                 <a
-                    data-test="docs-btn-anchor"
+                    <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
                     href="https://pankod.github.io/electio/"
                     target="_blank"
                 >

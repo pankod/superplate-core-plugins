@@ -2,25 +2,21 @@
 import "styled-components";
 // #endregion Global Imports
 type CommonColors =
-    | "transparent"
-    | "darkGrey"
-    | "blackGrey"
-    | "dodgerBlue"
-    | "white"
-;
+  | "transparent"
+  | "darkGrey"
+  | "blackGrey"
+  | "dodgerBlue"
+  | "white";
 
-type ExtendedColors =
-    | CommonColors
-    | "background"
-    | "textColor"
-;
+type ExtendedColors = CommonColors | "background" | "textColor" | "body" | "toggleBorder" | "gradient";
 
 declare module "styled-components" {
-    export interface BaseTheme {
-        colors: Record<CommonColors, string>;
-    }
+  export interface BaseTheme {
+    colors: Record<CommonColors, string>;
+  }
 
-    export interface DefaultTheme extends BaseTheme {
-        colors: Record<ExtendedColors, string>;
-    }
+  export interface DefaultTheme extends BaseTheme {
+    colors: Record<ExtendedColors, string>;
+  }
 }
+

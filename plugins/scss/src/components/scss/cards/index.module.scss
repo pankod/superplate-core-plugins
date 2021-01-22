@@ -1,6 +1,7 @@
 .cards {
     display: flex;
     flex-flow: row wrap;
+    flex: 1;
     padding-bottom: 1rem;
 
     @media (max-width: 575px) {

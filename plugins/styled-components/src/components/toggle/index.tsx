@@ -19,12 +19,12 @@ export const Toggle: React.FC = () => {
       <%_ if (features.includes("svgr")) { _%>
       <SunIcon width="32" height="32" />
       <%_ } else { _%>
-      <Image src="/icons/sun.svg" alt="sun" width="32" height="32" />
+      <Image src="/icons/sun-icon.svg" alt="sun" width="32" height="32" />
       <%_ } _%>
       <%_ if (features.includes("svgr")) { _%>
       <MoonIcon width="32" height="32" />
       <%_ } else { _%>
-      <Image src="/icons/half-moon.svg" alt="moon" width="32" height="32" />
+      <Image src="/icons/moon-icon.svg" alt="moon" width="32" height="32" />
       <%_ } _%>
     </ToggleContainer>
   );

@@ -7,9 +7,9 @@ import { Card } from "@components/scss";
 export const Cards: React.FC = () => {
     return (
         <div className={styles.cards}>
-            {data.map((item) => (
+            {(data?.plugins ?? []).map((plugin) => (
                 <div className={styles.cardWrapper}>
-                    <Card title={item.title}>{item.content}</Card>
+                    <Card title={plugin.name}>{plugin.description}</Card>
                 </div>
             ))}
         </div>

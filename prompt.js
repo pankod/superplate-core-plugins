@@ -43,6 +43,7 @@ module.exports = {
         {
             name: "features",
             message: "Features:",
+            hint: "use <arrow-keys> to navigate, <space> to select.",
             type: "multiselect",
             pageSize: 2,
             choices: [
@@ -61,6 +62,7 @@ module.exports = {
         {
             name: "hooks",
             message: "Hooks",
+            hint: "use <arrow-keys> to navigate, <space> to select.",
             type: "multiselect",
             choices: [
                 { message: "SWR", name: "swr" },
@@ -97,6 +99,7 @@ module.exports = {
             name: "linter",
             message: "Linting tools:",
             type: "multiselect",
+            hint: "use <arrow-keys> to navigate, <space> to select.",
             pageSize: 10,
             choices: [
                 { message: "ESLint", name: "eslint" },

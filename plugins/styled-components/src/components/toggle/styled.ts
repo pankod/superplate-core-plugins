@@ -42,11 +42,3 @@ export const ToggleContainer = styled.button<{ themeName: string }>`
 
 `;
 
-// export const SunIcon = styled.div`
-//   transform: ${({ themeName }) => (themeName === "light" ? 'translateY(0)' : 'translateY(100px)')};
-// `;
-
-// export const MoonIcon = styled.div`
-//   transform: ${({ themeName }) => (themeName === "light" ? 'translateY(-100px)' : 'translateY(0)')};
-// `;
-

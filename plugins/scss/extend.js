@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: ['import "@styles/globalStyle.scss"'],
+        import: ['import "@styles/global.scss"'],
         inner: [],
         wrapper: [],
     },

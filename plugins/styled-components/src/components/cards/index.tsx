@@ -6,10 +6,10 @@ import { Row, Col, Container, Card, CardBody, CardText, CardTitle } from "./styl
 export const Cards: React.FC = () => {
 
     return (
-        <Container className="my-5">
+        <Container>
             <Row>
                 {(data?.plugins ?? []).map((plugin) => (
-                    <Col md={4} key={plugin.name} className="mb-3">
+                    <Col key={plugin.name}>
                         <Card>
                             <CardBody>
                                 <CardTitle>{plugin.name}</CardTitle>

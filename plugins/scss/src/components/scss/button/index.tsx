@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./index.module.scss";
 
 export const Button: React.FC<
     React.AnchorHTMLAttributes<HTMLAnchorElement>
@@ -9,7 +10,7 @@ export const Button: React.FC<
             target="_blank"
             href="https://pankod.github.io/electio/"
             rel="noopener noreferrer"
-            className="button"
+            className={styles.button}
         >
             {children}
         </a>

@@ -14,6 +14,6 @@ describe("Homepage", () => {
     });
 
     it("Should have icons", () => {
-        cy.getBySel(`icon`).should("have.length", 6);
+        cy.getBySel("icon").should("have.length", 6);
     });
 });

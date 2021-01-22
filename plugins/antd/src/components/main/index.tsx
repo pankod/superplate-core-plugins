@@ -13,13 +13,24 @@ export const Main: React.FC = () => {
                 paddingBottom: 32,
             }}
         >
-            <h1 style={{ color: "#fff", fontSize: 46 }}>electio</h1>
+            <h1
+                data-test="main-heading"
+                style={{ color: "#fff", fontSize: 46 }}
+            >
+                electio
+            </h1>
             <p style={{ fontSize: 18 }}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
             </p>
             <Button type="primary" size="large">
-                Docs
+                <a
+                    data-test="docs-btn-anchor"
+                    href="https://pankod.github.io/electio/"
+                    target="_blank"
+                >
+                    Docs
+                </a>
             </Button>
         </div>
     );

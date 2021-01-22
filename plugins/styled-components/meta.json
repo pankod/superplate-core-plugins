@@ -1,0 +1,5 @@
+{
+    "name": "Styled Components",
+    "description": "Utilising tagged template literals (a recent addition to JavaScript) and the power of CSS, styled-components allows you to write actual CSS code to style your components.",
+    "url": "https://styled-components.com/docs"
+}

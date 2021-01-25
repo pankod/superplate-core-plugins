@@ -53,7 +53,7 @@ export const globalTypes = {
       items: ["LTR", "RTL"],
     },
   },
-}
+};
 
 const withChakra = (StoryFn, context) => {
   const { direction } = context.globals;

@@ -13,4 +13,8 @@ export const Container = styled.div`
   text-align: center;
   max-width: 71rem;
   min-width: 71rem;
+
+  @media (max-width: 575px) {
+    min-width: 22rem;
+  }
 `;

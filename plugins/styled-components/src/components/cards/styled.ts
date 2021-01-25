@@ -13,11 +13,19 @@ export const Row = styled.div`
     display: flex;
     flex-wrap: wrap;
     max-width: 71rem;
+
+    @media (max-width: 575px) {
+        flex-direction: column;
+    }
 `;
 
 export const Col = styled.div`
     flex: 0 0 25%;
     max-width: 25%;
+
+    @media (max-width: 575px) {
+        max-width: 100%;
+    }
 `;
 
 export const Card = styled.div`

@@ -1,13 +1,11 @@
 import React, { ReactNode } from "react";
 import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
+<%- testSetup.import.join("\n") %>
+
 <%
-    const testImports = _app.import.filter(el => el.match(/\.(sc|sa|le|c)ss/ig) === null);
-%>
-<%- testImports.join("\n") %>
-<%
-    var half = Math.floor(_app.wrapper.length / 2)
-    var openings = _app.wrapper.slice(0, half);
-    var closings = _app.wrapper.slice(half);
+    var half = Math.floor(testSetup.wrapper.length / 2)
+    var openings = testSetup.wrapper.slice(0, half);
+    var closings = testSetup.wrapper.slice(half);
 %>
 
 /**
@@ -19,7 +17,7 @@ import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
  */
 
 const AllTheProviders = ({ children }) => {
-    <%- _app.inner.join("\n") %>
+    <%- testSetup.inner.join("\n") %>
 
     return (
         <>

@@ -4,7 +4,7 @@ import { withKnobs, select } from "@storybook/addon-knobs";
 import { Button as ScssButton } from "./index";
 
 export default {
-    title: "Button SCSS",
+    title: "Button",
     component: ScssButton,
     decorators: [withKnobs],
 };

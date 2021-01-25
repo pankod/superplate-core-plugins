@@ -4,7 +4,7 @@ import { withKnobs, select } from "@storybook/addon-knobs";
 import { Card as CssCard } from "../card/index";
 
 export default {
-    title: "Card CSS",
+    title: "Card",
     component: CssCard,
     decorators: [withKnobs],
 };

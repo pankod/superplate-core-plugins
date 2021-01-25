@@ -2,8 +2,8 @@ describe("Homepage", () => {
     beforeEach(() => {
         browser.url("/")
     })
+    
     it("Brings header", async () => {
-        browser.url("/");
         const heading = await $('[data-test="main-heading"]');
         expect(await heading.getText()).toBe("electio");
     });
@@ -14,5 +14,10 @@ describe("Homepage", () => {
         const buttonHref = await button.getAttribute("href")
         expect(buttonHref).toBeTruthy()
         expect(buttonHref).toBe("https://pankod.github.io/electio/")
+    });
+
+    it("Should have icons", async () => {
+        const icons = await $$('[data-test="icon"]')
+        expect(icons).toHaveLength(6)
     });
 });

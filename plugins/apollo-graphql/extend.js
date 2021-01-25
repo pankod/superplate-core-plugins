@@ -13,7 +13,7 @@ const base = {
     testSetup: {
         import: ["import { MockedProvider } from '@apollo/client/testing';"],
         wrapper: [
-            "<MockedProvider mocks={mocks} addTypename={false}>",
+            "<MockedProvider mocks={[]} addTypename={false}>",
             "</MockedProvider>",
         ],
     },

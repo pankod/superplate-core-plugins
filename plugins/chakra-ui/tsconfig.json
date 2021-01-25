@@ -1,15 +1,12 @@
 {
-    "compilerOptions":{
-       "paths": {
-          "@definitions/*":[
-             "src/definitions/*"
-          ],
-          "@components/*": [
-            "src/components/*"
-         ],
-         "@components": [
-            "src/components"
-         ]
-       }
+    "compilerOptions": {
+        "paths": {
+            "@definitions/*": ["src/definitions/*"],
+            "@definitions": ["src/definitions"],
+            "@components/*": ["src/components/*"],
+            "@components": ["src/components"],
+            "@public/*": ["public/*"],
+            "@public": ["public"]
+        }
     }
- }
+}

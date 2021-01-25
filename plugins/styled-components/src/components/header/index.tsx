@@ -1,12 +1,15 @@
 import React from "react";
 
-import { Logo } from "@components";
-import { Container } from "./styled"
+import { Logo, Toggle } from "@components";
+import { Wrapper, Container } from "./styled";
 
 export const Header: React.FC = () => {
   return (
-    <Container>
-      <Logo />
-    </Container>
+    <Wrapper>
+      <Container>
+        <Logo />
+        <Toggle />
+      </Container>
+    </Wrapper>
   );
 };

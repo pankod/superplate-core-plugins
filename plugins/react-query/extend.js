@@ -5,10 +5,16 @@ const base = {
             'import { Hydrate } from "react-query/hydration";',
         ],
         inner: [
-            "const queryClient = new QueryClient()"
+            "const queryClient = new QueryClient()",
+            "const { dehydratedState } = typeof pageProps !== 'undefined' ? pageProps : {};",
         ],
-        wrapper: ["<QueryClientProvider client={queryClient}>", "<Hydrate state={pageProps.dehydratedState}>", "</Hydrate>", "</QueryClientProvider>"],
-    }
+        wrapper: [
+            "<QueryClientProvider client={queryClient}>",
+            "<Hydrate state={dehydratedState}>",
+            "</Hydrate>",
+            "</QueryClientProvider>",
+        ],
+    },
 };
 
 module.exports = {

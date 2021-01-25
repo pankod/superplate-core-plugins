@@ -56,8 +56,8 @@ export const globalTypes = {
 }
 
 const withChakra = (StoryFn, context) => {
-  const { direction } = context.globals
-  const dir = direction.toLowerCase()
+  const { direction } = context.globals;
+  const dir = direction.toLowerCase();
   return (
     <ChakraProvider theme={extendTheme({ direction: dir })}>
       <div dir={dir} id="story-wrapper" style={{ minHeight: "100vh" }}>

@@ -9,9 +9,9 @@ import { NextjsIcon } from "@components/icons";
 export const Logo: React.FC = () => {
     return (
         <%_ if (features.includes("svgr")) { _%>
-            <NextjsIcon className="text-white mx-auto" width="96" height="58" />
+            <NextjsIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> className="text-white mx-auto" width="96" height="58" />
         <%_ } else { _%>
-            <Image src="/icons/nextjs-icon.svg" alt="nextjs" width="96" height="58" />
+            <Image <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> src="/icons/nextjs-icon.svg" alt="nextjs" width="96" height="58" />
         <%_ } _%>
     );
 };

@@ -3,7 +3,7 @@ describe("Homepage", () => {
         cy.visit("/");
     });
     it("Brings header", () => {
-        cy.getBySel("main-heading").should("contain.text", "electio");
+        cy.getBySel("main-heading").should("contain.text", <% if(!(ui==="none" )) { %> "electio" <% } else { %> "next cli prototype app" <% } %>);
     });
 
     it("Should have true href", () => {

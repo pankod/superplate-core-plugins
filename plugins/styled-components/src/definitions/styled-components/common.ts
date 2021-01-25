@@ -8,7 +8,6 @@ const common: BaseTheme = {
         darkGrey: "#282C34",
         blackGrey: "#20232A",
         white: "#FFFFFF",
-        dodgerBlue: "#007BFF"
     },
 };
 

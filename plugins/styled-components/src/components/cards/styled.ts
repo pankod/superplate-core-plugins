@@ -6,7 +6,7 @@ export const Container = styled.div`
     justify-content: center;
     align-item: center;
     padding-bottom: 3rem;
-    background-color: ${({ theme }) => theme.colors.background}
+    background-color: ${({ theme }) => theme.colors.cardsBg}
 `;
 
 export const Row = styled.div`

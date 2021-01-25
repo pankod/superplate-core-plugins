@@ -1,3 +1,8 @@
+<%_ if (ui.includes("chakra-ui")) { _%>
+const path = require("path");
+const toPath = (_path) => path.join(process.cwd(), _path);
+<%_ } _%>
+
 module.exports = {
     stories: [
         "../src/**/*.stories.mdx",
@@ -28,6 +33,20 @@ module.exports = {
                 "sass-loader",
             ],
         });
+        <%_ } _%>
+
+        <%_ if (ui.includes("chakra-ui")) { _%>
+        config = {
+            ...config,
+            resolve: {
+                ...config.resolve,
+                alias: {
+                    ...config.resolve.alias,
+                    "@emotion/core": toPath("node_modules/@emotion/react"),
+                    "emotion-theming": toPath("node_modules/@emotion/react")
+                }
+            }
+        }
         <%_ } _%>
 
         return config;

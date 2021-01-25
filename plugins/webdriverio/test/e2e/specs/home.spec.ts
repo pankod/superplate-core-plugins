@@ -5,7 +5,7 @@ describe("Homepage", () => {
     
     it("Brings header", async () => {
         const heading = await $('[data-test="main-heading"]');
-        expect(await heading.getText()).toBe( <% if(!(ui==="none")) { %> "electio" <% } else { %> "next cli prototype app" <% } %> );
+        expect(await heading.getText()).toBe("electio");
     });
 
     it("Should have true href", async () => {

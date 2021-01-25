@@ -1,6 +1,6 @@
 <%_ if (ui.includes("chakra-ui")) { _%>
 const path = require("path");
-const toPath = (_path) => path.join(process.cwd(), _path)
+const toPath = (_path) => path.join(process.cwd(), _path);
 <%_ } _%>
 
 module.exports = {

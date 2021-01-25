@@ -10,6 +10,7 @@ describe("Homepage", () => {
 
     it("Should have true href", async () => {
         const button = await $('[data-test="docs-btn-anchor"]')
+        expect(await button.getTagName()).toBe("a")
         const buttonHref = await button.getAttribute("href")
         expect(buttonHref).toBeTruthy()
         expect(buttonHref).toBe("https://pankod.github.io/electio/")

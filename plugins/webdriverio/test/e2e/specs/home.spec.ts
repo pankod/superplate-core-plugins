@@ -1,6 +1,6 @@
 describe("Homepage", () => {
-    beforeEach(() => {
-        browser.url("/")
+    beforeEach(async () => {
+        await browser.url("/")
     })
     
     it("Brings header", async () => {

@@ -1,8 +1,12 @@
 <%_ if (testing === 'testing-library') { _%>   
 import { fireEvent, render } from "@test";
-<%_ } _%>
 
 import { Toggle } from "./index";
+<%_ } else if (testing === 'enzyme') { _%>
+import mount from "@test/mount";
+
+import { Toggle } from "./index";
+<%_ } _%>
 
 <%_ if (testing === 'testing-library') { _%>   
 describe("Toggle component testing with testing-library", () => {
@@ -26,6 +30,22 @@ describe("Toggle component testing with testing-library", () => {
 
         const toggleBtn = getByTestId("toggle");
         expect(toggleBtn.children).toHaveLength(2);
+    });
+});
+<%_ } else if (testing === 'enzyme') { _%>
+describe("Toggle component testing with enzyme", () => {
+    const mockFn = jest.fn();
+
+    const component = mount(<Toggle onClick={mockFn}/>);
+
+    it("renders without crashing", () => {
+        expect(component).toBeTruthy();
+    });
+
+    it("toggle button is clickable", () => {
+        const toggleBtn = component.find("button");
+
+        toggleBtn.simulate("click");
     });
 });
 <%_ } _%>

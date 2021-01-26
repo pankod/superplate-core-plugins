@@ -10,13 +10,21 @@ export const Main: React.FC = () => {
             style={{ backgroundColor: "#282c34" }}
         >
             <Container>
-                <h1 className="display-2 text-white">next-cli</h1>
+                <h1 <% if(!(e2etest === "none")) { %>  data-test="main-heading" <% } %> className="display-2 text-white">
+                    electio
+                </h1>
                 <p className="lead text-white">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                 </p>
                 <Button type="primary" size="lg">
-                    Docs
+                    <a
+                        <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
+                        href="https://pankod.github.io/electio/"
+                        target="_blank"
+                    >
+                        Docs
+                    </a>
                 </Button>
             </Container>
         </div>

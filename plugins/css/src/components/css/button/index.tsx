@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./index.module.css";
 
-export const Button: React.FC<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>
-> = ({ children, ...props }) => {
+export type IButton = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
+
+export const Button: React.FC<IButton> = ({ children, ...props}) => {
     return (
         <a
             {...props}
@@ -11,6 +14,9 @@ export const Button: React.FC<
             href="https://pankod.github.io/electio/"
             rel="noopener noreferrer"
             className={styles.button}
+            <%_ if (testing === 'testing-library') { _%>
+            data-testid="btn" 
+            <%_ } _%>
         >
             {children}
         </a>

@@ -1,5 +1,6 @@
 import { FetchExample } from "./index";
-import nock from "nock";
+import "./mocks";
+import { mockResponse } from "./mocks";
 
 <%_ if (testing === 'testing-library') { _%>
 import { render, waitFor } from "@test";
@@ -9,24 +10,8 @@ import { render, waitFor } from "@test";
 import  from "@test/mount";
 <%_ } _%>
     
-
-const mockResponse = [
-  {
-    id: 74,
-    type: "programming",
-    setup: "Why do C# and Java developers keep breaking their keyboards?",
-    punchline: "Because they use a strongly typed language.",
-  },
-];
-
 <%_ if (testing === 'testing-library') { _%>
 describe("Fetch testing with testing-library and nock", () => {
-  beforeAll(() => {
-    nock("https://official-joke-api.appspot.com")
-      .get("/jokes/programming/random")
-      .reply(200, mockResponse);
-  });
-
   it("renders the mock result", async () => {
     const { getByText, getByTestId } = render(<FetchExample />);
 
@@ -41,12 +26,6 @@ describe("Fetch testing with testing-library and nock", () => {
 
 <%_ if (testing === 'enzyme') { _%>
 describe("Fetch testing with enzyme and nock", () => {
-    beforeAll(() => {
-        nock("https://official-joke-api.appspot.com")
-        .get("/jokes/programming/random")
-        .reply(200, mockResponse);
-    });
-    
     it("renders without crashing", async () => {
         expect(true).toBeTruthy();
     });

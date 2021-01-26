@@ -12,14 +12,20 @@ export const Footer: React.FC = () => {
 
   return (
     <div className={styles.footer}>
-        <a href="https://github.com/pankod" target="_blank">
+        <a 
+            href="https://github.com/pankod" 
+            target="_blank"
+            <%_ if (testing === 'testing-library') { _%>   
+            data-testid="pankod-logo"
+            <%_ } _%>
+        >
             <%_ if (features.includes("svgr")) { _%>
             <PankodIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="140" height="28" />
             <%_ } else { _%>
             <Image <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
             <%_ } _%>
         </a>
-        <div className={styles.icons}>
+        <div className={styles.icons} <% if (testing === 'testing-library') { %> data-testid="icons-container" <% } %> >
             <a href="https://github.com/pankod" target="_blank" >
                 <%_ if (features.includes("svgr")) { _%>
                 <GithubIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="28" height="29" />
@@ -28,9 +34,8 @@ export const Footer: React.FC = () => {
                 <%_ } _%>
             </a>
             <a
-              href="https://twitter.com/PankodDev"
-              target="_blank"
-              
+                href="https://twitter.com/PankodDev"
+                target="_blank"
             >
                 <%_ if (features.includes("svgr")) { _%>
                 <TwitterIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="28" height="28" />
@@ -39,8 +44,8 @@ export const Footer: React.FC = () => {
                 <%_ } _%>
             </a>
             <a
-              href="https://www.youtube.com/channel/UCBGOeQkv1XW3ptryLWlQbAQ"
-              target="_blank"
+                href="https://www.youtube.com/channel/UCBGOeQkv1XW3ptryLWlQbAQ"
+                target="_blank"
             >
                 <%_ if (features.includes("svgr")) { _%>
                 <YoutubeIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="28" height="29" />
@@ -49,9 +54,8 @@ export const Footer: React.FC = () => {
                 <%_ } _%>
             </a>
             <a
-              href="https://www.linkedin.com/company/pankod-yazilim-ve-danismanlik/"
-              target="_blank"
-              
+                href="https://www.linkedin.com/company/pankod-yazilim-ve-danismanlik/"
+                target="_blank"
             >
                 <%_ if (features.includes("svgr")) { _%>
                 <LinkedinIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="28" height="32" />

@@ -49,7 +49,11 @@ export const FetchExample = () => {
                 <header className={styles.header}>
                     <h2>Fetch Data Fetching Example</h2>
                 </header>
-                <main className={styles.content}>
+                <main
+                <%_ if (testing !== "none") { _%>
+                    data-testid="joke-container"
+                <%_ } _%>
+                className={styles.content}>
                     <p className={styles.title}>
                         Programmer Jokes {`#${data[0].id}`}
                     </p>

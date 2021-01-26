@@ -12,6 +12,7 @@ describe("Footer component testing with testing-library", () => {
 
         expect(component).toBeTruthy();
     });
+
     it("renders pankod logo and directed to the correct url", () => {
         const { getByTestId } = render(<Footer />);
 
@@ -25,7 +26,6 @@ describe("Footer component testing with testing-library", () => {
 
         const icons = getByTestId("icons-container");
         expect(icons.children).toHaveLength(4);
-
     });
 });
 <%_ } _%>

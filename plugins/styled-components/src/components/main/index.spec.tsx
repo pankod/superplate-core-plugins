@@ -7,9 +7,9 @@ import { Main } from "./index";
 <%_ if (testing === 'testing-library') { _%>   
 describe("Main component testing with testing-library", () => {
 
-    const component = render(<Main />);
-
     it("renders without crashing", () => {
+        const component = render(<Main />);
+
         expect(component).toBeTruthy();
     });
     
@@ -18,7 +18,6 @@ describe("Main component testing with testing-library", () => {
 
         getByText("next-cli");
         getByText("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-
     });
 
     it("renders button successfuly", () => {

@@ -13,11 +13,12 @@ describe("Cards component testing with testing-library", () => {
 
         expect(component).toBeTruthy();
     });
-      it("cards length must be equal to the length of the meta data ", () => {
-        const { getAllByTestId } = render(<Cards />);
 
-        const cardContainer = getAllByTestId("container");
-        expect(cardContainer).toHaveLength(data.plugins.length);
-      });
+    it("cards length must be equal to the length of the meta data ", () => {
+      const { getAllByTestId } = render(<Cards />);
+      
+      const cardContainer = getAllByTestId("container");
+      expect(cardContainer).toHaveLength(data.plugins.length);
+    });
 });
 <%_ } _%>

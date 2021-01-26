@@ -24,7 +24,7 @@ describe("Toggle component testing with testing-library", () => {
     it("renders toggle button contain 2 images", () => {
         const { getByTestId } = render(<Toggle />);
 
-        const toggleBtn = getByTestId("toggle")
+        const toggleBtn = getByTestId("toggle");
         expect(toggleBtn.children).toHaveLength(2);
     });
 });

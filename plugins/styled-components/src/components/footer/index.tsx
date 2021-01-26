@@ -14,6 +14,9 @@ export const Footer: React.FC = () => {
       <LogoButton
         href="http://pankod.com"
         target="_blank"
+        <%_ if (testing === 'testing-library') { _%>   
+        data-testid="pankod-logo"
+        <%_ } _%>
       >
         <%_ if (features.includes("svgr")) { _%>
         <PankodIcon color="white" width="140" height="28" />
@@ -21,7 +24,7 @@ export const Footer: React.FC = () => {
         <Image src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
         <%_ } _%>
       </LogoButton>
-      <List>
+      <List <% if (testing === 'testing-library') { %> data-testid="icons-container" <% } %> >
         <ListItem>
           <%_ if (features.includes("svgr")) { _%>
           <GithubIcon color="white" width="28" height="29" />

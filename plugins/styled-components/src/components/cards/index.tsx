@@ -9,7 +9,12 @@ export const Cards: React.FC = () => {
         <Container>
             <Row>
                 {(data?.plugins ?? []).map((plugin) => (
-                    <Col key={plugin.name}>
+                    <Col 
+                        key={plugin.name} 
+                        <%_ if (testing === 'testing-library') { _%>   
+                        data-testid="container"
+                        <%_ } _%>
+                    >
                         <Card>
                             <CardBody>
                                 <CardTitle>{plugin.name}</CardTitle>

@@ -10,12 +10,22 @@ import { SunIcon, MoonIcon } from "@components/icons";
 import { useTheme } from '@definitions/styled-components';
 import { ToggleContainer } from "./styled";
 
-export const Toggle: React.FC = () => {
+export type IButton = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
+export const Toggle: React.FC<IButton> = () => {
   const { toggle, themeName } = useTheme();
 
   return (
-    <ToggleContainer themeName={themeName} onClick={toggle}>
+    <ToggleContainer 
+      themeName={themeName} 
+      onClick={toggle}
+      <%_ if (testing === 'testing-library') { _%>   
+      data-testid="toggle"
+      <%_ } _%>
+    >
       <%_ if (features.includes("svgr")) { _%>
       <SunIcon width="32" height="32" />
       <%_ } else { _%>

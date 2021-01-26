@@ -1,3 +1,4 @@
+import "isomorphic-unfetch";
 import Enzyme from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 <%_ if (features.indexOf("axios") >= 0) { _%>

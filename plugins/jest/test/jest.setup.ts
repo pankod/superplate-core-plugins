@@ -1,3 +1,4 @@
+import "isomorphic-unfetch";
 <%_ if (features.indexOf("axios") >= 0) { _%>
 import httpAdapter from "axios/lib/adapters/http";
 import axios from "axios";

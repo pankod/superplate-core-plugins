@@ -1,12 +1,10 @@
 <%_ if (testing === 'testing-library') { _%>   
 import { render } from "@test";
-
-import { Wrapper } from "./index";
 <%_ } else if (testing === 'enzyme') { _%>
 import mount from "@test/mount";
+<%_ } _%>
 
 import { Wrapper } from "./index";
-<%_ } _%>
 
 <%_ if (testing === 'testing-library') { _%>   
 describe("Wrapper component testing with testing-library", () => {

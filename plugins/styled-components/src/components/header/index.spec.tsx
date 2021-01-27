@@ -1,13 +1,12 @@
 <%_ if (testing === 'testing-library') { _%>   
 import { render } from "@test";
 
-import { Header } from "./index";
 <%_ } else if (testing === 'enzyme') { _%>
 import mount from "@test/mount";
 
 import { Logo, Toggle } from "@components";
-import { Header } from "./index";
 <%_ } _%>
+import { Header } from "./index";
 
 <%_ if (testing === 'testing-library') { _%>   
 describe("Header component testing with testing-library", () => {

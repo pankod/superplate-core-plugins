@@ -8,7 +8,7 @@ export const Cards: React.FC = () => {
   return (
     <SimpleGrid columns={4} spacing={10} px={20} py={10}>
       {(data?.plugins ?? []).map((plugin) => (
-        <Box key={plugin.name}>
+        <Box key={plugin.name} <% if (testing === 'testing-library') { %> data-testid="container" <% } %> >
           <Heading fontSize={16} fontWeight={500} py={5}>
             {plugin.name}
           </Heading>

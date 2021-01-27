@@ -178,7 +178,7 @@ module.exports = {
         },
         {
             when: function (answers) {
-                return answers.features.indexOf("storybook") === -1;
+                return !answers.features.includes("storybook");
             },
             pattern: ["**/*.stories.tsx"],
         },

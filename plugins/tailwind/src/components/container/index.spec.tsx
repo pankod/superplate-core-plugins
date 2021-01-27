@@ -4,12 +4,12 @@ import { render } from "@test";
 import mount from "@test/mount";
 <%_ } _%>
 
-import { Wrapper } from "./index";
+import { Container } from "./index";
 
 <%_ if (testing === 'testing-library') { _%>   
 describe("Wrapper component testing with testing-library", () => {
 
-    const component = render(<Wrapper />);
+    const component = render(<Container />);
 
     it("renders without crashing", () => {
         expect(component).toBeTruthy();
@@ -17,7 +17,7 @@ describe("Wrapper component testing with testing-library", () => {
 });
 <%_ } else if (testing === 'enzyme') { _%>
 describe("Wrapper component testing with enzyme", () => {
-    const component = mount(<Wrapper />);
+    const component = mount(<Container />);
 
     it("renders without crashing", () => {
         expect(component).toBeTruthy();

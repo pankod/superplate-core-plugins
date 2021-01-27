@@ -9,7 +9,14 @@ import React from "react";
 export const Footer: React.FC = () => {
   return (
     <div className="text-center py-5 bg-gray-800">
-      <a href="http://pankod.com" target="_blank" className="block mb-3">
+      <a 
+        href="http://pankod.com" 
+        target="_blank" 
+        className="block mb-3"
+        <%_ if (testing === 'testing-library') { _%>   
+        data-testid="pankod-logo"
+        <%_ } _%>
+      >
           <%_ if (features.includes("svgr")) { _%>
               <PankodIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> className="text-white mx-auto" width="140" height="28" />
           <%_ } else { _%>
@@ -17,7 +24,7 @@ export const Footer: React.FC = () => {
           <%_ } _%>
       </a>
 
-      <ul className="flex justify-center list-none p-0 m-0">
+      <ul className="flex justify-center list-none p-0 m-0" <% if (testing === 'testing-library') { %> data-testid="icons-container" <% } %> >
         <li className="mx-3">
           <%_ if (features.includes("svgr")) { _%>
               <GithubIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="28" height="29" />

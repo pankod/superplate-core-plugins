@@ -10,6 +10,7 @@ export const Cards: React.FC = () => {
                     <div
                         key={plugin.name}
                         className="col-span-1 rounded-md border border-gray-300 p-5"
+                        <% if (testing === 'testing-library') { %> data-testid="container" <% } %>
                     >
                         <h2 className="text-xl font-semibold mb-2">
                             {plugin.name}

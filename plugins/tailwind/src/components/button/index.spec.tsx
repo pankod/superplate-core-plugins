@@ -47,4 +47,4 @@ describe("Button component testing with enzyme", () => {
         expect(mockFn).toHaveBeenCalledTimes(1);
     });
 });
-<%_ }  _%>
+<%_ } _%>

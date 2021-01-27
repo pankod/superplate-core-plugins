@@ -1,12 +1,10 @@
 <%_ if (testing === 'testing-library') { _%>   
 import { fireEvent, render } from "@test";
-
-import { Toggle } from "./index";
 <%_ } else if (testing === 'enzyme') { _%>
 import mount from "@test/mount";
+<%_ } _%>
 
 import { Toggle } from "./index";
-<%_ } _%>
 
 <%_ if (testing === 'testing-library') { _%>   
 describe("Toggle component testing with testing-library", () => {

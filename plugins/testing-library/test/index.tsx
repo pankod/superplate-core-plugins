@@ -7,9 +7,8 @@ import {
 <%- testSetup.import.join("\n") %>
 
 <%
-    var half = Math.floor(testSetup.wrapper.length / 2)
-    var openings = testSetup.wrapper.slice(0, half);
-    var closings = testSetup.wrapper.slice(half);
+    var top = testSetup.wrapper.map(wrapper => wrapper[0] || "");
+    var bottom = testSetup.wrapper.map(wrapper => wrapper[1] || "");
 %>
 
 /**
@@ -25,9 +24,9 @@ export const AllTheProviders = ({ children }) => {
 
     return (
         <>
-            <%- openings.join("\n") %>
+            <%- top.join("\n") %>
                 {children}
-            <%- closings.join("\n") %>
+            <%- bottom.join("\n") %>
         </>
     );
 };

@@ -17,6 +17,9 @@ export const Footer: React.FC = () => {
                 href="http://pankod.com"
                 target="_blank"
                 className="d-block mb-3"
+                <%_ if (testing === 'testing-library') { _%>   
+                data-testid="pankod-logo"
+                <%_ } _%>
             >
                 <%_ if (features.includes("svgr")) { _%>
                 <PankodIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="140" height="28" />
@@ -25,7 +28,7 @@ export const Footer: React.FC = () => {
                 <%_ } _%>
             </a>
 
-            <ul className="d-flex justify-content-center list-unstyled p-0 m-0">
+            <ul className="d-flex justify-content-center list-unstyled p-0 m-0" <% if (testing === 'testing-library') { %> data-testid="icons-container" <% } %> >
                 <li className="mx-2">
                     <%_ if (features.includes("svgr")) { _%>
                     <GithubIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="28" height="29" />

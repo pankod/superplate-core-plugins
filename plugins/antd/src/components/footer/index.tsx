@@ -35,10 +35,13 @@ export const Footer: React.FC = () => {
                 <%_ } else { _%>    
                 <Image <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> src="/icons/pankod-icon.svg" alt="pankod" width="140" height="28" />
                 <%_ } _%>
-                <Space align="center" size="middle">
+                <Space align="center" size="middle" <% if (testing === 'testing-library') { %> data-testid="icons-container" <% } %> >
                     <a
                         href="https://github.com/pankod"
                         target="_blank"
+                        <%_ if (testing === 'testing-library') { _%>   
+                        data-testid="pankod-logo"
+                        <%_ } _%>
                         style={iconStyle}
                     >
                         <GithubOutlined <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %>/>

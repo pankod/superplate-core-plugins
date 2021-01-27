@@ -1,12 +1,10 @@
 <%_ if (testing === 'testing-library') { _%>   
 import { render } from "@test";
-
-import { Footer } from "./index";
 <%_ } else if (testing === 'enzyme') { _%>
 import mount from "@test/mount";
+<%_ } _%>
 
 import { Footer } from "./index";
-<%_ } _%>
 
 <%_ if (testing === 'testing-library') { _%>   
 describe("Footer component testing with testing-library", () => {

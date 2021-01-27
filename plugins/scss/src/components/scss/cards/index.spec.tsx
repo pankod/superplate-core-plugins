@@ -1,17 +1,13 @@
 <%_ if (testing === 'testing-library') { _%>   
 import { render } from "@test";
-
-import data from "@public/meta.json";
-
-import { Cards } from "./index";
 <%_ } else if (testing === 'enzyme') { _%>
 import mount from "@test/mount";
+import { Card } from "@components/scss";
+<%_ } _%>
 
 import data from "@public/meta.json";
-import { Card } from "@components/css";
 
 import { Cards } from "./index";
-<%_ } _%>
 
 <%_ if (testing === 'testing-library') { _%>
 describe("Cards component testing with testing-library", () => {

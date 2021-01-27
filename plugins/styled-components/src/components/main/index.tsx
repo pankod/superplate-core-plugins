@@ -7,10 +7,9 @@ export const Main: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        <h1>next-cli</h1>
+        <h1>superplate</h1>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          The frontend boilerplate with superpowers!
         </p>
         <Button>Docs</Button>
       </Container>

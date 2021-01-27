@@ -17,16 +17,15 @@ export const Main: React.FC = () => {
                 <% if(!(e2etest === "none")) { %>  data-test="main-heading" <% } %>
                 style={{ color: "#fff", fontSize: 46 }}
             >
-                electio
+                superplate
             </h1>
             <p style={{ fontSize: 18 }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
+                The frontend boilerplate with superpowers!
             </p>
             <Button type="primary" size="large">
                 <a
                     <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
-                    href="https://pankod.github.io/electio/"
+                    href="https://pankod.github.io/superplate/"
                     target="_blank"
                 >
                     Docs

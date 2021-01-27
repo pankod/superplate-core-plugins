@@ -20,8 +20,8 @@ describe("Main component testing with testing-library", () => {
     it("renders texts successfuly", () => {
         const { getByText } = render(<Main />);
 
-        getByText("next-cli");
-        getByText("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+        getByText("superplate");
+        getByText("The frontend boilerplate with superpowers!");
     });
 
     it("renders button successfuly", () => {
@@ -39,9 +39,9 @@ describe("Main component testing with enzyme", () => {
     });
 
     it("renders texts successfuly", () => {
-        expect(component.html()).toContain("next-cli")
+        expect(component.html()).toContain("superplate")
 
-        expect(component.html()).toContain("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+        expect(component.html()).toContain("The frontend boilerplate with superpowers!");
     });
 
     it("renders button successfuly", () => {

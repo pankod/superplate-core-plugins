@@ -5,7 +5,7 @@ describe("Homepage", () => {
     
     it("Brings header", async () => {
         const heading = await $('[data-test="main-heading"]');
-        expect(await heading.getText()).toBe("electio");
+        expect(await heading.getText()).toBe("superplate");
     });
 
     it("Should have true href", async () => {
@@ -13,7 +13,7 @@ describe("Homepage", () => {
         expect(await button.getTagName()).toBe("a")
         const buttonHref = await button.getAttribute("href")
         expect(buttonHref).toBeTruthy()
-        expect(buttonHref).toBe("https://pankod.github.io/electio/")
+        expect(buttonHref).toBe("https://pankod.github.io/superplate/")
     });
     
     it("Should have icons", async () => {

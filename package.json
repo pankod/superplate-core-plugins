@@ -1,5 +1,5 @@
 {
-  "name": "next-cli-core-plugins",
+  "name": "superplate-core-plugins",
   "version": "1.0.0",
   "description": "",
   "main": "prompt.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pankod/next-cli-core-plugins.git"
+    "url": "git+https://github.com/pankod/superplate-core-plugins.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pankod/next-cli-core-plugins/issues"
+    "url": "https://github.com/pankod/superplate-core-plugins/issues"
   },
-  "homepage": "https://github.com/pankod/next-cli-core-plugins#readme",
+  "homepage": "https://github.com/pankod/superplate-core-plugins#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

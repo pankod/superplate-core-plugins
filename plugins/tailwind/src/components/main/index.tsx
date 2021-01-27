@@ -6,14 +6,13 @@ export const Main: React.FC = () => {
   return (
     <div className="text-center font-light py-5 bg-gray-700">
       <div className="container mx-auto">
-        <h1 <% if(!(e2etest === "none")) { %>  data-test="main-heading" <% } %> className="text-white text-8xl mb-2">electio</h1>
+        <h1 <% if(!(e2etest === "none")) { %>  data-test="main-heading" <% } %> className="text-white text-8xl mb-2">superplate</h1>
         <p className="text-lg text-white mb-3">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          The frontend boilerplate with superpowers!
         </p>
         <Button type="button">
           <a <% if(!(e2etest==="none" )) { %> data-test="docs-btn-anchor" <% } %>
-              href="https://pankod.github.io/electio/"
+              href="https://pankod.github.io/superplate/"
               target="_blank"
               >
               Docs

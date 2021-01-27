@@ -11,7 +11,7 @@ export const Button: React.FC<IButton> = ({ children, ...props }) => {
         <a
             {...props}
             target="_blank"
-            href="https://pankod.github.io/electio/"
+            href="https://pankod.github.io/superplate/"
             rel="noopener noreferrer"
             className={styles.button}
             <%_ if (testing === 'testing-library') { _%>

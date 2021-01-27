@@ -6,10 +6,11 @@ const base = {
         ],
         inner: ["const queryClient = new QueryClient()"],
         wrapper: [
-            "<QueryClientProvider client={queryClient}>",
-            "<Hydrate state={pageProps.dehydratedState}>",
-            "</Hydrate>",
-            "</QueryClientProvider>",
+            [
+                "<QueryClientProvider client={queryClient}>",
+                "</QueryClientProvider>",
+            ],
+            ["<Hydrate state={pageProps.dehydratedState}>", "</Hydrate>"],
         ],
     },
     testSetup: {
@@ -18,8 +19,10 @@ const base = {
         ],
         inner: ["const queryClient = new QueryClient()"],
         wrapper: [
-            "<QueryClientProvider client={queryClient}>",
-            "</QueryClientProvider>",
+            [
+                "<QueryClientProvider client={queryClient}>",
+                "</QueryClientProvider>",
+            ],
         ],
     },
 };

@@ -1,16 +1,13 @@
 const base = {
     _app: {
-      import: [
-        "import { appWithTranslation } from '@i18n';",
-      ],
-      inner: [],
-      wrapper: [],
+        import: ["import { appWithTranslation } from '@i18n';"],
+        inner: [],
+        wrapper: [],
     },
-  };
-  
-  module.exports = {
+};
+
+module.exports = {
     extend(answers) {
-      return base;
+        return base;
     },
-  };
-  
+};

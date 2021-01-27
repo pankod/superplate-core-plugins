@@ -1,11 +1,10 @@
 const base = {
     _app: {
         import: [
-            '',
             'import { StyledThemeProvider } from "@definitions/styled-components";',
         ],
         inner: [],
-        wrapper: ["<StyledThemeProvider>", "</StyledThemeProvider>"],
+        wrapper: [["<StyledThemeProvider>", "</StyledThemeProvider>"]],
     },
     _document: {
         import: ['import { ServerStyleSheet } from "styled-components";'],
@@ -30,7 +29,7 @@ const base = {
             "}",
             "} finally {",
             "sheet.seal()",
-            "}"
+            "}",
         ],
         wrapper: [],
     },

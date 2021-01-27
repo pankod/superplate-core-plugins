@@ -156,4 +156,43 @@ module.exports = {
             default: "none",
         },
     ],
+    ignores: [
+        {
+            plugin: ["css", "scss", "styled-components"],
+            when: function (answers) {
+                return answers.ui !== "none";
+            },
+            pattern: ["src/components/**", "pages/index.tsx"],
+        },
+        {
+            when: function (answers) {
+                return answers.css_features !== "css";
+            },
+            pattern: ["**/*.css"],
+        },
+        {
+            when: function (answers) {
+                return answers.css_features !== "scss";
+            },
+            pattern: ["**/*.s@(c|a)ss"],
+        },
+        {
+            when: function (answers) {
+                return !answers.features.includes("storybook");
+            },
+            pattern: ["**/*.stories.tsx"],
+        },
+        {
+            when: function (answers) {
+                return answers.testing === "none";
+            },
+            pattern: ["**/src/**/*.@(spec|test).@(ts|tsx)"],
+        },
+        {
+            when: function (answers) {
+                return answers.testing === "jest";
+            },
+            pattern: ["**/src/**/*.@(spec|test).@(tsx)"],
+        },
+    ],
 };

@@ -4,7 +4,6 @@ const base = {
         inner: [],
         wrapper: [],
     },
-    testSetup: false
 };
 
 module.exports = {

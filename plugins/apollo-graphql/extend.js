@@ -6,15 +6,16 @@ const base = {
         ],
         inner: ["const apolloClient = initializeApollo();"],
         wrapper: [
-            "<ApolloProvider client={apolloClient}>",
-            "</ApolloProvider>",
+            ["<ApolloProvider client={apolloClient}>", "</ApolloProvider>"],
         ],
     },
     testSetup: {
         import: ["import { MockedProvider } from '@apollo/client/testing';"],
         wrapper: [
-            "<MockedProvider mocks={[]} addTypename={false}>",
-            "</MockedProvider>",
+            [
+                "<MockedProvider mocks={[]} addTypename={false}>",
+                "</MockedProvider>",
+            ],
         ],
     },
 };

@@ -4,12 +4,14 @@ const base = {
             'import { ChakraProvider } from "@chakra-ui/react";',
             'import theme from "@definitions/chakra/theme";',
         ],
-        inner: [],
-        wrapper: ["<ChakraProvider theme={theme}>", "</ChakraProvider>"],
+        wrapper: [["<ChakraProvider theme={theme}>", "</ChakraProvider>"]],
     },
-    _document: {
-        import: [],
-        initialProps: [],
+    testSetup: {
+        import: [
+            'import { ChakraProvider } from "@chakra-ui/react";',
+            'import theme from "@definitions/chakra/theme";',
+        ],
+        wrapper: [["<ChakraProvider theme={theme}>", "</ChakraProvider>"]],
     },
 };
 

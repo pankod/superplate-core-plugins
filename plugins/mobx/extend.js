@@ -1,16 +1,18 @@
 const base = {
     _app: {
-      import: [
-        "import { RootStoreProvider } from '@mobx';",
-      ],
-      inner: [],
-      wrapper: ["<RootStoreProvider>","</RootStoreProvider>"],
+        import: ["import { RootStoreProvider } from '@mobx';"],
+        inner: [],
+        wrapper: [["<RootStoreProvider>", "</RootStoreProvider>"]],
     },
-  };
-  
-  module.exports = {
+    testSetup: {
+        import: ["import { RootStoreProvider } from '@mobx';"],
+        inner: [],
+        wrapper: [["<RootStoreProvider>", "</RootStoreProvider>"]],
+    },
+};
+
+module.exports = {
     extend(answers) {
-      return base;
+        return base;
     },
-  };
-  
+};

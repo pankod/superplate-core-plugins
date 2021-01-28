@@ -29,7 +29,7 @@ Every plugin comes with an example to give you a brief knowledge about their usa
     <%= pmRun %> start
 ```
 
-<%_ if(linter && linter.length > 0) { _%>
+<%_ if(answers.linter && answers.linter.length > 0) { _%>
 ### Linting & formatting your code.
 
 ```bash
@@ -37,7 +37,7 @@ Every plugin comes with an example to give you a brief knowledge about their usa
 ```
 <%_ } _%>
 
-<%_ if(testing !== 'none') { _%>
+<%_ if(answers.testing !== 'none') { _%>
 ### Running your tests.
 
 ```bash

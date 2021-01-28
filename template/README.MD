@@ -29,7 +29,7 @@ Every plugin comes with an example to give you a brief knowledge about their usa
     <%= pmRun %> start
 ```
 
-<%_ if(linter !== 'none') { _%>
+<%_ if(linter && linter.length > 0) { _%>
 ### Linting & formatting your code.
 
 ```bash

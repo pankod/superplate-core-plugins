@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
 import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
-<%- testSetup.import.join("\n") %>
+<%- testSetup ? testSetup.import ? testSetup.import.join("\n") : "" : "" %>
 
 <%
-    var top = testSetup.wrapper.map(wrapper => wrapper[0] || "");
-    var bottom = testSetup.wrapper.map(wrapper => wrapper[1] || "");
+    var top = testSetup ? testSetup.wrapper ? testSetup.wrapper.map(wrapper => wrapper[0] || "") : [] : [];
+    var bottom = testSetup ? testSetup.wrapper ? testSetup.wrapper.map(wrapper => wrapper[1] || "").reverse() : [] : [];
 %>
 
 /**
@@ -16,7 +16,7 @@ import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
  */
 
 const AllTheProviders = ({ children }) => {
-    <%- testSetup.inner.join("\n") %>
+    <%- testSetup ? testSetup.inner ? testSetup.inner.join("\n") : "" : "" %>
 
     return (
         <>

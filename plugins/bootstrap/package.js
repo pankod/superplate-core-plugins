@@ -1,6 +1,6 @@
 module.exports = {
-    apply(pkg, answers) {
-        if (answers.includes("bootstrap") && answers.includes("less")) {
+    apply(pkg, {ui, css_features}) {
+        if (ui ==="bootstrap" && css_features === "less") {
             pkg.devDependencies["@zeit/next-css"] = "^1.0.1";
         }
 

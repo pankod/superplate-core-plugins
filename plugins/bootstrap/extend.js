@@ -5,8 +5,8 @@ const base = {
 };
 
 module.exports = {
-    extend(answers) {
-        if (!answers.includes("scss")) {
+    extend({css_features}) {
+        if (css_features !== "scss") {
             base._app.import = [
                 'import "bootstrap/dist/css/bootstrap.min.css";',
             ];

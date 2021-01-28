@@ -1,14 +1,14 @@
 module.exports = {
-    apply(pkg, answers) {
-        if (!answers.includes("css")) {
+    apply(pkg, {css_features}) {
+        if (css_features !== 'css') {
             delete pkg.devDependencies["css-loader"];
         }
 
-        if (!answers.includes("scss")) {
+        if (css_features !== "scss") {
             delete pkg.devDependencies["sass-loader"];
         }
 
-        if (!answers.includes("styled-components")) {
+        if (css_features !== "styled-components") {
             delete pkg.devDependencies[
                 "storybook-addon-styled-component-theme"
             ];

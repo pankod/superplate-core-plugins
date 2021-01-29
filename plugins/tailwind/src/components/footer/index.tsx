@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
   return (
     <div className="text-center py-5 bg-gray-800">
       <a 
-        href="http://pankod.com" 
+        href="https://github.com/pankod" 
         target="_blank" 
         className="block mb-3"
         <%_ if (testing === 'testing-library') { _%>   

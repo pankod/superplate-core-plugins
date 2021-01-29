@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
     return (
         <Center bg="main.100" py={10}>
             <Flex flexDirection="column">
-                <a href="http://pankod.com" target="_blank" <% if (testing === 'testing-library') { %> data-testid="pankod-logo" <% } %> >
+                <a href="https://github.com/pankod" target="_blank" <% if (testing === 'testing-library') { %> data-testid="pankod-logo" <% } %> >
                     <%_ if (features.includes("svgr")) { _%>
                     <PankodIcon <% if(!(e2etest === "none")) { %>  data-test="icon" <% } %> color="white" width="140" height="28" />
                     <%_ } else { _%>    

@@ -6,6 +6,6 @@ export class RootStore implements iroot {
     counterStore: icounter;
 
     constructor() {
-        this.counterStore = new CounterStore(this);
+        this.counterStore = new CounterStore();
     }
 }

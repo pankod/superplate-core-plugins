@@ -1,7 +1,7 @@
 import React from "react";
+import { TFunction } from "next-i18next";
 
 import { withTranslation, i18n } from "@i18n";
-
 import styles from "./index.module.css";
 
 /**
@@ -11,7 +11,7 @@ import styles from "./index.module.css";
  * please visit https://github.com/isaachinman/next-i18next
  */
 
-const I18NExampleComponent: React.FC<{ t: any }> = ({ t }) => {
+const I18NExampleComponent: React.FC<{ t: TFunction }> = ({ t }) => {
     const changeLanguage = () => {
         i18n.changeLanguage(i18n.language === "tr" ? "en" : "tr");
     };

@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
   return (
     <Container>
       <LogoButton
-        href="http://pankod.com"
+        href="https://github.com/pankod"
         target="_blank"
         <%_ if (testing === 'testing-library') { _%>   
         data-testid="pankod-logo"

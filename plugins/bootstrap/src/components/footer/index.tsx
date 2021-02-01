@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
             style={{ backgroundColor: "#282c34" }}
         >
             <a
-                href="http://pankod.com"
+                href="https://github.com/pankod"
                 target="_blank"
                 className="d-block mb-3"
                 <%_ if (testing === 'testing-library') { _%>   

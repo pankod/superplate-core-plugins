@@ -19,7 +19,7 @@ describe("Footer component testing with testing-library", () => {
         const { getByTestId } = render(<Footer />);
 
         expect(getByTestId("pankod-logo").getAttribute("href")).toStrictEqual(
-            "http://pankod.com"
+            "https://github.com/pankod"
         );
     });
     
@@ -40,7 +40,7 @@ describe("Footer component testing with enzyme", () => {
 
     it("renders pankod logo directed to the correct url", () => {
         expect(component.find("a").at(0).prop("href")).toContain(
-            "http://pankod.com"
+            "https://github.com/pankod"
         );
     });
     

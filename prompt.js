@@ -85,6 +85,17 @@ module.exports = {
             default: "none",
         },
         {
+            name: "mobx_state_tree",
+            message: "Do you want to use Mobx State Tree ?",
+            type: "select",
+            choices: [
+                { message: "None", name: "none" },
+                { message: "Mobx State Tree", name: "mobx-state-tree" },
+            ],
+            skip: ({ answers }) => answers["state-management"] !== "mobx",
+            default: "none",
+        },
+        {
             name: "i18n",
             message: "i18n - Internationalization",
             type: "select",
@@ -193,6 +204,13 @@ module.exports = {
                 return answers.testing === "jest";
             },
             pattern: ["**/src/**/*.@(spec|test).@(tsx)"],
+        },
+        {
+            plugin: ["mobx"],
+            when: function (answers) {
+                return answers.mobx_state_tree === "mobx-state-tree";
+            },
+            pattern: ["**/src/**/*.d.ts"],
         },
     ],
 };

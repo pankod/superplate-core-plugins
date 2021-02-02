@@ -1,10 +1,10 @@
 import { types } from "mobx-state-tree";
 
 /**
- * This file is generated as an example of Mobx Stores
+ * This file is generated as an example of Mobx State Tree Stores
  *
- * To learn more about Mobx and state management,
- * please visit https://mobx.js.org/README.html
+ * To learn more about Mobx and Mobx State Tree,
+ * please visit https://mobx-state-tree.js.org/intro/welcome
  */
 
 export const CounterStore = types

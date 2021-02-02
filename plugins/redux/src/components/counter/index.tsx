@@ -3,39 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { increase, decrease } from "@redux/actions";
 import { IState } from "@redux/istate";
-import styles from "./index.module.css";
 
 export default function Counter() {
     const dispatch = useDispatch();
     const count = useSelector((state: IState) => state.counter.count);
 
     return (
-        <div className={styles["box"]}>
+        <div>
             <div>
                 <h2>Counter</h2>
                 <button
-                    className={[styles.button, styles["button--increase"]].join(
-                        " ",
-                    )}
                     type="button"
                     onClick={() => dispatch(increase())}
                 >
                     +
                 </button>
-                <span className={styles["count"]}>{count}</span>
+                <span>{count}</span>
                 <button
-                    className={[styles.button, styles["button--decrease"]].join(
-                        " ",
-                    )}
                     type="button"
                     onClick={() => dispatch(decrease())}
                 >
                     -
                 </button>
             </div>
-
             <a
-                className={styles["link"]}
                 href="https://react-redux.js.org/"
                 target="_blank"
             >

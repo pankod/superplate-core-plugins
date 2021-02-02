@@ -92,7 +92,7 @@ module.exports = {
                 { message: "None", name: "none" },
                 { message: "Mobx State Tree", name: "mobx-state-tree" },
             ],
-            skip: ({ answers }) => answers['state-management'] !== "mobx",
+            skip: ({ answers }) => answers["state-management"] !== "mobx",
             default: "none",
         },
         {

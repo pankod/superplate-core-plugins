@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR, { mutate } from "swr";
-import styles from "./index.module.css";
 
 /**
  * This component is generated as an example for useSWR hook
@@ -21,25 +20,24 @@ export const SWRExample = () => {
 
     if (data) {
         return (
-            <div className={styles.app}>
-                <header className={styles.header}>
+            <div>
+                <header>
                     <h2>SWR Data Fetching Example</h2>
                 </header>
-                <main className={styles.content}>
-                    <p className={styles.title}>
+                <main>
+                    <p>
                         Programmer Jokes {`#${data[0].id}`}
                     </p>
-                    <p className={styles.setup}>{data[0].setup}</p>
-                    <p className={styles.punchline}>{data[0].punchline}</p>
-                    <p className={styles.randomContainer}>
-                        <button className={styles.button} onClick={refetch}>
+                    <p>{data[0].setup}</p>
+                    <p>{data[0].punchline}</p>
+                    <p>
+                        <button onClick={refetch}>
                             Give me another
                         </button>
                     </p>
                 </main>
-                <footer className={styles.footer}>
+                <footer>
                     <a
-                        className={styles.button}
                         href="https://swr.vercel.app/"
                         target="_blank"
                         rel="noopener noreferrer"

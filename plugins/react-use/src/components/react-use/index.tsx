@@ -1,8 +1,6 @@
 import React from "react";
 import { usePrevious, useWindowSize } from "react-use";
 
-import styles from "./index.module.css";
-
 /**
  * This component is created as an example for React-use hooks
  *
@@ -15,8 +13,8 @@ export const ReactUseExample = () => {
     const prevCount = usePrevious(count);
     const { width, height } = useWindowSize();
     return (
-        <div className={styles.app}>
-            <header className={styles.header}>
+        <div>
+            <header>
                 <h2>React Use Example</h2>
                 <p>
                     react-use has various hooks that you can use with ease. To
@@ -24,37 +22,30 @@ export const ReactUseExample = () => {
                     documentation.
                 </p>
             </header>
-            <main className={styles.content}>
-                <div className={styles.hook}>
-                    <p className={styles.hookName}>usePrevious</p>
-                    <p className={styles.hookOutput}>
+            <main>
+                <div>
+                    <p>usePrevious</p>
+                    <p>
                         Now: {count}, before: {prevCount}
                     </p>
-                    <p className={styles.hookInput}>
-                        <button
-                            className={styles.button}
-                            onClick={() => setCount(count + 1)}
-                        >
+                    <p>
+                        <button onClick={() => setCount(count + 1)}>
                             Increment
                         </button>
-                        <button
-                            className={styles.button}
-                            onClick={() => setCount(count - 1)}
-                        >
+                        <button onClick={() => setCount(count - 1)}>
                             Decrement
                         </button>
                     </p>
                 </div>
-                <div className={styles.hook}>
-                    <p className={styles.hookName}>useWindowSize</p>
-                    <p className={styles.hookOutput}>
+                <div>
+                    <p>useWindowSize</p>
+                    <p>
                         width: {`${width}px`}, height: {`${height}px`}
                     </p>
                 </div>
             </main>
-            <footer className={styles.footer}>
+            <footer>
                 <a
-                    className={styles.button}
                     href="https://github.com/streamich/react-use"
                     rel="noopener noreferrer"
                     target="_blank"

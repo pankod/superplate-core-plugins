@@ -39,6 +39,7 @@ This is the source repository for [superplate](https://github.com/pankod/superpl
 
 - [Redux](https://react-redux.js.org/)
 - [Mobx](https://mobx.js.org/README.html)
+  - [Mobx State Tree](https://mobx-state-tree.js.org/intro/welcome)
 - [Recoil](https://recoiljs.org/)
 
 ### i18n

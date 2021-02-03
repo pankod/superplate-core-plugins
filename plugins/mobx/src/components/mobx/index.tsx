@@ -1,8 +1,6 @@
 import { observer } from "mobx-react";
 import { useRootStore } from "@mobx";
 
-import styles from "./index.module.css";
-
 /**
  * This component is provided as an example usage of MobX in components
  *
@@ -15,32 +13,24 @@ export const MobxExample: React.FC = observer(() => {
     const { count, increase, decrease } = counterStore;
 
     return (
-        <div className={styles["box"]}>
+        <div>
             <div>
                 <h2>Counter</h2>
                 <button
-                    className={[styles.button, styles["button--increase"]].join(
-                        " ",
-                    )}
                     type="button"
                     onClick={increase}
                 >
                     +
                 </button>
-                <span className={styles["count"]}>{count}</span>
+                <span>{count}</span>
                 <button
-                    className={[styles.button, styles["button--decrease"]].join(
-                        " ",
-                    )}
                     type="button"
                     onClick={decrease}
                 >
                     -
                 </button>
             </div>
-
             <a
-                className={styles["link"]}
                 href="https://mobx.js.org"
                 target="_blank"
             >

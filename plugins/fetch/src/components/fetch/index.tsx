@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "./index.module.css";
 
 /**
  * This component is generated as an example for fetch
@@ -45,24 +44,23 @@ export const FetchExample = () => {
         return <div>Loading...</div>;
     } else {
         return (
-            <div className={styles.app}>
-                <header className={styles.header}>
+            <div>
+                <header>
                     <h2>Fetch Data Fetching Example</h2>
                 </header>
                 <main
                 <%_ if (testing !== "none") { _%>
                     data-testid="joke-container"
                 <%_ } _%>
-                className={styles.content}>
-                    <p className={styles.title}>
+                >
+                    <p>
                         Programmer Jokes {`#${data[0].id}`}
                     </p>
-                    <p className={styles.setup}>{data[0].setup}</p>
-                    <p className={styles.punchline}>{data[0].punchline}</p>
+                    <p>{data[0].setup}</p>
+                    <p>{data[0].punchline}</p>
                 </main>
-                <footer className={styles.footer}>
+                <footer>
                     <a
-                        className={styles.button}
                         href="https://swr.vercel.app/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -70,7 +68,7 @@ export const FetchExample = () => {
                         Go To Documentation
                     </a>
                 </footer>
-            </div>
+            </div >
         );
     }
 };

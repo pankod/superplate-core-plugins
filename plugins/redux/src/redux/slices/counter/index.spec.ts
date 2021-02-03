@@ -1,5 +1,3 @@
-// import { INCREASE, DECREASE } from "@redux/actionTypes";
-
 import Counter, { decrease, increase } from "./index";
 
 describe("Redux Counter Reducer", () => {

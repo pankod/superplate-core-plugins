@@ -78,7 +78,7 @@ module.exports = {
             pageSize: 3,
             choices: [
                 { message: "None", name: "none" },
-                { message: "Redux", name: "redux" },
+                { message: "Redux + Redux Toolkit", name: "redux" },
                 { message: "Recoil", name: "recoil" },
                 { message: "MobX", name: "mobx" },
             ],

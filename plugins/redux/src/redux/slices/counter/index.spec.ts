@@ -1,6 +1,6 @@
-import { INCREASE, DECREASE } from "@redux/actionTypes";
+// import { INCREASE, DECREASE } from "@redux/actionTypes";
 
-import Counter from "./index";
+import Counter, { decrease, increase } from "./index";
 
 describe("Redux Counter Reducer", () => {
     it("should create reducer with initial props", () => {
@@ -10,24 +10,24 @@ describe("Redux Counter Reducer", () => {
         const reducer = Counter(initial, {});
         expect(reducer).toEqual(initial);
     });
-    it("INCREASE action type should increase counter by 1", () => {
+    it("increase action should increase counter by 1", () => {
         const initial = {
             count: 0,
         };
         const expected = {
             count: 1,
         };
-        const reducer = Counter(initial, { type: INCREASE });
+        const reducer = Counter(initial, increase());
         expect(reducer).toEqual(expected);
     });
-    it("DECREASE action type should decrease counter by 1", () => {
+    it("decrease action should decrease counter by 1", () => {
         const initial = {
             count: 0,
         };
         const expected = {
             count: -1,
         };
-        const reducer = Counter(initial, { type: DECREASE });
+        const reducer = Counter(initial, decrease());
         expect(reducer).toEqual(expected);
     });
 });

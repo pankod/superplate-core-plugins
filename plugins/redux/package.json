@@ -1,6 +1,6 @@
 {
     "dependencies": {
         "react-redux": "^7.2.2",
-        "redux": "^4.0.5"
+        "@reduxjs/toolkit": "^1.5.0"
     }
 }

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { icounter } from "./counter";
+import { ICounter } from "./counter";
 
 /**
  * This file is generated as an example of Mobx Stores
@@ -9,7 +9,7 @@ import { icounter } from "./counter";
  * please visit https://mobx.js.org/README.html
  */
 
-export class CounterStore implements icounter {
+export class CounterStore implements ICounter {
     count = 0;
 
     constructor() {

@@ -115,9 +115,19 @@ module.exports = {
             choices: [
                 { message: "ESLint", name: "eslint" },
                 { message: "Prettier", name: "prettier" },
-                { message: "Lint staged files", name: "lint-staged" },
             ],
             default: [],
+        },
+        {
+            name: "eslint_specific",
+            message: "Do you want to use lint-staged ?",
+            type: "select",
+            choices: [
+                { message: "None", name: "none" },
+                { message: "Lint staged files", name: "lint-staged" },
+            ],
+            skip: ({ answers }) => !answers.linter.includes("eslint"),
+            default: "none",
         },
         {
             name: "testing",

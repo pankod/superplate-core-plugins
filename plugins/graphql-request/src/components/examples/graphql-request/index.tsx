@@ -26,7 +26,7 @@ export const GraphQLRequestExample: React.FC = () => {
             <div>Last 2 Space-X Launches</div>
             <div>
                 {launches.launchesPast.map((val) => (
-                    <div key={`key-${val.id}`}>
+                    <div key={`key-${val.mission_name}`}>
                         <img src={val.links.mission_patch_small} />
                         <div>
                             <h3>{val.mission_name}</h3>

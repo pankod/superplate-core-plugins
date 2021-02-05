@@ -1,15 +1,14 @@
 import { increase, decrease } from "./actions";
-import { INCREASE, DECREASE } from "./actionTypes";
 
 describe("Redux Actions", () => {
     describe("Counter Actions", () => {
-        it("increase should return type INCREASE", () => {
+        it("increase should return increase.type", () => {
             const action = increase();
-            expect(action.type).toBe(INCREASE);
+            expect(action.type).toBe(increase.type);
         });
-        it("decrease should return type DECREASE", () => {
+        it("decrease should return decrease.type", () => {
             const action = decrease();
-            expect(action.type).toBe(DECREASE);
+            expect(action.type).toBe(decrease.type);
         });
     });
 });

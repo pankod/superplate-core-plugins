@@ -4,6 +4,7 @@ import {
     RenderOptions,
     RenderResult,
 } from "@testing-library/react";
+<% var testSetup = typeof testSetup === "undefined" ? {} : testSetup %>
 <%- testSetup ? testSetup.import ? testSetup.import.join("\n") : "" : "" %>
 
 <%

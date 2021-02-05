@@ -1,9 +1,9 @@
 import React from "react";
 
 import { RootStore } from "./stores";
-import { iroot } from "./stores/store";
+import { IRoot } from "./stores/store";
 
-let store: iroot;
+let store: IRoot;
 
 const StoreContext = React.createContext<RootStore | undefined>(undefined);
 

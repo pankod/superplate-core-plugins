@@ -1,4 +1,4 @@
-export interface icounter {
+export interface ICounter {
     count: number;
     increase: () => void;
     decrease: () => void;

@@ -1,9 +1,9 @@
-import { iroot } from "./store";
+import { IRoot } from "./store";
 import { CounterStore } from "./counter";
-import { icounter } from "./counter/counter";
+import { ICounter } from "./counter/counter";
 
-export class RootStore implements iroot {
-    counterStore: icounter;
+export class RootStore implements IRoot {
+    counterStore: ICounter;
 
     constructor() {
         this.counterStore = new CounterStore();

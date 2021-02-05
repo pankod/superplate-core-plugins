@@ -120,7 +120,7 @@ module.exports = {
         },
         {
             name: "eslint_specific",
-            message: "Do you want to use lint-staged ?",
+            message: "Do you want to use lint-staged?",
             type: "select",
             choices: [
                 { message: "None", name: "none" },

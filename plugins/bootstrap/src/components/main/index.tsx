@@ -16,14 +16,14 @@ export const Main: React.FC = () => {
                 <p className="lead text-white">
                     The frontend boilerplate with superpowers!
                 </p>
-                <Button type="primary" size="lg">
-                    <a
-                        <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
-                        href="https://pankod.github.io/superplate/"
-                        target="_blank"
-                    >
-                        Docs
-                    </a>
+                <Button
+                    variant="primary"
+                    size="lg"
+                    <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
+                    href="https://pankod.github.io/superplate/"
+                    target="_blank"
+                >
+                    Docs
                 </Button>
             </Container>
         </div>

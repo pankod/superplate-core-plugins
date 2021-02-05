@@ -4,11 +4,12 @@ import {
     RenderOptions,
     RenderResult,
 } from "@testing-library/react";
-<%- typeof testSetup !== "undefined" ? testSetup.import ? testSetup.import.join("\n") : "" : "" %>
+<% var testSetup = typeof testSetup === "undefined" ? {} : testSetup %>
+<%- testSetup ? testSetup.import ? testSetup.import.join("\n") : "" : "" %>
 
 <%
-    var top = typeof testSetup !== "undefined" ? testSetup.wrapper ? testSetup.wrapper.map(wrapper => wrapper[0] || "") : [] : [];
-    var bottom = typeof testSetup !== "undefined" ? testSetup.wrapper ? testSetup.wrapper.map(wrapper => wrapper[1] || "").reverse() : [] : [];
+    var top = testSetup ? testSetup.wrapper ? testSetup.wrapper.map(wrapper => wrapper[0] || "") : [] : [];
+    var bottom = testSetup ? testSetup.wrapper ? testSetup.wrapper.map(wrapper => wrapper[1] || "").reverse() : [] : [];
 %>
 
 /**
@@ -20,7 +21,7 @@ import {
  */
 
 export const AllTheProviders = ({ children }) => {
-    <%- typeof testSetup !== "undefined" ? testSetup.inner ? testSetup.inner.join("\n") : "" : "" %>
+    <%- testSetup ? testSetup.inner ? testSetup.inner.join("\n") : "" : "" %>
 
     return (
         <>

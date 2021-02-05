@@ -8,5 +8,6 @@
             "@graphqlTypes/*": ["__generated__/*"],
             "@graphqlTypes": ["__generated__"]
         }
-    }
+    },
+    "exclude": ["__generated__/globalTypes.ts"]
 }

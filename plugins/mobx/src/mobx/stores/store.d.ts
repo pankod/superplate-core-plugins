@@ -1,4 +1,4 @@
-import { ICounter } from "./stores/counter/counter";
+import { ICounter } from "./counter/counter";
 
 export interface IRoot {
     counterStore: ICounter;

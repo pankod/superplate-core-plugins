@@ -7,7 +7,7 @@ import { render, waitFor } from "@test";
 <%_ } _%>
 
 <%_ if (testing === 'enzyme') { _%>
-import  from "@test/mount";
+import mount from "@test/mount";
 <%_ } _%>
     
 <%_ if (testing === 'testing-library') { _%>

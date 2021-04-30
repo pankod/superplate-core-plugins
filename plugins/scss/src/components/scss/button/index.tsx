@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./index.module.scss";
 
 export type IButton = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
 >;
 
 export const Button: React.FC<IButton> = ({ children, ...props }) => {

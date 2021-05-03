@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { mount as mountBase, MountRendererProps, ReactWrapper } from "enzyme";
+<% var testSetup = typeof testSetup === "undefined" ? {} : testSetup %>
 <%- testSetup ? testSetup.import ? testSetup.import.join("\n") : "" : "" %>
 
 <%

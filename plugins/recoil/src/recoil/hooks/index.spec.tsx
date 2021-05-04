@@ -1,7 +1,7 @@
 <%_ if (testing === 'enzyme') { _%>
 import { act } from "react-dom/test-utils";
 <%_ } else if (testing === 'testing-library') { _%>
-import { renderHook, act } from "@testing-library/react-hooks";
+import { renderHook, act } from "testing-library/react-hooks";
 <%_ } _%>
 
 <%_ if (testing === 'enzyme') { _%>

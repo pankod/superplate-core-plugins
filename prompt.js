@@ -173,6 +173,7 @@ module.exports = {
                 { message: "None", name: "none" },
                 { message: "GitHub Actions", name: "github-actions" },
                 { message: "Travis", name: "travis" },
+                { message: "Azure Pipelines", name: "azure-pipelines" },
             ],
             default: "none",
         },

@@ -1,0 +1,45 @@
+trigger:
+  - main
+  - master
+      
+pr:
+  - main
+  - master
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+  - job:
+    steps:
+      - checkout: self
+        persistCredentials: true
+
+      - task: NodeTool@0
+        inputs:
+          versionSpec: "14.x"
+        displayName: "Setup node env"
+
+      - script: |
+          <%= pmRun === 'yarn' ? 'yarn install' : 'npm ci' %>
+        displayName: "Install dependencies"
+
+      - script: |
+          <%= pmRun === 'yarn' ? 'yarn lint' : 'npm run lint' %>
+        displayName: "Run lint"
+
+      - script: |
+          <%= pmRun === 'yarn' ? 'yarn test' : 'npm run test' %>
+        displayName: "Run tests"
+      
+    <%_  if (e2etest.includes("cypress")) { _%>
+      - script: |
+          <%= pmRun === 'yarn' ? 'yarn cypress:test' : 'npm run cypress:test' %>
+        displayName: "Run e2e tests"  
+    <%_ } _%>
+
+    <%_  if (e2etest.includes("webdriverio")) { _%>
+      - script: |
+          <%= pmRun === 'yarn' ? 'yarn webdriver:run' : 'npm run webdriver:run' %>
+        displayName: "Run e2e tests"
+    <%_ } _%>

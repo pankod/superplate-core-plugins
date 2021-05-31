@@ -40,6 +40,6 @@ jobs:
 
     <%_  if (e2etest.includes("webdriverio")) { _%>
       - script: |
-          <%= pmRun === 'yarn' ? 'yarn cypress:test' : 'npm run cypress:test' %>
+          <%= pmRun === 'yarn' ? 'yarn webdriver:run' : 'npm run webdriver:run' %>
         displayName: "Run e2e tests"
     <%_ } _%>

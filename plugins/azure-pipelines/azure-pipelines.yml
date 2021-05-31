@@ -21,7 +21,7 @@ jobs:
         displayName: "Setup node env"
 
       - script: |
-          <%= pmRun === 'yarn' ? 'yarn install --immutable' : 'npm ci' %>
+          <%= pmRun === 'yarn' ? 'yarn install' : 'npm ci' %>
         displayName: "Install dependencies"
 
       - script: |

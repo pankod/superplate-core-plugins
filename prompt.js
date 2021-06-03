@@ -56,6 +56,7 @@ module.exports = {
                 { message: "Bundle Analyzer", name: "bundle-analyzer" },
                 { message: "Apollo GraphQL", name: "apollo-graphql" },
                 { message: "graphql-request", name: "graphql-request" },
+                { message: "Auth0", name: "auth0" },
             ],
             default: "none",
         },

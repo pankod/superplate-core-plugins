@@ -96,6 +96,17 @@ module.exports = {
             default: "none",
         },
         {
+            name: "rtk-query",
+            message: "Do you want to use RTK Query ?",
+            type: "select",
+            choices: [
+                { message: "None", name: "none" },
+                { message: "RTK Query", name: "rtk-query" },
+            ],
+            skip: ({ answers }) => answers["state-management"] !== "redux",
+            default: "none",
+        },
+        {
             name: "i18n",
             message: "i18n - Internationalization",
             type: "select",

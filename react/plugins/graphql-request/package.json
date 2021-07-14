@@ -1,0 +1,14 @@
+{
+    "scripts": {
+        "codegen:generate": "graphql-codegen"
+    },
+    "dependencies": {
+        "graphql": "^15.4.0",
+        "graphql-request": "^3.4.0"
+    },
+    "devDependencies": {
+        "@graphql-codegen/cli": "^1.20.0",
+        "@graphql-codegen/typescript": "^1.20.0",
+        "@graphql-codegen/typescript-operations": "^1.17.13"
+    }
+}

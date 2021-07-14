@@ -1,0 +1,11 @@
+# codegen.yaml
+schema: https://api.spacex.land/graphql/
+documents: ./src/**/**/graphql.ts
+generates:
+  ./__generated__/__types__.ts:
+    config:
+      onlyOperationTypes: true
+      preResolveTypes: true
+    plugins:
+      - typescript
+      - typescript-operations

@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test"
+    },
+    "dependencies": {
+        "@craco/craco": "^6.1.2",
+        "antd": "^4.10.2",
+        "@ant-design/icons": "^4.4.0"
+    },
+    "devDependencies": {} 
+}

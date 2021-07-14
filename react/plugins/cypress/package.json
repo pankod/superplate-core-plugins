@@ -1,0 +1,11 @@
+{
+    "devDependencies": {
+        "cypress": "^6.2.1",
+        "start-server-and-test": "^1.11.0"
+    },
+    "scripts": {
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run --config video=false",
+        "cypress:test": "start-server-and-test start http://localhost:3000 cypress:run"
+    }
+}

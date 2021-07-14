@@ -1,0 +1,5 @@
+{
+    "name": "MobX State Tree",
+    "description": "MobX-State-Tree (also known as MST) is a state container system built on MobX, a functional reactive state library.",
+    "url": "https://mobx-state-tree.js.org/intro/welcome"
+}

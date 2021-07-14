@@ -1,0 +1,5 @@
+{
+    "name": "Styled System",
+    "description": "Styled System is a collection of utility functions that add style props to your React components and allows you to control styles based on a global theme object with typographic scales, colors, and layout properties.",
+    "url": "https://styled-system.com/getting-started"
+}

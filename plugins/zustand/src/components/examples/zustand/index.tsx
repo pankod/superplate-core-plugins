@@ -1,4 +1,5 @@
 import create from "zustand";
+
 interface Counter {
   count: number;
   inc: () => void;

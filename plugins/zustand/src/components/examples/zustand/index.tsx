@@ -5,7 +5,7 @@ interface Counter {
   dec: () => void;
 }
 
-const useStore = create<Counter>((set) => ({
+export const useStore = create<Counter>((set) => ({
   count: 1,
   inc: () => set((state) => ({ count: state.count + 1 })),
   dec: () => set((state) => ({ count: state.count - 1 })),

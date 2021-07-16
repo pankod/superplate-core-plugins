@@ -81,6 +81,7 @@ module.exports = {
                 { message: "Redux + Redux Toolkit", name: "redux" },
                 { message: "Recoil", name: "recoil" },
                 { message: "MobX", name: "mobx" },
+                { message: "Zustand", name: "zustand" },
             ],
             default: "none",
         },

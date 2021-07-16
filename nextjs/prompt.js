@@ -81,6 +81,7 @@ module.exports = {
                 { message: "Redux + Redux Toolkit", name: "redux" },
                 { message: "Recoil", name: "recoil" },
                 { message: "MobX", name: "mobx" },
+                { message: "Zustand", name: "zustand" },
             ],
             default: "none",
         },
@@ -93,6 +94,17 @@ module.exports = {
                 { message: "Mobx State Tree", name: "mobx-state-tree" },
             ],
             skip: ({ answers }) => answers["state-management"] !== "mobx",
+            default: "none",
+        },
+        {
+            name: "rtk-query",
+            message: "Do you want to use RTK Query ?",
+            type: "select",
+            choices: [
+                { message: "None", name: "none" },
+                { message: "RTK Query", name: "rtk-query" },
+            ],
+            skip: ({ answers }) => answers["state-management"] !== "redux",
             default: "none",
         },
         {

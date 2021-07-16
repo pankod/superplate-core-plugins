@@ -1,0 +1,5 @@
+{
+    "name": "Zustand",
+    "description": "A small, fast and scalable bearbones state-management solution using simplified flux principles.",
+    "url": "https://github.com/pmndrs/zustand"
+}

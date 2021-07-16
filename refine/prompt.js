@@ -1,17 +1,6 @@
 module.exports = {
     prompts: [
         {
-            name: "theme-customization",
-            message: "Do you want customizee theme?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                { message: "No (Ant Design default theme)", name: "css" },
-                { message: "Yes, I want (less)", name: "less" },
-            ],
-            default: "css",
-        },
-        {
             name: "dataProvider",
             message: "Data Provider:",
             type: "select",
@@ -37,6 +26,17 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["data-provider"] === "strapi-data-provider",
             default: "none",
+        },
+        {
+            name: "theme-customization",
+            message: "Do you want customize theme?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No (Ant Design default theme)", name: "css" },
+                { message: "Yes, I want (less)", name: "less" },
+            ],
+            default: "css",
         },
         {
             name: "example-resource",

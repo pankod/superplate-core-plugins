@@ -7,8 +7,6 @@ This project was generated with [superplate](<%- docsUrl %>).
 
 superplate is a Next.js all-in-one project generator. Create your project with the tools you need without spending hours on setting them up.
 
-Every plugin comes with an example to give you a brief knowledge about their usage. 
-
 ## Available Scripts
 
 ### Running the development server.
@@ -28,22 +26,6 @@ Every plugin comes with an example to give you a brief knowledge about their usa
 ```bash
     <%= pmRun %> start
 ```
-
-<%_ if(answers.linter && answers.linter.length > 0) { _%>
-### Linting & formatting your code.
-
-```bash
-    <%= pmRun %> lint
-```
-<%_ } _%>
-
-<%_ if(answers.testing !== 'none') { _%>
-### Running your tests.
-
-```bash
-    <%= pmRun %> test
-```
-<%_ } _%>
 
 ## Learn More
 

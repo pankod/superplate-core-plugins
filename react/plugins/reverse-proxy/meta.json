@@ -1,0 +1,5 @@
+{
+    "name": "Reverse Proxy",
+    "description": "Proxying some URLs can be useful when you have a separate API backend development server and you want to send API requests on the same domain.",
+    "url": "https://create-react-app.dev/docs/proxying-api-requests-in-development/#configuring-the-proxy-manually"
+}

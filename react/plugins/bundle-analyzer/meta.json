@@ -1,0 +1,5 @@
+{
+    "name": "Bundle Analyzer",
+    "description": "Source map explorer analyzes JavaScript bundles using the source maps. This helps you understand where code bloat is coming from.",
+    "url": "https://github.com/danvk/source-map-explorer#readme"
+}

@@ -1,0 +1,5 @@
+{
+    "name": "Fetch",
+    "description": "The global fetch function allows you to make AJAX requests. It takes in a URL as an input and returns a Promise that resolves to a Response object.",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+}

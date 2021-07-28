@@ -1,14 +1,14 @@
 {
     "pages": {
         "login": {
-            "login": "Login",
+            "signin": "Sign in",
             "signup": "Sign up",
             "username": "Username",
             "password": "Password",
             "remember": "Remember me",
             "forgotPassword": "Forgot password?",
             "title": "Sign in your account",
-            "noAccount": "Still no account? Please go to"
+            "noAccount": "Don’t have an account?"
         },
         "error": {
             "info": "You may have forgotten to add the {{action}} component to {{resource}} resource.",

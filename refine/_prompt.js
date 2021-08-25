@@ -1,7 +1,7 @@
 module.exports = {
     prompts: [
         {
-            name: "dataProvider",
+            name: "data-provider",
             message: "Data Provider:",
             type: "select",
             pageSize: 2,
@@ -11,6 +11,10 @@ module.exports = {
                 {
                     message: "Custom JSON rest api",
                     name: "custom-json-rest-data-provider",
+                },
+                {
+                    message: "airtable",
+                    name: "airtable-data-provider",
                 },
             ],
             default: "custom-json-rest-data-provider",
@@ -49,6 +53,8 @@ module.exports = {
                     name: "example-resource",
                 },
             ],
+            skip: ({ answers }) =>
+                answers["data-provider"] === "strapi-data-provider" || answers["data-provider"] === "airtable-data-provider",
             default: "no",
         },
         {

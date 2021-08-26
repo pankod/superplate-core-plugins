@@ -22,6 +22,7 @@ module.exports = {
             choices: [
                 { message: "None", name: "none" },
                 { message: "Custom", name: "custom-auth-provider" },
+                { message: "Auth0", name: "auth0-auth-provider" },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "strapi-data-provider",

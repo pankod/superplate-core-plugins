@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             "import { Provider } from 'react-redux'",
-            "import store from '@redux/store'",
+            "import store from 'redux/store'",
         ],
         inner: [],
         wrapper: [["<Provider store={store}>", "</Provider>"]],
@@ -10,7 +10,7 @@ const base = {
     testSetup: {
         import: [
             "import { Provider } from 'react-redux'",
-            "import store from '@redux/store'",
+            "import store from 'redux/store'",
         ],
         wrapper: [["<Provider store={store}>", "</Provider>"]],
     },

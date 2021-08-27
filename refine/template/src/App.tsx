@@ -1,12 +1,4 @@
-import { 
-    Refine, 
-    <%_ if (answers["example-resource"] === "example-resource") { _%>
-    Resource,
-    <%_ } _%>
-    <%_ if (answers["auth-provider"] === "auth0-auth-provider") { _%>
-    AuthProvider,
-    <%_ } _%>
-} from '@pankod/refine';
+import { Refine, <%- _app.refineImports.join("\n,") _%> } from '@pankod/refine';
 
 <%- _app.import.join("\n") _%>
 

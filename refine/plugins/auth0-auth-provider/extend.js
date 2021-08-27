@@ -1,5 +1,6 @@
 const base = {
     _app: {
+        refineImports: [`AuthProvider`],
         import: [
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,

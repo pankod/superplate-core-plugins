@@ -6,7 +6,7 @@ const base = {
         ],
         inner: [
             "",
-            `const API_URL = "https://api.strapi.refine.dev";`,
+            `const API_URL = "your-strapi-api-url";`,
             "",
             `const { authProvider, axiosInstance } = strapiAuthProvider(API_URL);`,
             `const dataProvider = DataProvider(API_URL, axiosInstance);`,

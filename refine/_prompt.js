@@ -1,7 +1,7 @@
 module.exports = {
     prompts: [
         {
-            name: "data-provider",
+            name: "dataProvider",
             message: "Data Provider:",
             type: "select",
             pageSize: 2,
@@ -54,7 +54,7 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "strapi-data-provider" || answers["data-provider"] === "airtable-data-provider",
+                answers.dataProvider === "strapi-data-provider" || answers.dataProvider === "airtable-data-provider",
             default: "no",
         },
         {

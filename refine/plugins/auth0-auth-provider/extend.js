@@ -1,15 +1,15 @@
 const base = {
     _app: {
         import: [
-            `import { AuthProvider } from "@pankod/refine";`,
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
+            "",
+            `import { Login } from "pages/login";`,
+        ],
+        innerHooks: [
+            `const { getIdTokenClaims, isLoading, loginWithRedirect, isAuthenticated, user, logout } = useAuth0();`,
         ],
         inner: [
-            "",
-            `const axiosInstance = axios.create();`,
-            "",
-            `const { getIdTokenClaims, isLoading, loginWithRedirect, isAuthenticated, user, logout } = useAuth0();`,
             "",
             `const authProvider: AuthProvider = {
                 login: () => {
@@ -42,7 +42,7 @@ const base = {
             "",
             `getIdTokenClaims().then((token) => {
                 if (token) {
-                    axiosInstance.defaults.headers.common = {`,
+                    axios.defaults.headers.common = {`,
             "Authorization: `Bearer ${token.__raw}`",
             `};}});`,
             "",
@@ -51,7 +51,7 @@ const base = {
             }`,
             "",
         ],
-        refineProps: ["authProvider={authProvider}"],
+        refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
     },
 };
 module.exports = {

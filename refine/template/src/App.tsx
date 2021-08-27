@@ -1,4 +1,13 @@
-import { Refine, Resource } from '@pankod/refine';
+import { 
+    Refine, 
+    <%_ if (answers["example-resource"] === "example-resource") { _%>
+    Resource,
+    <%_ } _%>
+    <%_ if (answers["auth-provider"] === "auth0-auth-provider") { _%>
+    AuthProvider,
+    <%_ } _%>
+} from '@pankod/refine';
+
 <%- _app.import.join("\n") _%>
 
 <%
@@ -8,6 +17,7 @@ import { Refine, Resource } from '@pankod/refine';
 
 
 function App() {
+    <%- _app.innerHooks.join("\n") %>
     <%- _app.inner.join("\n") %>
     return (
         <%- top.join("\n") %>

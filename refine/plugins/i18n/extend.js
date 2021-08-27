@@ -4,9 +4,10 @@ const base = {
             `import { useTranslation } from "react-i18next";`,
             `import { Header } from "components";`,
         ],
-        inner: [
-            "",
+        innerHooks: [
             `const { t, i18n } = useTranslation();`,
+        ],
+        inner: [
             "",
             `const i18nProvider = {
                 translate: (key: string, params: object) => t(key, params),

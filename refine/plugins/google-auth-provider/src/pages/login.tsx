@@ -1,16 +1,26 @@
-import { AntdLayout, Button, Icons, useLogin } from "@pankod/refine";
+import { 
+    AntdLayout, 
+    Button, 
+    Icons, 
+    useLogin,
+    <%_ if (i18n === "i18n") { _%>
+    useTranslate,
+    <%_ } _%>
+} from "@pankod/refine";
 import { useGoogleLogin, GoogleLoginResponse } from "react-google-login";
 
 const { GoogleOutlined } = Icons;
 
-const clientId = "your-client-id";
-
 export const Login: React.FC = () => {
     const { mutate: login, isLoading } = useLogin<GoogleLoginResponse>();
 
+    <%_ if (i18n === "i18n") { _%>
+    const t = useTranslate();
+    <%_ } _%>
+
     const { signIn } = useGoogleLogin({
         onSuccess: (response) => login(response as GoogleLoginResponse),
-        clientId,
+        clientId: "your-client-id",
         isSignedIn: true,
         cookiePolicy: "single_host_origin",
     });
@@ -35,7 +45,11 @@ export const Login: React.FC = () => {
                         loading={isLoading}
                         onClick={() => signIn()}
                     >
+                        <%_ if (i18n === "i18n") { _%>
+                        {t("pages.login.signin", "Sign in")}
+                        <%_ } else { _%>
                         Sign in
+                        <%_ } _%>
                     </Button>
                 </div>
             </div>

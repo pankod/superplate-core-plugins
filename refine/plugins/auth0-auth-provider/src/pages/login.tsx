@@ -34,7 +34,7 @@ export const Login: React.FC = () => {
                         onClick={() => login({})}
                     >
                         <%_ if (i18n === "i18n") { _%>
-                        {translate("pages.login.signin", "Sign in")}
+                        {t("pages.login.signin", "Sign in")}
                         <%_ } else { _%>
                         Sign in
                         <%_ } _%>

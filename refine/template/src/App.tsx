@@ -1,4 +1,5 @@
-import { Refine, Resource } from '@pankod/refine';
+import { Refine, <%- _app.refineImports.join("\n,") _%> } from '@pankod/refine';
+
 <%- _app.import.join("\n") _%>
 
 <%
@@ -8,6 +9,7 @@ import { Refine, Resource } from '@pankod/refine';
 
 
 function App() {
+    <%- _app.innerHooks.join("\n") %>
     <%- _app.inner.join("\n") %>
     return (
         <%- top.join("\n") %>

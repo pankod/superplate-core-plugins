@@ -1,5 +1,6 @@
 const base = {
     _app: {
+        refineImports: [`Resource`],
         import: [
             `import { PostList, PostCreate, PostEdit } from "./pages/posts";`,
         ],

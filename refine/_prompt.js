@@ -12,6 +12,10 @@ module.exports = {
                     message: "Custom JSON rest api",
                     name: "custom-json-rest-data-provider",
                 },
+                {
+                    message: "airtable",
+                    name: "airtable-data-provider",
+                },
             ],
             default: "custom-json-rest-data-provider",
         },
@@ -50,6 +54,8 @@ module.exports = {
                     name: "example-resource",
                 },
             ],
+            skip: ({ answers }) =>
+                answers.dataProvider === "strapi-data-provider" || answers.dataProvider === "airtable-data-provider",
             default: "no",
         },
         {

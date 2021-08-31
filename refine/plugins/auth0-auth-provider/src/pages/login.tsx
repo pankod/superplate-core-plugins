@@ -1,7 +1,18 @@
-import { AntdLayout, Button, useLogin } from "@pankod/refine";
+import { 
+    AntdLayout, 
+    Button, 
+    useLogin,
+    <%_ if (i18n === "i18n") { _%>
+    useTranslate,
+    <%_ } _%>  
+} from "@pankod/refine";
 
 export const Login: React.FC = () => {
     const { mutate: login, isLoading } = useLogin();
+
+    <%_ if (i18n === "i18n") { _%>
+    const t = useTranslate();
+    <%_ } _%>
 
     return (
         <AntdLayout
@@ -22,7 +33,11 @@ export const Login: React.FC = () => {
                         loading={isLoading}
                         onClick={() => login({})}
                     >
+                        <%_ if (i18n === "i18n") { _%>
+                        {translate("pages.login.signin", "Sign in")}
+                        <%_ } else { _%>
                         Sign in
+                        <%_ } _%>
                     </Button>
                 </div>
             </div>

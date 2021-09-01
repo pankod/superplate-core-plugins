@@ -35,7 +35,7 @@ module.exports = {
         },
         {
             name: "theme-customization",
-            message: "Do you want customize theme?:",
+            message: "Do you want to customize theme?:",
             type: "select",
             pageSize: 2,
             choices: [
@@ -60,6 +60,17 @@ module.exports = {
             default: "no",
         },
         {
+            name: "custom-layout",
+            message: "Do you want to customize layout?",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes, I want", name: "custom-layout" },
+            ],
+            default: "no",
+        },
+        {
             name: "i18n",
             message: "i18n - Internationalization:",
             type: "select",
@@ -70,6 +81,7 @@ module.exports = {
             ],
             default: "no",
         },
+        
     ],
     ignores: [],
 };

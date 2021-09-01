@@ -1,6 +1,6 @@
-import { Refine, <%- _app.refineImports.join("\n,") _%> } from '@pankod/refine';
+import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine';
 
-<%- _app.import.join("\n") _%>
+<%- (_app.import || []).join("\n") _%>
 
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");
@@ -9,8 +9,8 @@ import { Refine, <%- _app.refineImports.join("\n,") _%> } from '@pankod/refine';
 
 
 function App() {
-    <%- _app.innerHooks.join("\n") %>
-    <%- _app.inner.join("\n") %>
+    <%- (_app.innerHooks || []).join("\n") %>
+    <%- (_app.inner || []).join("\n") %>
     return (
         <%- top.join("\n") %>
         <Refine <%- _app.refineProps.join("\n") %>><%- (_app.children || []).join("\n") _%></Refine>

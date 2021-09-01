@@ -1,9 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Layout, Menu, Grid } from "antd";
-import { RightOutlined, LogoutOutlined } from "@ant-design/icons";
+import {
+    RightOutlined,
+    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
+    LogoutOutlined
+    <%_ } _%>
+ } from "@ant-design/icons";
 
 import {
+    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
     useTranslate,
+    <%_ } _%>
     useMenu,
     useLogout,
     useTitle,
@@ -15,7 +22,9 @@ export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
     const Title = useTitle();
+    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
     const translate = useTranslate();
+    <%_ } _%>
     const { menuItems, selectedKey } = useMenu();
     const { push } = useNavigation();
     const breakpoint = Grid.useBreakpoint();

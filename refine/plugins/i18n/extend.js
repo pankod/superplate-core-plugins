@@ -23,7 +23,7 @@ const base = {
 module.exports = {
     extend(answers) {
         if (answers["custom-layout"] !== "no"){
-            base._app.import = base._app.import.slice(0,1)
+            base._app.import = base._app.import.filter(item => item !== `import { Header } from "components";`)
         }
         return base;
     },

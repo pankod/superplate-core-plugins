@@ -21,7 +21,10 @@ const base = {
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["custom-layout"] !== "no"){
+            base._app.import = base._app.import.slice(0,1)
+        }
         return base;
     },
 };

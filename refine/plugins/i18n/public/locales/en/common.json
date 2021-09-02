@@ -57,7 +57,12 @@
         "fields": {
             "id": "Id",
             "title": "Title",
-            "category": "Category",
+            "category": {
+                "title": "Category",
+                "filter": {
+                    "placeholder": "Select Category"
+                }
+            },
             "status": {
                 "title": "Status",
                 "published": "Published",

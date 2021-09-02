@@ -6,14 +6,14 @@ module.exports = {
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "strapi", name: "strapi-data-provider" },
-                { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
                 {
-                    message: "Custom JSON rest api",
+                    message: "Custom JSON REST API",
                     name: "custom-json-rest-data-provider",
                 },
+                { message: "Strapi", name: "strapi-data-provider" },
+                { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
                 {
-                    message: "airtable",
+                    message: "Airtable",
                     name: "airtable-data-provider",
                 },
             ],

@@ -11,8 +11,8 @@ const base = {
             `const { getIdTokenClaims, isLoading, loginWithRedirect, isAuthenticated, user, logout } = useAuth0();`,
         ],
         inner: [
-            "",
-            `const authProvider: AuthProvider = {
+            `
+            const authProvider: AuthProvider = {
                 login: () => {
                     loginWithRedirect();
                     return Promise.resolve();
@@ -40,17 +40,17 @@ const base = {
                     return Promise.reject();
                 },
             };`,
-            "",
-            `getIdTokenClaims().then((token) => {
+            `
+            getIdTokenClaims().then((token) => {
                 if (token) {
                     axios.defaults.headers.common = {`,
             "Authorization: `Bearer ${token.__raw}`",
             `};}});`,
-            "",
-            `if (isLoading) {
+            `
+            if (isLoading) {
                 return <span>Loading...</span>;
-            }`,
-            "",
+            }
+            `,
         ],
         refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
     },

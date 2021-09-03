@@ -3,8 +3,8 @@ const base = {
         refineImports: [`AuthProvider`],
         import: [
             `import axios from "axios";`,
-            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";`,
-            "",
+            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";
+            `,
             `import { Login } from "pages/login";`,
         ],
         innerHooks: [
@@ -14,8 +14,8 @@ const base = {
             });`,
         ],
         inner: [
-            "",
-            `const authProvider: AuthProvider = {
+            `
+            const authProvider: AuthProvider = {
                 login: ({ tokenId, profileObj, tokenObj }: GoogleLoginResponse) => {
                     axios.defaults.headers.common = {`,
                         "Authorization: `Bearer ${tokenId}`,",
@@ -54,8 +54,8 @@ const base = {
                         return Promise.resolve(JSON.parse(user));
                     }
                 },
-            };`,
-            "",
+            };
+            `,
         ],
         refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
     },

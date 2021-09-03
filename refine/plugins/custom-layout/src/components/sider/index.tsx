@@ -84,7 +84,7 @@ export const Sider: React.FC = () => {
                     );
                 })}
 
-                    <%_ if (answers["auth-provider"] !== 'none') { _%> (
+                    <%_ if (answers["auth-provider"] !== 'none') { _%>
                     <Menu.Item key="logout" icon={<LogoutOutlined />}>
                         <%_ if (i18n !== "no") { _%>
                         {translate("buttons.logout", "Logout")}
@@ -92,7 +92,6 @@ export const Sider: React.FC = () => {
                         "Logout"
                         <%_ } _%>
                     </Menu.Item>
-                    )
                 <%_ } _%>
             </Menu>
         </Layout.Sider>

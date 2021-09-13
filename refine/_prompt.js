@@ -1,6 +1,17 @@
 module.exports = {
     prompts: [
         {
+            name: "theme-customization",
+            message: "Do you want to customize theme?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No (Ant Design default theme)", name: "css" },
+                { message: "Yes, I want (less)", name: "less" },
+            ],
+            default: "css",
+        },
+        {
             name: "dataProvider",
             message: "Data Provider:",
             type: "select",
@@ -16,6 +27,14 @@ module.exports = {
                     message: "Airtable",
                     name: "airtable-data-provider",
                 },
+                {
+                    message: "Supabase",
+                    name: "supabase-data-provider",
+                },
+                {
+                    message: "Altogic",
+                    name: "altogic-data-provider",
+                },
             ],
             default: "custom-json-rest-data-provider",
         },
@@ -30,19 +49,8 @@ module.exports = {
                 { message: "Google", name: "google-auth-provider" },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "strapi-data-provider",
+                answers["data-provider"] === "strapi-data-provider" || answers.dataProvider === "supabase-data-provider",
             default: "none",
-        },
-        {
-            name: "theme-customization",
-            message: "Do you want to customize theme?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                { message: "No (Ant Design default theme)", name: "css" },
-                { message: "Yes, I want (less)", name: "less" },
-            ],
-            default: "css",
         },
         {
             name: "example-resource",
@@ -56,7 +64,7 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
-                answers.dataProvider === "strapi-data-provider" || answers.dataProvider === "airtable-data-provider",
+                answers.dataProvider === "strapi-data-provider" || answers.dataProvider === "airtable-data-provider" || answers.dataProvider === "supabase-data-provider" || answers.dataProvider === "altogic-data-provider",
             default: "no",
         },
         {

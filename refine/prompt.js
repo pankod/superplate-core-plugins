@@ -49,7 +49,8 @@ module.exports = {
                 { message: "Google", name: "google-auth-provider" },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "strapi-data-provider" || answers.dataProvider === "supabase-data-provider",
+                answers["data-provider"] === "strapi-data-provider" ||
+                answers.dataProvider === "supabase-data-provider",
             default: "none",
         },
         {
@@ -64,7 +65,10 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
-                answers.dataProvider === "strapi-data-provider" || answers.dataProvider === "airtable-data-provider" || answers.dataProvider === "supabase-data-provider" || answers.dataProvider === "altogic-data-provider",
+                answers.dataProvider === "strapi-data-provider" ||
+                answers.dataProvider === "airtable-data-provider" ||
+                answers.dataProvider === "supabase-data-provider" ||
+                answers.dataProvider === "altogic-data-provider",
             default: "no",
         },
         {
@@ -89,7 +93,6 @@ module.exports = {
             ],
             default: "no",
         },
-        
     ],
     ignores: [],
 };

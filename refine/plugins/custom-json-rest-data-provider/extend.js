@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import simpleRestDataProvider from "@pankod/refine-simple-server";`,
+            `import simpleRestDataProvider from "@pankod/refine-simple-rest";`,
         ],
         inner: [
             `

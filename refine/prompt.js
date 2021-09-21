@@ -18,10 +18,18 @@ module.exports = {
             pageSize: 2,
             choices: [
                 {
-                    message: "Custom JSON REST API",
+                    message: "REST API",
                     name: "custom-json-rest-data-provider",
                 },
+                {
+                    message: "GraphQL API",
+                    name: "graphql-data-provider",
+                },
                 { message: "Strapi", name: "strapi-data-provider" },
+                {
+                    message: "Strapi GraphQL",
+                    name: "strapi-graphql-data-provider",
+                },
                 { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
                 {
                     message: "Airtable",
@@ -49,7 +57,8 @@ module.exports = {
                 { message: "Google", name: "google-auth-provider" },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "strapi-data-provider" ||
+                answers.dataProvider === "strapi-data-provider" ||
+                answers.dataProvider === "strapi-graphql-data-provider" ||
                 answers.dataProvider === "supabase-data-provider",
             default: "none",
         },
@@ -68,6 +77,8 @@ module.exports = {
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "airtable-data-provider" ||
                 answers.dataProvider === "supabase-data-provider" ||
+                answers.dataProvider === "graphql-data-provider" ||
+                answers.dataProvider === "strapi-graphql-data-provider" ||
                 answers.dataProvider === "altogic-data-provider",
             default: "no",
         },

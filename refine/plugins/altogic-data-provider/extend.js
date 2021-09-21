@@ -29,9 +29,7 @@ const base = {
                 }
               );`,
         ],
-        refineProps: [
-            "dataProvider={dataProvider(API_URL, axiosInstance)}",
-        ],
+        refineProps: ["dataProvider={dataProvider(API_URL, axiosInstance)}"],
     },
 };
 module.exports = {

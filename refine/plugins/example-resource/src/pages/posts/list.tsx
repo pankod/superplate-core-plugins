@@ -15,16 +15,20 @@ import {
     FilterDropdown,
     Select,
     ShowButton,
-    <%_ if (i18n === "i18n") { _%>
+    <% _ if (i18n === "i18n") {
+    _ %>
     useTranslate,
-    <%_ } _%>
+    <% _
+} _ %>
 } from "@pankod/refine";
 import { IPost, ICategory } from "interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
-    <%_ if (i18n === "i18n") { _%>
+    <% _ if (i18n === "i18n") {
+        _ %>
         const t = useTranslate();
-    <%_ } _%>
+    <% _
+    } _ %>
 
     const { tableProps, sorter } = useTable<IPost>({
         initialSorter: [
@@ -38,11 +42,13 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
     const categoryIds =
         tableProps?.dataSource?.map((item) => item.category.id) ?? [];
     const { data: categoriesData, isLoading } = useMany<ICategory>(
-        "categories",
-        categoryIds,
         {
-            enabled: categoryIds.length > 0,
-        },
+            resource: "categories",
+            ids: categoryIds,
+            queryOptions: {
+                enabled: categoryIds.length > 0,
+            }
+        }
     );
 
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
@@ -64,111 +70,115 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 <Table.Column
                     dataIndex="title"
                     key="title"
-                    <%_ if (i18n !==  "i18n") { _%>
+                    <%_ if (i18n !==  "i18n") {_ %>
                     title="Title"
-                    <%_ } else { _%>
+                <%_ } else {_ %>
                     title={t("posts.fields.title")}
-                    <%_ } _%>
-                    render={(value) => <TextField value={value} />}
-                    defaultSortOrder={getDefaultSortOrder("title", sorter)}
-                    sorter
+                <%_ } _%>
+                render={(value) => <TextField value={value} />}
+                defaultSortOrder={getDefaultSortOrder("title", sorter)}
+                sorter
                 />
-                 <Table.Column
+                <Table.Column
                     dataIndex="status"
                     key="status"
-                    <%_ if (i18n !==  "i18n") { _%>
-                        title="Status"
-                        <%_ } else { _%>
-                        title={t("posts.fields.status.title")}
-                    <%_ } _%>
-                    render={(value) => <TagField value={value} />}
-                    defaultSortOrder={getDefaultSortOrder("status", sorter)}
-                    sorter
+                    <%_ if (i18n !==  "i18n") {_ %>
+                    title="Status"
+                <%_ } else {_ %>
+                    title={t("posts.fields.status.title")}
+                <%_ } _%>
+                render={(value) => <TagField value={value} />}
+                defaultSortOrder={getDefaultSortOrder("status", sorter)}
+                sorter
                 />
                 <Table.Column
                     dataIndex="createdAt"
                     key="createdAt"
-                    <%_ if (i18n !==  "i18n") { _%>
+                    <%_ if (i18n !==  "i18n") {_ %>
                     title="Created At"
-                    <%_ } else { _%>
+                <%_ } else {_ %>
                     title={t("posts.fields.createdAt")}
-                    <%_ } _%>
-                    render={(value) => (
-                        <DateField value={value} format="LLL" />
-                    )}
-                    defaultSortOrder={getDefaultSortOrder("createdAt", sorter)}
-                    sorter
+                <%_ } _%>
+                render={(value) => (
+                    <DateField value={value} format="LLL" />
+                )}
+                defaultSortOrder={getDefaultSortOrder("createdAt", sorter)}
+                sorter
                 />
                 <Table.Column
                     dataIndex={["category", "id"]}
-                    <%_ if (i18n !==  "i18n") { _%>
-                        title="Category"
-                    <%_ } else { _%>
-                        title={t("posts.fields.category.title")}
-                    <%_ } _%>
-                    render={(value) => {
-                        if (isLoading) {
-                            return <TextField 
-                                <%_ if (i18n !==  "i18n") { _%>
+                    <%_ if (i18n !==  "i18n") {_ %>
+                    title="Category"
+                <%_ } else {_ %>
+                    title={t("posts.fields.category.title")}
+                <%_ } _%>
+                render={(value) => {
+                    if (isLoading) {
+                        return <TextField
+                            <% _ if (i18n !== "i18n") {
+                                _ %>
                                 value="Loading..."
-                                <%_ } else { _%>
-                                    value={t("loading")}
-                                <%_ } _%>
+                                    <% _
+                    } else {
+                        _ %>
+                        value={ t("loading") }
+                                <% _
+                } _%>
                             />;
                         }
 
-                        return (
-                            <TextField
-                                value={
-                                    categoriesData?.data.find(
-                                        (item) => item.id === value,
-                                    )?.title
-                                }
-                            />
-                        );
+                return (
+                <TextField
+                    value={
+                        categoriesData?.data.find(
+                            (item) => item.id === value,
+                        )?.title
+                    }
+                />
+                );
                     }}
-                    filterDropdown={(props) => (
-                        <FilterDropdown {...props}>
-                            <Select
-                                style={{ minWidth: 200 }}
-                                mode="multiple"
-                                <%_ if (i18n !==  "i18n") { _%>
-                                    placeholder="Select Category"
-                                    <%_ } else { _%>
-                                    placeholder={t("posts.fields.category.filter.placeholder")}
-                                <%_ } _%>
+                filterDropdown={(props) => (
+                    <FilterDropdown {...props}>
+                        <Select
+                            style={{ minWidth: 200 }}
+                            mode="multiple"
+                                <%_ if (i18n !==  "i18n") {_ %>
+                            placeholder="Select Category"
+                        <%_ } else {_ %>
+                            placeholder={t("posts.fields.category.filter.placeholder")}
+                        <%_ } _%>
 
-                                {...categorySelectProps}
+                        {...categorySelectProps}
                             />
-                        </FilterDropdown>
-                    )}
+                    </FilterDropdown>
+                )}
                 />
                 <Table.Column<IPost>
-                    <%_ if (i18n !==  "i18n") { _%>
+                    <%_ if (i18n !==  "i18n") {_ %>
                     title="Actions"
-                    <%_ } else { _%>
+                <%_ } else {_ %>
                     title={t("table.actions")}
-                    <%_ } _%>
-                    dataIndex="actions"
-                    render={(_, record) => (
-                        <Space>
-                            <EditButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                                />
-                            <ShowButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
-                            <DeleteButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
-                        </Space>
-                    )}
+                <%_ } _%>
+                dataIndex="actions"
+                render={(_, record) => (
+                    <Space>
+                        <EditButton
+                            hideText
+                            size="small"
+                            recordItemId={record.id}
+                        />
+                        <ShowButton
+                            hideText
+                            size="small"
+                            recordItemId={record.id}
+                        />
+                        <DeleteButton
+                            hideText
+                            size="small"
+                            recordItemId={record.id}
+                        />
+                    </Space>
+                )}
                 />
             </Table>
         </List>

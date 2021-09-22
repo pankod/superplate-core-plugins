@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+        "react-hook-form": "^7.15.4"
+    },
+    "devDependencies": {
+        "@testing-library/react-hooks": "^7.0.2"
+    }
+}

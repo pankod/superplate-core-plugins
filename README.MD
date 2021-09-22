@@ -73,6 +73,10 @@ This is the source repository for [superplate](https://github.com/pankod/superpl
 - [GitHub Actions](https://docs.github.com/en/actions)
 - [Travis CI](https://travis-ci.org/)
 
+### Form Validation
+
+- [React Hook Form](https://react-hook-form.com/)
+
 ## Development / Contribution
 
 ### Create Your Source

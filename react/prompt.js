@@ -175,6 +175,16 @@ module.exports = {
             ],
             default: "none",
         },
+        {
+            name: "form validation",
+            message: "Form Validation:",
+            type: "select",
+            choices: [
+                { message: "None", name: "none"},
+                { message: "React Hook Form", name:"react-hook-form"}
+            ],
+            default: "none"
+        },
     ],
     ignores: [
         {

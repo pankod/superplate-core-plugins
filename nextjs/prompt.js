@@ -190,7 +190,7 @@ module.exports = {
             default: "none",
         },
         {
-            name: "form validation",
+            name: "form_validation",
             message: "Form Validation:",
             type: "select",
             choices: [

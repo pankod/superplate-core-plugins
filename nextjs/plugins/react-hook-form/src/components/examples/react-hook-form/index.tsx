@@ -23,8 +23,7 @@ export const FormExample = () => {
         getValues,
         formState: { errors },
     } = useForm<Login>();
-    const onSubmit: SubmitHandler<Login> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Login> = () => {
         setSubmit(true);
     };
 
@@ -35,19 +34,7 @@ export const FormExample = () => {
 
         switch (error.type) {
             case "required":
-                return (
-                    <span style={{ color: "red", marginLeft: 8 }}>
-                        {error.message}
-                    </span>
-                );
-
             case "minLength":
-                return (
-                    <span style={{ color: "red", marginLeft: 8 }}>
-                        {error.message}
-                    </span>
-                );
-
             case "pattern":
                 return (
                     <span style={{ color: "red", marginLeft: 8 }}>

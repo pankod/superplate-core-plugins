@@ -1,12 +1,5 @@
 {
     "dependencies": {
-        "@craco/craco": "^6.1.2",
-        "craco-less": "^1.17.1"
-    },
-    "scripts": {
-        "dev": "craco start",
-        "build": "craco build",
-        "test": "craco test",
-        "eject": "craco eject"
+        "next-plugin-antd-less": "^1.4.3"
     }
 }

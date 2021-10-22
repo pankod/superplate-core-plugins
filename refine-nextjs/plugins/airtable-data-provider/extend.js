@@ -2,8 +2,7 @@ const base = {
     _app: {
         import: [
             `import dataProvider from "@pankod/refine-airtable";`,
-        ],
-        inner: [
+            "",
             `const API_TOKEN = "your-airtable-api-token";`,
             `const BASE_ID = "your-airtable-base-id";`,
             "",

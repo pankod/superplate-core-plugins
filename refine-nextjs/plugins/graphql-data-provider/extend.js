@@ -4,7 +4,6 @@ const base = {
             `import dataProvider from "@pankod/refine-graphql";`,
             `import { GraphQLClient } from "graphql-request";`,
             "",
-            "",
             `const API_URL = "https://your-graphql-url/graphql";`,
             "",
             `const client = new GraphQLClient(API_URL);`,

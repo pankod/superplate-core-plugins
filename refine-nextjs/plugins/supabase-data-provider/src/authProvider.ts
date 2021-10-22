@@ -1,6 +1,6 @@
 import { AuthProvider } from "@pankod/refine";
 
-import { supabaseClient } from "utility";
+import { supabaseClient } from "./utility";
 
 const authProvider: AuthProvider = {
     login: async ({ username, password }) => {

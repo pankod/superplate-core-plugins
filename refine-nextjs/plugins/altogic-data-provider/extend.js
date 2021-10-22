@@ -5,7 +5,6 @@ const base = {
             `import dataProvider from "@pankod/refine-altogic";`,
             `import axios from "axios";`,
             "",
-            "",
             `const API_URL = "https://dev001.na-dev-engine.altogic.com";`,
             `const YOUR_SECRET_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbnZJZCI6IjYxMzczZGVkMjQ5NWMzMDAxOTliZTAxNiIsImtleUlkIjoiNjEzNzNlMzYyNDk1YzMwMDE5OWJlMDJkIiwiaWF0IjoxNjMxMDEwMzU4LCJleHAiOjI0OTUwMTAzNTh9.2fL28Bzd97mqfAvcsTrYj1mZ_hqf3WRnr2DOtV3lsc0";`,
             "",

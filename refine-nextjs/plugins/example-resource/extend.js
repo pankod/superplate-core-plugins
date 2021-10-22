@@ -2,7 +2,7 @@ const base = {
     _app: {
         refineImports: [`Resource`],
         import: [
-            `import { PostList, PostCreate, PostEdit, PostShow } from "./pages/posts";`,
+            `import { PostList, PostCreate, PostEdit, PostShow } from "src/components/posts";`,
         ],
         inner: [],
         children: [

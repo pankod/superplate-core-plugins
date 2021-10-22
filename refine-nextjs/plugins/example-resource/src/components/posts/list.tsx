@@ -19,7 +19,7 @@ import {
     useTranslate,
     <%_ } _%>
 } from "@pankod/refine";
-import { IPost, ICategory } from "interfaces";
+import { IPost, ICategory } from "src/interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     <%_ if (i18n === "i18n") { _%>

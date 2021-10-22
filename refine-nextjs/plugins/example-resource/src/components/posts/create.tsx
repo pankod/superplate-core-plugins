@@ -1,42 +1,42 @@
 import { useState } from "react";
 import {
-    Edit,
+    Create,
     Form,
     Input,
     Select,
+    useSelect,
     IResourceComponentsProps,
     useForm,
-    useSelect,
     <%_ if (i18n === "i18n") { _%>
     useTranslate,
     <%_ } _%>
 } from "@pankod/refine";
+
 import ReactMarkdown from "react-markdown";
 import ReactMde from "react-mde";
 
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import { IPost } from "interfaces";
+import { IPost, ICategory } from "src/interfaces";
 
-export const PostEdit: React.FC<IResourceComponentsProps> = () => {
+export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
         "write",
     );
 
     <%_ if (i18n === "i18n") { _%>
-        const t = useTranslate();
+    const t = useTranslate();
     <%_ } _%>
 
-    const { formProps, saveButtonProps, queryResult } = useForm<IPost>();
+    const { formProps, saveButtonProps } = useForm<IPost>();
 
-    const { selectProps: categorySelectProps } = useSelect<IPost>({
+    const { selectProps: categorySelectProps } = useSelect<ICategory>({
         resource: "categories",
-        defaultValue: queryResult?.data?.data.category.id,
-      });
+    });
 
     return (
-        <Edit saveButtonProps={saveButtonProps}>
-           <Form {...formProps} layout="vertical">
+        <Create saveButtonProps={saveButtonProps}>
+            <Form {...formProps} layout="vertical">
                 <Form.Item
                     <%_ if (i18n !== "i18n") { _%>
                     label="Title"
@@ -139,6 +139,6 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                     />
                 </Form.Item>
             </Form>
-        </Edit>
+        </Create>
     );
 };

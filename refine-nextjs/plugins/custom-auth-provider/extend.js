@@ -1,7 +1,6 @@
 const base = {
     _app: {
         import: ['import { authProvider } from "authProvider";'],
-        inner: [],
         refineProps: ["authProvider={authProvider}"],
     },
 };

@@ -15,12 +15,14 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
+        <%- top.join("\n") %>
         <Refine 
             routerProvider={routerProvider}
             <%- (_app.refineProps || []).join("\n") %>
         >
             <Component {...pageProps} />
         </Refine>
+        <%- bottom.join("\n") %>
       );
 };
 

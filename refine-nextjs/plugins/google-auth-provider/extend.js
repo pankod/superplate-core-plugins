@@ -3,9 +3,7 @@ const base = {
         refineImports: [`AuthProvider`],
         import: [
             `import axios from "axios";`,
-            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";
-            `,
-            `import { Login } from "pages/login";`,
+            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";`,
         ],
         innerHooks: [
             `const { signOut } = useGoogleLogout({
@@ -57,7 +55,7 @@ const base = {
             };
             `,
         ],
-        refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
+        refineProps: ["authProvider={authProvider}"],
     },
 };
 module.exports = {

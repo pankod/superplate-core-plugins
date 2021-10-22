@@ -1,11 +1,22 @@
 const base = {
     _app: {
         refineImports: [`AuthProvider`],
+        top: [
+            `
+            <Auth0Provider
+                domain="your-auth0-domain-address"
+                clientId="your-auth0-clientId"
+                redirectUri={window.location.origin}
+            >
+            `,
+        ],
+        bottom: [
+            `</Auth0Provider>`,
+        ],
         import: [
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
             "",
-            `import { Login } from "pages/login";`,
         ],
         innerHooks: [
             `const { getIdTokenClaims, isLoading, loginWithRedirect, isAuthenticated, user, logout } = useAuth0();`,
@@ -52,7 +63,7 @@ const base = {
             }
             `,
         ],
-        refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
+        refineProps: ["authProvider={authProvider}"],
     },
 };
 module.exports = {

@@ -90,7 +90,7 @@ export const Sider: React.FC = () => {
                         <%_ if (i18n !== "no") { _%>
                         {translate("buttons.logout", "Logout")}
                         <%_ } else { _%>
-                        "Logout"
+                        Logout
                         <%_ } _%>
                     </Menu.Item>
                 <%_ } _%>

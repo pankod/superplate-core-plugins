@@ -1,7 +1,6 @@
 import React from "react";
-import { Layout as AntLayout, Grid } from "antd";
 
-import { LayoutProps } from "@pankod/refine";
+import { LayoutProps, AntLayout, Grid } from "@pankod/refine";
 
 export const Layout: React.FC<LayoutProps> = ({
     children,

@@ -1,7 +1,6 @@
 import React from "react";
-import { Layout as AntLayout, Grid } from "antd";
 
-import { LayoutProps } from "@pankod/refine";
+import { LayoutProps, AntdLayout, Grid } from "@pankod/refine";
 
 export const Layout: React.FC<LayoutProps> = ({
     children,
@@ -12,11 +11,11 @@ export const Layout: React.FC<LayoutProps> = ({
 }) => {
     const breakpoint = Grid.useBreakpoint();
     return (
-        <AntLayout style={{ minHeight: "100vh", flexDirection: "row" }}>
+        <AntdLayout style={{ minHeight: "100vh", flexDirection: "row" }}>
             <Sider />
-            <AntLayout>
+            <AntdLayout>
                 <Header />
-                <AntLayout.Content>
+                <AntdLayout.Content>
                     <div
                         style={{
                             padding: breakpoint.sm ? 24 : 12,
@@ -26,9 +25,9 @@ export const Layout: React.FC<LayoutProps> = ({
                         {children}
                     </div>
                     <OffLayoutArea />
-                </AntLayout.Content>
+                </AntdLayout.Content>
                 <Footer />
-            </AntLayout>
-        </AntLayout>
+            </AntdLayout>
+        </AntdLayout>
     );
 };

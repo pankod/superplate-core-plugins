@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "@pankod/refine";
+import { Link } from "@pankod/refine-nextjs-router";
 
 import { TitleProps } from "@pankod/refine";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => (
-    <Link to="/">
+    <Link href="/">
         {collapsed ? (
             <img
                 src={"/refine-collapsed.svg"}

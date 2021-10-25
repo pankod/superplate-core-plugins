@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { Layout, Menu, Grid } from "antd";
-import {
-    RightOutlined,
-    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
-    LogoutOutlined
-    <%_ } _%>
- } from "@ant-design/icons";
 
 import {
-    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
+    AntdLayout,
+    Menu,
+    Grid,
+    Icons,
+    <%_ if (i18n !== "no") { _%>
     useTranslate,
     <%_ } _%>
     useMenu,
@@ -18,11 +15,18 @@ import {
 } from "@pankod/refine";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
+const {
+    RightOutlined,
+    <%_ if (answers["auth-provider"] !== 'none') { _%>
+    LogoutOutlined
+    <%_ } _%>
+ } = Icons;
+
 export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
     const Title = useTitle();
-    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
+    <%_ if (i18n !== "no") { _%>
     const translate = useTranslate();
     <%_ } _%>
     const { menuItems, selectedKey } = useMenu();
@@ -32,7 +36,7 @@ export const Sider: React.FC = () => {
     const isMobile = !breakpoint.lg;
 
     return (
-        <Layout.Sider
+        <AntdLayout.Sider
             collapsible
             collapsed={collapsed}
             onCollapse={(collapsed: boolean): void => setCollapsed(collapsed)}
@@ -91,6 +95,6 @@ export const Sider: React.FC = () => {
                     </Menu.Item>
                 <%_ } _%>
             </Menu>
-        </Layout.Sider>
+        </AntdLayout.Sider>
     );
 };

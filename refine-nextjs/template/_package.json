@@ -9,8 +9,8 @@
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
 },
 "dependencies": {
-  "@pankod/refine": "^1.1.1",
-  "@pankod/refine-nextjs-router": "^0.1.2",
+  "@pankod/refine": "^1.1.2",
+  "@pankod/refine-nextjs-router": "^0.1.4",
   "next": "11.1.2",
   "next-compose-plugins": "^2.2.1",
   "react": "^17.0.2",

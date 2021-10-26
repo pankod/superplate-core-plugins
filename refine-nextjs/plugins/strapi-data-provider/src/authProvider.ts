@@ -1,11 +1,13 @@
 import { AuthProvider } from "@pankod/refine";
 import { AuthHelper } from "@pankod/refine-strapi";
 import axios from "axios";
+import nookies from "nookies";
+
+import { TOKEN_KEY } from "src/constants";
 
 const strapiAuthProvider = (apiUrl: string) => {
     const axiosInstance = axios.create();
 
-    const TOKEN_KEY = "refine-auth";
     const strapiAuthHelper = AuthHelper(apiUrl);
 
     const authProvider: AuthProvider = {
@@ -15,7 +17,10 @@ const strapiAuthProvider = (apiUrl: string) => {
                 password,
             );
             if (status === 200) {
-                localStorage.setItem(TOKEN_KEY, data.jwt);
+                nookies.set(null, TOKEN_KEY, data.jwt, {
+                    maxAge: 30 * 24 * 60 * 60,
+                    path: "/",
+                });
 
                 // set header axios instance
                 axiosInstance.defaults.headers = {
@@ -27,15 +32,15 @@ const strapiAuthProvider = (apiUrl: string) => {
             return Promise.reject;
         },
         logout: () => {
-            localStorage.removeItem(TOKEN_KEY);
+            nookies.destroy(null, TOKEN_KEY);
             return Promise.resolve();
         },
         checkError: () => Promise.resolve(),
-        checkAuth: () => {
-            const token = localStorage.getItem(TOKEN_KEY);
-            if (token) {
+        checkAuth: (ctx) => {
+            const cookies = nookies.get(ctx);
+            if (cookies[TOKEN_KEY]) {
                 axiosInstance.defaults.headers = {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${cookies[TOKEN_KEY]}`,
                 };
                 return Promise.resolve();
             }
@@ -44,7 +49,7 @@ const strapiAuthProvider = (apiUrl: string) => {
         },
         getPermissions: () => Promise.resolve(),
         getUserIdentity: async () => {
-            const token = localStorage.getItem(TOKEN_KEY);
+            const token = nookies.get()[TOKEN_KEY];
             if (!token) {
                 return Promise.reject();
             }

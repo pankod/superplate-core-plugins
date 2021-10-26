@@ -1,6 +1,7 @@
 {
     "dependencies": {
-        "@pankod/refine-strapi": "^0.1.0",
-        "axios": "^0.21.1"
+        "@pankod/refine-strapi": "^0.1.8",
+        "axios": "^0.21.1",
+        "nookies": "^2.5.2"
     }
 }

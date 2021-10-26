@@ -40,13 +40,13 @@ export const authProvider: AuthProvider = {
   },
   checkError: () => Promise.resolve(),
   checkAuth: (ctx) => {
-    const jwt = nookies.get(ctx);
+    const { token } = nookies.get(ctx);
 
-    if (!jwt) {
+    if (!token) {
       return Promise.reject();
     }
 
-    client.setHeader("Authorization", `Bearer ${jwt}`);
+    client.setHeader("Authorization", `Bearer ${token}`);
 
     return Promise.resolve();
   },

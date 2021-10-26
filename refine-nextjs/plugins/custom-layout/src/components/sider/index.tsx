@@ -85,7 +85,7 @@ export const Sider: React.FC = () => {
                     );
                 })}
 
-                    <%_ if (answers["auth-provider"] !== 'none') { _%>
+                    <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
                     <Menu.Item key="logout" icon={<LogoutOutlined />}>
                         <%_ if (i18n !== "no") { _%>
                         {translate("buttons.logout", "Logout")}

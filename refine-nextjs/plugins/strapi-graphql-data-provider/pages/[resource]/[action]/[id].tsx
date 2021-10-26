@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
 
   if (!isAuthenticated) {
-    return { props };
+    return props;
   }
 
   return {

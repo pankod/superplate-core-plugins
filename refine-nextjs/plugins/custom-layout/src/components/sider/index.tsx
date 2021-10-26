@@ -17,7 +17,7 @@ import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
 const {
     RightOutlined,
-    <%_ if (answers["auth-provider"] !== 'none') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
     LogoutOutlined
     <%_ } _%>
  } = Icons;

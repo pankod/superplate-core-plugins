@@ -9,7 +9,5 @@ module.exports = withPlugins([[pluginAntdLess]], {
   webpack(config) {
     return config;
   },
-  future: {
-    webpack5: true,
-  },
+  webpack5: true,
 });

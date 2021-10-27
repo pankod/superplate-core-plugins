@@ -1,10 +1,11 @@
 import { AuthProvider } from "@pankod/refine";
+import nookies from "nookies";
 
 import { supabaseClient } from "./utility";
 
 const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
-        const { user, error } = await supabaseClient.auth.signIn({
+        const { user, error, data } = await supabaseClient.auth.signIn({
             email: username,
             password,
         });
@@ -13,11 +14,16 @@ const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (user) {
+        if (user && data) {
+            nookies.set(null, "token", data.access_token, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: "/",
+            });
             return Promise.resolve();
         }
     },
     logout: async () => {
+        nookies.destroy(null, "token");
         const { error } = await supabaseClient.auth.signOut();
 
         if (error) {
@@ -27,10 +33,11 @@ const authProvider: AuthProvider = {
         return Promise.resolve("/");
     },
     checkError: () => Promise.resolve(),
-    checkAuth: () => {
-        const session = supabaseClient.auth.session();
+    checkAuth: async (ctx) => {
+        const { token } = nookies.get(ctx);
+        const { data: user } = await supabaseClient.auth.api.getUser(token);
 
-        if (session) {
+        if (user) {
             return Promise.resolve();
         }
 

@@ -1,14 +1,10 @@
 const base = {
     _app: {
         import: [
-            'import nestjsxCrudDataProvider from "@pankod/refine-nestjsx-crud";',
-            "",
+            'import dataProvider from "@pankod/refine-nestjsx-crud";',
             `const API_URL = "https://api.nestjsx-crud.refine.dev";`,
         ],
-        inner: [
-            `const dataProvider = nestjsxCrudDataProvider(API_URL);`,
-        ],
-        refineProps: ["dataProvider={dataProvider}"],
+        refineProps: ["dataProvider={dataProvider(API_URL)}"],
     },
 };
 

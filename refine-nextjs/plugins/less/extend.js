@@ -1,6 +1,9 @@
 const base = {
     _app: {
-        import: ['require("antd/dist/antd.less");'],
+        import: [
+            'require("antd/dist/antd.less");',
+            "",
+        ],
     },
 };
 

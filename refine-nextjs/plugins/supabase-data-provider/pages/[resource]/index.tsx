@@ -1,11 +1,11 @@
+import { GetServerSideProps } from "next";
 export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
 import { checkAuthentication } from "@pankod/refine-nextjs-router";
 import { dataProvider } from "@pankod/refine-supabase";
 import nookies from "nookies";
 
-import { GetServerSideProps } from "next";
 
-import authProvider from "src/authProvider";
+import { authProvider } from "src/authProvider";
 import { supabaseClient } from "src/utility";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { Layout, Menu, Grid } from "antd";
-import {
-    RightOutlined,
-    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
-    LogoutOutlined
-    <%_ } _%>
- } from "@ant-design/icons";
 
 import {
-    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
+    AntdLayout,
+    Menu,
+    Grid,
+    Icons,
+    <%_ if (i18n !== "no") { _%>
     useTranslate,
     <%_ } _%>
     useMenu,
@@ -18,11 +15,18 @@ import {
 } from "@pankod/refine";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
+const {
+    RightOutlined,
+    <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
+    LogoutOutlined
+    <%_ } _%>
+ } = Icons;
+
 export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
     const Title = useTitle();
-    <%_ if (answers["auth-provider"] !== 'none' && i18n !== "no") { _%>
+    <%_ if (i18n !== "no") { _%>
     const translate = useTranslate();
     <%_ } _%>
     const { menuItems, selectedKey } = useMenu();
@@ -32,7 +36,7 @@ export const Sider: React.FC = () => {
     const isMobile = !breakpoint.lg;
 
     return (
-        <Layout.Sider
+        <AntdLayout.Sider
             collapsible
             collapsed={collapsed}
             onCollapse={(collapsed: boolean): void => setCollapsed(collapsed)}
@@ -81,16 +85,16 @@ export const Sider: React.FC = () => {
                     );
                 })}
 
-                    <%_ if (answers["auth-provider"] !== 'none') { _%>
+                    <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
                     <Menu.Item key="logout" icon={<LogoutOutlined />}>
                         <%_ if (i18n !== "no") { _%>
                         {translate("buttons.logout", "Logout")}
                         <%_ } else { _%>
-                        "Logout"
+                        Logout
                         <%_ } _%>
                     </Menu.Item>
                 <%_ } _%>
             </Menu>
-        </Layout.Sider>
+        </AntdLayout.Sider>
     );
 };

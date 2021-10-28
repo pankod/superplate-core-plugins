@@ -1,7 +1,6 @@
 import React from "react";
-import { Layout, Typography, Avatar, Space } from "antd";
 
-import { useGetIdentity } from "@pankod/refine";
+import { AntdLayout, Typography, Avatar, Space, useGetIdentity } from "@pankod/refine";
 
 const { Text } = Typography;
 
@@ -11,7 +10,7 @@ export const Header: React.FC = () => {
     const shouldRenderHeader = user && (user.name || user.avatar);
 
     return shouldRenderHeader ? (
-        <Layout.Header
+        <AntdLayout.Header
             style={{
                 display: "flex",
                 justifyContent: "flex-end",
@@ -31,6 +30,6 @@ export const Header: React.FC = () => {
                     <Avatar size="large" src={user?.avatar} alt={user?.name} />
                 )}
             </Space>
-        </Layout.Header>
+        </AntdLayout.Header>
     ) : null;
 };

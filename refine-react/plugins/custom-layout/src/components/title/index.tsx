@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "@pankod/refine";
-
-import { TitleProps } from "@pankod/refine";
+import { Link, TitleProps } from "@pankod/refine";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => (
     <Link to="/">

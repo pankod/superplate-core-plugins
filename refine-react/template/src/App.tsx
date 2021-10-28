@@ -1,4 +1,5 @@
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine';
+import routerProvider from "@pankod/refine-react-router";
 
 <%- (_app.import || []).join("\n") _%>
 
@@ -13,8 +14,10 @@ function App() {
     <%- (_app.inner || []).join("\n") %>
     return (
         <%- top.join("\n") %>
-        <Refine <%- (_app.refineProps || []).join("\n") %>><%- (_app.children || []).join("\n") _%></Refine>
-         <%- bottom.join("\n") %>
+        <Refine routerProvider={routerProvider} <%- (_app.refineProps || []).join("\n") %>>
+            <%- (_app.children || []).join("\n") _%>
+        </Refine>
+        <%- bottom.join("\n") %>
       );
 };
 

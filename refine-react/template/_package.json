@@ -15,7 +15,8 @@
     "react-scripts": "4.0.3",
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.1",
-    "@pankod/refine": "^1.0.76"
+    "@pankod/refine": "^1.0.76",
+    "@pankod/refine-react-router": "^0.1.5"
   },
   "scripts": {
     "dev": "react-scripts start",

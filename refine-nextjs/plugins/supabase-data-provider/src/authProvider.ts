@@ -3,7 +3,7 @@ import nookies from "nookies";
 
 import { supabaseClient } from "./utility";
 
-const authProvider: AuthProvider = {
+export const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
         const { user, error, data } = await supabaseClient.auth.signIn({
             email: username,
@@ -61,5 +61,3 @@ const authProvider: AuthProvider = {
         }
     },
 };
-
-export default authProvider;

@@ -3,7 +3,7 @@ const base = {
         import: [
             `import { dataProvider } from "@pankod/refine-supabase";`,
             "",
-            `import authProvider from "src/authProvider";`,
+            `import { authProvider } from "src/authProvider";`,
             `import { supabaseClient } from "src/utility";`
         ],
         refineProps: [

@@ -1,7 +1,6 @@
+import { GetServerSideProps } from "next";
 export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
 import { checkAuthentication } from "@pankod/refine-nextjs-router";
-
-import { GetServerSideProps } from "next";
 
 import { API_URL } from "src/constants";
 import strapiAuthProvider from "src/authProvider";

@@ -26,14 +26,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
         const t = useTranslate();
     <%_ } _%>
 
-    const { tableProps, sorter } = useTable<IPost>({
-        initialSorter: [
-            {
-                field: "id",
-                order: "desc",
-            },
-        ],
-    });
+    const { tableProps, sorter } = useTable<IPost>();
 
     const categoryIds =
         tableProps?.dataSource?.map((item) => item.category.id) ?? [];

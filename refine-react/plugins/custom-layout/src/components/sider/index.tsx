@@ -5,7 +5,7 @@ import {
     Menu,
     Grid,
     Icons,
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (i18n === "i18n") { _%>
     useTranslate,
     <%_ } _%>
     useMenu,
@@ -26,7 +26,7 @@ export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
     const Title = useTitle();
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (i18n === "i18n") { _%>
     const translate = useTranslate();
     <%_ } _%>
     const { menuItems, selectedKey } = useMenu();

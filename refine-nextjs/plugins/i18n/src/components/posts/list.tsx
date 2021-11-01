@@ -17,7 +17,13 @@ export const PostList: React.FC = () => {
     const { tableProps } = useTable<IPost>();
 
     const categoryIds =
-        tableProps?.dataSource?.map((item) => item.category.id) ?? [];
+        tableProps?.dataSource?.map((item) => item.
+        <%_ if (answers.dataProvider === 'supabase-data-provider') { _%>
+            categoryId)
+        <%_ } else { _%>
+            category.id)
+        <%_ } _%>
+            ?? [];
     const { data, isLoading } = useMany<ICategory>({
         resource: "categories",
         ids: categoryIds,
@@ -35,7 +41,11 @@ export const PostList: React.FC = () => {
                     title={translate("posts.fields.title")}
                 />
                 <Table.Column
+                <%_ if (answers.dataProvider === 'supabase-data-provider') { _%>
+                    dataIndex={["categoryId"]}
+                <%_ } else { _%>
                     dataIndex={["category", "id"]}
+                <%_ } _%>
                     title={translate("posts.fields.category.title")}
                     render={(value) => {
                         if (isLoading) {

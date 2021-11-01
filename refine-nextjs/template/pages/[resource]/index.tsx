@@ -18,9 +18,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         context,
     );
 
-    if (!isAuthenticated) {
-        return props;
-    }
+    <%_ if (i18n === 'i18n') { _%>
+    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
+
+            if (!isAuthenticated) {
+                return { props: { ...props, ...i18nProps } };
+            }
+
+    <%_ } else { _%>
+    return props;
+    <%_ } _%>
     
     <%_ } _%>
 

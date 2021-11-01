@@ -21,7 +21,13 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
     const { data: categoryData, isLoading: categoryIsLoading } =
         useOne<ICategory>({
             resource: "categories",
-            id: record?.category.id || "",
+            id: record?.
+            <%_ if (answers.dataProvider === 'supabase-data-provider') { _%>
+                categoryId
+            <%_ } else { _%>
+                category.id
+            <%_ } _%>
+             || "",
             queryOptions: {
                 enabled: !!record,
             },

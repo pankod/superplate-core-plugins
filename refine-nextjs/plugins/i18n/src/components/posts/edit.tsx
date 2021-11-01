@@ -24,7 +24,13 @@ export const PostEdit: React.FC<IResourceComponentsProps> = (props) => {
     const postData = queryResult?.data?.data;
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
         resource: "categories",
-        defaultValue: postData?.category.id,
+        defaultValue: postData?.
+        <%_ if (answers.dataProvider === 'supabase-data-provider') { _%>
+            categoryId
+        <%_ } else { _%>
+            category.id
+        <%_ } _%>
+        ,
     });
 
     const [selectedTab, setSelectedTab] =
@@ -46,7 +52,11 @@ export const PostEdit: React.FC<IResourceComponentsProps> = (props) => {
                 </Form.Item>
                 <Form.Item
                     label={translate("posts.fields.category.title")}
-                    name={["category", "id"]}
+                    <%_ if (answers.dataProvider === 'supabase-data-provider') { _%>
+                        name={["categoryId"]}
+                    <%_ } else { _%>
+                        name={["category", "id"]}
+                    <%_ } _%>
                     rules={[
                         {
                             required: true,

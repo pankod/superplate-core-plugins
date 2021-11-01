@@ -27,7 +27,6 @@ const base = {
                     create: PostCreate,
                     edit: PostEdit,
                     show: PostShow,
-                    canDelete: true,
                 },
             ]}`
         ],

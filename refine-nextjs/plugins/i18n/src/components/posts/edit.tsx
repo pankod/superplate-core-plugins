@@ -45,7 +45,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = (props) => {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label={translate("posts.fields.category")}
+                    label={translate("posts.fields.category.title")}
                     name={["category", "id"]}
                     rules={[
                         {

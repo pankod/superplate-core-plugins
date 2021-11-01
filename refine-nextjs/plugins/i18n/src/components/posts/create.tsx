@@ -43,7 +43,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label={translate("posts.fields.category")}
+                    label={translate("posts.fields.category.title")}
                     name={["category", "id"]}
                     rules={[
                         {

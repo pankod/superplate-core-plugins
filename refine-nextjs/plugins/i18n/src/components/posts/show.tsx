@@ -35,7 +35,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
             <Title level={5}>{translate("posts.fields.title")}</Title>
             <Text>{record?.title}</Text>
 
-            <Title level={5}>{translate("posts.fields.category")}</Title>
+            <Title level={5}>{translate("posts.fields.category.title")}</Title>
             <Text>
                 {categoryIsLoading ? "Loading..." : categoryData?.data.title}
             </Text>

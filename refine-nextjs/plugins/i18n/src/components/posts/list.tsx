@@ -36,7 +36,7 @@ export const PostList: React.FC = () => {
                 />
                 <Table.Column
                     dataIndex={["category", "id"]}
-                    title={translate("posts.fields.category")}
+                    title={translate("posts.fields.category.title")}
                     render={(value) => {
                         if (isLoading) {
                             return <TextField value="Loading..." />;

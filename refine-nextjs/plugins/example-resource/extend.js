@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import { PostList, PostCreate, PostEdit, PostShow } from "src/components/posts";`,
+            `import { PostList, PostCreate, PostEdit, PostShow } from "@components/posts";`,
         ],
         refineProps: [
             `resources={[

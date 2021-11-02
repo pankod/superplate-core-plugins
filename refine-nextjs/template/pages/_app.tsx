@@ -26,4 +26,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       );
 };
 
+
+<%_ if (i18n === 'i18n') { _%>
+export default appWithTranslation(MyApp);
+<%_ } else {_%>
 export default MyApp;
+<%_ } _%>

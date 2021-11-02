@@ -6,31 +6,26 @@ import {
     Icons,
     Dropdown,
     Avatar,
-    Typography,
     useGetLocale,
-    useSetLocale,
-    useGetIdentity,
 } from "@pankod/refine";
-import { useTranslation } from "react-i18next";
+import NextRouter from "@pankod/refine-nextjs-router";
+import { useRouter } from "next/router";
+
+const { Link } = NextRouter;
 
 const { DownOutlined } = Icons;
-const { Text } = Typography;
 
 export const Header: React.FC = () => {
-    const { i18n } = useTranslation();
     const locale = useGetLocale();
-    const changeLanguage = useSetLocale();
-    const { data: user } = useGetIdentity();
+    const { locales } = useRouter();
 
     const currentLocale = locale();
 
-
     const menu = (
         <Menu selectedKeys={[currentLocale]}>
-            {[...(i18n.languages || [])].sort().map((lang: string) => (
+            {[...(locales || [])].sort().map((lang: string) => (
                 <Menu.Item
                     key={lang}
-                    onClick={() => changeLanguage(lang)}
                     icon={
                         <span style={{ marginRight: 8 }}>
                             <Avatar
@@ -40,7 +35,9 @@ export const Header: React.FC = () => {
                         </span>
                     }
                 >
-                    {lang === "en" ? "English" : "German"}
+                    <Link href="/" locale={lang}>
+                        {lang === "en" ? "English" : "German"}
+                    </Link>
                 </Menu.Item>
             ))}
         </Menu>
@@ -53,7 +50,7 @@ export const Header: React.FC = () => {
                 justifyContent: "flex-end",
                 alignItems: "center",
                 padding: "0px 24px",
-                height: "64px",
+                height: "48px",
                 backgroundColor: "#FFF",
             }}
         >
@@ -69,14 +66,6 @@ export const Header: React.FC = () => {
                     </Space>
                 </Button>
             </Dropdown>
-            <Space style={{ marginLeft: "8px" }}>
-                {user?.name && (
-                    <Text ellipsis strong>
-                    {user.name}
-                    </Text>
-                )}
-                {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
-            </Space>
         </AntdLayout.Header>
     );
 };

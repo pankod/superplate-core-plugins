@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-simple-rest": "^0.1.8"
+        "@pankod/refine-simple-rest": "^2.0.7"
     }
 }

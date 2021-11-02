@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-supabase": "^0.1.0"
+        "@pankod/refine-supabase": "^2.0.7"
     }
 }

@@ -15,18 +15,23 @@ import {
     FilterDropdown,
     Select,
     ShowButton,
+    GetListResponse,
     <%_ if (i18n === "i18n") { _%>
     useTranslate,
     <%_ } _%>
 } from "@pankod/refine";
 import { IPost, ICategory } from "src/interfaces";
 
-export const PostList: React.FC<IResourceComponentsProps> = () => {
+export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>> = ({ initialData }) => {
     <%_ if (i18n === "i18n") { _%>
         const t = useTranslate();
     <%_ } _%>
 
-    const { tableProps, sorter } = useTable<IPost>();
+    const { tableProps, sorter } = useTable<IPost>({
+        queryOptions: {
+            initialData,
+        },
+    });
 
     const categoryIds =
         tableProps?.dataSource?.map((item) => item.category.id) ?? [];

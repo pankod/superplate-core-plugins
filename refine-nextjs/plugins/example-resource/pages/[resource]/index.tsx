@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
             return {
                 props: {
-                    pageData: data,
+                    initialData: data,
                     
                  <%_ if(i18n === 'i18n') { _%>
                 ...i18nProps
@@ -70,9 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     <%_ } else if (i18n === 'i18n') { _%>
     return {
         props: {
-            ...(await serverSideTranslations(context.locale ?? "en", [
-                "common",
-            ])),
+            ...i18nProps,
         },
     };
     <%_ } else { _%>

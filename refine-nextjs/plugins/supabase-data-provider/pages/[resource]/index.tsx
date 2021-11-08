@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
         return {
             props: {
-                pageData: data,
+                initialData: data,
                 <%_ if(i18n === 'i18n') { _%>
                 ...i18nProps
     <%_ } _%>

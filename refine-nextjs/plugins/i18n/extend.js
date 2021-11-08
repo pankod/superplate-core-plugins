@@ -3,7 +3,6 @@ const base = {
         import: [
             `import { appWithTranslation, useTranslation } from "next-i18next";`,
             `import { Header } from "@components/layout";`,
-            `import { PostList, PostCreate, PostEdit, PostShow } from "@components/posts";`,
         ],
         innerHooks: [
             `const { t, i18n } = useTranslation();`,
@@ -20,15 +19,6 @@ const base = {
         refineProps: [
             "i18nProvider={i18nProvider}",
             "Header={Header}",
-            `resources={[
-                {
-                    name: "posts",
-                    list: PostList,
-                    create: PostCreate,
-                    edit: PostEdit,
-                    show: PostShow,
-                },
-            ]}`
         ],
     },
 };

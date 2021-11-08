@@ -25,7 +25,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     <%_ } else { _%>
-    return props;
+        if (!isAuthenticated) {
+            return props;
+        }
     <%_ } _%>
 
     const { query } = context;

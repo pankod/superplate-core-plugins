@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             `import { appWithTranslation, useTranslation } from "next-i18next";`,
-            `import { Header } from "@components";`,
+            `import { Header } from "@components/layout";`,
             `import { PostList, PostCreate, PostEdit, PostShow } from "@components/posts";`,
         ],
         innerHooks: [
@@ -36,7 +36,7 @@ const base = {
 module.exports = {
     extend(answers) {
         if (answers["custom-layout"] !== "no") {
-            base._app.import = base._app.import.filter(item => item !== `import { Header } from "@components";`)
+            base._app.import = base._app.import.filter(item => item !== `import { Header } from "@components/layout";`)
         }
         return base;
     },

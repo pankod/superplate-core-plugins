@@ -9,7 +9,7 @@ const base = {
             "OffLayoutArea={OffLayoutArea}"
         ],
         import: [
-            `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "@components"`
+            `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "@components/layout"`
         ],
     },
 };

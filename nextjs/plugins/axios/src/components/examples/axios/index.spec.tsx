@@ -6,10 +6,6 @@ import { mockResponse } from "./mocks";
 import { render, waitFor } from "@test";
 <%_ } _%>
 
-<%_ if (testing === 'enzyme') { _%>
-import  from "@test/mount";
-<%_ } _%>
-
 <%_ if (testing === 'testing-library') { _%>
 describe("Axios testing with testing-library and nock", () => {
   it("renders the mock result", async () => {

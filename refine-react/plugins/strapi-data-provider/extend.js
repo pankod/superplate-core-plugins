@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             `import { DataProvider } from "@pankod/refine-strapi";`,
-            `import strapiAuthProvider from "authProvider";`,
+            `import strapiAuthProvider from "./authProvider";`,
         ],
         inner: [
             `const API_URL = "your-strapi-api-url";`,

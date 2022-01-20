@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: ['import { authProvider } from "authProvider";'],
+        import: ['import { authProvider } from "./authProvider";'],
         inner: [],
         refineProps: ["authProvider={authProvider}"],
     },
@@ -9,7 +9,8 @@ const base = {
 module.exports = {
     extend(answers) {
         if (answers["uiFramework"] === "antd") {
-            base._app.refineAntdProps = ["LoginPage"];
+            base._app.refineAntdImports = ["LoginPage"];
+            base._app.refineProps.push("LoginPage={LoginPage}");
         }
         return base;
     },

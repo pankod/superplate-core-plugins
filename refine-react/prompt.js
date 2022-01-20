@@ -6,8 +6,8 @@ module.exports = {
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "No (headless)", name: "no" },
                 { message: "Yes, I want Ant Design", name: "antd" },
+                { message: "No (headless)", name: "no" },
             ],
             default: "antd",
         },
@@ -20,7 +20,7 @@ module.exports = {
                 { message: "No (Ant Design default theme)", name: "css" },
                 { message: "Yes, I want (less)", name: "less" },
             ],
-            default: "css",
+            default: "none",
             skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
@@ -117,6 +117,19 @@ module.exports = {
                 { message: "Yes, I want", name: "i18n" },
             ],
             default: "no",
+            skip: ({ answers }) => answers.uiFramework === "antd",
+        },
+        {
+            name: "i18n",
+            message: "i18n - Internationalization:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes, I want", name: "i18n-antd" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers.uiFramework === "no",
         },
     ],
     ignores: [],

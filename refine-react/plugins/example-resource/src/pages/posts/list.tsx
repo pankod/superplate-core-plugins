@@ -1,24 +1,26 @@
 import {
+    <%_ if (i18n === "i18n") { _%>
+        useTranslate,
+    <%_ } _%>
+    IResourceComponentsProps,
+    useMany
+} from "@pankod/refine-core";
+import {
     List,
     Table,
     TextField,
     useTable,
-    IResourceComponentsProps,
     getDefaultSortOrder,
     DateField,
     Space,
     EditButton,
     DeleteButton,
-    useMany,
     useSelect,
     TagField,
     FilterDropdown,
     Select,
-    ShowButton,
-    <%_ if (i18n === "i18n") { _%>
-    useTranslate,
-    <%_ } _%>
-} from "@pankod/refine";
+    ShowButton
+} from "@pankod/refine-antd";
 import { IPost, ICategory } from "interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {

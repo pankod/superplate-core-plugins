@@ -1,17 +1,17 @@
 import {
+    <%_ if (i18n === "i18n") { _%>
+        useTranslate,
+    <%_ } _%>
+    IResourceComponentsProps,
+    useOne,
+    useShow
+} from "@pankod/refine-core";
+import {
     Show,
-    useShow,
     Typography,
     Tag,
-    useOne,
-    IResourceComponentsProps,
     MarkdownField,
-    <%_ if (i18n === "i18n") {
-    _%>
-    useTranslate,
-    <%_
-} _%>
-} from "@pankod/refine";
+} from "@pankod/refine-antd";
 
 import { IPost, ICategory } from "interfaces";
 

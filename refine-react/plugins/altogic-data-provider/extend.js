@@ -1,6 +1,7 @@
 const base = {
     _app: {
         refineImports: [`HttpError`],
+        refineAntdImports: [`LoginPage`],
         import: [
             `import dataProvider from "@pankod/refine-altogic";`,
             `import axios from "axios";`,

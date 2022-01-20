@@ -7,7 +7,10 @@ const base = {
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["uiFramework"] === "antd") {
+            base._app.refineAntdProps = ["LoginPage"];
+        }
         return base;
     },
 };

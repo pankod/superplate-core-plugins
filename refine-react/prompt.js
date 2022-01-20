@@ -1,6 +1,17 @@
 module.exports = {
     prompts: [
         {
+            name: "uiFramework",
+            message: "Do you want to using UI Framework?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No (headless)", name: "no" },
+                { message: "Yes, I want Ant Design", name: "antd" },
+            ],
+            default: "antd",
+        },
+        {
             name: "theme-customization",
             message: "Do you want to customize theme?:",
             type: "select",
@@ -10,6 +21,7 @@ module.exports = {
                 { message: "Yes, I want (less)", name: "less" },
             ],
             default: "css",
+            skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
             name: "dataProvider",
@@ -74,6 +86,7 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
+                answers.uiFramework === "no" ||
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "airtable-data-provider" ||
                 answers.dataProvider === "supabase-data-provider" ||
@@ -92,6 +105,7 @@ module.exports = {
                 { message: "Yes, I want", name: "custom-layout" },
             ],
             default: "no",
+            skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
             name: "i18n",

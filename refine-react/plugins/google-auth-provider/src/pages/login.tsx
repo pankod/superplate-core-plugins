@@ -1,12 +1,14 @@
 import { 
-    AntdLayout, 
-    Button, 
-    Icons, 
     useLogin,
     <%_ if (i18n === "i18n") { _%>
     useTranslate,
     <%_ } _%>
-} from "@pankod/refine";
+} from "@pankod/refine-core";
+import { 
+    AntdLayout, 
+    Button, 
+    Icons, 
+} from "@pankod/refine-antd";
 import { useGoogleLogin, GoogleLoginResponse } from "react-google-login";
 
 const { GoogleOutlined } = Icons;

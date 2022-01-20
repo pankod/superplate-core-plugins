@@ -1,6 +1,7 @@
 const base = {
     _app: {
         refineImports: [`AuthProvider`],
+        refineAntdImports: [`LoginPage`],
         import: [
             `import dataProvider from "@pankod/refine-strapi-graphql";`,
             `import { GraphQLClient } from "graphql-request";`,

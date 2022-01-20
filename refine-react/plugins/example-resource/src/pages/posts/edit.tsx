@@ -1,16 +1,18 @@
 import { useState } from "react";
 import {
+    <%_ if (i18n === "i18n") { _%>
+        useTranslate,
+    <%_ } _%>
+    IResourceComponentsProps
+} from "@pankod/refine-core"
+import {
     Edit,
     Form,
     Input,
     Select,
-    IResourceComponentsProps,
     useForm,
-    useSelect,
-    <%_ if (i18n === "i18n") { _%>
-    useTranslate,
-    <%_ } _%>
-} from "@pankod/refine";
+    useSelect
+} from "@pankod/refine-antd";
 import ReactMarkdown from "react-markdown";
 import ReactMde from "react-mde";
 

@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: ['import "@pankod/refine/dist/styles.min.css";'],
+        import: ['import "@pankod/refine-antd/dist/styles.min.css";'],
         inner: [],
     },
 };

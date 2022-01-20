@@ -18,8 +18,8 @@ const base = {
             const authProvider: AuthProvider = {
                 login: ({ tokenId, profileObj, tokenObj }: GoogleLoginResponse) => {
                     axios.defaults.headers.common = {`,
-                        "Authorization: `Bearer ${tokenId}`,",
-                    `};
+            "Authorization: `Bearer ${tokenId}`,",
+            `};
         
                     localStorage.setItem(
                         "user",

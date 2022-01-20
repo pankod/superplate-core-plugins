@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-nestjsx-crud": "^2.0.7"
+        "@pankod/refine-nestjsx-crud": "^3.0.1"
     }
 }

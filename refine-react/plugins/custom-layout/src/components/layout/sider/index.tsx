@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 
 import {
+    <%_ if (i18n === "i18n") { _%>
+        useTranslate,
+    <%_ } _%>
+    useLogout,
+    useTitle,
+    useNavigation
+} from "@pankod/refine-core"
+import {
     AntdLayout,
     Menu,
     Grid,
     Icons,
-    <%_ if (i18n === "i18n") { _%>
-    useTranslate,
-    <%_ } _%>
-    useMenu,
-    useLogout,
-    useTitle,
-    useNavigation,
-} from "@pankod/refine";
+    useMenu
+} from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
 const {
@@ -44,7 +46,7 @@ export const Sider: React.FC = () => {
             breakpoint="lg"
             style={isMobile ? antLayoutSiderMobile : antLayoutSider}
         >
-            <Title collapsed={collapsed} />
+            {Title && <Title collapsed={collapsed} />}
             <Menu
                 selectedKeys={[selectedKey]}
                 mode="inline"

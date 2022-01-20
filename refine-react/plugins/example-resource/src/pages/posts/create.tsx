@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
         useTranslate,
     <%_ } _%>
     IResourceComponentsProps
@@ -26,7 +26,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
         "write",
     );
 
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     const t = useTranslate();
     <%_ } _%>
 
@@ -40,7 +40,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
         <Create saveButtonProps={saveButtonProps}>
             <Form {...formProps} layout="vertical">
                 <Form.Item
-                    <%_ if (i18n !== "i18n") { _%>
+                    <%_ if (i18n === "no") { _%>
                     label="Title"
                     <%_ } else { _%>
                     label={t("posts.fields.title")}
@@ -55,7 +55,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    <%_ if (i18n !== "i18n") { _%>
+                    <%_ if (i18n === "no") { _%>
                     label="Status"
                     <%_ } else { _%>
                     label={t("posts.fields.status.title")}
@@ -68,7 +68,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                     <Select 
-                     <%_ if (i18n !== "i18n") { _%>
+                     <%_ if (i18n === "no") { _%>
                      options={[
                         {
                           label: "published",
@@ -104,7 +104,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
 
 
                 <Form.Item
-                <%_ if (i18n !== "i18n") { _%>
+                <%_ if (i18n === "no") { _%>
                     label="Category"
                 <%_ } else { _%>
                     label={t("posts.fields.category.title")}
@@ -118,7 +118,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                 <Select {...categorySelectProps} />
                 </Form.Item>
                 <Form.Item
-                    <%_ if (i18n !== "i18n") { _%>
+                    <%_ if (i18n === "no") { _%>
                     label="Content"
                     <%_ } else { _%>
                     label={t("posts.fields.content")}

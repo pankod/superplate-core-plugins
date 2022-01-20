@@ -1,4 +1,4 @@
-import { AuthProvider } from "@pankod/refine";
+import { AuthProvider } from "@pankod/refine-core";
 import nookies from "nookies";
 
 import { supabaseClient } from "./utility";

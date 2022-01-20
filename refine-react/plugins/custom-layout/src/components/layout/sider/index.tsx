@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 import {
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
         useTranslate,
     <%_ } _%>
     useLogout,
     useTitle,
     useNavigation
-} from "@pankod/refine-core"
+} from "@pankod/refine-core";
 import {
     AntdLayout,
     Menu,
@@ -28,7 +28,7 @@ export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
     const Title = useTitle();
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     const translate = useTranslate();
     <%_ } _%>
     const { menuItems, selectedKey } = useMenu();

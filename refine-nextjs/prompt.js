@@ -1,6 +1,17 @@
 module.exports = {
     prompts: [
         {
+            name: "uiFramework",
+            message: "Do you want to using UI Framework?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "Yes, I want Ant Design", name: "antd" },
+                { message: "No (headless)", name: "no" },
+            ],
+            default: "antd",
+        },
+        {
             name: "theme-customization",
             message: "Do you want to customize theme?:",
             type: "select",
@@ -10,6 +21,7 @@ module.exports = {
                 { message: "Yes, I want (less)", name: "less" },
             ],
             default: "css",
+            skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
             name: "dataProvider",
@@ -72,6 +84,7 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
+                answers.uiFramework === "no" ||
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "airtable-data-provider" ||
                 answers.dataProvider === "supabase-data-provider" ||
@@ -90,6 +103,7 @@ module.exports = {
                 { message: "Yes, I want", name: "custom-layout" },
             ],
             default: "no",
+            skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
             name: "i18n",
@@ -101,6 +115,19 @@ module.exports = {
                 { message: "Yes, I want", name: "i18n" },
             ],
             default: "no",
+            skip: ({ answers }) => answers.uiFramework === "antd",
+        },
+        {
+            name: "i18n",
+            message: "i18n - Internationalization:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes, I want", name: "i18n-antd" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers.uiFramework === "no",
         },
     ],
     ignores: [],

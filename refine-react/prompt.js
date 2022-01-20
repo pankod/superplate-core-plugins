@@ -20,7 +20,7 @@ module.exports = {
                 { message: "No (Ant Design default theme)", name: "css" },
                 { message: "Yes, I want (less)", name: "less" },
             ],
-            default: "none",
+            default: "css",
             skip: ({ answers }) => answers.uiFramework === "no",
         },
         {

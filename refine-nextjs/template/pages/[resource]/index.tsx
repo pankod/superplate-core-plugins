@@ -6,7 +6,7 @@ export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
     import { authProvider } from "src/authProvider";
 <%_ } _%>
 
-<%_ if (i18n === 'i18n') { _%>
+<%_ if (i18n !== 'no') { _%>
     import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             context,
         );
 
-        <%_ if (i18n === 'i18n') { _%>
+        <%_ if (i18n !== 'no') { _%>
         const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
 
                 if (!isAuthenticated) {
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     
     <%_ } _%>
 
-    <%_ if (i18n === 'i18n') { _%>
+    <%_ if (i18n !== 'no') { _%>
     return {
         props: {
             ...(await serverSideTranslations(context.locale ?? "en", [

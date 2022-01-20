@@ -2,7 +2,7 @@ const withPlugins = require("next-compose-plugins");
 <%_ if (answers["theme-customization"] === "less") { _%>
     const withAntdLess = require('next-plugin-antd-less');
 <%_ } 
-if (i18n === "i18n") { _%>
+if (i18n !== "no") { _%>
     const { i18n } = require("./next-i18next.config");
 <%_ } _%>
 
@@ -12,7 +12,7 @@ if (i18n === "i18n") { _%>
     });
 <%_ } _%>
 
-<%_ if (answers["theme-customization"] === "less" && i18n === "i18n") { _%>
+<%_ if (answers["theme-customization"] === "less" && i18n !== "no") { _%>
     module.exports = withPlugins([[pluginAntdLess]], {
         i18n,
         webpack(config) {
@@ -20,7 +20,7 @@ if (i18n === "i18n") { _%>
         },
         webpack5: true,
       });
-<%_ } else if (i18n === "i18n") { _%>
+<%_ } else if (i18n !== "no") { _%>
     module.exports = withPlugins([], { i18n });
 <%_ } else if (answers["theme-customization"] === "less") { _%>
     module.exports = withPlugins([[pluginAntdLess]], {

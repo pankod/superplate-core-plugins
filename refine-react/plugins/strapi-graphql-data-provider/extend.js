@@ -1,7 +1,7 @@
 const base = {
     _app: {
         refineImports: [`AuthProvider`],
-        refineAntdImports: [`LoginPage`],
+        refineAntdImports: [],
         import: [
             `import dataProvider from "@pankod/refine-strapi-graphql";`,
             `import { GraphQLClient } from "graphql-request";`,
@@ -108,7 +108,11 @@ const base = {
     },
 };
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["uiFramework"] === "antd") {
+            base._app.refineAntdImports.push("LoginPage");
+            base._app.refineProps.push("LoginPage={LoginPage}");
+        }
         return base;
     },
 };

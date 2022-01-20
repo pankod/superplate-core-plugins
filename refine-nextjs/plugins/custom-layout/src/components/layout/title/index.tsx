@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@pankod/refine-nextjs-router";
 
-import { TitleProps } from "@pankod/refine";
+import { TitleProps } from "@pankod/refine-core";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => (
     <Link href="/">

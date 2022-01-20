@@ -1,5 +1,5 @@
 import {
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
         useTranslate,
     <%_ } _%>
     IResourceComponentsProps,
@@ -24,7 +24,7 @@ import {
 import { IPost, ICategory } from "interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
 
@@ -68,7 +68,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 <Table.Column
                     dataIndex="title"
                     key="title"
-                    <%_ if (i18n !==  "i18n") {_%>
+                    <%_ if (i18n === "no") {_%>
                     title="Title"
                 <%_ } else {_%>
                     title={t("posts.fields.title")}
@@ -80,7 +80,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 <Table.Column
                     dataIndex="status"
                     key="status"
-                    <%_ if (i18n !==  "i18n") {_%>
+                    <%_ if (i18n === "no") {_%>
                     title="Status"
                 <%_ } else {_%>
                     title={t("posts.fields.status.title")}
@@ -92,7 +92,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 <Table.Column
                     dataIndex="createdAt"
                     key="createdAt"
-                    <%_ if (i18n !==  "i18n") {_%>
+                    <%_ if (i18n === "no") {_%>
                     title="Created At"
                 <%_ } else {_%>
                     title={t("posts.fields.createdAt")}
@@ -105,7 +105,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 />
                 <Table.Column
                     dataIndex={["category", "id"]}
-                    <%_ if (i18n !==  "i18n") {_%>
+                    <%_ if (i18n === "no") {_%>
                     title="Category"
                 <%_ } else {_%>
                     title={t("posts.fields.category.title")}
@@ -113,7 +113,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 render={(value) => {
                     if (isLoading) {
                         return <TextField
-                            <%_ if (i18n !== "i18n") {
+                            <%_ if (i18n === "no") {
                                 _%>
                                 value="Loading..."
                                     <%_
@@ -140,7 +140,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                         <Select
                             style={{ minWidth: 200 }}
                             mode="multiple"
-                                <%_ if (i18n !==  "i18n") {_%>
+                                <%_ if (i18n === "no") {_%>
                             placeholder="Select Category"
                         <%_ } else {_%>
                             placeholder={t("posts.fields.category.filter.placeholder")}
@@ -152,7 +152,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 )}
                 />
                 <Table.Column<IPost>
-                    <%_ if (i18n !==  "i18n") {_%>
+                    <%_ if (i18n === "no") {_%>
                     title="Actions"
                 <%_ } else {_%>
                     title={t("table.actions")}

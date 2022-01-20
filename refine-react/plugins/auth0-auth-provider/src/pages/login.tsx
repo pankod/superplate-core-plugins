@@ -2,7 +2,7 @@ import {
     AntdLayout, 
     Button, 
     useLogin,
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     useTranslate,
     <%_ } _%>  
 } from "@pankod/refine";
@@ -10,7 +10,7 @@ import {
 export const Login: React.FC = () => {
     const { mutate: login, isLoading } = useLogin();
 
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     const t = useTranslate();
     <%_ } _%>
 
@@ -33,7 +33,7 @@ export const Login: React.FC = () => {
                         loading={isLoading}
                         onClick={() => login({})}
                     >
-                        <%_ if (i18n === "i18n") { _%>
+                        <%_ if (i18n !== "no") { _%>
                         {t("pages.login.signin", "Sign in")}
                         <%_ } else { _%>
                         Sign in

@@ -9,7 +9,7 @@ const base = {
 module.exports = {
     extend(answers) {
         if (answers["uiFramework"] === "antd") {
-            base._app.refineAntdImports = ["LoginPage"];
+            base._app.refineAntdImports.push("LoginPage");
             base._app.refineProps.push("LoginPage={LoginPage}");
         }
         return base;

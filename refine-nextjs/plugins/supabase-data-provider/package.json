@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@pankod/refine-supabase": "^3.0.1",
+        "@pankod/refine-supabase": "^3.0.2",
         "nookies": "^2.5.2"
     }
 }

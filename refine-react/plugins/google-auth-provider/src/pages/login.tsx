@@ -4,14 +4,19 @@ import {
     useTranslate,
     <%_ } _%>
 } from "@pankod/refine-core";
-import { 
-    AntdLayout, 
-    Button, 
-    Icons, 
-} from "@pankod/refine-antd";
+<%_ if (uiFramework === "antd") { _%>
+    import { 
+        AntdLayout, 
+        Button,
+        Icons,
+    } from "@pankod/refine-antd";
+<%_ } _%> 
+
 import { useGoogleLogin, GoogleLoginResponse } from "react-google-login";
 
+<%_ if (uiFramework === "antd") { _%>
 const { GoogleOutlined } = Icons;
+<%_ } _%> 
 
 export const Login: React.FC = () => {
     const { mutate: login, isLoading } = useLogin<GoogleLoginResponse>();
@@ -27,6 +32,7 @@ export const Login: React.FC = () => {
         cookiePolicy: "single_host_origin",
     });
 
+    <%_ if (uiFramework === "antd") { _%>
     return (
         <AntdLayout
             style={{
@@ -55,6 +61,26 @@ export const Login: React.FC = () => {
                     </Button>
                 </div>
             </div>
-        </AntdLayout>
+        </AntdLayout>    
     );
+    <%_ } else {_%>
+        return(
+            <div
+                style={{
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <button onClick={() => signIn()}>
+                    <%_ if (i18n !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                    <%_ } else { _%>
+                        Sign in with Google
+                    <%_ } _%>
+                </button>
+            </div>
+        );
+    <%_ } _%>   
 };

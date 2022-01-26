@@ -1,9 +1,6 @@
 const base = {
     _app: {
-        import: [
-            `import { useTranslation } from "react-i18next";`,
-            `import { Header } from "components/layout";`,
-        ],
+        import: [`import { useTranslation } from "react-i18next";`],
         innerHooks: [`const { t, i18n } = useTranslation();`],
         inner: [
             `
@@ -20,9 +17,9 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        if (answers["custom-layout"] === "custom-layout") {
-            base._app.import = base._app.import.filter(
-                (item) => item !== `import { Header } from "components";`,
+        if (answers["custom-layout"] !== "custom-layout") {
+            base._app.import.push(
+                `import { Header } from "components/layout";`,
             );
         }
         return base;

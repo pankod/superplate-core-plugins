@@ -2,8 +2,8 @@ const base = {
     _app: {
         import: ['import { authProvider } from "src/authProvider";'],
         refineProps: ["authProvider={authProvider}"],
+        refineAntdImports: [],
     },
-    refineAntdImports: [],
 };
 
 module.exports = {
@@ -14,3 +14,4 @@ module.exports = {
         }
         return base;
     },
+};

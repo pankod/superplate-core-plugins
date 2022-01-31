@@ -1,7 +1,7 @@
 {
     "dependencies": {
         "@craco/craco": "^6.1.2",
-        "craco-less": "^1.17.1"
+        "craco-less": "^2.0.0"
     },
     "scripts": {
         "dev": "craco start",

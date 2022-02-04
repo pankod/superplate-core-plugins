@@ -6,10 +6,10 @@ module.exports = {
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "Yes, I want Ant Design", name: "antd" },
                 { message: "No (headless)", name: "no" },
+                { message: "Yes, I want Ant Design", name: "antd" },
             ],
-            default: "antd",
+            default: "no",
         },
         {
             name: "theme-customization",

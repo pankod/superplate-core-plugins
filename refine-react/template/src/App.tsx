@@ -2,9 +2,7 @@ import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/
 <%_ if (answers.uiFramework === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
 <%_ } _%>
-
 import routerProvider from "@pankod/refine-react-router";
-
 <%- (_app.import || []).join("\n") _%>
 
 <%
@@ -18,9 +16,7 @@ function App() {
     <%- (_app.inner || []).join("\n") %>
     return (
         <%- top.join("\n") %>
-        <Refine routerProvider={routerProvider} <%- (_app.refineProps || []).join("\n") %>>
-            <%- (_app.children || []).join("\n") _%>
-        </Refine>
+        <Refine routerProvider={routerProvider} <%- (_app.refineProps || []).join("\n") %> />
         <%- bottom.join("\n") %>
       );
 };

@@ -1,14 +1,9 @@
 const base = {
     _app: {
         import: [
-            `import simpleRestDataProvider from "@pankod/refine-simple-rest";`,
+            `import dataProvider from "@pankod/refine-simple-rest";`,
         ],
-        inner: [
-            `
-            const API_URL = "https://api.fake-rest.refine.dev";`,
-            `const dataProvider = simpleRestDataProvider(API_URL);`,
-        ],
-        refineProps: ["dataProvider={dataProvider}"],
+        refineProps: [`dataProvider={dataProvider("https://api.fake-rest.refine.dev")}`],
     },
 };
 

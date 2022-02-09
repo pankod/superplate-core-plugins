@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 
 import {
+    <%_ if (i18n !== "no") { _%>
+        useTranslate,
+    <%_ } _%>
+    useLogout,
+    useTitle,
+    useNavigation
+} from "@pankod/refine-core";
+
+import {
     AntdLayout,
     Menu,
     Grid,
     Icons,
-    <%_ if (i18n !== "no") { _%>
-    useTranslate,
-    <%_ } _%>
     useMenu,
-    useLogout,
-    useTitle,
-    useNavigation,
-} from "@pankod/refine";
+} from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
 const {

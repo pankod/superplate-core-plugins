@@ -1,20 +1,27 @@
 import { 
-    AntdLayout, 
-    Button, 
-    Icons, 
     useLogin,
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     useTranslate,
     <%_ } _%>
-} from "@pankod/refine";
+} from "@pankod/refine-core";
+<%_ if (uiFramework === "antd") { _%>
+    import { 
+        AntdLayout, 
+        Button,
+        Icons,
+    } from "@pankod/refine-antd";
+<%_ } _%> 
+
 import { useGoogleLogin, GoogleLoginResponse } from "react-google-login";
 
+<%_ if (uiFramework === "antd") { _%>
 const { GoogleOutlined } = Icons;
+<%_ } _%> 
 
 export const Login: React.FC = () => {
     const { mutate: login, isLoading } = useLogin<GoogleLoginResponse>();
 
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     const t = useTranslate();
     <%_ } _%>
 
@@ -25,6 +32,7 @@ export const Login: React.FC = () => {
         cookiePolicy: "single_host_origin",
     });
 
+    <%_ if (uiFramework === "antd") { _%>
     return (
         <AntdLayout
             style={{
@@ -45,7 +53,7 @@ export const Login: React.FC = () => {
                         loading={isLoading}
                         onClick={() => signIn()}
                     >
-                        <%_ if (i18n === "i18n") { _%>
+                        <%_ if (i18n !== "no") { _%>
                         {t("pages.login.signin", "Sign in")}
                         <%_ } else { _%>
                         Sign in
@@ -53,6 +61,26 @@ export const Login: React.FC = () => {
                     </Button>
                 </div>
             </div>
-        </AntdLayout>
+        </AntdLayout>    
     );
+    <%_ } else {_%>
+        return(
+            <div
+                style={{
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <button onClick={() => signIn()}>
+                    <%_ if (i18n !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                    <%_ } else { _%>
+                        Sign in with Google
+                    <%_ } _%>
+                </button>
+            </div>
+        );
+    <%_ } _%>   
 };

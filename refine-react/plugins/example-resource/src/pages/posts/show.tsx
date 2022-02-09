@@ -1,17 +1,17 @@
 import {
+    <%_ if (i18n !== "no") { _%>
+        useTranslate,
+    <%_ } _%>
+    IResourceComponentsProps,
+    useOne,
+    useShow
+} from "@pankod/refine-core";
+import {
     Show,
-    useShow,
     Typography,
     Tag,
-    useOne,
-    IResourceComponentsProps,
     MarkdownField,
-    <%_ if (i18n === "i18n") {
-    _%>
-    useTranslate,
-    <%_
-} _%>
-} from "@pankod/refine";
+} from "@pankod/refine-antd";
 
 import { IPost, ICategory } from "interfaces";
 
@@ -19,7 +19,7 @@ const { Title, Text } = Typography;
 
 export const PostShow: React.FC<IResourceComponentsProps> = () => {
 
-    <%_ if (i18n === "i18n") {
+    <%_ if (i18n !== "no") {
         _%>
         const t = useTranslate();
     <%_
@@ -42,7 +42,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
     return (
         <Show isLoading={isLoading}>
             <Title level={5}>
-                <%_ if (i18n !== "i18n") {_%>
+                <%_ if (i18n === "no") {_%>
                     Title
                     <%_} else {_%>
                         { t("posts.fields.title") }
@@ -51,7 +51,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
             <Text>{record?.title}</Text>
 
             <Title level={5}>
-                <%_ if (i18n !== "i18n") {_%>
+                <%_ if (i18n === "no") {_%>
                     Status
                     <%_} else {_%>
                         { t("posts.fields.status.title") }
@@ -63,7 +63,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
 
             <Title level={5}>
 
-                <%_ if (i18n !== "i18n") {_%>
+                <%_ if (i18n === "no") {_%>
                     Category
                     <%_} else {_%>
                         { t("posts.fields.category.title") }
@@ -73,7 +73,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
 
             <Title level={5}>
 
-                <%_ if (i18n !== "i18n") {_%>
+                <%_ if (i18n === "no") {_%>
                     Content
                     <%_} else {_%>
                         { t("posts.fields.content") }

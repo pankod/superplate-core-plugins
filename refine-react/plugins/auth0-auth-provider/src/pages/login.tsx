@@ -1,19 +1,25 @@
+<%_ if (i18n !== "no") { _%>
+import { 
+    useTranslate,
+} from "@pankod/refine-core";
+<%_ } _%>  
+<%_ if (uiFramework === "antd") { _%>
 import { 
     AntdLayout, 
-    Button, 
-    useLogin,
-    <%_ if (i18n === "i18n") { _%>
-    useTranslate,
-    <%_ } _%>  
-} from "@pankod/refine";
+    Button
+} from "@pankod/refine-antd";
+<%_ } _%> 
+
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Login: React.FC = () => {
-    const { mutate: login, isLoading } = useLogin();
+    const { loginWithRedirect } = useAuth0();
 
-    <%_ if (i18n === "i18n") { _%>
+    <%_ if (i18n !== "no") { _%>
     const t = useTranslate();
     <%_ } _%>
 
+    <%_ if (uiFramework === "antd") { _%>
     return (
         <AntdLayout
             style={{
@@ -30,10 +36,9 @@ export const Login: React.FC = () => {
                         type="primary"
                         size="large"
                         block
-                        loading={isLoading}
-                        onClick={() => login({})}
+                        onClick={() => loginWithRedirect()}
                     >
-                        <%_ if (i18n === "i18n") { _%>
+                        <%_ if (i18n !== "no") { _%>
                         {t("pages.login.signin", "Sign in")}
                         <%_ } else { _%>
                         Sign in
@@ -43,4 +48,24 @@ export const Login: React.FC = () => {
             </div>
         </AntdLayout>
     );
+    <%_ } else {_%>  
+        return(
+            <div
+                style={{
+                    height: "100vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <button onClick={() => loginWithRedirect()}>
+                    <%_ if (i18n !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                    <%_ } else { _%>
+                        Sign in with Auth0
+                    <%_ } _%>
+                </button>
+            </div>
+        );
+    <%_ } _%> 
 };

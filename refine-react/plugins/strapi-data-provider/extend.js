@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             `import { DataProvider } from "@pankod/refine-strapi";`,
-            `import strapiAuthProvider from "authProvider";`,
+            `import strapiAuthProvider from "./authProvider";`,
         ],
         inner: [
             `const API_URL = "your-strapi-api-url";`,
@@ -14,10 +14,15 @@ const base = {
             "dataProvider={dataProvider}",
             "authProvider={authProvider}",
         ],
+        refineAntdImports: [],
     },
 };
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["uiFramework"] === "antd") {
+            base._app.refineAntdImports.push("LoginPage");
+            base._app.refineProps.push("LoginPage={LoginPage}");
+        }
         return base;
     },
 };

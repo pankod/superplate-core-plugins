@@ -1,6 +1,6 @@
 import React from "react";
-
-import { AntdLayout, Typography, Avatar, Space, useGetIdentity } from "@pankod/refine";
+import { useGetIdentity } from "@pankod/refine-core";
+import { AntdLayout, Typography, Avatar, Space } from "@pankod/refine-antd";
 
 const { Text } = Typography;
 

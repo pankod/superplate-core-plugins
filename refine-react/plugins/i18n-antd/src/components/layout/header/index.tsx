@@ -1,4 +1,9 @@
 import {
+    useGetLocale,
+    useSetLocale,
+    useGetIdentity,
+} from "@pankod/refine-core";
+import {
     AntdLayout,
     Space,
     Menu,
@@ -7,10 +12,7 @@ import {
     Dropdown,
     Avatar,
     Typography,
-    useGetLocale,
-    useSetLocale,
-    useGetIdentity,
-} from "@pankod/refine";
+} from "@pankod/refine-antd";
 import { useTranslation } from "react-i18next";
 
 const { DownOutlined } = Icons;
@@ -23,7 +25,6 @@ export const Header: React.FC = () => {
     const { data: user } = useGetIdentity();
 
     const currentLocale = locale();
-
 
     const menu = (
         <Menu selectedKeys={[currentLocale]}>
@@ -72,7 +73,7 @@ export const Header: React.FC = () => {
             <Space style={{ marginLeft: "8px" }}>
                 {user?.name && (
                     <Text ellipsis strong>
-                    {user.name}
+                        {user.name}
                     </Text>
                 )}
                 {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}

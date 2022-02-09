@@ -1,7 +1,10 @@
 import React from "react";
 import { AppProps } from "next/app";
 
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine';
+import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+<%_ if (answers.uiFramework === 'antd') { _%>
+    import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
+<%_ } _%>
 import routerProvider from "@pankod/refine-nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
@@ -27,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 };
 
 
-<%_ if (i18n === 'i18n') { _%>
+<%_ if (i18n !== 'no') { _%>
 export default appWithTranslation(MyApp);
 <%_ } else {_%>
 export default MyApp;

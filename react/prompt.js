@@ -198,7 +198,9 @@ module.exports = {
         },
         {
             when: function (answers) {
-                return !(answers.features && answers.features.includes("storybook"));
+                return !(
+                    answers.features && answers.features.includes("storybook")
+                );
             },
             pattern: ["**/*.stories.tsx"],
         },

@@ -2,7 +2,7 @@ module.exports = {
     prompts: [
         {
             name: "uiFramework",
-            message: "Do you want to using UI Framework?:",
+            message: "Do you want to use an UI Framework?:",
             type: "select",
             pageSize: 2,
             choices: [

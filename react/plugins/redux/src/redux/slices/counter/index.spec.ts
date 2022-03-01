@@ -5,7 +5,7 @@ describe("Redux Counter Reducer", () => {
         const initial = {
             count: 0,
         };
-        const reducer = Counter(initial, {});
+        const reducer = Counter(initial, { type: {} });
         expect(reducer).toEqual(initial);
     });
     it("increase action should increase counter by 1", () => {

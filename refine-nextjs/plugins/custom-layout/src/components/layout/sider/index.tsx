@@ -47,7 +47,7 @@ export const Sider: React.FC = () => {
             breakpoint="lg"
             style={isMobile ? antLayoutSiderMobile : antLayoutSider}
         >
-            <Title collapsed={collapsed} />
+            {Title && <Title collapsed={collapsed} />}
             <Menu
                 selectedKeys={[selectedKey]}
                 mode="inline"

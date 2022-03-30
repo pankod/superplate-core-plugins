@@ -6,6 +6,8 @@ import {
     <%_ } _%>
     useLogout,
     useTitle,
+    CanAccess,
+    ITreeMenu,
     useNavigation
 } from "@pankod/refine-core";
 import {
@@ -18,7 +20,7 @@ import {
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
 const {
-    RightOutlined,
+    UnorderedListOutlined,
     <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
     LogoutOutlined
     <%_ } _%>
@@ -28,6 +30,8 @@ export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
     const Title = useTitle();
+    const { SubMenu } = Menu;
+
     <%_ if (i18n !== "no") { _%>
     const translate = useTranslate();
     <%_ } _%>
@@ -36,6 +40,49 @@ export const Sider: React.FC = () => {
     const breakpoint = Grid.useBreakpoint();
 
     const isMobile = !breakpoint.lg;
+
+    const renderTreeView = (tree: ITreeMenu[], selectedKey: string) => {
+        return tree.map((item: ITreeMenu) => {
+            const { icon, label, route, name, children, parentName } = item;
+
+            if (children.length > 0) {
+                return (
+                    <SubMenu
+                        key={name}
+                        icon={icon ?? <UnorderedListOutlined />}
+                        title={label}
+                    >
+                        {renderTreeView(children, selectedKey)}
+                    </SubMenu>
+                );
+            }
+            const isSelected = route === selectedKey;
+            const isRoute = !(parentName && children.length === 0);
+            return (
+                <CanAccess
+                    key={route}
+                    resource={name.toLowerCase()}
+                    action="list"
+                >
+                    <Menu.Item
+                        key={selectedKey}
+                        onClick={() => {
+                            push(route);
+                        }}
+                        style={{
+                            fontWeight: isSelected ? "bold" : "normal",
+                        }}
+                        icon={icon ?? (isRoute && <UnorderedListOutlined />)}
+                    >
+                        {label}
+                        {!collapsed && isSelected && (
+                            <div className="ant-menu-tree-arrow" />
+                        )}
+                    </Menu.Item>
+                </CanAccess>
+            );
+        });
+    };
 
     return (
         <AntdLayout.Sider
@@ -63,29 +110,7 @@ export const Sider: React.FC = () => {
                     push(key as string);
                 }}
             >
-                {menuItems.map(({ icon, label, route }) => {
-                    const isSelected = route === selectedKey;
-                    return (
-                        <Menu.Item
-                            style={{
-                                fontWeight: isSelected ? "bold" : "normal",
-                            }}
-                            key={route}
-                            icon={icon}
-                        >
-                            <div
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                }}
-                            >
-                                {label}
-                                {!collapsed && isSelected && <RightOutlined />}
-                            </div>
-                        </Menu.Item>
-                    );
-                })}
+                    {renderTreeView(menuItems, selectedKey)}   
 
                     <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
                     <Menu.Item key="logout" icon={<LogoutOutlined />}>

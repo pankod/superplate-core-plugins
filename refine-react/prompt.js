@@ -37,14 +37,14 @@ module.exports = {
                     message: "GraphQL API",
                     name: "graphql-data-provider",
                 },
-                { message: "Strapi", name: "strapi-data-provider" },
-                {
-                    message: "Strapi GraphQL",
-                    name: "strapi-graphql-data-provider",
-                },
                 {
                     message: "Strapi v4",
                     name: "strapi-v4-data-provider",
+                },
+                { message: "Strapi v3", name: "strapi-data-provider" },
+                {
+                    message: "Strapi GraphQL",
+                    name: "strapi-graphql-data-provider",
                 },
                 { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
                 {

@@ -37,14 +37,14 @@ module.exports = {
                     message: "GraphQL API",
                     name: "graphql-data-provider",
                 },
-                { message: "Strapi", name: "strapi-data-provider" },
-                {
-                    message: "Strapi GraphQL",
-                    name: "strapi-graphql-data-provider",
-                },
                 {
                     message: "Strapi v4",
                     name: "strapi-v4-data-provider",
+                },
+                { message: "Strapi v3", name: "strapi-data-provider" },
+                {
+                    message: "Strapi GraphQL",
+                    name: "strapi-graphql-data-provider",
                 },
                 { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
                 {
@@ -73,7 +73,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" || 
+                answers.dataProvider === "supabase-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider",
             default: "none",
         },
@@ -95,7 +95,7 @@ module.exports = {
                 answers.dataProvider === "supabase-data-provider" ||
                 answers.dataProvider === "graphql-data-provider" ||
                 answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "altogic-data-provider" || 
+                answers.dataProvider === "altogic-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider",
             default: "no",
         },

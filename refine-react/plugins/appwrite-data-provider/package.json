@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@pankod/refine-appwrite": "^3.11.0"
+    }
+}

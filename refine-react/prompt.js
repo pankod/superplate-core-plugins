@@ -24,6 +24,16 @@ module.exports = {
             skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
+            name: "router-provider",
+            message: "Router Provider:",
+            type: "select",
+            choices: [
+                { message: "React Router v6", name: "react-router-v6" },
+                { message: "React Location", name: "react-location" },
+            ],
+            default: "react-router-v6",
+        },
+        {
             name: "dataProvider",
             message: "Data Provider:",
             type: "select",

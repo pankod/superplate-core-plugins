@@ -73,6 +73,10 @@ module.exports = {
                     message: "Appwrite",
                     name: "appwrite-data-provider",
                 },
+                {
+                    message: "Hasura",
+                    name: "hasura-data-provider",
+                },
             ],
             default: "custom-json-rest-data-provider",
         },
@@ -114,7 +118,8 @@ module.exports = {
                 answers.dataProvider === "strapi-graphql-data-provider" ||
                 answers.dataProvider === "altogic-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider",
+                answers.dataProvider === "appwrite-data-provider" ||
+                answers.dataProvider === "hasura-data-provider",
             default: "no",
         },
         {

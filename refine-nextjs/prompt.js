@@ -62,7 +62,7 @@ module.exports = {
                 {
                     message: "Appwrite",
                     name: "appwrite-data-provider",
-                }
+                },
             ],
             default: "custom-json-rest-data-provider",
         },
@@ -77,7 +77,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" || 
+                answers.dataProvider === "supabase-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider" ||
                 answers.dataProvider === "appwrite-data-provider",
             default: "none",
@@ -100,7 +100,7 @@ module.exports = {
                 answers.dataProvider === "supabase-data-provider" ||
                 answers.dataProvider === "graphql-data-provider" ||
                 answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "altogic-data-provider" || 
+                answers.dataProvider === "altogic-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider" ||
                 answers.dataProvider === "appwrite-data-provider",
             default: "no",

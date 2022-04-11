@@ -15,13 +15,7 @@ function App() {
     <%- (_app.inner || []).join("\n") %>
     return (
         <%- top.join("\n") %>
-        <%_ if (answers["dataProvider"] === "nhost-data-provider") { _%>
-            <NhostAuthProvider  nhost={nhost}>
-            <%_ } _%>
-            <Refine <%- (_app.refineProps || []).join("\n") %> />
-            <%_ if (answers["dataProvider"] === "nhost-data-provider") { _%>
-            </NhostAuthProvider>
-            <%_ } _%>
+        <Refine <%- (_app.refineProps || []).join("\n") %> />
         <%- bottom.join("\n") %>
       );
 };

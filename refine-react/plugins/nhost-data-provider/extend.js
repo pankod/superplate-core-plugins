@@ -12,10 +12,16 @@ const base = {
             "dataProvider={dataProvider(nhost)}" , 
             "authProvider={authProvider}" 
         ],
+        refineAntdImports: [],
+        wrapper: [["<NhostAuthProvider nhost={nhost}>", "</NhostAuthProvider>"]],
     },
 };
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["uiFramework"] === "antd") {
+            base._app.refineAntdImports.push("LoginPage");
+            base._app.refineProps.push("LoginPage={LoginPage}");
+        }
         return base;
     },
 };

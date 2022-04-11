@@ -77,6 +77,10 @@ module.exports = {
                     message: "Hasura",
                     name: "hasura-data-provider",
                 },
+                {
+                    message: "nHost",
+                    name: "nhost-data-provider",
+                },
             ],
             default: "custom-json-rest-data-provider",
         },
@@ -95,7 +99,8 @@ module.exports = {
                 answers.dataProvider === "strapi-graphql-data-provider" ||
                 answers.dataProvider === "supabase-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider",
+                answers.dataProvider === "appwrite-data-provider" ||
+                answers.dataProvider === "nhost-data-provider",
             default: "none",
         },
         {
@@ -119,7 +124,8 @@ module.exports = {
                 answers.dataProvider === "altogic-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider" ||
                 answers.dataProvider === "appwrite-data-provider" ||
-                answers.dataProvider === "hasura-data-provider",
+                answers.dataProvider === "hasura-data-provider" ||
+                answers.dataProvider === "nhost-data-provider",
             default: "no",
         },
         {

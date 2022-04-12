@@ -153,11 +153,11 @@ module.exports = {
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "partytown-builder" }
+                { message: "Yes, I want", name: "partytown-builder" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "antd"
-        }
+            skip: ({ answers }) => answers.uiFramework === "antd",
+        },
     ],
     ignores: [],
 };

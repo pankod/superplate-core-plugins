@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "partytown": "partytown copylib public/~partytown"
+      },
+    "dependencies": {
+        "@builder.io/partytown": "^0.5.2"
+    }
+}

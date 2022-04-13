@@ -146,6 +146,18 @@ module.exports = {
             default: "no",
             skip: ({ answers }) => answers.uiFramework === "no",
         },
+        {
+            name: "partytown-builder",
+            message: "Do you want to Partytown? (https://partytown.builder.io)",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes, I want", name: "partytown-builder" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers.uiFramework === "antd",
+        },
     ],
     ignores: [],
 };

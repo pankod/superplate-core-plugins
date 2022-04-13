@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "build": "npm run partytown && next build",
+        "partytown": "partytown copylib public/~partytown"
+      },
+    "dependencies": {
+        "@builder.io/partytown": "^0.5.2"
+    }
+}

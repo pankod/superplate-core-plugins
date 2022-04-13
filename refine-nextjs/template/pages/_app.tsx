@@ -7,6 +7,11 @@ import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/
 <%_ } _%>
 import routerProvider from "@pankod/refine-nextjs-router";
 
+<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
+    import Head from "next/head";
+    import { Partytown } from '@builder.io/partytown/react';
+<%_ } _%>
+
 <%- (_app.import || []).join("\n") _%>
 
 <%
@@ -23,6 +28,13 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             routerProvider={routerProvider}
             <%- (_app.refineProps || []).join("\n") %>
         >
+
+            <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
+                <Head>
+                    <Partytown debug={true} forward={['dataLayer.push']} />
+                </Head>
+            <%_ } _%>
+
             <Component {...pageProps} />
         </Refine>
         <%- bottom.join("\n") %>

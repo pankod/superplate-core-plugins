@@ -148,7 +148,8 @@ module.exports = {
         },
         {
             name: "partytown-builder",
-            message: "Do you want to Partytown Builder?",
+            message: 
+            "Do you want to Partytown? (https://partytown.builder.io)",
             type: "select",
             pageSize: 2,
             choices: [

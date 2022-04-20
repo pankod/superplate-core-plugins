@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@pankod/refine-strapi": "^3.1.0",
+        "@pankod/refine-strapi": "^3.14.2",
         "axios": "^0.21.1"
     }
 }

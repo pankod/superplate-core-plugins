@@ -35,7 +35,7 @@ export const Sider: React.FC = () => {
     <%_ if (i18n !== "no") { _%>
     const translate = useTranslate();
     <%_ } _%>
-    const { menuItems, selectedKey } = useMenu();
+    const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
     const { push } = useNavigation();
     const breakpoint = Grid.useBreakpoint();
 
@@ -98,6 +98,7 @@ export const Sider: React.FC = () => {
             {Title && <Title collapsed={collapsed} />}
             <Menu
                 selectedKeys={[selectedKey]}
+                defaultOpenKeys={defaultOpenKeys}
                 mode="inline"
                 onClick={({ key }) => {
                     if (key === "logout") {

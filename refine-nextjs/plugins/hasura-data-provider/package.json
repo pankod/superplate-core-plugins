@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@pankod/refine-hasura": "^3.14.2",
+        "@pankod/refine-hasura": "^3.18.0",
         "graphql": "^15.6.1",
         "graphql-request": "^3.5.0"
     }

@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-react-location": "^3.14.2"
+        "@pankod/refine-react-location": "^3.18.0"
     }
 }

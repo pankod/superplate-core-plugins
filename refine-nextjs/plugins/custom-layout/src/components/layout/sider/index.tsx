@@ -8,7 +8,7 @@ import {
     useTitle,
     CanAccess,
     ITreeMenu,
-    useNavigation
+    useRouterContext
 } from "@pankod/refine-core";
 
 import {
@@ -30,6 +30,7 @@ const {
 export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const { mutate: logout } = useLogout();
+    const { Link } = useRouterContext();
     const Title = useTitle();
     const { SubMenu } = Menu;
 
@@ -37,7 +38,6 @@ export const Sider: React.FC = () => {
     const translate = useTranslate();
     <%_ } _%>
     const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
-    const { push } = useNavigation();
     const breakpoint = Grid.useBreakpoint();
 
     const isMobile = !breakpoint.lg;
@@ -69,15 +69,12 @@ export const Sider: React.FC = () => {
                 >
                     <Menu.Item
                         key={selectedKey}
-                        onClick={() => {
-                            push(route ?? "");
-                        }}
                         style={{
                             fontWeight: isSelected ? "bold" : "normal",
                         }}
                         icon={icon ?? (isRoute && <UnorderedListOutlined />)}
                     >
-                        {label}
+                        <Link to={route}>{label}</Link>
                         {!collapsed && isSelected && (
                             <div className="ant-menu-tree-arrow" />
                         )}
@@ -102,22 +99,15 @@ export const Sider: React.FC = () => {
                 defaultOpenKeys={defaultOpenKeys}
                 mode="inline"
                 onClick={({ key }) => {
-                    if (key === "logout") {
-                        logout();
-                        return;
-                    }
-
                     if (!breakpoint.lg) {
                         setCollapsed(true);
                     }
-
-                    push(key as string);
                 }}
             >
                 {renderTreeView(menuItems, selectedKey)}
 
                     <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
-                    <Menu.Item key="logout" icon={<LogoutOutlined />}>
+                    <Menu.Item key="logout" onClick={() => logout()} icon={<LogoutOutlined />}>
                         <%_ if (i18n !== "no") { _%>
                         {translate("buttons.logout", "Logout")}
                         <%_ } else { _%>

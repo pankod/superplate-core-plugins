@@ -4,7 +4,9 @@ import {
     <%_ if (i18n !== "no") { _%>
         useTranslate,
     <%_ } _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
     useLogout,
+    <%_ } _%>
     useTitle,
     CanAccess,
     ITreeMenu,
@@ -29,7 +31,9 @@ const {
 
 export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
+    <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
     const { mutate: logout } = useLogout();
+    <%_ } _%>
     const { Link } = useRouterContext();
     const Title = useTitle();
     const { SubMenu } = Menu;
@@ -74,7 +78,7 @@ export const Sider: React.FC = () => {
                         }}
                         icon={icon ?? (isRoute && <UnorderedListOutlined />)}
                     >
-                        <Link to={route}>{label}</Link>
+                        <Link href={route} to={route}>{label}</Link>
                         {!collapsed && isSelected && (
                             <div className="ant-menu-tree-arrow" />
                         )}

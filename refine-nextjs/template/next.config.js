@@ -21,7 +21,10 @@ if (i18n !== "no") { _%>
         webpack5: true,
       });
 <%_ } else if (i18n !== "no") { _%>
-    module.exports = withPlugins([], { i18n });
+    module.exports = withPlugins([], { 
+        i18n, experimental: {
+            newNextLinkBehavior: true,
+        }, });
 <%_ } else if (answers["theme-customization"] === "less") { _%>
     module.exports = withPlugins([[pluginAntdLess]], {
         webpack(config) {
@@ -30,5 +33,9 @@ if (i18n !== "no") { _%>
         webpack5: true,
         });
 <%_ } else { _%>
-    module.exports = withPlugins([], {});
+    module.exports = withPlugins([], {
+        experimental: {
+            newNextLinkBehavior: true,
+        },
+    });
 <%_ } _%>

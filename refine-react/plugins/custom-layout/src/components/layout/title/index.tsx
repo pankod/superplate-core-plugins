@@ -1,6 +1,11 @@
 import React from "react";
-import routerProvider from "@pankod/refine-react-router-v6";
 import { TitleProps } from "@pankod/refine-core";
+<%_ if (routerProvider === "react-router-v6") { _%>
+import routerProvider from "@pankod/refine-react-router-v6";
+<%_ } _%>
+<%_ if (routerProvider === "react-location") { _%>
+import routerProvider from "@pankod/refine-react-location";
+<%_ } _%>
 
 const { Link } = routerProvider;
 

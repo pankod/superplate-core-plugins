@@ -24,7 +24,7 @@ module.exports = {
             skip: ({ answers }) => answers.uiFramework === "no",
         },
         {
-            name: "router-provider",
+            name: "routerProvider",
             message: "Router Provider:",
             type: "select",
             choices: [

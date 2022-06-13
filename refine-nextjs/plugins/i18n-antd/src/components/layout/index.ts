@@ -1,4 +1,4 @@
-<%_ if (answers["custom-layout"] === "no") { _%>
+<%_ if (answers["antd-custom-layout"] === "no") { _%>
     export * from "./header";
 <%_ } else { _%>
     export * from "./footer";

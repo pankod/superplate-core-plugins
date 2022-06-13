@@ -8,11 +8,12 @@ module.exports = {
             choices: [
                 { message: "No (headless)", name: "no" },
                 { message: "Yes, I want Ant Design", name: "antd" },
+                { message: "Yes, I want Material UI", name: "mui" },
             ],
             default: "no",
         },
         {
-            name: "theme-customization",
+            name: "antd-theme-customization",
             message: "Do you want to customize theme?:",
             type: "select",
             pageSize: 2,
@@ -21,7 +22,7 @@ module.exports = {
                 { message: "Yes, I want (less)", name: "less" },
             ],
             default: "css",
-            skip: ({ answers }) => answers.uiFramework === "no",
+            skip: ({ answers }) => !answers.uiFramework === "antd",
         },
         {
             name: "routerProvider",
@@ -129,13 +130,13 @@ module.exports = {
             default: "no",
         },
         {
-            name: "custom-layout",
+            name: "antd-custom-layout",
             message: "Do you want to customize layout?",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "custom-layout" },
+                { message: "Yes, I want", name: "antd-custom-layout" },
             ],
             default: "no",
             skip: ({ answers }) => answers.uiFramework === "no",
@@ -174,7 +175,7 @@ module.exports = {
                 { message: "Yes, I want", name: "partytown-builder" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "antd",
+            skip: ({ answers }) => answers.uiFramework !== "no",
         },
     ],
     ignores: [],

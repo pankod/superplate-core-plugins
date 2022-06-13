@@ -17,7 +17,7 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        if (answers["custom-layout"] !== "custom-layout") {
+        if (answers["antd-custom-layout"] !== "antd-custom-layout") {
             base._app.import.push(
                 `import { Header } from "components/layout";`,
             );

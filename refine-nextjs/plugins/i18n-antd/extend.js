@@ -20,7 +20,7 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        if (answers["custom-layout"] !== "no") {
+        if (answers["antd-custom-layout"] !== "no") {
             base._app.import = base._app.import.filter(
                 (item) =>
                     item !== `import { Header } from "@components/layout";`,

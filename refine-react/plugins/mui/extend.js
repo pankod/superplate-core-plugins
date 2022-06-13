@@ -8,7 +8,7 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        if (answers["antd-custom-layout"] === "no") {
+        if (answers["mui-custom-layout"] === "no") {
             base._app.refineAntdImports.push("Layout");
             base._app.refineProps.push("Layout={Layout}");
         }
@@ -17,7 +17,6 @@ module.exports = {
         base._app.refineAntdImports.push("ErrorComponent");
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
-
         return base;
     },
 };

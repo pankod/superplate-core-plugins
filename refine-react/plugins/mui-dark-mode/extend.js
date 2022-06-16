@@ -1,8 +1,8 @@
 const base = {
     _app: {
         localImport: [
-            'import { ColorModeContextProvider } from "./contexts";',
-            'import { Header } from "./components/header";'
+            'import { ColorModeContextProvider } from "contexts";',
+            'import { Header } from "components/layout";'
         ],
         wrapper: [
             ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],

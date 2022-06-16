@@ -25,13 +25,13 @@ module.exports = {
             skip: ({ answers }) => answers.uiFramework !== "antd",
         },
         {
-            name: "mui-theme-extend",
+            name: "mui-extend-theme",
             message: "Do you want to extend theme?:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes", name: "mui-extended-theme" },
+                { message: "Yes", name: "mui-extend-theme" },
             ],
             default: "css",
             skip: ({ answers }) => answers.uiFramework !== "mui",

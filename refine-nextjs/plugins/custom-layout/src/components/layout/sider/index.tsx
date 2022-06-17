@@ -10,6 +10,7 @@ import {
     useTitle,
     CanAccess,
     ITreeMenu,
+    useMenu,
     useRouterContext
 } from "@pankod/refine-core";
 
@@ -18,7 +19,6 @@ import {
     Menu,
     Grid,
     Icons,
-    useMenu,
 } from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 

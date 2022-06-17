@@ -20,6 +20,7 @@ export const PostList: React.FC = () => {
         const t = useTranslate();
     <%_ } _%>
 
+    const getOne = React.useCallback(useOne, []);
     const columns = React.useMemo<GridColumns<IPost>>(
         () => [
             {
@@ -38,7 +39,7 @@ export const PostList: React.FC = () => {
                 <%_ if (i18n === "no") { _%>
                     headerName: "Category",
                 <%_ } else { _%>
-                    headerName: t("posts.fields.category"),
+                    headerName: t("posts.fields.category.title"),
                 <%_ } _%>
                 type: "number",
                 headerAlign: "left",
@@ -46,7 +47,7 @@ export const PostList: React.FC = () => {
                 minWidth: 250,
                 flex: 0.5,
                 valueGetter: ({ row }) => {
-                    const { data } = useOne<ICategory>({
+                    const { data } = getOne<ICategory>({
                         resource: "categories",
                         id: row.category.id,
                     });
@@ -58,7 +59,7 @@ export const PostList: React.FC = () => {
                 <%_ if (i18n === "no") { _%>
                     headerName: "Status",
                 <%_ } else { _%>
-                    headerName: t("posts.fields.status"),
+                    headerName: t("posts.fields.status.title"),
                 <%_ } _%>
                 minWidth: 120, 
                 flex: 0.3
@@ -68,7 +69,7 @@ export const PostList: React.FC = () => {
                 <%_ if (i18n === "no") { _%>
                     headerName: "Actions",
                 <%_ } else { _%>
-                    headerName: t("posts.fields.actions"),
+                    headerName: t("table.actions"),
                 <%_ } _%>
                 renderCell: function render({ row }) {
                     return <EditButton hideText recordItemId={row.id} />;
@@ -78,7 +79,7 @@ export const PostList: React.FC = () => {
                 minWidth: 80,
             },
         ],
-        [],
+        [t, getOne]
     );
 
     const { dataGridProps } = useDataGrid<IPost>({

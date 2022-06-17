@@ -5,14 +5,18 @@ const base = {
             "Sider={Sider}",
             "Layout={Layout}",
         ],
-        localImport: [
-            `import { Title, Sider, Layout } from "components/layout"`,
-        ],
+        localImport: [],
     },
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
+        if(answers["mui-dark-mode"] === "mui-dark-mode" || answers["i18n"] === "i18n-mui") {
+            base._app.localImport.push(`import { Title, Sider, Layout, Header } from "components/layout"`)
+            base._app.refineProps.push("Header={Header}")
+        } else {
+            base._app.localImport.push(`import { Title, Sider, Layout } from "components/layout"`)
+        }
         return base;
     },
 };

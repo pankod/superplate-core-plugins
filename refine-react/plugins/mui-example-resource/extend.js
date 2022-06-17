@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: [
+        localImport: [
             `import { PostList, PostCreate, PostEdit } from "pages/posts";`,
         ],
         refineProps: [

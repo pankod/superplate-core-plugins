@@ -12,11 +12,16 @@ const base = {
             `,
         ],
         refineProps: ["i18nProvider={i18nProvider}"],
+        localImport: [],
     },
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
+        if(answers["mui-custom-layout"] !== "mui-custom-layout") {
+            base._app.localImport.push(`import { Header } from "components/layout"`)
+            base._app.refineProps.push("Header={Header}")
+        }
         return base;
     },
 };

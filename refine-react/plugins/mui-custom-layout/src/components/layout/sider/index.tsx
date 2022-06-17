@@ -20,7 +20,7 @@ import {
     Tooltip,
     Button,
     IconButton,
-} from "@mui/material";
+} from "@pankod/refine-mui";
 import {
     ListOutlined,
     Logout,

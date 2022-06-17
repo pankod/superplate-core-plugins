@@ -71,7 +71,6 @@ export const PostCreate: React.FC = () => {
                             ),
                         }}
                     <%_ } _%>
-                    defaultValue=""
                     render={({ field }) => (
                         <Autocomplete
                             options={["published", "draft", "rejected"]}

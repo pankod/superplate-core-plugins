@@ -10,14 +10,14 @@ import {
     useTitle,
     CanAccess,
     ITreeMenu,
+    useMenu,
     useRouterContext
 } from "@pankod/refine-core";
 import {
     AntdLayout,
     Menu,
     Grid,
-    Icons,
-    useMenu
+    Icons
 } from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
@@ -54,7 +54,7 @@ export const Sider: React.FC = () => {
             if (children.length > 0) {
                 return (
                     <SubMenu
-                        key={name}
+                        key={route}
                         icon={icon ?? <UnorderedListOutlined />}
                         title={label}
                     >
@@ -73,7 +73,7 @@ export const Sider: React.FC = () => {
                     action="list"
                 >
                     <Menu.Item
-                        key={selectedKey}
+                        key={route}
                         style={{
                             fontWeight: isSelected ? "bold" : "normal",
                         }}

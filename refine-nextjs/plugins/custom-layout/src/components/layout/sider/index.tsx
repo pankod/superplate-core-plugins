@@ -18,7 +18,7 @@ import {
     AntdLayout,
     Menu,
     Grid,
-    Icons,
+    Icons
 } from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 

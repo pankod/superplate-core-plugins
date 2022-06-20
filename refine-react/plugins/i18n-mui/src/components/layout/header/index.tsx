@@ -42,63 +42,67 @@ export const Header: React.FC = () => {
 
   return (
     <AppBar color="default" position="sticky" elevation={1}>
-      <Toolbar
-        variant="dense"
-        sx={{ display: "flex", justifyContent: "flex-end" }}
-      >
-        <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
-        <IconButton
-          onClick={() => {
-            setMode();
-          }}
+      <Toolbar>
+        <Stack
+          direction="row"
+          width="100%"
+          justifyContent="flex-end"
+          alignItems="center"
         >
-          {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-        </IconButton>
-        <%_ } _%>
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <Select
-            disableUnderline
-            defaultValue={currentLocale}
-            inputProps={{ "aria-label": "Without label" }}
-            variant="standard"
+          <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
+          <IconButton
+            onClick={() => {
+              setMode();
+            }}
           >
-            {[...(i18n.languages ?? [])].sort().map((lang: string) => (
-              <MenuItem
-                selected={currentLocale === lang}
-                key={lang}
-                defaultValue={lang}
-                onClick={() => {
-                  changeLanguage(lang);
-                }}
-                value={lang}
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="center"
+            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
+          </IconButton>
+          <%_ } _%>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Select
+              disableUnderline
+              defaultValue={currentLocale}
+              inputProps={{ "aria-label": "Without label" }}
+              variant="standard"
+            >
+              {[...(i18n.languages ?? [])].sort().map((lang: string) => (
+                <MenuItem
+                  selected={currentLocale === lang}
+                  key={lang}
+                  defaultValue={lang}
+                  onClick={() => {
+                    changeLanguage(lang);
+                  }}
+                  value={lang}
                 >
-                  <Avatar
-                    sx={{
-                      width: "16px",
-                      height: "16px",
-                      marginRight: "5px",
-                    }}
-                    src={`/images/flags/${lang}.svg`}
-                  />
-                  {lang === "en" ? "English" : "German"}
-                </Stack>
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {showUserInfo && (
-          <Stack direction="row" gap="8px" alignItems="center">
-            {user.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
-            {user.name && (
-              <Typography variant="subtitle2">{user?.name}</Typography>
-            )}
-          </Stack>
-        )}
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Avatar
+                      sx={{
+                        width: "16px",
+                        height: "16px",
+                        marginRight: "5px",
+                      }}
+                      src={`/images/flags/${lang}.svg`}
+                    />
+                    {lang === "en" ? "English" : "German"}
+                  </Stack>
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {showUserInfo && (
+            <Stack direction="row" gap="16px" alignItems="center">
+              {user.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
+              {user.name && (
+                <Typography variant="subtitle2">{user?.name}</Typography>
+              )}
+            </Stack>
+          )}
+        </Stack>
       </Toolbar>
     </AppBar>
   );

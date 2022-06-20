@@ -20,25 +20,29 @@ export const Header: React.FC = () => {
 
   return (
     <AppBar color="default" position="sticky" elevation={1}>
-      <Toolbar
-        variant="dense"
-        sx={{ display: "flex", justifyContent: "flex-end" }}
-      >
-        <IconButton
-          onClick={() => {
-            setMode();
-          }}
+      <Toolbar>
+        <Stack
+            direction="row"
+            width="100%"
+            justifyContent="flex-end"
+            alignItems="center"
         >
-          {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-        </IconButton>
-        {showUserInfo && (
-          <Stack direction="row" gap="8px" alignItems="center">
-            {user.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
-            {user.name && (
-              <Typography variant="subtitle2">{user?.name}</Typography>
-            )}
-          </Stack>
-        )}
+          <IconButton
+            onClick={() => {
+              setMode();
+            }}
+          >
+            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
+          </IconButton>
+          {showUserInfo && (
+            <Stack direction="row" gap="16px" alignItems="center">
+              {user.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
+              {user.name && (
+                <Typography variant="subtitle2">{user?.name}</Typography>
+              )}
+            </Stack>
+          )}
+        </Stack>
       </Toolbar>
     </AppBar>
   );

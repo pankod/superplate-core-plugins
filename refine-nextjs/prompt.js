@@ -25,6 +25,30 @@ module.exports = {
             skip: ({ answers }) => answers.uiFramework !== "antd",
         },
         {
+            name: "mui-extend-theme",
+            message: "Do you want to extend theme?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "mui-extend-theme" },
+            ],
+            default: "css",
+            skip: ({ answers }) => answers.uiFramework !== "mui",
+        },
+        {
+            name: "mui-dark-mode",
+            message: "Do you want to add dark mode?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "mui-dark-mode" },
+            ],
+            default: "css",
+            skip: ({ answers }) => answers.uiFramework !== "mui",
+        },
+        {
             name: "dataProvider",
             message: "Data Provider:",
             type: "select",
@@ -108,7 +132,33 @@ module.exports = {
                 answers.dataProvider === "altogic-data-provider" ||
                 answers.dataProvider === "strapi-v4-data-provider" ||
                 answers.dataProvider === "appwrite-data-provider" ||
-                answers.dataProvider === "hasura-data-provider",
+                answers.dataProvider === "hasura-data-provider" ||
+                answers.uiFramework !== "antd",
+            default: "no",
+        },
+        {
+            name: "mui-example-resource",
+            message: "Do you want to add an example page?",
+            type: "select",
+            choices: [
+                { message: "No", name: "no" },
+                {
+                    message: "Yes, I want (recommended)",
+                    name: "mui-example-resource",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers.uiFramework === "no" ||
+                answers.dataProvider === "strapi-data-provider" ||
+                answers.dataProvider === "airtable-data-provider" ||
+                answers.dataProvider === "supabase-data-provider" ||
+                answers.dataProvider === "graphql-data-provider" ||
+                answers.dataProvider === "strapi-graphql-data-provider" ||
+                answers.dataProvider === "altogic-data-provider" ||
+                answers.dataProvider === "strapi-v4-data-provider" ||
+                answers.dataProvider === "appwrite-data-provider" ||
+                answers.dataProvider === "hasura-data-provider" ||
+                answers.uiFramework !== "mui",
             default: "no",
         },
         {
@@ -121,7 +171,19 @@ module.exports = {
                 { message: "Yes, I want", name: "antd-custom-layout" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "no",
+            skip: ({ answers }) => answers.uiFramework !== "antd",
+        },
+        {
+            name: "mui-custom-layout",
+            message: "Do you want to customize layout?",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes, I want", name: "mui-custom-layout" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers.uiFramework !== "mui",
         },
         {
             name: "i18n",
@@ -133,7 +195,7 @@ module.exports = {
                 { message: "Yes, I want", name: "i18n" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "antd",
+            skip: ({ answers }) => answers.uiFramework !== "no",
         },
         {
             name: "i18n",
@@ -145,7 +207,19 @@ module.exports = {
                 { message: "Yes, I want", name: "i18n-antd" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "no",
+            skip: ({ answers }) => answers.uiFramework !== "antd",
+        },
+        {
+            name: "i18n",
+            message: "i18n - Internationalization:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes, I want", name: "i18n-mui" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers.uiFramework !== "mui",
         },
         {
             name: "partytown-builder",

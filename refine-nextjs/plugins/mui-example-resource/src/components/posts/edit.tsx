@@ -10,7 +10,7 @@ import {
 } from "@pankod/refine-mui";
 import { Controller, useForm } from "@pankod/refine-react-hook-form";
 
-import { ICategory } from "interfaces";
+import { ICategory } from "src/interfaces";
 
 export const PostEdit: React.FC = () => {
     <%_ if (i18n !== "no") { _%>

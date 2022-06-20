@@ -24,7 +24,7 @@ import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 <%_ } _%>
 
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
-import { ColorModeContext } from "contexts";
+import { ColorModeContext } from "@contexts";
 <%_ } _%>
 import i18n from "i18n";
 

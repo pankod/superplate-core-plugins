@@ -10,7 +10,7 @@ import {
 } from "@pankod/refine-mui";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
-import { ColorModeContext } from "contexts";
+import { ColorModeContext } from "@contexts";
 
 export const Header: React.FC = () => {
   const { mode, setMode } = useContext(ColorModeContext);

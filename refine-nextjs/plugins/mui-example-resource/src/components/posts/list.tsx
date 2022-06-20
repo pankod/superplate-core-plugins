@@ -13,7 +13,7 @@ import {
     EditButton,
 } from "@pankod/refine-mui";
 
-import { ICategory, IPost } from "interfaces";
+import { ICategory, IPost } from "src/interfaces";
 
 export const PostList: React.FC = () => {
     <%_ if (i18n !== "no") { _%>

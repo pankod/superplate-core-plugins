@@ -3,8 +3,7 @@ import { useContext } from "react";
 <%_ } _%>
 import {
   useGetIdentity,
-  useGetLocale,
-  useSetLocale,
+  useRouterContext
 } from "@pankod/refine-core";
 import {
   AppBar,
@@ -22,20 +21,18 @@ import {
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 <%_ } _%>
+import { useRouter } from "next/router";
 
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
 import { ColorModeContext } from "@contexts";
 <%_ } _%>
-import i18n from "i18n";
 
 export const Header: React.FC = () => {
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
   const { mode, setMode } = useContext(ColorModeContext);
 <%_ } _%>
-
-  const changeLanguage = useSetLocale();
-  const locale = useGetLocale();
-  const currentLocale = locale();
+  const { Link } = useRouterContext();
+  const { locale: currentLocale, locales, pathname, query } = useRouter();
 
   const { data: user } = useGetIdentity();
   const showUserInfo = user && (user.name || user.avatar);
@@ -62,14 +59,14 @@ export const Header: React.FC = () => {
             inputProps={{ "aria-label": "Without label" }}
             variant="standard"
           >
-            {[...(i18n.languages ?? [])].sort().map((lang: string) => (
+            {[...(locales ?? [])].sort().map((lang: string) => (
               <MenuItem
+                component={Link}
+                href={{ pathname, query }}
+                locale={lang}
                 selected={currentLocale === lang}
                 key={lang}
                 defaultValue={lang}
-                onClick={() => {
-                  changeLanguage(lang);
-                }}
                 value={lang}
               >
                 <Stack

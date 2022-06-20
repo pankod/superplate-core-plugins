@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: [`import { useTranslation } from "react-i18next";`],
+        import: [`import { appWithTranslation, useTranslation } from "next-i18next";`],
         innerHooks: [`const { t, i18n } = useTranslation();`],
         inner: [
             `

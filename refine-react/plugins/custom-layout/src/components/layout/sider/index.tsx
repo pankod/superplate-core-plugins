@@ -10,14 +10,15 @@ import {
     useTitle,
     CanAccess,
     ITreeMenu,
+    useMenu,
+    useRefineContext,
     useRouterContext
 } from "@pankod/refine-core";
 import {
     AntdLayout,
     Menu,
     Grid,
-    Icons,
-    useMenu
+    Icons
 } from "@pankod/refine-antd";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
@@ -36,6 +37,7 @@ export const Sider: React.FC = () => {
     <%_ } _%>
 
     const { Link } = useRouterContext();
+    const { hasDashboard } = useRefineContext();
     const Title = useTitle();
     const { SubMenu } = Menu;
 
@@ -54,7 +56,7 @@ export const Sider: React.FC = () => {
             if (children.length > 0) {
                 return (
                     <SubMenu
-                        key={name}
+                        key={route}
                         icon={icon ?? <UnorderedListOutlined />}
                         title={label}
                     >
@@ -73,7 +75,7 @@ export const Sider: React.FC = () => {
                     action="list"
                 >
                     <Menu.Item
-                        key={selectedKey}
+                        key={route}
                         style={{
                             fontWeight: isSelected ? "bold" : "normal",
                         }}
@@ -109,6 +111,27 @@ export const Sider: React.FC = () => {
                     }
                 }}
             >
+                    {hasDashboard && (
+                        <Menu.Item
+                            key="dashboard"
+                            style={{
+                                fontWeight: selectedKey === "/" ? "bold" : "normal",
+                            }}
+                            icon={<Icons.DashboardOutlined />}
+                        >
+                            <Link href="/" to="/">
+                            <%_ if (i18n !== "no") { _%>
+                                {translate("dashboard.title", "Dashboard")}
+                            <%_ } else { _%>
+                                Dashboard
+                            <%_ } _%>
+                            </Link>
+                            {!collapsed && selectedKey === "/" && (
+                                <div className="ant-menu-tree-arrow" />
+                            )}
+                        </Menu.Item>
+                    )}
+
                     {renderTreeView(menuItems, selectedKey)}   
 
                     <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>

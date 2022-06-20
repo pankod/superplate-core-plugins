@@ -7,13 +7,14 @@ const base = {
             "CssBaseline", 
             "GlobalStyles"
         ],
+        wrapper: [],
     },
 };
 
 module.exports = {
     extend(answers) {
         if (answers["mui-custom-layout"] === "no") {
-            base._app.refineAntdImports.push("Layout");
+            base._app.refineMuiImports.push("Layout");
             base._app.refineProps.push("Layout={Layout}");
         }
 
@@ -26,8 +27,8 @@ module.exports = {
             base._app.wrapper.push(["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"]);
         }
 
-        base._app.refineAntdImports.push("ReadyPage");
-        base._app.refineAntdImports.push("ErrorComponent");
+        base._app.refineMuiImports.push("ReadyPage");
+        base._app.refineMuiImports.push("ErrorComponent");
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
 

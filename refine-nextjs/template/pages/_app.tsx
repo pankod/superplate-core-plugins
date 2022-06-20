@@ -1,18 +1,22 @@
 import React from "react";
 import { AppProps } from "next/app";
-
+<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
+import Head from "next/head";
+<%_ } _%>
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers.uiFramework === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
 <%_ } _%>
-import routerProvider from "@pankod/refine-nextjs-router";
-
-<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-    import Head from "next/head";
-    import { Partytown } from '@builder.io/partytown/react';
+<%_ if (answers.uiFramework === 'mui') { _%>
+    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
 <%_ } _%>
-
+import routerProvider from "@pankod/refine-nextjs-router";
+<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
+    import { Partytown } from '@builder.io/partytown/react';
+    <%_ } _%>
 <%- (_app.import || []).join("\n") _%>
+
+<%- (_app.localImport || []).join("\n") _%>
 
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");

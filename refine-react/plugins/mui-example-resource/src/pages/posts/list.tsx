@@ -79,7 +79,12 @@ export const PostList: React.FC = () => {
                 minWidth: 80,
             },
         ],
-        [t, getOne]
+        [
+            <%_ if (i18n !== "no") { _%>
+            t,
+            <%_ } _%> 
+            getOne
+        ]
     );
 
     const { dataGridProps } = useDataGrid<IPost>({

@@ -84,7 +84,7 @@ export const PostCreate: React.FC = () => {
                                     <%_ if (i18n === "no") { _%>
                                         label="Status"
                                     <%_ } else { _%>
-                                        label={t("posts.fields.status")}
+                                        label={t("posts.fields.status.title")}
                                     <%_ } _%>
                                     margin="normal"
                                     variant="outlined"
@@ -136,7 +136,7 @@ export const PostCreate: React.FC = () => {
                                     <%_ if (i18n === "no") { _%>
                                         label="Category"
                                     <%_ } else { _%>
-                                        label={t("posts.fields.category")}
+                                        label={t("posts.fields.category.title")}
                                     <%_ } _%>
                                     margin="normal"
                                     variant="outlined"

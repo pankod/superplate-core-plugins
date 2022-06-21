@@ -14,7 +14,6 @@ import {
     useRefineContext,
     useRouterContext
 } from "@pankod/refine-core";
-
 import {
     AntdLayout,
     Menu,
@@ -32,9 +31,11 @@ const {
 
 export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
+
     <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
     const { mutate: logout } = useLogout();
     <%_ } _%>
+
     const { Link } = useRouterContext();
     const { hasDashboard } = useRefineContext();
     const Title = useTitle();
@@ -80,7 +81,7 @@ export const Sider: React.FC = () => {
                         }}
                         icon={icon ?? (isRoute && <UnorderedListOutlined />)}
                     >
-                        <Link href={route} to={route}>{label}</Link>
+                        <Link to={route}>{label}</Link>
                         {!collapsed && isSelected && (
                             <div className="ant-menu-tree-arrow" />
                         )}
@@ -104,34 +105,34 @@ export const Sider: React.FC = () => {
                 selectedKeys={[selectedKey]}
                 defaultOpenKeys={defaultOpenKeys}
                 mode="inline"
-                onClick={({ key }) => {
+                onClick={() => {
                     if (!breakpoint.lg) {
                         setCollapsed(true);
                     }
                 }}
             >
-                {hasDashboard && (
-                    <Menu.Item
-                        key="dashboard"
-                        style={{
-                            fontWeight: selectedKey === "/" ? "bold" : "normal",
-                        }}
-                        icon={<Icons.DashboardOutlined />}
-                    >
-                        <Link href="/" to="/">
-                        <%_ if (i18n !== "no") { _%>
-                            {translate("dashboard.title", "Dashboard")}
-                        <%_ } else { _%>
-                            Dashboard
-                        <%_ } _%>
-                        </Link>
-                        {!collapsed && selectedKey === "/" && (
-                            <div className="ant-menu-tree-arrow" />
-                        )}
-                    </Menu.Item>
-                )}
+                    {hasDashboard && (
+                        <Menu.Item
+                            key="dashboard"
+                            style={{
+                                fontWeight: selectedKey === "/" ? "bold" : "normal",
+                            }}
+                            icon={<Icons.DashboardOutlined />}
+                        >
+                            <Link href="/" to="/">
+                            <%_ if (i18n !== "no") { _%>
+                                {translate("dashboard.title", "Dashboard")}
+                            <%_ } else { _%>
+                                Dashboard
+                            <%_ } _%>
+                            </Link>
+                            {!collapsed && selectedKey === "/" && (
+                                <div className="ant-menu-tree-arrow" />
+                            )}
+                        </Menu.Item>
+                    )}
 
-                {renderTreeView(menuItems, selectedKey)}
+                    {renderTreeView(menuItems, selectedKey)}   
 
                     <%_ if (answers["auth-provider"] !== 'none' || answers["dataProvider"] == 'strapi-data-provider' || answers["dataProvider"] == 'strapi-graphql-data-provider' || answers["dataProvider"] == 'supabase-data-provider') { _%>
                     <Menu.Item key="logout" onClick={() => logout()} icon={<LogoutOutlined />}>

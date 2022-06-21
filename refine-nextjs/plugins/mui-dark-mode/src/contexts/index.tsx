@@ -1,49 +1,50 @@
 import React, { createContext, useEffect, useState } from "react";
-import { ThemeProvider } from "@pankod/refine-mui";
+import { ThemeProvider, useMediaQuery } from "@pankod/refine-mui";
 import { DarkTheme, LightTheme } from "@pankod/refine-mui";
+import { parseCookies, setCookie } from "nookies";
 
 type ColorModeContextType = {
-    mode: string;
-    setMode: () => void;
+  mode: string;
+  setMode: () => void;
 };
 
 export const ColorModeContext = createContext<ColorModeContextType>(
-    {} as ColorModeContextType,
+  {} as ColorModeContextType
 );
 
 export const ColorModeContextProvider: React.FC = ({ children }) => {
-    const colorModeFromLocalStorage = localStorage.getItem("colorMode");
-    const isSystemPreferenceDark = window?.matchMedia(
-        "(prefers-color-scheme: dark)",
-    ).matches;
+  const [isMounted, setIsMounted] = useState(false);
+  const [mode, setMode] = useState("light");
 
-    const systemPreference = isSystemPreferenceDark ? "dark" : "light";
-    const [mode, setMode] = useState(
-        colorModeFromLocalStorage || systemPreference,
-    );
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    useEffect(() => {
-        window.localStorage.setItem("colorMode", mode);
-    }, [mode]);
+  const systemTheme = useMediaQuery(`(prefers-color-scheme: dark)`);
 
-    const setColorMode = () => {
-        if (mode === "light") {
-            setMode("dark");
-        } else {
-            setMode("light");
-        }
-    };
+  useEffect(() => {
+    if (isMounted) {
+      setMode(parseCookies()["theme"] || (systemTheme ? "dark" : "light"));
+    }
+  }, [isMounted, systemTheme]);
 
-    return (
-        <ColorModeContext.Provider
-            value={{
-                setMode: setColorMode,
-                mode,
-            }}
-        >
-            <ThemeProvider theme={mode === "light" ? LightTheme : DarkTheme}>
-                {children}
-            </ThemeProvider>
-        </ColorModeContext.Provider>
-    );
+  const toggleTheme = () => {
+    const nextTheme = mode === "light" ? "dark" : "light";
+
+    setMode(nextTheme);
+    setCookie(null, "theme", nextTheme);
+  };
+
+  return (
+    <ColorModeContext.Provider
+      value={{
+        setMode: toggleTheme,
+        mode,
+      }}
+    >
+      <ThemeProvider theme={mode === "light" ? LightTheme : DarkTheme}>
+        {children}
+      </ThemeProvider>
+    </ColorModeContext.Provider>
+  );
 };

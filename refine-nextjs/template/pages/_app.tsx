@@ -1,5 +1,6 @@
 import React from "react";
 import { AppProps } from "next/app";
+import Link from "next/link";
 <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
 import Head from "next/head";
 <%_ } _%>
@@ -29,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     return (
         <%- top.join("\n") %>
         <Refine 
-            routerProvider={routerProvider}
+            routerProvider={{...routerProvider, Link}}
             <%- (_app.refineProps || []).join("\n") %>
         >
 

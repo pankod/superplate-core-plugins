@@ -30,6 +30,7 @@ import {
     ChevronLeft,
     ChevronRight,
     MenuRounded,
+    Dashboard,
 } from "@mui/icons-material";
 
 import { Title as DefaultTitle } from "../title";
@@ -243,7 +244,7 @@ export const Sider: React.FC = () => {
                                 color: "primary.contrastText",
                             }}
                         >
-                            {<ListOutlined />}
+                            <Dashboard />
                         </ListItemIcon>
                         <ListItemText
                             primary={t("dashboard.title", "Dashboard")}

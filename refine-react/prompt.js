@@ -115,8 +115,8 @@ module.exports = {
             type: "select",
             choices: [
                 { message: "None", name: "none" },
-                { message: "Custom", name: "custom-auth-provider" },
-                { message: "Auth0", name: "auth0-auth-provider" },
+                { message: "Custom", name: "auth-provider-custom" },
+                { message: "Auth0", name: "auth-provider-auth0" },
                 { message: "Google", name: "google-auth-provider" },
             ],
             skip: ({ answers }) =>

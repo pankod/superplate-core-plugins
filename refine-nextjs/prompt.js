@@ -101,7 +101,7 @@ module.exports = {
             type: "select",
             choices: [
                 { message: "None", name: "none" },
-                { message: "Custom", name: "custom-auth-provider" },
+                { message: "Custom", name: "auth-provider-custom" },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-strapi" ||

@@ -2,8 +2,8 @@ const base = {
     _app: {
         import: [
             `import { appWithTranslation, useTranslation } from "next-i18next";`,
-            `import { Header } from "@components/layout";`,
         ],
+        localImport: [`import { Header } from "@components/layout";`],
         innerHooks: [`const { t, i18n } = useTranslation();`],
         inner: [
             `
@@ -21,7 +21,7 @@ const base = {
 module.exports = {
     extend(answers) {
         if (answers["antd-custom-layout"] !== "no") {
-            base._app.import = base._app.import.filter(
+            base._app.localImport = base._app.localImport.filter(
                 (item) =>
                     item !== `import { Header } from "@components/layout";`,
             );

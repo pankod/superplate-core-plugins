@@ -1,7 +1,7 @@
 const base = {
     _app: {
-        import: [
-            `import { DataProvider } from "@pankod/refine-strapi";`,
+        import: [`import { DataProvider } from "@pankod/refine-strapi";`],
+        localImport: [
             `import strapiAuthProvider from "src/authProvider";`,
             `import { API_URL } from "src/constants";`,
         ],

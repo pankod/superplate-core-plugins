@@ -1,9 +1,8 @@
 const base = {
     _app: {
-        import: [
-            `import { dataProvider } from "@pankod/refine-appwrite";`,
+        import: [`import { dataProvider } from "@pankod/refine-appwrite";`],
+        localImport: [
             `import { authProvider } from "src/authProvider";`,
-            "",
             `import { appwriteClient } from "src/utility";`,
         ],
         refineProps: [

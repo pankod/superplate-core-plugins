@@ -6,10 +6,10 @@ const base = {
             "Sider={Sider}",
             "Footer={Footer}",
             "Layout={Layout}",
-            "OffLayoutArea={OffLayoutArea}"
+            "OffLayoutArea={OffLayoutArea}",
         ],
-        import: [
-            `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "@components/layout"`
+        localImport: [
+            `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "@components/layout"`,
         ],
     },
 };

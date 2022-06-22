@@ -4,9 +4,8 @@ const base = {
         import: [
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
-            "",
-            `import { Login } from "pages/login";`,
         ],
+        localImport: [`import { Login } from "pages/login";`],
         innerHooks: [
             `const { getIdTokenClaims, isLoading, loginWithRedirect, isAuthenticated, user, logout } = useAuth0();`,
         ],

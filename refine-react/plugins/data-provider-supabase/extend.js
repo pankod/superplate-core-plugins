@@ -1,11 +1,8 @@
 const base = {
     _app: {
-        import: [
-            `import { dataProvider } from "@pankod/refine-supabase";`,
-            "",
-            `import authProvider from "./authProvider";`,
-            `import { supabaseClient } from "utility";`,
-        ],
+        import: [`import { dataProvider } from "@pankod/refine-supabase";`],
+        localImport: [`import { supabaseClient } from "utility";`],
+        relativeImport: [`import authProvider from "./authProvider";`],
         refineProps: [
             "dataProvider={dataProvider(supabaseClient)}",
             "authProvider={authProvider}",

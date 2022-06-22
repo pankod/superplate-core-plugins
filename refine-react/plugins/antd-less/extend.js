@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: ['import "styles/antd.less";'],
+        localImport: ['import "styles/antd.less";'],
         inner: [],
     },
 };

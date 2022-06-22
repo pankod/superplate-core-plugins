@@ -5,7 +5,8 @@ const base = {
         import: [
             `import dataProvider from "@pankod/refine-strapi-graphql";`,
             `import { GraphQLClient } from "graphql-request";`,
-            "",
+        ],
+        afterImport: [
             `const API_URL = "https://api.strapi.refine.dev/graphql";`,
             "",
             `const client = new GraphQLClient(API_URL);`,

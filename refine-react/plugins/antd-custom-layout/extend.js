@@ -8,7 +8,7 @@ const base = {
             "Layout={Layout}",
             "OffLayoutArea={OffLayoutArea}",
         ],
-        import: [
+        localImport: [
             `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "components/layout"`,
         ],
     },

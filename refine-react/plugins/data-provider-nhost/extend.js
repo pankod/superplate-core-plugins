@@ -2,18 +2,18 @@ const base = {
     _app: {
         import: [
             `import dataProvider from "@pankod/refine-nhost";`,
-            `import { authProvider } from "./authProvider";`,
             `import { NhostAuthProvider } from "@nhost/react-auth";`,
-            "",
-            `import { nhost } from "utility";`,
-            
         ],
+        localImport: [`import { nhost } from "utility";`],
+        relativeImport: [`import { authProvider } from "./authProvider";`],
         refineProps: [
-            "dataProvider={dataProvider(nhost)}" , 
-            "authProvider={authProvider}" 
+            "dataProvider={dataProvider(nhost)}",
+            "authProvider={authProvider}",
         ],
         refineAntdImports: [],
-        wrapper: [["<NhostAuthProvider nhost={nhost}>", "</NhostAuthProvider>"]],
+        wrapper: [
+            ["<NhostAuthProvider nhost={nhost}>", "</NhostAuthProvider>"],
+        ],
     },
 };
 module.exports = {

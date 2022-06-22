@@ -3,10 +3,9 @@ const base = {
         refineImports: [`AuthProvider`],
         import: [
             `import axios from "axios";`,
-            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";
-            `,
-            `import { Login } from "pages/login";`,
+            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";`,
         ],
+        localImport: [`import { Login } from "pages/login";`],
         innerHooks: [
             `const { signOut } = useGoogleLogout({
                 clientId: "your-client-id",

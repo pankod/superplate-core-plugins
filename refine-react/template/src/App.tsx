@@ -7,8 +7,11 @@ import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refi
 <%_ } _%>
 <%- (_app.import || []).join("\n") _%>
 
-
 <%- (_app.localImport || []).join("\n") _%>
+
+<%- (_app.relativeImport || []).join("\n") _%>
+
+<%- (_app.afterImport || []).join("\n") _%>
 
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");

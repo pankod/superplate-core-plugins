@@ -7,7 +7,7 @@ import { checkAuthentication } from "@pankod/refine-nextjs-router";
 <%_ if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
 import dataProvider from "@pankod/refine-simple-rest";
     const API_URL = "https://api.fake-rest.refine.dev";
-<%_ } else if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'nestjsx-crud-data-provider') { _%>
+<%_ } else if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
 import dataProvider from "@pankod/refine-nestjsx-crud";
     const API_URL = "https://api.nestjsx-crud.refine.dev"; 
 <%_ } _%>

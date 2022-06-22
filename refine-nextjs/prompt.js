@@ -71,7 +71,7 @@ module.exports = {
                     message: "Strapi GraphQL",
                     name: "data-provider-strapi-graphql",
                 },
-                { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
+                { message: "nestjsx-crud", name: "data-provider-nestjsx-crud" },
                 {
                     message: "Airtable",
                     name: "airtable-data-provider",

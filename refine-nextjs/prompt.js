@@ -112,14 +112,14 @@ module.exports = {
             default: "none",
         },
         {
-            name: "example-resource",
+            name: "antd-example-pages",
             message: "Do you want to add example pages?",
             type: "select",
             choices: [
                 { message: "No", name: "no" },
                 {
                     message: "Yes (Recommended)",
-                    name: "example-resource",
+                    name: "antd-example-pages",
                 },
             ],
             skip: ({ answers }) =>

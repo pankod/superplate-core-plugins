@@ -96,7 +96,7 @@ module.exports = {
                 },
                 {
                     message: "Appwrite",
-                    name: "appwrite-data-provider",
+                    name: "data-provider-appwrite",
                 },
                 {
                     message: "Hasura",
@@ -124,7 +124,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "appwrite-data-provider" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "nhost-data-provider",
             default: "none",
         },
@@ -148,7 +148,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "appwrite-data-provider" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "nhost-data-provider" ||
                 answers["ui-framework"] !== "antd",
@@ -174,7 +174,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "appwrite-data-provider" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "nhost-data-provider" ||
                 answers["ui-framework"] !== "mui",

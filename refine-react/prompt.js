@@ -100,7 +100,7 @@ module.exports = {
                 },
                 {
                     message: "Hasura",
-                    name: "hasura-data-provider",
+                    name: "data-provider-hasura",
                 },
                 {
                     message: "nHost",
@@ -149,7 +149,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
-                answers["data-provider"] === "hasura-data-provider" ||
+                answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "nhost-data-provider" ||
                 answers["ui-framework"] !== "antd",
             default: "no",
@@ -175,7 +175,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
-                answers["data-provider"] === "hasura-data-provider" ||
+                answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "nhost-data-provider" ||
                 answers["ui-framework"] !== "mui",
             default: "no",

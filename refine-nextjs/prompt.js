@@ -90,7 +90,7 @@ module.exports = {
                 },
                 {
                     message: "Hasura",
-                    name: "hasura-data-provider",
+                    name: "data-provider-hasura",
                 },
             ],
             default: "data-provider-custom-json-rest",
@@ -132,7 +132,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
-                answers["data-provider"] === "hasura-data-provider" ||
+                answers["data-provider"] === "data-provider-hasura" ||
                 answers["ui-framework"] !== "antd",
             default: "no",
         },
@@ -157,7 +157,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
-                answers["data-provider"] === "hasura-data-provider" ||
+                answers["data-provider"] === "data-provider-hasura" ||
                 answers["ui-framework"] !== "mui",
             default: "no",
         },

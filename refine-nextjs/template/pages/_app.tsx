@@ -19,6 +19,10 @@ import routerProvider from "@pankod/refine-nextjs-router";
 
 <%- (_app.localImport || []).join("\n") _%>
 
+<%- (_app.relativeImport || []).join("\n") _%>
+
+<%- (_app.afterImport || []).join("\n") _%>
+
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();

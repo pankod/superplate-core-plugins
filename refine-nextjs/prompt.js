@@ -74,7 +74,7 @@ module.exports = {
                 { message: "nestjsx-crud", name: "data-provider-nestjsx-crud" },
                 {
                     message: "Airtable",
-                    name: "airtable-data-provider",
+                    name: "data-provider-airtable",
                 },
                 {
                     message: "Supabase",
@@ -125,7 +125,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "airtable-data-provider" ||
+                answers["data-provider"] === "data-provider-airtable" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
@@ -150,7 +150,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "airtable-data-provider" ||
+                answers["data-provider"] === "data-provider-airtable" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||

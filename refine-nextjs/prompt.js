@@ -18,7 +18,7 @@ module.exports = {
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "Default theme)", name: "antd-css" },
+                { message: "Default theme", name: "antd-css" },
                 { message: "Custom theme (less)", name: "antd-less" },
             ],
             default: "antd-css",
@@ -223,7 +223,8 @@ module.exports = {
         },
         {
             name: "partytown-builder",
-            message: "Do you want to add Partytown? (https://partytown.builder.io)",
+            message:
+                "Do you want to add Partytown? (https://partytown.builder.io)",
             type: "select",
             pageSize: 2,
             choices: [

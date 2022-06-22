@@ -4,7 +4,7 @@ import {
     <%_ if (i18n !== "no") { _%>
         useTranslate,
     <%_ } _%>
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'supabase-data-provider') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
     useLogout,
     <%_ } _%>
     useTitle,
@@ -24,7 +24,7 @@ import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 
 const {
     UnorderedListOutlined,
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'supabase-data-provider') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
     LogoutOutlined
     <%_ } _%>
  } = Icons;
@@ -32,7 +32,7 @@ const {
 export const Sider: React.FC = () => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
 
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'supabase-data-provider') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
     const { mutate: logout } = useLogout();
     <%_ } _%>
 
@@ -134,7 +134,7 @@ export const Sider: React.FC = () => {
 
                     {renderTreeView(menuItems, selectedKey)}   
 
-                    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'supabase-data-provider') { _%>
+                    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
                     <Menu.Item key="logout" onClick={() => logout()} icon={<LogoutOutlined />}>
                         <%_ if (i18n !== "no") { _%>
                         {translate("buttons.logout", "Logout")}

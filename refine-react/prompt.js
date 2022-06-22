@@ -88,7 +88,7 @@ module.exports = {
                 },
                 {
                     message: "Supabase",
-                    name: "supabase-data-provider",
+                    name: "data-provider-supabase",
                 },
                 {
                     message: "Altogic",
@@ -122,7 +122,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-strapi" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "supabase-data-provider" ||
+                answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
                 answers["data-provider"] === "nhost-data-provider",
@@ -143,7 +143,7 @@ module.exports = {
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-strapi" ||
                 answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "supabase-data-provider" ||
+                answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "altogic-data-provider" ||
@@ -169,7 +169,7 @@ module.exports = {
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-strapi" ||
                 answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "supabase-data-provider" ||
+                answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "altogic-data-provider" ||

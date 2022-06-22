@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
-<%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'supabase-data-provider') { _%>
+<%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
     import { checkAuthentication } from "@pankod/refine-nextjs-router";
 
     import { authProvider } from "src/authProvider";
@@ -11,7 +11,7 @@ export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
 <%_ } _%>
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'supabase-data-provider') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
 
         const { isAuthenticated, ...props } = await checkAuthentication(
             authProvider,

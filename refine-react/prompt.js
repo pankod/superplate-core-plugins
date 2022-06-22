@@ -104,7 +104,7 @@ module.exports = {
                 },
                 {
                     message: "nHost",
-                    name: "nhost-data-provider",
+                    name: "data-provider-nhost",
                 },
             ],
             default: "data-provider-custom-json-rest",
@@ -125,7 +125,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "nhost-data-provider",
+                answers["data-provider"] === "data-provider-nhost",
             default: "none",
         },
         {
@@ -150,7 +150,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "nhost-data-provider" ||
+                answers["data-provider"] === "data-provider-nhost" ||
                 answers["ui-framework"] !== "antd",
             default: "no",
         },
@@ -176,7 +176,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "nhost-data-provider" ||
+                answers["data-provider"] === "data-provider-nhost" ||
                 answers["ui-framework"] !== "mui",
             default: "no",
         },

@@ -4,7 +4,7 @@ import {
     useTranslate,
     <%_ } _%>
 } from "@pankod/refine-core";
-<%_ if (uiFramework === "antd") { _%>
+<%_ if (answers["ui-framework"] === "antd") { _%>
     import { 
         AntdLayout, 
         Button,
@@ -14,7 +14,7 @@ import {
 
 import { useGoogleLogin, GoogleLoginResponse } from "react-google-login";
 
-<%_ if (uiFramework === "antd") { _%>
+<%_ if (answers["ui-framework"] === "antd") { _%>
 const { GoogleOutlined } = Icons;
 <%_ } _%> 
 
@@ -32,7 +32,7 @@ export const Login: React.FC = () => {
         cookiePolicy: "single_host_origin",
     });
 
-    <%_ if (uiFramework === "antd") { _%>
+    <%_ if (answers["ui-framework"] === "antd") { _%>
     return (
         <AntdLayout
             style={{

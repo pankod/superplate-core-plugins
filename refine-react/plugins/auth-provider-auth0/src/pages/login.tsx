@@ -3,7 +3,7 @@ import {
     useTranslate,
 } from "@pankod/refine-core";
 <%_ } _%>  
-<%_ if (uiFramework === "antd") { _%>
+<%_ if (answers["ui-framework"] === "antd") { _%>
 import { 
     AntdLayout, 
     Button
@@ -19,7 +19,7 @@ export const Login: React.FC = () => {
     const t = useTranslate();
     <%_ } _%>
 
-    <%_ if (uiFramework === "antd") { _%>
+    <%_ if (answers["ui-framework"] === "antd") { _%>
     return (
         <AntdLayout
             style={{

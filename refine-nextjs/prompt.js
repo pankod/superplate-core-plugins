@@ -1,52 +1,52 @@
 module.exports = {
     prompts: [
         {
-            name: "uiFramework",
-            message: "Do you want to use an UI Framework?:",
+            name: "ui-framework",
+            message: "Do you want to use a UI Framework?:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No (headless)", name: "no" },
-                { message: "Yes, I want Ant Design", name: "antd" },
-                { message: "Yes, I want Material UI", name: "mui" },
+                { message: "Ant Design", name: "antd" },
+                { message: "Material UI", name: "mui" },
             ],
             default: "no",
         },
         {
             name: "antd-theme-customization",
-            message: "Do you want to customize theme?:",
+            message: "Do you want a customized theme?:",
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "No (Ant Design default theme)", name: "css" },
-                { message: "Yes, I want (less)", name: "less" },
+                { message: "Default theme)", name: "antd-css" },
+                { message: "Custom theme (less)", name: "antd-less" },
             ],
             default: "css",
-            skip: ({ answers }) => answers.uiFramework !== "antd",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
             name: "mui-extend-theme",
-            message: "Do you want to extend theme?:",
+            message: "Do you want an extended theme?:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes", name: "mui-extend-theme" },
+                { message: "Yes (Custom Variables)", name: "mui-extend-theme" },
             ],
             default: "css",
-            skip: ({ answers }) => answers.uiFramework !== "mui",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
             name: "mui-dark-mode",
-            message: "Do you want to add dark mode?:",
+            message: "Do you want to add dark mode support?:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
                 { message: "Yes", name: "mui-dark-mode" },
             ],
-            default: "css",
-            skip: ({ answers }) => answers.uiFramework !== "mui",
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
             name: "dataProvider",
@@ -113,17 +113,17 @@ module.exports = {
         },
         {
             name: "example-resource",
-            message: "Do you want to add an example page?",
+            message: "Do you want to add example pages?",
             type: "select",
             choices: [
                 { message: "No", name: "no" },
                 {
-                    message: "Yes, I want (recommended)",
+                    message: "Yes (Recommended)",
                     name: "example-resource",
                 },
             ],
             skip: ({ answers }) =>
-                answers.uiFramework === "no" ||
+                answers["ui-framework"] === "no" ||
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "airtable-data-provider" ||
                 answers.dataProvider === "supabase-data-provider" ||
@@ -133,22 +133,22 @@ module.exports = {
                 answers.dataProvider === "strapi-v4-data-provider" ||
                 answers.dataProvider === "appwrite-data-provider" ||
                 answers.dataProvider === "hasura-data-provider" ||
-                answers.uiFramework !== "antd",
+                answers["ui-framework"] !== "antd",
             default: "no",
         },
         {
             name: "mui-example-resource",
-            message: "Do you want to add an example page?",
+            message: "Do you want to add example pages?",
             type: "select",
             choices: [
                 { message: "No", name: "no" },
                 {
-                    message: "Yes, I want (recommended)",
+                    message: "Yes (Recommended)",
                     name: "mui-example-resource",
                 },
             ],
             skip: ({ answers }) =>
-                answers.uiFramework === "no" ||
+                answers["ui-framework"] === "no" ||
                 answers.dataProvider === "strapi-data-provider" ||
                 answers.dataProvider === "airtable-data-provider" ||
                 answers.dataProvider === "supabase-data-provider" ||
@@ -158,32 +158,32 @@ module.exports = {
                 answers.dataProvider === "strapi-v4-data-provider" ||
                 answers.dataProvider === "appwrite-data-provider" ||
                 answers.dataProvider === "hasura-data-provider" ||
-                answers.uiFramework !== "mui",
+                answers["ui-framework"] !== "mui",
             default: "no",
         },
         {
             name: "antd-custom-layout",
-            message: "Do you want to customize layout?",
+            message: "Do you want a customized layout?",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "antd-custom-layout" },
+                { message: "Yes", name: "antd-custom-layout" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework !== "antd",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
             name: "mui-custom-layout",
-            message: "Do you want to customize layout?",
+            message: "Do you want a customized layout?",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "mui-custom-layout" },
+                { message: "Yes", name: "mui-custom-layout" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework !== "mui",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
             name: "i18n",
@@ -192,10 +192,10 @@ module.exports = {
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "i18n" },
+                { message: "Yes", name: "i18n" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework !== "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
         {
             name: "i18n",
@@ -204,10 +204,10 @@ module.exports = {
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "i18n-antd" },
+                { message: "Yes", name: "i18n-antd" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework !== "antd",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
             name: "i18n",
@@ -216,22 +216,22 @@ module.exports = {
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "i18n-mui" },
+                { message: "Yes", name: "i18n-mui" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework !== "mui",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
             name: "partytown-builder",
-            message: "Do you want to Partytown? (https://partytown.builder.io)",
+            message: "Do you want to add Partytown? (https://partytown.builder.io)",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "partytown-builder" },
+                { message: "Yes", name: "partytown-builder" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework !== "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
     ],
     ignores: [],

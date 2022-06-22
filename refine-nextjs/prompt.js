@@ -60,7 +60,7 @@ module.exports = {
                 },
                 {
                     message: "GraphQL API",
-                    name: "graphql-data-provider",
+                    name: "data-provider-graphql",
                 },
                 {
                     message: "Strapi v4",
@@ -127,7 +127,7 @@ module.exports = {
                 answers["data-provider"] === "strapi-data-provider" ||
                 answers["data-provider"] === "airtable-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
-                answers["data-provider"] === "graphql-data-provider" ||
+                answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "strapi-graphql-data-provider" ||
                 answers["data-provider"] === "altogic-data-provider" ||
                 answers["data-provider"] === "strapi-v4-data-provider" ||
@@ -152,7 +152,7 @@ module.exports = {
                 answers["data-provider"] === "strapi-data-provider" ||
                 answers["data-provider"] === "airtable-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
-                answers["data-provider"] === "graphql-data-provider" ||
+                answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "strapi-graphql-data-provider" ||
                 answers["data-provider"] === "altogic-data-provider" ||
                 answers["data-provider"] === "strapi-v4-data-provider" ||

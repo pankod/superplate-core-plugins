@@ -6,7 +6,7 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        if (answers.uiFramework !== "no") {
+        if (answers["ui-framework"] !== "no") {
             base._app.import = [];
         }
         return base;

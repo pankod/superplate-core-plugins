@@ -49,7 +49,7 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
-            name: "dataProvider",
+            name: "data-provider",
             message: "Data Provider:",
             type: "select",
             pageSize: 2,
@@ -104,11 +104,11 @@ module.exports = {
                 { message: "Custom", name: "custom-auth-provider" },
             ],
             skip: ({ answers }) =>
-                answers.dataProvider === "strapi-data-provider" ||
-                answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" ||
-                answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider",
+                answers["data-provider"] === "strapi-data-provider" ||
+                answers["data-provider"] === "strapi-graphql-data-provider" ||
+                answers["data-provider"] === "supabase-data-provider" ||
+                answers["data-provider"] === "strapi-v4-data-provider" ||
+                answers["data-provider"] === "appwrite-data-provider",
             default: "none",
         },
         {
@@ -124,15 +124,15 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
-                answers.dataProvider === "strapi-data-provider" ||
-                answers.dataProvider === "airtable-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" ||
-                answers.dataProvider === "graphql-data-provider" ||
-                answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "altogic-data-provider" ||
-                answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider" ||
-                answers.dataProvider === "hasura-data-provider" ||
+                answers["data-provider"] === "strapi-data-provider" ||
+                answers["data-provider"] === "airtable-data-provider" ||
+                answers["data-provider"] === "supabase-data-provider" ||
+                answers["data-provider"] === "graphql-data-provider" ||
+                answers["data-provider"] === "strapi-graphql-data-provider" ||
+                answers["data-provider"] === "altogic-data-provider" ||
+                answers["data-provider"] === "strapi-v4-data-provider" ||
+                answers["data-provider"] === "appwrite-data-provider" ||
+                answers["data-provider"] === "hasura-data-provider" ||
                 answers["ui-framework"] !== "antd",
             default: "no",
         },
@@ -149,15 +149,15 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
-                answers.dataProvider === "strapi-data-provider" ||
-                answers.dataProvider === "airtable-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" ||
-                answers.dataProvider === "graphql-data-provider" ||
-                answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "altogic-data-provider" ||
-                answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider" ||
-                answers.dataProvider === "hasura-data-provider" ||
+                answers["data-provider"] === "strapi-data-provider" ||
+                answers["data-provider"] === "airtable-data-provider" ||
+                answers["data-provider"] === "supabase-data-provider" ||
+                answers["data-provider"] === "graphql-data-provider" ||
+                answers["data-provider"] === "strapi-graphql-data-provider" ||
+                answers["data-provider"] === "altogic-data-provider" ||
+                answers["data-provider"] === "strapi-v4-data-provider" ||
+                answers["data-provider"] === "appwrite-data-provider" ||
+                answers["data-provider"] === "hasura-data-provider" ||
                 answers["ui-framework"] !== "mui",
             default: "no",
         },

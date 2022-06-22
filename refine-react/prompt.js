@@ -117,7 +117,7 @@ module.exports = {
                 { message: "None", name: "none" },
                 { message: "Custom", name: "auth-provider-custom" },
                 { message: "Auth0", name: "auth-provider-auth0" },
-                { message: "Google", name: "google-auth-provider" },
+                { message: "Google", name: "auth-provider-google" },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-strapi" ||

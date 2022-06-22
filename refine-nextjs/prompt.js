@@ -21,7 +21,7 @@ module.exports = {
                 { message: "Default theme)", name: "antd-css" },
                 { message: "Custom theme (less)", name: "antd-less" },
             ],
-            default: "css",
+            default: "antd-css",
             skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
@@ -33,7 +33,7 @@ module.exports = {
                 { message: "No", name: "no" },
                 { message: "Yes (Custom Variables)", name: "mui-extend-theme" },
             ],
-            default: "css",
+            default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {

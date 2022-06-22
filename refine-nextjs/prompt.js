@@ -64,7 +64,7 @@ module.exports = {
                 },
                 {
                     message: "Strapi v4",
-                    name: "strapi-v4-data-provider",
+                    name: "data-provider-strapi-v4",
                 },
                 { message: "Strapi v3", name: "strapi-data-provider" },
                 {
@@ -107,7 +107,7 @@ module.exports = {
                 answers["data-provider"] === "strapi-data-provider" ||
                 answers["data-provider"] === "strapi-graphql-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
-                answers["data-provider"] === "strapi-v4-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider",
             default: "none",
         },
@@ -130,7 +130,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "strapi-graphql-data-provider" ||
                 answers["data-provider"] === "altogic-data-provider" ||
-                answers["data-provider"] === "strapi-v4-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
                 answers["data-provider"] === "hasura-data-provider" ||
                 answers["ui-framework"] !== "antd",
@@ -155,7 +155,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "strapi-graphql-data-provider" ||
                 answers["data-provider"] === "altogic-data-provider" ||
-                answers["data-provider"] === "strapi-v4-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
                 answers["data-provider"] === "hasura-data-provider" ||
                 answers["ui-framework"] !== "mui",

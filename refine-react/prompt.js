@@ -49,7 +49,7 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
-            name: "routerProvider",
+            name: "router-provider",
             message: "Router Provider:",
             type: "select",
             choices: [

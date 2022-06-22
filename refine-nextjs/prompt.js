@@ -82,7 +82,7 @@ module.exports = {
                 },
                 {
                     message: "Altogic",
-                    name: "altogic-data-provider",
+                    name: "data-provider-altogic",
                 },
                 {
                     message: "Appwrite",
@@ -129,7 +129,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "altogic-data-provider" ||
+                answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
                 answers["data-provider"] === "hasura-data-provider" ||
@@ -154,7 +154,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "altogic-data-provider" ||
+                answers["data-provider"] === "data-provider-altogic" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
                 answers["data-provider"] === "hasura-data-provider" ||

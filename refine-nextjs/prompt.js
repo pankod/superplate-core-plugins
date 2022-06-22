@@ -66,7 +66,7 @@ module.exports = {
                     message: "Strapi v4",
                     name: "data-provider-strapi-v4",
                 },
-                { message: "Strapi v3", name: "strapi-data-provider" },
+                { message: "Strapi v3", name: "data-provider-strapi" },
                 {
                     message: "Strapi GraphQL",
                     name: "strapi-graphql-data-provider",
@@ -104,7 +104,7 @@ module.exports = {
                 { message: "Custom", name: "custom-auth-provider" },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "strapi-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi" ||
                 answers["data-provider"] === "strapi-graphql-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
@@ -124,7 +124,7 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "strapi-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi" ||
                 answers["data-provider"] === "airtable-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-graphql" ||
@@ -149,7 +149,7 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "strapi-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi" ||
                 answers["data-provider"] === "airtable-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-graphql" ||

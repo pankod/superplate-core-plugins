@@ -155,14 +155,14 @@ module.exports = {
             default: "no",
         },
         {
-            name: "mui-example-resource",
+            name: "mui-example-pages",
             message: "Do you want to add example pages?",
             type: "select",
             choices: [
                 { message: "No", name: "no" },
                 {
                     message: "Yes (Recommended)",
-                    name: "mui-example-resource",
+                    name: "mui-example-pages",
                 },
             ],
             skip: ({ answers }) =>

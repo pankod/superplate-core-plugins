@@ -56,7 +56,7 @@ module.exports = {
             choices: [
                 {
                     message: "REST API",
-                    name: "custom-json-rest-data-provider",
+                    name: "data-provider-custom-json-rest",
                 },
                 {
                     message: "GraphQL API",
@@ -93,7 +93,7 @@ module.exports = {
                     name: "hasura-data-provider",
                 },
             ],
-            default: "custom-json-rest-data-provider",
+            default: "data-provider-custom-json-rest",
         },
         {
             name: "auth-provider",

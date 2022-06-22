@@ -69,7 +69,7 @@ module.exports = {
                 { message: "Strapi v3", name: "data-provider-strapi" },
                 {
                     message: "Strapi GraphQL",
-                    name: "strapi-graphql-data-provider",
+                    name: "data-provider-strapi-graphql",
                 },
                 { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
                 {
@@ -105,7 +105,7 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "strapi-graphql-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider",
@@ -128,7 +128,7 @@ module.exports = {
                 answers["data-provider"] === "airtable-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "strapi-graphql-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "altogic-data-provider" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||
@@ -153,7 +153,7 @@ module.exports = {
                 answers["data-provider"] === "airtable-data-provider" ||
                 answers["data-provider"] === "supabase-data-provider" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "strapi-graphql-data-provider" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "altogic-data-provider" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "appwrite-data-provider" ||

@@ -33,7 +33,16 @@ export const PostList: React.FC = () => {
                 type: "number",
                 width: 50,
             },
-            { field: "title", headerName: "Title", minWidth: 400, flex: 1 },
+            { 
+                field: "title", 
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
+                headerName: "Title", 
+                <%_ } else { _%>
+                headerName: t("posts.fields.title"),
+                <%_ } _%>
+                minWidth: 400, 
+                flex: 1 
+            },
             {
                 field: "category.id",
                 <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>

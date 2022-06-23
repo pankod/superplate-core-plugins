@@ -55,7 +55,7 @@ export const PostList: React.FC = () => {
                 align: "left",
                 minWidth: 250,
                 flex: 0.5,
-                valueGetter: ({ row }) => {
+                renderCell: ({ row }) => {
                     const { data } = getOne<ICategory>({
                         resource: "categories",
                         id: row.category.id,

@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "react-google-login": "^5.2.2",
+        "axios": "^0.26.1"
+    }
+}

@@ -8,7 +8,7 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        if (answers["custom-layout"] === "no") {
+        if (answers["antd-custom-layout"] === "no") {
             base._app.refineAntdImports.push("Layout");
             base._app.refineProps.push("Layout={Layout}");
         }

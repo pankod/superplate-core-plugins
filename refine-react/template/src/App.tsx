@@ -1,8 +1,17 @@
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
-<%_ if (answers.uiFramework === 'antd') { _%>
+<%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
 <%_ } _%>
+<%_ if (answers["ui-framework"] === 'mui') { _%>
+    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
+<%_ } _%>
 <%- (_app.import || []).join("\n") _%>
+
+<%- (_app.localImport || []).join("\n") _%>
+
+<%- (_app.relativeImport || []).join("\n") _%>
+
+<%- (_app.afterImport || []).join("\n") _%>
 
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");

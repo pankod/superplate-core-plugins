@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "@pankod/refine-strapi-v4": "^3.18.0",
+        "axios": "^0.26.1"
+    }
+}

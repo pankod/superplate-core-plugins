@@ -1,74 +1,99 @@
 module.exports = {
     prompts: [
         {
-            name: "uiFramework",
-            message: "Do you want to use an UI Framework?:",
+            name: "ui-framework",
+            message: "Do you want to use a UI Framework?:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No (headless)", name: "no" },
-                { message: "Yes, I want Ant Design", name: "antd" },
+                { message: "Ant Design", name: "antd" },
+                { message: "Material UI", name: "mui" },
             ],
             default: "no",
         },
         {
-            name: "theme-customization",
-            message: "Do you want to customize theme?:",
+            name: "antd-theme-customization",
+            message: "Do you want a customized theme?:",
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "No (Ant Design default theme)", name: "css" },
-                { message: "Yes, I want (less)", name: "less" },
+                { message: "Default theme", name: "antd-css" },
+                { message: "Custom theme (less)", name: "antd-less" },
             ],
-            default: "css",
-            skip: ({ answers }) => answers.uiFramework === "no",
+            default: "antd-css",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
-            name: "dataProvider",
+            name: "mui-extend-theme",
+            message: "Do you want an extended theme?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes (Custom Variables)", name: "mui-extend-theme" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "mui-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "mui-dark-mode" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "data-provider",
             message: "Data Provider:",
             type: "select",
             pageSize: 2,
             choices: [
                 {
                     message: "REST API",
-                    name: "custom-json-rest-data-provider",
+                    name: "data-provider-custom-json-rest",
                 },
                 {
                     message: "GraphQL API",
-                    name: "graphql-data-provider",
+                    name: "data-provider-graphql",
                 },
                 {
                     message: "Strapi v4",
-                    name: "strapi-v4-data-provider",
+                    name: "data-provider-strapi-v4",
                 },
-                { message: "Strapi v3", name: "strapi-data-provider" },
+                { message: "Strapi v3", name: "data-provider-strapi" },
                 {
                     message: "Strapi GraphQL",
-                    name: "strapi-graphql-data-provider",
+                    name: "data-provider-strapi-graphql",
                 },
-                { message: "nestjsx-crud", name: "nestjsx-crud-data-provider" },
+                { message: "nestjsx-crud", name: "data-provider-nestjsx-crud" },
                 {
                     message: "Airtable",
-                    name: "airtable-data-provider",
+                    name: "data-provider-airtable",
                 },
                 {
                     message: "Supabase",
-                    name: "supabase-data-provider",
+                    name: "data-provider-supabase",
                 },
                 {
                     message: "Altogic",
-                    name: "altogic-data-provider",
+                    name: "data-provider-altogic",
                 },
                 {
                     message: "Appwrite",
-                    name: "appwrite-data-provider",
+                    name: "data-provider-appwrite",
                 },
                 {
                     message: "Hasura",
-                    name: "hasura-data-provider",
+                    name: "data-provider-hasura",
                 },
             ],
-            default: "custom-json-rest-data-provider",
+            default: "data-provider-custom-json-rest",
         },
         {
             name: "auth-provider",
@@ -76,87 +101,135 @@ module.exports = {
             type: "select",
             choices: [
                 { message: "None", name: "none" },
-                { message: "Custom", name: "custom-auth-provider" },
+                { message: "Custom", name: "auth-provider-custom" },
             ],
             skip: ({ answers }) =>
-                answers.dataProvider === "strapi-data-provider" ||
-                answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" ||
-                answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider",
+                answers["data-provider"] === "data-provider-strapi" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-supabase" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
+                answers["data-provider"] === "data-provider-appwrite",
             default: "none",
         },
         {
-            name: "example-resource",
-            message: "Do you want to add an example page?",
+            name: "antd-example-pages",
+            message: "Do you want to add example pages?",
             type: "select",
             choices: [
                 { message: "No", name: "no" },
                 {
-                    message: "Yes, I want (recommended)",
-                    name: "example-resource",
+                    message: "Yes (Recommended)",
+                    name: "antd-example-pages",
                 },
             ],
             skip: ({ answers }) =>
-                answers.uiFramework === "no" ||
-                answers.dataProvider === "strapi-data-provider" ||
-                answers.dataProvider === "airtable-data-provider" ||
-                answers.dataProvider === "supabase-data-provider" ||
-                answers.dataProvider === "graphql-data-provider" ||
-                answers.dataProvider === "strapi-graphql-data-provider" ||
-                answers.dataProvider === "altogic-data-provider" ||
-                answers.dataProvider === "strapi-v4-data-provider" ||
-                answers.dataProvider === "appwrite-data-provider" ||
-                answers.dataProvider === "hasura-data-provider",
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-strapi" ||
+                answers["data-provider"] === "data-provider-airtable" ||
+                answers["data-provider"] === "data-provider-supabase" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-altogic" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["ui-framework"] !== "antd",
             default: "no",
         },
         {
-            name: "custom-layout",
-            message: "Do you want to customize layout?",
+            name: "mui-example-pages",
+            message: "Do you want to add example pages?",
+            type: "select",
+            choices: [
+                { message: "No", name: "no" },
+                {
+                    message: "Yes (Recommended)",
+                    name: "mui-example-pages",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-strapi" ||
+                answers["data-provider"] === "data-provider-airtable" ||
+                answers["data-provider"] === "data-provider-supabase" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-altogic" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["ui-framework"] !== "mui",
+            default: "no",
+        },
+        {
+            name: "antd-custom-layout",
+            message: "Do you want a customized layout?",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "custom-layout" },
+                { message: "Yes", name: "antd-custom-layout" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
-            name: "i18n",
+            name: "mui-custom-layout",
+            message: "Do you want a customized layout?",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "mui-custom-layout" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "i18n-no",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "i18n" },
+                { message: "Yes", name: "i18n" },
             ],
-            default: "no",
-            skip: ({ answers }) => answers.uiFramework === "antd",
+            skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
         {
-            name: "i18n",
+            name: "i18n-antd",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "i18n-antd" },
+                { message: "Yes", name: "i18n-antd" },
             ],
-            default: "no",
-            skip: ({ answers }) => answers.uiFramework === "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
+        },
+        {
+            name: "i18n-mui",
+            message: "i18n - Internationalization:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "i18n-mui" },
+            ],
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
             name: "partytown-builder",
-            message: "Do you want to Partytown? (https://partytown.builder.io)",
+            message:
+                "Do you want to add Partytown? (https://partytown.builder.io)",
             type: "select",
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes, I want", name: "partytown-builder" },
+                { message: "Yes", name: "partytown-builder" },
             ],
             default: "no",
-            skip: ({ answers }) => answers.uiFramework === "antd",
+            skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
     ],
     ignores: [],

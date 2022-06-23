@@ -1,5 +1,7 @@
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
-import { useContext } from "react";
+import React, { useContext } from "react";
+<%_ } else { _%>
+import React from "react";
 <%_ } _%>
 import {
   useGetIdentity,

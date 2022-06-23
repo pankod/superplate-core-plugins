@@ -1,4 +1,8 @@
+<%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
+import React, { useContext } from "react";
+<%_ } else { _%>
 import React from "react";
+<%_ } _%>
 import { useGetIdentity } from "@pankod/refine-core";
 import { 
     AppBar,

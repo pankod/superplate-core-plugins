@@ -253,5 +253,13 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
     ],
-    ignores: [],
+    ignores: [
+        {
+            plugin: ["data-provider-nhost", "data-provider-appwrite"],
+            when: function (answers) {
+                return answers['ui-framework'] !== "antd";
+            },
+            pattern: ["src/utility/normalize.ts"],
+        },
+    ],
 };

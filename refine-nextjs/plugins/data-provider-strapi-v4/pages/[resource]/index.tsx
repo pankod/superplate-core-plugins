@@ -34,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
    try {
         const cookies = nookies.get(context);
         if (cookies[TOKEN_KEY]) {
-          axiosInstance.defaults.headers = {
+          axiosInstance.defaults.headers.common = {
               Authorization: `Bearer ${cookies[TOKEN_KEY]}`,
           };
         }

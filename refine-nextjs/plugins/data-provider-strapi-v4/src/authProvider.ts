@@ -23,7 +23,7 @@ export const authProvider: AuthProvider = {
             });
 
             // set header axios instance
-            axiosInstance.defaults.headers = {
+            axiosInstance.defaults.headers.common = {
                 Authorization: `Bearer ${data.jwt}`,
             };
 
@@ -39,7 +39,7 @@ export const authProvider: AuthProvider = {
     checkAuth: (ctx) => {
         const cookies = nookies.get(ctx);
         if (cookies[TOKEN_KEY]) {
-            axiosInstance.defaults.headers = {
+            axiosInstance.defaults.headers.common = {
                 Authorization: `Bearer ${cookies[TOKEN_KEY]}`,
             };
             return Promise.resolve();

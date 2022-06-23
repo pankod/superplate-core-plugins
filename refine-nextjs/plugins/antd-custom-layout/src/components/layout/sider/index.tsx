@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import {
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
     <%_ } _%>
     <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
@@ -41,7 +41,7 @@ export const Sider: React.FC = () => {
     const Title = useTitle();
     const { SubMenu } = Menu;
 
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     const translate = useTranslate();
     <%_ } _%>
     const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
@@ -120,7 +120,7 @@ export const Sider: React.FC = () => {
                             icon={<Icons.DashboardOutlined />}
                         >
                             <Link href="/" to="/">
-                            <%_ if (i18n !== "no") { _%>
+                            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                                 {translate("dashboard.title", "Dashboard")}
                             <%_ } else { _%>
                                 Dashboard
@@ -136,7 +136,7 @@ export const Sider: React.FC = () => {
 
                     <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
                     <Menu.Item key="logout" onClick={() => logout()} icon={<LogoutOutlined />}>
-                        <%_ if (i18n !== "no") { _%>
+                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                         {translate("buttons.logout", "Logout")}
                         <%_ } else { _%>
                         Logout

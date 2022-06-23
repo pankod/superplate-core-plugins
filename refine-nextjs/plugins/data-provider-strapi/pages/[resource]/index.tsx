@@ -6,7 +6,7 @@ import { DataProvider } from "@pankod/refine-strapi";
 import axios from "axios";
 import nookies from "nookies";
 
-<%_ if (i18n !== 'no') { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     context
   );
 
-  <%_ if (i18n !== 'no') { _%>
+  <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
 
     if (!isAuthenticated) {
@@ -53,14 +53,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         return {
             props: {
                 initialData: data,
-                <%_ if(i18n !== 'no') { _%>
+                <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
                 ...i18nProps
     <%_ } _%>
             },
         };
     } catch (error) {
         return { props: {
-            <%_ if(i18n !== 'no') { _%>
+            <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
                 ...i18nProps
             <%_ } _%>
         } };

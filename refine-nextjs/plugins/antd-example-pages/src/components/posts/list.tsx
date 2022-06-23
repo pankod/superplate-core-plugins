@@ -2,7 +2,7 @@ import {
     IResourceComponentsProps,
     GetListResponse,
     useMany,
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
     <%_ } _%>
 } from "@pankod/refine-core";
@@ -25,7 +25,7 @@ import {
 import { IPost, ICategory } from "src/interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>> = ({ initialData }) => {
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
 
@@ -66,7 +66,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                 <Table.Column
                     dataIndex="title"
                     key="title"
-                    <%_ if (i18n === "no") {_%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     title="Title"
                 <%_ } else {_%>
                     title={t("posts.fields.title")}
@@ -78,7 +78,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                 <Table.Column
                     dataIndex="status"
                     key="status"
-                    <%_ if (i18n === "no") {_%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     title="Status"
                 <%_ } else {_%>
                     title={t("posts.fields.status.title")}
@@ -90,7 +90,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                 <Table.Column
                     dataIndex="createdAt"
                     key="createdAt"
-                    <%_ if (i18n === "no") {_%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     title="Created At"
                 <%_ } else {_%>
                     title={t("posts.fields.createdAt")}
@@ -103,7 +103,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                 />
                 <Table.Column
                     dataIndex={["category", "id"]}
-                    <%_ if (i18n === "no") {_%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     title="Category"
                 <%_ } else {_%>
                     title={t("posts.fields.category.title")}
@@ -111,7 +111,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                 render={(value) => {
                     if (isLoading) {
                         return <TextField
-                            <%_ if (i18n === "no") {
+                            <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {
                                 _%>
                                 value="Loading..."
                                     <%_
@@ -138,7 +138,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                         <Select
                             style={{ minWidth: 200 }}
                             mode="multiple"
-                                <%_ if (i18n === "no") {_%>
+                                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                             placeholder="Select Category"
                         <%_ } else {_%>
                             placeholder={t("posts.fields.category.filter.placeholder")}
@@ -150,7 +150,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                 )}
                 />
                 <Table.Column<IPost>
-                    <%_ if (i18n === "no") {_%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     title="Actions"
                 <%_ } else {_%>
                     title={t("table.actions")}

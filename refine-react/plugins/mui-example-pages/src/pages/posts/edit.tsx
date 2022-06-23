@@ -1,4 +1,4 @@
-<%_ if (i18n !== "no") { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { useTranslate } from "@pankod/refine-core";
 <%_ } _%>
 import {
@@ -13,7 +13,7 @@ import { Controller, useForm } from "@pankod/refine-react-hook-form";
 import { ICategory } from "interfaces";
 
 export const PostEdit: React.FC = () => {
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
 
@@ -39,7 +39,7 @@ export const PostEdit: React.FC = () => {
             >
                 <TextField
                     {...register("title", {
-                        <%_ if (i18n === "no") { _%>
+                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                             required: "This field is required",
                         <%_ } else { _%>
                             required: t(
@@ -52,7 +52,7 @@ export const PostEdit: React.FC = () => {
                     helperText={errors.title?.message}
                     margin="normal"
                     fullWidth
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                         label="Title"
                     <%_ } else { _%>
                         label={t("posts.fields.title")}
@@ -63,7 +63,7 @@ export const PostEdit: React.FC = () => {
                 <Controller
                     control={control}
                     name="status"
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                         rules={{ required: "This field is required" }}
                     <%_ } else { _%>
                         rules={{
@@ -84,7 +84,7 @@ export const PostEdit: React.FC = () => {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
-                                    <%_ if (i18n === "no") { _%>
+                                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                                         label="Status"
                                     <%_ } else { _%>
                                         label={t("posts.fields.status.title")}
@@ -102,7 +102,7 @@ export const PostEdit: React.FC = () => {
                 <Controller
                     control={control}
                     name="category"
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                         rules={{ required: "This field is required" }}
                     <%_ } else { _%>
                         rules={{
@@ -136,7 +136,7 @@ export const PostEdit: React.FC = () => {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
-                                    <%_ if (i18n === "no") { _%>
+                                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                                         label="Category"
                                     <%_ } else { _%>
                                         label={t("posts.fields.category.title")}
@@ -153,7 +153,7 @@ export const PostEdit: React.FC = () => {
                 />
                 <TextField
                     {...register("content", {
-                        <%_ if (i18n === "no") { _%>
+                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                             required: "This field is required",
                         <%_ } else { _%>
                             required: t(
@@ -165,7 +165,7 @@ export const PostEdit: React.FC = () => {
                     error={!!errors.content}
                     helperText={errors.content?.message}
                     margin="normal"
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                         label="Content"
                     <%_ } else { _%>
                         label={t("posts.fields.content")}

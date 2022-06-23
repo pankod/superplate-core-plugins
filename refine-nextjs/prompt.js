@@ -186,7 +186,7 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
-            name: "i18n",
+            name: "i18n-no",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
@@ -194,11 +194,10 @@ module.exports = {
                 { message: "No", name: "no" },
                 { message: "Yes", name: "i18n" },
             ],
-            default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
         {
-            name: "i18n",
+            name: "i18n-antd",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
@@ -206,11 +205,10 @@ module.exports = {
                 { message: "No", name: "no" },
                 { message: "Yes", name: "i18n-antd" },
             ],
-            default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
-            name: "i18n",
+            name: "i18n-mui",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
@@ -218,7 +216,6 @@ module.exports = {
                 { message: "No", name: "no" },
                 { message: "Yes", name: "i18n-mui" },
             ],
-            default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {

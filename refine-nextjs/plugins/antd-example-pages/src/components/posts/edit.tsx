@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
     IResourceComponentsProps,
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
     <%_ } _%>
 } from "@pankod/refine-core";
@@ -25,7 +25,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
         "write",
     );
 
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
 
@@ -40,7 +40,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
         <Edit saveButtonProps={saveButtonProps}>
            <Form {...formProps} layout="vertical">
                 <Form.Item
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     label="Title"
                     <%_ } else { _%>
                     label={t("posts.fields.title")}
@@ -55,7 +55,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     label="Status"
                     <%_ } else { _%>
                     label={t("posts.fields.status.title")}
@@ -68,7 +68,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                     <Select 
-                     <%_ if (i18n === "no") { _%>
+                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                      options={[
                         {
                           label: "published",
@@ -104,7 +104,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
 
 
                 <Form.Item
-                <%_ if (i18n === "no") { _%>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     label="Category"
                 <%_ } else { _%>
                     label={t("posts.fields.category.title")}
@@ -118,7 +118,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                 <Select {...categorySelectProps} />
                 </Form.Item>
                 <Form.Item
-                    <%_ if (i18n === "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     label="Content"
                     <%_ } else { _%>
                     label={t("posts.fields.content")}

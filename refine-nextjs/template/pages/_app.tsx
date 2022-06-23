@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 };
 
 
-<%_ if (i18n !== 'no') { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
 export default appWithTranslation(MyApp);
 <%_ } else {_%>
 export default MyApp;

@@ -1,6 +1,6 @@
 import { 
     useLogin,
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     useTranslate,
     <%_ } _%>
 } from "@pankod/refine-core";
@@ -26,7 +26,7 @@ export const Login: React.FC = () => {
         <%_ } _%> 
     } = useLogin<GoogleLoginResponse>();
 
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     const t = useTranslate();
     <%_ } _%>
 
@@ -58,7 +58,7 @@ export const Login: React.FC = () => {
                         loading={isLoading}
                         onClick={() => signIn()}
                     >
-                        <%_ if (i18n !== "no") { _%>
+                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                         {t("pages.login.signin", "Sign in")}
                         <%_ } else { _%>
                         Sign in
@@ -79,7 +79,7 @@ export const Login: React.FC = () => {
                 }}
             >
                 <button onClick={() => signIn()}>
-                    <%_ if (i18n !== "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                     {t("pages.login.signin", "Sign in")}
                     <%_ } else { _%>
                         Sign in with Google

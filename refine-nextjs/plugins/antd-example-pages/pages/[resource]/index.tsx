@@ -16,7 +16,7 @@ import dataProvider from "@pankod/refine-nestjsx-crud";
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 
-<%_ if (i18n !== 'no') { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             context,
         );
 
-    <%_ if (i18n !== 'no') { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
 
     if (!isAuthenticated) {
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                 props: {
                     initialData: data,
                     
-                 <%_ if(i18n !== 'no') { _%>
+                 <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
                 ...i18nProps
                 <%_ } _%>
              },
@@ -61,13 +61,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
      } catch (error) {
     return {
         props: {
-              <%_ if(i18n !== 'no') { _%>
+              <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
                 ...i18nProps
             <%_ } _%>
          } };
      }
 
-    <%_ } else if (i18n !== 'no') { _%>
+    <%_ } else if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
     return {
         props: {

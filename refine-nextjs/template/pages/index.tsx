@@ -6,7 +6,7 @@ import { checkAuthentication } from "@pankod/refine-nextjs-router";
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 
-<%_ if (i18n !== 'no') { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     
     <%_ } _%>
 
-    <%_ if (i18n !== 'no') { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     return {
         props: {
             ...(await serverSideTranslations(context.locale ?? "en", [

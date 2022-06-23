@@ -205,7 +205,7 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
-            name: "i18n",
+            name: "i18n-no",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
@@ -217,7 +217,7 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
         {
-            name: "i18n",
+            name: "i18n-antd",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,
@@ -229,7 +229,7 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
-            name: "i18n",
+            name: "i18n-mui",
             message: "i18n - Internationalization:",
             type: "select",
             pageSize: 2,

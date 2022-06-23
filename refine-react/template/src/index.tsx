@@ -7,14 +7,14 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
-<%_ if (i18n !== "no") { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import "./i18n";
 <%_ } _%>
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <%_ if (i18n !== "no") { _%>
+        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         <React.Suspense fallback="loading">
         <%_ } _%>
             <%_ if (answers["auth-provider"] === "auth-provider-auth0") { _%>
@@ -28,7 +28,7 @@ ReactDOM.render(
             <%_ if (answers["auth-provider"] === "auth-provider-auth0") { _%>
             </Auth0Provider>
             <%_ } _%>
-        <%_ if (i18n !== "no") { _%>
+        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         </React.Suspense>
         <%_ } _%>
     </React.StrictMode>,

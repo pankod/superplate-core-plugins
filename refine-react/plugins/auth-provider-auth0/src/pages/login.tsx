@@ -1,4 +1,4 @@
-<%_ if (i18n !== "no") { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { 
     useTranslate,
 } from "@pankod/refine-core";
@@ -15,7 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export const Login: React.FC = () => {
     const { loginWithRedirect } = useAuth0();
 
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     const t = useTranslate();
     <%_ } _%>
 
@@ -38,7 +38,7 @@ export const Login: React.FC = () => {
                         block
                         onClick={() => loginWithRedirect()}
                     >
-                        <%_ if (i18n !== "no") { _%>
+                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                         {t("pages.login.signin", "Sign in")}
                         <%_ } else { _%>
                         Sign in
@@ -59,7 +59,7 @@ export const Login: React.FC = () => {
                 }}
             >
                 <button onClick={() => loginWithRedirect()}>
-                    <%_ if (i18n !== "no") { _%>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                     {t("pages.login.signin", "Sign in")}
                     <%_ } else { _%>
                         Sign in with Auth0

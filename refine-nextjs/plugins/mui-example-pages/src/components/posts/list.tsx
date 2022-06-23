@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
     <%_ } _%>
     useOne
@@ -16,7 +16,7 @@ import {
 import { ICategory, IPost } from "src/interfaces";
 
 export const PostList: React.FC = () => {
-    <%_ if (i18n !== "no") { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
 
@@ -25,7 +25,7 @@ export const PostList: React.FC = () => {
         () => [
             {
                 field: "id",
-                <%_ if (i18n === "no") { _%>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     headerName: "ID",
                 <%_ } else { _%>
                     headerName: t("posts.fields.id"),
@@ -36,7 +36,7 @@ export const PostList: React.FC = () => {
             { field: "title", headerName: "Title", minWidth: 400, flex: 1 },
             {
                 field: "category.id",
-                <%_ if (i18n === "no") { _%>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     headerName: "Category",
                 <%_ } else { _%>
                     headerName: t("posts.fields.category.title"),
@@ -56,7 +56,7 @@ export const PostList: React.FC = () => {
             },
             { 
                 field: "status", 
-                <%_ if (i18n === "no") { _%>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     headerName: "Status",
                 <%_ } else { _%>
                     headerName: t("posts.fields.status.title"),
@@ -66,7 +66,7 @@ export const PostList: React.FC = () => {
             },
             {
                 field: "actions",
-                <%_ if (i18n === "no") { _%>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     headerName: "Actions",
                 <%_ } else { _%>
                     headerName: t("table.actions"),
@@ -80,7 +80,7 @@ export const PostList: React.FC = () => {
             },
         ],
         [
-            <%_ if (i18n !== "no") { _%>
+            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
             t,
             <%_ } _%> 
             getOne

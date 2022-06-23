@@ -75,6 +75,7 @@ export const PostList: React.FC = () => {
             },
             {
                 field: "actions",
+                type: "actions",
                 <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     headerName: "Actions",
                 <%_ } else { _%>

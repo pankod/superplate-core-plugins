@@ -19,7 +19,12 @@ const { GoogleOutlined } = Icons;
 <%_ } _%> 
 
 export const Login: React.FC = () => {
-    const { mutate: login, isLoading } = useLogin<GoogleLoginResponse>();
+    const { 
+        mutate: login,
+        <%_ if (answers["ui-framework"] === "antd") { _%> 
+        isLoading 
+        <%_ } _%> 
+    } = useLogin<GoogleLoginResponse>();
 
     <%_ if (i18n !== "no") { _%>
     const t = useTranslate();

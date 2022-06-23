@@ -28,7 +28,11 @@ export const Header: React.FC = () => {
 <%_ } _%>
 
     const { data: user } = useGetIdentity();
+    <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
+    const shouldRenderHeader = true; // since we are using the dark/light toggle; we don't need to check if user is logged in or not.
+    <%_ } else { _%>
     const shouldRenderHeader = user && (user.name || user.avatar);
+    <%_ } _%>
 
     return shouldRenderHeader ? (
         <AppBar color="default" position="sticky" elevation={1}>
@@ -54,10 +58,14 @@ export const Header: React.FC = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        <Typography variant="subtitle2">
-                            {user?.name}
-                        </Typography>
-                        <Avatar src={user?.avatar} alt={user?.name} />
+                        {user?.name ? (
+                            <Typography variant="subtitle2">
+                                {user?.name}
+                            </Typography>
+                        ) : null}
+                        {user?.avatar ? (
+                            <Avatar src={user?.avatar} alt={user?.name} />
+                        ) : null}
                     </Stack>
                 </Stack>
             </Toolbar>

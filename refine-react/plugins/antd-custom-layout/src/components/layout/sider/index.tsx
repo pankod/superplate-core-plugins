@@ -81,7 +81,7 @@ export const Sider: React.FC = () => {
                         }}
                         icon={icon ?? (isRoute && <UnorderedListOutlined />)}
                     >
-                        <Link href={route}>{label}</Link>
+                        <Link to={route}>{label}</Link>
                         {!collapsed && isSelected && (
                             <div className="ant-menu-tree-arrow" />
                         )}
@@ -119,7 +119,7 @@ export const Sider: React.FC = () => {
                             }}
                             icon={<Icons.DashboardOutlined />}
                         >
-                            <Link href="/">
+                            <Link to="/">
                             <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                                 {translate("dashboard.title", "Dashboard")}
                             <%_ } else { _%>

@@ -17,6 +17,12 @@
             "backHome": "Zurück"
         }
     },
+    "actions": {
+        "list": "Aufführen",
+        "create": "Erstellen",
+        "edit": "Bearbeiten",
+        "show": "Zeigen"
+    },
     "buttons": {
         "create": "Erstellen",
         "save": "Speichern",
@@ -32,7 +38,7 @@
         "undo": "Undo",
         "import": "Importieren",
         "clone": "Klon",
-        "notAccessTitle": "Sie haben keine zugriffsberechtigung",
+        "notAccessTitle": "Sie haben keine zugriffsberechtigung"
     },
     "warnWhenUnsavedChanges": "Nicht gespeicherte Änderungen werden nicht übernommen.",
     "notifications": {

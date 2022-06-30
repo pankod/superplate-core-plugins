@@ -3,7 +3,7 @@ import {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
     <%_ } _%>
-    useOne
+    useMany,
 } from "@pankod/refine-core";
 import {
     useDataGrid,
@@ -20,7 +20,17 @@ export const PostList: React.FC = () => {
         const t = useTranslate();
     <%_ } _%>
 
-    const getOne = React.useCallback(useOne, []);
+    const { dataGridProps } = useDataGrid<IPost>();
+
+    const categoryIds = dataGridProps.rows.map((item) => item.category.id);
+    const { data: categoriesData, isLoading } = useMany<ICategory>({
+        resource: "categories",
+        ids: categoryIds,
+        queryOptions: {
+            enabled: categoryIds.length > 0,
+        },
+    });
+
     const columns = React.useMemo<GridColumns<IPost>>(
         () => [
             {
@@ -55,12 +65,15 @@ export const PostList: React.FC = () => {
                 align: "left",
                 minWidth: 250,
                 flex: 0.5,
-                renderCell: ({ row }) => {
-                    const { data } = getOne<ICategory>({
-                        resource: "categories",
-                        id: row.category.id,
-                    });
-                    return data?.data.title;
+                renderCell: function render({ row }) {
+                    if (isLoading) {
+                        return "Loading...";
+                    }
+
+                    const category = categoriesData?.data.find(
+                        (item) => item.id === row.category.id,
+                    );
+                    return category?.title;
                 },
             },
             { 
@@ -93,17 +106,14 @@ export const PostList: React.FC = () => {
             <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
             t,
             <%_ } _%> 
-            getOne
+            categoriesData,
+            isLoading
         ]
     );
 
-    const { dataGridProps } = useDataGrid<IPost>({
-        columns,
-    });
-
     return (
         <List>
-            <DataGrid {...dataGridProps} autoHeight />
+            <DataGrid {...dataGridProps} columns={columns} autoHeight />
         </List>
     );
 };

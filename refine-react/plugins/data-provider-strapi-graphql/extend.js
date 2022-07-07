@@ -3,8 +3,7 @@ const base = {
         refineImports: [`AuthProvider`],
         refineAntdImports: [],
         import: [
-            `import dataProvider from "@pankod/refine-strapi-graphql";`,
-            `import { GraphQLClient } from "graphql-request";`,
+            `import dataProvider, { GraphQLClient } from "@pankod/refine-strapi-graphql";`,
         ],
         afterImport: [
             `const API_URL = "https://api.strapi.refine.dev/graphql";`,

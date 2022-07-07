@@ -1,8 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import dataProvider from "@pankod/refine-hasura";`,
-            `import { GraphQLClient } from "graphql-request";`,
+            `import dataProvider, { GraphQLClient } from "@pankod/refine-hasura";`,
         ],
         afterImport: [
             `const API_URL = "https://your-hasura-url/graphql";`,

@@ -1,8 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import dataProvider from "@pankod/refine-graphql";`,
-            `import { GraphQLClient } from "graphql-request";`,
+            `import dataProvider, { GraphQLClient } from "@pankod/refine-graphql";`,
         ],
         afterImport: [
             `const API_URL = "https://your-graphql-url/graphql";`,

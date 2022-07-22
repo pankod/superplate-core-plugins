@@ -241,6 +241,17 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
+            name: "command-palette",
+            message: "Do you want to add Kbar command pallette:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "kbar" },
+            ],
+            default: "no",
+        },
+        {
             name: "partytown-builder",
             message:
                 "Do you want to add Partytown? (https://partytown.builder.io)",

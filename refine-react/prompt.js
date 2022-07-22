@@ -205,6 +205,18 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
+            name: "command-palette",
+            message: "Do you want to add Kbar command pallette:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "kbar" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] === "no",
+        },
+        {
             name: "i18n-no",
             message: "i18n - Internationalization:",
             type: "select",
@@ -261,6 +273,16 @@ module.exports = {
                 return answers["ui-framework"] !== "antd";
             },
             pattern: ["src/utility/normalize.ts"],
+        },
+        {
+            plugin: ["kbar"],
+            when: function (answers) {
+                return (
+                    answers["ui-framework"] === "antd" &&
+                    answers["antd-custom-layout"] !== "no"
+                );
+            },
+            pattern: ["src/components/**"],
         },
     ],
 };

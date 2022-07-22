@@ -214,6 +214,7 @@ module.exports = {
                 { message: "Yes", name: "kbar" },
             ],
             default: "no",
+            skip: ({ answers }) => answers["ui-framework"] === "no",
         },
         {
             name: "i18n-no",
@@ -272,6 +273,13 @@ module.exports = {
                 return answers["ui-framework"] !== "antd";
             },
             pattern: ["src/utility/normalize.ts"],
+        },
+        {
+            plugin: ["kbar"],
+            when: function (answers) {
+                return answers['ui-framework'] === "antd" && answers['antd-custom-layout'] !== "no";
+            },
+            pattern: ["src/components/**"],
         },
     ],
 };

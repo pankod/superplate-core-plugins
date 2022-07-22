@@ -10,8 +10,11 @@ const base = {
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["ui-framework"] === "antd" && answers["antd-custom-layout"] === "antd-custom-layout"){
+            base._app.refineProps=[]
+            base._app.localImport=[]
+        }
         return base;
-    },
+    }
 };
-

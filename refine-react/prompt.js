@@ -247,7 +247,7 @@ module.exports = {
             pageSize: 2,
             choices: [
                 { message: "No", name: "no" },
-                { message: "Yes", name: "kbar" },
+                { message: "Yes", name: "yes" },
             ],
             default: "no",
         },

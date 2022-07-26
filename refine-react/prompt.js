@@ -206,7 +206,7 @@ module.exports = {
         },
         {
             name: "command-palette",
-            message: "Do you want to add Kbar command pallette:",
+            message: "Do you want to add Kbar command palette:",
             type: "select",
             pageSize: 2,
             choices: [

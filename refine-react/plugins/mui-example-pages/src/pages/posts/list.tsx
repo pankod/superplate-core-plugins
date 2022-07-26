@@ -10,7 +10,9 @@ import {
     DataGrid,
     GridColumns,
     List,
+    Stack,
     EditButton,
+    DeleteButton,
 } from "@pankod/refine-mui";
 
 import { ICategory, IPost } from "interfaces";
@@ -95,7 +97,20 @@ export const PostList: React.FC = () => {
                     headerName: t("table.actions"),
                 <%_ } _%>
                 renderCell: function render({ row }) {
-                    return <EditButton hideText recordItemId={row.id} />;
+                    return (
+                        <Stack direction="row" spacing={1}>
+                            <EditButton
+                                size="small"
+                                hideText
+                                recordItemId={row.id}
+                            />
+                            <DeleteButton
+                                size="small"
+                                hideText
+                                recordItemId={row.id}
+                            />
+                        </Stack>
+                    );
                 },
                 align: "center",
                 headerAlign: "center",

@@ -1,11 +1,23 @@
 # <%= name %>
-<% const docsUrl = "https://github.com/pankod/superplate"; %>
+<% const refineGitUrl = "https://github.com/pankod/refine"; -%>
+<% const superplateGitUrl = "https://github.com/pankod/refine"; -%>
+<% const refineDocsUrl = "https://refine.dev/docs"; -%>
+<% const superplateDocsUrl = "https://pankod.github.io/superplate/docs"; -%>
 
-This project was generated with [superplate](<%- docsUrl %>).
+<div align="center" style="margin: 30px;">
+    <a href="https://refine.dev">
+    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
+    </a>
+</div>
+<br/>
+
+This [refine](<%- refineGitUrl %>) project was generated with [superplate](<%- superplateGitUrl %>).
 
 ## Getting Started
 
-superplate is a Next.js all-in-one project generator. Create your project with the tools you need without spending hours on setting them up.
+**refine** is a React-based framework for building data-intensive applications in no time ✨
+
+Refine offers lots of out-of-the box functionality for rapid development, without compromising extreme customizability. Use-cases include, but are not limited to admin panels, B2B applications and dashboards.
 
 ## Available Scripts
 
@@ -29,15 +41,13 @@ superplate is a Next.js all-in-one project generator. Create your project with t
 
 ## Learn More
 
-To learn more about **superplate**, please check out the [Documentation](<%- docsUrl %>).
+To learn more about **refine**, please check out the [Documentation](<%- refineDocsUrl %>)
 
-<% for (var i = 0; i < pluginsData.length; i++ ) { %>
-### **<%= pluginsData[i].name %>**
-
-<%= pluginsData[i].description %>
-
-[Go To Documentation](<%- pluginsData[i].url %>)
-
+<% const list = pluginsData.filter((plugin) => plugin.url.length > 0) -%>
+<% for (var i = 0; i < list.length; i++ ) { -%>
+<% if (list[i].url.length > 0) { -%>
+- **<%= list[i].name -%>** [Docs](<%- list[i].url %>)
+<% } -%>
 <% } %>
 
 ## License

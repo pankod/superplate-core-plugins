@@ -91,10 +91,6 @@ module.exports = {
                     name: "data-provider-supabase",
                 },
                 {
-                    message: "Altogic",
-                    name: "data-provider-altogic",
-                },
-                {
                     message: "Appwrite",
                     name: "data-provider-appwrite",
                 },
@@ -103,8 +99,16 @@ module.exports = {
                     name: "data-provider-hasura",
                 },
                 {
+                    message: "Medusa",
+                    name: "data-provider-medusa",
+                },
+                {
                     message: "nHost",
                     name: "data-provider-nhost",
+                },
+                {
+                    message: "Altogic",
+                    name: "data-provider-altogic",
                 },
             ],
             default: "data-provider-custom-json-rest",
@@ -147,6 +151,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-altogic" ||
+                answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "data-provider-hasura" ||
@@ -173,6 +178,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-altogic" ||
+                answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
                 answers["data-provider"] === "data-provider-hasura" ||

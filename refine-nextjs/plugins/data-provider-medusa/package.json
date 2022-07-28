@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@pankod/refine-medusa": "^0.3.0"
+    }
+}

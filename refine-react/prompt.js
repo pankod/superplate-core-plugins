@@ -129,6 +129,7 @@ module.exports = {
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
+                answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-nhost",
             default: "none",
         },

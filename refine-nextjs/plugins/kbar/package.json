@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-kbar": "^0.2.2"
+        "@pankod/refine-kbar": "^0.8.0"
     }
 }

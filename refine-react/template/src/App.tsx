@@ -5,9 +5,6 @@ import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refi
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
 <%_ } _%>
-<%_ if (answers["command-palette"] === 'kbar') { _%>
-    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-kbar';
-<%_ } _%>
 <%- (_app.import || []).join("\n") _%>
 
 <%- (_app.localImport || []).join("\n") _%>

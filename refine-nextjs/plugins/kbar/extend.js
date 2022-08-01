@@ -12,10 +12,8 @@ const base = {
 module.exports = {
     extend(answers) {
         if (
-            (answers["ui-framework"] === "antd" &&
-                answers["antd-custom-layout"] === "antd-custom-layout") ||
-            (answers["ui-framework"] === "mui" &&
-                answers["mui-custom-layout"] === "mui-custom-layout")
+            answers["ui-framework"] === "antd" &&
+            answers["antd-custom-layout"] === "antd-custom-layout"
         ) {
             base._app.refineProps = [];
             base._app.localImport = [];

@@ -1,5 +1,5 @@
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-import { useTranslate } from "@pankod/refine-core";
+import { useTranslate, HttpError } from "@pankod/refine-core";
 <%_ } _%>
 import {
     Edit,
@@ -10,7 +10,7 @@ import {
 } from "@pankod/refine-mui";
 import { Controller, useForm } from "@pankod/refine-react-hook-form";
 
-import { ICategory } from "src/interfaces";
+import { IPost, ICategory } from "src/interfaces";
 
 export const PostEdit: React.FC = () => {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
@@ -23,7 +23,7 @@ export const PostEdit: React.FC = () => {
         register,
         control,
         formState: { errors },
-    } = useForm();
+    } = useForm<IPost, HttpError, IPost & { category: ICategory }>();
 
     const { autocompleteProps } = useAutocomplete<ICategory>({
         resource: "categories",
@@ -112,7 +112,7 @@ export const PostEdit: React.FC = () => {
                             ),
                         }}
                     <%_ } _%>
-                    defaultValue=""
+                    defaultValue={null as any}
                     render={({ field }) => (
                         <Autocomplete
                             {...autocompleteProps}

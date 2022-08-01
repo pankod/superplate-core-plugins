@@ -73,7 +73,7 @@ export const PostEdit: React.FC = () => {
                             ),
                         }}
                     <%_ } _%>
-                    defaultValue={null}
+                    defaultValue={null as any}
                     render={({ field }) => (
                         <Autocomplete
                             options={["published", "draft", "rejected"]}

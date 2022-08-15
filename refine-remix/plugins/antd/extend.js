@@ -1,8 +1,15 @@
 const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
-        import: [],
+        import: [
+            'import resetStyle from "@pankod/refine-antd/dist/reset.min.css";',
+            'import antdStyle from "@pankod/refine-antd/dist/antd.min.css";',
+        ],
         refineAntdImports: ["notificationProvider"],
+        styleImport: [
+            '{ rel: "stylesheet", href: antdStyle }',
+            '{ rel: "stylesheet", href: resetStyle }',
+        ],
     },
 };
 

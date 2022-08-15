@@ -13,18 +13,6 @@ module.exports = {
             default: "no",
         },
         {
-            name: "antd-theme-customization",
-            message: "Do you want a customized theme?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                { message: "Default theme", name: "antd-css" },
-                { message: "Custom theme (less)", name: "antd-less" },
-            ],
-            default: "antd-css",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        },
-        {
             name: "mui-extend-theme",
             message: "Do you want an extended theme?:",
             type: "select",

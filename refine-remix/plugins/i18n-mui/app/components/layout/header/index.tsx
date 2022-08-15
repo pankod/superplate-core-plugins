@@ -67,7 +67,7 @@ export const Header: React.FC = () => {
               {[...(locales ?? [])].sort().map((lang: string) => (
                 <MenuItem
                   component={Link}
-                  href={{ pathname, query }}
+                  to={{ pathname, query }}
                   locale={lang}
                   selected={currentLocale === lang}
                   key={lang}

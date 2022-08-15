@@ -1,4 +1,5 @@
 import React from "react";
+import { useLoaderData } from "@remix-run/react";
 import {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
@@ -15,14 +16,20 @@ import {
     DeleteButton,
 } from "@pankod/refine-mui";
 
-import { ICategory, IPost } from "src/interfaces";
+import { IPost, ICategory } from "~/interfaces";
 
 export const PostList: React.FC = () => {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
 
-    const { dataGridProps } = useDataGrid<IPost>();
+    const { initialData } = useLoaderData();
+
+    const { dataGridProps } = useDataGrid<IPost>({
+        queryOptions: {
+            initialData,
+        },
+    });
 
     const categoryIds = dataGridProps.rows.map((item) => item.category.id);
     const { data: categoriesData, isLoading } = useMany<ICategory>({

@@ -10,7 +10,7 @@ import {
 } from "@pankod/refine-mui";
 import { Controller, useForm } from "@pankod/refine-react-hook-form";
 
-import { IPost, ICategory } from "src/interfaces";
+import { IPost, ICategory } from "~/interfaces";
 
 export const PostCreate: React.FC = () => {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>

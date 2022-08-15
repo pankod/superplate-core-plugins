@@ -25,12 +25,6 @@ export const loader: LoaderFunction = async ({ params, request }) => {
     <%_ if (answers["auth-provider"] !== 'none') { _%>
 
     await requireUserId(request);
-
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
-    
-    //TODO: handle i18n
-    return { props: { ...props, ...i18nProps } };
     <%_ } _%>
 
     const { resource } = params;
@@ -50,40 +44,7 @@ export const loader: LoaderFunction = async ({ params, request }) => {
             });
 
             return json({ initialData: data });
-
-/*             return {
-                props: {
-                    initialData: data,
-                    
-                 <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-                <%_ } _%>
-             }, 
-         };*/
      } catch (error) {
         return json({});
-    //TODO: handle i18n
-/*     return {
-        props: {
-              <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-            <%_ } _%>
-         } };
-         */
      } 
-
-    <%_ } else if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-
-    //TODO: handle i18n
-    return json({});
-    /* const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
-    return {
-        props: {
-            ...i18nProps,
-        },
-    }; */
-    <%_ } else { _%>
-    return json({});
-    <%_ } _%>
-
 };

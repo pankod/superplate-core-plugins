@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
+export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
 import { checkAuthentication } from "@pankod/refine-nextjs-router";
 
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>

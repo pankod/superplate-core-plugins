@@ -1,7 +1,8 @@
-import { GetServerSideProps } from "next";
-export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
+import { json, LoaderFunction } from "@remix-run/node";
+import { parseTableParams } from "@pankod/refine-core";
+export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
 <%_ if (answers["auth-provider"] !== 'none') { _%>
-import { checkAuthentication } from "@pankod/refine-nextjs-router";
+import { requireUserId } from "~/session.server";
 <%_ } _%>
 
 <%_ if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
@@ -13,71 +14,33 @@ import dataProvider from "@pankod/refine-nestjsx-crud";
 <%_ } _%>
 
 <%_ if (answers["auth-provider"] !== 'none') { _%>
-import { authProvider } from "src/authProvider";
+import { authProvider } from "~/authProvider.ts";
 <%_ } _%>
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-<%_ } _%>
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const loader: LoaderFunction = async ({ params, request }) => {
     <%_ if (answers["auth-provider"] !== 'none') { _%>
 
-    const { isAuthenticated, ...props } = await checkAuthentication(
-            authProvider,
-            context,
-        );
-
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
-
-    if (!isAuthenticated) {
-        return { props: { ...props, ...i18nProps } };
-    }
-
-    <%_ } else { _%>
-        if (!isAuthenticated) {
-            return props;
-        }
+    await requireUserId(request);
     <%_ } _%>
 
+    const { resource } = params;
+    const url = new URL(request.url);
 
-    const { query } = context;
-
+    const { parsedCurrent, parsedPageSize, parsedSorter, parsedFilters } =
+    parseTableParams(url.search);
         try {
             const data = await dataProvider(API_URL).getList({
-                resource: query["resource"] as string,
+                resource: resource as string,
+                filters: parsedFilters,
+                pagination: {
+                    current: parsedCurrent || 1,
+                    pageSize: parsedPageSize || 10,
+                },
+                sort: parsedSorter,
             });
 
-            return {
-                props: {
-                    initialData: data,
-                    
-                 <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-                <%_ } _%>
-             },
-         };
+            return json({ initialData: data });
      } catch (error) {
-    return {
-        props: {
-              <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-            <%_ } _%>
-         } };
-     }
-
-    <%_ } else if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
-    return {
-        props: {
-            ...i18nProps,
-        },
-    };
-    <%_ } else { _%>
-    return {
-        props: {},
-    };
-    <%_ } _%>
-
+        return json({});
+     } 
 };

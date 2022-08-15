@@ -7,9 +7,13 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => {
 
     return (
         <Button fullWidth variant="text" disableRipple>
-            <Link href="/">
+            <Link to="/">
                 {collapsed ? (
-                    <img src="/refine-collapsed.svg" alt="Refine" width="28px" />
+                    <img
+                        src="/refine-collapsed.svg"
+                        alt="Refine"
+                        width="28px"
+                    />
                 ) : (
                     <img src="/refine.svg" alt="Refine" width="140px" />
                 )}

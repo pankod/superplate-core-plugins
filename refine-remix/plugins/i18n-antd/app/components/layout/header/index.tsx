@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
                         </span>
                     }
                 >
-                    <Link href="/" locale={lang}>
+                    <Link to="/" locale={lang}>
                         {lang === "en" ? "English" : "German"}
                     </Link>
                 </Menu.Item>

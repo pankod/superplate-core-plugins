@@ -17,10 +17,6 @@ import dataProvider from "@pankod/refine-nestjsx-crud";
 import { authProvider } from "~/authProvider.ts";
 <%_ } _%>
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-<%_ } _%>
-
 export const loader: LoaderFunction = async ({ params, request }) => {
     <%_ if (answers["auth-provider"] !== 'none') { _%>
 

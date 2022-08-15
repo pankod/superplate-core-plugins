@@ -1,11 +1,10 @@
-import { AuthProvider } from "@pankod/refine-core";
-import nookies from "nookies";
+import type { AuthProvider } from "@pankod/refine-core";
 
 import { supabaseClient } from "./utility";
 
 export const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
-        const { user, error, data } = await supabaseClient.auth.signIn({
+        const { user, error, session } = await supabaseClient.auth.signIn({
             email: username,
             password,
         });
@@ -14,27 +13,22 @@ export const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (user && data) {
-            nookies.set(null, "token", data.access_token, {
-                maxAge: 30 * 24 * 60 * 60,
-                path: "/",
-            });
-            return Promise.resolve();
+        if (user && session) {
+            return Promise.resolve({ ...user, token: session.access_token });
         }
     },
     logout: async () => {
-        nookies.destroy(null, "token");
-        const { error } = await supabaseClient.auth.signOut();
+        await supabaseClient.auth.signOut();
 
-        if (error) {
-            return Promise.reject(error);
-        }
-
-        return Promise.resolve("/");
+        return "/logout";
     },
     checkError: () => Promise.resolve(),
-    checkAuth: async (ctx) => {
-        const { token } = nookies.get(ctx);
+    checkAuth: async ({ request, storage }) => {
+        const session = await storage.getSession(request.headers.get("Cookie"));
+        const {
+            user: { token },
+        } = session.get("user");
+
         const { data: user } = await supabaseClient.auth.api.getUser(token);
 
         if (user) {

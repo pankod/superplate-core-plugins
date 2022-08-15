@@ -1,6 +1,6 @@
 import { AuthProvider } from "@pankod/refine-core";
 
-import { account } from "./utility";
+import { account } from "~/utility";
 
 export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {

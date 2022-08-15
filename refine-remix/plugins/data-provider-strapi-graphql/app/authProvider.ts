@@ -1,5 +1,4 @@
 import { AuthProvider } from "@pankod/refine-core";
-import nookies from "nookies";
 
 import { gqlDataProvider, client } from "./gqDataProvider";
 
@@ -22,13 +21,9 @@ export const authProvider: AuthProvider = {
                 },
             });
 
-            nookies.set(null, "token", data.jwt, {
-                maxAge: 30 * 24 * 60 * 60,
-                path: "/",
-            });
             client.setHeader("Authorization", `Bearer ${data.jwt}`);
 
-            return Promise.resolve();
+            return Promise.resolve(data);
         } catch (error) {
             return Promise.reject(error);
         }

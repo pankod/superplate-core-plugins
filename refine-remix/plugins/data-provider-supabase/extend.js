@@ -2,8 +2,8 @@ const base = {
     _app: {
         import: [`import { dataProvider } from "@pankod/refine-supabase";`],
         localImport: [
-            `import { authProvider } from "src/authProvider";`,
-            `import { supabaseClient } from "src/utility";`,
+            `import { authProvider } from "~/authProvider";`,
+            `import { supabaseClient } from "~/utility";`,
         ],
         refineAntdImports: [],
         refineProps: [

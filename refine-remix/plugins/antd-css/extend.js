@@ -4,13 +4,9 @@ const base = {
             'import resetStyle from "@pankod/refine-antd/dist/reset.min.css";',
             'import antdStyle from "@pankod/refine-antd/dist/antd.min.css";',
         ],
-        afterImport: [
-            `export function links() {
-                return [
-                    { rel: "stylesheet", href: antdStyle },
-                    { rel: "stylesheet", href: resetStyle },
-                ];
-            }`,
+        styleImport: [
+            '{ rel: "stylesheet", href: antdStyle }',
+            '{ rel: "stylesheet", href: resetStyle }',
         ],
     },
 };

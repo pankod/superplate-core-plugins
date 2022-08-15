@@ -13,10 +13,6 @@ import dataProvider from "@pankod/refine-nestjsx-crud";
     const API_URL = "https://api.nestjsx-crud.refine.dev"; 
 <%_ } _%>
 
-<%_ if (answers["auth-provider"] !== 'none') { _%>
-import { authProvider } from "~/authProvider.ts";
-<%_ } _%>
-
 export const loader: LoaderFunction = async ({ params, request }) => {
     <%_ if (answers["auth-provider"] !== 'none') { _%>
 

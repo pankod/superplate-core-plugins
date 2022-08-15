@@ -64,3 +64,9 @@ export default function App() {
         </html>
     );
 }
+
+export function links() {
+    return [
+        <%- (_app.styleImport || []).join("\n,") _%>
+    ];
+};

@@ -53,7 +53,7 @@ export async function requireUserId(
 
 export async function createUserSession(user: object, redirectTo: string) {
     const session = await storage.getSession();
-    session.set("user", { ...user });
+    session.set("user", user);
     return redirect(redirectTo, {
         headers: {
             "Set-Cookie": await storage.commitSession(session),

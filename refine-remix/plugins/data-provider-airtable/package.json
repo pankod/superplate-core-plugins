@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@pankod/refine-airtable": "^3.18.0"
+    }
+}

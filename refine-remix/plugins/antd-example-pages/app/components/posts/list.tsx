@@ -1,6 +1,6 @@
+import { useLoaderData } from "@remix-run/react";
 import {
     IResourceComponentsProps,
-    GetListResponse,
     useMany,
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
@@ -22,12 +22,16 @@ import {
     Select,
     ShowButton,
 } from "@pankod/refine-antd";
-import { IPost, ICategory } from "src/interfaces";
+import type { IPost, ICategory } from "~/interfaces";
 
-export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>> = ({ initialData }) => {
+
+export const PostList: React.FC<IResourceComponentsProps> = () => {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
+
+    const { initialData } = useLoaderData();
+
 
     const { tableProps, sorter } = useTable<IPost>({
         queryOptions: {

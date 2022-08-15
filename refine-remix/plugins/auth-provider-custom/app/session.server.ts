@@ -1,5 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
-import { authProvider } from "./authProvider";
+import { authProvider } from "~/authProvider";
 
 type LoginForm = {
     username: string;

@@ -13,7 +13,7 @@ import {
     MarkdownField,
 } from "@pankod/refine-antd";
 
-import { IPost, ICategory } from "src/interfaces";
+import type { IPost, ICategory } from "~/interfaces";
 
 const { Title, Text } = Typography;
 

@@ -1,5 +1,4 @@
 import { AuthProvider } from "@pankod/refine-core";
-import nookies from "nookies";
 
 const mockUsers = [
     {
@@ -18,18 +17,13 @@ export const authProvider: AuthProvider = {
         const user = mockUsers.find((item) => item.username === username);
 
         if (user) {
-            nookies.set(null, "auth", JSON.stringify(user), {
-                maxAge: 30 * 24 * 60 * 60,
-                path: "/",
-            });
-            return Promise.resolve();
+            return Promise.resolve(user);
         }
 
         return Promise.reject();
     },
     logout: () => {
-        nookies.destroy(null, "auth");
-        return Promise.resolve();
+        return Promise.resolve("/logout");
     },
     checkError: (error) => {
         if (error && error.statusCode === 401) {
@@ -38,24 +32,20 @@ export const authProvider: AuthProvider = {
 
         return Promise.resolve();
     },
-    checkAuth: (ctx) => {
-        const cookies = nookies.get(ctx);
-        return cookies["auth"] ? Promise.resolve() : Promise.reject();
-    },
-    getPermissions: () => {
-        const auth = nookies.get()["auth"];
-        if (auth) {
-            const parsedUser = JSON.parse(auth);
-            return Promise.resolve(parsedUser.roles);
+    checkAuth: async ({ request, storage }) => {
+        const session = await storage.getSession(request.headers.get("Cookie"));
+
+        const user = session.get("user");
+
+        if (!user) {
+            return Promise.reject();
         }
-        return Promise.reject();
+        return Promise.resolve();
     },
-    getUserIdentity: () => {
-        const auth = nookies.get()["auth"];
-        if (auth) {
-            const parsedUser = JSON.parse(auth);
-            return Promise.resolve(parsedUser.username);
-        }
-        return Promise.reject();
+    getPermissions: async () => {
+        return Promise.resolve();
+    },
+    getUserIdentity: async () => {
+        return Promise.resolve();
     },
 };

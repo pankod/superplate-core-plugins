@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        localImport: ['import { authProvider } from "src/authProvider";'],
+        localImport: ['import { authProvider } from "~/authProvider";'],
         refineProps: ["authProvider={authProvider}"],
         refineAntdImports: [],
         refineMuiImports: [],

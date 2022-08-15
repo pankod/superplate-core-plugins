@@ -18,7 +18,7 @@ import ReactMde from "react-mde";
 
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import { IPost } from "src/interfaces";
+import type { IPost, ICategory } from "~/interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     const [selectedTab, setSelectedTab] = useState<"write" | "preview">(

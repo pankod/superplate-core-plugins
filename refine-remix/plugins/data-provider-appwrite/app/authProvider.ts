@@ -1,16 +1,15 @@
-import { AuthProvider } from "@pankod/refine-core";
+import type { AuthProvider } from "@pankod/refine-core";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";
 
-import { account, TOKEN_KEY } from "~/utility";
+import { account, appwriteClient, TOKEN_KEY } from "~/utility";
 
 export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
         try {
             const user = await account.createEmailSession(email, password);
 
-            // TODO: fix
-            Cookies.set(TOKEN_KEY, user.token);
+            Cookies.set(TOKEN_KEY, user.providerAccessToken);
 
             return Promise.resolve(user);
         } catch (e) {
@@ -34,8 +33,10 @@ export const authProvider: AuthProvider = {
             token = parsedCookie;
         }
 
-        // TODO: fix
-
+        if (!token) {
+            return Promise.reject();
+        }
+        appwriteClient.setJWT(token);
         const session = await account.get();
 
         if (session) {

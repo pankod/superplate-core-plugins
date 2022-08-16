@@ -17,11 +17,10 @@ export const loader: LoaderFunction = async ({ params, request }) => {
     const { resource } = params;
     const url = new URL(request.url);
 
-    const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+    const parsedCookie = cookie.parse(request.headers.get("Cookie") ?? "");
     const token = parsedCookie[TOKEN_KEY];
 
-    // TODO: fix
-    await appwriteClient.auth.setAuth(token);
+    appwriteClient.setJWT(token);
 
     const {
         parsedCurrent,

@@ -1,0 +1,12 @@
+{
+    "dependencies": {
+        "@pankod/refine-strapi-graphql": "^4.3.0",
+        "graphql": "^15.5.3",
+        "graphql-request": "^3.5.0",
+        "cookie": "^0.5.0",
+        "js-cookie": "^3.0.1"
+    },
+    "devDependencies": {
+        "@types/js-cookie": "^3.0.2"
+    }
+}

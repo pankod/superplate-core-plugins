@@ -1,18 +1,28 @@
-import { dataProvider } from "@pankod/refine-supabase";
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
+import * as cookie from 'cookie'
 import { parseTableParams } from "@pankod/refine-core";
+import { dataProvider } from "@pankod/refine-supabase";
 
-import { requireUserId } from "~/session.server";
+import { checkAuthentication } from "@pankod/refine-remix-router";
+
 import { supabaseClient } from "~/utility";
+import { authProvider } from "~/authProvider";
+import { TOKEN_KEY } from "~/constants";
 
 export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
 
 export const loader: LoaderFunction = async ({ params, request }) => {
-    await requireUserId(request);
+    await checkAuthentication(authProvider, request);
 
     const { resource } = params;
     const url = new URL(request.url);
+
+    const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+    const token = parsedCookie[TOKEN_KEY];
+   
+
+    await supabaseClient.auth.setAuth(token);
 
     const {
         parsedCurrent,

@@ -1,22 +1,30 @@
-import { json, LoaderFunction } from "@remix-run/node";
-import axios from "axios";
-import dataProvider from "@pankod/refine-simple-rest";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import * as cookie from "cookie";
 import { parseTableParams } from "@pankod/refine-core";
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
 import { DataProvider } from "@pankod/refine-strapi";
+import { checkAuthentication } from "@pankod/refine-remix-router";
 
-import { requireUserId } from "~/session.server";
+import { authProvider, axiosInstance } from "~/authProvider";
 
-const axiosInstance = axios.create();
+export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
 
-const API_URL = "https://api.fake-rest.refine.dev";
+import { API_URL, TOKEN_KEY } from "~/constants";
+
 export const loader: LoaderFunction = async ({ params, request }) => {
-    const {
-        user: { token },
-    } = await requireUserId(request);
+    await checkAuthentication(authProvider, request);
 
     const { resource } = params;
     const url = new URL(request.url);
+
+    const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+    const token = parsedCookie[TOKEN_KEY];
+
+    if (token) {
+        axiosInstance.defaults.headers.common = {
+            Authorization: `Bearer ${token}`,
+        };
+    }
 
     const {
         parsedCurrent,
@@ -26,10 +34,6 @@ export const loader: LoaderFunction = async ({ params, request }) => {
     } = parseTableParams(url.search);
 
     try {
-        axiosInstance.defaults.headers.common = {
-            Authorization: `Bearer ${token}`,
-        };
-
         const data = await DataProvider(API_URL, axiosInstance).getList({
             resource: resource as string,
             filters: parsedFilters,

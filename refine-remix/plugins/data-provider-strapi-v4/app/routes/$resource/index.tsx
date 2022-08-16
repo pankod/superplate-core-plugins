@@ -1,59 +1,54 @@
-import { GetServerSideProps } from "next";
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
-import { checkAuthentication } from "@pankod/refine-nextjs-router";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import * as cookie from "cookie";
+import { parseTableParams } from "@pankod/refine-core";
 import { DataProvider } from "@pankod/refine-strapi-v4";
+import { checkAuthentication } from "@pankod/refine-remix-router";
 
-import nookies from "nookies";
+import { authProvider, axiosInstance } from "~/authProvider";
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-<%_ } _%>
+export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
 
-import { API_URL, TOKEN_KEY } from "src/constants";
-import { authProvider, axiosInstance} from "src/authProvider";
+import { API_URL, TOKEN_KEY } from "~/constants";
 
+export const loader: LoaderFunction = async ({ params, request }) => {
+    await checkAuthentication(authProvider, request);
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { isAuthenticated, ...props } = await checkAuthentication(
-    authProvider,
-    context
-  );
+    const { resource } = params;
+    const url = new URL(request.url);
 
-  <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
-    if (!isAuthenticated) {
-        return { props: { ...props, ...i18nProps } };
-    }
-    <%_ } else { _%>
-    if (!isAuthenticated) {
-      return props;
-    }
-    
-    <%_ } _%>
-    const { query } = context;
-   try {
-        const cookies = nookies.get(context);
-        if (cookies[TOKEN_KEY]) {
-          axiosInstance.defaults.headers.common = {
-              Authorization: `Bearer ${cookies[TOKEN_KEY]}`,
-          };
-        }
-        const data = await DataProvider(API_URL + "/api", axiosInstance).getList({
-            resource: query["resource"] as string,
-        });
-        return {
-            props: {
-                initialData: data,
-                <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-    <%_ } _%>
-            },
+    const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+    const token = parsedCookie[TOKEN_KEY];
+
+    if (token) {
+        axiosInstance.defaults.headers.common = {
+            Authorization: `Bearer ${token}`,
         };
+    }
+
+    const {
+        parsedCurrent,
+        parsedPageSize,
+        parsedSorter,
+        parsedFilters,
+    } = parseTableParams(url.search);
+
+    try {
+        const data = await DataProvider(
+            API_URL + "/api",
+            axiosInstance,
+        ).getList({
+            resource: resource as string,
+            filters: parsedFilters,
+            pagination: {
+                current: parsedCurrent || 1,
+                pageSize: parsedPageSize || 10,
+            },
+            sort: parsedSorter,
+        });
+
+        return json({ initialData: data });
     } catch (error) {
-        return { props: {
-            <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-            <%_ } _%>
-        } };
+        return json({});
     }
 };

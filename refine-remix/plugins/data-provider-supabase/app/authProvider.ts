@@ -1,6 +1,9 @@
 import type { AuthProvider } from "@pankod/refine-core";
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
 
-import { supabaseClient } from "./utility";
+import { supabaseClient } from "~/utility";
+import { TOKEN_KEY } from "~/constants";
 
 export const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
@@ -14,20 +17,27 @@ export const authProvider: AuthProvider = {
         }
 
         if (user && session) {
-            return Promise.resolve({ ...user, token: session.access_token });
+            Cookies.set(TOKEN_KEY, session.access_token);
+            return Promise.resolve();
         }
     },
     logout: async () => {
         await supabaseClient.auth.signOut();
+        Cookies.remove(TOKEN_KEY);
 
-        return "/logout";
+        return Promise.resolve();
     },
     checkError: () => Promise.resolve(),
-    checkAuth: async ({ request, storage }) => {
-        const session = await storage.getSession(request.headers.get("Cookie"));
-        const {
-            user: { token },
-        } = session.get("user");
+    checkAuth: async (context) => {
+        let token = undefined;
+        if (context) {
+            const { request } = context;
+            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+            token = parsedCookie[TOKEN_KEY];
+        } else {
+            const parsedCookie = Cookies.get(TOKEN_KEY);
+            token = parsedCookie;
+        }
 
         const { data: user } = await supabaseClient.auth.api.getUser(token);
 

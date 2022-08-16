@@ -1,6 +1,9 @@
 import { AuthProvider } from "@pankod/refine-core";
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
 
 import { gqlDataProvider, client } from "./gqDataProvider";
+import { TOKEN_KEY } from "~/constants";
 
 export const authProvider: AuthProvider = {
     login: async ({ username, password }) => {
@@ -21,6 +24,7 @@ export const authProvider: AuthProvider = {
                 },
             });
 
+            Cookies.set(TOKEN_KEY, data.jwt);
             client.setHeader("Authorization", `Bearer ${data.jwt}`);
 
             return Promise.resolve(data);
@@ -29,13 +33,21 @@ export const authProvider: AuthProvider = {
         }
     },
     logout: async () => {
-        nookies.destroy(null, "token");
+        Cookies.remove(TOKEN_KEY);
         client.setHeader("Authorization", "");
         return Promise.resolve("/");
     },
     checkError: () => Promise.resolve(),
-    checkAuth: (ctx) => {
-        const { token } = nookies.get(ctx);
+    checkAuth: (context) => {
+        let token = undefined;
+        if (context) {
+            const { request } = context;
+            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+            token = parsedCookie[TOKEN_KEY];
+        } else {
+            const parsedCookie = Cookies.get(TOKEN_KEY);
+            token = parsedCookie;
+        }
 
         if (!token) {
             return Promise.reject();

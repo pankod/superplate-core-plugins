@@ -1,11 +1,11 @@
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
 import { AuthProvider } from "@pankod/refine-core";
 import { AuthHelper } from "@pankod/refine-strapi-v4";
 
 import axios from "axios";
-import nookies from "nookies";
 
 import { TOKEN_KEY, API_URL } from "./constants";
-
 
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
@@ -17,10 +17,7 @@ export const authProvider: AuthProvider = {
             password,
         );
         if (status === 200) {
-            nookies.set(null, TOKEN_KEY, data.jwt, {
-                maxAge: 30 * 24 * 60 * 60,
-                path: "/",
-            });
+            Cookies.set(TOKEN_KEY, data.jwt);
 
             // set header axios instance
             axiosInstance.defaults.headers.common = {
@@ -32,15 +29,24 @@ export const authProvider: AuthProvider = {
         return Promise.reject();
     },
     logout: () => {
-        nookies.destroy(null, TOKEN_KEY);
+        Cookies.remove(TOKEN_KEY);
         return Promise.resolve();
     },
     checkError: () => Promise.resolve(),
-    checkAuth: (ctx) => {
-        const cookies = nookies.get(ctx);
-        if (cookies[TOKEN_KEY]) {
+    checkAuth: (context) => {
+        let token = undefined;
+        if (context) {
+            const { request } = context;
+            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+            token = parsedCookie[TOKEN_KEY];
+        } else {
+            const parsedCookie = Cookies.get(TOKEN_KEY);
+            token = parsedCookie;
+        }
+
+        if (token) {
             axiosInstance.defaults.headers.common = {
-                Authorization: `Bearer ${cookies[TOKEN_KEY]}`,
+                Authorization: `Bearer ${token}`,
             };
             return Promise.resolve();
         }
@@ -49,7 +55,8 @@ export const authProvider: AuthProvider = {
     },
     getPermissions: () => Promise.resolve(),
     getUserIdentity: async () => {
-        const token = nookies.get()[TOKEN_KEY];
+        const token = Cookies.get(TOKEN_KEY);
+
         if (!token) {
             return Promise.reject();
         }

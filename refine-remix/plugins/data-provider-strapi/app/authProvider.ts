@@ -1,6 +1,8 @@
 import { AuthProvider } from "@pankod/refine-core";
 import { AuthHelper } from "@pankod/refine-strapi";
 import axios from "axios";
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
 
 import { TOKEN_KEY } from "~/constants";
 
@@ -21,21 +23,30 @@ const strapiAuthProvider = (apiUrl: string) => {
                     Authorization: `Bearer ${data.jwt}`,
                 };
 
+                Cookies.set(TOKEN_KEY, data.jwt);
+
                 return Promise.resolve(data);
             }
             return Promise.reject();
         },
-        logout: async () => {
-            return "/logout";
+        logout: () => {
+            Cookies.remove(TOKEN_KEY);
+
+            return Promise.resolve();
         },
         checkError: () => Promise.resolve(),
-        checkAuth: async ({ request, storage }) => {
-            const session = await storage.getSession(
-                request.headers.get("Cookie"),
-            );
-            const {
-                user: { token },
-            } = session.get("user");
+        checkAuth: async (context) => {
+            let token = undefined;
+            if (context) {
+                const { request } = context;
+                const parsedCookie = cookie.parse(
+                    request.headers.get("Cookie"),
+                );
+                token = parsedCookie[TOKEN_KEY];
+            } else {
+                const parsedCookie = Cookies.get(TOKEN_KEY);
+                token = parsedCookie;
+            }
 
             if (token) {
                 axiosInstance.defaults.headers.common = {

@@ -16,8 +16,6 @@ import {
 import ReactMarkdown from "react-markdown";
 import ReactMde from "react-mde";
 
-import "react-mde/lib/styles/css/react-mde-all.css";
-
 import type { IPost, ICategory } from "~/interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {

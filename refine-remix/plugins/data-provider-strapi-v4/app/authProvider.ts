@@ -1,11 +1,10 @@
-import Cookies from "js-cookie";
-import * as cookie from "cookie";
 import { AuthProvider } from "@pankod/refine-core";
 import { AuthHelper } from "@pankod/refine-strapi-v4";
-
 import axios from "axios";
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
 
-import { TOKEN_KEY, API_URL } from "./constants";
+import { TOKEN_KEY, API_URL } from "~/constants";
 
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");

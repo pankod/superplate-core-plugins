@@ -1,13 +1,19 @@
 import { AuthProvider } from "@pankod/refine-core";
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
+
+import { TOKEN_KEY } from "~/constants";
 
 const mockUsers = [
     {
         username: "admin",
         roles: ["admin"],
+        token: "admin-token",
     },
     {
         username: "editor",
         roles: ["editor"],
+        token: "editor-token",
     },
 ];
 
@@ -17,13 +23,17 @@ export const authProvider: AuthProvider = {
         const user = mockUsers.find((item) => item.username === username);
 
         if (user) {
-            return Promise.resolve(user);
+            // Suppose we actually send a request to the back end here.
+            Cookies.set(TOKEN_KEY, user.token);
+
+            return Promise.resolve();
         }
 
         return Promise.reject();
     },
     logout: () => {
-        return Promise.resolve("/logout");
+        Cookies.remove(TOKEN_KEY);
+        return Promise.resolve();
     },
     checkError: (error) => {
         if (error && error.statusCode === 401) {
@@ -32,15 +42,22 @@ export const authProvider: AuthProvider = {
 
         return Promise.resolve();
     },
-    checkAuth: async ({ request, storage }) => {
-        const session = await storage.getSession(request.headers.get("Cookie"));
-
-        const user = session.get("user");
-
-        if (!user) {
-            return Promise.reject();
+    checkAuth: (context) => {
+        let token = undefined;
+        if (context) {
+            const { request } = context;
+            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+            token = parsedCookie[TOKEN_KEY];
+        } else {
+            const parsedCookie = Cookies.get(TOKEN_KEY);
+            token = parsedCookie;
         }
-        return Promise.resolve();
+
+        if (token) {
+            return Promise.resolve();
+        }
+
+        return Promise.reject();
     },
     getPermissions: async () => {
         return Promise.resolve();

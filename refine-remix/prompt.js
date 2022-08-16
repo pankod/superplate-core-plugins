@@ -192,7 +192,7 @@ module.exports = {
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] === "no",
         },
-        {
+        /*         {
             name: "i18n-no",
             message: "i18n - Internationalization:",
             type: "select",
@@ -224,8 +224,8 @@ module.exports = {
                 { message: "Yes", name: "i18n-mui" },
             ],
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
+        }, */
+        /*         {
             name: "partytown-builder",
             message:
                 "Do you want to add Partytown? (https://partytown.builder.io)",
@@ -237,7 +237,7 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "no",
-        },
+        }, */
     ],
     ignores: [
         {

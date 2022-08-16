@@ -1,8 +1,8 @@
 const base = {
     _app: {
         localImport: [
-            `import { gqlDataProvider } from "src/gqDataProvider";`,
-            `import { authProvider } from "src/authProvider";`,
+            `import { gqlDataProvider } from "~/gqDataProvider";`,
+            `import { authProvider } from "~/authProvider";`,
         ],
         refineAntdImports: [],
         refineProps: [

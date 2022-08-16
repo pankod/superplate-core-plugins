@@ -5,19 +5,20 @@ import { parseTableParams } from "@pankod/refine-core";
 import { DataProvider } from "@pankod/refine-strapi";
 import { checkAuthentication } from "@pankod/refine-remix-router";
 
-import { authProvider, axiosInstance } from "~/authProvider";
-
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+import strapiAuthProvider from "~/authProvider";
 
 import { API_URL, TOKEN_KEY } from "~/constants";
 
+export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+
 export const loader: LoaderFunction = async ({ params, request }) => {
+    const { authProvider, axiosInstance } = strapiAuthProvider(API_URL);
     await checkAuthentication(authProvider, request);
 
     const { resource } = params;
     const url = new URL(request.url);
 
-    const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+    const parsedCookie = cookie.parse(request.headers.get("Cookie") ?? "");
     const token = parsedCookie[TOKEN_KEY];
 
     if (token) {

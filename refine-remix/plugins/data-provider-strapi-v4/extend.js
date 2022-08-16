@@ -2,8 +2,8 @@ const base = {
     _app: {
         import: [`import { DataProvider } from "@pankod/refine-strapi-v4";`],
         localImport: [
-            `import { authProvider, axiosInstance } from "src/authProvider";`,
-            `import { API_URL } from "src/constants";`,
+            `import { authProvider, axiosInstance } from "~/authProvider";`,
+            `import { API_URL } from "~/constants";`,
         ],
         refineProps: [
             "authProvider={authProvider}",

@@ -4,8 +4,8 @@ const base = {
             `import { dataProvider, liveProvider } from "@pankod/refine-appwrite";`,
         ],
         localImport: [
-            `import { authProvider } from "src/authProvider";`,
-            `import { appwriteClient } from "src/utility";`,
+            `import { authProvider } from "~/authProvider";`,
+            `import { appwriteClient } from "~/utility";`,
         ],
         refineProps: [
             `dataProvider={dataProvider(appwriteClient, {

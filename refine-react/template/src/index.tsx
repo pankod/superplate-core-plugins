@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 <%_ if (answers["auth-provider"] === "auth-provider-auth0") { _%>
 import { Auth0Provider } from "@auth0/auth0-react";
 <%_ } _%>
@@ -11,8 +11,10 @@ import App from "./App";
 import "./i18n";
 <%_ } _%>
 
+const container = document.getElementById("root") as HTMLElement;
+const root = createRoot(container);
 
-ReactDOM.render(
+root.render(
     <React.StrictMode>
         <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         <React.Suspense fallback="loading">
@@ -31,8 +33,7 @@ ReactDOM.render(
         <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         </React.Suspense>
         <%_ } _%>
-    </React.StrictMode>,
-    document.getElementById("root"),
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

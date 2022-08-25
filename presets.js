@@ -53,7 +53,7 @@ module.exports = {
                 "mui-extend-theme": "no",
                 "mui-dark-mode": "no",
                 "router-provider": "react-router-v6",
-                "data-provider": "data-provider-altogic",
+                "data-provider": "data-provider-custom-json-rest",
                 "auth-provider": "none",
                 "antd-example-pages": "no",
                 "mui-example-pages": "no",

@@ -1,47 +1,67 @@
 const base = {
     _app: {
         refineImports: [`AuthProvider`],
-        import: [
-            `import axios from "axios";`,
-            `import { useGoogleLogout, GoogleLoginResponse } from "react-google-login";`,
+        import: [`import axios, { AxiosRequestConfig } from "axios";`],
+        localImport: [
+            `import { Login } from "pages/login";`,
+            `import { CredentialResponse } from "interfaces/google";`,
+            `import { parseJwt } from "utils/parse-jwt";`,
         ],
-        localImport: [`import { Login } from "pages/login";`],
-        innerHooks: [
-            `const { signOut } = useGoogleLogout({
-                clientId: "your-client-id",
-                cookiePolicy: "single_host_origin",
-            });`,
+        afterImport: [
+            "const axiosInstance = axios.create();",
+            "axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {",
+            'const token = localStorage.getItem("token");',
+            "if (request.headers) {",
+            '    request.headers["Authorization"] = `Bearer ${token}`;',
+            "} else {",
+            "    request.headers = {",
+            "        Authorization: `Bearer ${token}`,",
+            "    };",
+            "}",
+            "",
+            "return request;",
+            "});",
         ],
         inner: [
             `
             const authProvider: AuthProvider = {
-                login: ({ tokenId, profileObj, tokenObj }: GoogleLoginResponse) => {
-                    axios.defaults.headers.common = {`,
-            "Authorization: `Bearer ${tokenId}`,",
-            `};
+                login: ({ credential }: CredentialResponse) => {
+                    const profileObj = credential ? parseJwt(credential) : null;
         
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify({ ...profileObj, avatar: profileObj.imageUrl }),
-                    );
-                    localStorage.setItem("expiresAt", tokenObj.expires_at.toString());
-        
+                    if (profileObj) {
+                        localStorage.setItem(
+                            "user",
+                            JSON.stringify({
+                                ...profileObj,
+                                avatar: profileObj.picture,
+                            }),
+                        );
+                    }
+            `,
+            'localStorage.setItem("token", `${credential}`);',
+            `
                     return Promise.resolve();
                 },
                 logout: () => {
-                    signOut();
-                    localStorage.removeItem("user");
-                    localStorage.removeItem("expiresAt");
+                    const token = localStorage.getItem("token");
+        
+                    if (token && typeof window !== "undefined") {
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("user");
+                        axios.defaults.headers.common = {};
+                        window.google?.accounts.id.revoke(token, () => {
+                            return Promise.resolve();
+                        });
+                    }
+        
                     return Promise.resolve();
                 },
                 checkError: () => Promise.resolve(),
                 checkAuth: async () => {
-                    const expiresAt = localStorage.getItem("expiresAt");
+                    const token = localStorage.getItem("token");
         
-                    if (expiresAt) {
-                        return new Date().getTime() / 1000 < +expiresAt
-                            ? Promise.resolve()
-                            : Promise.reject();
+                    if (token) {
+                        return Promise.resolve();
                     }
                     return Promise.reject();
                 },
@@ -54,9 +74,13 @@ const base = {
                     }
                 },
             };
+        
             `,
         ],
         refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
+        publicScripts: [
+            `<script src="https://accounts.google.com/gsi/client" async defer ></script>`,
+        ],
     },
 };
 module.exports = {

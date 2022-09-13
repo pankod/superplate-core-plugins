@@ -10,6 +10,7 @@ import {
     Tooltip,
     Button,
     IconButton,
+    MuiList,
 } from "@pankod/refine-mui";
 import {
     ListOutlined,
@@ -311,6 +312,7 @@ export const Sider: React.FC<typeof DefaultSider> = ({ render }) => {
                 dashboard,
                 logout,
                 items,
+                collapsed,
             });
         }
         return (

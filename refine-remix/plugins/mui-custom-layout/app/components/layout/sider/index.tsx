@@ -312,6 +312,7 @@ export const Sider: React.FC<typeof DefaultSider> = ({ render }) => {
                 dashboard,
                 logout,
                 items,
+                collapsed,
             });
         }
         return (

@@ -1,54 +1,44 @@
 import React, { useState } from "react";
-
-import {
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        useTranslate,
-    <%_ } _%>
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
-    useLogout,
-    <%_ } _%>
-    useTitle,
-    CanAccess,
-    ITreeMenu,
-    useMenu,
-    useRefineContext,
-    useRouterContext
-} from "@pankod/refine-core";
 import {
     AntdLayout,
     Menu,
     Grid,
-    Icons
+    Icons,
+    Sider as DefaultSider,
 } from "@pankod/refine-antd";
+import {
+    useTranslate,
+    useLogout,
+    useTitle,
+    CanAccess,
+    ITreeMenu,
+    useIsExistAuthentication,
+    useRouterContext,
+    useMenu,
+    useRefineContext,
+} from "@pankod/refine-core";
+
+import { Title as DefaultTitle } from "../title";
+
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
+const { UnorderedListOutlined, LogoutOutlined } = Icons;
+const { SubMenu } = Menu;
 
-const {
-    UnorderedListOutlined,
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
-    LogoutOutlined
-    <%_ } _%>
- } = Icons;
-
-export const Sider: React.FC = () => {
+export const Sider: React.FC<typeof DefaultSider> = ({ render }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
-
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
-    const { mutate: logout } = useLogout();
-    <%_ } _%>
-
+    const isExistAuthentication = useIsExistAuthentication();
     const { Link } = useRouterContext();
-    const { hasDashboard } = useRefineContext();
+    const { mutate: mutateLogout } = useLogout();
     const Title = useTitle();
-    const { SubMenu } = Menu;
-
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     const translate = useTranslate();
-    <%_ } _%>
     const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
     const breakpoint = Grid.useBreakpoint();
+    const { hasDashboard } = useRefineContext();
 
     const isMobile =
         typeof breakpoint.lg === "undefined" ? false : !breakpoint.lg;
+
+    const RenderToTitle = Title ?? DefaultTitle;
 
     const renderTreeView = (tree: ITreeMenu[], selectedKey: string) => {
         return tree.map((item: ITreeMenu) => {
@@ -56,13 +46,22 @@ export const Sider: React.FC = () => {
 
             if (children.length > 0) {
                 return (
-                    <SubMenu
+                    <CanAccess
                         key={route}
-                        icon={icon ?? <UnorderedListOutlined />}
-                        title={label}
+                        resource={name.toLowerCase()}
+                        action="list"
+                        params={{
+                            resource: item,
+                        }}
                     >
-                        {renderTreeView(children, selectedKey)}
-                    </SubMenu>
+                        <SubMenu
+                            key={route}
+                            icon={icon ?? <UnorderedListOutlined />}
+                            title={label}
+                        >
+                            {renderTreeView(children, selectedKey)}
+                        </SubMenu>
+                    </CanAccess>
                 );
             }
             const isSelected = route === selectedKey;
@@ -74,6 +73,9 @@ export const Sider: React.FC = () => {
                     key={route}
                     resource={name.toLowerCase()}
                     action="list"
+                    params={{
+                        resource: item,
+                    }}
                 >
                     <Menu.Item
                         key={route}
@@ -82,7 +84,7 @@ export const Sider: React.FC = () => {
                         }}
                         icon={icon ?? (isRoute && <UnorderedListOutlined />)}
                     >
-                        <Link href={route}>{label}</Link>
+                        <Link to={route}>{label}</Link>
                         {!collapsed && isSelected && (
                             <div className="ant-menu-tree-arrow" />
                         )}
@@ -90,6 +92,54 @@ export const Sider: React.FC = () => {
                 </CanAccess>
             );
         });
+    };
+    const logout = isExistAuthentication && (
+        <Menu.Item
+            key="logout"
+            onClick={() => mutateLogout()}
+            icon={<LogoutOutlined />}
+        >
+            {translate("buttons.logout", "Logout")}
+            Logout
+        </Menu.Item>
+    );
+
+    const dashboard = hasDashboard && (
+        <Menu.Item
+            key="dashboard"
+            style={{
+                fontWeight: selectedKey === "/" ? "bold" : "normal",
+            }}
+            icon={<Icons.DashboardOutlined />}
+        >
+            <Link href="/">
+                {translate("dashboard.title", "Dashboard")}
+                Dashboard
+            </Link>
+            {!collapsed && selectedKey === "/" && (
+                <div className="ant-menu-tree-arrow" />
+            )}
+        </Menu.Item>
+    );
+
+    const items = renderTreeView(menuItems, selectedKey);
+
+    const renderSider = () => {
+        if (render) {
+            return render({
+                dashboard,
+                items,
+                logout,
+                collapsed,
+            });
+        }
+        return (
+            <>
+                {dashboard}
+                {items}
+                {logout}
+            </>
+        );
     };
 
     return (
@@ -101,7 +151,7 @@ export const Sider: React.FC = () => {
             breakpoint="lg"
             style={isMobile ? antLayoutSiderMobile : antLayoutSider}
         >
-            {Title && <Title collapsed={collapsed} />}
+            <RenderToTitle collapsed={collapsed} />
             <Menu
                 selectedKeys={[selectedKey]}
                 defaultOpenKeys={defaultOpenKeys}
@@ -112,38 +162,7 @@ export const Sider: React.FC = () => {
                     }
                 }}
             >
-                    {hasDashboard && (
-                        <Menu.Item
-                            key="dashboard"
-                            style={{
-                                fontWeight: selectedKey === "/" ? "bold" : "normal",
-                            }}
-                            icon={<Icons.DashboardOutlined />}
-                        >
-                            <Link href="/">
-                            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-                                {translate("dashboard.title", "Dashboard")}
-                            <%_ } else { _%>
-                                Dashboard
-                            <%_ } _%>
-                            </Link>
-                            {!collapsed && selectedKey === "/" && (
-                                <div className="ant-menu-tree-arrow" />
-                            )}
-                        </Menu.Item>
-                    )}
-
-                    {renderTreeView(menuItems, selectedKey)}   
-
-                    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
-                    <Menu.Item key="logout" onClick={() => logout()} icon={<LogoutOutlined />}>
-                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-                        {translate("buttons.logout", "Logout")}
-                        <%_ } else { _%>
-                        Logout
-                        <%_ } _%>
-                    </Menu.Item>
-                <%_ } _%>
+                {renderSider()}
             </Menu>
         </AntdLayout.Sider>
     );

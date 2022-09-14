@@ -24,7 +24,7 @@ import { antLayoutSider, antLayoutSiderMobile } from "./styles";
 const { UnorderedListOutlined, LogoutOutlined } = Icons;
 const { SubMenu } = Menu;
 
-export const Sider: React.FC<typeof DefaultSider> = ({ render }) => {
+export const Sider: typeof DefaultSider = ({ render }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const isExistAuthentication = useIsExistAuthentication();
     const { Link } = useRouterContext();

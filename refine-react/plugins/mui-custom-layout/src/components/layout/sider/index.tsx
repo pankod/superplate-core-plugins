@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import {
-    CanAccess,
-    ITreeMenu,
-    useIsExistAuthentication,
-    useLogout,
-    useTitle,
-    useTranslate,
-    useRefineContext,
-    useRouterContext,
-    useMenu,
-} from "@pankod/refine-core";
-import {
     Box,
     Drawer,
-    MuiList,
+    Sider as DefaultSider,
     ListItemButton,
     ListItemIcon,
     ListItemText,
@@ -21,6 +10,7 @@ import {
     Tooltip,
     Button,
     IconButton,
+    MuiList,
 } from "@pankod/refine-mui";
 import {
     ListOutlined,
@@ -32,10 +22,21 @@ import {
     MenuRounded,
     Dashboard,
 } from "@mui/icons-material";
+import {
+    CanAccess,
+    ITreeMenu,
+    useIsExistAuthentication,
+    useLogout,
+    useTitle,
+    useTranslate,
+    useRouterContext,
+    useMenu,
+    useRefineContext,
+} from "@pankod/refine-core";
 
 import { Title as DefaultTitle } from "../title";
 
-export const Sider: React.FC = () => {
+export const Sider: React.FC<typeof DefaultSider> = ({ render }) => {
     const [collapsed, setCollapsed] = useState(false);
     const [opened, setOpened] = useState(false);
 
@@ -45,12 +46,13 @@ export const Sider: React.FC = () => {
     };
 
     const t = useTranslate();
-    const { hasDashboard } = useRefineContext();
     const { Link } = useRouterContext();
+    const { hasDashboard } = useRefineContext();
+    const translate = useTranslate();
 
     const { menuItems, selectedKey, defaultOpenKeys } = useMenu();
     const isExistAuthentication = useIsExistAuthentication();
-    const { mutate: logout } = useLogout();
+    const { mutate: mutateLogout } = useLogout();
     const Title = useTitle();
 
     const [open, setOpen] = useState<{ [k: string]: any }>({});
@@ -85,70 +87,83 @@ export const Sider: React.FC = () => {
 
             if (children.length > 0) {
                 return (
-                    <div key={route}>
-                        <Tooltip
-                            title={label ?? name}
-                            placement="right"
-                            disableHoverListener={!collapsed}
-                            arrow
-                        >
-                            <ListItemButton
-                                onClick={() => {
-                                    if (collapsed) {
-                                        setCollapsed(false);
-                                        if (!isOpen) {
+                    <CanAccess
+                        key={route}
+                        resource={name.toLowerCase()}
+                        action="list"
+                        params={{
+                            resource: item,
+                        }}
+                    >
+                        <div key={route}>
+                            <Tooltip
+                                title={label ?? name}
+                                placement="right"
+                                disableHoverListener={!collapsed}
+                                arrow
+                            >
+                                <ListItemButton
+                                    onClick={() => {
+                                        if (collapsed) {
+                                            setCollapsed(false);
+                                            if (!isOpen) {
+                                                handleClick(route || "");
+                                            }
+                                        } else {
                                             handleClick(route || "");
                                         }
-                                    } else {
-                                        handleClick(route || "");
-                                    }
-                                }}
-                                sx={{
-                                    pl: isNested ? 4 : 2,
-                                    justifyContent: "center",
-                                    "&.Mui-selected": {
-                                        "&:hover": {
+                                    }}
+                                    sx={{
+                                        pl: isNested ? 4 : 2,
+                                        justifyContent: "center",
+                                        "&.Mui-selected": {
+                                            "&:hover": {
+                                                backgroundColor: "transparent",
+                                            },
                                             backgroundColor: "transparent",
                                         },
-                                        backgroundColor: "transparent",
-                                    },
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        justifyContent: "center",
-                                        minWidth: 36,
-                                        color: "primary.contrastText",
                                     }}
                                 >
-                                    {icon ?? <ListOutlined />}
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={label}
-                                    primaryTypographyProps={{
-                                        noWrap: true,
-                                        fontSize: "14px",
-                                        fontWeight: isSelected
-                                            ? "bold"
-                                            : "normal",
-                                    }}
-                                />
-                                {!collapsed &&
-                                    (isOpen ? <ExpandLess /> : <ExpandMore />)}
-                            </ListItemButton>
-                        </Tooltip>
-                        {!collapsed && (
-                            <Collapse
-                                in={open[route || ""]}
-                                timeout="auto"
-                                unmountOnExit
-                            >
-                                <MuiList component="div" disablePadding>
-                                    {renderTreeView(children, selectedKey)}
-                                </MuiList>
-                            </Collapse>
-                        )}
-                    </div>
+                                    <ListItemIcon
+                                        sx={{
+                                            justifyContent: "center",
+                                            minWidth: 36,
+                                            color: "primary.contrastText",
+                                        }}
+                                    >
+                                        {icon ?? <ListOutlined />}
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={label}
+                                        primaryTypographyProps={{
+                                            noWrap: true,
+                                            fontSize: "14px",
+                                            fontWeight: isSelected
+                                                ? "bold"
+                                                : "normal",
+                                        }}
+                                    />
+                                    {!collapsed &&
+                                        (isOpen ? (
+                                            <ExpandLess />
+                                        ) : (
+                                            <ExpandMore />
+                                        ))}
+                                </ListItemButton>
+                            </Tooltip>
+                            {!collapsed && (
+                                <Collapse
+                                    in={open[route || ""]}
+                                    timeout="auto"
+                                    unmountOnExit
+                                >
+                                    <MuiList component="div" disablePadding>
+                                        {renderTreeView(children, selectedKey)}
+                                    </MuiList>
+                                </Collapse>
+                            )}
+                        </div>
+                    </CanAccess>
                 );
             }
 
@@ -157,6 +172,7 @@ export const Sider: React.FC = () => {
                     key={route}
                     resource={name.toLowerCase()}
                     action="list"
+                    params={{ resource: item }}
                 >
                     <Tooltip
                         title={label ?? name}
@@ -207,87 +223,110 @@ export const Sider: React.FC = () => {
         });
     };
 
-    const drawer = (
-        <MuiList disablePadding sx={{ mt: 1, color: "primary.contrastText" }}>
-            {hasDashboard ? (
-                <Tooltip
-                    title={t("dashboard.title", "Dashboard")}
-                    placement="right"
-                    disableHoverListener={!collapsed}
-                    arrow
-                >
-                    <ListItemButton
-                        component={Link}
-                        to="/"
-                        selected={selectedKey === "/"}
-                        onClick={() => {
-                            setOpened(false);
-                        }}
-                        sx={{
-                            pl: 2,
-                            py: 1,
-                            "&.Mui-selected": {
-                                "&:hover": {
-                                    backgroundColor: "transparent",
-                                },
+    const dashboard = hasDashboard ? (
+        <CanAccess resource="dashboard" action="list">
+            <Tooltip
+                title={translate("dashboard.title", "Dashboard")}
+                placement="right"
+                disableHoverListener={!collapsed}
+                arrow
+            >
+                <ListItemButton
+                    component={Link}
+                    to="/"
+                    selected={selectedKey === "/"}
+                    onClick={() => {
+                        setOpened(false);
+                    }}
+                    sx={{
+                        pl: 2,
+                        py: 1,
+                        "&.Mui-selected": {
+                            "&:hover": {
                                 backgroundColor: "transparent",
                             },
+                            backgroundColor: "transparent",
+                        },
+                        justifyContent: "center",
+                    }}
+                >
+                    <ListItemIcon
+                        sx={{
                             justifyContent: "center",
+                            minWidth: 36,
+                            color: "primary.contrastText",
                         }}
                     >
-                        <ListItemIcon
-                            sx={{
-                                justifyContent: "center",
-                                minWidth: 36,
-                                color: "primary.contrastText",
-                            }}
-                        >
-                            <Dashboard />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={t("dashboard.title", "Dashboard")}
-                            primaryTypographyProps={{
-                                noWrap: true,
-                                fontSize: "14px",
-                                fontWeight:
-                                    selectedKey === "/" ? "bold" : "normal",
-                            }}
-                        />
-                    </ListItemButton>
-                </Tooltip>
-            ) : null}
-            {renderTreeView(menuItems, selectedKey)}
-            {isExistAuthentication && (
-                <Tooltip
-                    title={t("buttons.logout", "Logout")}
-                    placement="right"
-                    disableHoverListener={!collapsed}
-                    arrow
+                        <Dashboard />
+                    </ListItemIcon>
+                    <ListItemText
+                        primary={translate("dashboard.title", "Dashboard")}
+                        primaryTypographyProps={{
+                            noWrap: true,
+                            fontSize: "14px",
+                            fontWeight: selectedKey === "/" ? "bold" : "normal",
+                        }}
+                    />
+                </ListItemButton>
+            </Tooltip>
+        </CanAccess>
+    ) : null;
+
+    const logout = isExistAuthentication && (
+        <Tooltip
+            title={t("buttons.logout", "Logout")}
+            placement="right"
+            disableHoverListener={!collapsed}
+            arrow
+        >
+            <ListItemButton
+                key="logout"
+                onClick={() => mutateLogout()}
+                sx={{ justifyContent: "center" }}
+            >
+                <ListItemIcon
+                    sx={{
+                        justifyContent: "center",
+                        minWidth: 36,
+                        color: "primary.contrastText",
+                    }}
                 >
-                    <ListItemButton
-                        key="logout"
-                        onClick={() => logout()}
-                        sx={{ justifyContent: "center" }}
-                    >
-                        <ListItemIcon
-                            sx={{
-                                justifyContent: "center",
-                                minWidth: 36,
-                                color: "primary.contrastText",
-                            }}
-                        >
-                            <Logout />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={t("buttons.logout", "Logout")}
-                            primaryTypographyProps={{
-                                noWrap: true,
-                                fontSize: "14px",
-                            }}
-                        />
-                    </ListItemButton>
-                </Tooltip>
-            )}
+                    <Logout />
+                </ListItemIcon>
+                <ListItemText
+                    primary={t("buttons.logout", "Logout")}
+                    primaryTypographyProps={{
+                        noWrap: true,
+                        fontSize: "14px",
+                    }}
+                />
+            </ListItemButton>
+        </Tooltip>
+    );
+
+    const items = renderTreeView(menuItems, selectedKey);
+
+    const renderSider = () => {
+        if (render) {
+            return render({
+                dashboard,
+                logout,
+                items,
+                collapsed,
+            });
+        }
+        return (
+            <>
+                {dashboard}
+                {items}
+                {logout}
+            </>
+        );
+    };
+
+    const drawer = (
+        <MuiList disablePadding sx={{ mt: 1, color: "primary.contrastText" }}>
+            {renderSider()}
         </MuiList>
     );
 

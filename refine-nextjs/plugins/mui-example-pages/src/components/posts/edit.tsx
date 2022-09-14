@@ -1,6 +1,8 @@
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-import { useTranslate, HttpError } from "@pankod/refine-core";
-<%_ } _%>
+import {
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+    useTranslate,
+    <%_ } _%>
+    HttpError } from "@pankod/refine-core";
 import {
     Edit,
     Box,

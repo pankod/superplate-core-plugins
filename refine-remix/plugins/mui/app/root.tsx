@@ -1,3 +1,4 @@
+import React from 'react';
 import type { MetaFunction } from "@remix-run/node";
 import {
     Links,

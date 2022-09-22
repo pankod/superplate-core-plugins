@@ -43,6 +43,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     <%_ } _%>
 
+    <%_ } _%>
+
     try {
         if (resource && action === "show" && id) {
             const data = await dataProvider(API_URL).getOne({
@@ -81,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
          } };
      }
 
-    <%_ } else if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
     return {
         props: {

@@ -19,9 +19,7 @@ import {
 import { IPost, ICategory } from "~/interfaces";
 
 export const PostList: React.FC = () => {
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        const t = useTranslate();
-    <%_ } _%>
+
 
     const { initialData } = useLoaderData();
 

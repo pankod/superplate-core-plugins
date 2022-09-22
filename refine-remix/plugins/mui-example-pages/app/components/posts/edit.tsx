@@ -1,8 +1,4 @@
-import {
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-    useTranslate,
-    <%_ } _%>
-    HttpError } from "@pankod/refine-core";
+import { HttpError } from "@pankod/refine-core";
 import {
     Edit,
     Box,
@@ -15,10 +11,6 @@ import { Controller, useForm } from "@pankod/refine-react-hook-form";
 import { IPost, ICategory } from "~/interfaces";
 
 export const PostEdit: React.FC = () => {
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        const t = useTranslate();
-    <%_ } _%>
-
     const {
         saveButtonProps,
         refineCore: { queryResult },
@@ -41,40 +33,20 @@ export const PostEdit: React.FC = () => {
             >
                 <TextField
                     {...register("title", {
-                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                            required: "This field is required",
-                        <%_ } else { _%>
-                            required: t(
-                                "errors.required.field",
-                                { field: "Title" },
-                            ),
-                        <%_ } _%>
+                        required: "This field is required",
                     })}
                     error={!!errors.title}
                     helperText={errors.title?.message}
                     margin="normal"
                     fullWidth
-                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                        label="Title"
-                    <%_ } else { _%>
-                        label={t("posts.fields.title")}
-                    <%_ } _%>
+                    label="Title"
                     name="title"
                     autoFocus
                 />
                 <Controller
                     control={control}
                     name="status"
-                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                        rules={{ required: "This field is required" }}
-                    <%_ } else { _%>
-                        rules={{
-                            required: t(
-                                "errors.required.field",
-                                { field: "Status" },
-                            ),
-                        }}
-                    <%_ } _%>
+                    rules={{ required: "This field is required" }}
                     defaultValue={null as any}
                     render={({ field }) => (
                         <Autocomplete
@@ -86,11 +58,7 @@ export const PostEdit: React.FC = () => {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
-                                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                                        label="Status"
-                                    <%_ } else { _%>
-                                        label={t("posts.fields.status.title")}
-                                    <%_ } _%>
+                                    label="Status"
                                     margin="normal"
                                     variant="outlined"
                                     error={!!errors.status}
@@ -104,16 +72,7 @@ export const PostEdit: React.FC = () => {
                 <Controller
                     control={control}
                     name="category"
-                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                        rules={{ required: "This field is required" }}
-                    <%_ } else { _%>
-                        rules={{
-                            required: t(
-                                "errors.required.field",
-                                { field: "Category" },
-                            ),
-                        }}
-                    <%_ } _%>
+                    rules={{ required: "This field is required" }}
                     defaultValue={null as any}
                     render={({ field }) => (
                         <Autocomplete
@@ -138,11 +97,7 @@ export const PostEdit: React.FC = () => {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
-                                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                                        label="Category"
-                                    <%_ } else { _%>
-                                        label={t("posts.fields.category.title")}
-                                    <%_ } _%>
+                                    label="Category"
                                     margin="normal"
                                     variant="outlined"
                                     error={!!errors.category}
@@ -155,23 +110,12 @@ export const PostEdit: React.FC = () => {
                 />
                 <TextField
                     {...register("content", {
-                        <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                            required: "This field is required",
-                        <%_ } else { _%>
-                            required: t(
-                                "errors.required.field",
-                                { field: "Content" },
-                            ),
-                        <%_ } _%>
+                        required: "This field is required",
                     })}
                     error={!!errors.content}
                     helperText={errors.content?.message}
                     margin="normal"
-                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                        label="Content"
-                    <%_ } else { _%>
-                        label={t("posts.fields.content")}
-                    <%_ } _%>
+                    label="Content"
                     multiline
                     rows={4}
                 />

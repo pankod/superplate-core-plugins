@@ -4,10 +4,10 @@ import { NextRouteComponent, handleRefineParams } from '@pankod/refine-nextjs-ro
 import { checkAuthentication } from "@pankod/refine-nextjs-router";
 <%_ } _%>
 
-<%_ if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
+<%_ if (answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
 import dataProvider from "@pankod/refine-simple-rest";
     const API_URL = "https://api.fake-rest.refine.dev";
-<%_ } else if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
+<%_ } else if (answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
 import dataProvider from "@pankod/refine-nestjsx-crud";
     const API_URL = "https://api.nestjsx-crud.refine.dev"; 
 <%_ } _%>

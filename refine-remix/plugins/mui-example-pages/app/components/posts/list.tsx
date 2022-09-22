@@ -1,11 +1,6 @@
 import React from "react";
 import { useLoaderData } from "@remix-run/react";
-import {
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        useTranslate,
-    <%_ } _%>
-    useMany,
-} from "@pankod/refine-core";
+import { useMany } from "@pankod/refine-core";
 import {
     useDataGrid,
     DataGrid,
@@ -19,10 +14,6 @@ import {
 import { IPost, ICategory } from "~/interfaces";
 
 export const PostList: React.FC = () => {
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        const t = useTranslate();
-    <%_ } _%>
-
     const { initialData } = useLoaderData();
 
     const { dataGridProps } = useDataGrid<IPost>({
@@ -44,31 +35,19 @@ export const PostList: React.FC = () => {
         () => [
             {
                 field: "id",
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                    headerName: "ID",
-                <%_ } else { _%>
-                    headerName: t("posts.fields.id"),
-                <%_ } _%>
+                headerName: "ID",
                 type: "number",
                 width: 50,
             },
-            { 
-                field: "title", 
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                headerName: "Title", 
-                <%_ } else { _%>
-                headerName: t("posts.fields.title"),
-                <%_ } _%>
-                minWidth: 400, 
-                flex: 1 
+            {
+                field: "title",
+                headerName: "Title",
+                minWidth: 400,
+                flex: 1,
             },
             {
                 field: "category.id",
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                    headerName: "Category",
-                <%_ } else { _%>
-                    headerName: t("posts.fields.category.title"),
-                <%_ } _%>
+                headerName: "Category",
                 type: "number",
                 headerAlign: "left",
                 align: "left",
@@ -85,24 +64,16 @@ export const PostList: React.FC = () => {
                     return category?.title;
                 },
             },
-            { 
-                field: "status", 
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                    headerName: "Status",
-                <%_ } else { _%>
-                    headerName: t("posts.fields.status.title"),
-                <%_ } _%>
-                minWidth: 120, 
-                flex: 0.3
+            {
+                field: "status",
+                headerName: "Status",
+                minWidth: 120,
+                flex: 0.3,
             },
             {
                 field: "actions",
                 type: "actions",
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-                    headerName: "Actions",
-                <%_ } else { _%>
-                    headerName: t("table.actions"),
-                <%_ } _%>
+                headerName: "Actions",
                 renderCell: function render({ row }) {
                     return (
                         <Stack direction="row" spacing={1}>
@@ -124,13 +95,7 @@ export const PostList: React.FC = () => {
                 minWidth: 80,
             },
         ],
-        [
-            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-            t,
-            <%_ } _%> 
-            categoriesData,
-            isLoading
-        ]
+        [categoriesData, isLoading],
     );
 
     return (

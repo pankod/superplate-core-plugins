@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
+import { NextRouteComponent /*, handleRefineParams */ } from "@pankod/refine-nextjs-router";
 <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
     import { checkAuthentication } from "@pankod/refine-nextjs-router";
 
@@ -11,6 +11,8 @@ export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
 <%_ } _%>
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    // const { resource, action, id } = handleRefineParams(context.params?.refine);
+
     <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] == 'data-provider-strapi-graphql' || answers["data-provider"] == 'data-provider-supabase') { _%>
 
         const { isAuthenticated, ...props } = await checkAuthentication(
@@ -50,3 +52,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     
 };
+
+export default NextRouteComponent;
+
+/**
+ * To define a custom initial route for refine to redirect and start with:
+ *
+ * Bind the `initialRoute` value to the `NextRouteComponent` like the following:
+ *
+ * export default NextRouteComponent.bind({ initialRoute: "/posts" });
+ *
+ **/

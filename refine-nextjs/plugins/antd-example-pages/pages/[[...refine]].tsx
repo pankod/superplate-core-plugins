@@ -1,13 +1,13 @@
 import { GetServerSideProps } from "next";
-export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
+import { NextRouteComponent, handleRefineParams } from "@pankod/refine-nextjs-router";
 <%_ if (answers["auth-provider"] !== 'none') { _%>
 import { checkAuthentication } from "@pankod/refine-nextjs-router";
 <%_ } _%>
 
-<%_ if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
+<%_ if (answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
 import dataProvider from "@pankod/refine-simple-rest";
     const API_URL = "https://api.fake-rest.refine.dev";
-<%_ } else if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
+<%_ } else if (answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
 import dataProvider from "@pankod/refine-nestjsx-crud";
     const API_URL = "https://api.nestjsx-crud.refine.dev"; 
 <%_ } _%>
@@ -21,6 +21,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { resource, action, id } = handleRefineParams(context.params?.refine);
+
     <%_ if (answers["auth-provider"] !== 'none') { _%>
 
     const { isAuthenticated, ...props } = await checkAuthentication(
@@ -41,24 +43,38 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     <%_ } _%>
 
+    <%_ } _%>
 
-    const { query } = context;
-
-        try {
-            const data = await dataProvider(API_URL).getList({
-                resource: query["resource"] as string,
+    try {
+        if (resource && action === "show" && id) {
+            const data = await dataProvider(API_URL).getOne({
+                resource: resource.slice(resource.lastIndexOf("/") + 1),
+                id,
             });
 
             return {
                 props: {
                     initialData: data,
-                    
-                 <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-                <%_ } _%>
-             },
-         };
-     } catch (error) {
+                    <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+                        ...i18nProps
+                        <%_ } _%>
+                },
+            };
+        } else if (resource && !action && !id) {
+            const data = await dataProvider(API_URL).getList({
+                resource: resource.slice(resource.lastIndexOf("/") + 1),
+            });
+
+            return {
+                props: {
+                    initialData: data,
+                    <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+                        ...i18nProps
+                        <%_ } _%>
+                },
+            };
+        }
+    } catch (error) {
     return {
         props: {
               <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
@@ -67,8 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
          } };
      }
 
-    <%_ } else if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     return {
         props: {
             ...i18nProps,
@@ -81,3 +96,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     <%_ } _%>
 
 };
+
+export default NextRouteComponent;
+
+/**
+ * To define a custom initial route for refine to redirect and start with:
+ *
+ * Bind the `initialRoute` value to the `NextRouteComponent` like the following:
+ *
+ * export default NextRouteComponent.bind({ initialRoute: "/posts" });
+ *
+ **/
+

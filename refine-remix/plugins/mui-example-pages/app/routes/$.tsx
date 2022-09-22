@@ -1,14 +1,15 @@
-import { json, LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { parseTableParams } from "@pankod/refine-core";
 import { RemixRouteComponent, handleRefineParams } from "@pankod/refine-remix-router";
 <%_ if (answers["auth-provider"] !== 'none') { _%>
 import { checkAuthentication } from "@pankod/refine-remix-router";
 <%_ } _%>
 
-<%_ if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
+<%_ if (answers["data-provider"] === 'data-provider-custom-json-rest') { _%>
 import dataProvider from "@pankod/refine-simple-rest";
     const API_URL = "https://api.fake-rest.refine.dev";
-<%_ } else if (answers["auth-provider"] !== 'none' && answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
+<%_ } else if (answers["data-provider"] === 'data-provider-nestjsx-crud') { _%>
 import dataProvider from "@pankod/refine-nestjsx-crud";
     const API_URL = "https://api.nestjsx-crud.refine.dev"; 
 <%_ } _%>

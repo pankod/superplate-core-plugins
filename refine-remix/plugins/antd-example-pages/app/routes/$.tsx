@@ -1,6 +1,6 @@
 import { json, LoaderFunction } from "@remix-run/node";
 import { parseTableParams } from "@pankod/refine-core";
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+import { RemixRouteComponent, handleRefineParams } from "@pankod/refine-remix-router";
 <%_ if (answers["auth-provider"] !== 'none') { _%>
 import { checkAuthentication } from "@pankod/refine-remix-router";
 <%_ } _%>
@@ -18,18 +18,39 @@ import { authProvider } from "~/authProvider";
 <%_ } _%>
 
 export const loader: LoaderFunction = async ({ params, request }) => {
+    const refineSplatParams = handleRefineParams(params["*"]);
+
+    const {
+        resource = undefined,
+        action = undefined,
+        id = undefined,
+    } = { ...refineSplatParams, ...params };
+
     <%_ if (answers["auth-provider"] !== 'none') { _%>
-        await checkAuthentication(authProvider, request);
+
+    await checkAuthentication(authProvider, request);
     <%_ } _%>
 
-    const { resource } = params;
     const url = new URL(request.url);
 
-    const { parsedCurrent, parsedPageSize, parsedSorter, parsedFilters } =
-    parseTableParams(url.search);
-        try {
+    try {
+        if (resource && action === "show" && id) {
+            const data = await dataProvider(API_URL).getOne({
+                resource: `${resource}`.slice(
+                    `${resource}`.lastIndexOf("/") + 1,
+                ),
+                id,
+            });
+
+            return json({ initialData: data });
+        } else if (resource && !action && !id) {
+            const { parsedCurrent, parsedPageSize, parsedSorter, parsedFilters } =
+            parseTableParams(url.search);
+
             const data = await dataProvider(API_URL).getList({
-                resource: resource as string,
+                resource: `${resource}`.slice(
+                    `${resource}`.lastIndexOf("/") + 1,
+                ),
                 filters: parsedFilters,
                 pagination: {
                     current: parsedCurrent || 1,
@@ -39,7 +60,21 @@ export const loader: LoaderFunction = async ({ params, request }) => {
             });
 
             return json({ initialData: data });
-     } catch (error) {
+        }
+
+        return null;
+    } catch (error) {
         return json({});
-     } 
+    }
 };
+
+export default RemixRouteComponent;
+
+/**
+ * To define a custom initial route for refine to redirect and start with:
+ *
+ * Bind the `initialRoute` value to the `RemixRouteComponent` like the following:
+ *
+ * export default RemixRouteComponent.bind({ initialRoute: "/posts" });
+ *
+ **/

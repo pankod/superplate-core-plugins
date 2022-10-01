@@ -13,7 +13,7 @@ const base = {
             `
             const authProvider: AuthProvider = {
                 login: () => {
-                    return Promise.resolve();
+                    return Promise.resolve(false);
                 },
                 logout: () => {
                     logout({ returnTo: window.location.origin });

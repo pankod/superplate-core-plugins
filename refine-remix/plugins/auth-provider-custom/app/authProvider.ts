@@ -4,31 +4,12 @@ import * as cookie from "cookie";
 
 import { TOKEN_KEY } from "~/constants";
 
-const mockUsers = [
-    {
-        username: "admin",
-        roles: ["admin"],
-        token: "admin-token",
-    },
-    {
-        username: "editor",
-        roles: ["editor"],
-        token: "editor-token",
-    },
-];
-
 export const authProvider: AuthProvider = {
-    login: ({ username, password, remember }) => {
-        // Suppose we actually send a request to the back end here.
-        const user = mockUsers.find((item) => item.username === username);
-
-        if (user) {
-            // Suppose we actually send a request to the back end here.
-            Cookies.set(TOKEN_KEY, user.token);
-
+    login: async ({ username, email, password }) => {
+        if ((username || email) && password) {
+            Cookies.set(TOKEN_KEY, `${username}-${email}`);
             return Promise.resolve();
         }
-
         return Promise.reject();
     },
     logout: () => {

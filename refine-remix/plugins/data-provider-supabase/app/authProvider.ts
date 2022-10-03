@@ -6,9 +6,9 @@ import { supabaseClient } from "~/utility";
 import { TOKEN_KEY } from "~/constants";
 
 export const authProvider: AuthProvider = {
-    login: async ({ username, password }) => {
+    login: async ({ email, password }) => {
         const { user, error, session } = await supabaseClient.auth.signIn({
-            email: username,
+            email,
             password,
         });
 
@@ -32,7 +32,9 @@ export const authProvider: AuthProvider = {
         let token = undefined;
         if (context) {
             const { request } = context;
-            const parsedCookie = cookie.parse(request.headers.get("Cookie") ?? "");
+            const parsedCookie = cookie.parse(
+                request.headers.get("Cookie") ?? "",
+            );
             token = parsedCookie[TOKEN_KEY];
         } else {
             const parsedCookie = Cookies.get(TOKEN_KEY);

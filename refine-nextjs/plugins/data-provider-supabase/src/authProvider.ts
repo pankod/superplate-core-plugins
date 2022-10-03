@@ -4,9 +4,9 @@ import nookies from "nookies";
 import { supabaseClient } from "./utility";
 
 export const authProvider: AuthProvider = {
-    login: async ({ username, password }) => {
-        const { user, error, data } = await supabaseClient.auth.signIn({
-            email: username,
+    login: async ({ email, password }) => {
+        const { user, error, session } = await supabaseClient.auth.signIn({
+            email,
             password,
         });
 
@@ -14,8 +14,8 @@ export const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (user && data) {
-            nookies.set(null, "token", data.access_token, {
+        if (user && session) {
+            nookies.set(null, "token", session.access_token, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });

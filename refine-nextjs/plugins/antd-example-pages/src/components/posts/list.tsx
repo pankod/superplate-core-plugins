@@ -106,7 +106,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     title="Category"
                 <%_ } else {_%>
-                    title={t("posts.fields.category.title")}
+                    title={t("posts.fields.category")}
                 <%_ } _%>
                 render={(value) => {
                     if (isLoading) {

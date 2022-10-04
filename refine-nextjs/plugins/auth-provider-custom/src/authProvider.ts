@@ -17,9 +17,7 @@ const mockUsers = [
 export const authProvider: AuthProvider = {
     login: ({ email, username, password, remember }) => {
         // Suppose we actually send a request to the back end here.
-        const user = mockUsers.find(
-            (item) => item.username === username || item.email === email,
-        );
+        const user = mockUsers[0];
 
         if (user) {
             nookies.set(null, "auth", JSON.stringify(user), {

@@ -66,7 +66,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
                 <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                     Category
                     <%_} else {_%>
-                        { t("posts.fields.category.title") }
+                        { t("posts.fields.category") }
                         <%_} _%>
             </Title>
             <Text>{categoryData?.data.title}</Text>

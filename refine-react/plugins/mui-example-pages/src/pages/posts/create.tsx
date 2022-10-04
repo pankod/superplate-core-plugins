@@ -137,7 +137,7 @@ export const PostCreate: React.FC = () => {
                                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                                         label="Category"
                                     <%_ } else { _%>
-                                        label={t("posts.fields.category.title")}
+                                        label={t("posts.fields.category")}
                                     <%_ } _%>
                                     margin="normal"
                                     variant="outlined"

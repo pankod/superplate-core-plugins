@@ -6,6 +6,8 @@ const base = {
             `import { API_URL } from "src/constants";`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
         inner: [
             `const { authProvider, axiosInstance } = strapiAuthProvider(API_URL);`,
             `const dataProvider = DataProvider(API_URL, axiosInstance);`,
@@ -23,8 +25,13 @@ module.exports = {
             base._app.refineProps.push("LoginPage={AuthPage}");
         }
         if (answers["ui-framework"] === "mui") {
-            base._app.refineMuiImports.push("LoginPage");
-            base._app.refineProps.push("LoginPage={LoginPage}");
+            base._app.refineMuiImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
+        }
+
+        if (answers["ui-framework"] === "mantine") {
+            base._app.refineMantineImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
         }
         return base;
     },

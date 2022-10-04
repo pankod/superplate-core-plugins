@@ -9,6 +9,7 @@ module.exports = {
                 { message: "No (Headless)", name: "no" },
                 { message: "Ant Design", name: "antd" },
                 { message: "Material UI", name: "mui" },
+                { message: "Mantine", name: "mantine" },
             ],
             default: "no",
         },
@@ -188,6 +189,33 @@ module.exports = {
             default: "no",
         },
         {
+            name: "mantine-example-pages",
+            message: "Do you want to add example pages?",
+            type: "select",
+            choices: [
+                { message: "No", name: "no" },
+                {
+                    message: "Yes (Recommended)",
+                    name: "mantine-example-pages",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-strapi" ||
+                answers["data-provider"] === "data-provider-airtable" ||
+                answers["data-provider"] === "data-provider-supabase" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-altogic" ||
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["data-provider"] === "data-provider-nhost" ||
+                answers["ui-framework"] !== "mantine",
+            default: "no",
+        },
+        {
             name: "antd-custom-layout",
             message: "Do you want a customized layout?",
             type: "select",
@@ -210,6 +238,18 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "mantine-custom-layout",
+            message: "Do you want a customized layout?",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "mantine-custom-layout" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
         },
         {
             name: "command-palette",
@@ -258,6 +298,18 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "i18n-mantine",
+            message: "i18n - Internationalization:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "i18n-mantine" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
         },
         {
             name: "partytown-builder",

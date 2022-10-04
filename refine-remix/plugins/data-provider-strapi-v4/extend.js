@@ -10,6 +10,8 @@ const base = {
             "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
     },
 };
 module.exports = {
@@ -20,8 +22,13 @@ module.exports = {
         }
 
         if (answers["ui-framework"] === "mui") {
-            base._app.refineMuiImports.push("LoginPage");
-            base._app.refineProps.push("LoginPage={LoginPage}");
+            base._app.refineMuiImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
+        }
+
+        if (answers["ui-framework"] === "mantine") {
+            base._app.refineMantineImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
         }
         return base;
     },

@@ -1,14 +1,62 @@
 {
     "pages": {
         "login": {
+            "title": "Melden Sie sich bei Ihrem Konto an",
             "signin": "Einloggen",
             "signup": "Anmelden",
-            "username": "Benutzername",
-            "password": "Passwort",
-            "remember": "Login speichern",
-            "forgotPassword": "Passwort Vergessen?",
-            "title": "Benutzerkonto einloggen",
-            "noAccount": "Noch kein Benutzerkonto?"
+            "divider": "oder",
+            "fields": {
+                "email": "Email",
+                "password": "Passwort"
+            },
+            "errors": {
+                "validEmail": "Ungültige E-Mail-Adresse"
+            },
+            "buttons": {
+                "submit": "Anmeldung",
+                "forgotPassword": "Passwort vergessen?",
+                "noAccount": "Sie haben kein Konto?",
+                "rememberMe": "Erinnere dich an mich"
+            }
+        },
+        "forgotPassword": {
+            "title": "Haben Sie Ihr Passwort vergessen?",
+            "fields": {
+                "email": "Email"
+            },
+            "errors": {
+                "validEmail": "Ungültige E-Mail-Adresse"
+            },
+            "buttons": {
+                "submit": "Anweisungen zum Zurücksetzen senden"
+            }
+        },
+        "register": {
+            "title": "Registrieren Sie sich für Ihr Konto",
+            "fields": {
+                "email": "Email",
+                "password": "Passwort"
+            },
+            "errors": {
+                "validEmail": "Ungültige E-Mail-Adresse"
+            },
+            "buttons": {
+                "submit": "Registrieren",
+                "haveAccount": "Ein Konto haben?"
+            }
+        },
+        "updatePassword": {
+            "title": "Kennwort aktualisieren",
+            "fields": {
+                "password": "Neues Passwort",
+                "confirmPassword": "Bestätige neues Passwort"
+            },
+            "errors": {
+                "confirmPasswordNotMatch": "Passwörter stimmen nicht überein"
+            },
+            "buttons": {
+                "submit": "Aktualisieren"
+            }
         },
         "error": {
             "info": "Sie haben vergessen, {{action}} component zu {{resource}} hinzufügen.",
@@ -65,12 +113,7 @@
         "fields": {
             "id": "Id",
             "title": "Titel",
-            "category": {
-                "title": "Kategorie",
-                "filter": {
-                    "placeholder": "Auswählen Category"
-                }
-            },
+            "category": "Kategorie",
             "status": {
                 "title": "Status",
                 "published": "Veröffentlicht",
@@ -89,10 +132,5 @@
     },
     "table": {
         "actions": "Aktionen"
-    },
-    "errors": {
-        "required": {
-            "field": "'{{ field }}' ist erforderlich"
-        }
     }
 }

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
@@ -5,6 +7,11 @@ import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refi
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
 <%_ } _%>
+
+<%_ if (answers["ui-framework"] === 'mantine') { _%>
+    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@pankod/refine-mantine';
+<%_ } _%>
+
 <%- (_app.import || []).join("\n") _%>
 
 <%- (_app.localImport || []).join("\n") _%>

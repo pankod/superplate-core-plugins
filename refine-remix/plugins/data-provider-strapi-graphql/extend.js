@@ -5,6 +5,8 @@ const base = {
             `import { authProvider } from "~/authProvider";`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
         refineProps: [
             "dataProvider={gqlDataProvider}",
             "authProvider={authProvider}",
@@ -19,8 +21,13 @@ module.exports = {
         }
 
         if (answers["ui-framework"] === "mui") {
-            base._app.refineMuiImports.push("LoginPage");
-            base._app.refineProps.push("LoginPage={LoginPage}");
+            base._app.refineMuiImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
+        }
+
+        if (answers["ui-framework"] === "mantine") {
+            base._app.refineMantineImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
         }
         return base;
     },

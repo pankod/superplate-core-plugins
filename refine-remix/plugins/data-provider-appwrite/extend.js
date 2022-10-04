@@ -18,6 +18,7 @@ const base = {
             `authProvider={authProvider}`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
         refineMuiImports: [],
     },
 };

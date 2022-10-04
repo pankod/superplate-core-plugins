@@ -5,6 +5,8 @@ const base = {
             `import { authProvider } from "~/authProvider";`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
         refineProps: [
             "dataProvider={gqlDataProvider}",
             "authProvider={authProvider}",

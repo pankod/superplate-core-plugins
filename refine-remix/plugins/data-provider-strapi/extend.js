@@ -6,6 +6,8 @@ const base = {
             `import { API_URL } from "~/constants";`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
         inner: [
             `const { authProvider, axiosInstance } = strapiAuthProvider(API_URL);`,
             `const dataProvider = DataProvider(API_URL, axiosInstance);`,

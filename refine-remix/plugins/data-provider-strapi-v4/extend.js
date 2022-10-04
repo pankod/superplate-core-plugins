@@ -10,6 +10,8 @@ const base = {
             "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
     },
 };
 module.exports = {

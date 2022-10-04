@@ -18,6 +18,7 @@ const base = {
             `authProvider={authProvider}`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
         refineMuiImports: [],
     },
 };
@@ -31,6 +32,11 @@ module.exports = {
         if (answers["ui-framework"] === "mui") {
             base._app.refineMuiImports.push("LoginPage");
             base._app.refineProps.push("LoginPage={LoginPage}");
+        }
+
+        if (answers["ui-framework"] === "mantine") {
+            base._app.refineMantineImports.push("AuthPage");
+            base._app.refineProps.push("LoginPage={AuthPage}");
         }
         return base;
     },

@@ -6,6 +6,8 @@ const base = {
             `import { supabaseClient } from "~/utility";`,
         ],
         refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
         refineProps: [
             "dataProvider={dataProvider(supabaseClient)}",
             "authProvider={authProvider}",

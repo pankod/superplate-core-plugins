@@ -57,8 +57,43 @@ module.exports = {
         }
 
         if (answers["ui-framework"] === "mui") {
-            base._app.refineMuiImports.push("LoginPage");
-            base._app.refineProps.push("LoginPage={LoginPage}");
+            base._app.refineMuiImports.push("AuthPage");
+
+            base._app.refineProps.push(`routerProvider={{
+                ...routerProvider,
+                routes: [
+                    {
+                        path: "/register",
+                        element: <AuthPage type="register" />,
+                    },
+                    {
+                        path: "/forgot-password",
+                        element: <AuthPage type="forgotPassword" />,
+                    },
+                    {
+                        path: "/update-password",
+                        element: <AuthPage type="updatePassword" />,
+                    },
+                ],
+            }}`);
+
+            base._app.refineProps.push(`LoginPage={() => (
+                <AuthPage
+                    type="login"
+                    providers={[
+                        {
+                            name: "google",
+                            label: "Sign in with Google",
+                        },
+                    ]}
+                    formProps={{
+                        defaultValues: {
+                            email: "info@refine.dev",
+                            password: "refine-supabase",
+                        },
+                    }}
+                />
+            )}`);
         }
 
         if (answers["ui-framework"] === "mantine") {

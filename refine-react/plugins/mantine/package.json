@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "@pankod/refine-mantine": "^1.2.0",
+        "@pankod/refine-react-table": "^4.7.2",
+        "@tabler/icons": "^1.39.1"
+    }
+}

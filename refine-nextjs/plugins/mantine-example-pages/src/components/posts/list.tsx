@@ -4,6 +4,7 @@ import {
         useTranslate,
     <%_ } _%>
     useMany,
+    GetManyResponse,
 } from "@pankod/refine-core";
 import { useTable, ColumnDef, flexRender } from "@pankod/refine-react-table";
 import {
@@ -20,7 +21,7 @@ import {
 } from "@pankod/refine-mantine";
 
 import { ColumnFilter, ColumnSorter } from "@components/table";
-import { ICategory, FilterElementProps, IPost } from "@interfaces";
+import { ICategory, FilterElementProps, IPost } from "src/interfaces";
 
 
 export const PostList: React.FC = () => {
@@ -77,6 +78,25 @@ export const PostList: React.FC = () => {
                 },
             },
             {
+                id: "category.id",
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
+                    header: "Category",
+                <%_ } else { _%>
+                    header: t("posts.fields.category"),
+                <%_ } _%>
+                enableColumnFilter: false,
+                accessorKey: "category.id",
+                cell: function render({ getValue, table }) {
+                    const meta = table.options.meta as {
+                        categoriesData: GetManyResponse<ICategory>;
+                    };
+                    const category = meta.categoriesData?.data.find(
+                        (item) => item.id === getValue(),
+                    );
+                    return category?.title ?? "Loading...";
+                },
+            },
+            {
                 id: "createdAt",
                 <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     header: "Created At",
@@ -123,10 +143,33 @@ export const PostList: React.FC = () => {
     const {
         getHeaderGroups,
         getRowModel,
-        refineCore: { setCurrent, pageCount, current },
+        setOptions,
+        refineCore: {
+            setCurrent,
+            pageCount,
+            current,
+            tableQueryResult: { data: tableData },
+        },
     } = useTable({
         columns,
     });
+
+    const categoryIds = tableData?.data?.map((item) => item.category.id) ?? [];
+    const { data: categoriesData } = useMany<ICategory>({
+        resource: "categories",
+        ids: categoryIds,
+        queryOptions: {
+            enabled: categoryIds.length > 0,
+        },
+    });
+
+    setOptions((prev) => ({
+        ...prev,
+        meta: {
+            ...prev.meta,
+            categoriesData,
+        },
+    }));
 
     return (
         <ScrollArea>

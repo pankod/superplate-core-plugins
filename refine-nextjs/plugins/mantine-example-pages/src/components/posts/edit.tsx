@@ -2,7 +2,7 @@ import {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     useTranslate,
     <%_ } _%>
-    HttpError } from "@pankod/refine-core";
+} from "@pankod/refine-core";
 import {
     Edit,
     Select,
@@ -12,8 +12,6 @@ import {
     Text,
 } from "@pankod/refine-mantine";
 import RichTextEditor from '@components/richtext';
-
-import { IPost, ICategory } from "@interfaces";
 
 export const PostEdit: React.FC = () => {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>

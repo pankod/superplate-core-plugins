@@ -17,8 +17,8 @@ import {
     DateField,
 } from "@pankod/refine-mantine";
 
-import { ColumnFilter, ColumnSorter } from "../../components/table";
-import { FilterElementProps, IPost, ICategory } from "../../interfaces";
+import { ColumnFilter, ColumnSorter } from "~/components/table";
+import { FilterElementProps, IPost, ICategory } from "~/interfaces";
 
 
 export const PostList: React.FC = () => {

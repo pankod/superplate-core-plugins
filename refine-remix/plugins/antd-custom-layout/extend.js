@@ -9,7 +9,7 @@ const base = {
             "OffLayoutArea={OffLayoutArea}",
         ],
         localImport: [
-            `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "@components/layout"`,
+            `import {Title, Header, Sider, Footer, Layout, OffLayoutArea} from "~/components/layout"`,
         ],
     },
 };

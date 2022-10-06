@@ -8,7 +8,7 @@ import {
 } from "@pankod/refine-mantine";
 import { IconFilter, IconX, IconCheck } from "@tabler/icons";
 
-import { ColumnButtonProps } from "@interfaces";
+import { ColumnButtonProps } from "~/interfaces";
 
 export const ColumnFilter: React.FC<ColumnButtonProps> = ({ column }) => {
     const [state, setState] = useState(null as null | { value: any });

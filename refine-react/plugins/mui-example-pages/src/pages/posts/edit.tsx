@@ -141,7 +141,7 @@ export const PostEdit: React.FC = () => {
                                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                                         label="Category"
                                     <%_ } else { _%>
-                                        label={t("posts.fields.category")}
+                                        label={t("posts.fields.category.title")}
                                     <%_ } _%>
                                     margin="normal"
                                     variant="outlined"

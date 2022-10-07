@@ -6,7 +6,8 @@ import {
     useSelect,
     Text,
 } from "@pankod/refine-mantine";
-import { RichText } from "@components/richtext";
+
+import { RichText } from "~/components/richtext";
 
 import type { ICategory } from "../../interfaces";
 

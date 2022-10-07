@@ -50,6 +50,18 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
         {
+            name: "mantine-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "mantine-dark-mode" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
+        },
+        {
             name: "data-provider",
             message: "Data Provider:",
             type: "select",

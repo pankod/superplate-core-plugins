@@ -5,6 +5,7 @@ const base = {
         refineMantineImports: [
             "NotificationsProvider",
             "notificationProvider",
+            "MantineProvider",
             "Global",
         ],
         wrapper: [],
@@ -18,15 +19,20 @@ module.exports = {
             base._app.refineProps.push("Layout={Layout}");
         }
 
-        //if (answers["mantine-dark-mode"] === "no") {
-        base._app.wrapper.push([
-            `<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`,
-        ]);
-        base._app.wrapper.push([
-            `<NotificationsProvider position="top-right">`,
-            "</NotificationsProvider>",
-        ]);
-        //}
+        if (answers["mantine-dark-mode"] === "no") {
+            base._app.refineMantineImports.push("LightTheme");
+            base._app.wrapper.push([
+                `<MantineProvider theme={LightTheme} withNormalizeCSS withGlobalStyles>`,
+                "</MantineProvider>",
+            ]);
+            base._app.wrapper.push([
+                `<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`,
+            ]);
+            base._app.wrapper.push([
+                `<NotificationsProvider position="top-right">`,
+                "</NotificationsProvider>",
+            ]);
+        }
 
         base._app.refineMantineImports.push("ReadyPage");
         base._app.refineMantineImports.push("ErrorComponent");

@@ -6,7 +6,7 @@ const base = {
             "Layout={Layout}",
             "Header={Header}"
         ],
-        localImport: [`import { Title, Sider, Layout, Header } from "@components/layout"`],
+        localImport: [`import { Title, Sider, Layout, Header } from "~/components/layout"`],
     },
 };
 

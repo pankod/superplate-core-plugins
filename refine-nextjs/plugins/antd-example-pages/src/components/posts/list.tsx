@@ -141,7 +141,7 @@ export const PostList: React.FC<IResourceComponentsProps<GetListResponse<IPost>>
                                 <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") {_%>
                             placeholder="Select Category"
                         <%_ } else {_%>
-                            placeholder={t("posts.fields.category.filter.placeholder")}
+                            placeholder={t("posts.fields.category.title.filter.placeholder")}
                         <%_ } _%>
 
                         {...categorySelectProps}

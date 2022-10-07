@@ -1,11 +1,6 @@
 const base = {
     _app: {
-        import: [
-            `import { appWithTranslation, useTranslation } from "next-i18next";`,
-        ],
-        localImport: [
-            /* `import { Header } from "@components/layout";` */
-        ],
+        import: [`import { appWithTranslation, useTranslation } from "next-i18next";`],
         innerHooks: [`const { t, i18n } = useTranslation();`],
         inner: [
             `
@@ -16,18 +11,19 @@ const base = {
             };
             `,
         ],
-        refineProps: ["i18nProvider={i18nProvider}" /*  "Header={Header}" */],
+        refineProps: ["i18nProvider={i18nProvider}"],
+        localImport: [],
     },
 };
 
 module.exports = {
     extend(answers) {
-        /*  if (answers["mantine-custom-layout"] !== "no") {
-            base._app.localImport = base._app.localImport.filter(
-                (item) =>
-                    item !== `import { Header } from "@components/layout";`,
+        if (answers["mantine-custom-layout"] !== "mantine-custom-layout") {
+            base._app.localImport.push(
+                `import { Header } from "components/layout"`,
             );
-        } */
+            base._app.refineProps.push("Header={Header}");
+        }
         return base;
     },
 };

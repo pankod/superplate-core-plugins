@@ -78,7 +78,7 @@ export const PostCreate: React.FC = () => {
                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                         label="Category"
                     <%_ } else { _%>
-                        label={t("posts.fields.category")}
+                        label={t("posts.fields.category.title")}
                     <%_ } _%>
                     placeholder="Pick one"
                     {...getInputProps("category.id")}

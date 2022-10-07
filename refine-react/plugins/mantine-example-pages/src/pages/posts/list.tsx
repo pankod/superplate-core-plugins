@@ -137,7 +137,11 @@ export const PostList: React.FC = () => {
                 },
             },
         ],
-        [],
+        [
+            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+            t,
+            <%_ } _%> 
+        ]
     );
 
     const {

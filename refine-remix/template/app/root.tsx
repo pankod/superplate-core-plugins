@@ -15,6 +15,9 @@ import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
 <%_ } _%>
+<%_ if (answers["ui-framework"] === 'mantine') { _%>
+    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@pankod/refine-mantine';
+<%_ } _%>
 
 import routerProvider from "@pankod/refine-remix-router";
 

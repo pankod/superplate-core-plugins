@@ -60,7 +60,7 @@ export const PostList: React.FC = () => {
                 <%_ if (answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
                     headerName: "Category",
                 <%_ } else { _%>
-                    headerName: t("posts.fields.category"),
+                    headerName: t("posts.fields.category.title"),
                 <%_ } _%>
                 type: "number",
                 headerAlign: "left",

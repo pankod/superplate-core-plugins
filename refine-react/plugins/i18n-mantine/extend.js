@@ -18,13 +18,12 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        //TODO: fix header
-        /* if (answers["mantine-custom-layout"] !== "mantine-custom-layout") {
+        if (answers["mantine-custom-layout"] !== "mantine-custom-layout") {
             base._app.localImport.push(
                 `import { Header } from "components/layout"`,
             );
             base._app.refineProps.push("Header={Header}");
-        } */
+        }
         return base;
     },
 };

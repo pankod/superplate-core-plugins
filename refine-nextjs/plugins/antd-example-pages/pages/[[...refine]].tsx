@@ -42,7 +42,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             return props;
         }
     <%_ } _%>
-
+    <%_ } else { _%>
+        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+        const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
+    <%_ } _%>
     <%_ } _%>
 
     try {

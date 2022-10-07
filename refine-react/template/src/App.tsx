@@ -28,7 +28,9 @@ import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refi
 
 function App() {
     <%- (_app.innerHooks || []).join("\n") %>
+
     <%- (_app.inner || []).join("\n") %>
+    
     return (
         <%- top.join("\n") %>
         <Refine <%- (_app.refineProps || []).join("\n") %> />

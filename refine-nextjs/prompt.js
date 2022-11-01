@@ -10,6 +10,7 @@ module.exports = {
                 { message: "Ant Design", name: "antd" },
                 { message: "Material UI", name: "mui" },
                 { message: "Mantine", name: "mantine" },
+                { message: "Chakra UI", name: "chakra" },
             ],
             default: "no",
         },
@@ -60,6 +61,18 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mantine",
+        },
+        {
+            name: "chakra-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "chakra-dark-mode" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
         {
             name: "data-provider",
@@ -208,6 +221,33 @@ module.exports = {
             default: "no",
         },
         {
+            name: "chakra-example-pages",
+            message: "Do you want to add example pages?",
+            type: "select",
+            choices: [
+                { message: "No", name: "no" },
+                {
+                    message: "Yes (Recommended)",
+                    name: "chakra-example-pages",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-strapi" ||
+                answers["data-provider"] === "data-provider-airtable" ||
+                answers["data-provider"] === "data-provider-supabase" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-altogic" ||
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["data-provider"] === "data-provider-nhost" ||
+                answers["ui-framework"] !== "chakra",
+            default: "no",
+        },
+        {
             name: "antd-custom-layout",
             message: "Do you want a customized layout?",
             type: "select",
@@ -242,6 +282,18 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mantine",
+        },
+        {
+            name: "chakra-custom-layout",
+            message: "Do you want a customized layout?",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "chakra-custom-layout" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
         {
             name: "command-palette",
@@ -298,6 +350,18 @@ module.exports = {
                 { message: "Yes", name: "i18n-mantine" },
             ],
             skip: ({ answers }) => answers["ui-framework"] !== "mantine",
+        },
+        {
+            name: "i18n-chakra",
+            message: "i18n - Internationalization:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                { message: "No", name: "no" },
+                { message: "Yes", name: "i18n-chakra" },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
         {
             name: "partytown-builder",

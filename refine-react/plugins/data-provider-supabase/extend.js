@@ -126,12 +126,12 @@ module.exports = {
                             label: "Sign in with Google",
                         },
                     ]}
-                    /* formProps={{
+                    formProps={{
                         initialValues: {
                             email: "info@refine.dev",
                             password: "refine-supabase",
                         },
-                    }} */
+                    }}
                 />
             )}`);
         }
@@ -165,12 +165,12 @@ module.exports = {
                             label: "Sign in with Google",
                         },
                     ]}
-                    /* formProps={{
-                        initialValues: {
+                    formProps={{
+                        defaultValues: {
                             email: "info@refine.dev",
                             password: "refine-supabase",
                         },
-                    }} */
+                    }}
                 />
             )}`);
         }

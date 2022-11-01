@@ -67,6 +67,32 @@ module.exports = {
             },
         },
         {
+            name: "refine-mantine",
+            type: "refine-react",
+            answers: {
+                'ui-framework': 'mantine',
+                'antd-theme-customization': 'antd-css',
+                'mui-extend-theme': 'no',
+                'mui-dark-mode': 'no',
+                'mantine-dark-mode': 'no',
+                'router-provider': 'react-router-v6',
+                'data-provider': 'data-provider-custom-json-rest',
+                'auth-provider': 'none',
+                'antd-example-pages': 'no',
+                'mui-example-pages': 'no',
+                'mantine-example-pages': 'no',
+                'antd-custom-layout': 'no',
+                'mui-custom-layout': 'no',
+                'mantine-custom-layout': 'no',
+                'command-palette': 'no',
+                'i18n-no': 'no',
+                'i18n-antd': 'no',
+                'i18n-mui': 'no',
+                'i18n-mantine': 'no',
+                'partytown-builder': 'no'
+              }
+        },
+        {
             name: "refine-headless-remix",
             type: "refine-remix",
             answers: {

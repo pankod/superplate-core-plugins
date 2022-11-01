@@ -13,6 +13,7 @@ const base = {
         refineAntdImports: [],
         refineMantineImports: [],
         refineMuiImports: [],
+        refineChakraImports: [],
     },
 };
 module.exports = {
@@ -98,6 +99,45 @@ module.exports = {
 
         if (answers["ui-framework"] === "mantine") {
             base._app.refineMantineImports.push("AuthPage");
+
+            base._app.refineProps.push(`routerProvider={{
+                ...routerProvider,
+                routes: [
+                    {
+                        path: "/register",
+                        element: <AuthPage type="register" />,
+                    },
+                    {
+                        path: "/forgot-password",
+                        element: <AuthPage type="forgotPassword" />,
+                    },
+                    {
+                        path: "/update-password",
+                        element: <AuthPage type="updatePassword" />,
+                    },
+                ],
+            }}`);
+            base._app.refineProps.push(`LoginPage={() => (
+                <AuthPage
+                    type="login"
+                    providers={[
+                        {
+                            name: "google",
+                            label: "Sign in with Google",
+                        },
+                    ]}
+                    /* formProps={{
+                        initialValues: {
+                            email: "info@refine.dev",
+                            password: "refine-supabase",
+                        },
+                    }} */
+                />
+            )}`);
+        }
+
+        if (answers["ui-framework"] === "chakra") {
+            base._app.refineChakraImports.push("AuthPage");
 
             base._app.refineProps.push(`routerProvider={{
                 ...routerProvider,

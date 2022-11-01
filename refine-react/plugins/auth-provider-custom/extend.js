@@ -5,6 +5,7 @@ const base = {
         refineAntdImports: [],
         refineMantineImports: [],
         refineMuiImports: [],
+        refineChakraImports: [],
     },
 };
 

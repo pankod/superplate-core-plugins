@@ -1,7 +1,7 @@
 import { IconButton } from "@chakra-ui/react";
 import { IconChevronDown, IconSelector } from "@tabler/icons";
 
-import { ColumnButtonProps } from "~/interfaces";
+import type { ColumnButtonProps } from "~/interfaces";
 
 export const ColumnSorter: React.FC<ColumnButtonProps> = ({ column }) => {
     if (!column.getCanSort()) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutProps } from "@pankod/refine-core";
+import type { LayoutProps } from "@pankod/refine-core";
 import { Box, useColorModeValue } from "@pankod/refine-chakra-ui";
 
 import { Sider as DefaultSider } from "../sider";

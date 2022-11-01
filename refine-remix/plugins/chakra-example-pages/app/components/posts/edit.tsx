@@ -12,7 +12,7 @@ import {
 } from "@pankod/refine-chakra-ui";
 import { useForm } from "@pankod/refine-react-hook-form";
 
-import { IPost } from "~/interfaces";
+import type { IPost } from "~/interfaces";
 
 export const PostEdit: React.FC = () => {
     const {

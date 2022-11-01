@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
     CanAccess,
-    ITreeMenu,
     useIsExistAuthentication,
     useLogout,
     useMenu,
@@ -10,6 +9,7 @@ import {
     useTitle,
     useTranslate,
 } from "@pankod/refine-core";
+import type { ITreeMenu } from "@pankod/refine-core";
 import {
     Accordion,
     AccordionButton,
@@ -23,10 +23,12 @@ import {
     DrawerOverlay,
     IconButton,
     Tooltip,
-    TooltipProps,
     VStack,
-    Sider as DefaultSider,
 } from "@pankod/refine-chakra-ui";
+import type {
+    TooltipProps,
+    Sider as DefaultSider,
+  } from "@pankod/refine-chakra-ui";
 import {
     IconList,
     IconChevronRight,

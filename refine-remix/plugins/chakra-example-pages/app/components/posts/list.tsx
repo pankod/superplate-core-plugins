@@ -24,7 +24,7 @@ import {
 
 import { ColumnFilter, ColumnSorter } from "~/components/table";
 import { Pagination } from "~/components/pagination";
-import { FilterElementProps, ICategory, IPost } from "~/interfaces";
+import type { FilterElementProps, ICategory, IPost } from "~/interfaces";
 
 export const PostList: React.FC = () => {
     const columns = React.useMemo<ColumnDef<IPost>[]>(

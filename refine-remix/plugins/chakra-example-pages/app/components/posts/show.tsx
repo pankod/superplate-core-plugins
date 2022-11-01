@@ -10,7 +10,7 @@ import {
     Spacer,
 } from "@pankod/refine-chakra-ui";
 
-import { ICategory, IPost } from "~/interfaces";
+import type { ICategory, IPost } from "~/interfaces";
 
 export const PostShow: React.FC = () => {
     const { queryResult } = useShow<IPost>();

@@ -13,6 +13,9 @@ import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
     import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@pankod/refine-mantine';
 <%_ } _%>
+<%_ if (answers["ui-framework"] === 'chakra') { _%>
+    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@pankod/refine-chakra-ui';
+<%_ } _%>
 import routerProvider from "@pankod/refine-nextjs-router";
 <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
     import { Partytown } from '@builder.io/partytown/react';

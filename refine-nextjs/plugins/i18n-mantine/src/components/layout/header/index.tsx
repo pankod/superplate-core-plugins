@@ -80,6 +80,7 @@
         );
       };      
 <%_ } else { _%>
+    import { useRouter } from "next/router";
     import {
         useGetIdentity,
         useGetLocale,
@@ -93,8 +94,6 @@
         Menu,
       } from "@pankod/refine-mantine";
       import { IconLanguage } from "@tabler/icons";
-      
-      import i18n from "i18n";
       
       export const Header: React.FC = () => {
         const { data: user } = useGetIdentity();

@@ -39,3 +39,8 @@ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         },
     });
 <%_ } _%>
+
+<%_ if (answers["antd-example-pages"] !== "no") { _%>
+    const removeImports = require('next-remove-imports')();
+    module.exports = removeImports({});
+<%_ } _%>

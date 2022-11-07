@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "react-markdown": "^6.0.1",
-        "react-mde": "^11.1.0"
-    }  
+        "next-remove-imports": "^1.0.8",
+        "@uiw/react-md-editor": "3.6.0"
+    }
 }

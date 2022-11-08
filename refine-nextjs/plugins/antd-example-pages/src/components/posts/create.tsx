@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic"
 import {
     IResourceComponentsProps,
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
@@ -13,13 +12,6 @@ import {
     useSelect,
     useForm,
 } from "@pankod/refine-antd";
-
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
-const MDEditor = dynamic(
-    () => import("@uiw/react-md-editor"),
-    { ssr: false }
-  );
 
 import { IPost, ICategory } from "src/interfaces";
 
@@ -128,7 +120,7 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    <MDEditor data-color-mode="light" />
+                    <Input.TextArea rows={4}  />    
                 </Form.Item>
             </Form>
         </Create>

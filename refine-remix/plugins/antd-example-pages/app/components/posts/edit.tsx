@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IResourceComponentsProps } from "@pankod/refine-core";
 import {
     Edit,
@@ -8,16 +7,10 @@ import {
     useForm,
     useSelect,
 } from "@pankod/refine-antd";
-import ReactMarkdown from "react-markdown";
-import ReactMde from "react-mde";
 
-import type { IPost, ICategory } from "~/interfaces";
+import type { IPost } from "~/interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
-    const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
-        "write",
-    );
-
     const { formProps, saveButtonProps, queryResult } = useForm<IPost>();
 
     const { selectProps: categorySelectProps } = useSelect<IPost>({
@@ -86,15 +79,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    <ReactMde
-                        selectedTab={selectedTab}
-                        onTabChange={setSelectedTab}
-                        generateMarkdownPreview={(markdown) =>
-                            Promise.resolve(
-                                <ReactMarkdown>{markdown}</ReactMarkdown>,
-                            )
-                        }
-                    />
+                    <Input.TextArea rows={4} />
                 </Form.Item>
             </Form>
         </Edit>

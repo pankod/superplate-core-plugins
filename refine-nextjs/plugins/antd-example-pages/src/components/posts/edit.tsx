@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
     IResourceComponentsProps,
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
@@ -13,18 +12,10 @@ import {
     useForm,
     useSelect,
 } from "@pankod/refine-antd";
-import ReactMarkdown from "react-markdown";
-import ReactMde from "react-mde";
-
-import "react-mde/lib/styles/css/react-mde-all.css";
 
 import { IPost } from "src/interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
-    const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
-        "write",
-    );
-
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>
@@ -130,15 +121,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    <ReactMde
-                        selectedTab={selectedTab}
-                        onTabChange={setSelectedTab}
-                        generateMarkdownPreview={(markdown) =>
-                            Promise.resolve(
-                                <ReactMarkdown>{markdown}</ReactMarkdown>,
-                            )
-                        }
-                    />
+                    <Input.TextArea rows={4}  />    
                 </Form.Item>
             </Form>
         </Edit>

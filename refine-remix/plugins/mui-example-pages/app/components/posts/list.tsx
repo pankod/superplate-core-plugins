@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData } from "@remix-run/react";
-import { useMany } from "@pankod/refine-core";
+import { Option, useSelect } from "@pankod/refine-core";
 import {
     useDataGrid,
     DataGrid,
@@ -9,6 +9,7 @@ import {
     Stack,
     EditButton,
     DeleteButton,
+    GridValueFormatterParams,
 } from "@pankod/refine-mui";
 
 import { IPost, ICategory } from "~/interfaces";
@@ -22,13 +23,12 @@ export const PostList: React.FC = () => {
         },
     });
 
-    const categoryIds = dataGridProps.rows.map((item) => item.category.id);
-    const { data: categoriesData, isLoading } = useMany<ICategory>({
+    const {
+        options,
+        queryResult: { isLoading },
+    } = useSelect<ICategory>({
         resource: "categories",
-        ids: categoryIds,
-        queryOptions: {
-            enabled: categoryIds.length > 0,
-        },
+        hasPagination: false,
     });
 
     const columns = React.useMemo<GridColumns<IPost>>(
@@ -48,20 +48,26 @@ export const PostList: React.FC = () => {
             {
                 field: "category.id",
                 headerName: "Category",
-                type: "number",
+                type: "singleSelect",
                 headerAlign: "left",
                 align: "left",
                 minWidth: 250,
                 flex: 0.5,
+                valueOptions: options,
+                valueFormatter: (params: GridValueFormatterParams<Option>) => {
+                    return params.value;
+                },
                 renderCell: function render({ row }) {
                     if (isLoading) {
                         return "Loading...";
                     }
 
-                    const category = categoriesData?.data.find(
-                        (item) => item.id === row.category.id,
+                    const category = options.find(
+                        (item) =>
+                            item.value.toString() ===
+                            row.category.id.toString(),
                     );
-                    return category?.title;
+                    return category?.label;
                 },
             },
             {
@@ -69,6 +75,8 @@ export const PostList: React.FC = () => {
                 headerName: "Status",
                 minWidth: 120,
                 flex: 0.3,
+                type: "singleSelect",
+                valueOptions: ["draft", "published", "rejected"],
             },
             {
                 field: "actions",
@@ -95,7 +103,7 @@ export const PostList: React.FC = () => {
                 minWidth: 80,
             },
         ],
-        [categoriesData, isLoading],
+        [options, isLoading],
     );
 
     return (

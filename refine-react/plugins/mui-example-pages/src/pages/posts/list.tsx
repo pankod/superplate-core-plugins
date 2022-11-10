@@ -3,7 +3,8 @@ import {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
     <%_ } _%>
-    useMany,
+    Option, 
+    useSelect,
 } from "@pankod/refine-core";
 import {
     useDataGrid,
@@ -13,6 +14,7 @@ import {
     Stack,
     EditButton,
     DeleteButton,
+    GridValueFormatterParams,
 } from "@pankod/refine-mui";
 
 import { ICategory, IPost } from "interfaces";
@@ -24,13 +26,12 @@ export const PostList: React.FC = () => {
 
     const { dataGridProps } = useDataGrid<IPost>();
 
-    const categoryIds = dataGridProps.rows.map((item) => item.category.id);
-    const { data: categoriesData, isLoading } = useMany<ICategory>({
+    const {
+        options,
+        queryResult: { isLoading },
+    } = useSelect<ICategory>({
         resource: "categories",
-        ids: categoryIds,
-        queryOptions: {
-            enabled: categoryIds.length > 0,
-        },
+        hasPagination: false,
     });
 
     const columns = React.useMemo<GridColumns<IPost>>(
@@ -62,20 +63,26 @@ export const PostList: React.FC = () => {
                 <%_ } else { _%>
                     headerName: t("posts.fields.category.title"),
                 <%_ } _%>
-                type: "number",
+                type: "singleSelect",
                 headerAlign: "left",
                 align: "left",
                 minWidth: 250,
                 flex: 0.5,
+                valueOptions: options,
+                valueFormatter: (params: GridValueFormatterParams<Option>) => {
+                    return params.value;
+                },
                 renderCell: function render({ row }) {
                     if (isLoading) {
                         return "Loading...";
                     }
 
-                    const category = categoriesData?.data.find(
-                        (item) => item.id === row.category.id,
+                    const category = options.find(
+                        (item) =>
+                            item.value.toString() ===
+                            row.category.id.toString(),
                     );
-                    return category?.title;
+                    return category?.label;
                 },
             },
             { 
@@ -86,7 +93,9 @@ export const PostList: React.FC = () => {
                     headerName: t("posts.fields.status.title"),
                 <%_ } _%>
                 minWidth: 120, 
-                flex: 0.3
+                flex: 0.3,
+                type: "singleSelect",
+                valueOptions: ["draft", "published", "rejected"],
             },
             {
                 field: "actions",
@@ -121,7 +130,7 @@ export const PostList: React.FC = () => {
             <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
             t,
             <%_ } _%> 
-            categoriesData,
+            options,
             isLoading
         ]
     );

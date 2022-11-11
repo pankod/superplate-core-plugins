@@ -111,7 +111,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
             }}
             icon={<Icons.DashboardOutlined />}
         >
-            <Link href="/">{translate("dashboard.title", "Dashboard")}</Link>
+            <Link to="/">{translate("dashboard.title", "Dashboard")}</Link>
             {!collapsed && selectedKey === "/" && (
                 <div className="ant-menu-tree-arrow" />
             )}

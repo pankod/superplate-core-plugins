@@ -73,27 +73,27 @@ module.exports = {
                 {
                     message: "Headless",
                     name: "no",
-                    hint: "No UI framework packages will be installed.",
+                    hint: "No UI framework package will be installed.",
                 },
                 {
                     message: "Ant Design",
                     name: "antd",
-                    hint: "Installs Ant Design packages.",
+                    hint: "Installs Ant Design package.",
                 },
                 {
                     message: "Material UI",
                     name: "mui",
-                    hint: "Installs Material UI packages.",
+                    hint: "Installs Material UI package.",
                 },
                 {
                     message: "Mantine",
                     name: "mantine",
-                    hint: "Installs Mantine packages.",
+                    hint: "Installs Mantine package.",
                 },
                 {
                     message: "Chakra UI",
                     name: "chakra",
-                    hint: "Installs Chakra UI packages.",
+                    hint: "Installs Chakra UI package.",
                 },
             ],
             default: "no",
@@ -406,7 +406,7 @@ module.exports = {
         },
         {
             name: "antd-example-pages",
-            message: "Add example pages?:",
+            message: "Do you want to add example pages?:",
             type: "select",
             choices: [
                 {
@@ -438,7 +438,7 @@ module.exports = {
         },
         {
             name: "mui-example-pages",
-            message: "Add example pages?:",
+            message: "Do you want to add example pages?:",
             type: "select",
             choices: [
                 {
@@ -470,7 +470,7 @@ module.exports = {
         },
         {
             name: "mantine-example-pages",
-            message: "Add example pages?:",
+            message: "Do you want to add example pages?:",
             type: "select",
             choices: [
                 {
@@ -502,7 +502,7 @@ module.exports = {
         },
         {
             name: "chakra-example-pages",
-            message: "Add example pages?:",
+            message: "Do you want to add example pages?:",
             type: "select",
             choices: [
                 {
@@ -534,12 +534,20 @@ module.exports = {
         },
         {
             name: "command-palette",
-            message: "Do you want to add Kbar command pallette:",
+            message: "Do you want to add kbar command interface support?:",
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "No", name: "no" },
-                { message: "Yes", name: "kbar" },
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "Kbar will not be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "kbar",
+                    hint: "Installs kbar command+k interface.",
+                },
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] === "no",
@@ -547,12 +555,20 @@ module.exports = {
         {
             name: "partytown-builder",
             message:
-                "Do you want to add Partytown? (https://partytown.builder.io)",
+                "Do you want to add partytown library support (https://partytown.builder.io)?:",
             type: "select",
             pageSize: 2,
             choices: [
-                { message: "No", name: "no" },
-                { message: "Yes", name: "partytown-builder" },
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "partytown will not be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "partytown-builder",
+                    hint: "Installs partytown library.",
+                },
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "no",

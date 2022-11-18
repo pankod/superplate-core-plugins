@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,
@@ -19,10 +18,6 @@ import MDEditor from "@uiw/react-md-editor";
 import { IPost } from "interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
-    const [selectedTab, setSelectedTab] = useState<"write" | "preview">(
-        "write",
-    );
-
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         const t = useTranslate();
     <%_ } _%>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         useTranslate,

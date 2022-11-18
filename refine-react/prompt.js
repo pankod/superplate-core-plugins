@@ -66,11 +66,6 @@ module.exports = {
                     name: "data-provider-nhost",
                     hint: "Installs NHost Data Provider.",
                 },
-                {
-                    message: "Altogic",
-                    name: "data-provider-altogic",
-                    hint: "Installs Altogic Data Provider.",
-                },
             ],
             default: "data-provider-custom-json-rest",
         },

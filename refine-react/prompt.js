@@ -112,12 +112,12 @@ module.exports = {
                 {
                     message: "No",
                     name: "antd-css",
-                    hint: "Uses the default css.",
+                    hint: "Uses the default CSS.",
                 },
                 {
                     message: "Yes",
                     name: "antd-less",
-                    hint: "Installs craco & less for theme overrides.",
+                    hint: "Installs Craco & Less for theme overrides.",
                 },
             ],
             default: "antd-css",

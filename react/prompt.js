@@ -8,9 +8,8 @@ module.exports = {
             choices: [
                 { message: "None", name: "none" },
                 { message: "Tailwind CSS", name: "tailwind" },
-                { message: "Bootstrap", name: "bootstrap" },
                 { message: "Chakra UI", name: "chakra-ui" },
-                { message: "Antd", name: "antd" },
+                { message: "Ant Design", name: "antd" },
             ],
             default: "none",
         },
@@ -80,20 +79,8 @@ module.exports = {
                 { message: "None", name: "none" },
                 { message: "Redux + Redux Toolkit", name: "redux" },
                 { message: "Recoil", name: "recoil" },
-                { message: "MobX", name: "mobx" },
                 { message: "Zustand", name: "zustand" },
             ],
-            default: "none",
-        },
-        {
-            name: "mobx_state_tree",
-            message: "Do you want to use Mobx State Tree ?",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Mobx State Tree", name: "mobx-state-tree" },
-            ],
-            skip: ({ answers }) => answers["state-management"] !== "mobx",
             default: "none",
         },
         {
@@ -171,7 +158,6 @@ module.exports = {
             choices: [
                 { message: "None", name: "none" },
                 { message: "GitHub Actions", name: "github-actions" },
-                { message: "Travis", name: "travis" },
             ],
             default: "none",
         },
@@ -209,13 +195,6 @@ module.exports = {
                 return answers.testing === "jest";
             },
             pattern: ["**/src/**/*.@(spec|test).@(tsx)"],
-        },
-        {
-            plugin: ["mobx"],
-            when: function (answers) {
-                return answers.mobx_state_tree === "mobx-state-tree";
-            },
-            pattern: ["**/src/**/*.d.ts"],
         },
     ],
 };

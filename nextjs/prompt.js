@@ -8,9 +8,8 @@ module.exports = {
             choices: [
                 { message: "None", name: "none" },
                 { message: "Tailwind CSS", name: "tailwind" },
-                { message: "Bootstrap", name: "bootstrap" },
                 { message: "Chakra UI", name: "chakra-ui" },
-                { message: "Antd", name: "antd" },
+                { message: "Ant Design", name: "antd" },
             ],
             default: "none",
         },
@@ -52,7 +51,6 @@ module.exports = {
                 { message: "Storybook", name: "storybook" },
                 { message: "SVGR", name: "svgr" },
                 { message: "Environment Variables", name: "env" },
-                { message: "Reverse Proxy", name: "reverse-proxy" },
                 { message: "Bundle Analyzer", name: "bundle-analyzer" },
                 { message: "Apollo GraphQL", name: "apollo-graphql" },
                 { message: "graphql-request", name: "graphql-request" },
@@ -60,7 +58,7 @@ module.exports = {
             default: "none",
         },
         {
-            name: "hooks",
+            name: "hooks", // discuss
             message: "Hooks",
             hint: "use <arrow-keys> to navigate, <space> to select.",
             type: "multiselect",
@@ -80,20 +78,8 @@ module.exports = {
                 { message: "None", name: "none" },
                 { message: "Redux + Redux Toolkit", name: "redux" },
                 { message: "Recoil", name: "recoil" },
-                { message: "MobX", name: "mobx" },
                 { message: "Zustand", name: "zustand" },
             ],
-            default: "none",
-        },
-        {
-            name: "mobx_state_tree",
-            message: "Do you want to use Mobx State Tree ?",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Mobx State Tree", name: "mobx-state-tree" },
-            ],
-            skip: ({ answers }) => answers["state-management"] !== "mobx",
             default: "none",
         },
         {
@@ -113,7 +99,6 @@ module.exports = {
             type: "select",
             choices: [
                 { message: "None", name: "none" },
-                { message: "next-translate", name: "next-translate" },
                 { message: "next-i18next", name: "next-i18next" },
             ],
             default: "none",
@@ -152,7 +137,6 @@ module.exports = {
                     message: "React Testing Library + Jest",
                     name: "testing-library",
                 },
-                { message: "Enzyme + Jest", name: "enzyme" },
             ],
         },
         {
@@ -184,7 +168,6 @@ module.exports = {
             choices: [
                 { message: "None", name: "none" },
                 { message: "GitHub Actions", name: "github-actions" },
-                { message: "Travis", name: "travis" },
                 { message: "Azure Pipelines", name: "azure-pipelines" },
             ],
             default: "none",

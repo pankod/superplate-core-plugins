@@ -22,13 +22,14 @@ export const Main: React.FC = () => {
         <p style={{ fontSize: 18 }}>
           The frontend boilerplate with superpowers!
         </p>
-        <Button type="primary" size="large">
-          <a 
-        <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
-          href="https://pankod.github.io/superplate/" target="_blank">
-            Docs
-          </a>
-        </Button>
+        <Button
+              type="primary"
+              size="large"
+              href="https://pankod.github.io/superplate/"
+              <% if(!(e2etest === "none")) { %>  data-test="docs-btn-anchor" <% } %>
+          >
+              Docs
+          </Button>
       </div>
       <div
         style={{

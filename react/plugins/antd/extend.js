@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: ['import "antd/dist/antd.css";'],
+        import: ['import "antd/dist/reset.css";'],
         inner: [],
         wrapper: [],
     },

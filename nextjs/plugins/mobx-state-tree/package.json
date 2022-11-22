@@ -1,5 +1,0 @@
-{
-    "dependencies": {
-        "mobx-state-tree": "^5.0.1"
-    }
-}

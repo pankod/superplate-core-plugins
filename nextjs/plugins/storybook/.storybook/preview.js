@@ -1,6 +1,3 @@
-<%_ if (ui.includes("bootstrap")) { _%>
-  import styles from "../src/styles/app.scss";
-<%_ } _%>
 <%_ if (css_features.includes("styled-components") || ui.includes("chakra-ui")) { _%>
 import { addDecorator } from "@storybook/react";
 <%_ } _%>

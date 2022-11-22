@@ -1,16 +1,8 @@
-<%_ if (testing === 'testing-library') { _%>   
 import { render } from "test";
 
-<%_ } else if (testing === 'enzyme') { _%>
-import mount from "test/mount";
-
-import { Logo } from "components/scss";
-<%_ } _%>
 import { Header } from "./index";
 
-<%_ if (testing === 'testing-library') { _%>   
 describe("Header component testing with testing-library", () => {
-
     const { getByTestId } = render(<Header />);
 
     const container = getByTestId("container");
@@ -23,16 +15,3 @@ describe("Header component testing with testing-library", () => {
         expect(container.firstChild).toBeDefined();
     });
 });
-<%_ } else if (testing === 'enzyme') { _%>
-describe("Header component testing with testing-library", () => {
-    const component = mount(<Header />);
-
-    it("renders without crashing", () => {
-        expect(component).toBeTruthy();
-    });
-
-    it("renders successfuly next.js logo", () => {
-        expect(component.find(Logo)).toBeDefined();
-    });
-});
-<%_ } _%>

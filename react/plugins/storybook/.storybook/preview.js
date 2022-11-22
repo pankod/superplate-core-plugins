@@ -2,9 +2,6 @@
 <%_ if (ui.includes("tailwind")) { _%>
   import "../src/styles/global.css";
 <%_ } _%>
-<%_ if (ui.includes("bootstrap")) { _%>
-  import styles from "../src/styles/app.scss";
-<%_ } _%>
 <%_ if (css_features.includes("styled-components") || ui.includes("chakra-ui")) { _%>
 import { addDecorator } from "@storybook/react";
 <%_ } _%>

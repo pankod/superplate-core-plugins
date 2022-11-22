@@ -7,7 +7,6 @@ This is the source repository for [superplate](https://github.com/pankod/superpl
 ### UI Frameworks
 
 - [Tailwind CSS](http://tailwindcss.com/)
-- [React Bootstrap](https://react-bootstrap.github.io/)
 - [Chakra UI](https://chakra-ui.com/docs/getting-started)
 - [Ant Design](https://ant.design/)
 
@@ -38,8 +37,6 @@ This is the source repository for [superplate](https://github.com/pankod/superpl
 ### State Management
 
 - [Redux](https://react-redux.js.org/)
-- [Mobx](https://mobx.js.org/README.html)
-  - [Mobx State Tree](https://mobx-state-tree.js.org/intro/welcome)
 - [Recoil](https://recoiljs.org/)
 
 ### i18n
@@ -57,7 +54,6 @@ This is the source repository for [superplate](https://github.com/pankod/superpl
 
 - [Jest](https://jestjs.io/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- [Enzyme](https://enzymejs.github.io/enzyme/)
 
 ### E2E Testing Frameworks
 
@@ -71,7 +67,6 @@ This is the source repository for [superplate](https://github.com/pankod/superpl
 ### CI Tools
 
 - [GitHub Actions](https://docs.github.com/en/actions)
-- [Travis CI](https://travis-ci.org/)
 
 ## Development / Contribution
 

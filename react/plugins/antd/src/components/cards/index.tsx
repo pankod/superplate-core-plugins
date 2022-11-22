@@ -7,12 +7,14 @@ import data from "meta.json";
 export const Cards: React.FC = () => {
 
   return (
-    <Row style={{ flex: 1}}>
-      {(data?.plugins ?? []).map((plugin) => (
-        <Col md={6} key={plugin.name} <% if (testing === 'testing-library') { %> data-testid="container" <% } %> >
-          <Card title={plugin.name}>{plugin.description}</Card>
-        </Col>
-      ))}
-    </Row>
+<Row gutter={[16, 16]}>
+{(data?.plugins ?? []).map((plugin) => (
+    <Col span={8} key={plugin.name}  <% if (testing === 'testing-library') { %> data-testid="container" <% } %>>
+        <Card title={plugin.name} bordered={false}>
+            {plugin.description}
+        </Card>
+    </Col>
+))}
+</Row>
   );
 };

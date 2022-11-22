@@ -211,12 +211,5 @@ module.exports = {
             },
             pattern: ["**/src/**/*.@(spec|test).@(tsx)"],
         },
-        {
-            plugin: ["mobx"],
-            when: function (answers) {
-                return answers.mobx_state_tree === "mobx-state-tree";
-            },
-            pattern: ["**/src/**/*.d.ts"],
-        },
     ],
 };

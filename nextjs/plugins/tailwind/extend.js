@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: ['import "@styles/global.css"'],
+        import: ['import "@styles/tailwind.css"'],
         inner: [],
         wrapper: [],
     },

@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            'import { QueryClient, QueryClientProvider } from "react-query";',
+            'import { QueryClient, QueryClientProvider } from "@tanstack/react-query";',
         ],
         inner: ["const queryClient = new QueryClient()"],
         wrapper: [
@@ -13,7 +13,7 @@ const base = {
     },
     testSetup: {
         import: [
-            'import { QueryClient, QueryClientProvider } from "react-query";',
+            'import { QueryClient, QueryClientProvider } from "@tanstack/react-query";',
         ],
         inner: ["const queryClient = new QueryClient()"],
         wrapper: [

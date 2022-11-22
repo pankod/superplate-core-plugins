@@ -1,10 +1,10 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 /**
  * This component is generated as an example for useQuery hook
  *
  * To learn more about React Query and data fetching,
- * please visit https://react-query.tanstack.com/
+ * please visit https://tanstack.com/query/v4/
  */
 
 const API_URL = <%- features.includes("reverse-proxy") ?
@@ -13,7 +13,7 @@ const API_URL = <%- features.includes("reverse-proxy") ?
 
 export const ReactQueryExample = () => {
 
-  const { data, refetch } = useQuery("repoData", () => 
+  const { data, refetch } = useQuery(["repoData"], () => 
     fetch(
       API_URL
     ).then((res) => res.json()),
@@ -45,7 +45,7 @@ export const ReactQueryExample = () => {
         </main>
         <footer>
           <a
-            href="https://react-query.tanstack.com/"
+            href="https://tanstack.com/query/v4/"
             target="_blank"
             rel="noopener noreferrer"
           >

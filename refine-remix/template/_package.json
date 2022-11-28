@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "refine dev",
     "build": "refine build",
-    "start": "refine start"
+    "start": "refine start",
+    "refine": "refine"
   },
   "dependencies": {
     "@pankod/refine-cli": "^1.2.0",

@@ -10,11 +10,11 @@
     "refine": "refine"
   },
   "dependencies": {
-    "@pankod/refine-cli": "^1.2.0",
-    "@pankod/refine-core": "^3.18.0",
-    "@pankod/refine-nextjs-router": "^3.18.0",
+    "@pankod/refine-cli": "^1.13.0",
+    "@pankod/refine-core": "^3.90.4",
+    "@pankod/refine-nextjs-router": "^4.1.0",
     "@pankod/refine-inferencer": "^1.2.0",
-    "next": "^12.1.6",
+    "next": "^13.0.6",
     "next-compose-plugins": "^2.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

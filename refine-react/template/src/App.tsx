@@ -3,6 +3,7 @@ import React from "react";
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
+import "@pankod/refine-antd/dist/reset.css";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';

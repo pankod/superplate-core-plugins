@@ -103,26 +103,27 @@ module.exports = {
             ],
             default: "no",
         },
-        {
-            name: "antd-theme-customization",
-            message: "Do you want to customize the Ant Design theme?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "antd-css",
-                    hint: "Uses the default CSS.",
-                },
-                {
-                    message: "Yes",
-                    name: "antd-less",
-                    hint: "Installs Craco & Less for theme overrides.",
-                },
-            ],
-            default: "antd-css",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        },
+        // TODO: Add dark mode support for Antd
+        // {
+        //     name: "antd-dark-mode",
+        //     message: "Do you want to add dark mode support?:",
+        //     type: "select",
+        //     pageSize: 2,
+        //     choices: [
+        //         {
+        //             message: "No",
+        //             name: "no",
+        //             hint: "Only light theme will be installed.",
+        //         },
+        //         {
+        //             message: "Yes",
+        //             name: "antd-dark-mode",
+        //             hint: "Both light & dark themes will be installed.",
+        //         },
+        //     ],
+        //     default: "no",
+        //     skip: ({ answers }) => answers["ui-framework"] !== "antd",
+        // },
         {
             name: "mui-extend-theme",
             message: "Do you want to customize the Material UI theme?:",

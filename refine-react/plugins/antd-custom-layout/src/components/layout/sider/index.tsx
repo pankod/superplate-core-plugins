@@ -148,21 +148,19 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
   const renderMenu = () => {
     return (
-      <>
-        <Menu
-          selectedKeys={[selectedKey]}
-          defaultOpenKeys={defaultOpenKeys}
-          mode="inline"
-          onClick={() => {
-            setDrawerOpen(false);
-            if (!breakpoint.lg) {
-              setCollapsed(true);
-            }
-          }}
-        >
-          {renderSider()}
-        </Menu>
-      </>
+      <Menu
+        selectedKeys={[selectedKey]}
+        defaultOpenKeys={defaultOpenKeys}
+        mode="inline"
+        onClick={() => {
+          setDrawerOpen(false);
+          if (!breakpoint.lg) {
+            setCollapsed(true);
+          }
+        }}
+      >
+        {renderSider()}
+      </Menu>
     );
   };
 

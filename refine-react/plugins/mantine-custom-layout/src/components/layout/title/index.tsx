@@ -1,11 +1,10 @@
 import React from "react";
-import { TitleProps } from "@pankod/refine-core";
+import { useRouterContext, TitleProps } from "@pankod/refine-core";
 import { Center } from "@pankod/refine-mantine";
-import routerProvider from "@pankod/refine-react-router-v6";
-
-const { Link } = routerProvider;
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => {
+    const { Link } = useRouterContext();
+
     return (
         <Link to="/">
             <Center p="xs">

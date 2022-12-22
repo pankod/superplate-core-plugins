@@ -2,10 +2,8 @@ const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
         import: [],
-        refineAntdImports: ["notificationProvider", "ConfigProvider", "theme"],
-        wrapper: [
-            [`<ConfigProvider theme={{ algorithm: theme.defaultAlgorithm }}>`, "</ConfigProvider>"],
-        ]
+        refineAntdImports: ["notificationProvider"],
+        wrapper: []
     },
 };
 

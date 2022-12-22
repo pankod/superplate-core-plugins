@@ -103,27 +103,26 @@ module.exports = {
             ],
             default: "no",
         },
-        // TODO: Add dark mode support for Antd
-        // {
-        //     name: "antd-dark-mode",
-        //     message: "Do you want to add dark mode support?:",
-        //     type: "select",
-        //     pageSize: 2,
-        //     choices: [
-        //         {
-        //             message: "No",
-        //             name: "no",
-        //             hint: "Only light theme will be installed.",
-        //         },
-        //         {
-        //             message: "Yes",
-        //             name: "antd-dark-mode",
-        //             hint: "Both light & dark themes will be installed.",
-        //         },
-        //     ],
-        //     default: "no",
-        //     skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        // },
+        {
+            name: "antd-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "antd-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
+        },
         {
             name: "mui-extend-theme",
             message: "Do you want to customize the Material UI theme?:",

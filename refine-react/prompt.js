@@ -293,15 +293,10 @@ module.exports = {
                     name: "react-router-v6",
                     hint: "React Router v6 will be used as router.",
                 },
-                {
-                    message: "React Location",
-                    name: "react-location",
-                    hint: "React Location will be used as router.",
-                },
             ],
             default: "react-router-v6",
+            skip: () => true,
         },
-
         {
             name: "auth-provider",
             message: "Do you need any Authentication logic?:",

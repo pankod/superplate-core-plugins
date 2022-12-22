@@ -2,9 +2,7 @@ import React from "react";
 import { TitleProps } from "@pankod/refine-core";
 <%_ if (answers["router-provider"] === "react-router-v6") { _%>
   import routerProvider from "@pankod/refine-react-router-v6";
-<%_ } else if (answers["router-provider"] === "react-location") { _%>
-  import routerProvider from "@pankod/refine-react-location";
-<%_ } _%>
+<%_ }
     
 const { Link } = routerProvider;
     

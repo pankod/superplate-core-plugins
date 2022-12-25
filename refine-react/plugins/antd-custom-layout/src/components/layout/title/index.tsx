@@ -1,8 +1,8 @@
 import React from "react";
 import { TitleProps } from "@pankod/refine-core";
 <%_ if (answers["router-provider"] === "react-router-v6") { _%>
-  import routerProvider from "@pankod/refine-react-router-v6";
-<%_ }
+import routerProvider from "@pankod/refine-react-router-v6";
+<%_ } _%>
     
 const { Link } = routerProvider;
     

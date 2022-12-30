@@ -11,6 +11,10 @@ const base = {
         ],
         inner: [
             `
+            if (isLoading) {
+                return <span>loading...</span>
+            }
+
             const authProvider: AuthProvider = {
                 login: () => {
                     return Promise.resolve(false);

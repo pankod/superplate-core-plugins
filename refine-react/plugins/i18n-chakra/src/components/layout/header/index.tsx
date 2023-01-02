@@ -106,7 +106,7 @@
     Menu,
     MenuButton,
     MenuItem,
-    MenuList
+    MenuList,
    } from "@pankod/refine-chakra-ui";
   import { IconLanguage } from "@tabler/icons";
 

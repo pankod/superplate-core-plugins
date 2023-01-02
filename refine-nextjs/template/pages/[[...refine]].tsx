@@ -13,39 +13,38 @@ import { NextRouteComponent /*, handleRefineParams */ } from "@pankod/refine-nex
 export const getServerSideProps: GetServerSideProps = async (context) => {
     // const { resource, action, id } = handleRefineParams(context.params?.refine);
 
-    <%_ if (answers["auth-provider"] !== 'none' || ['data-provider-strapi-graphql', 'data-provider-supabase', 'data-provider-strapi-v4', 'data-provider-strapi'].includes(answers["data-provider"])) { _%>
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+    const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]));
+<%_ } _%>
 
-        const { isAuthenticated, ...authenticationValues } = await checkAuthentication(
-            authProvider,
-            context,
-        );
+<%_ if (answers["auth-provider"] !== 'none' || ['data-provider-strapi-graphql', 'data-provider-supabase', 'data-provider-strapi-v4', 'data-provider-strapi'].includes(answers["data-provider"])) { _%>
+    const { isAuthenticated, ...authenticationValues } = await checkAuthentication(
+        authProvider,
+        context,
+    );
 
-        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-        const i18nProps = await serverSideTranslations(context.locale ?? "en", [
-            "common",
-          ]);
-        <%_ } _%>
-
-        if (!isAuthenticated) {
-            return {
-                ...authenticationValues,
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                props: {
-                    ...i18nProps,
-                },
-                <%_ } _%>
-            };
-        }
-
+    if (!isAuthenticated) {
         return {
-            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+            ...authenticationValues,
             props: {
+                ...('props' in authenticationValues ? authenticationValues.props : {}),
+            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
                 ...i18nProps,
-            },
-            <%_ } else { _%>
-            props: {},
             <%_ } _%>
+            },
         };
+    }  
+<%_ } _%>
+
+    return {
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+        props: {
+            ...i18nProps,
+        },
+    <%_ } else {_%>
+        props: {},
+    <%_ } _%>
+    }
 };
 
 export default NextRouteComponent;

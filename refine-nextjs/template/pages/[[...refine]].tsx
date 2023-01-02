@@ -15,42 +15,37 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     <%_ if (answers["auth-provider"] !== 'none' || ['data-provider-strapi-graphql', 'data-provider-supabase', 'data-provider-strapi-v4', 'data-provider-strapi'].includes(answers["data-provider"])) { _%>
 
-        const { isAuthenticated, ...props } = await checkAuthentication(
+        const { isAuthenticated, ...authenticationValues } = await checkAuthentication(
             authProvider,
             context,
         );
 
         <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-        const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
-
-                if (!isAuthenticated) {
-                    return { props: { ...props, ...i18nProps } };
-                }
-
-        <%_ } else { _%>
-            if (!isAuthenticated) {
-                return props;
-            }
+        const i18nProps = await serverSideTranslations(context.locale ?? "en", [
+            "common",
+          ]);
         <%_ } _%>
-    
-    <%_ } _%>
 
-    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-    return {
-        props: {
-            ...(await serverSideTranslations(context.locale ?? "en", [
-                "common",
-            ])),
-        },
-    };
-    <%_ } else {_%>
-    return {
-        props: {},
-    };
-    <%_ } _%>
-        
+        if (!isAuthenticated) {
+            return {
+                ...authenticationValues,
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+                props: {
+                    ...i18nProps,
+                },
+                <%_ } _%>
+            };
+        }
 
-    
+        return {
+            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+            props: {
+                ...i18nProps,
+            },
+            <%_ } else { _%>
+            props: {},
+            <%_ } _%>
+        };
 };
 
 export default NextRouteComponent;

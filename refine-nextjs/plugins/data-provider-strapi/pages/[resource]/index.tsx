@@ -16,25 +16,25 @@ import strapiAuthProvider from "src/authProvider";
 const axiosInstance = axios.create();
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { authProvider } = strapiAuthProvider(API_URL);
-  const { isAuthenticated, ...props } = await checkAuthentication(
-    authProvider,
-    context
-  );
-
-  <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+    const { authProvider } = strapiAuthProvider(API_URL);
+    const { isAuthenticated, ...authenticationValues } = await checkAuthentication(
+        authProvider,
+        context
+    );
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
     const i18nProps = (await serverSideTranslations(context.locale ?? "en", ["common"]))
+<%_ } _%>
 
     if (!isAuthenticated) {
-        return { props: { ...props, ...i18nProps } };
+        return {
+            ...authenticationValues,
+            props: {
+            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+                ...i18nProps,
+            <%_ } _%>
+            },
+        };
     }
-
-    <%_ } else { _%>
-    if (!isAuthenticated) {
-      return props;
-    }
-    
-    <%_ } _%>
 
     const { query } = context;
 
@@ -53,16 +53,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         return {
             props: {
                 initialData: data,
-                <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-                ...i18nProps
-    <%_ } _%>
-            },
-        };
-    } catch (error) {
-        return { props: {
             <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
                 ...i18nProps
             <%_ } _%>
-        } };
+            },
+        };
+    } catch (error) {
+        return {
+            props: {
+            <%_ if(answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
+                ...i18nProps,
+            <%_ } _%>
+            }
+        };
     }
 };

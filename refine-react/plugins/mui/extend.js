@@ -3,9 +3,9 @@ const base = {
         refineProps: ["notificationProvider={notificationProvider}"],
         import: [],
         refineMuiImports: [
-            "notificationProvider", 
-            "RefineSnackbarProvider", 
-            "CssBaseline", 
+            "notificationProvider",
+            "RefineSnackbarProvider",
+            "CssBaseline",
             "GlobalStyles"
         ],
         wrapper: [],
@@ -32,6 +32,25 @@ module.exports = {
         base._app.refineMuiImports.push("ErrorComponent");
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
+
+        // ignore inferencer for graphql base data providers
+        const ignoredDataProviders = ["data-provider-graphql", "data-provider-strapi-graphql", "data-provider-hasura"];
+
+        if (!ignoredDataProviders.includes(answers["data-provider"])) {
+            base._app.refineAntdImports.push(`import { MuiInferencer } from "@pankod/refine-inferencer/mui";`,);
+            base._app.refineProps.push(
+                `resources={[
+                    {
+                        name: "posts",
+                        list: MuiInferencer,
+                        edit: MuiInferencer,
+                        show: MuiInferencer,
+                        create: MuiInferencer,
+                        canDelete: true,
+                    },
+                ]}`,
+            );
+        }
         return base;
     },
 };

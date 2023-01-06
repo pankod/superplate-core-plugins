@@ -18,7 +18,7 @@ import {
   Switch,
 } from "@pankod/refine-antd";
 import { useTranslation } from "react-i18next";
-import { ColorModeContext } from "contexts";
+import { ColorModeContext } from "@contexts";
 
 const { DownOutlined } = Icons;
 const { Text } = Typography;

@@ -37,7 +37,7 @@ module.exports = {
         const ignoredDataProviders = ["data-provider-graphql", "data-provider-strapi-graphql", "data-provider-hasura"];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {
-            base._app.refineAntdImports.push(`import { MuiInferencer } from "@pankod/refine-inferencer/mui";`,);
+            base._app.import.push(`import { MuiInferencer } from "@pankod/refine-inferencer/mui";`,);
             base._app.refineProps.push(
                 `resources={[
                     {

@@ -25,7 +25,7 @@ module.exports = {
         const ignoredDataProviders = ["data-provider-graphql", "data-provider-strapi-graphql", "data-provider-hasura"];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {
-            base._app.refineAntdImports.push(`import { AntdInferencer } from "@pankod/refine-inferencer/antd";`,);
+            base._app.import.push(`import { AntdInferencer } from "@pankod/refine-inferencer/antd";`,);
             base._app.refineProps.push(
                 `resources={[
                     {

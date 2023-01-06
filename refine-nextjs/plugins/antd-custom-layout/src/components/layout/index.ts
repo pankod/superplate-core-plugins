@@ -1,6 +1,6 @@
-export * from "./footer";
-export * from "./header";
-export * from "./sider";
-export * from "./layout";
-export * from "./offLayoutArea";
-export * from "./title";
+export { Footer } from "./footer";
+export { Header } from "./header";
+export { Sider } from "./sider";
+export { Layout } from "./layout";
+export { OffLayoutArea } from "./offLayoutArea";
+export { Title } from "./title";

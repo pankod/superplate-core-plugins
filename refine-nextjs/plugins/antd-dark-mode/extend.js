@@ -8,9 +8,7 @@ const base = {
         inner: [],
         localImport: [
             `import { ColorModeContextProvider } from "@contexts";`,
-            `import { Header } from "@components/layout";`
         ],
-        refineProps: ["Header={Header}"],
     },
 };
 

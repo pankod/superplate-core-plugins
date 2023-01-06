@@ -1,30 +1,37 @@
 import React from "react";
-import { Link } from "@pankod/refine-nextjs-router";
-
 import { TitleProps } from "@pankod/refine-core";
-
+import { Link } from "@pankod/refine-nextjs-router";
+    
 export const Title: React.FC<TitleProps> = ({ collapsed }) => (
-    <Link href="/">
-        {collapsed ? (
-            <img
-                src={"/refine-collapsed.svg"}
-                alt="Refine"
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: "12px 24px",
-                }}
-            />
-        ) : (
-            <img
-                src={"/refine.svg"}
-                alt="Refine"
-                style={{
-                    width: "200px",
-                    padding: "12px 24px",
-                }}
-            />
-        )}
-    </Link>
+<Link to="/">
+{collapsed ? (
+  <div
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+  >
+  <img
+  src="https://refine.ams3.cdn.digitaloceanspaces.com/logo/refine-mini.svg"
+  alt="Refine"
+  style={{
+    margin: "0 auto",
+    padding: "12px 0",
+    maxHeight: "65.5px",
+  }}
+  />
+  </div>
+  ) : (
+    <img
+    src="https://refine.ams3.cdn.digitaloceanspaces.com/logo/refine.svg"
+    alt="Refine"
+    style={{
+      width: "200px",
+      padding: "12px 24px",
+    }}
+    />
+    )}
+  </Link>
 );
+          

@@ -99,6 +99,26 @@ module.exports = {
             default: "no",
         },
         {
+            name: "antd-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "antd-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
+        },
+        {
             name: "mui-extend-theme",
             message: "Do you want an extended theme?:",
             type: "select",
@@ -279,38 +299,6 @@ module.exports = {
                 answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-nhost",
             default: "none",
-        },
-        {
-            name: "antd-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "antd-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "antd",
-            default: "no",
         },
         {
             name: "mui-example-pages",

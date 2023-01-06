@@ -99,23 +99,23 @@ module.exports = {
             default: "no",
         },
         {
-            name: "antd-theme-customization",
-            message: "Do you want to customize the Ant Design theme?:",
+            name: "antd-dark-mode",
+            message: "Do you want to add dark mode support?:",
             type: "select",
             pageSize: 2,
             choices: [
                 {
                     message: "No",
-                    name: "antd-css",
-                    hint: "Uses the default CSS.",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
                 },
                 {
                     message: "Yes",
-                    name: "antd-less",
-                    hint: "Installs Less plugin for theme overrides.",
+                    name: "antd-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
                 },
             ],
-            default: "antd-css",
+            default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {

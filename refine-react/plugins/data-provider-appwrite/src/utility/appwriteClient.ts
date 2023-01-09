@@ -1,7 +1,7 @@
 import { Account, Appwrite, Storage } from "@pankod/refine-appwrite";
 
-const APPWRITE_URL = "your-appwrite-url";
-const APPWRITE_PROJECT = "your-appwrite-project";
+const APPWRITE_URL = "https://refine.appwrite.org/v1";
+const APPWRITE_PROJECT = "61c4368b4e349";
 
 const appwriteClient = new Appwrite();
 

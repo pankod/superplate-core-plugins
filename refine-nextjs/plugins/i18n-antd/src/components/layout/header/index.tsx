@@ -17,34 +17,36 @@ import {
   Typography,
   Switch,
 } from "@pankod/refine-antd";
-import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
+import NextRouter from "@pankod/refine-nextjs-router";
+
 import { ColorModeContext } from "@contexts";
 
 const { DownOutlined } = Icons;
 const { Text } = Typography;
+const { Link } = NextRouter;
 
 export const Header: React.FC = () => {
-  const { i18n } = useTranslation();
   const locale = useGetLocale();
-  const changeLanguage = useSetLocale();
+  const { locales } = useRouter();
+  const currentLocale = locale();
   const { data: user } = useGetIdentity();
   const { mode, setMode } = useContext(ColorModeContext);
 
-  const currentLocale = locale();
-
   const menu = (
     <Menu selectedKeys={currentLocale ? [currentLocale] : []}>
-      {[...(i18n.languages || [])].sort().map((lang: string) => (
+      {[...(locales || [])].sort().map((lang: string) => (
         <Menu.Item
           key={lang}
-          onClick={() => changeLanguage(lang)}
           icon={
             <span style={{ marginRight: 8 }}>
               <Avatar size={16} src={`/images/flags/${lang}.svg`} />
             </span>
           }
         >
-          {lang === "en" ? "English" : "German"}
+          <Link href="/" locale={lang}>
+            {lang === "en" ? "English" : "German"}
+          </Link>
         </Menu.Item>
       ))}
     </Menu>
@@ -86,13 +88,12 @@ export const Header: React.FC = () => {
     </AntdLayout.Header>
   );
 };
+
+
 <%_ } else { _%>
 
-  import {
-  useGetLocale,
-  useSetLocale,
-  useGetIdentity,
-} from "@pankod/refine-core";
+import { useContext } from "react";
+import { useGetLocale, useGetIdentity } from "@pankod/refine-core";
 import {
   AntdLayout,
   Space,
@@ -102,33 +103,35 @@ import {
   Dropdown,
   Avatar,
   Typography,
+  Switch,
 } from "@pankod/refine-antd";
-import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
+import NextRouter from "@pankod/refine-nextjs-router";
 
 const { DownOutlined } = Icons;
 const { Text } = Typography;
+const { Link } = NextRouter;
 
 export const Header: React.FC = () => {
-  const { i18n } = useTranslation();
   const locale = useGetLocale();
-  const changeLanguage = useSetLocale();
-  const { data: user } = useGetIdentity();
-
+  const { locales } = useRouter();
   const currentLocale = locale();
+  const { data: user } = useGetIdentity();
 
   const menu = (
     <Menu selectedKeys={currentLocale ? [currentLocale] : []}>
-      {[...(i18n.languages || [])].sort().map((lang: string) => (
+      {[...(locales || [])].sort().map((lang: string) => (
         <Menu.Item
           key={lang}
-          onClick={() => changeLanguage(lang)}
           icon={
             <span style={{ marginRight: 8 }}>
               <Avatar size={16} src={`/images/flags/${lang}.svg`} />
             </span>
           }
         >
-          {lang === "en" ? "English" : "German"}
+          <Link href="/" locale={lang}>
+            {lang === "en" ? "English" : "German"}
+          </Link>
         </Menu.Item>
       ))}
     </Menu>
@@ -164,7 +167,6 @@ export const Header: React.FC = () => {
     </AntdLayout.Header>
   );
 };
-
 
 <%_ } _%>
 

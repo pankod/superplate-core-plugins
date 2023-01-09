@@ -22,6 +22,32 @@ module.exports = {
             base._app.refineProps.push("Layout={Layout}");
         }
 
+        // ignore inferencer for graphql base data providers
+        const ignoredDataProviders = [
+            "data-provider-graphql",
+            "data-provider-strapi-graphql",
+            "data-provider-hasura",
+            "data-provider-medusa",
+        ];
+
+        if (!ignoredDataProviders.includes(answers["data-provider"])) {
+            base._app.import.push(
+                `import { ChakraUIInferencer } from "@pankod/refine-inferencer/chakra-ui";`,
+            );
+            base._app.refineProps.push(
+                `resources={[
+                    {
+                        name: "posts",
+                        list: ChakraUIInferencer,
+                        edit: ChakraUIInferencer,
+                        show: ChakraUIInferencer,
+                        create: ChakraUIInferencer,
+                        canDelete: true,
+                    },
+                ]}`,
+            );
+        }
+
         return base;
     },
 };

@@ -5,7 +5,7 @@ const base = {
             "notificationProvider",
             "RefineSnackbarProvider",
             "CssBaseline",
-            "GlobalStyles"
+            "GlobalStyles",
         ],
         wrapper: [],
     },
@@ -21,10 +21,18 @@ module.exports = {
         if (answers["mui-dark-mode"] === "no") {
             base._app.refineMuiImports.push("ThemeProvider");
             base._app.refineMuiImports.push("LightTheme");
-            base._app.wrapper.push(["<ThemeProvider theme={LightTheme}>", "</ThemeProvider>"]);
+            base._app.wrapper.push([
+                "<ThemeProvider theme={LightTheme}>",
+                "</ThemeProvider>",
+            ]);
             base._app.wrapper.push(["<CssBaseline />"]);
-            base._app.wrapper.push([`<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`]);
-            base._app.wrapper.push(["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"]);
+            base._app.wrapper.push([
+                `<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`,
+            ]);
+            base._app.wrapper.push([
+                "<RefineSnackbarProvider>",
+                "</RefineSnackbarProvider>",
+            ]);
         }
 
         base._app.refineMuiImports.push("ReadyPage");
@@ -38,6 +46,7 @@ module.exports = {
             "data-provider-strapi-graphql",
             "data-provider-hasura",
             "data-provider-medusa",
+            "data-provider-appwrite",
         ];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {

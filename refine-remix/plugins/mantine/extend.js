@@ -45,6 +45,7 @@ module.exports = {
             "data-provider-strapi-graphql",
             "data-provider-hasura",
             "data-provider-medusa",
+            "data-provider-appwrite",
         ];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {

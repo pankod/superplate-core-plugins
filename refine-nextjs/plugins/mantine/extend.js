@@ -39,13 +39,13 @@ module.exports = {
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
 
-
         // ignore inferencer for graphql base data providers
         const ignoredDataProviders = [
             "data-provider-graphql",
             "data-provider-strapi-graphql",
             "data-provider-hasura",
             "data-provider-medusa",
+            "data-provider-appwrite",
         ];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {

@@ -3,7 +3,7 @@ const base = {
         refineProps: [
             "notificationProvider={notificationProvider()}",
             "ReadyPage={ReadyPage}",
-            "catchAll={<ErrorComponent />}"
+            "catchAll={<ErrorComponent />}",
         ],
         import: [],
         refineChakraImports: [
@@ -12,10 +12,9 @@ const base = {
             "refineTheme",
             "ReadyPage",
             "ErrorComponent",
-
         ],
         wrapper: [
-            [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"]
+            [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
         ],
     },
 };
@@ -33,6 +32,7 @@ module.exports = {
             "data-provider-strapi-graphql",
             "data-provider-hasura",
             "data-provider-medusa",
+            "data-provider-appwrite",
         ];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {

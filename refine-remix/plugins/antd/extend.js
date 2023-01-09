@@ -2,14 +2,10 @@ const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
         import: [
-            'import resetStyle from "@pankod/refine-antd/dist/reset.min.css";',
-            'import antdStyle from "@pankod/refine-antd/dist/antd.min.css";',
+            'import resetStyle from "@pankod/refine-antd/dist/reset.css";',
         ],
         refineAntdImports: ["notificationProvider"],
-        styleImport: [
-            '{ rel: "stylesheet", href: antdStyle }',
-            '{ rel: "stylesheet", href: resetStyle }',
-        ],
+        styleImport: ['{ rel: "stylesheet", href: resetStyle }'],
     },
 };
 
@@ -24,6 +20,33 @@ module.exports = {
         base._app.refineAntdImports.push("ErrorComponent");
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
+
+        // ignore inferencer for graphql base data providers
+        const ignoredDataProviders = [
+            "data-provider-graphql",
+            "data-provider-strapi-graphql",
+            "data-provider-hasura",
+            "data-provider-medusa",
+            "data-provider-appwrite",
+        ];
+
+        if (!ignoredDataProviders.includes(answers["data-provider"])) {
+            base._app.import.push(
+                `import { AntdInferencer } from "@pankod/refine-inferencer/antd"`,
+            );
+            base._app.refineProps.push(
+                `resources={[
+                    {
+                        name: "posts",
+                        list: AntdInferencer,
+                        edit: AntdInferencer,
+                        show: AntdInferencer,
+                        create: AntdInferencer,
+                        canDelete: true,
+                    },
+                ]}`,
+            );
+        }
 
         return base;
     },

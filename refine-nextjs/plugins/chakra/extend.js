@@ -3,7 +3,7 @@ const base = {
         refineProps: [
             "notificationProvider={notificationProvider()}",
             "ReadyPage={ReadyPage}",
-            "catchAll={<ErrorComponent />}"
+            "catchAll={<ErrorComponent />}",
         ],
         import: [],
         refineChakraImports: [
@@ -12,10 +12,9 @@ const base = {
             "refineTheme",
             "ReadyPage",
             "ErrorComponent",
-
         ],
         wrapper: [
-            [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"]
+            [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
         ],
     },
 };
@@ -26,6 +25,35 @@ module.exports = {
             base._app.refineChakraImports.push("Layout");
             base._app.refineProps.push("Layout={Layout}");
         }
+
+        // ignore inferencer for graphql base data providers
+        const ignoredDataProviders = [
+            "data-provider-graphql",
+            "data-provider-strapi-graphql",
+            "data-provider-hasura",
+            "data-provider-medusa",
+            "data-provider-appwrite",
+        ];
+
+        if (!ignoredDataProviders.includes(answers["data-provider"])) {
+            base._app.import.push(
+                `import { ChakraUIInferencer } from "@pankod/refine-inferencer/chakra-ui";`,
+            );
+            base._app.refineProps.push(
+                `resources={[
+                    {
+                        name: "posts",
+                        list: ChakraUIInferencer,
+                        edit: ChakraUIInferencer,
+                        show: ChakraUIInferencer,
+                        create: ChakraUIInferencer,
+                        canDelete: true,
+                    },
+                ]}`,
+            );
+        }
+
+        return base;
 
         return base;
     },

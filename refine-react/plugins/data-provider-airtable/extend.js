@@ -2,8 +2,8 @@ const base = {
     _app: {
         import: [`import dataProvider from "@pankod/refine-airtable";`],
         inner: [
-            `const API_TOKEN = "your-airtable-api-token";`,
-            `const BASE_ID = "your-airtable-base-id";`,
+            `const API_TOKEN = "keyI18pnBeEMfPAIb";`,
+            `const BASE_ID = "appKYl1H4k9g73sBT";`,
             "",
         ],
         refineProps: ["dataProvider={dataProvider(API_TOKEN, BASE_ID)}"],

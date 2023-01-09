@@ -99,23 +99,23 @@ module.exports = {
             default: "no",
         },
         {
-            name: "antd-theme-customization",
-            message: "Do you want to customize the Ant Design theme?:",
+            name: "antd-dark-mode",
+            message: "Do you want to add dark mode support?:",
             type: "select",
             pageSize: 2,
             choices: [
                 {
                     message: "No",
-                    name: "antd-css",
-                    hint: "Uses the default CSS.",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
                 },
                 {
                     message: "Yes",
-                    name: "antd-less",
-                    hint: "Installs Less plugin for theme overrides.",
+                    name: "antd-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
                 },
             ],
-            default: "antd-css",
+            default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
@@ -403,134 +403,6 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "chakra",
-        },
-        {
-            name: "antd-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "antd-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "antd",
-            default: "no",
-        },
-        {
-            name: "mui-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "mui-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "mui",
-            default: "no",
-        },
-        {
-            name: "mantine-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "mantine-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "mantine",
-            default: "no",
-        },
-        {
-            name: "chakra-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "chakra-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "chakra",
-            default: "no",
         },
         {
             name: "command-palette",

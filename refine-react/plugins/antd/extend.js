@@ -1,11 +1,9 @@
 const base = {
     _app: {
         import: [],
-        refineProps: [
-            "notificationProvider={notificationProvider}",
-        ],
+        refineProps: ["notificationProvider={notificationProvider}"],
         refineAntdImports: ["notificationProvider"],
-        wrapper: []
+        wrapper: [],
     },
 };
 
@@ -22,10 +20,17 @@ module.exports = {
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
 
         // ignore inferencer for graphql base data providers
-        const ignoredDataProviders = ["data-provider-graphql", "data-provider-strapi-graphql", "data-provider-hasura"];
+        const ignoredDataProviders = [
+            "data-provider-graphql",
+            "data-provider-strapi-graphql",
+            "data-provider-hasura",
+            "data-provider-medusa",
+        ];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {
-            base._app.import.push(`import { AntdInferencer } from "@pankod/refine-inferencer/antd";`,);
+            base._app.import.push(
+                `import { AntdInferencer } from "@pankod/refine-inferencer/antd";`,
+            );
             base._app.refineProps.push(
                 `resources={[
                     {

@@ -40,10 +40,17 @@ module.exports = {
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
 
         // ignore inferencer for graphql base data providers
-        const ignoredDataProviders = ["data-provider-graphql", "data-provider-strapi-graphql", "data-provider-hasura"];
+        const ignoredDataProviders = [
+            "data-provider-graphql",
+            "data-provider-strapi-graphql",
+            "data-provider-hasura",
+            "data-provider-medusa",
+        ];
 
         if (!ignoredDataProviders.includes(answers["data-provider"])) {
-            base._app.import.push(`import { MantineInferencer } from "@pankod/refine-inferencer/mantine";`,);
+            base._app.import.push(
+                `import { MantineInferencer } from "@pankod/refine-inferencer/mantine";`,
+            );
             base._app.refineProps.push(
                 `resources={[
                     {

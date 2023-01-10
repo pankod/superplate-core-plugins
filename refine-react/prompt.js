@@ -70,6 +70,31 @@ module.exports = {
             default: "data-provider-custom-json-rest",
         },
         {
+            name: "inferencer",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "inferencer",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-appwrite",
+            default: "no",
+        },
+        {
             name: "ui-framework",
             message: "Do you want to use a UI Framework?:",
             type: "select",

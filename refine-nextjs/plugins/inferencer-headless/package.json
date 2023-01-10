@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "@pankod/refine-inferencer": "^2.0.2",
+        "@pankod/refine-react-hook-form": "^3.37.2",
+        "@pankod/refine-react-table": "^4.9.0"
+    }
+}

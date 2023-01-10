@@ -54,7 +54,5 @@ module.exports = {
         }
 
         return base;
-
-        return base;
     },
 };

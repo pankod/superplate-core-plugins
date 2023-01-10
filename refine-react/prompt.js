@@ -139,7 +139,7 @@ module.exports = {
                     hint: "No examples will be installed.",
                 },
                 {
-                    message: "Yes (Recommended) __headless",
+                    message: "Yes (Recommended)",
                     name: "inferencer-headless",
                     hint: "Installs example pages.",
                 },

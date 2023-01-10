@@ -8,6 +8,7 @@ const base = {
             "GlobalStyles",
         ],
         wrapper: [],
+        import: [],
     },
 };
 
@@ -66,8 +67,6 @@ module.exports = {
                 ]}`,
             );
         }
-
-        return base;
 
         return base;
     },

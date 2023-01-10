@@ -29,6 +29,11 @@ module.exports = {
                 ui: "mantine",
                 folder: "mantine",
                 component: "MantineInferencer",
+            },
+            {
+                ui: "mui",
+                folder: "mui",
+                component: "MuiInferencer",
             }
         ];
 

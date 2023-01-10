@@ -5,7 +5,6 @@ module.exports = {
             type: "refine-react",
             answers: {
                 "ui-framework": "antd",
-                "antd-theme-customization": "antd-css",
                 "mui-extend-theme": "no",
                 "mui-dark-mode": "no",
                 "router-provider": "react-router-v6",
@@ -20,6 +19,7 @@ module.exports = {
                 "i18n-antd": "no",
                 "i18n-mui": "no",
                 "partytown-builder": "no",
+                "inferencer": "no",
             },
         },
         {
@@ -27,7 +27,6 @@ module.exports = {
             type: "refine-react",
             answers: {
                 "ui-framework": "no",
-                "antd-theme-customization": "antd-css",
                 "mui-extend-theme": "no",
                 "mui-dark-mode": "no",
                 "router-provider": "react-router-v6",
@@ -42,6 +41,7 @@ module.exports = {
                 "i18n-antd": "no",
                 "i18n-mui": "no",
                 "partytown-builder": "no",
+                "inferencer": "no",
             },
         },
         {
@@ -49,7 +49,6 @@ module.exports = {
             type: "refine-react",
             answers: {
                 "ui-framework": "mui",
-                "antd-theme-customization": "antd-css",
                 "mui-extend-theme": "no",
                 "mui-dark-mode": "no",
                 "router-provider": "react-router-v6",
@@ -64,6 +63,7 @@ module.exports = {
                 "i18n-antd": "no",
                 "i18n-mui": "no",
                 "partytown-builder": "no",
+                "inferencer": "no",
             },
         },
         {
@@ -71,7 +71,6 @@ module.exports = {
             type: "refine-react",
             answers: {
                 'ui-framework': 'mantine',
-                'antd-theme-customization': 'antd-css',
                 'mui-extend-theme': 'no',
                 'mui-dark-mode': 'no',
                 'mantine-dark-mode': 'no',
@@ -89,15 +88,15 @@ module.exports = {
                 'i18n-antd': 'no',
                 'i18n-mui': 'no',
                 'i18n-mantine': 'no',
-                'partytown-builder': 'no'
-              }
+                'partytown-builder': 'no',
+                "inferencer": "no",
+            }
         },
         {
             name: "refine-chakra-ui",
             type: "refine-react",
             answers: {
                 'ui-framework': 'chakra',
-                'antd-theme-customization': 'antd-css',
                 'mui-extend-theme': 'no',
                 'mui-dark-mode': 'no',
                 'mantine-dark-mode': 'no',
@@ -119,8 +118,9 @@ module.exports = {
                 'i18n-mui': 'no',
                 'i18n-mantine': 'no',
                 'i18n-chakra': 'no',
-                'partytown-builder': 'no'
-              }
+                'partytown-builder': 'no',
+                "inferencer": "no",
+            }
         },
         {
             name: "refine-headless-remix",
@@ -136,6 +136,7 @@ module.exports = {
                 "antd-custom-layout": "no",
                 "mui-custom-layout": "no",
                 "command-palette": "no",
+                "inferencer": "no",
             },
         },
         {
@@ -143,7 +144,6 @@ module.exports = {
             type: "refine-nextjs",
             answers: {
                 "ui-framework": "antd",
-                "antd-theme-customization": "antd-css",
                 "mui-extend-theme": "no",
                 "mui-dark-mode": "no",
                 "data-provider": "data-provider-custom-json-rest",
@@ -157,6 +157,7 @@ module.exports = {
                 "i18n-antd": "no",
                 "i18n-mui": "no",
                 "partytown-builder": "no",
+                "inferencer": "no",
             },
         },
         {
@@ -164,7 +165,6 @@ module.exports = {
             type: "refine-react",
             answers: {
                 "ui-framework": "antd",
-                "antd-theme-customization": "antd-css",
                 "mui-extend-theme": "no",
                 "mui-dark-mode": "no",
                 "router-provider": "react-router-v6",

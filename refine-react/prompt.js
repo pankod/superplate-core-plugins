@@ -145,6 +145,7 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
+                answers["ui-framework"] !== "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-hasura" ||

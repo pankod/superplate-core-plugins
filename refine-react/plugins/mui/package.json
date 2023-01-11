@@ -2,7 +2,6 @@
     "dependencies": {
         "@pankod/refine-mui": "^3.30.0",
         "@pankod/refine-react-hook-form": "^3.27.1",
-        "@pankod/refine-inferencer": "^2.0.2",
         "@mui/icons-material": "^5.8.3"
     }
 }

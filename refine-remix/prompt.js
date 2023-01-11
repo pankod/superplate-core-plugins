@@ -99,6 +99,55 @@ module.exports = {
             default: "no",
         },
         {
+            name: "inferencer",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "inferencer",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-appwrite",
+            default: "no",
+        },
+        {
+            name: "inferencer-headless",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "inferencer-headless",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-strapi-graphql" ||
+                answers["data-provider"] === "data-provider-hasura" ||
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-appwrite",
+            default: "no",
+        },
+        {
             name: "antd-dark-mode",
             message: "Do you want to add dark mode support?:",
             type: "select",
@@ -299,102 +348,6 @@ module.exports = {
                 answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-nhost",
             default: "none",
-        },
-        {
-            name: "mui-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "mui-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "mui",
-            default: "no",
-        },
-        {
-            name: "mantine-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "mantine-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "mantine",
-            default: "no",
-        },
-        {
-            name: "chakra-example-pages",
-            message: "Do you want to add example pages?:",
-            type: "select",
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No examples will be installed.",
-                },
-                {
-                    message: "Yes (Recommended)",
-                    name: "chakra-example-pages",
-                    hint: "Installs example pages.",
-                },
-            ],
-            skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-airtable" ||
-                answers["data-provider"] === "data-provider-supabase" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
-                answers["data-provider"] === "data-provider-altogic" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-nhost" ||
-                answers["ui-framework"] !== "chakra",
-            default: "no",
         },
         {
             name: "command-palette",

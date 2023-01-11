@@ -39,32 +39,6 @@ module.exports = {
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
 
-        // ignore inferencer for graphql base data providers
-        const ignoredDataProviders = [
-            "data-provider-graphql",
-            "data-provider-strapi-graphql",
-            "data-provider-hasura",
-            "data-provider-medusa",
-            "data-provider-appwrite",
-        ];
-
-        if (!ignoredDataProviders.includes(answers["data-provider"])) {
-            base._app.import.push(
-                `import { MantineInferencer } from "@pankod/refine-inferencer/mantine";`,
-            );
-            base._app.refineProps.push(
-                `resources={[
-                    {
-                        name: "posts",
-                        list: MantineInferencer,
-                        edit: MantineInferencer,
-                        show: MantineInferencer,
-                        create: MantineInferencer,
-                        canDelete: true,
-                    },
-                ]}`,
-            );
-        }
         return base;
     },
 };

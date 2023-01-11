@@ -19,33 +19,6 @@ module.exports = {
         base._app.refineProps.push("ReadyPage={ReadyPage}");
         base._app.refineProps.push("catchAll={<ErrorComponent />}");
 
-        // ignore inferencer for graphql base data providers
-        const ignoredDataProviders = [
-            "data-provider-graphql",
-            "data-provider-strapi-graphql",
-            "data-provider-hasura",
-            "data-provider-medusa",
-            "data-provider-appwrite",
-        ];
-
-        if (!ignoredDataProviders.includes(answers["data-provider"])) {
-            base._app.import.push(
-                `import { AntdInferencer } from "@pankod/refine-inferencer/antd";`,
-            );
-            base._app.refineProps.push(
-                `resources={[
-                    {
-                        name: "posts",
-                        list: AntdInferencer,
-                        edit: AntdInferencer,
-                        show: AntdInferencer,
-                        create: AntdInferencer,
-                        canDelete: true,
-                    },
-                ]}`,
-            );
-        }
-
         return base;
     },
 };

@@ -16,7 +16,7 @@ module.exports = {
                 component: "AntdInferencer",
             },
             {
-                ui: "chakra-ui",
+                ui: "chakra",
                 folder: "chakra-ui",
                 component: "ChakraUIInferencer",
             },

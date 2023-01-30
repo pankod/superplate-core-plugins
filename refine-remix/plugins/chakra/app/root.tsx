@@ -18,12 +18,6 @@ import routerProvider from "@pankod/refine-remix-router";
 
 import { ServerStyleContext, ClientStyleContext } from './context'
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1',
-});
-
 <%- (_app.import || []).join("\n") _%>
 
 <%- (_app.localImport || []).join("\n") _%>
@@ -31,6 +25,12 @@ export const meta: MetaFunction = () => ({
 <%- (_app.relativeImport || []).join("\n") _%>
 
 <%- (_app.afterImport || []).join("\n") _%>
+
+export const meta: MetaFunction = () => ({
+  charset: 'utf-8',
+  title: 'New Remix App',
+  viewport: 'width=device-width,initial-scale=1',
+});
 
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");

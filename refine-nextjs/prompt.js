@@ -169,6 +169,66 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
+            name: "mui-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "mui-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "mantine-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "mantine-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
+        },
+        {
+            name: "chakra-dark-mode",
+            message: "Do you want to add dark mode support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "Only light theme will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "chakra-dark-mode",
+                    hint: "Both light & dark themes will be installed.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
+        },
+        {
             name: "mui-extend-theme",
             message: "Do you want to customize the Material UI theme?:",
             type: "select",
@@ -263,66 +323,6 @@ module.exports = {
                     name: "chakra-custom-layout",
                     hint:
                         "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
-        },
-        {
-            name: "mui-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "mui-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "mantine-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "mantine-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
-        },
-        {
-            name: "chakra-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "chakra-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
                 },
             ],
             default: "no",

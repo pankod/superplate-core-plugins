@@ -7,7 +7,7 @@ import { TOKEN_KEY } from "~/constants";
 
 export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
-        const { user, error, session } = await supabaseClient.auth.signIn({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
             email,
             password,
         });
@@ -16,16 +16,22 @@ export const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (user && session) {
-            Cookies.set(TOKEN_KEY, session.access_token);
+        if (data?.session) {
+            Cookies.set(TOKEN_KEY, data.session.access_token);
             return Promise.resolve();
         }
+
+        // for third-party login
+        return Promise.resolve(false);
     },
     logout: async () => {
-        await supabaseClient.auth.signOut();
-        Cookies.remove(TOKEN_KEY);
+        const { error } = await supabaseClient.auth.signOut();
 
-        return Promise.resolve();
+        if (error) {
+            return Promise.reject(error);
+        }
+
+        return Promise.resolve("/");
     },
     checkError: () => Promise.resolve(),
     checkAuth: async (context) => {
@@ -40,8 +46,8 @@ export const authProvider: AuthProvider = {
             const parsedCookie = Cookies.get(TOKEN_KEY);
             token = parsedCookie;
         }
-
-        const { data: user } = await supabaseClient.auth.api.getUser(token);
+        const { data } = await supabaseClient.auth.getUser(token);
+        const { user } = data;
 
         if (user) {
             return Promise.resolve();
@@ -50,19 +56,19 @@ export const authProvider: AuthProvider = {
         return Promise.reject();
     },
     getPermissions: async () => {
-        const user = supabaseClient.auth.user();
+        const user = await supabaseClient.auth.getUser();
 
         if (user) {
-            return Promise.resolve(user.role);
+            return Promise.resolve(user.data.user?.role);
         }
     },
     getUserIdentity: async () => {
-        const user = supabaseClient.auth.user();
+        const { data } = await supabaseClient.auth.getUser();
 
-        if (user) {
+        if (data?.user) {
             return Promise.resolve({
-                ...user,
-                name: user.email,
+                ...data.user,
+                name: data.user.email,
             });
         }
     },

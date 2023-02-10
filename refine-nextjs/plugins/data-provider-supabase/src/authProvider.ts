@@ -5,7 +5,7 @@ import { supabaseClient } from "./utility";
 
 export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
-        const { user, error, session } = await supabaseClient.auth.signIn({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
             email,
             password,
         });
@@ -14,13 +14,16 @@ export const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (user && session) {
-            nookies.set(null, "token", session.access_token, {
+        if (data?.session) {
+            nookies.set(null, "token", data.session.access_token, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });
             return Promise.resolve();
         }
+
+        // for third-party login
+        return Promise.resolve(false);
     },
     logout: async () => {
         nookies.destroy(null, "token");
@@ -35,7 +38,8 @@ export const authProvider: AuthProvider = {
     checkError: () => Promise.resolve(),
     checkAuth: async (ctx) => {
         const { token } = nookies.get(ctx);
-        const { data: user } = await supabaseClient.auth.api.getUser(token);
+        const { data } = await supabaseClient.auth.getUser(token);
+        const { user } = data;
 
         if (user) {
             return Promise.resolve();
@@ -44,19 +48,19 @@ export const authProvider: AuthProvider = {
         return Promise.reject();
     },
     getPermissions: async () => {
-        const user = supabaseClient.auth.user();
+        const user = await supabaseClient.auth.getUser();
 
         if (user) {
-            return Promise.resolve(user.role);
+            return Promise.resolve(user.data.user?.role);
         }
     },
     getUserIdentity: async () => {
-        const user = supabaseClient.auth.user();
+        const { data } = await supabaseClient.auth.getUser();
 
-        if (user) {
+        if (data?.user) {
             return Promise.resolve({
-                ...user,
-                name: user.email,
+                ...data.user,
+                name: data.user.email,
             });
         }
     },

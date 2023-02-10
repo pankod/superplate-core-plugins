@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@pankod/refine-supabase": "^4.0.0",
+        "@pankod/refine-supabase": "^4.1.0",
         "cookie": "^0.5.0",
         "js-cookie": "^3.0.1"
     },

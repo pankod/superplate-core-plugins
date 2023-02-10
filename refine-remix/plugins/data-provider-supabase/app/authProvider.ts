@@ -16,8 +16,8 @@ export const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (data?.user) {
-            Cookies.set(TOKEN_KEY, data.user.access_token);
+        if (data?.session) {
+            Cookies.set(TOKEN_KEY, data.session.access_token);
             return Promise.resolve();
         }
 
@@ -46,10 +46,10 @@ export const authProvider: AuthProvider = {
             const parsedCookie = Cookies.get(TOKEN_KEY);
             token = parsedCookie;
         }
-        const { data } = await supabaseClient.auth.getSession();
-        const { session } = data;
+        const { data } = await supabaseClient.auth.getUser(token);
+        const { user } = data;
 
-        if (session) {
+        if (user) {
             return Promise.resolve();
         }
 

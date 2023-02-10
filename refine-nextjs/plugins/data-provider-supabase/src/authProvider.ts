@@ -14,8 +14,8 @@ export const authProvider: AuthProvider = {
             return Promise.reject(error);
         }
 
-        if (data?.user) {
-            nookies.set(null, "token", data.user.access_token, {
+        if (data?.session) {
+            nookies.set(null, "token", data.session.access_token, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });
@@ -38,10 +38,10 @@ export const authProvider: AuthProvider = {
     checkError: () => Promise.resolve(),
     checkAuth: async (ctx) => {
         const { token } = nookies.get(ctx);
-        const { data } = await supabaseClient.auth.getSession({ access_token: token });
-        const { session } = data;
+        const { data } = await supabaseClient.auth.getUser(token);
+        const { user } = data;
 
-        if (session) {
+        if (user) {
             return Promise.resolve();
         }
 

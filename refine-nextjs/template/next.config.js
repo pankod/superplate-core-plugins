@@ -7,6 +7,7 @@
         },
         transpilePackages: [
             '@pankod/refine-antd',
+            "@pankod/refine-inferencer",
             'antd',
             '@ant-design/pro-components',
             '@ant-design/pro-layout',
@@ -23,6 +24,7 @@
         },
         transpilePackages: [
             '@pankod/refine-antd',
+            "@pankod/refine-inferencer",
             'antd',
             '@ant-design/pro-components',
             '@ant-design/pro-layout',

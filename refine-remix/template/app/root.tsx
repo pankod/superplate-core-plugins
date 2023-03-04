@@ -8,7 +8,7 @@ import {
     ScrollRestoration,
 } from "@remix-run/react";
 
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
 <%_ } _%>
@@ -55,7 +55,8 @@ export default function App() {
                 <Links />
             </head>
             <body>
-            <%- top.join("\n") %>
+                <GitHubBanner />
+                <%- top.join("\n") %>
                 <Refine
                     routerProvider={routerProvider}
                     <%- (_app.refineProps || []).join("\n") %>

@@ -3,7 +3,7 @@ import { AppProps } from "next/app";
 <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
 import Head from "next/head";
 <%_ } _%>
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
 <%_ } _%>
@@ -37,21 +37,24 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
-        <%- top.join("\n") %>
-        <Refine 
-            routerProvider={routerProvider}
-            <%- (_app.refineProps || []).join("\n") %>
-        >
+        <>
+            <%- top.join("\n") %>
+            <GitHubBanner />
+            <Refine
+                routerProvider={routerProvider}
+                <%- (_app.refineProps || []).join("\n") %>
+            >
 
-            <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-                <Head>
-                    <Partytown debug={true} forward={['dataLayer.push']} />
-                </Head>
-            <%_ } _%>
+                <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
+                    <Head>
+                        <Partytown debug={true} forward={['dataLayer.push']} />
+                    </Head>
+                <%_ } _%>
 
-            <Component {...pageProps} />
-        </Refine>
-        <%- bottom.join("\n") %>
+                <Component {...pageProps} />
+            </Refine>
+            <%- bottom.join("\n") %>
+       </>
       );
 };
 

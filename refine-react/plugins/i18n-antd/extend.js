@@ -12,17 +12,12 @@ const base = {
             };
             `,
         ],
-        refineProps: ["i18nProvider={i18nProvider}", "Header={Header}"],
+        refineProps: ["i18nProvider={i18nProvider}"],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["antd-custom-layout"] !== "antd-custom-layout") {
-            base._app.localImport.push(
-                `import { Header } from "components/layout";`,
-            );
-        }
+    extend() {
         return base;
     },
 };

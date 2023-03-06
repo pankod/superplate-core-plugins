@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
@@ -17,6 +15,10 @@ import "@pankod/refine-antd/dist/reset.css";
 
 <%- (_app.import || []).join("\n") _%>
 
+<%_ if (_app.routes || [].length > 0) { _%>
+import { Header } from "./components";
+<%_ } _%>
+
 <%- (_app.localImport || []).join("\n") _%>
 
 <%- (_app.relativeImport || []).join("\n") _%>
@@ -27,6 +29,10 @@ import "@pankod/refine-antd/dist/reset.css";
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
+<%
+    var layoutWrapperTop = _app.layoutWrapper.map(layoutWrapper => layoutWrapper[0] || "");
+    var layoutWrapperBottom = _app.layoutWrapper.map(layoutWrapper => layoutWrapper[1] || "").reverse();
+%>
 
 
 function App() {
@@ -36,7 +42,16 @@ function App() {
     
     return (
         <%- top.join("\n") %>
-        <Refine <%- (_app.refineProps || []).join("\n") %> />
+        <Refine <%- (_app.refineProps || []).join("\n") %>>
+            <%_ if (_app.routes || [].length > 0) { _%>
+                <%- layoutWrapperTop.join("\n") %>
+                    <Layout Header={Header}>
+                        <%- (_app.routes || []).join("\n") %>    
+                    </Layout>
+                <%- layoutWrapperBottom.join("\n") %>
+            <%_ } _%>
+            <%- (_app.refineComponents || []).join("\n") %>
+        </Refine>
         <%- bottom.join("\n") %>
       );
 };

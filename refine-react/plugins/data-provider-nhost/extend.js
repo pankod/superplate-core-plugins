@@ -7,7 +7,7 @@ const base = {
         localImport: [`import { nhost } from "utility";`],
         relativeImport: [`import { authProvider } from "./authProvider";`],
         refineProps: [
-            "dataProvider={dataProvider(nhost)}",
+            "legacyRouterProvider={dataProvider(nhost)}",
             "authProvider={authProvider}",
         ],
         refineAntdImports: [],

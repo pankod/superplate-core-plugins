@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        refineImports: [`AuthProvider`],
+        refineImports: [`LegacyAuthProvider`],
         import: [`import axios, { AxiosRequestConfig } from "axios";`],
         localImport: [
             `import { Login } from "pages/login";`,
@@ -24,7 +24,7 @@ const base = {
         ],
         inner: [
             `
-            const authProvider: AuthProvider = {
+            const authProvider: LegacyAuthProvider = {
                 login: ({ credential }: CredentialResponse) => {
                     const profileObj = credential ? parseJwt(credential) : null;
         
@@ -77,9 +77,17 @@ const base = {
         
             `,
         ],
-        refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
+        refineProps: ["legacyAuthProvider={authProvider}"],
         publicScripts: [
             `<script src="https://accounts.google.com/gsi/client" async defer ></script>`,
+        ],
+        layoutWrapper: [
+            [`<Authenticated fallback={
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="*" element={<Navigate to="/login" />} />
+                </Routes>
+            }>`, `</Authenticated>`],
         ],
     },
 };

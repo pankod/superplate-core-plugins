@@ -1,7 +1,7 @@
-import { AuthProvider } from "@pankod/refine-core";
+import { LegacyAuthProvider } from "@pankod/refine-core";
 import { nhost } from "utility";
 
-export const authProvider: AuthProvider = {
+export const authProvider: LegacyAuthProvider = {
     login: async ({ username, password }) => {
         const { error } = await nhost.auth.signIn({
             email: username,

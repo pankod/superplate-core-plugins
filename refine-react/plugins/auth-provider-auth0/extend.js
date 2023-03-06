@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        refineImports: [`AuthProvider`],
+        refineImports: [`LegacyAuthProvider`],
         import: [
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
@@ -15,7 +15,7 @@ const base = {
                 return <span>loading...</span>
             }
 
-            const authProvider: AuthProvider = {
+            const authProvider: LegacyAuthProvider = {
                 login: () => {
                     return Promise.resolve(false);
                 },
@@ -52,7 +52,15 @@ const base = {
             };
             `,
         ],
-        refineProps: ["authProvider={authProvider}", "LoginPage={Login}"],
+        refineProps: ["legacyAuthProvider={authProvider}", "LoginPage={Login}"],
+        layoutWrapper: [
+            [`<Authenticated fallback={
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="*" element={<Navigate to="/login" />} />
+                </Routes>
+            }>`, `</Authenticated>`],
+        ],
     },
 };
 module.exports = {

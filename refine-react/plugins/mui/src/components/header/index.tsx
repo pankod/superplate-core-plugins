@@ -7,15 +7,21 @@ import {
   Stack,
   Toolbar,
   Typography,
-} from "@pankod/refine-mui";
+} from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
-import { ColorModeContext } from "contexts";
+import { ColorModeContext } from "../../contexts/color-mode";
+
+type IUser = {
+    id: number;
+    name: string;
+    avatar: string;
+};
 
 export const Header: React.FC = () => {
   const { mode, setMode } = useContext(ColorModeContext);
 
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const showUserInfo = user && (user.name || user.avatar);
 
   return (

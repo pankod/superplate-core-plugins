@@ -2,15 +2,21 @@ import { useGetIdentity } from "@pankod/refine-core";
 import {
   ActionIcon,
   Group,
-  MantineHeader,
+  Header as MantineHeader,
   Title,
   Avatar,
   useMantineColorScheme,
-} from "@pankod/refine-mantine";
+} from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons";
 
+type IUser = {
+    id: number;
+    name: string;
+    avatar: string;
+};
+
 export const Header: React.FC = () => {
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const showUserInfo = user && (user.name || user.avatar);
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();

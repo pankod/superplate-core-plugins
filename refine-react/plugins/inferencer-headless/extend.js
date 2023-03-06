@@ -28,7 +28,7 @@ const base = {
             [`<BrowserRouter>`, `</BrowserRouter>`],
         ],
         layoutWrapper: [],
-        refineComponents: [
+        routes: [
             `<Routes>
                 <Route index element={<NavigateToResource />} />
                 <Route

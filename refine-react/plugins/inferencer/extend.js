@@ -62,7 +62,8 @@ const base = {
                     element={<CategoryShow />}
                 />
             </Routes>`
-        ]
+        ],
+        hasLayout: true,
     },
 };
 

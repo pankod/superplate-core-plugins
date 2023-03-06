@@ -15,7 +15,7 @@ import "@pankod/refine-antd/dist/reset.css";
 
 <%- (_app.import || []).join("\n") _%>
 
-<%_ if (_app.routes || [].length > 0) { _%>
+<%_ if (_app.hasLayout || false) { _%>
 import { Header } from "./components";
 <%_ } _%>
 
@@ -43,12 +43,14 @@ function App() {
     return (
         <%- top.join("\n") %>
         <Refine <%- (_app.refineProps || []).join("\n") %>>
-            <%_ if (_app.routes || [].length > 0) { _%>
+            <%_ if (_app.hasLayout || false) { _%>
                 <%- layoutWrapperTop.join("\n") %>
                     <Layout Header={Header}>
                         <%- (_app.routes || []).join("\n") %>    
                     </Layout>
                 <%- layoutWrapperBottom.join("\n") %>
+            <%_ } else { _%>
+                <%- (_app.routes || []).join("\n") %>    
             <%_ } _%>
             <%- (_app.refineComponents || []).join("\n") %>
         </Refine>

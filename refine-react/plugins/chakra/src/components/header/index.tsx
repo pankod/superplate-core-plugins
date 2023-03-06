@@ -1,9 +1,15 @@
 import { useGetIdentity } from "@pankod/refine-core";
-import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@pankod/refine-chakra-ui";
+import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@chakra-ui/react";
 import { IconMoon, IconSun } from "@tabler/icons";
 
+type IUser = {
+    id: number;
+    name: string;
+    avatar: string;
+};
+
 export const Header: React.FC = () => {
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const showUserInfo = user && (user.name || user.avatar);
 
   const { colorMode, toggleColorMode } = useColorMode();

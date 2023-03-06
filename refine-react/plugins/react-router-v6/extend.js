@@ -1,7 +1,8 @@
 const base = {
     _app: {
         import: [
-            `import routerProvider from "@pankod/refine-react-router-v6";`,
+            `import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";`,
+            `import routerBindings, { NavigateToResource } from "@pankod/refine-react-router-v6";`
         ],
         refineProps: [],
     },
@@ -9,7 +10,7 @@ const base = {
 module.exports = {
     extend(answers) {
         if (answers["data-provider"] !== "data-provider-supabase") {
-            base._app.refineProps.push("routerProvider={routerProvider}");
+            base._app.refineProps.push("routerProvider={routerBindings}");
         }
 
         return base;

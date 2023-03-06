@@ -5,8 +5,6 @@ const base = {
         ],
         localImport: [
             `import { supabaseClient } from "utility";`,
-            `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
-            `import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`
         ],
         relativeImport: [`import authProvider from "./authProvider";`],
         refineProps: [
@@ -59,37 +57,6 @@ const base = {
                 }
             >`, `</Authenticated>`],
         ],
-        routes: [
-            `<Routes>
-                <Route index element={<NavigateToResource />} />
-                <Route path="/products" element={<ProductList />} />
-                <Route
-                    path="/products/create"
-                    element={<ProductCreate />}
-                />
-                <Route
-                    path="/products/edit/:id"
-                    element={<ProductEdit />}
-                />
-                <Route
-                    path="/products/show/:id"
-                    element={<ProductShow />}
-                />
-                <Route path="/categoies" element={<CategoryList />} />
-                <Route
-                    path="/categoies/create"
-                    element={<CategoryCreate />}
-                />
-                <Route
-                    path="/categoies/edit/:id"
-                    element={<CategoryEdit />}
-                />
-                <Route
-                    path="/categoies/show/:id"
-                    element={<CategoryShow />}
-                />
-            </Routes>`
-        ]
     },
 };
 module.exports = {

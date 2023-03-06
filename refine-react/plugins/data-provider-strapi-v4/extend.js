@@ -9,26 +9,40 @@ const base = {
             "authProvider={authProvider}",
             "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
         ],
+        refineImports: [
+            `Authenticated`
+        ],
         refineAntdImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
+        hasLayout: true,
+        layoutWrapper: [
+            [`<Authenticated
+                fallback={
+                    <Routes>
+                        <Route path="/login" element={<AuthPage type="login" />}/>
+                        <Route
+                            path="*"
+                            element={<Navigate to="/login" />}
+                        />
+                    </Routes>
+                }
+            >`, `</Authenticated>`],
+        ],
     },
 };
 module.exports = {
     extend(answers) {
         if (answers["ui-framework"] === "antd") {
             base._app.refineAntdImports.push("AuthPage");
-            base._app.refineProps.push("LoginPage={AuthPage}");
         }
 
         if (answers["ui-framework"] === "mui") {
             base._app.refineMuiImports.push("AuthPage");
-            base._app.refineProps.push("LoginPage={AuthPage}");
         }
 
         if (answers["ui-framework"] === "antd") {
             base._app.refineMantineImports.push("AuthPage");
-            base._app.refineProps.push("LoginPage={AuthPage}");
         }
         return base;
     },

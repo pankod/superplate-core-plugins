@@ -1,4 +1,4 @@
-import { UploadFile } from "@pankod/refine-antd";
+import { UploadFile } from "@refinedev/antd";
 
 interface UploadResponse {
     url: string;

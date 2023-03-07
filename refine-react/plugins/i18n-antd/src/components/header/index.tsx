@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useGetIdentity, useGetLocale, useSetLocale } from "@pankod/refine-core";
+import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import { Layout as AntdLayout, Space, Avatar, Typography, Switch, Menu, Button, Dropdown } from "antd";
 import { DownOutlined } from '@ant-design/icons';
 import { useTranslation } from "react-i18next";

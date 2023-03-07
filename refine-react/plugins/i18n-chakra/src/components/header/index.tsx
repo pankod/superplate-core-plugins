@@ -2,7 +2,7 @@
     useGetIdentity,
     useGetLocale,
     useSetLocale,
-  } from "@pankod/refine-core";
+  } from "@refinedev/core";
   import { 
     Box,
     IconButton,

@@ -1,13 +1,13 @@
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { 
     useTranslate,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 <%_ } _%>  
 <%_ if (answers["ui-framework"] === "antd") { _%>
 import { 
     AntdLayout, 
     Button
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 <%_ } _%> 
 
 import { useAuth0 } from "@auth0/auth0-react";

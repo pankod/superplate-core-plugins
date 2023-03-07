@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import { dataProvider, liveProvider } from "@pankod/refine-supabase";`,
+            `import { dataProvider, liveProvider } from "@refinedev/supabase";`,
         ],
         localImport: [
             `import { supabaseClient } from "utility";`,

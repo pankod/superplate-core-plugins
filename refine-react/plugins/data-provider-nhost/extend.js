@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import dataProvider from "@pankod/refine-nhost";`,
+            `import dataProvider from "@refinedev/nhost";`,
             `import { NhostAuthProvider } from "@nhost/react-auth";`,
         ],
         localImport: [`import { nhost } from "utility";`],

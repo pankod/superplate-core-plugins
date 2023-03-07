@@ -1,7 +1,7 @@
 {
     "dependencies": {
-        "@pankod/refine-mantine": "^1.15.10",
-        "@pankod/refine-react-table": "^4.9.1",
+        "@refinedev/mantine": "^1.15.10",
+        "@refinedev/react-table": "^4.9.1",
         "@tabler/icons": "^1.1.0",
         "@emotion/react": "^11.8.2",
         "@mantine/core": "^5.5.6",

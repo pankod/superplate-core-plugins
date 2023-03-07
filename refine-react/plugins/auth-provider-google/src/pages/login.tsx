@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
-import { useLogin } from "@pankod/refine-core";
+import { useLogin } from "@refinedev/core";
 <%_ if (answers["ui-framework"] === "antd") { _%>
     import { 
         AntdLayout, 
-    } from "@pankod/refine-antd";
+    } from "@refinedev/antd";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === "mui") { _%>
     import { 
         Container, Box 
-    } from "@pankod/refine-mui";
+    } from "@refinedev/mui";
 <%_ } _%>
 
 import { CredentialResponse } from "../interfaces/google";

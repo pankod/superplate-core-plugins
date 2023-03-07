@@ -5,7 +5,7 @@ const base = {
         refineMantineImports: [],
         refineMuiImports: [],
         import: [
-            `import dataProvider, { GraphQLClient } from "@pankod/refine-strapi-graphql";`,
+            `import dataProvider, { GraphQLClient } from "@refinedev/strapi-graphql";`,
         ],
         afterImport: [
             `const API_URL = "https://api.strapi.refine.dev/graphql";`,

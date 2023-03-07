@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             `import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";`,
-            `import routerBindings, { NavigateToResource } from "@pankod/refine-react-router-v6";`
+            `import routerBindings, { NavigateToResource } from "@refinedev/react-router-v6";`
         ],
         refineProps: [],
     },

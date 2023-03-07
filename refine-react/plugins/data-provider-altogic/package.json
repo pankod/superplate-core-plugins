@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@pankod/refine-altogic": "^3.18.0",
+        "@refinedev/altogic": "^3.18.0",
         "axios": "^0.26.1",
     }
 }

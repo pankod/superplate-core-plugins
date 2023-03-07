@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import { Layout as AntdLayout, Space, Avatar, Typography, Switch } from "antd";
 import { ColorModeContext } from "../../contexts/color-mode";
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import {
   AppBar,
   IconButton,

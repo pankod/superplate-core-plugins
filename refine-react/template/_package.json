@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@pankod/refine-cli": "^1.17.0",
-    "@pankod/refine-core": "^3.99.4",
-    "@pankod/refine-inferencer": "^2.8.2",
+    "@refinedev/cli": "^1.17.0",
+    "@refinedev/core": "^3.99.4",
+    "@refinedev/inferencer": "^2.8.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "^5.0.0",

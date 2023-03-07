@@ -1,4 +1,4 @@
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@chakra-ui/react";
 import { IconMoon, IconSun } from "@tabler/icons";
 

@@ -1,8 +1,5 @@
 import React from "react";
 import { AppProps } from "next/app";
-<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-import Head from "next/head";
-<%_ } _%>
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
@@ -17,9 +14,7 @@ import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refined
     import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
 import routerProvider from "@refinedev/nextjs-router";
-<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-    import { Partytown } from '@builder.io/partytown/react';
-    <%_ } _%>
+
 <%- (_app.import || []).join("\n") _%>
 
 <%- (_app.localImport || []).join("\n") _%>
@@ -43,11 +38,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             <%- (_app.refineProps || []).join("\n") %>
         >
 
-            <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-                <Head>
-                    <Partytown debug={true} forward={['dataLayer.push']} />
-                </Head>
-            <%_ } _%>
+            
 
             <Component {...pageProps} />
         </Refine>

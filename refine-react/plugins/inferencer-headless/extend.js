@@ -30,7 +30,7 @@ const base = {
         layoutWrapper: [],
         routes: [
             `<Routes>
-                <Route path="/" element={<NavigateToResource resource="products" />} />
+                <Route index element={<NavigateToResource resource="products" />} />
                 <Route
                     path="/products"
                     element={<ProductList />}

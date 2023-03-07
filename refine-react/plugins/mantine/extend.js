@@ -15,7 +15,7 @@ const base = {
         wrapper: [
             [`<BrowserRouter>`, `</BrowserRouter>`],
             ["<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>", "</ColorSchemeProvider>"],
-            [`<MantineProvider theme={LightTheme} withNormalizeCSS withGlobalStyles>`, "</MantineProvider>"],
+            [`<MantineProvider theme={colorScheme === "dark" ? DarkTheme : LightTheme} withNormalizeCSS withGlobalStyles>`, "</MantineProvider>"],
             [`<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`, ``],
             [`<NotificationsProvider position="top-right">`, `</NotificationsProvider>`],
         ],

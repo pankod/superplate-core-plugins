@@ -28,7 +28,7 @@ const base = {
         ],
         routes: [
             `<Routes>
-                <Route index element={<NavigateToResource />} />
+                <Route path="/" element={<NavigateToResource resource="products" />} />
                 <Route
                     path="/products"
                     element={<ProductList />}

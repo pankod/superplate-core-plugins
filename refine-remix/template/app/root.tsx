@@ -57,12 +57,12 @@ export default function App() {
             <body>
             <GitHubBanner />
             <%- top.join("\n") %>
-            <Refine
-                routerProvider={routerProvider}
-                <%- (_app.refineProps || []).join("\n") %>
-            >
-                <Outlet />
-            </Refine>
+                <Refine
+                    routerProvider={routerProvider}
+                    <%- (_app.refineProps || []).join("\n") %>
+                >
+                    <Outlet />
+                </Refine>
             <%- bottom.join("\n") %>
             <ScrollRestoration />
             <Scripts />

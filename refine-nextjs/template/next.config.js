@@ -1,13 +1,14 @@
-<%_ if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+<% _ if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] !== "no") {
+    _ %>
     const { i18n } = require("./next-i18next.config");
 
-    module.exports = { 
+    module.exports = {
         i18n, experimental: {
             newNextLinkBehavior: true,
         },
         transpilePackages: [
-            '@pankod/refine-antd',
-            "@pankod/refine-inferencer",
+            '@refinedev/antd',
+            "@refinedev/inferencer",
             'antd',
             '@ant-design/pro-components',
             '@ant-design/pro-layout',
@@ -17,14 +18,16 @@
             'rc-picker'
         ],
     };
-<%_ } else if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
-    module.exports = { 
+<% _
+} else if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] === "no") {
+    _ %>
+    module.exports = {
         experimental: {
             newNextLinkBehavior: true,
         },
         transpilePackages: [
-            '@pankod/refine-antd',
-            "@pankod/refine-inferencer",
+            '@refinedev/antd',
+            "@refinedev/inferencer",
             'antd',
             '@ant-design/pro-components',
             '@ant-design/pro-layout',
@@ -34,19 +37,24 @@
             'rc-picker'
         ],
     };
-<%_ } else if  (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+<% _
+} else if (answers[`i18n-${answers["ui-framework"]}`] !== "no") {
+    _ %>
     const { i18n } = require("./next-i18next.config");
 
-    module.exports = { 
+    module.exports = {
         i18n, experimental: {
             newNextLinkBehavior: true,
         },
     };
-<%_ } else { _%>
+<% _
+} else {
+    _ %>
     module.exports = {
         experimental: {
             newNextLinkBehavior: true,
         },
     };
-<%_ } _%>
+<% _
+} _ %>
 

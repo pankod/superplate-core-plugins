@@ -1,6 +1,6 @@
 <%_ if (answers["chakra-dark-mode"] === "chakra-dark-mode") { _%>
-import { useGetIdentity } from "@pankod/refine-core";
-import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@pankod/refine-chakra-ui";
+import { useGetIdentity } from "@refinedev/core";
+import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@refinedev/chakra-ui";
 import { IconMoon, IconSun } from "@tabler/icons";
 
 export const Header: React.FC = () => {
@@ -44,8 +44,8 @@ export const Header: React.FC = () => {
 
 <%_ } else { _%>
 import React from "react";
-import { useGetIdentity } from "@pankod/refine-core";
-import { Box, Avatar, Text, HStack } from "@pankod/refine-chakra-ui";
+import { useGetIdentity } from "@refinedev/core";
+import { Box, Avatar, Text, HStack } from "@refinedev/chakra-ui";
 
 export const Header: React.FC = () => {
     const { data: user } = useGetIdentity();

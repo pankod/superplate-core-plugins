@@ -1,5 +1,5 @@
-import { AuthProvider } from "@pankod/refine-core";
-import { AuthHelper } from "@pankod/refine-strapi";
+import { AuthProvider } from "@refinedev/core";
+import { AuthHelper } from "@refinedev/strapi";
 import axios from "axios";
 import nookies from "nookies";
 

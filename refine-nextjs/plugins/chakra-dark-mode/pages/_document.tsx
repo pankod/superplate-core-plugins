@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import {refineTheme,ColorModeScript} from '@pankod/refine-chakra-ui'
+import {refineTheme,ColorModeScript} from '@refinedev/chakra-ui'
 
 export default function Document() {
     return (

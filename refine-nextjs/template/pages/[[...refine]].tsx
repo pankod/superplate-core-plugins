@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
-import { NextRouteComponent /*, handleRefineParams */ } from "@pankod/refine-nextjs-router";
+import { NextRouteComponent /*, handleRefineParams */ } from "@refinedev/nextjs-router";
 <%_ if (answers["auth-provider"] !== 'none' || ['data-provider-strapi-graphql', 'data-provider-supabase', 'data-provider-strapi-v4', 'data-provider-strapi'].includes(answers["data-provider"])) { _%>
-    import { checkAuthentication } from "@pankod/refine-nextjs-router";
+    import { checkAuthentication } from "@refinedev/nextjs-router";
 
     import { authProvider } from "src/authProvider";
 <%_ } _%>

@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
-export { NextRouteComponent as default } from "@pankod/refine-nextjs-router";
-import { checkAuthentication } from "@pankod/refine-nextjs-router";
-import { DataProvider } from "@pankod/refine-strapi-v4";
+export { NextRouteComponent as default } from "@refinedev/nextjs-router";
+import { checkAuthentication } from "@refinedev/nextjs-router";
+import { DataProvider } from "@refinedev/strapi-v4";
 
 import nookies from "nookies";
 

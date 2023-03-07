@@ -1,4 +1,4 @@
-import { AuthProvider } from "@pankod/refine-core";
+import { AuthProvider } from "@refinedev/core";
 
 import { account } from "./utility";
 

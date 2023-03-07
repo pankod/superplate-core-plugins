@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import { dataProvider, liveProvider } from "@pankod/refine-appwrite";`,
+            `import { dataProvider, liveProvider } from "@refinedev/appwrite";`,
         ],
         localImport: [
             `import { authProvider } from "src/authProvider";`,

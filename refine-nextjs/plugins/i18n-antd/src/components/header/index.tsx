@@ -3,7 +3,7 @@ import {
   useGetLocale,
   useSetLocale,
   useGetIdentity,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 import {
   Layout as AntdLayout,
   Space,
@@ -16,7 +16,7 @@ import {
   Switch,
 } from "antd";
 import { useRouter } from "next/router";
-import NextRouter from "@pankod/refine-nextjs-router";
+import NextRouter from "@refinedev/nextjs-router";
 
 import { ColorModeContext } from "@contexts";
 

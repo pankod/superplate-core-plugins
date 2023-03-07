@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 <%_ } else { _%>
 import React from "react";
 <%_ } _%>
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import { 
     AppBar,
     <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
@@ -13,7 +13,7 @@ import {
     Toolbar, 
     Typography, 
     Avatar  
-} from "@pankod/refine-mui";
+} from "@refinedev/mui";
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 <%_ } _%>

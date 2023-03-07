@@ -1,6 +1,6 @@
 import React from "react";
-import { LayoutProps } from "@pankod/refine-core";
-import { Box, useColorModeValue } from "@pankod/refine-chakra-ui";
+import { LayoutProps } from "@refinedev/core";
+import { Box, useColorModeValue } from "@refinedev/chakra-ui";
 
 import { Sider as DefaultSider } from "../sider";
 import { Header as DefaultHeader } from "../header";

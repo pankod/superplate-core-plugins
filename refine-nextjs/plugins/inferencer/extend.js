@@ -42,7 +42,7 @@ module.exports = {
         );
 
         base._app.import.push(
-            `import { ${inferencer.component} } from "@pankod/refine-inferencer/${inferencer.folder}";`,
+            `import { ${inferencer.component} } from "@refinedev/inferencer/${inferencer.folder}";`,
         );
         base._app.refineProps.push(
             `resources={[

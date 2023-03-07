@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            `import dataProvider, { authProvider } from "@pankod/refine-medusa";`,
+            `import dataProvider, { authProvider } from "@refinedev/medusa";`,
         ],
         afterImport: [
             `const API_URL = "https://your-medusa-url";`,

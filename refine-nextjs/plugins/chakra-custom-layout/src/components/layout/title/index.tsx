@@ -1,6 +1,6 @@
 import React from "react";
-import { useRouterContext, TitleProps } from "@pankod/refine-core";
-import { Link as ChakraLink } from "@pankod/refine-chakra-ui";
+import { useRouterContext, TitleProps } from "@refinedev/core";
+import { Link as ChakraLink } from "@refinedev/chakra-ui";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => {
     const { Link } = useRouterContext();

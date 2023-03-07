@@ -1,11 +1,11 @@
 <%_ if (answers["mantine-dark-mode"] === "mantine-dark-mode") { _%>
     import { useRouter } from "next/router";
-    import NextRouter from "@pankod/refine-nextjs-router";
+    import NextRouter from "@refinedev/nextjs-router";
     import {
         useGetIdentity,
         useGetLocale,
         useSetLocale,
-      } from "@pankod/refine-core";
+      } from "@refinedev/core";
       import {
         ActionIcon,
         Group,
@@ -14,7 +14,7 @@
         Avatar,
         useMantineColorScheme,
         Menu,
-      } from "@pankod/refine-mantine";
+      } from "@refinedev/mantine";
       import { IconSun, IconMoonStars, IconLanguage } from "@tabler/icons";
       
     
@@ -84,7 +84,7 @@
     import {
         useGetIdentity,
         useGetLocale,
-      } from "@pankod/refine-core";
+      } from "@refinedev/core";
       import {
         ActionIcon,
         Group,
@@ -92,7 +92,7 @@
         Title,
         Avatar,
         Menu,
-      } from "@pankod/refine-mantine";
+      } from "@refinedev/mantine";
       import { IconLanguage } from "@tabler/icons";
       
       export const Header: React.FC = () => {

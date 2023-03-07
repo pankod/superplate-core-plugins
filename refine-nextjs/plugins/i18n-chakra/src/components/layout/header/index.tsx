@@ -3,8 +3,8 @@
   import { 
     useGetIdentity,
     useGetLocale,
-  } from "@pankod/refine-core";
-  import NextRouter from "@pankod/refine-nextjs-router";
+  } from "@refinedev/core";
+  import NextRouter from "@refinedev/nextjs-router";
   import { 
     Box,
     IconButton,
@@ -17,7 +17,7 @@
     MenuItem,
     MenuList,
     useColorMode,
-  } from "@pankod/refine-chakra-ui";
+  } from "@refinedev/chakra-ui";
   import { IconMoon, IconSun, IconLanguage } from "@tabler/icons";
 
   export const Header: React.FC = () => {
@@ -96,8 +96,8 @@
   import {
     useGetIdentity,
     useGetLocale,
-  } from "@pankod/refine-core";
-  import NextRouter from "@pankod/refine-nextjs-router";
+  } from "@refinedev/core";
+  import NextRouter from "@refinedev/nextjs-router";
   import { 
     Box,
     HStack,
@@ -108,7 +108,7 @@
     MenuItem,
     MenuList,
     IconButton,
-   } from "@pankod/refine-chakra-ui";
+   } from "@refinedev/chakra-ui";
   import { IconLanguage } from "@tabler/icons";
 
   export const Header: React.FC = () => {

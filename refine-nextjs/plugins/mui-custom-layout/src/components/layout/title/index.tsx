@@ -1,6 +1,6 @@
 import React from "react";
-import { useRouterContext, TitleProps } from "@pankod/refine-core";
-import { Button } from "@pankod/refine-mui";
+import { useRouterContext, TitleProps } from "@refinedev/core";
+import { Button } from "@refinedev/mui";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => {
     const { Link } = useRouterContext();

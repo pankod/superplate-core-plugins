@@ -9,7 +9,7 @@ import {
     useRouterContext,
     useTitle,
     useTranslate,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 import {
     Accordion,
     AccordionButton,
@@ -26,7 +26,7 @@ import {
     TooltipProps,
     VStack,
     Sider as DefaultSider,
-} from "@pankod/refine-chakra-ui";
+} from "@refinedev/chakra-ui";
 import {
     IconList,
     IconChevronRight,

@@ -1,7 +1,7 @@
 const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
-        import: ['import "@pankod/refine-antd/dist/reset.css";'],
+        import: ['import "@refinedev/antd/dist/reset.css";'],
         refineAntdImports: ["notificationProvider", "Layout"],
         wrapper: [
             [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`]

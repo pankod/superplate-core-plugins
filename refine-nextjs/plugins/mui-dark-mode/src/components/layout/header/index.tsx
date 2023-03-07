@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import {
   AppBar,
   IconButton,
@@ -7,7 +7,7 @@ import {
   Stack,
   Toolbar,
   Typography,
-} from "@pankod/refine-mui";
+} from "@refinedev/mui";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";

@@ -1,6 +1,6 @@
 import React from "react";
-import { LayoutProps } from "@pankod/refine-core";
-import { Box } from "@pankod/refine-mantine";
+import { LayoutProps } from "@refinedev/core";
+import { Box } from "@refinedev/mantine";
 
 import { Sider as DefaultSider } from "../sider";
 import { Header as DefaultHeader } from "../header";

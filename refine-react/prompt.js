@@ -332,5 +332,14 @@ module.exports = {
             },
             pattern: ["src/utility/normalize.ts"],
         },
+        {
+            plugin: ["kbar"],
+            when: function (answers) {
+                return (
+                    answers["ui-framework"] === "antd"
+                );
+            },
+            pattern: ["src/components/**"],
+        },
     ],
 };

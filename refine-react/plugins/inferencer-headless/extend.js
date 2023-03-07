@@ -38,6 +38,26 @@ module.exports = {
             componentPrefix: "Headless",
         };
 
+        // if auth-provider is none
+        if (answers["auth-provider"] === "none") {
+            base._app.routes = [
+                `<Route element={<Outlet />}>
+                    <Route index element={<NavigateToResource resource="posts" />} />
+                    <Route path="/products" element={<ProductList />} />
+                    <Route path="/products/create" element={<ProductCreate />} />
+                    <Route path="/products/edit/:id" element={<ProductEdit />} />
+                    <Route path="/products/show/:id" element={<ProductShow />} />
+                    <Route path="/categories" element={<CategoryList />} />
+                    <Route path="/categories/create" element={<CategoryCreate />} />
+                    <Route path="/categories/edit/:id" element={<CategoryEdit />} />
+                    <Route path="/categories/show/:id" element={<CategoryShow />} />
+                </Route>`,
+                `<Route element={<Outlet />}>
+                    <Route path="*" element={<div>Error</div>} />
+                </Route>`
+            ];
+        }
+
         return base;
     },
 };

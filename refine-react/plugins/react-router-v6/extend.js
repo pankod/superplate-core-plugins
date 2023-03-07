@@ -1,8 +1,8 @@
 const base = {
     _app: {
         import: [
-            `import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";`,
-            `import routerBindings, { NavigateToResource } from "@refinedev/react-router-v6";`
+            `import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";`,
+            `import routerBindings, { NavigateToResource, CatchAllNavigate } from "@refinedev/react-router-v6";`
         ],
         refineProps: [],
     },

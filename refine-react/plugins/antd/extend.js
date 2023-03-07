@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [],
         refineImports: [],
-        refineAntdImports: ["notificationProvider", "Layout"],
+        refineAntdImports: ["notificationProvider", "Layout", "ErrorComponent"],
         refineProps: ["notificationProvider={notificationProvider}"],
         wrapper: [
             [`<BrowserRouter>`, `</BrowserRouter>`],
@@ -12,7 +12,6 @@ const base = {
             `import { ColorModeContextProvider } from "./contexts/color-mode";`
         ],
         refineComponents: [],
-        layoutWrapper: [],
     },
 };
 

@@ -9,13 +9,13 @@ const base = {
         refineChakraImports: [
             "notificationProvider",
             "refineTheme",
-            "Layout"
+            "Layout",
+            "ErrorComponent"
         ],
         wrapper: [
             [`<BrowserRouter>`, `</BrowserRouter>`],
             [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
         ],
-        layoutWrapper: [],
     },
 };
 

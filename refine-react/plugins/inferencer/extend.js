@@ -26,44 +26,7 @@ const base = {
             `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
             `import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`
         ],
-        routes: [
-            `<Routes>
-                <Route index element={<NavigateToResource resource="products" />} />
-                <Route
-                    path="/products"
-                    element={<ProductList />}
-                />
-                <Route
-                    path="/products/create"
-                    element={<ProductCreate />}
-                />
-                <Route
-                    path="/products/edit/:id"
-                    element={<ProductEdit />}
-                />
-                <Route
-                    path="/products/show/:id"
-                    element={<ProductShow />}
-                />
-                <Route
-                    path="/categories"
-                    element={<CategoryList />}
-                />
-                <Route
-                    path="/categories/create"
-                    element={<CategoryCreate />}
-                />
-                <Route
-                    path="/categories/edit/:id"
-                    element={<CategoryEdit />}
-                />
-                <Route
-                    path="/categories/show/:id"
-                    element={<CategoryShow />}
-                />
-            </Routes>`
-        ],
-        hasLayout: true,
+        routes: [],
     },
 };
 
@@ -100,6 +63,26 @@ module.exports = {
         base._app.inferencer = inferencerPackage.find(
             (item) => item.ui === answers["ui-framework"],
         );
+
+        // if auth-provider is none
+        if (answers["auth-provider"] === "none") {
+            base._app.routes = [
+                `<Route element={<Layout><Outlet /></Layout>}>
+                    <Route index element={<NavigateToResource resource="posts" />} />
+                    <Route path="/products" element={<ProductList />} />
+                    <Route path="/products/create" element={<ProductCreate />} />
+                    <Route path="/products/edit/:id" element={<ProductEdit />} />
+                    <Route path="/products/show/:id" element={<ProductShow />} />
+                    <Route path="/categories" element={<CategoryList />} />
+                    <Route path="/categories/create" element={<CategoryCreate />} />
+                    <Route path="/categories/edit/:id" element={<CategoryEdit />} />
+                    <Route path="/categories/show/:id" element={<CategoryShow />} />
+                </Route>`,
+                `<Route element={<Layout><Outlet /></Layout>}>
+                    <Route path="*" element={<ErrorComponent />} />
+                </Route>`
+            ];
+        }
 
         return base;
     },

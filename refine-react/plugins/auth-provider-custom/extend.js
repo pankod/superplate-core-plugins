@@ -7,13 +7,48 @@ const base = {
         refineMantineImports: [],
         refineMuiImports: [],
         refineChakraImports: [],
-        layoutWrapper: [
-            [`<Authenticated fallback={
-                <Routes>
-                    <Route path="/login" element={<AuthPage type="login" />} />
-                    <Route path="*" element={<Navigate to="/login" />} />
-                </Routes>
-            }>`, `</Authenticated>`],
+        routes: [
+            `<Route
+                element={
+                    <Authenticated
+                        fallback={<CatchAllNavigate to="/login" />}
+                    >
+                        <Layout>
+                            <Outlet />
+                        </Layout>
+                    </Authenticated>
+                }
+            >
+                <Route index element={<NavigateToResource resource="products" />} />
+                <Route path="/products" element={<ProductList />} />
+                <Route path="/products/create" element={<ProductCreate />} />
+                <Route path="/products/edit/:id" element={<ProductEdit />} />
+                <Route path="/products/show/:id" element={<ProductShow />} />
+                <Route path="/categories" element={<CategoryList />} />
+                <Route path="/categories/create" element={<CategoryCreate />} />
+                <Route path="/categories/edit/:id" element={<CategoryEdit />} />
+                <Route path="/categories/show/:id" element={<CategoryShow />} />
+            </Route>`,
+            `<Route
+                element={
+                    <Authenticated fallback={<Outlet />}>
+                        <NavigateToResource />
+                    </Authenticated>
+                }
+            >
+                <Route path="/login" element={<AuthPage type="login" />} />
+            </Route>`,
+            `<Route
+                element={
+                    <Authenticated fallback={<Outlet />}>
+                        <Layout>
+                            <Outlet />
+                        </Layout>
+                    </Authenticated>
+                }
+            >
+                <Route path="*" element={<ErrorComponent />} />
+            </Route>`
         ],
     },
 };
@@ -35,6 +70,7 @@ module.exports = {
         if (answers["ui-framework"] === "chakra") {
             base._app.refineChakraImports.push("AuthPage");
         }
+
         return base;
     },
 };

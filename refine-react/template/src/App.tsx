@@ -15,10 +15,6 @@ import "@refinedev/antd/dist/reset.css";
 
 <%- (_app.import || []).join("\n") _%>
 
-<%_ if (_app.hasLayout || false) { _%>
-import { Header } from "./components";
-<%_ } _%>
-
 <%- (_app.localImport || []).join("\n") _%>
 
 <%- (_app.relativeImport || []).join("\n") _%>
@@ -28,10 +24,6 @@ import { Header } from "./components";
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
-%>
-<%
-    var layoutWrapperTop = _app.layoutWrapper.map(layoutWrapper => layoutWrapper[0] || "");
-    var layoutWrapperBottom = _app.layoutWrapper.map(layoutWrapper => layoutWrapper[1] || "").reverse();
 %>
 
 
@@ -43,16 +35,9 @@ function App() {
     return (
         <%- top.join("\n") %>
         <Refine <%- (_app.refineProps || []).join("\n") %>>
-            <%_ if (_app.hasLayout || false) { _%>
-                <%- layoutWrapperTop.join("\n") %>
-                    <Layout Header={Header}>
-                        <%- (_app.routes || []).join("\n") %>    
-                    </Layout>
-                <%- layoutWrapperBottom.join("\n") %>
-            <%_ } else { _%>
-                <%- (_app.routes || []).join("\n") %>    
-            <%_ } _%>
-            <%- (_app.refineComponents || []).join("\n") %>
+            <Routes>
+                <%- (_app.routes || []).join("\n") %>
+            </Routes>
         </Refine>
         <%- bottom.join("\n") %>
       );

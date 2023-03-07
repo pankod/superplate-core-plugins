@@ -10,7 +10,8 @@ const base = {
             "notificationProvider",
             "LightTheme",
             "DarkTheme",
-            "Layout"
+            "Layout",
+            "ErrorComponent",
         ],
         wrapper: [
             [`<BrowserRouter>`, `</BrowserRouter>`],
@@ -19,7 +20,6 @@ const base = {
             [`<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`, ``],
             [`<NotificationsProvider position="top-right">`, `</NotificationsProvider>`],
         ],
-        layoutWrapper: [],
         innerHooks: [
             `const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
                 key: "mantine-color-scheme",

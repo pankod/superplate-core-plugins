@@ -7,7 +7,8 @@ const base = {
         refineMuiImports: [
             "notificationProvider",
             "RefineSnackbarProvider",
-            "Layout"
+            "Layout",
+            "ErrorComponent"
         ],
         localImport: [
             `import { ColorModeContextProvider } from "./contexts/color-mode";`
@@ -20,7 +21,6 @@ const base = {
             [`<RefineSnackbarProvider>`, `</RefineSnackbarProvider>`]
 
         ],
-        layoutWrapper: [],
         refineComponents: [],
     },
 };

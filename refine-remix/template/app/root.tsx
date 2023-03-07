@@ -55,18 +55,18 @@ export default function App() {
                 <Links />
             </head>
             <body>
-                <GitHubBanner />
-                <%- top.join("\n") %>
-                <Refine
-                    routerProvider={routerProvider}
-                    <%- (_app.refineProps || []).join("\n") %>
-                >
-                    <Outlet />
-                </Refine>
-                <%- bottom.join("\n") %>
-                <ScrollRestoration />
-                <Scripts />
-                <LiveReload />
+            <GitHubBanner />
+            <%- top.join("\n") %>
+            <Refine
+                routerProvider={routerProvider}
+                <%- (_app.refineProps || []).join("\n") %>
+            >
+                <Outlet />
+            </Refine>
+            <%- bottom.join("\n") %>
+            <ScrollRestoration />
+            <Scripts />
+            <LiveReload />
             </body>
         </html>
     );

@@ -38,8 +38,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <%- (_app.inner || []).join("\n") %>
     return (
         <>
-            <%- top.join("\n") %>
             <GitHubBanner />
+            <%- top.join("\n") %>
             <Refine
                 routerProvider={routerProvider}
                 <%- (_app.refineProps || []).join("\n") %>

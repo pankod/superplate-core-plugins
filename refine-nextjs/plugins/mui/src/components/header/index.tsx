@@ -7,15 +7,20 @@ import {
   Stack,
   Toolbar,
   Typography,
-} from "@refinedev/mui";
+} from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";
 
+interface IUser {
+    name: string;
+    avatar: string;
+}
+
 export const Header: React.FC = () => {
   const { mode, setMode } = useContext(ColorModeContext);
 
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const showUserInfo = user && (user.name || user.avatar);
 
   return (

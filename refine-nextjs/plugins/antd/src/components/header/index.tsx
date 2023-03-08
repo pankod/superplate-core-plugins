@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import {
-  AntdLayout,
+  Layout as AntdLayout,
   Space,
   Avatar,
   Typography,
   Switch,
-} from "@refinedev/antd";
+} from "antd";
 import { ColorModeContext } from "@contexts";
 
 const { Text } = Typography;

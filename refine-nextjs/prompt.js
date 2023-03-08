@@ -300,8 +300,7 @@ module.exports = {
             plugin: ["kbar"],
             when: function (answers) {
                 return (
-                    answers["ui-framework"] === "antd" &&
-                    answers["antd-custom-layout"] !== "no"
+                    answers["ui-framework"] === "antd"
                 );
             },
             pattern: ["src/components/**"],

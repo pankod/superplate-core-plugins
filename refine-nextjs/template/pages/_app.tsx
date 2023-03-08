@@ -1,5 +1,6 @@
 import React from "react";
 import { AppProps } from "next/app";
+import type { NextPage } from "next";
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
@@ -28,7 +29,23 @@ import routerProvider from "@refinedev/nextjs-router";
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+     layout?: string;
+ };
+
+ type AppPropsWithLayout = AppProps & {
+     Component: NextPageWithLayout;
+ };
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+    const RenderLayout = ({ children }: { children: JSX.Element }) => {
+        if (!Component.layout) {
+            return <Layout Header={Header}>{children}</Layout>;
+        }
+
+        return <React.Fragment>{children}</React.Fragment>;
+    };
+
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
@@ -37,10 +54,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             routerProvider={routerProvider}
             <%- (_app.refineProps || []).join("\n") %>
         >
-
-            
-
-            <Component {...pageProps} />
+            <RenderLayout>
+                <Component {...pageProps} />
+            </RenderLayout>
         </Refine>
         <%- bottom.join("\n") %>
       );

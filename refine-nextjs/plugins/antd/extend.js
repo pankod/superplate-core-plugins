@@ -14,7 +14,7 @@ const base = {
 };
 
 module.exports = {
-    extend(answers) {
+    extend() {
         return base;
     },
 };

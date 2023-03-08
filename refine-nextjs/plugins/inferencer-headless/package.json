@@ -2,6 +2,6 @@
     "dependencies": {
         "@refinedev/inferencer": "^2.8.2",
         "@refinedev/react-hook-form": "^3.37.2",
-        "@refinedev/react-table": "^4.9.1",
+        "@refinedev/react-table": "^4.9.1"
     }
 }

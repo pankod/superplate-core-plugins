@@ -1,5 +1,4 @@
-<% _ if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] !== "no") {
-    _ %>
+<%_if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] !== "no") {_%>
     const { i18n } = require("./next-i18next.config");
 
     module.exports = {
@@ -18,9 +17,7 @@
             'rc-picker'
         ],
     };
-<% _
-} else if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] === "no") {
-    _ %>
+<%_ } else if (answers["ui-framework"] === "antd" && answers[`i18n-${answers["ui-framework"]}`] === "no") { _%>
     module.exports = {
         experimental: {
             newNextLinkBehavior: true,
@@ -37,9 +34,7 @@
             'rc-picker'
         ],
     };
-<% _
-} else if (answers[`i18n-${answers["ui-framework"]}`] !== "no") {
-    _ %>
+<%_ } else if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     const { i18n } = require("./next-i18next.config");
 
     module.exports = {
@@ -47,14 +42,11 @@
             newNextLinkBehavior: true,
         },
     };
-<% _
-} else {
-    _ %>
+<%_ } else { _%>
     module.exports = {
         experimental: {
             newNextLinkBehavior: true,
         },
     };
-<% _
-} _ %>
+<%_ } _%>
 

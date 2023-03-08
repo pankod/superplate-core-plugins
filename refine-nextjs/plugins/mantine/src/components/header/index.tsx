@@ -2,11 +2,11 @@ import { useGetIdentity } from "@refinedev/core";
 import {
   ActionIcon,
   Group,
-  MantineHeader,
+  Header as MantineHeader,
   Title,
   Avatar,
-  useMantineColorScheme,
-} from "@refinedev/mantine";
+  useMantineColorScheme
+} from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons";
 
 export const Header: React.FC = () => {

@@ -9,12 +9,12 @@
       import {
         ActionIcon,
         Group,
-        MantineHeader,
+        Header as MantineHeader,
         Title,
         Avatar,
-        useMantineColorScheme,
         Menu,
-      } from "@refinedev/mantine";
+        useMantineColorScheme
+      } from "@mantine/core";
       import { IconSun, IconMoonStars, IconLanguage } from "@tabler/icons";
       
     

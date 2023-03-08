@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 
-export default function PostList() {
+export default function ProductList() {
     return <<%- (_app.inferencer.componentPrefix || "") _%>EditInferencer />;
 }
 

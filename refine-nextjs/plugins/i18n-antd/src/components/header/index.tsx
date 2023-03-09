@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
       </Dropdown>
       <Space style={{ marginLeft: "8px" }}>
         {user?.name && (
-          <Text ellipsis strong>
+          <Text strong>
             {user.name}
           </Text>
         )}

@@ -2,8 +2,13 @@ import { useGetIdentity } from "@refinedev/core";
 import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@chakra-ui/react";
 import { IconMoon, IconSun } from "@tabler/icons";
 
+ interface IUser {
+    name: string;
+    avatar: string;
+  }
+
 export const Header: React.FC = () => {
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const showUserInfo = user && (user.name || user.avatar);
 
   const { colorMode, toggleColorMode } = useColorMode();

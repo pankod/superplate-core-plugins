@@ -11,8 +11,13 @@ import { ColorModeContext } from "@contexts";
 
 const { Text } = Typography;
 
+ interface IUser {
+    name: string;
+    avatar: string;
+  }
+
 export const Header: React.FC = () => {
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const { mode, setMode } = useContext(ColorModeContext);
 
   return (

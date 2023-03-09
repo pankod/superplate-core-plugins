@@ -9,26 +9,29 @@ import {
   Space,
   Menu,
   Button,
-  Icons,
   Dropdown,
   Avatar,
   Typography,
   Switch,
 } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
-import NextRouter from "@refinedev/nextjs-router";
+import Link from "next/link";
 
 import { ColorModeContext } from "@contexts";
 
-const { DownOutlined } = Icons;
 const { Text } = Typography;
-const { Link } = NextRouter;
+
+ interface IUser {
+    name: string;
+    avatar: string;
+  }
 
 export const Header: React.FC = () => {
   const locale = useGetLocale();
   const { locales } = useRouter();
   const currentLocale = locale();
-  const { data: user } = useGetIdentity();
+  const { data: user } = useGetIdentity<IUser>();
   const { mode, setMode } = useContext(ColorModeContext);
 
   const menu = (

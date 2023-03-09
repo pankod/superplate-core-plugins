@@ -30,7 +30,7 @@ import routerProvider from "@refinedev/nextjs-router";
 %>
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-     layout?: string;
+     customLayout?: string;
  };
 
  type AppPropsWithLayout = AppProps & {
@@ -38,12 +38,18 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
  };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-    const RenderLayout = ({ children }: { children: JSX.Element }) => {
-        if (!Component.layout) {
-            return <Layout Header={Header}>{children}</Layout>;
+    const renderComponent = () => {
+        // wrap default layout
+        if (!Component.customLayout) {
+            return (
+                <Layout Header={Header}>
+                    <Component {...pageProps} />
+                </Layout>
+            );
         }
 
-        return <React.Fragment>{children}</React.Fragment>;
+        // TODO: Wrap custom layout
+        return <Component {...pageProps} />;
     };
 
     <%- (_app.innerHooks || []).join("\n") %>
@@ -54,9 +60,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             routerProvider={routerProvider}
             <%- (_app.refineProps || []).join("\n") %>
         >
-            <RenderLayout>
-                <Component {...pageProps} />
-            </RenderLayout>
+            {renderComponent()}
         </Refine>
         <%- bottom.join("\n") %>
       );

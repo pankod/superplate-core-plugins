@@ -1,9 +1,9 @@
-import { AuthProvider } from "@refinedev/core";
+import { AuthBindings } from "@refinedev/core";
 import nookies from "nookies";
 
 import { supabaseClient } from "./utility";
 
-export const authProvider: AuthProvider = {
+export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
         const { data, error } = await supabaseClient.auth.signInWithPassword({
             email,
@@ -19,33 +19,51 @@ export const authProvider: AuthProvider = {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });
-            return Promise.resolve();
+            return Promise.resolve({
+                success: true,
+                redirectTo: "/",
+            });
         }
 
         // for third-party login
-        return Promise.resolve(false);
+        return Promise.resolve({
+            success: false,
+            error: {
+                name: "LoginError",
+                message: "Invalid username or password",
+            },
+        });
     },
     logout: async () => {
         nookies.destroy(null, "token");
         const { error } = await supabaseClient.auth.signOut();
 
         if (error) {
-            return Promise.reject(error);
+            return Promise.resolve({
+                success: true,
+            });
         }
 
-        return Promise.resolve("/");
+        return Promise.resolve({
+            success: true,
+            redirectTo: "/login",
+        });
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: async (ctx) => {
+    check: async (ctx) => {
         const { token } = nookies.get(ctx);
         const { data } = await supabaseClient.auth.getUser(token);
         const { user } = data;
 
         if (user) {
-            return Promise.resolve();
+            return Promise.resolve({
+                authenticated: true,
+            });
         }
 
-        return Promise.reject();
+        return Promise.resolve({
+            authenticated: false,
+            redirectTo: "/login",
+        });
     },
     getPermissions: async () => {
         const user = await supabaseClient.auth.getUser();
@@ -54,7 +72,7 @@ export const authProvider: AuthProvider = {
             return Promise.resolve(user.data.user?.role);
         }
     },
-    getUserIdentity: async () => {
+    getIdentity: async () => {
         const { data } = await supabaseClient.auth.getUser();
 
         if (data?.user) {
@@ -63,5 +81,14 @@ export const authProvider: AuthProvider = {
                 name: data.user.email,
             });
         }
+    },
+    onError: async (err) => {
+        return Promise.resolve({
+            error: {
+                name: "LoginError",
+                message: err,
+            },
+            logout: true,
+        });
     },
 };

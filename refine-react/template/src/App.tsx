@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
 import "@pankod/refine-antd/dist/reset.css";
@@ -35,9 +35,12 @@ function App() {
     <%- (_app.inner || []).join("\n") %>
     
     return (
-        <%- top.join("\n") %>
-        <Refine <%- (_app.refineProps || []).join("\n") %> />
-        <%- bottom.join("\n") %>
+        <>
+            <GitHubBanner />
+            <%- top.join("\n") %>
+            <Refine <%- (_app.refineProps || []).join("\n") %> />
+            <%- bottom.join("\n") %>
+        </>
       );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { AppProps } from "next/app";
 import type { NextPage } from "next";
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 <%_ } _%>
@@ -55,6 +55,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
+        <GitHubBanner />
         <%- top.join("\n") %>
         <Refine 
             routerProvider={routerProvider}

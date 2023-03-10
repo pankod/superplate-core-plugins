@@ -4,8 +4,8 @@ import React, {
     useEffect,
     useState,
 } from "react";
-import { ThemeProvider, useMediaQuery } from "@pankod/refine-mui";
-import { DarkTheme, LightTheme } from "@pankod/refine-mui";
+import { ThemeProvider, useMediaQuery } from "@refinedev/mui";
+import { DarkTheme, LightTheme } from "@refinedev/mui";
 import { parseCookies, setCookie } from "nookies";
 
 type ColorModeContextType = {

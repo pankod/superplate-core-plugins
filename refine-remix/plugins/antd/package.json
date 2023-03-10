@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-antd": "^4.7.0"
+        "@refinedev/antd": "^4.7.3"
     }
 }

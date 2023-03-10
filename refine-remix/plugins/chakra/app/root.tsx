@@ -10,10 +10,10 @@ import {
 } from '@remix-run/react'
 import { MetaFunction, LinksFunction } from '@remix-run/node' // Depends on the runtime you choose
 
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
-import routerProvider from "@pankod/refine-remix-router";
+import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import routerProvider from "@refinedev/remix-router";
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { ChakraProvider, refineTheme, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@pankod/refine-chakra-ui';
+    import { ChakraProvider, refineTheme, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
 
 import { ServerStyleContext, ClientStyleContext } from './context'

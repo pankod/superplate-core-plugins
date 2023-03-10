@@ -1,5 +1,5 @@
-import { useGetIdentity } from "@pankod/refine-core";
-import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@pankod/refine-chakra-ui";
+import { useGetIdentity } from "@refinedev/core";
+import { Box, IconButton, HStack, Text, Avatar, Icon, useColorMode } from "@refinedev/chakra-ui";
 import { IconMoon, IconSun } from "@tabler/icons";
 
 export const Header: React.FC = () => {

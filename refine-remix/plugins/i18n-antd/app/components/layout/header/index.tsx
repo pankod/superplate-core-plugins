@@ -5,7 +5,7 @@ import {
   useGetLocale,
   useSetLocale,
   useGetIdentity,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 import {
   AntdLayout,
   Space,
@@ -16,7 +16,7 @@ import {
   Avatar,
   Typography,
   Switch,
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 import { useTranslation } from "react-i18next";
 import { ColorModeContext } from "~/contexts";
 
@@ -92,7 +92,7 @@ export const Header: React.FC = () => {
   useGetLocale,
   useSetLocale,
   useGetIdentity,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 import {
   AntdLayout,
   Space,
@@ -102,7 +102,7 @@ import {
   Dropdown,
   Avatar,
   Typography,
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 import { useTranslation } from "react-i18next";
 
 const { DownOutlined } = Icons;

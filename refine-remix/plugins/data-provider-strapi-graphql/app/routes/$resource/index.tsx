@@ -1,14 +1,14 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import * as cookie from "cookie";
-import { parseTableParams } from "@pankod/refine-core";
-import { checkAuthentication } from "@pankod/refine-remix-router";
+import { parseTableParams } from "@refinedev/core";
+import { checkAuthentication } from "@refinedev/remix-router";
 
 import { authProvider } from "~/authProvider";
 import { gqlDataProvider, client } from "~/gqDataProvider";
 import { TOKEN_KEY } from "~/constants";
 
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+export { RemixRouteComponent as default } from "@refinedev/remix-router";
 export const loader: LoaderFunction = async ({ params, request }) => {
     await checkAuthentication(authProvider, request);
 

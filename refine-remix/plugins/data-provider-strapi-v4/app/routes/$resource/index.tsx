@@ -1,13 +1,13 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import * as cookie from "cookie";
-import { parseTableParams } from "@pankod/refine-core";
-import { DataProvider } from "@pankod/refine-strapi-v4";
-import { checkAuthentication } from "@pankod/refine-remix-router";
+import { parseTableParams } from "@refinedev/core";
+import { DataProvider } from "@refinedev/strapi-v4";
+import { checkAuthentication } from "@refinedev/remix-router";
 
 import { authProvider, axiosInstance } from "~/authProvider";
 
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+export { RemixRouteComponent as default } from "@refinedev/remix-router";
 
 import { API_URL, TOKEN_KEY } from "~/constants";
 

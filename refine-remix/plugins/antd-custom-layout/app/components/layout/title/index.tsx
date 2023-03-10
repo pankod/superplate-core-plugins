@@ -1,6 +1,6 @@
 import React from "react";
-import { TitleProps } from "@pankod/refine-core";
-import routerProvider from "@pankod/refine-remix-router";
+import { TitleProps } from "@refinedev/core";
+import routerProvider from "@refinedev/remix-router";
 const { Link } = routerProvider;
 
     

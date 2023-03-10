@@ -1,4 +1,4 @@
-import type { AuthProvider } from "@pankod/refine-core";
+import type { AuthProvider } from "@refinedev/core";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";
 

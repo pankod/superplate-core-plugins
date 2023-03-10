@@ -1,9 +1,9 @@
 import type { LoaderFunction } from "@remix-run/node";
-import { checkAuthentication } from "@pankod/refine-remix-router";
+import { checkAuthentication } from "@refinedev/remix-router";
 
 import { authProvider } from "~/authProvider";
 
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+export { RemixRouteComponent as default } from "@refinedev/remix-router";
 
 export const loader: LoaderFunction = async ({ params, request }) => {
     await checkAuthentication(authProvider, request);

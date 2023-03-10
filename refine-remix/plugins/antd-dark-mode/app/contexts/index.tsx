@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { ConfigProvider, theme } from "@pankod/refine-antd";
+import { ConfigProvider, theme } from "@refinedev/antd";
 import { parseCookies, setCookie } from "nookies";
 
 type ColorModeContextType = {

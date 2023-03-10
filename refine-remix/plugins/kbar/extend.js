@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: [`import { RefineKbarProvider } from "@pankod/refine-kbar";`],
+        import: [`import { RefineKbarProvider } from "@refinedev/kbar";`],
         localImport: [
             `import { OffLayoutArea } from "~/components/offLayoutArea"`,
         ],

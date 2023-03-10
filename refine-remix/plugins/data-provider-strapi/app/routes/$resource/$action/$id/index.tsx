@@ -1,10 +1,10 @@
 import type { LoaderFunction } from "@remix-run/node";
-import { checkAuthentication } from "@pankod/refine-remix-router";
+import { checkAuthentication } from "@refinedev/remix-router";
 
 import strapiAuthProvider from "~/authProvider";
 
 import { API_URL } from "~/constants";
-export { RemixRouteComponent as default } from "@pankod/refine-remix-router";
+export { RemixRouteComponent as default } from "@refinedev/remix-router";
 
 export const loader: LoaderFunction = async ({ request }) => {
     const { authProvider } = strapiAuthProvider(API_URL);

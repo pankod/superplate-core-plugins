@@ -1,6 +1,6 @@
 import React from "react";
 <%_ if (answers[`command-palette`] === "kbar") { _%>
-import { RefineKbar } from "@pankod/refine-kbar";
+import { RefineKbar } from "@refinedev/kbar";
 <%_ } _%>
 
 <%_ if (answers[`command-palette`] === "kbar") { _%>

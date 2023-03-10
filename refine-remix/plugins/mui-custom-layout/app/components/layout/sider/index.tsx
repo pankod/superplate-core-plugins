@@ -11,7 +11,7 @@ import {
     Button,
     IconButton,
     MuiList,
-} from "@pankod/refine-mui";
+} from "@refinedev/mui";
 import {
     ListOutlined,
     Logout,
@@ -32,7 +32,7 @@ import {
     useRouterContext,
     useMenu,
     useRefineContext,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 
 import { Title as DefaultTitle } from "../title";
 

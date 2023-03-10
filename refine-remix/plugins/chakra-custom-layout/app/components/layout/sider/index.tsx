@@ -8,8 +8,8 @@ import {
     useRouterContext,
     useTitle,
     useTranslate,
-} from "@pankod/refine-core";
-import type { ITreeMenu } from "@pankod/refine-core";
+} from "@refinedev/core";
+import type { ITreeMenu } from "@refinedev/core";
 import {
     Accordion,
     AccordionButton,
@@ -24,11 +24,11 @@ import {
     IconButton,
     Tooltip,
     VStack,
-} from "@pankod/refine-chakra-ui";
+} from "@refinedev/chakra-ui";
 import type {
     TooltipProps,
     Sider as DefaultSider,
-  } from "@pankod/refine-chakra-ui";
+  } from "@refinedev/chakra-ui";
 import {
     IconList,
     IconChevronRight,

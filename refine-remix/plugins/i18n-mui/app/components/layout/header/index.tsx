@@ -6,7 +6,7 @@ import React from "react";
 import {
   useGetIdentity,
   useRouterContext
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 import {
   AppBar,
   <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
@@ -19,7 +19,7 @@ import {
   Select,
   Toolbar,
   Typography,
-} from "@pankod/refine-mui";
+} from "@refinedev/mui";
 <%_ if (answers["mui-dark-mode"] === "mui-dark-mode") { _%>
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 <%_ } _%>

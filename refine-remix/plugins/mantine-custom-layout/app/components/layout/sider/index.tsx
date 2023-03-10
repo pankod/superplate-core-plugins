@@ -9,7 +9,7 @@ import {
     useRouterContext,
     useTitle,
     useTranslate,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 import {
     ActionIcon,
     Box,
@@ -25,7 +25,7 @@ import {
     TooltipProps,
     Styles,
     Sider as DefaultSider,
-} from "@pankod/refine-mantine";
+} from "@refinedev/mantine";
 import {
     IconList,
     IconMenu2,

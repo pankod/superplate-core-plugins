@@ -1,13 +1,13 @@
 <%_ if (answers["antd-dark-mode"] === "antd-dark-mode") { _%>
 import { useContext } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import {
   AntdLayout,
   Space,
   Avatar,
   Typography,
   Switch,
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 import { ColorModeContext } from "~/contexts";
 
 const { Text } = Typography;
@@ -46,13 +46,13 @@ export const Header: React.FC = () => {
 
 <%_ } else { _%>
 
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import {
   AntdLayout,
   Space,
   Avatar,
   Typography,
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 
 const { Text } = Typography;
 

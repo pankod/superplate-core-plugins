@@ -2,7 +2,7 @@ const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
         import: [
-            'import resetStyle from "@pankod/refine-antd/dist/reset.css";',
+            'import resetStyle from "@refinedev/antd/dist/reset.css";',
         ],
         refineAntdImports: ["notificationProvider"],
         styleImport: ['{ rel: "stylesheet", href: resetStyle }'],

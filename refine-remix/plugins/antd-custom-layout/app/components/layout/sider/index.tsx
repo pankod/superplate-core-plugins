@@ -8,7 +8,7 @@ import {
   Drawer,
   Sider as DefaultSider,
   Button,
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 import {
   useTranslate,
   useLogout,
@@ -19,7 +19,7 @@ import {
   useRouterContext,
   useMenu,
   useRefineContext,
-} from "@pankod/refine-core";
+} from "@refinedev/core";
 
 import { Title as DefaultTitle } from "../title";
 

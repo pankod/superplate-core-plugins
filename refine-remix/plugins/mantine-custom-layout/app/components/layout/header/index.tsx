@@ -1,5 +1,5 @@
 <%_ if (answers["mantine-dark-mode"] === "mantine-dark-mode") { _%>
-    import { useGetIdentity } from "@pankod/refine-core";
+    import { useGetIdentity } from "@refinedev/core";
     import {
     ActionIcon,
     Group,
@@ -7,7 +7,7 @@
     Title,
     Avatar,
     useMantineColorScheme,
-    } from "@pankod/refine-mantine";
+    } from "@refinedev/mantine";
     import { IconSun, IconMoonStars } from "@tabler/icons";
 
     export const Header: React.FC = () => {
@@ -40,13 +40,13 @@
     };
 <%_ } else { _%>
     import React from "react";
-    import { useGetIdentity } from "@pankod/refine-core";
+    import { useGetIdentity } from "@refinedev/core";
     import {
         Avatar,
         Group,
         MantineHeader,
         Title as MantineTitle,
-    } from "@pankod/refine-mantine";
+    } from "@refinedev/mantine";
 
     export const Header: React.FC = () => {
         const { data: user } = useGetIdentity();

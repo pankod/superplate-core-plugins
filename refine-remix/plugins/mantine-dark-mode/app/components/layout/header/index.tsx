@@ -1,4 +1,4 @@
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import {
   ActionIcon,
   Group,
@@ -6,7 +6,7 @@ import {
   Title,
   Avatar,
   useMantineColorScheme,
-} from "@pankod/refine-mantine";
+} from "@refinedev/mantine";
 import { IconSun, IconMoonStars } from "@tabler/icons";
 
 export const Header: React.FC = () => {

@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity } from "@refinedev/core";
 import {
   AntdLayout,
   Space,
   Avatar,
   Typography,
   Switch,
-} from "@pankod/refine-antd";
+} from "@refinedev/antd";
 import { ColorModeContext } from "@contexts";
 
 const { Text } = Typography;

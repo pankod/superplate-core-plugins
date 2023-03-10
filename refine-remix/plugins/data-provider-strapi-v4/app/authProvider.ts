@@ -1,5 +1,5 @@
-import { AuthProvider } from "@pankod/refine-core";
-import { AuthHelper } from "@pankod/refine-strapi-v4";
+import { AuthProvider } from "@refinedev/core";
+import { AuthHelper } from "@refinedev/strapi-v4";
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";

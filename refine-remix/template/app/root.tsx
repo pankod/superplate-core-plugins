@@ -8,21 +8,21 @@ import {
     ScrollRestoration,
 } from "@remix-run/react";
 
-import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
-    import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
+    import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
+    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@pankod/refine-mantine';
+    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@pankod/refine-chakra-ui';
+    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
 
-import routerProvider from "@pankod/refine-remix-router";
+import routerProvider from "@refinedev/remix-router";
 
 <%- (_app.import || []).join("\n") _%>
 

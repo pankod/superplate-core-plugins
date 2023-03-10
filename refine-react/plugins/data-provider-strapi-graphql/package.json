@@ -1,7 +1,0 @@
-{
-    "dependencies": {
-        "@refinedev/strapi-graphql": "^4.9.0",
-        "graphql": "^15.5.3",
-        "graphql-request": "^3.5.0"
-    }
-}

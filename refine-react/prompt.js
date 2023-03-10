@@ -22,16 +22,6 @@ module.exports = {
                     hint: "Installs Strapi v4 Data Provider.",
                 },
                 {
-                    message: "Strapi v3",
-                    name: "data-provider-strapi",
-                    hint: "Installs Strapi v3 Data Provider.",
-                },
-                {
-                    message: "Strapi GraphQL",
-                    name: "data-provider-strapi-graphql",
-                    hint: "Installs Strapi v3 GraphQL Data Provider.",
-                },
-                {
                     message: "nestjsx-crud",
                     name: "data-provider-nestjsx-crud",
                     hint: "Installs Nestjsx-crud Data Provider.",
@@ -60,11 +50,6 @@ module.exports = {
                     message: "Medusa",
                     name: "data-provider-medusa",
                     hint: "Installs Medusa Data Provider.",
-                },
-                {
-                    message: "nHost",
-                    name: "data-provider-nhost",
-                    hint: "Installs NHost Data Provider.",
                 },
             ],
             default: "data-provider-custom-json-rest",
@@ -122,7 +107,6 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-appwrite",
@@ -147,7 +131,6 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] !== "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-appwrite",
@@ -194,13 +177,10 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-nhost",
+                answers["data-provider"] === "data-provider-medusa",
             default: "none",
         },
         {
@@ -326,7 +306,7 @@ module.exports = {
     ],
     ignores: [
         {
-            plugin: ["data-provider-nhost", "data-provider-appwrite"],
+            plugin: ["data-provider-appwrite"],
             when: function (answers) {
                 return answers["ui-framework"] !== "antd";
             },

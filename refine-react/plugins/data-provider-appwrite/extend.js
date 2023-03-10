@@ -27,7 +27,7 @@ const base = {
                     <Authenticated
                         fallback={<CatchAllNavigate to="/login" />}
                     >
-                        <Layout>
+                        <Layout Header={Header}>
                             <Outlet />
                         </Layout>
                     </Authenticated>
@@ -55,7 +55,7 @@ const base = {
             `<Route
                 element={
                     <Authenticated fallback={<Outlet />}>
-                        <Layout>
+                        <Layout Header={Header}>
                             <Outlet />
                         </Layout>
                     </Authenticated>

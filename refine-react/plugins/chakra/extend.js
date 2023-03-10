@@ -16,6 +16,9 @@ const base = {
             [`<BrowserRouter>`, `</BrowserRouter>`],
             [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
         ],
+        localImport: [
+            `import { Header } from "./components/header";`
+        ]
     },
 };
 

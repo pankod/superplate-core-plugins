@@ -67,7 +67,7 @@ module.exports = {
         // if auth-provider is none
         if (answers["auth-provider"] === "none") {
             base._app.routes = [
-                `<Route element={<Layout><Outlet /></Layout>}>
+                `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
                     <Route index element={<NavigateToResource resource="posts" />} />
                     <Route path="/products" element={<ProductList />} />
                     <Route path="/products/create" element={<ProductCreate />} />
@@ -78,7 +78,7 @@ module.exports = {
                     <Route path="/categories/edit/:id" element={<CategoryEdit />} />
                     <Route path="/categories/show/:id" element={<CategoryShow />} />
                 </Route>`,
-                `<Route element={<Layout><Outlet /></Layout>}>
+                `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
                     <Route path="*" element={<ErrorComponent />} />
                 </Route>`
             ];

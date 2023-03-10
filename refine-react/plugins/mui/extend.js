@@ -11,7 +11,8 @@ const base = {
             "ErrorComponent"
         ],
         localImport: [
-            `import { ColorModeContextProvider } from "./contexts/color-mode";`
+            `import { ColorModeContextProvider } from "./contexts/color-mode";`,
+            `import { Header } from "./components/header";`
         ],
         wrapper: [
             [`<BrowserRouter>`, `</BrowserRouter>`],

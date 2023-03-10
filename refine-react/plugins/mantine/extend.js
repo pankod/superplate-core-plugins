@@ -31,6 +31,9 @@ const base = {
             `const toggleColorScheme = (value?: ColorScheme) =>
                 setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));`
         ],
+        localImport: [
+            `import { Header } from "./components/header";`
+        ]
     },
 };
 

@@ -1,4 +1,4 @@
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 import "@refinedev/antd/dist/reset.css";
@@ -33,6 +33,8 @@ function App() {
     <%- (_app.inner || []).join("\n") %>
     
     return (
+        <>
+        <GitHubBanner />
         <%- top.join("\n") %>
         <Refine <%- (_app.refineProps || []).join("\n") %>>
             <Routes>
@@ -40,6 +42,7 @@ function App() {
             </Routes>
         </Refine>
         <%- bottom.join("\n") %>
+        </>
       );
 };
 

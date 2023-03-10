@@ -1,7 +1,0 @@
-{
-    "dependencies": {
-        "@refinedev/strapi": "^3.37.0",
-        "axios": "^0.26.1",
-        "nookies": "^2.5.2"
-    }
-}

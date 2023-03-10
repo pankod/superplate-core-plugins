@@ -15,7 +15,33 @@ const base = {
             `const gqlDataProvider = dataProvider(client);`,
             "",
         ],
-        refineProps: ["dataProvider={gqlDataProvider}"],
+        refineProps: [
+            `dataProvider={gqlDataProvider}`,
+            `resources={[
+                {
+                    name: "products",
+                    list: "/products",
+                    create: "/products/create",
+                    edit: "/products/edit/:id",
+                    show: "/products/show/:id",
+                },
+            ]}`
+        ],
+        localImport: [
+            `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
+        ],
+        routes: [
+            `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+                    <Route index element={<NavigateToResource resource="posts" />} />
+                    <Route path="/products" element={<ProductList />} />
+                    <Route path="/products/create" element={<ProductCreate />} />
+                    <Route path="/products/edit/:id" element={<ProductEdit />} />
+                    <Route path="/products/show/:id" element={<ProductShow />} />
+                </Route>`,
+            `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+                    <Route path="*" element={<ErrorComponent />} />
+                </Route>`
+        ],
     },
 };
 module.exports = {

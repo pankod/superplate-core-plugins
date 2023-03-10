@@ -55,6 +55,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
+        <>
         <GitHubBanner />
         <%- top.join("\n") %>
         <Refine 
@@ -64,6 +65,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             {renderComponent()}
         </Refine>
         <%- bottom.join("\n") %>
+        </>
       );
 };
 

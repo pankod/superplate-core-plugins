@@ -108,19 +108,25 @@
     "dashboard": {
         "title": "Dashboard"
     },
-    "posts": {
-        "posts": "Einträge",
+    "products": {
+        "products": "Produkte",
         "fields": {
             "id": "Id",
-            "title": "Titel",
-            "category": "Kategorie",
-            "status": {
-                "title": "Status",
-                "published": "Veröffentlicht",
-                "draft": "Draft",
-                "rejected": "Abgelehnt"
-            },
-            "content": "Inhalh",
+            "name": "Titel",
+            "createdAt": "Erstellt am"
+        },
+        "titles": {
+            "create": "Erstellen",
+            "edit": "Bearbeiten",
+            "list": "Einträge",
+            "show": "Eintrag zeigen"
+        }
+    },
+    "categories": {
+        "categories": "Kategorien",
+        "fields": {
+            "id": "Id",
+            "name": "Titel",
             "createdAt": "Erstellt am"
         },
         "titles": {

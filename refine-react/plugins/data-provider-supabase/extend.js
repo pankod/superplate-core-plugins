@@ -76,7 +76,7 @@ const base = {
             </Route>`,
             `<Route
                 element={
-                    <Authenticated fallback={<Outlet />}>
+                    <Authenticated>
                         <Layout Header={Header}>
                             <Outlet />
                         </Layout>

@@ -9,6 +9,7 @@ const base = {
                      create: "/products/create",
                      edit: "/products/edit/:id",
                      show: "/products/show/:id",
+                     canDelete: true,
                  },
                  {
                      name: "categories",
@@ -16,6 +17,7 @@ const base = {
                      create: "/categories/create",
                      edit: "/categories/edit/:id",
                      show: "/categories/show/:id",
+                     canDelete: true,
                  },
              ]}`
         ],

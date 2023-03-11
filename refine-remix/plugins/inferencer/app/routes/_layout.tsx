@@ -11,13 +11,18 @@ import { Outlet } from "@remix-run/react";
  <%_ if (answers["ui-framework"] === 'chakra') { _%>
      import { Layout } from "@refinedev/chakra-ui";
  <%_ } _%>
+ import { RefineKbar } from "@refinedev/kbar";
 
 import { Header } from "@components/header";
 
 export default function BaseLayout() {
     return (
-        <Layout Header={Header}>
-            <Outlet />
-        </Layout>
+        <>
+            <Layout Header={Header}>
+                <Outlet />
+            </Layout>
+            <RefineKbar />
+        </>
+        
     );
 }

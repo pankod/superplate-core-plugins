@@ -1,6 +1,8 @@
 const base = {
     _app: {
-        import: [],
+        import: [
+            `import { RefineKbarProvider } from "@refinedev/kbar";`
+        ],
         refineProps: [
             `resources={[
                  {
@@ -20,7 +22,9 @@ const base = {
              ]}`
         ],
         refineAntdImports: [],
-        wrapper: [],
+        wrapper: [
+            ["<RefineKbarProvider>", "</RefineKbarProvider>"]
+        ],
         localImport: [],
         inferencer: {},
     },

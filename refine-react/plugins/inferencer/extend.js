@@ -1,3 +1,72 @@
+const withoutAuthRoutes = [
+    `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+        <Route index element={<NavigateToResource resource="posts" />} />
+        <Route path="/products">
+            <Route index element={<ProductList />} />
+            <Route path="create" element={<ProductCreate />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
+            <Route path="show/:id" element={<ProductShow />} />
+        </Route>
+        <Route path="/categories">
+            <Route index element={<CategoryList />} />
+            <Route path="create" element={<CategoryCreate />} />
+            <Route path="edit/:id" element={<CategoryEdit />} />
+            <Route path="show/:id" element={<CategoryShow />} />
+        </Route>
+    </Route>`,
+    `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+        <Route path="*" element={<ErrorComponent />} />
+    </Route>`
+];
+
+const withAuthRoutes = [
+    `<Route
+        element={
+            <Authenticated
+                fallback={<CatchAllNavigate to="/login" />}
+            >
+                <Layout Header={Header}>
+                    <Outlet />
+                </Layout>
+            </Authenticated>
+        }
+    >
+        <Route index element={<NavigateToResource resource="products" />} />
+        <Route path="/products">
+            <Route index element={<ProductList />} />
+            <Route path="create" element={<ProductCreate />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
+            <Route path="show/:id" element={<ProductShow />} />
+        </Route>
+        <Route path="/categories">
+            <Route index element={<CategoryList />} />
+            <Route path="create" element={<CategoryCreate />} />
+            <Route path="edit/:id" element={<CategoryEdit />} />
+            <Route path="show/:id" element={<CategoryShow />} />
+        </Route>
+    </Route>`,
+    `<Route
+        element={
+            <Authenticated fallback={<Outlet />}>
+                <NavigateToResource />
+            </Authenticated>
+        }
+    >
+        <Route path="/login" element={<AuthPage type="login" />} />
+    </Route>`,
+    `<Route
+        element={
+            <Authenticated>
+                <Layout Header={Header}>
+                    <Outlet />
+                </Layout>
+            </Authenticated>
+        }
+    >
+        <Route path="*" element={<ErrorComponent />} />
+    </Route>`,
+];
+
 const base = {
     _app: {
         import: [],
@@ -66,28 +135,16 @@ module.exports = {
             (item) => item.ui === answers["ui-framework"],
         );
 
-        // if auth-provider is none
-        if (answers["auth-provider"] === "none") {
-            base._app.routes = [
-                `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-                    <Route index element={<NavigateToResource resource="posts" />} />
-                        <Route path="/products">
-                        <Route index element={<ProductList />} />
-                        <Route path="/products/create" element={<ProductCreate />} />
-                        <Route path="/products/edit/:id" element={<ProductEdit />} />
-                        <Route path="/products/show/:id" element={<ProductShow />} />
-                    </Route>
-                    <Route path="/categories">
-                        <Route index element={<CategoryList />} />
-                        <Route path="/products/create" element={<CategoryCreate />} />
-                        <Route path="/products/edit/:id" element={<CategoryEdit />} />
-                        <Route path="/products/show/:id" element={<CategoryShow />} />
-                    </Route>
-                </Route>`,
-                `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-                    <Route path="*" element={<ErrorComponent />} />
-                </Route>`
-            ];
+        if (
+            answers["data-provider"] === "data-provider-appwrite" ||
+            answers["data-provider"] === "data-provider-supabase" ||
+            answers["data-provider"] === "data-provider-strapi-v4"
+        ) {
+            base._app.routes = withAuthRoutes;
+        } else if (answers["auth-provider"] === "none") {
+            base._app.routes = withoutAuthRoutes;
+        } else {
+            base._app.routes = withAuthRoutes;
         }
 
         return base;

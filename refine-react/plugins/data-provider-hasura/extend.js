@@ -31,24 +31,15 @@ const base = {
         localImport: [
             `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
         ],
-        routes: [
-            `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-                    <Route index element={<NavigateToResource resource="posts" />} />
-                    <Route path="/products">
-                        <Route index element={<ProductList />} />
-                        <Route path="/products/create" element={<ProductCreate />} />
-                        <Route path="/products/edit/:id" element={<ProductEdit />} />
-                        <Route path="/products/show/:id" element={<ProductShow />} />
-                    </Route>
-                </Route>`,
-            `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-                    <Route path="*" element={<ErrorComponent />} />
-                </Route>`
-        ],
+        routes: [],
     },
 };
 module.exports = {
     extend() {
+        // clear routes
+        base._app.routes = [];
+
+
         return base;
     },
 };

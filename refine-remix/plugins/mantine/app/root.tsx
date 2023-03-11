@@ -12,7 +12,8 @@ import { StylesPlaceholder } from '@mantine/remix';
 
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { createEmotionCache, <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
+    import { createEmotionCache } from "@mantine/core";
+    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
 <%_ } _%>
 
 import routerProvider from "@refinedev/remix-router";

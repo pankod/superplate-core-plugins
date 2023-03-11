@@ -168,26 +168,7 @@ module.exports = {
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
         },
-        {
-            name: "mantine-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "mantine-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
-        },
+
         {
             name: "mui-extend-theme",
             message: "Do you want an extended theme?:",
@@ -220,27 +201,6 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "mantine-custom-layout",
-            message: "Do you want a customized layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "mantine-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
         },
         {
             name: "auth-provider",

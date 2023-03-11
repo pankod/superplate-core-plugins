@@ -6,21 +6,17 @@ const base = {
         ],
         refineAntdImports: ["notificationProvider"],
         styleImport: ['{ rel: "stylesheet", href: resetStyle }'],
+        wrapper: [
+            [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`]
+        ],
+        localImport: [
+            `import { ColorModeContextProvider } from "@contexts";`,
+        ],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["antd-custom-layout"] === "no") {
-            base._app.refineAntdImports.push("Layout");
-            base._app.refineProps.push("Layout={Layout}");
-        }
-
-        base._app.refineAntdImports.push("ReadyPage");
-        base._app.refineAntdImports.push("ErrorComponent");
-        base._app.refineProps.push("ReadyPage={ReadyPage}");
-        base._app.refineProps.push("catchAll={<ErrorComponent />}");
-
+    extend() {
         return base;
     },
 };

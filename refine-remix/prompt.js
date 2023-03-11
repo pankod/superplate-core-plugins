@@ -149,26 +149,6 @@ module.exports = {
             default: "no",
         },
         {
-            name: "antd-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "antd-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        },
-        {
             name: "mui-dark-mode",
             message: "Do you want to add dark mode support?:",
             type: "select",
@@ -239,27 +219,6 @@ module.exports = {
             ],
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "antd-custom-layout",
-            message: "Do you want to customize the Ant Design layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "antd-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
         },
         {
             name: "mui-custom-layout",
@@ -376,8 +335,7 @@ module.exports = {
             plugin: ["kbar"],
             when: function (answers) {
                 return (
-                    answers["ui-framework"] === "antd" &&
-                    answers["antd-custom-layout"] !== "no"
+                    answers["ui-framework"] === "antd"
                 );
             },
             pattern: ["src/components/**"],

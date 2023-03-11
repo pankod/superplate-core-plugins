@@ -1,5 +1,6 @@
 import type { AuthBindings } from "@refinedev/core";
 import Cookies from "js-cookie";
+import * as cookie from "cookie";
 
 import { account, appwriteClient, TOKEN_KEY } from "~/utility";
 
@@ -35,7 +36,15 @@ export const authProvider: AuthBindings = {
         };
     },
     check: async (context) => {
-        const token = Cookies.get(TOKEN_KEY);
+        let token = undefined;
+        if (context && context.headers) {
+            const { headers } = context;
+            const parsedCookie = cookie.parse(headers.get("Cookie") ?? "");
+            token = parsedCookie[TOKEN_KEY];
+        } else {
+            const parsedCookie = Cookies.get(TOKEN_KEY);
+            token = parsedCookie;
+        }
 
         if (!token) {
             return {

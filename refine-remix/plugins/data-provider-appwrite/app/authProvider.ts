@@ -37,7 +37,7 @@ export const authProvider: AuthBindings = {
     },
     check: async (context) => {
         let token = undefined;
-        if (context && context.headers) {
+        if (context) {
             const { headers } = context;
             const parsedCookie = cookie.parse(headers.get("Cookie") ?? "");
             token = parsedCookie[TOKEN_KEY];

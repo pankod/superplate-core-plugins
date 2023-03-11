@@ -1,52 +1,62 @@
-import type { AuthProvider } from "@refinedev/core";
+import type { AuthBindings } from "@refinedev/core";
 import Cookies from "js-cookie";
-import * as cookie from "cookie";
 
 import { account, appwriteClient, TOKEN_KEY } from "~/utility";
 
-export const authProvider: AuthProvider = {
-    login: async ({ email, password }) => {
+export const authProvider: AuthBindings = {
+    login: async ({ email, password }: any) => {
         try {
             const user = await account.createEmailSession(email, password);
-
             Cookies.set(TOKEN_KEY, user.providerAccessToken);
 
-            return Promise.resolve(user);
+            return {
+                success: true,
+                redirectTo: "/",
+            };
         } catch (e) {
-            return Promise.reject();
+            return {
+                success: false,
+            };
         }
     },
     logout: async () => {
         Cookies.remove(TOKEN_KEY);
         await account.deleteSession("current");
-        return Promise.resolve();
+        return {
+            success: true,
+            redirectTo: "/login",
+        };
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: async (context) => {
-        let token = undefined;
-        if (context) {
-            const { request } = context;
-            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
-            token = parsedCookie[TOKEN_KEY];
-        } else {
-            const parsedCookie = Cookies.get(TOKEN_KEY);
-            token = parsedCookie;
-        }
+    onError: async () => {
+        return {
+            error: new Error("Unauthorized"),
+            logout: true,
+            redirectTo: "/login",
+        };
+    },
+    check: async (context) => {
+        const token = Cookies.get(TOKEN_KEY);
 
         if (!token) {
-            return Promise.reject();
+            return {
+                authenticated: false,
+            };
         }
         appwriteClient.setJWT(token);
         const session = await account.get();
 
         if (session) {
-            return Promise.resolve();
+            return {
+                authenticated: true,
+            };
         }
 
-        return Promise.reject();
+        return {
+            authenticated: false,
+        };
     },
-    getPermissions: () => Promise.resolve(),
-    getUserIdentity: async () => {
+    getPermissions: async () => ({}),
+    getIdentity: async () => {
         const user = await account.get();
 
         if (user) {

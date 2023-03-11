@@ -2,7 +2,8 @@
     "dependencies": {
         "@refinedev/appwrite": "^5.5.0",
         "cookie": "^0.5.0",
-        "js-cookie": "^3.0.1"
+        "js-cookie": "^3.0.1",
+        "@refinedev/kbar": "^0.10.2"
     },
     "devDependencies": {
         "@types/js-cookie": "^3.0.2"

@@ -13,7 +13,8 @@ import { MetaFunction, LinksFunction } from '@remix-run/node' // Depends on the 
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 import routerProvider from "@refinedev/remix-router";
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { ChakraProvider, refineTheme, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
+    import {ChakraProvider} from "@chakra-ui/react";
+    import {  refineTheme, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
 
 import { ServerStyleContext, ClientStyleContext } from './context'

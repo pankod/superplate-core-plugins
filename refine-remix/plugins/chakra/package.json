@@ -5,6 +5,7 @@
         "@refinedev/react-table": "^4.9.1",
         "@tabler/icons": "^1.1.0",
         "@emotion/server": "^11.10.0",
-        "@emotion/cache": "^11.10.5"
+        "@emotion/cache": "^11.10.5",
+        "@chakra-ui/react": "^2.3.6"
     }
 }

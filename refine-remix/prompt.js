@@ -149,60 +149,6 @@ module.exports = {
             default: "no",
         },
         {
-            name: "mui-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "mui-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-
-        {
-            name: "mui-extend-theme",
-            message: "Do you want an extended theme?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                { message: "No", name: "no" },
-                { message: "Yes (Custom Variables)", name: "mui-extend-theme" },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "mui-custom-layout",
-            message: "Do you want to customize the Material UI layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "mui-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
             name: "auth-provider",
             message: "Do you need any Authentication logic?:",
             type: "select",

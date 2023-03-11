@@ -7,7 +7,7 @@ import {
   Stack,
   Toolbar,
   Typography,
-} from "@refinedev/mui";
+} from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";

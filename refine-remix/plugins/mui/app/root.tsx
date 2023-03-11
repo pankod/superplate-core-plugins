@@ -11,6 +11,7 @@ import {
 
 import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'mui') { _%>
+    import { CssBaseline, GlobalStyles } from "@mui/material";
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 

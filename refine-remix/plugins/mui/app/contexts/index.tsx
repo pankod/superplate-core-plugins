@@ -4,7 +4,8 @@ import React, {
     useEffect,
     useState,
 } from "react";
-import { ThemeProvider, useMediaQuery } from "@refinedev/mui";
+import { useMediaQuery } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import { DarkTheme, LightTheme } from "@refinedev/mui";
 import { parseCookies, setCookie } from "nookies";
 

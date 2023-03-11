@@ -9,6 +9,7 @@ const base = {
                     create: "/products/create",
                     edit: "/products/edit/:id",
                     show: "/products/show/:id",
+                    canDelete: true,
                 },
                 {
                     name: "categories",
@@ -16,6 +17,7 @@ const base = {
                     create: "/categories/create",
                     edit: "/categories/edit/:id",
                     show: "/categories/show/:id",
+                    canDelete: true,
                 },
             ]}`
         ],
@@ -43,14 +45,18 @@ module.exports = {
             base._app.routes = [
                 `<Route element={<Outlet />}>
                     <Route index element={<NavigateToResource resource="posts" />} />
-                    <Route path="/products" element={<ProductList />} />
-                    <Route path="/products/create" element={<ProductCreate />} />
-                    <Route path="/products/edit/:id" element={<ProductEdit />} />
-                    <Route path="/products/show/:id" element={<ProductShow />} />
-                    <Route path="/categories" element={<CategoryList />} />
-                    <Route path="/categories/create" element={<CategoryCreate />} />
-                    <Route path="/categories/edit/:id" element={<CategoryEdit />} />
-                    <Route path="/categories/show/:id" element={<CategoryShow />} />
+                    <Route path="/products">
+                        <Route index element={<ProductList />} />
+                        <Route path="/products/create" element={<ProductCreate />} />
+                        <Route path="/products/edit/:id" element={<ProductEdit />} />
+                        <Route path="/products/show/:id" element={<ProductShow />} />
+                    </Route>
+                    <Route path="/categories">
+                        <Route index element={<CategoryList />} />
+                        <Route path="/products/create" element={<CategoryCreate />} />
+                        <Route path="/products/edit/:id" element={<CategoryEdit />} />
+                        <Route path="/products/show/:id" element={<CategoryShow />} />
+                    </Route>
                 </Route>`,
                 `<Route element={<Outlet />}>
                     <Route path="*" element={<div>Error</div>} />

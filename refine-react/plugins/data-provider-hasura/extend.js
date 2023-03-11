@@ -24,6 +24,7 @@ const base = {
                     create: "/products/create",
                     edit: "/products/edit/:id",
                     show: "/products/show/:id",
+                    canDelete: true,
                 },
             ]}`
         ],
@@ -33,10 +34,12 @@ const base = {
         routes: [
             `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
                     <Route index element={<NavigateToResource resource="posts" />} />
-                    <Route path="/products" element={<ProductList />} />
-                    <Route path="/products/create" element={<ProductCreate />} />
-                    <Route path="/products/edit/:id" element={<ProductEdit />} />
-                    <Route path="/products/show/:id" element={<ProductShow />} />
+                    <Route path="/products">
+                        <Route index element={<ProductList />} />
+                        <Route path="/products/create" element={<ProductCreate />} />
+                        <Route path="/products/edit/:id" element={<ProductEdit />} />
+                        <Route path="/products/show/:id" element={<ProductShow />} />
+                    </Route>
                 </Route>`,
             `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
                     <Route path="*" element={<ErrorComponent />} />

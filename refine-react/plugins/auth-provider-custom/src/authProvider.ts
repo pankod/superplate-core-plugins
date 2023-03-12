@@ -6,52 +6,54 @@ export const authProvider: AuthBindings = {
     login: async ({ username, email, password }) => {
         if ((username || email) && password) {
             localStorage.setItem(TOKEN_KEY, username);
-            return Promise.resolve({
+            return {
                 success: true,
                 redirectTo: "/",
-            });
+            };
         }
 
-        return Promise.resolve({
+        return {
             success: false,
             error: {
                 name: "LoginError",
                 message: "Invalid username or password",
             },
-        });
+        };
     },
     logout: () => {
         localStorage.removeItem(TOKEN_KEY);
-        return Promise.resolve({
+        return {
             success: true,
-        });
+            redirectTo: "/login"
+        };
     },
-    check: () => {
+    check: async () => {
         const token = localStorage.getItem(TOKEN_KEY);
-        const authenticated = !!token;
-        return Promise.resolve({
-            authenticated,
-        });
+        if (token) {
+            return {
+                authenticated: true
+            };
+        }
+
+        return {
+            authenticated: false,
+            redirectTo: "/login"
+        };
     },
-    getPermissions: () => Promise.resolve(),
+    getPermissions: async () => null,
     getIdentity: async () => {
         const token = localStorage.getItem(TOKEN_KEY);
         if (token) {
-            return Promise.resolve({
+            return {
                 id: 1,
                 name: "John Doe",
                 avatar: "https://i.pravatar.cc/300",
-            });
+            };
         }
+        return null;
     },
-    onError: (err) => {
-        console.log(err);
-        return Promise.resolve({
-            error: {
-                name: "LoginError",
-                message: err,
-            },
-            logout: true,
-        });
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
 };

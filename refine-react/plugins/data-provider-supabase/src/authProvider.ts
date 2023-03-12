@@ -22,6 +22,7 @@ const authProvider: AuthBindings = {
                 if (data?.url) {
                     return {
                         success: true,
+                        redirectTo: "/"
                     };
                 }
             }
@@ -43,6 +44,7 @@ const authProvider: AuthBindings = {
             if (data?.user) {
                 return {
                     success: true,
+                    redirectTo: "/"
                 };
             }
         } catch (error: any) {
@@ -74,6 +76,7 @@ const authProvider: AuthBindings = {
             if (data) {
                 return {
                     success: true,
+                    redirectTo: "/"
                 };
             }
         } catch (error: any) {
@@ -103,12 +106,6 @@ const authProvider: AuthBindings = {
             }
 
             if (data) {
-                // notification.open({
-                //     type: "success",
-                //     message: "Success",
-                //     description:
-                //         "Please check your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.",
-                // });
                 return {
                     success: true,
                 };
@@ -170,7 +167,10 @@ const authProvider: AuthBindings = {
             redirectTo: "/",
         };
     },
-    onError: async () => ({}),
+    onError: async (error) => {
+        console.error(error);
+        return { error };
+    },
     check: async () => {
         try {
             const { data } = await supabaseClient.auth.getSession();

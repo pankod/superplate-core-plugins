@@ -112,7 +112,7 @@
         "products": "Products",
         "fields": {
             "id": "Id",
-            "name": "Title",
+            "title": "Title",
             "createdAt": "Created At"
         },
         "titles": {
@@ -126,7 +126,7 @@
         "categories": "Categories",
         "fields": {
             "id": "Id",
-            "name": "Title",
+            "title": "Title",
             "createdAt": "Created At"
         },
         "titles": {

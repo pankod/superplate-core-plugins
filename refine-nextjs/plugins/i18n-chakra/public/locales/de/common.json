@@ -112,7 +112,7 @@
         "products": "Produkte",
         "fields": {
             "id": "Id",
-            "name": "Titel",
+            "title": "Titel",
             "createdAt": "Erstellt am"
         },
         "titles": {
@@ -126,7 +126,7 @@
         "categories": "Kategorien",
         "fields": {
             "id": "Id",
-            "name": "Titel",
+            "title": "Titel",
             "createdAt": "Erstellt am"
         },
         "titles": {

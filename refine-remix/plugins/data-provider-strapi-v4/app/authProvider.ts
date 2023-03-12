@@ -78,7 +78,7 @@ export const authProvider: AuthBindings = {
             const { id, username, email } = data;
             return {
                 id,
-                username,
+                name: username,
                 email,
             };
         }

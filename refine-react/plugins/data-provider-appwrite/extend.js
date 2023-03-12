@@ -12,7 +12,6 @@ const base = {
             `liveProvider={liveProvider(appwriteClient, {
                 databaseId: "default",
             })}`,
-            `liveMode="auto"`,
             `authProvider={authProvider}`,
         ],
         refineImports: [

@@ -1,4 +1,5 @@
 import { AuthBindings } from "@refinedev/core";
+import { AppwriteException } from "@refinedev/appwrite";
 
 import { account } from "./utility";
 

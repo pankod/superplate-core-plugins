@@ -4,9 +4,9 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "start": "remix dev",
+    "dev": "remix dev",
     "build": "remix build",
-    "_start": "remix start",
+    "start": "remix start",
     "refine": "refine"
   },
   "dependencies": {

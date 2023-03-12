@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
       </Dropdown>
       <Space style={{ marginLeft: "8px" }}>
         {user?.name && (
-          <Text strong>
+          <Text style={{ color: "white" }} strong>
             {user.name}
           </Text>
         )}

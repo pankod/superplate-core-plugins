@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
       />
       <Space style={{ marginLeft: "8px" }}>
         {user?.name && (
-          <Text strong>
+          <Text style={{ color: "white" }} strong>
             {user.name}
           </Text>
         )}

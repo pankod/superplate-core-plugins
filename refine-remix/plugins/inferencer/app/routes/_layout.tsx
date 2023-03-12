@@ -11,7 +11,6 @@ import { Outlet } from "@remix-run/react";
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import { Layout } from "@refinedev/chakra-ui";
 <%_ } _%>
-import { RefineKbar } from "@refinedev/kbar";
 
 <%_ if ((answers["auth-provider"] === 'none') && (answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-appwrite' || answers["data-provider"] === 'data-provider-strapi-v4')) { _%>
 import type { LoaderArgs } from "@remix-run/node";
@@ -23,13 +22,9 @@ import { Header } from "@components/header";
 
 export default function BaseLayout() {
     return (
-        <>
-            <Layout Header={Header}>
-                <Outlet />
-            </Layout>
-            <RefineKbar />
-        </>
-        
+        <Layout Header={Header}>
+            <Outlet />
+        </Layout>
     );
 }
 

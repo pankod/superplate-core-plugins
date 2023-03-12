@@ -39,11 +39,17 @@ function App() {
         <GitHubBanner />
         <RefineKbarProvider>
             <%- top.join("\n") %>
-            <Refine <%- (_app.refineProps || []).join("\n") %>>
+            <Refine <%- (_app.refineProps || []).join("\n") %> 
+                options={{
+                    syncWithLocation: true,
+                    warnWhenUnsavedChanges: true,
+                }}
+            >
                 <Routes>
                     <%- (_app.routes || []).join("\n") %>
                 </Routes>
                 <RefineKbar />
+                <UnsavedChangesNotifier />
             </Refine>
             <%- bottom.join("\n") %>
         </RefineKbarProvider>

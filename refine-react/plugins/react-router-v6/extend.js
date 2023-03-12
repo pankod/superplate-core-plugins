@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             `import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";`,
-            `import routerBindings, { NavigateToResource, CatchAllNavigate } from "@refinedev/react-router-v6";`
+            `import routerBindings, { NavigateToResource, CatchAllNavigate, UnsavedChangesNotifier } from "@refinedev/react-router-v6";`
         ],
         refineProps: [],
     },

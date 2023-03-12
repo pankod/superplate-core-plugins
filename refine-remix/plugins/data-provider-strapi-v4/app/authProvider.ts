@@ -39,12 +39,9 @@ export const authProvider: AuthBindings = {
             redirectTo: "/login",
         };
     },
-    onError: async () => {
-        return {
-            error: new Error("Unauthorized"),
-            logout: true,
-            redirectTo: "/login",
-        };
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
     check: (context) => {
         let token = undefined;
@@ -67,10 +64,11 @@ export const authProvider: AuthBindings = {
         }
 
         return {
-            authenticated: false
+            authenticated: false,
+            redirectTo: "/login"
         };
     },
-    getPermissions: () => Promise.resolve(),
+    getPermissions: async () => null,
     getIdentity: async () => {
         const token = Cookies.get(TOKEN_KEY);
         const { data, status } = await strapiAuthHelper.me(token);
@@ -82,5 +80,7 @@ export const authProvider: AuthBindings = {
                 email,
             };
         }
+
+        return null;
     },
 };

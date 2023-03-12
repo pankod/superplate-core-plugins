@@ -30,6 +30,7 @@ export const authProvider: AuthBindings = {
 
         return {
             success: false,
+            error: new Error("Invalid email or password"),
         };
     },
     logout: async () => {
@@ -41,15 +42,8 @@ export const authProvider: AuthBindings = {
         };
     },
     onError: async (error) => {
-        if (error && error.statusCode === 401) {
-            return {
-                error: new Error("Unauthorized"),
-                logout: true,
-                redirectTo: "/login",
-            };
-        }
-
-        return {};
+        console.error(error);
+        return { error };
     },
     check: async (request) => {
         let user = undefined;
@@ -69,7 +63,7 @@ export const authProvider: AuthBindings = {
         if (!user) {
             return {
                 authenticated: false,
-                error: new Error("Unauthorized"),
+                error: new Error("Unauthenticated"),
                 logout: true,
                 redirectTo: "/login",
             };
@@ -79,10 +73,6 @@ export const authProvider: AuthBindings = {
             authenticated: true,
         };
     },
-    getPermissions: async () => {
-        return null;
-    },
-    getIdentity: async () => {
-        return null;
-    },
+    getPermissions: async () => null,
+    getIdentity: async () => null,
 };

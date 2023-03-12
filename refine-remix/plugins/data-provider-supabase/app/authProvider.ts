@@ -50,12 +50,9 @@ export const authProvider: AuthBindings = {
             redirectTo: "/login",
         };
     },
-    onError: async () => {
-        return {
-            error: new Error("Unauthorized"),
-            logout: true,
-            redirectTo: "/login",
-        };
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
     check: async (context) => {
         let token = undefined;
@@ -78,23 +75,28 @@ export const authProvider: AuthBindings = {
 
         return {
             authenticated: false,
+            redirectTo: "/login",
         };
     },
     getPermissions: async () => {
         const user = await supabaseClient.auth.getUser();
 
         if (user) {
-            return Promise.resolve(user.data.user?.role);
+            return user.data.user?.role;
         }
+
+        return null;
     },
     getIdentity: async () => {
         const { data } = await supabaseClient.auth.getUser();
 
         if (data?.user) {
-            return Promise.resolve({
+            return {
                 ...data.user,
                 name: data.user.email,
-            });
+            };
         }
+
+        return null;
     },
 };

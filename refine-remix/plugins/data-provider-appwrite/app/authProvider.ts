@@ -14,9 +14,10 @@ export const authProvider: AuthBindings = {
                 success: true,
                 redirectTo: "/",
             };
-        } catch (e) {
+        } catch (error: any) {
             return {
                 success: false,
+                error,
             };
         }
     },
@@ -28,12 +29,9 @@ export const authProvider: AuthBindings = {
             redirectTo: "/login",
         };
     },
-    onError: async () => {
-        return {
-            error: new Error("Unauthorized"),
-            logout: true,
-            redirectTo: "/login",
-        };
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
     check: async (context) => {
         let token = undefined;
@@ -49,6 +47,7 @@ export const authProvider: AuthBindings = {
         if (!token) {
             return {
                 authenticated: false,
+                redirectTo: "/login"
             };
         }
         appwriteClient.setJWT(token);
@@ -62,14 +61,17 @@ export const authProvider: AuthBindings = {
 
         return {
             authenticated: false,
+            redirectTo: "/login"
         };
     },
-    getPermissions: async () => ({}),
+    getPermissions: async () => null,
     getIdentity: async () => {
         const user = await account.get();
 
         if (user) {
             return user;
         }
+
+        return null;
     },
 };

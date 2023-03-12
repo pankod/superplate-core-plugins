@@ -1,5 +1,7 @@
 {
     "dependencies": {
-        "@refinedev/antd": "^4.7.3"
+        "@refinedev/antd": "^4.7.3",
+        "antd": "^5.0.5",
+        "@ant-design/icons": "^5.0.1"
     }
 }

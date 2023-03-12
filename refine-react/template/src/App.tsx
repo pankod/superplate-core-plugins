@@ -1,4 +1,6 @@
 import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 import "@refinedev/antd/dist/reset.css";
@@ -35,13 +37,16 @@ function App() {
     return (
         <>
         <GitHubBanner />
-        <%- top.join("\n") %>
-        <Refine <%- (_app.refineProps || []).join("\n") %>>
-            <Routes>
-                <%- (_app.routes || []).join("\n") %>
-            </Routes>
-        </Refine>
-        <%- bottom.join("\n") %>
+        <RefineKbarProvider>
+            <%- top.join("\n") %>
+            <Refine <%- (_app.refineProps || []).join("\n") %>>
+                <Routes>
+                    <%- (_app.routes || []).join("\n") %>
+                </Routes>
+                <RefineKbar />
+            </Refine>
+            <%- bottom.join("\n") %>
+        </RefineKbarProvider>
         </>
       );
 };

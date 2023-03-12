@@ -283,26 +283,6 @@ module.exports = {
             default: "no",
             skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
-        {
-            name: "command-palette",
-            message: "Do you want to add kbar command interface support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Kbar will not be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "kbar",
-                    hint: "Installs kbar command+k interface.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] === "no",
-        },
     ],
     ignores: [
         {
@@ -311,15 +291,6 @@ module.exports = {
                 return answers["ui-framework"] !== "antd";
             },
             pattern: ["src/utility/normalize.ts"],
-        },
-        {
-            plugin: ["kbar"],
-            when: function (answers) {
-                return (
-                    answers["ui-framework"] === "antd"
-                );
-            },
-            pattern: ["src/components/**"],
         },
     ],
 };

@@ -11,7 +11,10 @@ export const authProvider: AuthBindings = {
         });
 
         if (error) {
-            return Promise.reject(error);
+            return {
+                success: false,
+                error,
+            }
         }
 
         if (data?.session) {
@@ -19,35 +22,37 @@ export const authProvider: AuthBindings = {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });
-            return Promise.resolve({
+
+            return {
                 success: true,
                 redirectTo: "/",
-            });
+            };
         }
 
         // for third-party login
-        return Promise.resolve({
+        return {
             success: false,
             error: {
                 name: "LoginError",
                 message: "Invalid username or password",
             },
-        });
+        };
     },
     logout: async () => {
         nookies.destroy(null, "token");
         const { error } = await supabaseClient.auth.signOut();
 
         if (error) {
-            return Promise.resolve({
-                success: true,
-            });
+            return {
+                success: false,
+                error,
+            };
         }
 
-        return Promise.resolve({
+        return {
             success: true,
             redirectTo: "/login",
-        });
+        };
     },
     check: async (ctx) => {
         const { token } = nookies.get(ctx);
@@ -55,40 +60,39 @@ export const authProvider: AuthBindings = {
         const { user } = data;
 
         if (user) {
-            return Promise.resolve({
+            return {
                 authenticated: true,
-            });
+            };
         }
 
-        return Promise.resolve({
+        return {
             authenticated: false,
             redirectTo: "/login",
-        });
+        };
     },
     getPermissions: async () => {
         const user = await supabaseClient.auth.getUser();
 
         if (user) {
-            return Promise.resolve(user.data.user?.role);
+            return user.data.user?.role;
         }
+
+        return null;
     },
     getIdentity: async () => {
         const { data } = await supabaseClient.auth.getUser();
 
         if (data?.user) {
-            return Promise.resolve({
+            return {
                 ...data.user,
                 name: data.user.email,
-            });
+            };
         }
+
+        return null;
     },
-    onError: async (err) => {
-        return Promise.resolve({
-            error: {
-                name: "LoginError",
-                message: err,
-            },
-            logout: true,
-        });
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
 };

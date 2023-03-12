@@ -53,13 +53,14 @@ export const authProvider: AuthBindings = {
 
         return {
             authenticated: false,
+            redirectTo: "/login",
         };
     },
-    getPermissions: () => Promise.resolve(),
+    getPermissions: async () => null,
     getIdentity: async () => {
         const token = nookies.get()[TOKEN_KEY];
         if (!token) {
-            return Promise.reject();
+            return null;
         }
 
         const { data, status } = await strapiAuthHelper.me(token);
@@ -72,7 +73,10 @@ export const authProvider: AuthBindings = {
             };
         }
 
-        return {};
+        return null;
     },
-    onError: async () => ({}),
+    onError: async (error) => {
+        console.error(error);
+        return { error };
+    },
 };

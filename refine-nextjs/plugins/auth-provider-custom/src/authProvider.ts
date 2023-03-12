@@ -17,7 +17,7 @@ const mockUsers = [
 ];
 
 export const authProvider: AuthBindings = {
-    login: ({ email, username, password, remember }) => {
+    login: async ({ email, username, password, remember }) => {
         // Suppose we actually send a request to the back end here.
         const user = mockUsers[0];
 
@@ -26,64 +26,59 @@ export const authProvider: AuthBindings = {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });
-            return Promise.resolve({
+            return {
                 success: true,
                 redirectTo: "/",
-            });
+            };
         }
 
-        return Promise.resolve({
+        return {
             success: false,
             error: {
                 name: "LoginError",
                 message: "Invalid username or password",
             },
-        });
+        };
     },
-    logout: () => {
+    logout: async () => {
         nookies.destroy(null, "auth");
-        return Promise.resolve({
+        return {
             success: true,
             redirectTo: "/login",
-        });
+        };
     },
-    check: (ctx: any) => {
+    check: async (ctx: any) => {
         const cookies = nookies.get(ctx);
         if (cookies["auth"]) {
-            return Promise.resolve({
+            return {
                 authenticated: true,
-            });
+            };
         }
 
-        return Promise.resolve({
+        return {
             authenticated: false,
+            logout: true,
             redirectTo: "/login",
-        });
+        };
     },
-    getPermissions: () => {
+    getPermissions: async () => {
         const auth = nookies.get()["auth"];
         if (auth) {
             const parsedUser = JSON.parse(auth);
-            return Promise.resolve(parsedUser.roles);
+            return parsedUser.roles;
         }
-        return Promise.resolve(null);
+        return null;
     },
     getIdentity: () => {
         const auth = nookies.get()["auth"];
         if (auth) {
             const parsedUser = JSON.parse(auth);
-            return Promise.resolve(parsedUser);
+            return parsedUser;
         }
-        return Promise.resolve(null);
+        return null;
     },
-    onError: (err) => {
-        console.log(err);
-        return Promise.resolve({
-            error: {
-                name: "LoginError",
-                message: err,
-            },
-            logout: true,
-        });
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
 };

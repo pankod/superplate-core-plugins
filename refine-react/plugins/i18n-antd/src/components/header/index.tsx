@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
                     defaultChecked={mode === "dark"}
                 />
                 <Space style={{ marginLeft: "8px" }}>
-                    {user?.name && <Text strong>{user.name}</Text>}
+                    {user?.name && <Text style={{ color: "white" }} strong>{user.name}</Text>}
                     {user?.avatar && (
                         <Avatar src={user?.avatar} alt={user?.name} />
                     )}

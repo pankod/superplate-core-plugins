@@ -108,8 +108,7 @@ module.exports = {
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-hasura" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-appwrite",
+                answers["data-provider"] === "data-provider-medusa",
             default: "no",
         },
         {

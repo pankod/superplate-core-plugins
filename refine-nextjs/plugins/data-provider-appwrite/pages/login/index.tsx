@@ -23,7 +23,7 @@ export default function Login() {
     );
 }
 
-Login.customLayout = true;
+Login.noLayout = true;
 
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

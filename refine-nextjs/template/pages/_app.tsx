@@ -31,7 +31,7 @@ import routerProvider, { UnsavedChangesNotifier } from "@refinedev/nextjs-router
 %>
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-     customLayout?: string;
+     noLayout?: boolean;
  };
 
  type AppPropsWithLayout = AppProps & {
@@ -40,17 +40,15 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     const renderComponent = () => {
-        // wrap default layout
-        if (!Component.customLayout) {
-            return (
-                <Layout Header={Header}>
-                    <Component {...pageProps} />
-                </Layout>
-            );
+        if (Component.noLayout) {
+            return <Component {...pageProps} />;
         }
 
-        // TODO: Wrap custom layout
-        return <Component {...pageProps} />;
+        return (
+            <Layout Header={Header}>
+                <Component {...pageProps} />
+            </Layout>
+        );
     };
 
     <%- (_app.innerHooks || []).join("\n") %>

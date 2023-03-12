@@ -2,6 +2,7 @@ import React from "react";
 import { AppProps } from "next/app";
 import type { NextPage } from "next";
 import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 <%_ } _%>
@@ -57,14 +58,17 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     return (
         <>
         <GitHubBanner />
-        <%- top.join("\n") %>
-        <Refine 
-            routerProvider={routerProvider}
-            <%- (_app.refineProps || []).join("\n") %>
-        >
-            {renderComponent()}
-        </Refine>
-        <%- bottom.join("\n") %>
+        <RefineKbarProvider>
+            <%- top.join("\n") %>
+            <Refine 
+                routerProvider={routerProvider}
+                <%- (_app.refineProps || []).join("\n") %>
+            >
+                {renderComponent()}
+                <RefineKbar />
+            </Refine>
+            <%- bottom.join("\n") %>
+        </RefineKbarProvider>
         </>
       );
 };

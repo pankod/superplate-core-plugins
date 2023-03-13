@@ -15,7 +15,6 @@ const base = {
             `import { Header } from "./components/header";`
         ],
         wrapper: [
-            [`<BrowserRouter>`, `</BrowserRouter>`],
             ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],
             [`<CssBaseline />`, ``],
             [`<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`, ``],

@@ -27,7 +27,6 @@ const base = {
         ],
         refineAntdImports: [],
         wrapper: [
-            [`<BrowserRouter>`, `</BrowserRouter>`],
         ],
     },
 };

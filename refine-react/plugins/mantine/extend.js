@@ -14,7 +14,6 @@ const base = {
             "ErrorComponent",
         ],
         wrapper: [
-            [`<BrowserRouter>`, `</BrowserRouter>`],
             ["<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>", "</ColorSchemeProvider>"],
             [`<MantineProvider theme={colorScheme === "dark" ? DarkTheme : LightTheme} withNormalizeCSS withGlobalStyles>`, "</MantineProvider>"],
             [`<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`, ``],

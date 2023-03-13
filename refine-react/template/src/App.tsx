@@ -38,7 +38,7 @@ function App() {
     <%- (_app.inner || []).join("\n") %>
     
     return (
-        <>
+        <BrowserRouter>
         <GitHubBanner />
         <RefineKbarProvider>
             <%- top.join("\n") %>
@@ -63,7 +63,7 @@ function App() {
             </Refine>
             <%- bottom.join("\n") %>
         </RefineKbarProvider>
-        </>
+        </BrowserRouter>
       );
 };
 

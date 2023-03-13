@@ -5,7 +5,6 @@ const base = {
         refineAntdImports: ["notificationProvider", "Layout", "ErrorComponent"],
         refineProps: ["notificationProvider={notificationProvider}"],
         wrapper: [
-            [`<BrowserRouter>`, `</BrowserRouter>`],
             [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`],
         ],
         localImport: [

@@ -13,7 +13,6 @@ const base = {
             "ErrorComponent"
         ],
         wrapper: [
-            [`<BrowserRouter>`, `</BrowserRouter>`],
             [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
         ],
         localImport: [

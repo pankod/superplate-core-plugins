@@ -1,4 +1,7 @@
-import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%>
+<%_ if (answers["ui-framework"] === 'no') { _%>
+    WelcomePage
+<%_ } _%> } from '@refinedev/core';
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 <%_ if (answers["ui-framework"] === 'antd') { _%>
@@ -51,6 +54,10 @@ function App() {
                 </Routes>
                 <%_ } _%>
                 <%- (_app.refineComponents || []).join("\n") %>
+
+                <%_ if (answers["ui-framework"] === 'no') { _%>
+                    <WelcomePage />
+                <%_ } _%>
                 <RefineKbar />
                 <UnsavedChangesNotifier />
             </Refine>

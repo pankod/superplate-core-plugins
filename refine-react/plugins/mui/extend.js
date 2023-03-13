@@ -27,7 +27,12 @@ const base = {
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["inferencer"] === "no") {
+            base._app.refineMuiImports.push("WelcomePage");
+            base._app.refineComponents.push(`<WelcomePage />`);
+        }
+
         return base;
     },
 };

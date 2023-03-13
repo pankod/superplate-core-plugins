@@ -10,6 +10,9 @@
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import { WelcomePage } from "@refinedev/chakra-ui";
 <%_ } _%>
+<%_ if (answers["ui-framework"] === 'no') { _%>
+    import { WelcomePage } from "@refinedev/core";
+<%_ } _%>
 
 export default function Index() {
     return (

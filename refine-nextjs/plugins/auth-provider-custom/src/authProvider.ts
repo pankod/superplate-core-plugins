@@ -69,7 +69,7 @@ export const authProvider: AuthBindings = {
         }
         return null;
     },
-    getIdentity: () => {
+    getIdentity: async () => {
         const auth = nookies.get()["auth"];
         if (auth) {
             const parsedUser = JSON.parse(auth);

@@ -20,7 +20,7 @@ export const authProvider: AuthBindings = {
             },
         };
     },
-    logout: () => {
+    logout: async () => {
         localStorage.removeItem(TOKEN_KEY);
         return {
             success: true,

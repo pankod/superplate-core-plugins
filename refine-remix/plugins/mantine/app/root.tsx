@@ -10,12 +10,13 @@ import {
 } from "@remix-run/react";
 import { StylesPlaceholder } from '@mantine/remix';
 
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { createEmotionCache, <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@pankod/refine-mantine';
+    import { createEmotionCache } from "@mantine/core";
+    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
 <%_ } _%>
 
-import routerProvider from "@pankod/refine-remix-router";
+import routerProvider from "@refinedev/remix-router";
 
 <%- (_app.import || []).join("\n") _%>
 

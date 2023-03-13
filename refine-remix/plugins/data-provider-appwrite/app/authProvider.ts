@@ -1,32 +1,43 @@
-import type { AuthProvider } from "@pankod/refine-core";
+import type { AuthBindings } from "@refinedev/core";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";
 
 import { account, appwriteClient, TOKEN_KEY } from "~/utility";
 
-export const authProvider: AuthProvider = {
-    login: async ({ email, password }) => {
+export const authProvider: AuthBindings = {
+    login: async ({ email, password }: any) => {
         try {
             const user = await account.createEmailSession(email, password);
-
             Cookies.set(TOKEN_KEY, user.providerAccessToken);
 
-            return Promise.resolve(user);
-        } catch (e) {
-            return Promise.reject();
+            return {
+                success: true,
+                redirectTo: "/",
+            };
+        } catch (error: any) {
+            return {
+                success: false,
+                error,
+            };
         }
     },
     logout: async () => {
         Cookies.remove(TOKEN_KEY);
         await account.deleteSession("current");
-        return Promise.resolve();
+        return {
+            success: true,
+            redirectTo: "/login",
+        };
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: async (context) => {
+    onError: async (error) => {
+        console.error(error);
+        return { error };
+    },
+    check: async (context) => {
         let token = undefined;
         if (context) {
-            const { request } = context;
-            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
+            const { headers } = context;
+            const parsedCookie = cookie.parse(headers.get("Cookie") ?? "");
             token = parsedCookie[TOKEN_KEY];
         } else {
             const parsedCookie = Cookies.get(TOKEN_KEY);
@@ -34,23 +45,33 @@ export const authProvider: AuthProvider = {
         }
 
         if (!token) {
-            return Promise.reject();
+            return {
+                authenticated: false,
+                redirectTo: "/login"
+            };
         }
         appwriteClient.setJWT(token);
         const session = await account.get();
 
         if (session) {
-            return Promise.resolve();
+            return {
+                authenticated: true,
+            };
         }
 
-        return Promise.reject();
+        return {
+            authenticated: false,
+            redirectTo: "/login"
+        };
     },
-    getPermissions: () => Promise.resolve(),
-    getUserIdentity: async () => {
+    getPermissions: async () => null,
+    getIdentity: async () => {
         const user = await account.get();
 
         if (user) {
             return user;
         }
+
+        return null;
     },
 };

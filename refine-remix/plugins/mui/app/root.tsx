@@ -9,12 +9,13 @@ import {
     ScrollRestoration,
 } from "@remix-run/react";
 
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
+    import { CssBaseline, GlobalStyles } from "@mui/material";
+    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 
-import routerProvider from "@pankod/refine-remix-router";
+import routerProvider from "@refinedev/remix-router";
 
 <%- (_app.import || []).join("\n") _%>
 

@@ -1,11 +1,11 @@
-import type { AuthProvider } from "@pankod/refine-core";
+import type { AuthBindings } from "@refinedev/core";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";
 
 import { supabaseClient } from "~/utility";
 import { TOKEN_KEY } from "~/constants";
 
-export const authProvider: AuthProvider = {
+export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
         const { data, error } = await supabaseClient.auth.signInWithPassword({
             email,
@@ -13,34 +13,52 @@ export const authProvider: AuthProvider = {
         });
 
         if (error) {
-            return Promise.reject(error);
+            return {
+                success: false,
+            };
         }
 
         if (data?.session) {
             Cookies.set(TOKEN_KEY, data.session.access_token);
-            return Promise.resolve();
+            return {
+                success: true,
+                redirectTo: "/",
+            };
         }
 
         // for third-party login
-        return Promise.resolve(false);
+        return {
+            success: true,
+        };
     },
     logout: async () => {
         const { error } = await supabaseClient.auth.signOut();
 
         if (error) {
-            return Promise.reject(error);
+            return {
+                success: false,
+                error: {
+                    message: error.message,
+                    name: "LogoutError",
+                },
+            };
         }
 
-        return Promise.resolve("/");
+        Cookies.remove(TOKEN_KEY);
+        return {
+            success: true,
+            redirectTo: "/login",
+        };
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: async (context) => {
+    onError: async (error) => {
+        console.error(error);
+        return { error };
+    },
+    check: async (context) => {
         let token = undefined;
-        if (context) {
-            const { request } = context;
-            const parsedCookie = cookie.parse(
-                request.headers.get("Cookie") ?? "",
-            );
+        if (context && context.headers) {
+            const { headers } = context;
+            const parsedCookie = cookie.parse(headers.get("Cookie") ?? "");
             token = parsedCookie[TOKEN_KEY];
         } else {
             const parsedCookie = Cookies.get(TOKEN_KEY);
@@ -50,26 +68,35 @@ export const authProvider: AuthProvider = {
         const { user } = data;
 
         if (user) {
-            return Promise.resolve();
+            return {
+                authenticated: true,
+            };
         }
 
-        return Promise.reject();
+        return {
+            authenticated: false,
+            redirectTo: "/login",
+        };
     },
     getPermissions: async () => {
         const user = await supabaseClient.auth.getUser();
 
         if (user) {
-            return Promise.resolve(user.data.user?.role);
+            return user.data.user?.role;
         }
+
+        return null;
     },
-    getUserIdentity: async () => {
+    getIdentity: async () => {
         const { data } = await supabaseClient.auth.getUser();
 
         if (data?.user) {
-            return Promise.resolve({
+            return {
                 ...data.user,
                 name: data.user.email,
-            });
+            };
         }
+
+        return null;
     },
 };

@@ -1,7 +1,26 @@
 const base = {
     _app: {
         import: [],
-        refineProps: [],
+        refineProps: [
+            `resources={[
+                 {
+                     name: "products",
+                     list: "/products",
+                     create: "/products/create",
+                     edit: "/products/edit/:id",
+                     show: "/products/show/:id",
+                     canDelete: true,
+                 },
+                 {
+                     name: "categories",
+                     list: "/categories",
+                     create: "/categories/create",
+                     edit: "/categories/edit/:id",
+                     show: "/categories/show/:id",
+                     canDelete: true,
+                 },
+             ]}`
+        ],
         refineAntdImports: [],
         wrapper: [],
     },
@@ -9,53 +28,11 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        const inferencerPackage = [
-            {
-                ui: "antd",
-                folder: "antd",
-                component: "AntdInferencer",
-            },
-            {
-                ui: "chakra",
-                folder: "chakra-ui",
-                component: "ChakraUIInferencer",
-            },
-            {
-                ui: "no",
-                folder: "headless",
-                component: "HeadlessInferencer",
-            },
-            {
-                ui: "mantine",
-                folder: "mantine",
-                component: "MantineInferencer",
-            },
-            {
-                ui: "mui",
-                folder: "mui",
-                component: "MuiInferencer",
-            }
-        ];
-
-        const inferencer = inferencerPackage.find(
-            (item) => item.ui === answers["ui-framework"],
-        );
-
-        base._app.import.push(
-            `import { ${inferencer.component} } from "@pankod/refine-inferencer/${inferencer.folder}";`,
-        );
-        base._app.refineProps.push(
-            `resources={[
-                    {
-                        name: "posts",
-                        list: ${inferencer.component},
-                        edit: ${inferencer.component},
-                        show: ${inferencer.component},
-                        create: ${inferencer.component},
-                        canDelete: true,
-                    },
-                ]}`,
-        );
+        base._app.inferencer = {
+            ui: "no",
+            folder: "headless",
+            componentPrefix: "Headless",
+        };
 
         return base;
     },

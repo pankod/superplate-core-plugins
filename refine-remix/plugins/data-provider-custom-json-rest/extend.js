@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: [`import dataProvider from "@pankod/refine-simple-rest";`],
+        import: [`import dataProvider from "@refinedev/simple-rest";`],
         afterImport: [
             `const API_URL = "https://api.fake-rest.refine.dev";`,
             "",

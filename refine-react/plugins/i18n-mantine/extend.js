@@ -17,13 +17,7 @@ const base = {
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["mantine-custom-layout"] !== "mantine-custom-layout") {
-            base._app.localImport.push(
-                `import { Header } from "components/layout"`,
-            );
-            base._app.refineProps.push("Header={Header}");
-        }
+    extend() {
         return base;
     },
 };

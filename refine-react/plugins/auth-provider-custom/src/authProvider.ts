@@ -1,37 +1,59 @@
-import { AuthProvider } from "@pankod/refine-core";
+import { AuthBindings } from "@refinedev/core";
 
 export const TOKEN_KEY = "refine-auth";
 
-export const authProvider: AuthProvider = {
+export const authProvider: AuthBindings = {
     login: async ({ username, email, password }) => {
         if ((username || email) && password) {
             localStorage.setItem(TOKEN_KEY, username);
-            return Promise.resolve();
+            return {
+                success: true,
+                redirectTo: "/",
+            };
         }
-        return Promise.reject(new Error("username: admin, password: admin"));
+
+        return {
+            success: false,
+            error: {
+                name: "LoginError",
+                message: "Invalid username or password",
+            },
+        };
     },
     logout: () => {
         localStorage.removeItem(TOKEN_KEY);
-        return Promise.resolve();
+        return {
+            success: true,
+            redirectTo: "/login"
+        };
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: () => {
+    check: async () => {
         const token = localStorage.getItem(TOKEN_KEY);
         if (token) {
-            return Promise.resolve();
+            return {
+                authenticated: true
+            };
         }
 
-        return Promise.reject();
+        return {
+            authenticated: false,
+            redirectTo: "/login"
+        };
     },
-    getPermissions: () => Promise.resolve(),
-    getUserIdentity: async () => {
+    getPermissions: async () => null,
+    getIdentity: async () => {
         const token = localStorage.getItem(TOKEN_KEY);
-        if (!token) {
-            return Promise.reject();
+        if (token) {
+            return {
+                id: 1,
+                name: "John Doe",
+                avatar: "https://i.pravatar.cc/300",
+            };
         }
-
-        return Promise.resolve({
-            id: 1,
-        });
+        return null;
+    },
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
 };

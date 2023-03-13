@@ -1,46 +1,33 @@
 const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
-        import: [],
+        import: [
+            `import { CssBaseline, GlobalStyles } from "@mui/material";`,
+        ],
         refineMuiImports: [
             "notificationProvider",
             "RefineSnackbarProvider",
-            "CssBaseline",
-            "GlobalStyles",
+            "Layout",
+            "ErrorComponent"
         ],
-        wrapper: [],
+        localImport: [
+            `import { ColorModeContextProvider } from "./contexts/color-mode";`,
+            `import { Header } from "./components/header";`
+        ],
+        wrapper: [
+            [`<BrowserRouter>`, `</BrowserRouter>`],
+            ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],
+            [`<CssBaseline />`, ``],
+            [`<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`, ``],
+            [`<RefineSnackbarProvider>`, `</RefineSnackbarProvider>`]
+
+        ],
+        refineComponents: [],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["mui-custom-layout"] === "no") {
-            base._app.refineMuiImports.push("Layout");
-            base._app.refineProps.push("Layout={Layout}");
-        }
-
-        if (answers["mui-dark-mode"] === "no") {
-            base._app.refineMuiImports.push("ThemeProvider");
-            base._app.refineMuiImports.push("LightTheme");
-            base._app.wrapper.push([
-                "<ThemeProvider theme={LightTheme}>",
-                "</ThemeProvider>",
-            ]);
-            base._app.wrapper.push(["<CssBaseline />"]);
-            base._app.wrapper.push([
-                `<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`,
-            ]);
-            base._app.wrapper.push([
-                "<RefineSnackbarProvider>",
-                "</RefineSnackbarProvider>",
-            ]);
-        }
-
-        base._app.refineMuiImports.push("ReadyPage");
-        base._app.refineMuiImports.push("ErrorComponent");
-        base._app.refineProps.push("ReadyPage={ReadyPage}");
-        base._app.refineProps.push("catchAll={<ErrorComponent />}");
-
+    extend() {
         return base;
     },
 };

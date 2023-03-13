@@ -1,23 +1,27 @@
 const base = {
     _app: {
         import: [],
+        refineImports: [],
+        refineAntdImports: ["notificationProvider", "Layout", "ErrorComponent"],
         refineProps: ["notificationProvider={notificationProvider}"],
-        refineAntdImports: ["notificationProvider"],
-        wrapper: [],
+        wrapper: [
+            [`<BrowserRouter>`, `</BrowserRouter>`],
+            [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`],
+        ],
+        localImport: [
+            `import { ColorModeContextProvider } from "./contexts/color-mode";`,
+            `import { Header } from "./components/header";`
+        ],
+        refineComponents: [],
     },
 };
 
 module.exports = {
     extend(answers) {
-        if (answers["antd-custom-layout"] === "no") {
-            base._app.refineAntdImports.push("Layout");
-            base._app.refineProps.push("Layout={Layout}");
+        if (answers["inferencer"] === "no") {
+            base._app.refineAntdImports.push("WelcomePage");
+            base._app.refineComponents.push(`<WelcomePage />`);
         }
-
-        base._app.refineAntdImports.push("ReadyPage");
-        base._app.refineAntdImports.push("ErrorComponent");
-        base._app.refineProps.push("ReadyPage={ReadyPage}");
-        base._app.refineProps.push("catchAll={<ErrorComponent />}");
 
         return base;
     },

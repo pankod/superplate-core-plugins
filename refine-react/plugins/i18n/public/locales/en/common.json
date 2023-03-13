@@ -108,31 +108,32 @@
     "dashboard": {
         "title": "Dashboard"
     },
-    "posts": {
-        "posts": "Posts",
+    "products": {
+        "products": "Products",
         "fields": {
             "id": "Id",
             "title": "Title",
-            "category": {
-                "title": "Category",
-                "filter": {
-                    "placeholder": "Select Category"
-                }
-            },
-            "status": {
-                "title": "Status",
-                "published": "Published",
-                "draft": "Draft",
-                "rejected": "Rejected"
-            },
-            "content": "Content",
             "createdAt": "Created At"
         },
         "titles": {
-            "create": "Create Post",
-            "edit": "Edit Post",
-            "list": "Posts",
-            "show": "Show Post"
+            "create": "Create Product",
+            "edit": "Edit Product",
+            "list": "Products",
+            "show": "Show Product"
+        }
+    },
+    "categories": {
+        "categories": "Categories",
+        "fields": {
+            "id": "Id",
+            "title": "Title",
+            "createdAt": "Created At"
+        },
+        "titles": {
+            "create": "Create Category",
+            "edit": "Edit Category",
+            "list": "Categories",
+            "show": "Show Category"
         }
     },
     "table": {

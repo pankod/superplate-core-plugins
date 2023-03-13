@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-supabase": "^4.1.0"
+        "@refinedev/supabase": "^4.1.2"
     }
 }

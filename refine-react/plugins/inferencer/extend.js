@@ -1,9 +1,103 @@
+const withoutAuthRoutes = [
+    `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+        <Route index element={<NavigateToResource resource="posts" />} />
+        <Route path="/products">
+            <Route index element={<ProductList />} />
+            <Route path="create" element={<ProductCreate />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
+            <Route path="show/:id" element={<ProductShow />} />
+        </Route>
+        <Route path="/categories">
+            <Route index element={<CategoryList />} />
+            <Route path="create" element={<CategoryCreate />} />
+            <Route path="edit/:id" element={<CategoryEdit />} />
+            <Route path="show/:id" element={<CategoryShow />} />
+        </Route>
+    </Route>`,
+    `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+        <Route path="*" element={<ErrorComponent />} />
+    </Route>`
+];
+
+const withAuthRoutes = [
+    `<Route
+        element={
+            <Authenticated
+                fallback={<CatchAllNavigate to="/login" />}
+            >
+                <Layout Header={Header}>
+                    <Outlet />
+                </Layout>
+            </Authenticated>
+        }
+    >
+        <Route index element={<NavigateToResource resource="products" />} />
+        <Route path="/products">
+            <Route index element={<ProductList />} />
+            <Route path="create" element={<ProductCreate />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
+            <Route path="show/:id" element={<ProductShow />} />
+        </Route>
+        <Route path="/categories">
+            <Route index element={<CategoryList />} />
+            <Route path="create" element={<CategoryCreate />} />
+            <Route path="edit/:id" element={<CategoryEdit />} />
+            <Route path="show/:id" element={<CategoryShow />} />
+        </Route>
+    </Route>`,
+    `<Route
+        element={
+            <Authenticated fallback={<Outlet />}>
+                <NavigateToResource />
+            </Authenticated>
+        }
+    >
+        <Route path="/login" element={<AuthPage type="login" />} />
+    </Route>`,
+    `<Route
+        element={
+            <Authenticated>
+                <Layout Header={Header}>
+                    <Outlet />
+                </Layout>
+            </Authenticated>
+        }
+    >
+        <Route path="*" element={<ErrorComponent />} />
+    </Route>`,
+];
+
 const base = {
     _app: {
         import: [],
-        refineProps: [],
+        refineProps: [
+            `resources={[
+                {
+                    name: "products",
+                    list: "/products",
+                    create: "/products/create",
+                    edit: "/products/edit/:id",
+                    show: "/products/show/:id",
+                    canDelete: true,
+                },
+                {
+                    name: "categories",
+                    list: "/categories",
+                    create: "/categories/create",
+                    edit: "/categories/edit/:id",
+                    show: "/categories/show/:id",
+                    canDelete: true,
+                },
+            ]}`
+        ],
         refineAntdImports: [],
         wrapper: [],
+        inferencer: {},
+        localImport: [
+            `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
+            `import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`
+        ],
+        routes: [],
     },
 };
 
@@ -13,49 +107,45 @@ module.exports = {
             {
                 ui: "antd",
                 folder: "antd",
-                component: "AntdInferencer",
+                componentPrefix: "Antd",
             },
             {
                 ui: "chakra",
                 folder: "chakra-ui",
-                component: "ChakraUIInferencer",
+                componentPrefix: "ChakraUI",
             },
             {
                 ui: "no",
                 folder: "headless",
-                component: "HeadlessInferencer",
+                componentPrefix: "Headless",
             },
             {
                 ui: "mantine",
                 folder: "mantine",
-                component: "MantineInferencer",
+                componentPrefix: "Mantine",
             },
             {
                 ui: "mui",
                 folder: "mui",
-                component: "MuiInferencer",
+                componentPrefix: "Mui",
             }
         ];
 
-        const inferencer = inferencerPackage.find(
+        base._app.inferencer = inferencerPackage.find(
             (item) => item.ui === answers["ui-framework"],
         );
 
-        base._app.import.push(
-            `import { ${inferencer.component} } from "@pankod/refine-inferencer/${inferencer.folder}";`,
-        );
-        base._app.refineProps.push(
-            `resources={[
-                    {
-                        name: "posts",
-                        list: ${inferencer.component},
-                        edit: ${inferencer.component},
-                        show: ${inferencer.component},
-                        create: ${inferencer.component},
-                        canDelete: true,
-                    },
-                ]}`,
-        );
+        if (
+            answers["data-provider"] === "data-provider-appwrite" ||
+            answers["data-provider"] === "data-provider-supabase" ||
+            answers["data-provider"] === "data-provider-strapi-v4"
+        ) {
+            base._app.routes = withAuthRoutes;
+        } else if (answers["auth-provider"] === "none") {
+            base._app.routes = withoutAuthRoutes;
+        } else {
+            base._app.routes = withAuthRoutes;
+        }
 
         return base;
     },

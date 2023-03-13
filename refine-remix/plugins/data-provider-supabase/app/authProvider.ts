@@ -54,16 +54,21 @@ export const authProvider: AuthBindings = {
         console.error(error);
         return { error };
     },
-    check: async (context) => {
+    check: async (request) => {
         let token = undefined;
-        if (context && context.headers) {
-            const { headers } = context;
-            const parsedCookie = cookie.parse(headers.get("Cookie") ?? "");
-            token = parsedCookie[TOKEN_KEY];
+        if (request) {
+            const hasCookie = request.headers.get("Cookie");
+            if (hasCookie) {
+                const parsedCookie = cookie.parse(
+                    request.headers.get("Cookie"),
+                );
+                token = parsedCookie[TOKEN_KEY];
+            }
         } else {
             const parsedCookie = Cookies.get(TOKEN_KEY);
-            token = parsedCookie;
+            token = parsedCookie ? JSON.parse(parsedCookie) : undefined;
         }
+
         const { data } = await supabaseClient.auth.getUser(token);
         const { user } = data;
 

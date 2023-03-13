@@ -21,7 +21,7 @@ import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } 
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
-import { RefineKbar } from "@refinedev/kbar";
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import routerProvider, { UnsavedChangesNotifier } from "@refinedev/remix-router";
 
 <%- (_app.import || []).join("\n") _%>
@@ -56,22 +56,24 @@ export default function App() {
             </head>
             <body>
             <GitHubBanner />
-            <%- top.join("\n") %>
-                <Refine
-                    routerProvider={routerProvider}
-                    <%- (_app.refineProps || []).join("\n") %>
-                    options={{
-                        syncWithLocation: true,
-                        warnWhenUnsavedChanges: true,
-                    }}
-                >
-                    <>
-                    <Outlet />
-                    <UnsavedChangesNotifier />
-                    <RefineKbar />
-                    </>
-                </Refine>
-            <%- bottom.join("\n") %>
+            <RefineKbarProvider>
+                <%- top.join("\n") %>
+                    <Refine
+                        routerProvider={routerProvider}
+                        <%- (_app.refineProps || []).join("\n") %>
+                        options={{
+                            syncWithLocation: true,
+                            warnWhenUnsavedChanges: true,
+                        }}
+                    >
+                        <>
+                        <Outlet />
+                        <UnsavedChangesNotifier />
+                        <RefineKbar />
+                        </>
+                    </Refine>
+                <%- bottom.join("\n") %>
+            </RefineKbarProvider>
             <ScrollRestoration />
             <Scripts />
             <LiveReload />

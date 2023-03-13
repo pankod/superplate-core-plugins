@@ -1,21 +1,23 @@
-import { AuthProvider } from "@pankod/refine-core";
+import { AuthBindings } from "@refinedev/core";
 import nookies from "nookies";
 
 const mockUsers = [
     {
-        username: "admin",
-        email: "admin@refine.dev",
+        name: "John Doe",
+        email: "johndoe@mail.com",
         roles: ["admin"],
+        avatar: "https://i.pravatar.cc/150?img=1",
     },
     {
-        username: "editor",
-        email: "editor@refine.dev",
+        name: "Jane Doe",
+        email: "janedoe@mail.com",
         roles: ["editor"],
+        avatar: "https://i.pravatar.cc/150?img=1",
     },
 ];
 
-export const authProvider: AuthProvider = {
-    login: ({ email, username, password, remember }) => {
+export const authProvider: AuthBindings = {
+    login: async ({ email, username, password, remember }) => {
         // Suppose we actually send a request to the back end here.
         const user = mockUsers[0];
 
@@ -24,40 +26,59 @@ export const authProvider: AuthProvider = {
                 maxAge: 30 * 24 * 60 * 60,
                 path: "/",
             });
-            return Promise.resolve();
+            return {
+                success: true,
+                redirectTo: "/",
+            };
         }
 
-        return Promise.reject();
+        return {
+            success: false,
+            error: {
+                name: "LoginError",
+                message: "Invalid username or password",
+            },
+        };
     },
-    logout: () => {
+    logout: async () => {
         nookies.destroy(null, "auth");
-        return Promise.resolve();
+        return {
+            success: true,
+            redirectTo: "/login",
+        };
     },
-    checkError: (error) => {
-        if (error && error.statusCode === 401) {
-            return Promise.reject();
+    check: async (ctx: any) => {
+        const cookies = nookies.get(ctx);
+        if (cookies["auth"]) {
+            return {
+                authenticated: true,
+            };
         }
 
-        return Promise.resolve();
+        return {
+            authenticated: false,
+            logout: true,
+            redirectTo: "/login",
+        };
     },
-    checkAuth: (ctx) => {
-        const cookies = nookies.get(ctx);
-        return cookies["auth"] ? Promise.resolve() : Promise.reject();
-    },
-    getPermissions: () => {
+    getPermissions: async () => {
         const auth = nookies.get()["auth"];
         if (auth) {
             const parsedUser = JSON.parse(auth);
-            return Promise.resolve(parsedUser.roles);
+            return parsedUser.roles;
         }
-        return Promise.reject();
+        return null;
     },
-    getUserIdentity: () => {
+    getIdentity: () => {
         const auth = nookies.get()["auth"];
         if (auth) {
             const parsedUser = JSON.parse(auth);
-            return Promise.resolve(parsedUser.username);
+            return parsedUser;
         }
-        return Promise.reject();
+        return null;
+    },
+    onError: async (error) => {
+        console.error(error);
+        return { error };
     },
 };

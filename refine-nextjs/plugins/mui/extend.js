@@ -4,43 +4,26 @@ const base = {
         refineMuiImports: [
             "notificationProvider",
             "RefineSnackbarProvider",
-            "CssBaseline",
-            "GlobalStyles",
+            "Layout"
         ],
-        wrapper: [],
-        import: [],
+        wrapper: [
+            ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],
+            ["<CssBaseline />"],
+            [`<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`],
+            ["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"],
+        ],
+        import: [
+            `import { CssBaseline, GlobalStyles } from "@mui/material";`,
+        ],
+        localImport: [
+            'import { ColorModeContextProvider } from "@contexts";',
+            'import { Header } from "@components/header";',
+        ],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["mui-custom-layout"] === "no") {
-            base._app.refineMuiImports.push("Layout");
-            base._app.refineProps.push("Layout={Layout}");
-        }
-
-        if (answers["mui-dark-mode"] === "no") {
-            base._app.refineMuiImports.push("ThemeProvider");
-            base._app.refineMuiImports.push("LightTheme");
-            base._app.wrapper.push([
-                "<ThemeProvider theme={LightTheme}>",
-                "</ThemeProvider>",
-            ]);
-            base._app.wrapper.push(["<CssBaseline />"]);
-            base._app.wrapper.push([
-                `<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`,
-            ]);
-            base._app.wrapper.push([
-                "<RefineSnackbarProvider>",
-                "</RefineSnackbarProvider>",
-            ]);
-        }
-
-        base._app.refineMuiImports.push("ReadyPage");
-        base._app.refineMuiImports.push("ErrorComponent");
-        base._app.refineProps.push("ReadyPage={ReadyPage}");
-        base._app.refineProps.push("catchAll={<ErrorComponent />}");
-
+    extend() {
         return base;
     },
 };

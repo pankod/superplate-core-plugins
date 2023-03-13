@@ -1,25 +1,22 @@
 import React from "react";
 import { AppProps } from "next/app";
-<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-import Head from "next/head";
-<%_ } _%>
-import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@pankod/refine-core';
+import type { NextPage } from "next";
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
-    import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@pankod/refine-antd';
+    import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@pankod/refine-mui';
+    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@pankod/refine-mantine';
+    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@pankod/refine-chakra-ui';
+    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
-import routerProvider from "@pankod/refine-nextjs-router";
-<%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-    import { Partytown } from '@builder.io/partytown/react';
-    <%_ } _%>
+import routerProvider, { UnsavedChangesNotifier } from "@refinedev/nextjs-router";
+
 <%- (_app.import || []).join("\n") _%>
 
 <%- (_app.localImport || []).join("\n") _%>
@@ -33,28 +30,49 @@ import routerProvider from "@pankod/refine-nextjs-router";
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+     noLayout?: boolean;
+ };
+
+ type AppPropsWithLayout = AppProps & {
+     Component: NextPageWithLayout;
+ };
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+    const renderComponent = () => {
+        if (Component.noLayout) {
+            return <Component {...pageProps} />;
+        }
+
+        return (
+            <Layout Header={Header}>
+                <Component {...pageProps} />
+            </Layout>
+        );
+    };
+
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
         <>
-            <GitHubBanner />
+        <GitHubBanner />
+        <RefineKbarProvider>
             <%- top.join("\n") %>
-            <Refine
+            <Refine 
                 routerProvider={routerProvider}
                 <%- (_app.refineProps || []).join("\n") %>
+                options={{
+                    syncWithLocation: true,
+                    warnWhenUnsavedChanges: true,
+                }}
             >
-
-                <%_ if (answers["partytown-builder"] === 'partytown-builder') { _%>
-                    <Head>
-                        <Partytown debug={true} forward={['dataLayer.push']} />
-                    </Head>
-                <%_ } _%>
-
-                <Component {...pageProps} />
+                {renderComponent()}
+                <RefineKbar />
+                <UnsavedChangesNotifier />
             </Refine>
             <%- bottom.join("\n") %>
-       </>
+        </RefineKbarProvider>
+        </>
       );
 };
 

@@ -11,8 +11,8 @@ export const authProvider: AuthBindings = {
                 success: true,
                 redirectTo: "/",
             };
-        } catch (e) {
-            const { type, message, code } = e as AppwriteException;
+        } catch (error) {
+            const { type, message, code } = error as AppwriteException;
             return {
                 success: false,
                 error: {

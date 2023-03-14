@@ -8,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
 export default function CategoryList() {
-    return <<%- (_app.inferencer.componentPrefix || "") _%>ListInferencer />;
+    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ListInferencer />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

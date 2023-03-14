@@ -1,4 +1,4 @@
-import { <%- (_app.inferencer.componentPrefix || "") _%>ShowInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
+import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 import { GetServerSideProps } from "next";
 <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase') { _%>
 import { authProvider } from "src/authProvider";
@@ -8,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
 export default function ProductShow() {
-    return <<%- (_app.inferencer.componentPrefix || "") _%>ShowInferencer />;
+    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

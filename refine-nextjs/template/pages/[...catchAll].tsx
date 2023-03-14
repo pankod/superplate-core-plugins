@@ -13,7 +13,6 @@
 <%_ if (answers["ui-framework"] === 'no') { _%>
     import { ErrorComponent } from "@refinedev/core";
 <%_ } _%>
-import { <%- (_app.inferencer.componentPrefix || "") _%>ListInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 import { GetServerSideProps } from "next";
 <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase') { _%>
 import { authProvider } from "src/authProvider";

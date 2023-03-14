@@ -73,7 +73,7 @@ export const authProvider: AuthBindings = {
             authenticated: false,
             error: new Error("Unauthenticated"),
             logout: true,
-            redirectTo: "/login?to=" + pathname,
+            redirectTo: `/login?to=${pathname}`,
         };
     },
     getPermissions: async () => null,

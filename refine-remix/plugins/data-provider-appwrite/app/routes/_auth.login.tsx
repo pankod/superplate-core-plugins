@@ -1,5 +1,5 @@
 <%_ if (answers["ui-framework"] === 'antd') { _%>
-     import { AuthPage } from "@refinedev/antd";
+    import { AuthPage } from "@refinedev/antd";
  <%_ } _%>
  <%_ if (answers["ui-framework"] === 'mui') { _%>
      import { AuthPage } from "@refinedev/mui";
@@ -16,10 +16,18 @@ export default function Login() {
         <AuthPage
             type="login"
             formProps={{
-                initialValues: {
-                    email: "demo@refine.dev",
-                    password: "demodemo",
-                },
+                <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
+                    initialValues: {
+                        email: "demo@refine.dev",
+                        password: "demodemo",
+                    },
+                <%_ } _%>
+                <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
+                    defaultValues: {
+                        email: "demo@refine.dev",
+                        password: "demodemo",
+                    },
+                <%_ } _%>
             }}
         />
     );

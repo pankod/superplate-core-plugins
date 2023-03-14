@@ -16,10 +16,18 @@ export default function Login() {
         <AuthPage
             type="login"
             formProps={{
-                initialValues: {
-                    email: "admin@refine.dev",
-                    password: "password",
-                },
+                <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
+                    initialValues: {
+                        email: "admin@refine.dev",
+                        password: "demodemo",
+                    },
+                <%_ } _%>
+                <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
+                    defaultValues: {
+                        email: "admin@refine.dev",
+                        password: "demodemo",
+                    },
+                <%_ } _%>
             }}
         />
     );

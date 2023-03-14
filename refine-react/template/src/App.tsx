@@ -55,7 +55,7 @@ function App() {
                 <%_ } _%>
                 <%- (_app.refineComponents || []).join("\n") %>
 
-                <%_ if (answers["ui-framework"] === 'no') { _%>
+                <%_ if (answers["ui-framework"] === 'no' && answers["inferencer-headless"] === "no") { _%>
                     <WelcomePage />
                 <%_ } _%>
                 <RefineKbar />

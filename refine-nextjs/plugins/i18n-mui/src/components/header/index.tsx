@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import {
-  useGetIdentity,
-  useLink
+  useGetIdentity
 } from "@refinedev/core";
 import {
   AppBar,
@@ -16,6 +15,7 @@ import {
 } from "@mui/material";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { ColorModeContext } from "@contexts";
 
@@ -26,7 +26,6 @@ import { ColorModeContext } from "@contexts";
 
 export const Header: React.FC = () => {
   const { mode, setMode } = useContext(ColorModeContext);
-  const Link = useLink();
   const { locale: currentLocale, locales, pathname, query } = useRouter();
 
   const { data: user } = useGetIdentity<IUser>();

@@ -66,10 +66,14 @@ export const authProvider: AuthBindings = {
                 authenticated: true
             };
         }
+        
+        const { pathname } = new URL(request.url);
 
         return {
             authenticated: false,
-            redirectTo: "/login"
+            error: new Error("Unauthenticated"),
+            logout: true,
+            redirectTo: "/login?to=" + pathname,
         };
     },
     getPermissions: async () => null,

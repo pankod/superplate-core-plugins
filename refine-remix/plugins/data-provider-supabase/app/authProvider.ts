@@ -78,9 +78,13 @@ export const authProvider: AuthBindings = {
             };
         }
 
+        const { pathname } = new URL(request.url);
+
         return {
             authenticated: false,
-            redirectTo: "/login",
+            error: new Error("Unauthenticated"),
+            logout: true,
+            redirectTo: "/login?to=" + pathname,
         };
     },
     getPermissions: async () => {

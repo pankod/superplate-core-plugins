@@ -1,14 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useLogin } from "@refinedev/core";
 <%_ if (answers["ui-framework"] === "antd") { _%>
-    import { 
-        AntdLayout, 
-    } from "@refinedev/antd";
+    import { Layout } from "antd";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === "mui") { _%>
-    import { 
-        Container, Box 
-    } from "@refinedev/mui";
+    import { Container, Box } from "@mui/material";
 <%_ } _%>
 
 import { CredentialResponse } from "../interfaces/google";
@@ -53,7 +49,7 @@ export const Login: React.FC = () => {
 
     <%_ if (answers["ui-framework"] === "antd") { _%>
     return (
-        <AntdLayout
+        <Layout
             style={{
                 background: `radial-gradient(50% 50% at 50% 50%, #63386A 0%, #310438 100%)`,
                 backgroundSize: "cover",
@@ -67,7 +63,7 @@ export const Login: React.FC = () => {
                     <GoogleButton />
                 </div>
             </div>
-        </AntdLayout>
+        </Layout>
     );
     <% } else if (answers["ui-framework"] === "mui") { _%>
     return (

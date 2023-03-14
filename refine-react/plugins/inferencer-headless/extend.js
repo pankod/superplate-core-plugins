@@ -3,7 +3,7 @@ function getAuth(answers) {
     if (answers["auth-provider"] === 'auth-provider-auth0') {
         return `<Route path="/login" element={<Login />} />`
     }
-    return `<Route path="/login" element={<AuthPage type="login" formProps={{` + formProps(answers) + `}}/>} />`
+    return `<Route path="/login" element={<AuthPage type="login" ` + formProps(answers) + `/>} />`
 
 }
 
@@ -75,16 +75,18 @@ function getRoutes(withAuth, answers) {
 function formProps(answers) {
     if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') {
         if (answers["data-provider"] === 'data-provider-supabase') {
-            return `initialValues:{ email: "info@refine.dev", password: "refine-supabase" }`
+            return `formProps={{ initialValues:{ email: "info@refine.dev", password: "refine-supabase" } }}`
         } else {
-            return `initialValues:{ email: "demo@refine.dev", password: "demodemo" }`
+            return `formProps={{ initialValues:{ email: "demo@refine.dev", password: "demodemo" } }}`
         }
     } else if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') {
         if (answers["data-provider"] === 'data-provider-supabase') {
-            return `defaultValues:{ email: "info@refine.dev", password: "refine-supabase" }`
+            return `formProps={{ defaultValues:{ email: "info@refine.dev", password: "refine-supabase" } }}`
         } else {
-            return `defaultValues:{ email: "demo@refine.dev", password: "demodemo" }`
+            return `formProps={{ defaultValues:{ email: "demo@refine.dev", password: "demodemo" } }}`
         }
+    } else {
+        return ``;
     }
 }
 
@@ -113,7 +115,7 @@ const base = {
             ]}`
         ],
         refineAntdImports: [],
-        refineImports: [`AuthPage`, `Authenticated`],
+        refineImports: [`AuthPage`, `Authenticated`, `ErrorComponent`],
         wrapper: [],
         inferencer: {},
         localImport: [

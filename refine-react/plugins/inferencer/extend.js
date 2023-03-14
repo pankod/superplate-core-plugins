@@ -54,7 +54,7 @@ function getRoutes(withAuth, answers) {
     }
 
     return `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-        <Route index element={<NavigateToResource resource="posts" />} />
+        <Route index element={<NavigateToResource resource="products" />} />
         <Route path="/products">
             <Route index element={<ProductList />} />
             <Route path="create" element={<ProductCreate />} />
@@ -67,11 +67,10 @@ function getRoutes(withAuth, answers) {
             <Route path="edit/:id" element={<CategoryEdit />} />
             <Route path="show/:id" element={<CategoryShow />} />
         </Route>
-    </Route>`,
-        `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+    </Route>
+    <Route element={<Layout Header={Header}><Outlet /></Layout>}>
         <Route path="*" element={<ErrorComponent />} />
     </Route>`;
-
 }
 
 

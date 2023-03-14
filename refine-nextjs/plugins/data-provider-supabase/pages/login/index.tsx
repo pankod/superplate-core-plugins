@@ -19,6 +19,20 @@ export default function Login() {
     return (
         <AuthPage
             type="login"
+            formProps={{
+                <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
+                    initialValues: {
+                        email: "info@refine.dev",
+                        password: "refine-supabase",
+                    },
+                <%_ } _%>
+                <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
+                    defaultValues: {
+                        email: "info@refine.dev",
+                        password: "refine-supabase",
+                    },
+                <%_ } _%>
+            }}
         />
     );
 }

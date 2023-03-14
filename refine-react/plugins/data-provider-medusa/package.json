@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@refinedev/medusa": "^1.7.2"
+        "@refinedev/medusa": "^2.0.0"
     }
 }

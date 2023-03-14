@@ -10,11 +10,11 @@
     "refine": "refine"
   },
   "dependencies": {
-    "@refinedev/cli": "^1.17.0",
-    "@refinedev/core": "^3.99.4",
-    "@refinedev/nextjs-router": "^4.1.0",
-    "@refinedev/inferencer": "^2.8.2",
-    "@refinedev/kbar": "^0.10.2",
+    "@refinedev/cli": "^2.0.0",
+    "@refinedev/core": "^4.0.0",
+    "@refinedev/nextjs-router": "^5.0.0",
+    "@refinedev/inferencer": "^3.0.0",
+    "@refinedev/kbar": "^1.0.0",
     "next": "^13.0.6",
     "nookies": "^2.5.2",
     "react": "^18.0.0",

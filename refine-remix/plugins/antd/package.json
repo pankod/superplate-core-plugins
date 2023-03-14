@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@refinedev/antd": "^4.7.3",
+        "@refinedev/antd": "^5.0.0",
         "nookies": "^2.5.2",
         "antd": "^5.0.5",
         "@ant-design/icons": "^5.0.1"

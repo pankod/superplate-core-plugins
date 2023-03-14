@@ -43,7 +43,7 @@ module.exports = {
         if (answers["auth-provider"] === "none") {
             base._app.routes = [
                 `<Route element={<Outlet />}>
-                    <Route index element={<NavigateToResource resource="posts" />} />
+                    <Route index element={<NavigateToResource resource="products" />} />
                     <Route path="/products">
                         <Route index element={<ProductList />} />
                         <Route path="/products/create" element={<ProductCreate />} />

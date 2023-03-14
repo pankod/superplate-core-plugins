@@ -1,63 +1,88 @@
 const base = {
     _app: {
-        refineImports: [`LegacyAuthProvider`],
+        refineImports: [`Authenticated`, `AuthBindings`],
         import: [
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
         ],
-        localImport: [`import { Login } from "pages/login";`],
+        localImport: [
+            `import { Login } from "pages/login";`,
+            `import { authProvider } from "./auth-provider";`,
+        ],
         innerHooks: [
-            `const { isLoading, user, logout, getIdTokenClaims } = useAuth0();`,
+            `const { isLoading, user, logout, getIdTokenClaims } = useAuth0();`
         ],
         inner: [
             `
             if (isLoading) {
                 return <span>loading...</span>
-            }
-
-            const authProvider: LegacyAuthProvider = {
-                login: () => {
-                    return Promise.resolve(false);
+            }`,
+            `
+            const authProvider: AuthBindings = {
+                login: async () => {
+                    return {
+                        success: true,
+                    };
                 },
-                logout: () => {
+                logout: async () => {
                     logout({ returnTo: window.location.origin });
-                    return Promise.resolve("/");
+                    return {
+                        success: true,
+                    };
                 },
-                checkError: () => Promise.resolve(),
-                checkAuth: async () => {
+                onError: async (error) => {
+                    console.error(error);
+                    return { error };
+                },
+                check: async () => {
                     try {
                         const token = await getIdTokenClaims();
                         if (token) {
                             axios.defaults.headers.common = {`,
             "Authorization: `Bearer ${token.__raw}`",
-            `};
-                            return Promise.resolve();
+            `
+                            };
+                            return {
+                                authenticated: true,
+                            };
                         } else {
-                            return Promise.reject();
+                            return {
+                                authenticated: false,
+                                error: new Error("Token not found"),
+                                redirectTo: "/login",
+                                logout: true,
+                            };
                         }
-                    } catch (error) {
-                        return Promise.reject();
+                    } catch (error: any) {
+                        return {
+                            authenticated: false,
+                            error: new Error(error),
+                            redirectTo: "/login",
+                            logout: true,
+                        };
                     }
                 },
-                getPermissions: () => Promise.resolve(),
-                getUserIdentity: async () => {
+                getPermissions: async () => null,
+                getIdentity: async () => {
                     if (user) {
-                        return Promise.resolve({
+                        return {
                             ...user,
                             avatar: user.picture,
-                        });
+                        };
                     }
-                    return Promise.reject();
+                    return null;
                 },
             };
-            `,
+            `
         ],
-        refineProps: ["legacyAuthProvider={authProvider}", "LoginPage={Login}"],
+        refineProps: ["authProvider={authProvider}"],
         routes: [],
     },
 };
+
 module.exports = {
-    extend() {
+    extend(answers) {
+        console.log("answers auth0", answers)
         return base;
     },
 };

@@ -1,3 +1,12 @@
+function getAuth(answers) {
+
+    if (answers["auth-provider"] === 'auth-provider-auth0') {
+        return `<Route path="/login" element={<Login />} />`
+    }
+    return `<Route path="/login" element={<AuthPage type="login" formProps={{` + formProps(answers) + `}}/>} />`
+
+}
+
 function getRoutes(withAuth, answers) {
     if (withAuth === true) {
         return `<Route
@@ -32,12 +41,7 @@ function getRoutes(withAuth, answers) {
             </Authenticated>
         }
     >
-        <Route path="/login" element={<AuthPage type="login" formProps={{`+
-            formProps(answers)
-
-            + `}}
-        
-        />} />
+    `+ getAuth(answers) + `
     </Route>
     <Route
         element={
@@ -162,6 +166,7 @@ module.exports = {
         if (
             answers["data-provider"] === "data-provider-appwrite" ||
             answers["data-provider"] === "data-provider-supabase" ||
+            answers["auth-provider"] === "auth-provider-auth0" ||
             answers["data-provider"] === "data-provider-strapi-v4"
         ) {
             const routes = getRoutes(true, answers);
@@ -170,7 +175,7 @@ module.exports = {
             const routes = getRoutes(false, answers);
             base._app.routes = [routes];
         } else {
-            const routes = getRoutes(false, answers);
+            const routes = getRoutes(true, answers);
             base._app.routes = [routes];
         }
 

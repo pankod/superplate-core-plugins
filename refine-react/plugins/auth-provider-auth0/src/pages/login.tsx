@@ -5,9 +5,9 @@ import {
 <%_ } _%>  
 <%_ if (answers["ui-framework"] === "antd") { _%>
 import { 
-    AntdLayout, 
+    Layout as AntdLayout, 
     Button
-} from "@refinedev/antd";
+} from "antd";
 <%_ } _%> 
 
 import { useAuth0 } from "@auth0/auth0-react";

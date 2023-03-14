@@ -32,7 +32,7 @@ const base = {
 };
 
 module.exports = {
-    extend() {
+    extend(answers) {
         base._app.inferencer = {
             ui: "no",
             folder: "headless",

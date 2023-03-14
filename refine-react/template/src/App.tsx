@@ -56,7 +56,9 @@ function App() {
                 <%- (_app.refineComponents || []).join("\n") %>
 
                 <%_ if (answers["ui-framework"] === 'no' && answers["inferencer-headless"] === "no") { _%>
-                    <WelcomePage />
+                <Routes>
+                    <Route index element={<WelcomePage />} />
+                </Routes>
                 <%_ } _%>
                 <RefineKbar />
                 <UnsavedChangesNotifier />

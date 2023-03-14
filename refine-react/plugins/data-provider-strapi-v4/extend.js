@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        import: [`import { DataProvider } from "@pankod/refine-strapi-v4";`],
+        import: [`import { DataProvider } from "@refinedev/strapi-v4";`],
         relativeImport: [
             `import { authProvider, axiosInstance } from "./authProvider";`,
             `import { API_URL } from "./constants";`,
@@ -9,26 +9,27 @@ const base = {
             "authProvider={authProvider}",
             "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
         ],
+        refineImports: [
+            `Authenticated`
+        ],
         refineAntdImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
+        routes: [],
     },
 };
 module.exports = {
     extend(answers) {
         if (answers["ui-framework"] === "antd") {
             base._app.refineAntdImports.push("AuthPage");
-            base._app.refineProps.push("LoginPage={AuthPage}");
         }
 
         if (answers["ui-framework"] === "mui") {
             base._app.refineMuiImports.push("AuthPage");
-            base._app.refineProps.push("LoginPage={AuthPage}");
         }
 
         if (answers["ui-framework"] === "antd") {
             base._app.refineMantineImports.push("AuthPage");
-            base._app.refineProps.push("LoginPage={AuthPage}");
         }
         return base;
     },

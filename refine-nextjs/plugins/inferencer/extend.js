@@ -1,9 +1,30 @@
 const base = {
     _app: {
         import: [],
-        refineProps: [],
+        refineProps: [
+            `resources={[
+                {
+                    name: "products",
+                    list: "/products",
+                    create: "/products/create",
+                    edit: "/products/edit/:id",
+                    show: "/products/show/:id",
+                    canDelete: true,
+                },
+                {
+                    name: "categories",
+                    list: "/categories",
+                    create: "/categories/create",
+                    edit: "/categories/edit/:id",
+                    show: "/categories/show/:id",
+                    canDelete: true,
+                },
+            ]}`
+        ],
         refineAntdImports: [],
         wrapper: [],
+        localImport: [],
+        inferencer: {},
     },
 };
 
@@ -13,48 +34,32 @@ module.exports = {
             {
                 ui: "antd",
                 folder: "antd",
-                component: "AntdInferencer",
+                componentPrefix: "Antd",
             },
             {
                 ui: "chakra",
                 folder: "chakra-ui",
-                component: "ChakraUIInferencer",
+                componentPrefix: "ChakraUI",
             },
             {
                 ui: "no",
                 folder: "headless",
-                component: "HeadlessInferencer",
+                componentPrefix: "Headless",
             },
             {
                 ui: "mantine",
                 folder: "mantine",
-                component: "MantineInferencer",
+                componentPrefix: "Mantine",
             },
             {
                 ui: "mui",
                 folder: "mui",
-                component: "MuiInferencer",
+                componentPrefix: "Mui",
             }
         ];
 
-        const inferencer = inferencerPackage.find(
+        base._app.inferencer = inferencerPackage.find(
             (item) => item.ui === answers["ui-framework"],
-        );
-
-        base._app.import.push(
-            `import { ${inferencer.component} } from "@pankod/refine-inferencer/${inferencer.folder}";`,
-        );
-        base._app.refineProps.push(
-            `resources={[
-                    {
-                        name: "posts",
-                        list: ${inferencer.component},
-                        edit: ${inferencer.component},
-                        show: ${inferencer.component},
-                        create: ${inferencer.component},
-                        canDelete: true,
-                    },
-                ]}`,
         );
 
         return base;

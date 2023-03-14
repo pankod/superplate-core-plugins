@@ -1,10 +1,11 @@
 {
     "dependencies": {
-        "@pankod/refine-chakra-ui": "^1.0.0",
-        "@pankod/refine-react-hook-form": "^3.27.1",
-        "@pankod/refine-react-table": "^4.7.2",
-        "@tabler/icons": "^1.39.1",
+        "@refinedev/chakra-ui": "^2.0.0",
+        "@refinedev/react-hook-form": "^4.0.0",
+        "@refinedev/react-table": "^5.0.0",
+        "@tabler/icons": "^1.1.0",
         "@emotion/server": "^11.10.0",
-        "@emotion/cache": "^11.10.5"
+        "@emotion/cache": "^11.10.5",
+        "@chakra-ui/react": "^2.5.1"
     }
 }

@@ -1,5 +1,5 @@
-import { AuthProvider } from "@pankod/refine-core";
-import { AuthHelper } from "@pankod/refine-strapi-v4";
+import type { AuthBindings } from "@refinedev/core";
+import { AuthHelper } from "@refinedev/strapi-v4";
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as cookie from "cookie";
@@ -9,10 +9,10 @@ import { TOKEN_KEY, API_URL } from "~/constants";
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
-export const authProvider: AuthProvider = {
-    login: async ({ username, password }) => {
+export const authProvider: AuthBindings = {
+    login: async ({ email, password }) => {
         const { data, status } = await strapiAuthHelper.login(
-            username,
+            email,
             password,
         );
         if (status === 200) {
@@ -23,53 +23,69 @@ export const authProvider: AuthProvider = {
                 Authorization: `Bearer ${data.jwt}`,
             };
 
-            return Promise.resolve();
+            return {
+                success: true,
+                redirectTo: "/",
+            };
         }
-        return Promise.reject();
+        return {
+            success: false,
+        };
     },
-    logout: () => {
+    logout: async () => {
         Cookies.remove(TOKEN_KEY);
-        return Promise.resolve();
+        return {
+            success: true,
+            redirectTo: "/login",
+        };
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: (context) => {
+    onError: async (error) => {
+        console.error(error);
+        return { error };
+    },
+    check: async (request) => {
         let token = undefined;
-        if (context) {
-            const { request } = context;
-            const parsedCookie = cookie.parse(request.headers.get("Cookie") ?? "");
-            token = parsedCookie[TOKEN_KEY];
+        if (request) {
+            const hasCookie = request.headers.get("Cookie");
+            if (hasCookie) {
+                const parsedCookie = cookie.parse(
+                    request.headers.get("Cookie"),
+                );
+                token = parsedCookie[TOKEN_KEY];
+            }
         } else {
             const parsedCookie = Cookies.get(TOKEN_KEY);
-            token = parsedCookie;
+            token = parsedCookie ? JSON.parse(parsedCookie) : undefined;
         }
 
         if (token) {
             axiosInstance.defaults.headers.common = {
                 Authorization: `Bearer ${token}`,
             };
-            return Promise.resolve();
+            return {
+                authenticated: true
+            };
         }
 
-        return Promise.reject();
+        return {
+            authenticated: false,
+            redirectTo: "/login"
+        };
     },
-    getPermissions: () => Promise.resolve(),
-    getUserIdentity: async () => {
+    getPermissions: async () => null,
+    getIdentity: async () => {
         const token = Cookies.get(TOKEN_KEY);
-
-        if (!token) {
-            return Promise.reject();
-        }
-
+        if (!token) return null;
         const { data, status } = await strapiAuthHelper.me(token);
         if (status === 200) {
             const { id, username, email } = data;
-            return Promise.resolve({
+            return {
                 id,
-                username,
+                name: username,
                 email,
-            });
+            };
         }
 
-        return Promise.reject();
+        return null;
     },
 };

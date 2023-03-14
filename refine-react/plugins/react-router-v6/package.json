@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@pankod/refine-react-router-v6": "^3.18.0"
+        "@refinedev/react-router-v6": "^4.0.0"
     }
 }

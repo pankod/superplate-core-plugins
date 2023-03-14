@@ -1,7 +1,7 @@
 const base = {
     _app: {
         import: [
-            'import nestjsxCrudDataProvider from "@pankod/refine-nestjsx-crud";',
+            'import nestjsxCrudDataProvider from "@refinedev/nestjsx-crud";',
         ],
         inner: [
             `

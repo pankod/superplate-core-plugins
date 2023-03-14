@@ -22,16 +22,6 @@ module.exports = {
                     hint: "Installs Strapi v4 Data Provider.",
                 },
                 {
-                    message: "Strapi v3",
-                    name: "data-provider-strapi",
-                    hint: "Installs Strapi v3 Data Provider.",
-                },
-                {
-                    message: "Strapi GraphQL",
-                    name: "data-provider-strapi-graphql",
-                    hint: "Installs Strapi v3 GraphQL Data Provider.",
-                },
-                {
                     message: "nestjsx-crud",
                     name: "data-provider-nestjsx-crud",
                     hint: "Installs Nestjsx-crud Data Provider.",
@@ -117,7 +107,6 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-appwrite",
@@ -142,187 +131,10 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] !== "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-appwrite",
             default: "no",
-        },
-        {
-            name: "antd-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "antd-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        },
-        {
-            name: "mui-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "mui-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "mantine-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "mantine-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
-        },
-        {
-            name: "chakra-dark-mode",
-            message: "Do you want to add dark mode support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Only light theme will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "chakra-dark-mode",
-                    hint: "Both light & dark themes will be installed.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
-        },
-        {
-            name: "mui-extend-theme",
-            message: "Do you want an extended theme?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                { message: "No", name: "no" },
-                { message: "Yes (Custom Variables)", name: "mui-extend-theme" },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "antd-custom-layout",
-            message: "Do you want to customize the Ant Design layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "antd-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        },
-        {
-            name: "mui-custom-layout",
-            message: "Do you want to customize the Material UI layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "mui-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "mantine-custom-layout",
-            message: "Do you want a customized layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "mantine-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
-        },
-        {
-            name: "chakra-custom-layout",
-            message: "Do you want a customized layout?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Uses the default page layout.",
-                },
-                {
-                    message: "Yes",
-                    name: "chakra-custom-layout",
-                    hint:
-                        "Enables custom page layout (Sider, header, footer etc.)",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
         {
             name: "auth-provider",
@@ -341,8 +153,6 @@ module.exports = {
                 },
             ],
             skip: ({ answers }) =>
-                answers["data-provider"] === "data-provider-strapi" ||
-                answers["data-provider"] === "data-provider-strapi-graphql" ||
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
@@ -350,37 +160,5 @@ module.exports = {
                 answers["data-provider"] === "data-provider-nhost",
             default: "none",
         },
-        {
-            name: "command-palette",
-            message: "Do you want to add kbar command interface support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "Kbar will not be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "kbar",
-                    hint: "Installs kbar command+k interface.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] === "no",
-        },
-    ],
-    ignores: [
-        {
-            plugin: ["kbar"],
-            when: function (answers) {
-                return (
-                    answers["ui-framework"] === "antd" &&
-                    answers["antd-custom-layout"] !== "no"
-                );
-            },
-            pattern: ["src/components/**"],
-        },
-    ],
+    ]
 };

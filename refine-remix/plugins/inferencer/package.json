@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@refinedev/kbar": "^1.0.0"
+    }
+}

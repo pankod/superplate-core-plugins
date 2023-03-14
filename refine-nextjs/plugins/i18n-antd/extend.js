@@ -3,7 +3,7 @@ const base = {
         import: [
             `import { appWithTranslation, useTranslation } from "next-i18next";`,
         ],
-        localImport: [`import { Header } from "@components/layout";`],
+        localImport: [],
         innerHooks: [`const { t, i18n } = useTranslation();`],
         inner: [
             `
@@ -14,18 +14,12 @@ const base = {
             };
             `,
         ],
-        refineProps: ["i18nProvider={i18nProvider}", "Header={Header}"],
+        refineProps: ["i18nProvider={i18nProvider}"],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["antd-custom-layout"] !== "no") {
-            base._app.localImport = base._app.localImport.filter(
-                (item) =>
-                    item !== `import { Header } from "@components/layout";`,
-            );
-        }
+    extend() {
         return base;
     },
 };

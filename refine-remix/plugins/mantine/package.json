@@ -1,10 +1,14 @@
 {
     "dependencies": {
-        "@pankod/refine-mantine": "^1.2.0",
-        "@pankod/refine-react-table": "^4.7.2",
-        "@tabler/icons": "^1.39.1",
+        "@refinedev/mantine": "^2.0.0",
+        "@refinedev/react-table": "^5.0.0",
+        "@tabler/icons": "^1.1.0",
         "@mantine/remix": "^5.5.1",
-        "@emotion/react": "^11.10.4",
-        "@emotion/server": "^11.10.0"
+        "@emotion/react": "^11.8.2",
+        "@emotion/server": "^11.10.0",
+        "@mantine/core": "^5.10.4",
+        "@mantine/hooks": "^5.10.4",
+        "@mantine/form": "^5.10.4",
+        "@mantine/notifications": "^5.10.4"
     }
 }

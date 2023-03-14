@@ -1,5 +1,7 @@
 {
     "dependencies": {
-        "@pankod/refine-antd": "^4.7.0"
+        "@refinedev/antd": "^5.0.0",
+        "antd": "^5.0.5",
+        "@ant-design/icons": "^5.0.1"
     }
 }

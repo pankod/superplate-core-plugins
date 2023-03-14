@@ -2,30 +2,26 @@ const base = {
     _app: {
         refineProps: [
             "notificationProvider={notificationProvider()}",
-            "ReadyPage={ReadyPage}",
-            "catchAll={<ErrorComponent />}",
         ],
-        import: [],
+        import: [
+            `import { ChakraProvider } from "@chakra-ui/react";`,
+        ],
         refineChakraImports: [
             "notificationProvider",
-            "ChakraProvider",
             "refineTheme",
-            "ReadyPage",
-            "ErrorComponent",
+            "Layout"
         ],
         wrapper: [
             [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
+        ],
+        localImport: [
+            `import { Header } from "@components/header"`,
         ],
     },
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["chakra-custom-layout"] === "no") {
-            base._app.refineChakraImports.push("Layout");
-            base._app.refineProps.push("Layout={Layout}");
-        }
-
+    extend() {
         return base;
     },
 };

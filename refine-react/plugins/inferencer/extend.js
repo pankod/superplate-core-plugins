@@ -1,26 +1,6 @@
-const withoutAuthRoutes = [
-    `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-        <Route index element={<NavigateToResource resource="posts" />} />
-        <Route path="/products">
-            <Route index element={<ProductList />} />
-            <Route path="create" element={<ProductCreate />} />
-            <Route path="edit/:id" element={<ProductEdit />} />
-            <Route path="show/:id" element={<ProductShow />} />
-        </Route>
-        <Route path="/categories">
-            <Route index element={<CategoryList />} />
-            <Route path="create" element={<CategoryCreate />} />
-            <Route path="edit/:id" element={<CategoryEdit />} />
-            <Route path="show/:id" element={<CategoryShow />} />
-        </Route>
-    </Route>`,
-    `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
-        <Route path="*" element={<ErrorComponent />} />
-    </Route>`
-];
-
-const withAuthRoutes = [
-    `<Route
+function getRoutes(withAuth, answers) {
+    if (withAuth === true) {
+        return `<Route
         element={
             <Authenticated
                 fallback={<CatchAllNavigate to="/login" />}
@@ -44,17 +24,22 @@ const withAuthRoutes = [
             <Route path="edit/:id" element={<CategoryEdit />} />
             <Route path="show/:id" element={<CategoryShow />} />
         </Route>
-    </Route>`,
-    `<Route
+    </Route>
+    <Route
         element={
             <Authenticated fallback={<Outlet />}>
                 <NavigateToResource />
             </Authenticated>
         }
     >
-        <Route path="/login" element={<AuthPage type="login" />} />
-    </Route>`,
-    `<Route
+        <Route path="/login" element={<AuthPage type="login" formProps={{`+
+            formProps(answers)
+
+            + `}}
+        
+        />} />
+    </Route>
+    <Route
         element={
             <Authenticated>
                 <Layout Header={Header}>
@@ -64,8 +49,48 @@ const withAuthRoutes = [
         }
     >
         <Route path="*" element={<ErrorComponent />} />
+    </Route>`;
+
+    }
+
+    return `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+        <Route index element={<NavigateToResource resource="posts" />} />
+        <Route path="/products">
+            <Route index element={<ProductList />} />
+            <Route path="create" element={<ProductCreate />} />
+            <Route path="edit/:id" element={<ProductEdit />} />
+            <Route path="show/:id" element={<ProductShow />} />
+        </Route>
+        <Route path="/categories">
+            <Route index element={<CategoryList />} />
+            <Route path="create" element={<CategoryCreate />} />
+            <Route path="edit/:id" element={<CategoryEdit />} />
+            <Route path="show/:id" element={<CategoryShow />} />
+        </Route>
     </Route>`,
-];
+        `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
+        <Route path="*" element={<ErrorComponent />} />
+    </Route>`;
+
+}
+
+
+function formProps(answers) {
+    if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') {
+        if (answers["data-provider"] === 'data-provider-supabase') {
+            return `initialValues:{ email: "info@refine.dev", password: "refine-supabase" }`
+        } else {
+            return `initialValues:{ email: "demo@refine.dev", password: "demodemo" }`
+        }
+    } else if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') {
+        if (answers["data-provider"] === 'data-provider-supabase') {
+            return `defaultValues:{ email: "info@refine.dev", password: "refine-supabase" }`
+        } else {
+            return `defaultValues:{ email: "demo@refine.dev", password: "demodemo" }`
+        }
+    }
+}
+
 
 const base = {
     _app: {
@@ -140,11 +165,14 @@ module.exports = {
             answers["data-provider"] === "data-provider-supabase" ||
             answers["data-provider"] === "data-provider-strapi-v4"
         ) {
-            base._app.routes = withAuthRoutes;
+            const routes = getRoutes(true, answers);
+            base._app.routes = [routes];
         } else if (answers["auth-provider"] === "none") {
-            base._app.routes = withoutAuthRoutes;
+            const routes = getRoutes(false, answers);
+            base._app.routes = [routes];
         } else {
-            base._app.routes = withAuthRoutes;
+            const routes = getRoutes(false, answers);
+            base._app.routes = [routes];
         }
 
         return base;

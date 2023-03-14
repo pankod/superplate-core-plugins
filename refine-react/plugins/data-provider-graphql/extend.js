@@ -11,10 +11,43 @@ const base = {
             "",
         ],
         refineProps: ["dataProvider={gqlDataProvider}"],
+        refineComponents: [],
+        refineImports: [],
+        refineAntdImports: [],
+        refineMuiImports: [],
+        refineMantineImports: [],
+        refineChakraImports: [],
     },
 };
 module.exports = {
-    extend() {
+    extend(answers) {
+        if (answers["ui-framework"] === "antd") {
+            base._app.refineAntdImports.push("WelcomePage");
+        }
+
+        if (answers["ui-framework"] === "mui") {
+            base._app.refineMuiImports.push("WelcomePage");
+        }
+
+        if (answers["ui-framework"] === "mantine") {
+            base._app.refineMantineImports.push("WelcomePage");
+        }
+
+        if (answers["ui-framework"] === "chakra") {
+            base._app.refineChakraImports.push("WelcomePage");
+        }
+
+        if (answers["ui-framework"] === "no") {
+            base._app.refineImports.push("WelcomePage");
+        }
+
+
+        base._app.refineComponents.push(`
+            <Routes>
+                <Route index element={<WelcomePage />} />
+            </Routes>
+        `);
+
         return base;
     },
 };

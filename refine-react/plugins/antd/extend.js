@@ -16,12 +16,7 @@ const base = {
 };
 
 module.exports = {
-    extend(answers) {
-        if (answers["inferencer"] === "no") {
-            base._app.refineAntdImports.push("WelcomePage");
-            base._app.refineComponents.push(`<WelcomePage />`);
-        }
-
+    extend() {
         return base;
     },
 };

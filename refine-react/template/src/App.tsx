@@ -48,11 +48,12 @@ function App() {
                     warnWhenUnsavedChanges: true,
                 }}
             >
-                <%_ if (_app.routes || [].lenght > 0) { _%>
+                <%_ if ((_app.routes || []).length > 0) { _%>
                 <Routes>
                     <%- (_app.routes || []).join("\n") %>
                 </Routes>
                 <%_ } _%>
+                
                 <%- (_app.refineComponents || []).join("\n") %>
 
                 <%_ if (answers["ui-framework"] === 'no' && answers["inferencer-headless"] === "no") { _%>

@@ -8,7 +8,7 @@ const base = {
         loginPageProps: [],
         refineProps: [],
         localImport: [],
-        refineImports: [`AuthPage`, `Authenticated`, `ErrorComponent`],
+        refineImports: [`Authenticated`, `ErrorComponent`],
         refineAntdImports: [],
         refineChakraImports: [],
         refineMuiImports: [],
@@ -24,19 +24,19 @@ module.exports = {
 
         switch (uiFramework) {
             case "antd":
-                base._app.refineAntdImports.push(`WelcomePage`);
+                base._app.refineAntdImports.push([`WelcomePage`, `AuthPage`]);
                 break;
             case "mui":
-                base._app.refineMuiImports.push(`WelcomePage`);
+                base._app.refineMuiImports.push([`WelcomePage`, `AuthPage`]);
                 break;
             case "mantine":
-                base._app.refineMantineImports.push(`WelcomePage`);
+                base._app.refineMantineImports.push([`WelcomePage`, `AuthPage`]);
                 break;
             case "chakra":
-                base._app.refineChakraImports.push(`WelcomePage`);
+                base._app.refineChakraImports.push([`WelcomePage`, `AuthPage`]);
                 break;
             default:
-                base._app.refineImports.push(`WelcomePage`);
+                base._app.refineImports.push([`WelcomePage`, `AuthPage`]);
                 break;
         }
 
@@ -45,7 +45,14 @@ module.exports = {
         }
 
         if (answers["auth-provider"] === "none") {
-            base._app.isNoAuthRoutes = true;
+            if (["data-provider-appwrite",
+                "data-provider-supabase",
+                "auth-provider-auth0",
+                "data-provider-strapi-v4"].includes(dataProvider)) {
+                base._app.isAuthRoutes = true;
+            } else {
+                base._app.isNoAuthRoutes = true;
+            }
         } else {
             base._app.isAuthRoutes = true;
         }

@@ -20,7 +20,6 @@ const base = {
         refineAntdImports: [],
         refineMantineImports: [],
         refineMuiImports: [],
-        routes: [],
     },
 };
 module.exports = {

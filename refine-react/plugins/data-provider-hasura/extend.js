@@ -17,21 +17,7 @@ const base = {
         ],
         refineProps: [
             `dataProvider={gqlDataProvider}`,
-            `resources={[
-                {
-                    name: "products",
-                    list: "/products",
-                    create: "/products/create",
-                    edit: "/products/edit/:id",
-                    show: "/products/show/:id",
-                    canDelete: true,
-                },
-            ]}`
         ],
-        localImport: [
-            `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
-        ],
-        routes: [],
     },
 };
 module.exports = {

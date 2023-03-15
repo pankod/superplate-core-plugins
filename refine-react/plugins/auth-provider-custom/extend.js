@@ -7,7 +7,6 @@ const base = {
         refineMantineImports: [],
         refineMuiImports: [],
         refineChakraImports: [],
-        routes: [],
     },
 };
 

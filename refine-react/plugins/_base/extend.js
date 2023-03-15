@@ -8,7 +8,7 @@ const base = {
         loginPageProps: [],
         refineProps: [],
         localImport: [],
-        refineImports: [`Authenticated`, `ErrorComponent`],
+        refineImports: [`Authenticated`],
         refineAntdImports: [],
         refineChakraImports: [],
         refineMuiImports: [],
@@ -24,19 +24,19 @@ module.exports = {
 
         switch (uiFramework) {
             case "antd":
-                base._app.refineAntdImports.push([`WelcomePage`, `AuthPage`]);
+                base._app.refineAntdImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
                 break;
             case "mui":
-                base._app.refineMuiImports.push([`WelcomePage`, `AuthPage`]);
+                base._app.refineMuiImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
                 break;
             case "mantine":
-                base._app.refineMantineImports.push([`WelcomePage`, `AuthPage`]);
+                base._app.refineMantineImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
                 break;
             case "chakra":
-                base._app.refineChakraImports.push([`WelcomePage`, `AuthPage`]);
+                base._app.refineChakraImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
                 break;
             default:
-                base._app.refineImports.push([`WelcomePage`, `AuthPage`]);
+                base._app.refineImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
                 break;
         }
 

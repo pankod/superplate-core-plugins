@@ -21,8 +21,8 @@ root.render(
         <%_ } _%>
             <%_ if (answers["auth-provider"] === "auth-provider-auth0") { _%>
             <Auth0Provider
-                domain="your-auth0-domain-address"
-                clientId="your-auth0-clientId"
+                domain="refine.eu.auth0.com"
+                clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
                 redirectUri={window.location.origin}
             >
             <%_ } _%>

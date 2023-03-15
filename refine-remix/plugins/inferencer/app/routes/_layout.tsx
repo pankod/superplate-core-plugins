@@ -22,9 +22,15 @@ import { Header } from "@components/header";
 
 export default function BaseLayout() {
     return (
-        <Layout Header={Header}>
-            <Outlet />
-        </Layout>
+        <>
+             <%_ if (answers["ui-framework"] === 'no') { _%>
+                <Outlet />
+            <%_ } else { _%>
+                <Layout Header={Header}>
+                    <Outlet />
+                </Layout>
+            <%_ } _%>
+        </>
     );
 }
 

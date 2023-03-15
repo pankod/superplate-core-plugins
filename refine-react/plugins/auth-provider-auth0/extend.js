@@ -82,7 +82,6 @@ const base = {
 
 module.exports = {
     extend(answers) {
-        console.log("answers auth0", answers)
         return base;
     },
 };

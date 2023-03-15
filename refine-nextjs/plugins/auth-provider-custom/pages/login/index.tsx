@@ -10,6 +10,10 @@
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import { AuthPage } from "@refinedev/chakra-ui";
 <%_ } _%>
+<%_ if (answers[`ui-framework`] === "no") { _%>
+    import { AuthPage } from "@refinedev/core";
+<%_ } _%>
+    
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

@@ -1,29 +1,37 @@
-import type { AuthBindings } from "@refinedev/core";
-import Cookies from "js-cookie";
-import * as cookie from "cookie";
+import { AuthBindings } from "@refinedev/core";
+import { AppwriteException } from "@refinedev/appwrite";
 
-import { account, appwriteClient, TOKEN_KEY } from "~/utility";
+import { account } from "./utility";
 
 export const authProvider: AuthBindings = {
-    login: async ({ email, password }: any) => {
+    login: async ({ email, password }) => {
         try {
-            const user = await account.createEmailSession(email, password);
-            Cookies.set(TOKEN_KEY, user.providerAccessToken);
-
+            await account.createEmailSession(email, password);
             return {
                 success: true,
                 redirectTo: "/",
             };
+        } catch (error) {
+            const { type, message, code } = error as AppwriteException;
+            return {
+                success: false,
+                error: {
+                    message,
+                    name: `${code} - ${type}`,
+                },
+            };
+        }
+    },
+    logout: async () => {
+        try {
+            await account.deleteSession("current");
         } catch (error: any) {
             return {
                 success: false,
                 error,
             };
         }
-    },
-    logout: async () => {
-        Cookies.remove(TOKEN_KEY);
-        await account.deleteSession("current");
+
         return {
             success: true,
             redirectTo: "/login",
@@ -34,38 +42,33 @@ export const authProvider: AuthBindings = {
         return { error };
     },
     check: async (request) => {
-        let token = undefined;
-        if (request) {
-            const hasCookie = request.headers.get("Cookie");
-            if (hasCookie) {
-                const parsedCookie = cookie.parse(
-                    request.headers.get("Cookie"),
-                );
-                token = parsedCookie[TOKEN_KEY];
-            }
-        } else {
-            const parsedCookie = Cookies.get(TOKEN_KEY);
-            token = parsedCookie ? JSON.parse(parsedCookie) : undefined;
-        }
+        try {
+            const session = await account.get();
 
-        if (!token) {
+            if (session) {
+                return {
+                    authenticated: true,
+                };
+            }
+        } catch (error: any) {
             return {
                 authenticated: false,
-                redirectTo: "/login"
+                error: error,
+                logout: true,
+                redirectTo: "/login",
             };
         }
-        appwriteClient.setJWT(token);
-        const session = await account.get();
 
-        if (session) {
-            return {
-                authenticated: true,
-            };
-        }
+        const { pathname } = new URL(request.url);
+
+        const query =
+            pathname === "/" ? "" : `?to=${encodeURIComponent(pathname)}`;
 
         return {
             authenticated: false,
-            redirectTo: "/login"
+            error: new Error("Unauthorized"),
+            logout: true,
+            redirectTo: `/login${query}`,
         };
     },
     getPermissions: async () => null,

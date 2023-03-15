@@ -10,22 +10,13 @@
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import { ErrorComponent } from "@refinedev/chakra-ui";
 <%_ } _%>
+<%_ if (answers["ui-framework"] === 'no') { _%>
+    import { ErrorComponent } from "@refinedev/core";
+<%_ } _%>
 
-
-import { Authenticated 
-    <%_ if (answers["ui-framework"] === 'no') { _%>
-    ErrorComponent
-<%_ } _%> } from "@refinedev/core";
-
-export default function Custom404() {
-    return (
-        <%_ if (answers["auth-provider"] !== 'none') { _%>
-        <Authenticated>
-        <%_ } _%>
-            <ErrorComponent />
-        <%_ if (answers["auth-provider"] !== 'none') { _%>
-        </Authenticated>
-        <%_ } _%>
-    );
+/**
+ * We're using a splat route to catch all routes that don't match any other route and render the `ErrorComponent` as 404 page.
+ */
+export default function Index() {
+    return <ErrorComponent />;
 }
-

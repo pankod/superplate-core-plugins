@@ -1,11 +1,11 @@
-import { <%- (_app.inferencer.componentPrefix || "") _%>ShowInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
+import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 <%_ if (answers["auth-provider"] !== 'none') { _%>
 import { GetServerSideProps } from "next";
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 
 export default function PostList() {
-    return <<%- (_app.inferencer.componentPrefix || "") _%>ShowInferencer />;
+    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer />;
 }
 
 <%_ if (answers["auth-provider"] !== 'none') { _%>

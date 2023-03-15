@@ -1,15 +1,21 @@
 function getAuth(answers) {
-
-    if (answers["auth-provider"] === 'auth-provider-auth0') {
-        return `<Route path="/login" element={<Login />} />`
+    if (
+        answers["auth-provider"] === "auth-provider-auth0" ||
+        answers["auth-provider"] === "auth-provider-google"
+    ) {
+        return `<Route path="/login" element={<Login />} />`;
     }
-    return `<Route path="/login" element={<AuthPage type="login" formProps={{` + formProps(answers) + `}}/>} />`
-
+    return (
+        `<Route path="/login" element={<AuthPage type="login" formProps={{` +
+        formProps(answers) +
+        `}}/>} />`
+    );
 }
 
 function getRoutes(withAuth, answers) {
     if (withAuth === true) {
-        return `<Route
+        return (
+            `<Route
         element={
             <Authenticated
                 fallback={<CatchAllNavigate to="/login" />}
@@ -41,7 +47,9 @@ function getRoutes(withAuth, answers) {
             </Authenticated>
         }
     >
-    `+ getAuth(answers) + `
+    ` +
+            getAuth(answers) +
+            `
     </Route>
     <Route
         element={
@@ -53,8 +61,8 @@ function getRoutes(withAuth, answers) {
         }
     >
         <Route path="*" element={<ErrorComponent />} />
-    </Route>`;
-
+    </Route>`
+        );
     }
 
     return `<Route element={<Layout Header={Header}><Outlet /></Layout>}>
@@ -77,23 +85,27 @@ function getRoutes(withAuth, answers) {
     </Route>`;
 }
 
-
 function formProps(answers) {
-    if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') {
-        if (answers["data-provider"] === 'data-provider-supabase') {
-            return `initialValues:{ email: "info@refine.dev", password: "refine-supabase" }`
+    if (
+        answers["ui-framework"] === "antd" ||
+        answers["ui-framework"] === "mantine"
+    ) {
+        if (answers["data-provider"] === "data-provider-supabase") {
+            return `initialValues:{ email: "info@refine.dev", password: "refine-supabase" }`;
         } else {
-            return `initialValues:{ email: "demo@refine.dev", password: "demodemo" }`
+            return `initialValues:{ email: "demo@refine.dev", password: "demodemo" }`;
         }
-    } else if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') {
-        if (answers["data-provider"] === 'data-provider-supabase') {
-            return `defaultValues:{ email: "info@refine.dev", password: "refine-supabase" }`
+    } else if (
+        answers["ui-framework"] === "mui" ||
+        answers["ui-framework"] === "chakra"
+    ) {
+        if (answers["data-provider"] === "data-provider-supabase") {
+            return `defaultValues:{ email: "info@refine.dev", password: "refine-supabase" }`;
         } else {
-            return `defaultValues:{ email: "demo@refine.dev", password: "demodemo" }`
+            return `defaultValues:{ email: "demo@refine.dev", password: "demodemo" }`;
         }
     }
 }
-
 
 const base = {
     _app: {
@@ -116,14 +128,15 @@ const base = {
                     show: "/categories/show/:id",
                     canDelete: true,
                 },
-            ]}`
+            ]}`,
         ],
         refineAntdImports: [],
+        refineImports: [`Authenticated`],
         wrapper: [],
         inferencer: {},
         localImport: [
             `import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`,
-            `import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`
+            `import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`,
         ],
         routes: [],
     },
@@ -156,7 +169,7 @@ module.exports = {
                 ui: "mui",
                 folder: "mui",
                 componentPrefix: "Mui",
-            }
+            },
         ];
 
         base._app.inferencer = inferencerPackage.find(

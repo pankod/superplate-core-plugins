@@ -21,12 +21,16 @@ import { authProvider } from "~/authProvider";
 export default function BaseLayout() {
     return (
         <>
-            <Layout Header={Header}>
+             <%_ if (answers["ui-framework"] === 'no') { _%>
                 <Outlet />
-            </Layout>
-            <RefineKbar />
+                <RefineKbar />
+            <%_ } else { _%>
+                <Layout Header={Header}>
+                    <Outlet />
+                </Layout>
+                <RefineKbar />
+            <%_ } _%>
         </>
-        
     );
 }
 

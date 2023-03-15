@@ -1,4 +1,5 @@
 import { AuthBindings } from "@refinedev/core";
+import { AppwriteException } from "@refinedev/appwrite";
 
 import { account } from "./utility";
 
@@ -10,8 +11,8 @@ export const authProvider: AuthBindings = {
                 success: true,
                 redirectTo: "/",
             };
-        } catch (e) {
-            const { type, message, code } = e;
+        } catch (error) {
+            const { type, message, code } = error as AppwriteException;
             return {
                 success: false,
                 error: {
@@ -30,7 +31,7 @@ export const authProvider: AuthBindings = {
                 error,
             };
         }
-        
+
         return {
             success: true,
             redirectTo: "/login",
@@ -43,7 +44,7 @@ export const authProvider: AuthBindings = {
     check: async () => {
         try {
             const session = await account.get();
-            
+
             if (session) {
                 return {
                     authenticated: true,
@@ -57,7 +58,7 @@ export const authProvider: AuthBindings = {
                 redirectTo: "/login",
             };
         }
-        
+
         return {
             authenticated: false,
             error: new Error("Session not found"),
@@ -68,11 +69,11 @@ export const authProvider: AuthBindings = {
     getPermissions: async () => null,
     getIdentity: async () => {
         const user = await account.get();
-        
+
         if (user) {
             return user;
         }
-        
+
         return null;
     },
 };

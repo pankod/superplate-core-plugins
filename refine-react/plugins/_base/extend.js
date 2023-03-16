@@ -125,9 +125,6 @@ module.exports = {
             }
         }
         // ## resources
-
-        console.log('---| answers', answers);
-        console.log("---| app", base._app)
         return base;
     },
 };

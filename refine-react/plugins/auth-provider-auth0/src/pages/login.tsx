@@ -32,15 +32,7 @@ export const Login: React.FC = () => {
                 alignItems: "center",
             }}
         >
-            <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-            <Button onClick={() => loginWithRedirect()}>
-                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-                {t("pages.login.signin", "Sign in")}
-                <%_ } else { _%>
-                Sign in
-                <%_ } _%>
-            </Button>
-            <%_ } else { _%>
+            <%_ if (answers["ui-framework"] === "no") { _%>
                 <button onClick={() => loginWithRedirect()}>
                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                     {t("pages.login.signin", "Sign in")}
@@ -48,6 +40,14 @@ export const Login: React.FC = () => {
                         Sign in with Auth0
                     <%_ } _%>
             </button>
+            <%_ } else { _%>
+                <Button onClick={() => loginWithRedirect()}>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                {t("pages.login.signin", "Sign in")}
+                <%_ } else { _%>
+                Sign in
+                <%_ } _%>
+            </Button>
             <%_ } _%>                
         </div>
     );

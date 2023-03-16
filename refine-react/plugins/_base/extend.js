@@ -83,32 +83,36 @@ module.exports = {
 
         // ## resources & localImport
         if (base._app.isAuthRoutes || base._app.isNoAuthRoutes) {
-            base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`);
-            base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
-            base._app.refineProps.push(
-                `resources={[
-                    {
-                        name: "products",
-                        list: "/products",
-                        create: "/products/create",
-                        edit: "/products/edit/:id",
-                        show: "/products/show/:id",
-                        meta: {
-                            canDelete: true,
+            // ignore 
+            if (dataProvider !== "data-provider-graphql") {
+                base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`);
+                base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
+                base._app.refineProps.push(
+                    `resources={[
+                        {
+                            name: "products",
+                            list: "/products",
+                            create: "/products/create",
+                            edit: "/products/edit/:id",
+                            show: "/products/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
                         },
-                    },
-                    {
-                        name: "categories",
-                        list: "/categories",
-                        create: "/categories/create",
-                        edit: "/categories/edit/:id",
-                        show: "/categories/show/:id",
-                        meta: {
-                            canDelete: true,
+                        {
+                            name: "categories",
+                            list: "/categories",
+                            create: "/categories/create",
+                            edit: "/categories/edit/:id",
+                            show: "/categories/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
                         },
-                    },
-                ]}`
-            )
+                    ]}`
+                );
+
+            }
         }
         // ## resources
 

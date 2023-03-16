@@ -1,7 +1,7 @@
 const base = {
     _app: {
         refineProps: [
-            "notificationProvider={notificationProvider()}",
+            "notificationProvider={notificationProvider}",
         ],
         import: [],
         refineChakraImports: [

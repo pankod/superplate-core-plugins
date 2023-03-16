@@ -1,6 +1,6 @@
 import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 import { GetServerSideProps } from "next";
-<%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase') { _%>
+<%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
@@ -12,7 +12,7 @@ export default function CategoryShow() {
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
     const { authenticated, redirectTo } = await authProvider.check(context);
     <%_ } _%>
 
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     );
     <%_ } _%>
 
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase') { _%>
+    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
     if (!authenticated) {
         return {
             props: {

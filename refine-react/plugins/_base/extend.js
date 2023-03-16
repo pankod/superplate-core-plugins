@@ -76,6 +76,8 @@ module.exports = {
         if (uiFramework === "mui" || uiFramework === "chakra") {
             defaultValuePropsName = "defaultValues";
         }
+
+        // TODO: for headless empty
         base._app.authPageProps = [`formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`];
         // ## authPageProps
 
@@ -91,7 +93,9 @@ module.exports = {
                         create: "/products/create",
                         edit: "/products/edit/:id",
                         show: "/products/show/:id",
-                        canDelete: true,
+                        meta: {
+                            canDelete: true,
+                        },
                     },
                     {
                         name: "categories",
@@ -99,7 +103,9 @@ module.exports = {
                         create: "/categories/create",
                         edit: "/categories/edit/:id",
                         show: "/categories/show/:id",
-                        canDelete: true,
+                        meta: {
+                            canDelete: true,
+                        },
                     },
                 ]}`
             )

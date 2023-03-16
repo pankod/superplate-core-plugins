@@ -10,25 +10,30 @@
  <%_ if (answers["ui-framework"] === 'chakra') { _%>
      import { AuthPage } from "@refinedev/chakra-ui";
  <%_ } _%>
+ <%_ if (answers[`ui-framework`] === "no") { _%>
+    import { AuthPage } from "@refinedev/core";
+<%_ } _%>
 
 export default function Login() {
     return (
         <AuthPage
             type="login"
-            formProps={{
-                <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
+            <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
+                formProps={{
                     initialValues: {
                         email: "demo@refine.dev",
                         password: "demodemo",
                     },
-                <%_ } _%>
-                <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
+                }}
+            <%_ } _%>
+            <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
+                formProps={{
                     defaultValues: {
                         email: "demo@refine.dev",
                         password: "demodemo",
                     },
-                <%_ } _%>
-            }}
+                }}
+            <%_ } _%>
         />
     );
 }

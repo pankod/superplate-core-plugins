@@ -32,7 +32,9 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
                 <%_ } _%>
             },
             redirect: {
-                destination: redirectTo,
+                destination: `${redirectTo}?to=${encodeURIComponent(
+          context.req.url || "/"
+        )}`,
                 permanent: false,
             },
         };

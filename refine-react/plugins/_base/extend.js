@@ -40,7 +40,7 @@ module.exports = {
                 break;
         }
 
-        if (inferencer === "no") {
+        if (inferencer === "no" && answers["inferencer-headless"] === "no") {
             base._app.hasRoutes = false;
         }
 
@@ -64,6 +64,8 @@ module.exports = {
             base._app.isCustomLoginPage = true;
         }
 
+
+
         // ## authPageProps
         let defaultValuePropsName = "initialValues";
         let defaultValues = `email: "demo@refine.dev", password: "demodemo"`;
@@ -83,12 +85,17 @@ module.exports = {
 
         // ## resources & localImport
         if (base._app.isAuthRoutes || base._app.isNoAuthRoutes) {
+            console.log("---| data provider", dataProvider)
             // ignore 
-            if (dataProvider !== "data-provider-graphql") {
-                base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`);
-                base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
-                base._app.refineProps.push(
-                    `resources={[
+            // if (
+            //     dataProvider !== "data-provider-graphql" ||
+            //     dataProvider !== "data-provider-hasura" ||
+            //     dataProvider !== "data-provider-medusa"
+            // ) {
+            base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`);
+            base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
+            base._app.refineProps.push(
+                `resourcesssss={[
                         {
                             name: "products",
                             list: "/products",
@@ -110,13 +117,13 @@ module.exports = {
                             },
                         },
                     ]}`
-                );
-
-            }
+            );
+            // }
         }
         // ## resources
 
         console.log('---| answers', answers);
+        console.log("---| app", base._app)
         return base;
     },
 };

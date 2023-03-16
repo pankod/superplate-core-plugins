@@ -79,8 +79,12 @@ module.exports = {
             defaultValuePropsName = "defaultValues";
         }
 
-        // TODO: for headless empty
         base._app.authPageProps = [`formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`];
+
+        // clear for headless
+        if (uiFramework === "none") {
+            base._app.authPageProps = [];
+        }
         // ## authPageProps
 
         // ## resources & localImport

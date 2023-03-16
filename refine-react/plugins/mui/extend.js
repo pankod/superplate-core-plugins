@@ -21,7 +21,6 @@ const base = {
             [`<RefineSnackbarProvider>`, `</RefineSnackbarProvider>`]
 
         ],
-        refineComponents: [],
     },
 };
 

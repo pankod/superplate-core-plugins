@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        refineImports: [`LegacyAuthProvider`],
+        refineImports: [`AuthBindings`],
         import: [`import axios, { AxiosRequestConfig } from "axios";`],
         localImport: [
             `import { Login } from "pages/login";`,
@@ -24,10 +24,10 @@ const base = {
         ],
         inner: [
             `
-            const authProvider: LegacyAuthProvider = {
-                login: ({ credential }: CredentialResponse) => {
+            const authProvider: AuthBindings = {
+                login: async ({ credential }: CredentialResponse) => {
                     const profileObj = credential ? parseJwt(credential) : null;
-        
+
                     if (profileObj) {
                         localStorage.setItem(
                             "user",
@@ -36,52 +36,72 @@ const base = {
                                 avatar: profileObj.picture,
                             }),
                         );
-                    }
-            `,
-            'localStorage.setItem("token", `${credential}`);',
+                        `,
+            'localStorage.setItem("token", `${ credential }`);',
             `
-                    return Promise.resolve();
+                        return {
+                            success: true,
+                            redirectTo: "/",
+                        };
+                    }
+
+                    return {
+                        success: false,
+                    };
                 },
-                logout: () => {
+                logout: async () => {
                     const token = localStorage.getItem("token");
-        
+
                     if (token && typeof window !== "undefined") {
                         localStorage.removeItem("token");
                         localStorage.removeItem("user");
                         axios.defaults.headers.common = {};
                         window.google?.accounts.id.revoke(token, () => {
-                            return Promise.resolve();
+                            return {};
                         });
                     }
-        
-                    return Promise.resolve();
+
+                    return {
+                        success: true,
+                        redirectTo: "/login",
+                    };
                 },
-                checkError: () => Promise.resolve(),
-                checkAuth: async () => {
+                onError: async (error) => {
+                    console.error(error);
+                    return { error };
+                },
+                check: async () => {
                     const token = localStorage.getItem("token");
-        
+
                     if (token) {
-                        return Promise.resolve();
+                        return {
+                            authenticated: true,
+                        };
                     }
-                    return Promise.reject();
+
+                    return {
+                        authenticated: false,
+                        error: new Error("Not authenticated"),
+                        logout: true,
+                        redirectTo: "/login",
+                    };
                 },
-        
-                getPermissions: () => Promise.resolve(),
-                getUserIdentity: async () => {
+                getPermissions: async () => null,
+                getIdentity: async () => {
                     const user = localStorage.getItem("user");
                     if (user) {
-                        return Promise.resolve(JSON.parse(user));
+                        return JSON.parse(user);
                     }
+
+                    return null;
                 },
             };
-        
             `,
         ],
-        refineProps: ["legacyAuthProvider={authProvider}"],
+        refineProps: ["authProvider={authProvider}"],
         publicScripts: [
             `<script src="https://accounts.google.com/gsi/client" async defer ></script>`,
         ],
-        routes: [],
     },
 };
 module.exports = {

@@ -33,7 +33,6 @@ const base = {
         localImport: [
             `import { Header } from "./components/header";`
         ],
-        refineComponents: [],
     },
 };
 

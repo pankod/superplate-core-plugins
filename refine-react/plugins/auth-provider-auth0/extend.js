@@ -76,7 +76,6 @@ const base = {
             `
         ],
         refineProps: ["authProvider={authProvider}"],
-        routes: [],
     },
 };
 

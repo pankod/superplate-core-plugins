@@ -1,7 +1,7 @@
 const base = {
     _app: {
         refineProps: [
-            "notificationProvider={notificationProvider()}",
+            "notificationProvider={notificationProvider}",
         ],
         import: [
             `import { ChakraProvider } from "@chakra-ui/react";`
@@ -18,7 +18,6 @@ const base = {
         localImport: [
             `import { Header } from "./components/header";`
         ],
-        refineComponents: [],
     },
 };
 

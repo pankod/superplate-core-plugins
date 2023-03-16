@@ -24,14 +24,6 @@ export const Header: React.FC = () => {
         w="full"
         bg="chakra-body-bg"
     >
-      {showUserInfo && (
-          <HStack>
-              <Text size="sm" fontWeight="bold">
-                  {user?.name}
-              </Text>
-              <Avatar size="sm" name={user?.name} src={user?.avatar} />
-          </HStack>
-        )}
         <IconButton
             variant="ghost"
             aria-label="Toggle theme"
@@ -43,6 +35,14 @@ export const Header: React.FC = () => {
                 h="24px"
             />
         </IconButton>
+        {showUserInfo && (
+          <HStack>
+              <Text size="sm" fontWeight="bold">
+                  {user?.name}
+              </Text>
+              <Avatar size="sm" name={user?.name} src={user?.avatar} />
+          </HStack>
+        )}
     </Box>
 );
 };

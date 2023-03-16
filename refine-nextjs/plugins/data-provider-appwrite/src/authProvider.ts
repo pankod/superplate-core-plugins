@@ -1,12 +1,22 @@
 import { AuthBindings } from "@refinedev/core";
 import { AppwriteException } from "@refinedev/appwrite";
+import nookies from "nookies";
 
-import { account } from "./utility";
+import { account, appwriteClient, APPWRITE_TOKEN_KEY } from "./utility";
 
 export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
         try {
             await account.createEmailSession(email, password);
+            const { jwt } = await account.createJWT();
+
+            if (jwt) {
+                nookies.set(null, APPWRITE_TOKEN_KEY, jwt, {
+                    maxAge: 30 * 24 * 60 * 60,
+                    path: "/",
+                });
+            }
+
             return {
                 success: true,
                 redirectTo: "/",
@@ -31,7 +41,7 @@ export const authProvider: AuthBindings = {
                 error,
             };
         }
-
+        nookies.destroy(null, APPWRITE_TOKEN_KEY);
         return {
             success: true,
             redirectTo: "/login",
@@ -41,7 +51,14 @@ export const authProvider: AuthBindings = {
         console.error(error);
         return { error };
     },
-    check: async () => {
+    check: async (ctx) => {
+        // for server side authentication
+        const cookies = nookies.get(ctx);
+        const appwriteJWT = cookies[APPWRITE_TOKEN_KEY];
+        if (appwriteJWT) {
+            appwriteClient.setJWT(appwriteJWT);
+        }
+
         try {
             const session = await account.get();
 

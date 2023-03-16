@@ -15,22 +15,11 @@ const base = {
         refineAntdImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
-        routes: [],
+
     },
 };
 module.exports = {
-    extend(answers) {
-        if (answers["ui-framework"] === "antd") {
-            base._app.refineAntdImports.push("AuthPage");
-        }
-
-        if (answers["ui-framework"] === "mui") {
-            base._app.refineMuiImports.push("AuthPage");
-        }
-
-        if (answers["ui-framework"] === "antd") {
-            base._app.refineMantineImports.push("AuthPage");
-        }
+    extend() {
         return base;
     },
 };

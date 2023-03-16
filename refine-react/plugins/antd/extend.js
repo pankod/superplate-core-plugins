@@ -11,7 +11,6 @@ const base = {
             `import { ColorModeContextProvider } from "./contexts/color-mode";`,
             `import { Header } from "./components/header";`
         ],
-        refineComponents: [],
     },
 };
 

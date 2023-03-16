@@ -46,14 +46,6 @@
           w="full"
           bg="chakra-body-bg"
       >
-        {showUserInfo && (
-            <HStack>
-                <Text size="sm" fontWeight="bold">
-                    {user?.name}
-                </Text>
-                <Avatar size="sm" name={user?.name} src={user?.avatar} />
-            </HStack>
-          )}
           <Menu>
               <MenuButton
                   as={IconButton}
@@ -94,6 +86,15 @@
                   h="24px"
               />
           </IconButton>
+
+          {showUserInfo && (
+            <HStack>
+                <Text size="sm" fontWeight="bold">
+                    {user?.name}
+                </Text>
+                <Avatar size="sm" name={user?.name} src={user?.avatar} />
+            </HStack>
+          )}
       </Box>
   );
   };    

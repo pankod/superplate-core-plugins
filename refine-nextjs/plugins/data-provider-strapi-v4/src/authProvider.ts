@@ -9,6 +9,16 @@ import { TOKEN_KEY, API_URL } from "./constants";
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
+axiosInstance.interceptors.request.use((request) => {
+    const cookies = nookies.get();
+    if (cookies[TOKEN_KEY]) {
+        request.headers = {
+            Authorization: `Bearer ${cookies[TOKEN_KEY]}`,
+        };
+    }
+    return request;
+});
+
 export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
         const { data, status } = await strapiAuthHelper.login(email, password);

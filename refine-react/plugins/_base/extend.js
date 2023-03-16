@@ -82,7 +82,7 @@ module.exports = {
         base._app.authPageProps = [`formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`];
 
         // clear for headless
-        if (uiFramework === "none") {
+        if (uiFramework === "no") {
             base._app.authPageProps = [];
         }
         // ## authPageProps

@@ -19,6 +19,8 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
+import { authProvider } from "src/authProvider";
+
 export default function Login() {
     return (
         <AuthPage
@@ -46,17 +48,31 @@ export default function Login() {
 
 Login.noLayout = true;
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+    const { authenticated } = await authProvider.check(context);
+
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
     const translateProps = await serverSideTranslations(
         context.locale ?? "en",
         ["common"],
     );
+    <%_ } _%>
+
+    if (authenticated) {
+        return {
+            props: {},
+            redirect: {
+                destination: `/`,
+                permanent: false,
+            },
+        };
+    }
 
     return {
-        props: {
+        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
             ...translateProps,
-        },
-    };
+        <%_ } _%>
+    }
+    
 };
-<%_ } _%>
+

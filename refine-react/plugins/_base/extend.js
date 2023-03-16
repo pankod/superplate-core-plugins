@@ -85,13 +85,11 @@ module.exports = {
 
         // ## resources & localImport
         if (base._app.isAuthRoutes || base._app.isNoAuthRoutes) {
-            // ignore 
-            if (
-                dataProvider !== "data-provider-graphql" ||
-                dataProvider !== "data-provider-hasura" ||
-                dataProvider !== "data-provider-medusa"
-            ) {
-                console.log('---| ignored resource for', dataProvider)
+            // ignore this data providers
+            if (!["data-provider-graphql",
+                "data-provider-hasura",
+                "data-provider-medusa"].includes(dataProvider)) {
+
                 base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`);
                 base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
                 base._app.refineProps.push(
@@ -118,6 +116,8 @@ module.exports = {
                         },
                     ]}`
                 );
+
+
             }
         }
         // ## resources

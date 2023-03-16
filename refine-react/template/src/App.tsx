@@ -55,9 +55,13 @@ function App() {
                             <Authenticated
                                 fallback={<CatchAllNavigate to="/login" />}
                             >
-                                <Layout Header={Header}>
+                                <%_ if (answers["ui-framework"] === 'no') { _%>
                                     <Outlet />
-                                </Layout>
+                                <%_ } else { _%>
+                                    <Layout Header={Header}>
+                                        <Outlet />
+                                    </Layout>
+                                <%_ } _%>
                             </Authenticated>
                         }
                     >
@@ -91,9 +95,13 @@ function App() {
                     <Route
                         element={
                             <Authenticated>
-                                <Layout Header={Header}>
+                                <%_ if (answers["ui-framework"] === 'no') { _%>
                                     <Outlet />
-                                </Layout>
+                                <%_ } else { _%>
+                                    <Layout Header={Header}>
+                                        <Outlet />
+                                    </Layout>
+                                <%_ } _%>
                             </Authenticated>
                         }
                     >

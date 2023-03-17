@@ -43,6 +43,30 @@ function App() {
         <RefineKbarProvider>
             <%- top.join("\n") %>
             <Refine <%- (_app.refineProps || []).join("\n") %> 
+                <%_ if (_app.hasRoutes === true) { _%>
+                    resources={[
+                        {
+                            name: "products",
+                            list: "/products",
+                            create: "/products/create",
+                            edit: "/products/edit/:id",
+                            show: "/products/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
+                        },
+                        {
+                            name: "categories",
+                            list: "/categories",
+                            create: "/categories/create",
+                            edit: "/categories/edit/:id",
+                            show: "/categories/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
+                        },
+                    ]}
+                <%_ } _%>
                 options={{
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,

@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
             },
             redirect: {
                 destination: `${redirectTo}?to=${encodeURIComponent(
-          context.req.url || "/"
+          "/categories"
         )}`,
                 permanent: false,
             },

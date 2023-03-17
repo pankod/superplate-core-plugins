@@ -1,12 +1,21 @@
 import { AuthBindings } from "@refinedev/core";
 import { AppwriteException } from "@refinedev/appwrite";
+import Cookies from "js-cookie";
+import * as cookie from "cookie";
 
-import { account } from "./utility";
+import { account, TOKEN_KEY, appwriteClient } from "./utility";
 
 export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
         try {
             await account.createEmailSession(email, password);
+
+            const { jwt } = await account.createJWT();
+
+            if (jwt) {
+                Cookies.set(TOKEN_KEY, jwt);
+            }
+
             return {
                 success: true,
                 redirectTo: "/",
@@ -31,6 +40,7 @@ export const authProvider: AuthBindings = {
                 error,
             };
         }
+        Cookies.remove(TOKEN_KEY);
 
         return {
             success: true,
@@ -42,6 +52,28 @@ export const authProvider: AuthBindings = {
         return { error };
     },
     check: async (request) => {
+        // for server side authentication
+        let token = undefined;
+        const hasCookie = request.headers.get("Cookie");
+        if (hasCookie) {
+            const parsedCookie = cookie.parse(
+                request.headers.get("Cookie"),
+            );
+            token = parsedCookie[TOKEN_KEY];
+        } else {
+            const parsedCookie = Cookies.get(TOKEN_KEY);
+            token = parsedCookie ? JSON.parse(parsedCookie) : undefined;
+        }
+
+        if (token) {
+            appwriteClient.setJWT(token);
+        }
+
+        const { pathname } = new URL(request.url);
+        const query =
+            pathname === "/" ? "" : `?to=${encodeURIComponent(pathname)}`;
+
+
         try {
             const session = await account.get();
 
@@ -55,15 +87,11 @@ export const authProvider: AuthBindings = {
                 authenticated: false,
                 error: error,
                 logout: true,
-                redirectTo: "/login",
+                redirectTo: `/login${query}`,
             };
         }
 
-        const { pathname } = new URL(request.url);
-
-        const query =
-            pathname === "/" ? "" : `?to=${encodeURIComponent(pathname)}`;
-
+    
         return {
             authenticated: false,
             error: new Error("Unauthorized"),

@@ -110,10 +110,10 @@ function App() {
                             <%_ } _%>
                         } />
                         <Route path="/blog_posts">
-                            <Route index element={<ProductList />} />
-                            <Route path="create" element={<ProductCreate />} />
-                            <Route path="edit/:id" element={<ProductEdit />} />
-                            <Route path="show/:id" element={<ProductShow />} />
+                            <Route index element={<BlogPostList />} />
+                            <Route path="create" element={<BlogPostCreate />} />
+                            <Route path="edit/:id" element={<BlogPostEdit />} />
+                            <Route path="show/:id" element={<BlogPostShow />} />
                         </Route>
                         <Route path="/categories">
                             <Route index element={<CategoryList />} />
@@ -164,10 +164,10 @@ function App() {
                             <%_ } _%>
                         } />
                         <Route path="/blog_posts">
-                            <Route index element={<ProductList />} />
-                            <Route path="create" element={<ProductCreate />} />
-                            <Route path="edit/:id" element={<ProductEdit />} />
-                            <Route path="show/:id" element={<ProductShow />} />
+                            <Route index element={<BlogPostList />} />
+                            <Route path="create" element={<BlogPostCreate />} />
+                            <Route path="edit/:id" element={<BlogPostEdit />} />
+                            <Route path="show/:id" element={<BlogPostShow />} />
                         </Route>
                         <Route path="/categories">
                             <Route index element={<CategoryList />} />

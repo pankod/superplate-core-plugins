@@ -94,7 +94,7 @@ module.exports = {
                 "data-provider-hasura",
                 "data-provider-medusa"].includes(dataProvider)) {
 
-                base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/blog_posts";`);
+                base._app.localImport.push(`import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "pages/blog_posts";`);
                 base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
             }
         }

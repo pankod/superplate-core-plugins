@@ -108,18 +108,21 @@
     "dashboard": {
         "title": "Dashboard"
     },
-    "products": {
-        "products": "Products",
+    "blog_posts": {
+        "blog_posts": "Blog Posts",
         "fields": {
             "id": "Id",
             "title": "Title",
+            "content": "Content",
+            "status": "Status",
+            "category": "Category",
             "createdAt": "Created At"
         },
         "titles": {
-            "create": "Create Product",
-            "edit": "Edit Product",
-            "list": "Products",
-            "show": "Show Product"
+            "create": "Create Blog Post",
+            "edit": "Edit Blog Post",
+            "list": "Blog Posts",
+            "show": "Show Blog Post"
         }
     },
     "categories": {

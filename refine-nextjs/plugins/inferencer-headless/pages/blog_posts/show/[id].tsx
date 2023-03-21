@@ -1,4 +1,4 @@
-import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ListInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
+import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 import { GetServerSideProps } from "next";
 <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
 import { authProvider } from "src/authProvider";
@@ -7,8 +7,8 @@ import { authProvider } from "src/authProvider";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
-export default function ProductList() {
-    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ListInferencer />;
+export default function BlogPostShow() {
+    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
             },
             redirect: {
                 destination: `${redirectTo}?to=${encodeURIComponent(
-          "/products"
+          "/blog_posts"
         )}`,
                 permanent: false,
             },

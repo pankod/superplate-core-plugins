@@ -45,16 +45,29 @@ function App() {
             <Refine <%- (_app.refineProps || []).join("\n") %> 
                 <%_ if (_app.hasRoutes === true) { _%>
                     resources={[
+                        <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                         {
-                            name: "products",
-                            list: "/products",
-                            create: "/products/create",
-                            edit: "/products/edit/:id",
-                            show: "/products/show/:id",
+                            name: "blog-posts",
+                            list: "/blog_posts",
+                            create: "/blog_posts/create",
+                            edit: "/blog_posts/edit/:id",
+                            show: "/blog_posts/show/:id",
                             meta: {
                                 canDelete: true,
                             },
                         },
+                        <%_ } else { _%>
+                        {
+                            name: "blog_posts",
+                            list: "/blog_posts",
+                            create: "/blog_posts/create",
+                            edit: "/blog_posts/edit/:id",
+                            show: "/blog_posts/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
+                        },
+                        <%_ } _%>
                         {
                             name: "categories",
                             list: "/categories",
@@ -89,8 +102,14 @@ function App() {
                             </Authenticated>
                         }
                     >
-                        <Route index element={<NavigateToResource resource="products" />} />
-                        <Route path="/products">
+                        <Route index element={
+                            <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                                <NavigateToResource resource="blog-posts" />
+                            <%_ } else { _%>
+                                <NavigateToResource resource="blog_posts" />
+                            <%_ } _%>
+                        } />
+                        <Route path="/blog_posts">
                             <Route index element={<ProductList />} />
                             <Route path="create" element={<ProductCreate />} />
                             <Route path="edit/:id" element={<ProductEdit />} />
@@ -137,8 +156,14 @@ function App() {
                 <%_ if (_app.hasRoutes === true && _app.isNoAuthRoutes) { _%>
                 <Routes>
                     <Route element={<Layout Header={Header}><Outlet /></Layout>}>
-                        <Route index element={<NavigateToResource resource="products" />} />
-                        <Route path="/products">
+                        <Route index element={
+                            <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                                <NavigateToResource resource="blog-posts" />
+                            <%_ } else { _%>
+                                <NavigateToResource resource="blog_posts" />
+                            <%_ } _%>
+                        } />
+                        <Route path="/blog_posts">
                             <Route index element={<ProductList />} />
                             <Route path="create" element={<ProductCreate />} />
                             <Route path="edit/:id" element={<ProductEdit />} />

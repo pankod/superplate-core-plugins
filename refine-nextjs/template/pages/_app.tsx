@@ -61,6 +61,53 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             <Refine 
                 routerProvider={routerProvider}
                 <%- (_app.refineProps || []).join("\n") %>
+                <%_ if (answers["inferencer"] === 'inferencer' || answers["inferencer-headless"] === 'inferencer-headless') { _%>
+                resources={[
+                    <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                    {
+                        name: "blog-posts",
+                        list: "/blog_posts",
+                        create: "/blog_posts/create",
+                        edit: "/blog_posts/edit/:id",
+                        show: "/blog_posts/show/:id",
+                        meta: {
+                            canDelete: true,
+                        },
+                    },
+                    {
+                        name: "categories",
+                        list: "/categories",
+                        create: "/categories/create",
+                        edit: "/categories/edit/:id",
+                        show: "/categories/show/:id",
+                        meta: {
+                            canDelete: true,
+                        },
+                    }
+                    <%_ } else { _%>
+                    {
+                        name: "blog_posts",
+                        list: "/blog_posts",
+                        create: "/blog_posts/create",
+                        edit: "/blog_posts/edit/:id",
+                        show: "/blog_posts/show/:id",
+                        meta: {
+                            canDelete: true,
+                        },
+                    },
+                    {
+                        name: "categories",
+                        list: "/categories",
+                        create: "/categories/create",
+                        edit: "/categories/edit/:id",
+                        show: "/categories/show/:id",
+                        meta: {
+                            canDelete: true,
+                        },
+                    }
+                    <%_ } _%>
+                ]}
+                <%_ } _%>
                 options={{
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,

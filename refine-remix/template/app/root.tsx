@@ -66,10 +66,10 @@ export default function App() {
                             <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                             {
                                 name: "blog-posts",
-                                list: "/blog-posts",
-                                create: "/blog-posts/create",
-                                edit: "/blog-posts/edit/:id",
-                                show: "/blog-posts/show/:id",
+                                list: "/blog_posts",
+                                create: "/blog_posts/create",
+                                edit: "/blog_posts/edit/:id",
+                                show: "/blog_posts/show/:id",
                                 meta: {
                                     canDelete: true,
                                 },

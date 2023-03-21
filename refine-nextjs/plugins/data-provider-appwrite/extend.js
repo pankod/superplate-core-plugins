@@ -9,10 +9,10 @@ const base = {
         ],
         refineProps: [
             `dataProvider={dataProvider(appwriteClient, {
-                databaseId: "default",
+                databaseId: "database",
             })}`,
             `liveProvider={liveProvider(appwriteClient, {
-                databaseId: "default",
+                databaseId: "database",
             })}`,
             `authProvider={authProvider}`,
         ],

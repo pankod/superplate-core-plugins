@@ -1,4 +1,4 @@
-import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>EditInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
+import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>CreateInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 import { GetServerSideProps } from "next";
 <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
 import { authProvider } from "src/authProvider";
@@ -7,8 +7,8 @@ import { authProvider } from "src/authProvider";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 
-export default function BlogPostEdit() {
-    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>EditInferencer 
+export default function BlogPostCreate() {
+    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>CreateInferencer 
 <%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
 fieldTransformer={(field: any) => {
   if (["$permissions", "$updatedAt"].includes(field.key)) {
@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
             },
             redirect: {
                 destination: `${redirectTo}?to=${encodeURIComponent(
-          "/blog_posts"
+          "/blog-posts"
         )}`,
                 permanent: false,
             },

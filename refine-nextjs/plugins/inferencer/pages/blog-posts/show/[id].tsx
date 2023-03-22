@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
             },
             redirect: {
                 destination: `${redirectTo}?to=${encodeURIComponent(
-          "/blog_posts"
+          "/blog-posts"
         )}`,
                 permanent: false,
             },

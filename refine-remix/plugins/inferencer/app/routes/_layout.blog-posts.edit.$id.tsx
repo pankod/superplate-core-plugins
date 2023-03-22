@@ -2,7 +2,8 @@ import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%
 
 export default function BlogPostEdit() {
     return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>EditInferencer 
-<%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
+<
+%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
 fieldTransformer={(field: any) => {
   if (["$permissions", "$updatedAt"].includes(field.key)) {
     return false;

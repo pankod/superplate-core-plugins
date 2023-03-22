@@ -66,10 +66,10 @@ export default function App() {
                             <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                             {
                                 name: "blog-posts",
-                                list: "/blog_posts",
-                                create: "/blog_posts/create",
-                                edit: "/blog_posts/edit/:id",
-                                show: "/blog_posts/show/:id",
+                                list: "/blog-posts",
+                                create: "/blog-posts/create",
+                                edit: "/blog-posts/edit/:id",
+                                show: "/blog-posts/show/:id",
                                 meta: {
                                     canDelete: true,
                                 },
@@ -77,10 +77,10 @@ export default function App() {
                             <%_ } else { _%>
                             {
                                 name: "blog_posts",
-                                list: "/blog_posts",
-                                create: "/blog_posts/create",
-                                edit: "/blog_posts/edit/:id",
-                                show: "/blog_posts/show/:id",
+                                list: "/blog-posts",
+                                create: "/blog-posts/create",
+                                edit: "/blog-posts/edit/:id",
+                                show: "/blog-posts/show/:id",
                                 meta: {
                                     canDelete: true,
                                 },

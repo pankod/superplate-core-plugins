@@ -3,32 +3,49 @@ const base = {
         refineImports: [`Authenticated`, `AuthBindings`],
         import: [
             `import axios from "axios";`,
-            `import { useAuth0 } from "@auth0/auth0-react";`,
+            `import { useKeycloak } from "@react-keycloak/web";`,
         ],
         localImport: [
             `import { Login } from "pages/login";`,
             `import { authProvider } from "./auth-provider";`,
         ],
         innerHooks: [
-            `const { isLoading, user, logout, getIdTokenClaims } = useAuth0();`
+            `const { keycloak, initialized } = useKeycloak();`
         ],
         inner: [
             `
-            if (isLoading) {
-                return <span>loading...</span>
-            }`,
+            if (!initialized) {
+                return <div>Loading...</div>;
+            }
+            `,
             `
             const authProvider: AuthBindings = {
                 login: async () => {
+                    const urlSearchParams = new URLSearchParams(window.location.search);
+                    const { to } = Object.fromEntries(urlSearchParams.entries());
+                    await keycloak.login({`,
+            "redirectUri: to ? `${ window.location.origin }${ to }` : undefined",
+            `});
                     return {
-                        success: true,
+                        success: false,
+                        error: new Error("Login failed"),
                     };
                 },
                 logout: async () => {
-                    logout({ returnTo: window.location.origin });
-                    return {
-                        success: true,
-                    };
+                    try {
+                        await keycloak.logout({
+                            redirectUri: window.location.origin,
+                        });
+                        return {
+                            success: true,
+                            redirectTo: "/login",
+                        };
+                    } catch (error) {
+                        return {
+                            success: false,
+                            error: new Error("Logout failed"),
+                        };
+                    }
                 },
                 onError: async (error) => {
                     console.error(error);
@@ -36,38 +53,36 @@ const base = {
                 },
                 check: async () => {
                     try {
-                        const token = await getIdTokenClaims();
+                        const { token } = keycloak;
                         if (token) {
                             axios.defaults.headers.common = {`,
-            "Authorization: `Bearer ${token.__raw}`",
-            `
-                            };
+            "Authorization: `Bearer ${ token }`",
+            `};
                             return {
                                 authenticated: true,
                             };
                         } else {
                             return {
                                 authenticated: false,
-                                error: new Error("Token not found"),
-                                redirectTo: "/login",
                                 logout: true,
+                                redirectTo: "/login",
+                                error: new Error("Token not found"),
                             };
                         }
-                    } catch (error: any) {
+                    } catch (error) {
                         return {
                             authenticated: false,
-                            error: new Error(error),
-                            redirectTo: "/login",
                             logout: true,
+                            redirectTo: "/login",
+                            error: new Error("Token not found"),
                         };
                     }
                 },
                 getPermissions: async () => null,
                 getIdentity: async () => {
-                    if (user) {
+                    if (keycloak?.tokenParsed) {
                         return {
-                            ...user,
-                            avatar: user.picture,
+                            name: keycloak.tokenParsed.family_name,
                         };
                     }
                     return null;
@@ -78,19 +93,15 @@ const base = {
         refineProps: ["authProvider={authProvider}"],
         mainWrapper: [
             [
-                `<Auth0Provider
-                    domain="refine.eu.auth0.com"
-                    clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
-                    redirectUri={window.location.origin}
-                >`,
-                `</Auth0Provider>`
+                `<ReactKeycloakProvider authClient={keycloak}>`,
+                `</ReactKeycloakProvider>`
             ],
         ],
     },
 };
 
 module.exports = {
-    extend(answers) {
+    extend() {
         return base;
     },
 };

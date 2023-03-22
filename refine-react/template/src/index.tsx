@@ -4,6 +4,11 @@ import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 <%_ } _%>
 
+<%_ if (answers["auth-provider"] === "auth-provider-keycloak") { _%>
+import Keycloak from "keycloak-js";
+import { ReactKeycloakProvider } from "@react-keycloak/web";
+<%_ } _%>
+
 
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
@@ -11,29 +16,40 @@ import App from "./App";
 import "./i18n";
 <%_ } _%>
 
+<%_ if (answers["auth-provider"] === "auth-provider-keycloak") { _%>
+const keycloak = new Keycloak({
+    clientId: "refine-demo",
+    url: "https://lemur-0.cloud-iam.com/auth",
+    realm: "refine",
+});
+<%_ } _%>
+
 const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
 
+<%
+    var mainWrapper = _app.mainWrapper || [];
+    var top = mainWrapper.map(wrapper => wrapper[0] || "");
+    var bottom = mainWrapper.map(wrapper => wrapper[1] || "").reverse();
+%>
+
+
 root.render(
-    <React.StrictMode>
+    <%_ if (_app.hasStrictMode === true) { _%>
+        <React.StrictMode>
+    <%_ } _%>
         <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         <React.Suspense fallback="loading">
         <%_ } _%>
-            <%_ if (answers["auth-provider"] === "auth-provider-auth0") { _%>
-            <Auth0Provider
-                domain="refine.eu.auth0.com"
-                clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
-                redirectUri={window.location.origin}
-            >
-            <%_ } _%>
+            <%- top.join("\n") %>
                 <App />
-            <%_ if (answers["auth-provider"] === "auth-provider-auth0") { _%>
-            </Auth0Provider>
-            <%_ } _%>
+            <%- bottom.join("\n") %>
         <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
         </React.Suspense>
         <%_ } _%>
+    <%_ if (_app.hasStrictMode === true) { _%>
     </React.StrictMode>
+    <%_ } _%>
 );
 
 // If you want to start measuring performance in your app, pass a function

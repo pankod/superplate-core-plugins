@@ -4,6 +4,7 @@ const base = {
         isNoAuthRoutes: false,
         hasRoutes: true,
         isCustomLoginPage: false,
+        hasStrictMode: true,
         authPageProps: [],
         loginPageProps: [],
         refineProps: [],
@@ -59,10 +60,17 @@ module.exports = {
 
         if (
             answers["auth-provider"] === "auth-provider-auth0" ||
-            answers["auth-provider"] === "auth-provider-google"
+            answers["auth-provider"] === "auth-provider-google" ||
+            answers["auth-provider"] === "auth-provider-keycloak"
         ) {
             base._app.isCustomLoginPage = true;
         }
+
+        // ## hasStrictMode
+        if (answers["auth-provider"] === "auth-provider-keycloak") {
+            base._app.hasStrictMode = false;
+        }
+        // ## hasStrictMode
 
 
 

@@ -41,6 +41,7 @@ export const authProvider: AuthBindings = {
             };
         }
         Cookies.remove(TOKEN_KEY);
+        appwriteClient.setJWT(undefined);
 
         return {
             success: true,

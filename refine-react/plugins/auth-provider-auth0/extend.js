@@ -76,6 +76,16 @@ const base = {
             `
         ],
         refineProps: ["authProvider={authProvider}"],
+        mainWrapper: [
+            [
+                `<Auth0Provider
+                    domain="refine.eu.auth0.com"
+                    clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
+                    redirectUri={window.location.origin}
+                >`,
+                `</Auth0Provider>`
+            ],
+        ],
     },
 };
 

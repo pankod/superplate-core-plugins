@@ -61,6 +61,43 @@ export default function App() {
                     <Refine
                         routerProvider={routerProvider}
                         <%- (_app.refineProps || []).join("\n") %>
+                        <%_ if (answers["inferencer"] === 'inferencer' || answers["inferencer-headless"] === 'inferencer-headless') { _%>
+                        resources={[
+                            <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                            {
+                                name: "blog-posts",
+                                list: "/blog-posts",
+                                create: "/blog-posts/create",
+                                edit: "/blog-posts/edit/:id",
+                                show: "/blog-posts/show/:id",
+                                meta: {
+                                    canDelete: true,
+                                },
+                            },
+                            <%_ } else { _%>
+                            {
+                                name: "blog_posts",
+                                list: "/blog-posts",
+                                create: "/blog-posts/create",
+                                edit: "/blog-posts/edit/:id",
+                                show: "/blog-posts/show/:id",
+                                meta: {
+                                    canDelete: true,
+                                },
+                            },
+                            <%_ } _%>
+                            {
+                                name: "categories",
+                                list: "/categories",
+                                create: "/categories/create",
+                                edit: "/categories/edit/:id",
+                                show: "/categories/show/:id",
+                                meta: {
+                                    canDelete: true,
+                                },
+                            }
+                        ]}
+                        <%_ } _%>
                         options={{
                             syncWithLocation: true,
                             warnWhenUnsavedChanges: true,

@@ -45,16 +45,29 @@ function App() {
             <Refine <%- (_app.refineProps || []).join("\n") %> 
                 <%_ if (_app.hasRoutes === true) { _%>
                     resources={[
+                        <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                         {
-                            name: "products",
-                            list: "/products",
-                            create: "/products/create",
-                            edit: "/products/edit/:id",
-                            show: "/products/show/:id",
+                            name: "blog-posts",
+                            list: "/blog-posts",
+                            create: "/blog-posts/create",
+                            edit: "/blog-posts/edit/:id",
+                            show: "/blog-posts/show/:id",
                             meta: {
                                 canDelete: true,
                             },
                         },
+                        <%_ } else { _%>
+                        {
+                            name: "blog_posts",
+                            list: "/blog-posts",
+                            create: "/blog-posts/create",
+                            edit: "/blog-posts/edit/:id",
+                            show: "/blog-posts/show/:id",
+                            meta: {
+                                canDelete: true,
+                            },
+                        },
+                        <%_ } _%>
                         {
                             name: "categories",
                             list: "/categories",
@@ -89,12 +102,18 @@ function App() {
                             </Authenticated>
                         }
                     >
-                        <Route index element={<NavigateToResource resource="products" />} />
-                        <Route path="/products">
-                            <Route index element={<ProductList />} />
-                            <Route path="create" element={<ProductCreate />} />
-                            <Route path="edit/:id" element={<ProductEdit />} />
-                            <Route path="show/:id" element={<ProductShow />} />
+                        <Route index element={
+                            <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                                <NavigateToResource resource="blog-posts" />
+                            <%_ } else { _%>
+                                <NavigateToResource resource="blog_posts" />
+                            <%_ } _%>
+                        } />
+                        <Route path="/blog-posts">
+                            <Route index element={<BlogPostList />} />
+                            <Route path="create" element={<BlogPostCreate />} />
+                            <Route path="edit/:id" element={<BlogPostEdit />} />
+                            <Route path="show/:id" element={<BlogPostShow />} />
                         </Route>
                         <Route path="/categories">
                             <Route index element={<CategoryList />} />
@@ -137,12 +156,18 @@ function App() {
                 <%_ if (_app.hasRoutes === true && _app.isNoAuthRoutes) { _%>
                 <Routes>
                     <Route element={<Layout Header={Header}><Outlet /></Layout>}>
-                        <Route index element={<NavigateToResource resource="products" />} />
-                        <Route path="/products">
-                            <Route index element={<ProductList />} />
-                            <Route path="create" element={<ProductCreate />} />
-                            <Route path="edit/:id" element={<ProductEdit />} />
-                            <Route path="show/:id" element={<ProductShow />} />
+                        <Route index element={
+                            <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                                <NavigateToResource resource="blog-posts" />
+                            <%_ } else { _%>
+                                <NavigateToResource resource="blog_posts" />
+                            <%_ } _%>
+                        } />
+                        <Route path="/blog-posts">
+                            <Route index element={<BlogPostList />} />
+                            <Route path="create" element={<BlogPostCreate />} />
+                            <Route path="edit/:id" element={<BlogPostEdit />} />
+                            <Route path="show/:id" element={<BlogPostShow />} />
                         </Route>
                         <Route path="/categories">
                             <Route index element={<CategoryList />} />

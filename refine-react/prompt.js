@@ -173,6 +173,11 @@ module.exports = {
                     name: "auth-provider-google",
                     hint: "Installs Google Auth Provider.",
                 },
+                {
+                    message: "Keycloak",
+                    name: "auth-provider-keycloak",
+                    hint: "Installs Keycloak Auth Provider.",
+                },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-supabase" ||

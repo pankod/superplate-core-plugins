@@ -4,6 +4,7 @@ const base = {
         isNoAuthRoutes: false,
         hasRoutes: true,
         isCustomLoginPage: false,
+        hasStrictMode: true,
         authPageProps: [],
         loginPageProps: [],
         refineProps: [],
@@ -59,10 +60,17 @@ module.exports = {
 
         if (
             answers["auth-provider"] === "auth-provider-auth0" ||
-            answers["auth-provider"] === "auth-provider-google"
+            answers["auth-provider"] === "auth-provider-google" ||
+            answers["auth-provider"] === "auth-provider-keycloak"
         ) {
             base._app.isCustomLoginPage = true;
         }
+
+        // ## hasStrictMode
+        if (answers["auth-provider"] === "auth-provider-keycloak") {
+            base._app.hasStrictMode = false;
+        }
+        // ## hasStrictMode
 
 
 
@@ -87,18 +95,18 @@ module.exports = {
         }
         // ## authPageProps
 
-        // ## resources & localImport
+        // ## localImport
         if (base._app.isAuthRoutes || base._app.isNoAuthRoutes) {
             // ignore this data providers
             if (!["data-provider-graphql",
                 "data-provider-hasura",
                 "data-provider-medusa"].includes(dataProvider)) {
 
-                base._app.localImport.push(`import { ProductList, ProductCreate, ProductEdit, ProductShow } from "pages/products";`);
+                base._app.localImport.push(`import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "pages/blog-posts";`);
                 base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
             }
         }
-        // ## resources
+        // ## localImport
         return base;
     },
 };

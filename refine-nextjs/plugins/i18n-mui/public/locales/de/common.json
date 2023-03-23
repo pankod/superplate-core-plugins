@@ -108,11 +108,14 @@
     "dashboard": {
         "title": "Dashboard"
     },
-    "products": {
-        "products": "Produkte",
+    "blog_posts": {
+        "blog_posts": "Blogeinträge",
         "fields": {
             "id": "Id",
             "title": "Titel",
+            "content": "Inhalt",
+            "status": "Status",
+            "category": "Kategorien",
             "createdAt": "Erstellt am"
         },
         "titles": {

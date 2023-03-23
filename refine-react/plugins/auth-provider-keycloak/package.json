@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "keycloak-js": "^20.0.3",
+        "@react-keycloak/web": "^3.4.0",
+        "axios": "^0.26.1"
+    }
+}

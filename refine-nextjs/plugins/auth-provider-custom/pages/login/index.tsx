@@ -14,11 +14,11 @@
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
     
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { GetServerSideProps } from "next";
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
-<%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
+<%_ if (_app.isAuthProviderCheck) { _%>
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 
@@ -47,7 +47,7 @@ export default function Login() {
 Login.noLayout = true;
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
+    <%_ if (_app.isAuthProviderCheck) { _%>
     const { authenticated, redirectTo } = await authProvider.check(context);
     <%_ } _%>
 
@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     );
     <%_ } _%>
 
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
+    <%_ if (_app.isAuthProviderCheck) { _%>
     if (authenticated) {
         return {
             props: {},

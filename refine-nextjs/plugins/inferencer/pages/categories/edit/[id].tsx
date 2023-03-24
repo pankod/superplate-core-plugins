@@ -1,10 +1,15 @@
 import { <%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>EditInferencer } from "@refinedev/inferencer/<%- (_app.inferencer.folder || "") _%>";
 import { GetServerSideProps } from "next";
-<%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
+<%_ if (_app.isAuthProviderCheck) { _%>
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+<%_ } _%>
+
+<%_ if (_app.isNextAuthCheck) { _%>
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../api/auth/[...nextauth]";
 <%_ } _%>
 
 export default function CategoryEdit() {
@@ -12,7 +17,16 @@ export default function CategoryEdit() {
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
+
+    <%_ if (_app.isNextAuthCheck) { _%>
+      const session = await getServerSession(
+        context.req,
+        context.res,
+        authOptions,
+    );
+    <%_ } _%>
+    
+    <%_ if (_app.isAuthProviderCheck) { _%>
     const { authenticated, redirectTo } = await authProvider.check(context);
     <%_ } _%>
 
@@ -23,7 +37,23 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     );
     <%_ } _%>
 
-    <%_ if (answers["auth-provider"] !== 'none' || answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-strapi-v4' || answers["data-provider"] === 'data-provider-appwrite') { _%>
+    <%_ if (_app.isNextAuthCheck) { _%>
+    if (!session) {
+        return {
+            props: {
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                ...translateProps,
+                <%_ } _%>
+            },
+            redirect: {
+                destination: `/login?to=${encodeURIComponent("/categories")}`,
+                permanent: false,
+            },
+        };
+    }
+    <%_ } _%>
+
+    <%_ if (_app.isAuthProviderCheck) { _%>
     if (!authenticated) {
         return {
             props: {

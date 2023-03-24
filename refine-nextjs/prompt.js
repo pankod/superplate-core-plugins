@@ -149,6 +149,11 @@ module.exports = {
                     name: "auth-provider-custom",
                     hint: "Installs a mock Auth Provider.",
                 },
+                {
+                    message: "Auth0",
+                    name: "auth-provider-auth0",
+                    hint: "Installs a Auth0 with NextAuth.js",
+                },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-supabase" ||

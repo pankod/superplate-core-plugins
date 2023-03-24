@@ -1,4 +1,4 @@
-import { WelcomePage } from "@refinedev/mui";
+import { WelcomePage } from "@refinedev/core";
 
 export default function Welcome() {
     return <WelcomePage />;

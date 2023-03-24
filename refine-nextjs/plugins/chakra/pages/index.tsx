@@ -1,4 +1,4 @@
-import { WelcomePage } from "@refinedev/chakra-ui";
+import { WelcomePage } from "@refinedev/core";
 
 export default function Welcome() {
     return <WelcomePage />;

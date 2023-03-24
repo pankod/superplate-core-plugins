@@ -1,7 +1,9 @@
-import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%>
-<%_ if (answers["ui-framework"] === 'no') { _%>
-    WelcomePage
-<%_ } _%> } from '@refinedev/core';
+import { 
+    Refine,
+    GitHubBanner, 
+    WelcomePage,
+    <%- (_app.refineImports || []).join("\n,") _%>, 
+} from '@refinedev/core';
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 <%_ if (answers["ui-framework"] === 'antd') { _%>

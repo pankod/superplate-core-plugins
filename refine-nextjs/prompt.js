@@ -154,6 +154,11 @@ module.exports = {
                     name: "auth-provider-auth0",
                     hint: "Installs a Auth0 with NextAuth.js",
                 },
+                {
+                    message: "Keycloak",
+                    name: "auth-provider-keycloak",
+                    hint: "Installs a Keycloak with NextAuth.js",
+                },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-supabase" ||

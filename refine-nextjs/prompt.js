@@ -152,17 +152,17 @@ module.exports = {
                 {
                     message: "Auth0",
                     name: "auth-provider-auth0",
-                    hint: "Installs a Auth0 with NextAuth.js",
+                    hint: "Installs Auth0 with NextAuth.js",
                 },
                 {
                     message: "Google",
                     name: "auth-provider-google",
-                    hint: "Installs a Google with NextAuth.js",
+                    hint: "Installs Google with NextAuth.js",
                 },
                 {
                     message: "Keycloak",
                     name: "auth-provider-keycloak",
-                    hint: "Installs a Keycloak with NextAuth.js",
+                    hint: "Installs Keycloak with NextAuth.js",
                 },
             ],
             skip: ({ answers }) =>

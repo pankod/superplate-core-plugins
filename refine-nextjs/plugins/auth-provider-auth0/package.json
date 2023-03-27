@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "nookies": "^2.5.2",
+        "next-auth": "^4.20.1"
+    }
+}

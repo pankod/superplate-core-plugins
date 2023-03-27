@@ -14,8 +14,8 @@
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { GetServerSideProps } from "next";
+<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 <%_ } _%>
 

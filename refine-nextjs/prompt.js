@@ -149,6 +149,21 @@ module.exports = {
                     name: "auth-provider-custom",
                     hint: "Installs a mock Auth Provider.",
                 },
+                {
+                    message: "Auth0",
+                    name: "auth-provider-auth0",
+                    hint: "Installs Auth0 with NextAuth.js",
+                },
+                {
+                    message: "Google",
+                    name: "auth-provider-google",
+                    hint: "Installs Google with NextAuth.js",
+                },
+                {
+                    message: "Keycloak",
+                    name: "auth-provider-keycloak",
+                    hint: "Installs Keycloak with NextAuth.js",
+                },
             ],
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-supabase" ||

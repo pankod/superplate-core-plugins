@@ -1,23 +1,17 @@
 const base = {
     _app: {
-        refineProps: [
-            "notificationProvider={notificationProvider}",
-        ],
-        import: [
-            `import { ChakraProvider } from "@chakra-ui/react";`
-        ],
+        refineProps: ["notificationProvider={notificationProvider}"],
+        import: [`import { ChakraProvider } from "@chakra-ui/react";`],
         refineChakraImports: [
             "notificationProvider",
-            "refineTheme",
-            "Layout",
-            "ErrorComponent"
+            "RefineThemes",
+            "ThemedLayout",
+            "ErrorComponent",
         ],
         wrapper: [
-            [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
+            [`<ChakraProvider theme={RefineThemes.Blue}>`, "</ChakraProvider>"],
         ],
-        localImport: [
-            `import { Header } from "./components/header";`
-        ],
+        localImport: [`import { Header } from "./components/header";`],
     },
 };
 

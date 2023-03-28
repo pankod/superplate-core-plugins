@@ -1,10 +1,6 @@
-import {
-    PropsWithChildren,
-    createContext,
-    useEffect,
-    useState,
-} from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { ConfigProvider, theme } from "antd";
+import { RefineThemes } from "@refinedev/antd";
 
 type ColorModeContextType = {
     mode: string;
@@ -50,7 +46,9 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
             }}
         >
             <ConfigProvider
+                // you can change the theme colors here. example: ...RefineThemes.Magenta,
                 theme={{
+                    ...RefineThemes.Blue,
                     algorithm:
                         mode === "light" ? defaultAlgorithm : darkAlgorithm,
                 }}

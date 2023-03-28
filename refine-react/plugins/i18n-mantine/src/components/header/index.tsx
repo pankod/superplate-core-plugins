@@ -1,17 +1,13 @@
-
+import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import {
-  useGetIdentity,
-  useGetLocale,
-  useSetLocale,
-} from "@refinedev/core";
-import {
-  ActionIcon,
-  Group,
-  Header as MantineHeader,
-  Title,
-  Avatar,
-  useMantineColorScheme,
-  Menu,
+    ActionIcon,
+    Avatar,
+    Group,
+    Header as MantineHeader,
+    Title,
+    useMantineColorScheme,
+    useMantineTheme,
+    Menu,
 } from "@mantine/core";
 import { IconSun, IconMoonStars, IconLanguage } from "@tabler/icons";
 
@@ -24,63 +20,92 @@ type IUser = {
 };
 
 export const Header: React.FC = () => {
-  const { data: user } = useGetIdentity<IUser>();
-  const showUserInfo = user && (user.name || user.avatar);
+    const { data: user } = useGetIdentity<IUser>();
 
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
+    const changeLanguage = useSetLocale();
+    const locale = useGetLocale();
+    const currentLocale = locale();
 
-  const changeLanguage = useSetLocale();
-  const locale = useGetLocale();
-  const currentLocale = locale();
+    const theme = useMantineTheme();
 
-  return (
-    <MantineHeader height={50} p="xs">
-      <Group position="right">
-        <Menu shadow="md">
-          <Menu.Target>
-            <ActionIcon variant="outline">
-              <IconLanguage size={18} />
-            </ActionIcon>
-          </Menu.Target>
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const dark = colorScheme === "dark";
 
-          <Menu.Dropdown>
-            {[...(i18n.languages ?? [])].sort().map((lang: string) => (
-              <Menu.Item
-                key={lang}
-                onClick={() => {
-                  changeLanguage(lang);
-                }}
-                value={lang}
-                color={lang === currentLocale ? "primary" : undefined}
-                icon={
-                  <Avatar
-                    src={`/images/flags/${lang}.svg`}
-                    size={18}
-                    radius="lg"
-                  />
-                }
-              >
-                {lang === "en" ? "English" : "German"}
-              </Menu.Item>
-            ))}
-          </Menu.Dropdown>
-        </Menu>
-        <ActionIcon
-          variant="outline"
-          color={dark ? "yellow" : "primary"}
-          onClick={() => toggleColorScheme()}
-          title="Toggle color scheme"
+    const borderColor = dark ? theme.colors.dark[6] : theme.colors.gray[2];
+
+    return (
+        <MantineHeader
+            zIndex={199}
+            height={64}
+            py={6}
+            px="sm"
+            sx={{
+                borderBottom: `1px solid ${borderColor}`,
+            }}
         >
-          {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
-        </ActionIcon>
-        {showUserInfo && (
-          <Group spacing="xs">
-            <Title order={6}>{user?.name}</Title>
-            <Avatar src={user?.avatar} alt={user?.name} radius="xl" />
-          </Group>
-        )}
-      </Group>
-    </MantineHeader>
-  );
-};      
+            <Group
+                position="right"
+                align="center"
+                sx={{
+                    height: "100%",
+                }}
+            >
+                <Menu shadow="md">
+                    <Menu.Target>
+                        <ActionIcon variant="outline">
+                            <IconLanguage size={18} />
+                        </ActionIcon>
+                    </Menu.Target>
+
+                    <Menu.Dropdown>
+                        {[...(i18n.languages ?? [])]
+                            .sort()
+                            .map((lang: string) => (
+                                <Menu.Item
+                                    key={lang}
+                                    onClick={() => {
+                                        changeLanguage(lang);
+                                    }}
+                                    value={lang}
+                                    color={
+                                        lang === currentLocale
+                                            ? "primary"
+                                            : undefined
+                                    }
+                                    icon={
+                                        <Avatar
+                                            src={`/images/flags/${lang}.svg`}
+                                            size={18}
+                                            radius="lg"
+                                        />
+                                    }
+                                >
+                                    {lang === "en" ? "English" : "German"}
+                                </Menu.Item>
+                            ))}
+                    </Menu.Dropdown>
+                </Menu>
+
+                <ActionIcon
+                    variant="outline"
+                    color={dark ? "yellow" : "primary"}
+                    onClick={() => toggleColorScheme()}
+                    title="Toggle color scheme"
+                >
+                    {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
+                </ActionIcon>
+
+                {(user?.name || user?.avatar) && (
+                    <Group spacing="xs">
+                        {user?.name && <Title order={6}>{user?.name}</Title>}
+                        <Avatar
+                            src={user?.avatar}
+                            alt={user?.name}
+                            radius="xl"
+                        />
+                    </Group>
+                )}
+            </Group>
+        </MantineHeader>
+    );
+};

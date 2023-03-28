@@ -12,7 +12,7 @@ import { Outlet } from "@remix-run/react";
     import { Layout } from "@refinedev/chakra-ui";
 <%_ } _%>
 
-<%_ if ((answers["auth-provider"] === 'none') && (answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-appwrite' || answers["data-provider"] === 'data-provider-strapi-v4')) { _%>
+<%_ if (_app.isAuthProviderCheck) { _%>
 import type { LoaderArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { authProvider } from "~/authProvider";
@@ -24,7 +24,7 @@ export default function BaseLayout() {
     );
 }
 
-<%_ if ((answers["auth-provider"] === 'none') && (answers["data-provider"] === 'data-provider-supabase' || answers["data-provider"] === 'data-provider-appwrite' || answers["data-provider"] === 'data-provider-strapi-v4')) { _%>
+<%_ if (_app.isAuthProviderCheck) { _%>
 /**
  * We're checking if the current session is authenticated.
  * If not, we're redirecting the user to the login page.

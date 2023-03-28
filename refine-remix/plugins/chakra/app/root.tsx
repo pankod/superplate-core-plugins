@@ -7,15 +7,17 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react'
 import { MetaFunction, LinksFunction } from '@remix-run/node' // Depends on the runtime you choose
-
-import { Refine, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
-import routerProvider from "@refinedev/remix-router";
+import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import {ChakraProvider} from "@chakra-ui/react";
     import {  refineTheme, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
+import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import routerProvider, { UnsavedChangesNotifier } from "@refinedev/remix-router";
+
 
 import { ServerStyleContext, ClientStyleContext } from './context'
 
@@ -97,18 +99,69 @@ const Document = withEmotionCache(
 );
 
 export default function App() {
+  <%- (_app.innerHooks || []).join("\n") %>
+  <%- (_app.inner || []).join("\n") %>
+
   return (
     <Document>
+      <GitHubBanner />
       <ChakraProvider theme={refineTheme}>
+      <RefineKbarProvider>
       <%- top.join("\n") %>
         <Refine
             routerProvider={routerProvider}
             <%- (_app.refineProps || []).join("\n") %>
+            <%_ if (answers["inferencer"] === 'inferencer' || answers["inferencer-headless"] === 'inferencer-headless') { _%>
+            resources={[
+                <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+                {
+                    name: "blog-posts",
+                    list: "/blog-posts",
+                    create: "/blog-posts/create",
+                    edit: "/blog-posts/edit/:id",
+                    show: "/blog-posts/show/:id",
+                    meta: {
+                        canDelete: true,
+                    },
+                },
+                <%_ } else { _%>
+                {
+                    name: "blog_posts",
+                    list: "/blog-posts",
+                    create: "/blog-posts/create",
+                    edit: "/blog-posts/edit/:id",
+                    show: "/blog-posts/show/:id",
+                    meta: {
+                        canDelete: true,
+                    },
+                },
+                <%_ } _%>
+                {
+                    name: "categories",
+                    list: "/categories",
+                    create: "/categories/create",
+                    edit: "/categories/edit/:id",
+                    show: "/categories/show/:id",
+                    meta: {
+                        canDelete: true,
+                    },
+                }
+            ]}
+            <%_ } _%>
+            options={{
+                syncWithLocation: true,
+                warnWhenUnsavedChanges: true,
+            }}
         >
           <Outlet />
+          <UnsavedChangesNotifier />
+                        <RefineKbar />
         </Refine>
       <%- bottom.join("\n") %>
+      </RefineKbarProvider>
       </ChakraProvider>
     </Document>
   );
 }
+
+<%- (_app.loader || []).join("\n,") _%>

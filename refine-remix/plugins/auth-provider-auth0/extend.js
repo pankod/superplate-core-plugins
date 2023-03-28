@@ -24,7 +24,7 @@ const base = {
             const authProvider: AuthBindings = {
                 login: async ({ providerName }) => {
                     if (providerName) {`,
-            "window.location.href = `/ auth / ${ providerName } ? to = ${ to }`;",
+            "window.location.href = `/auth/${providerName} ? to = ${to}`;",
             `return {
                             success: true,
                         };

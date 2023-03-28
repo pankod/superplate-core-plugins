@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "remix-auth": "^3.4.0",
+        "remix-auth-google": "^1.2.0"
+    }
+}

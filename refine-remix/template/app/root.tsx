@@ -6,6 +6,7 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
+    useLoaderData,
 } from "@remix-run/react";
 
 import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
@@ -124,3 +125,5 @@ export function links() {
         <%- (_app.styleImport || []).join("\n,") _%>
     ];
 };
+
+<%- (_app.loader || []).join("\n,") _%>

@@ -30,9 +30,6 @@ module.exports = {
         }
         // ## isAuthProviderCheck
 
-        console.log("-- base", JSON.stringify(base, null, 4));
-
-
         return base;
     },
 };

@@ -75,6 +75,7 @@ export default function Login() {
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
+                    justifyContent: "center",
                 }}
                 />
 
@@ -84,7 +85,7 @@ export default function Login() {
             }} variant="contained">Sign in</Button>
                 </form>
                 
-                <Typography align="center" color={"text.secondary"} fontSize="14px">
+                <Typography align="center" color={"text.secondary"} fontSize="12px">
                 Powered by Keycloak
                 </Typography>
             </Box>

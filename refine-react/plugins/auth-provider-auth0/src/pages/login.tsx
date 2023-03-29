@@ -99,6 +99,7 @@ export const Login: React.FC = () => {
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
+                    justifyContent: "center",
                 }}
                 />
 
@@ -109,7 +110,7 @@ export const Login: React.FC = () => {
                         Sign in
                     <%_ } _%>
                 </Button>
-                <Typography align="center" color={"text.secondary"} fontSize="14px">
+                <Typography align="center" color={"text.secondary"} fontSize="12px">
                 Powered by <Auth0Icon /> Auth0
                 </Typography>
             </Box>

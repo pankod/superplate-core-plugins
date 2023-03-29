@@ -124,12 +124,13 @@ export const Login: React.FC = () => {
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
+                    justifyContent: "center",
                 }}
                 />
 
                 <GoogleButton />
 
-                <Typography align="center" color={"text.secondary"} fontSize="14px">
+                <Typography align="center" color={"text.secondary"} fontSize="12px">
                 Powered by <GoogleIcon /> Auth0
                 </Typography>
             </Box>

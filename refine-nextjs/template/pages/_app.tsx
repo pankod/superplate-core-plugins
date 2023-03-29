@@ -45,9 +45,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
         }
 
         return (
-            <Layout Header={Header}>
+            <ThemedLayout Header={Header}>
                 <Component {...pageProps} />
-            </Layout>
+            </ThemedLayout>
         );
     };
 

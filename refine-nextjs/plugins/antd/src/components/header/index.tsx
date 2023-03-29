@@ -44,12 +44,14 @@ export const Header: React.FC = () => {
                     }
                     defaultChecked={mode === "dark"}
                 />
-                <Space style={{ marginLeft: "8px" }} size="middle">
-                    {user?.name && <Text strong>{user.name}</Text>}
-                    {user?.avatar && (
-                        <Avatar src={user?.avatar} alt={user?.name} />
-                    )}
-                </Space>
+                {(user?.name || user?.avatar) && (
+                    <Space style={{ marginLeft: "8px" }} size="middle">
+                        {user?.name && <Text strong>{user.name}</Text>}
+                        {user?.avatar && (
+                            <Avatar src={user?.avatar} alt={user?.name} />
+                        )}
+                    </Space>
+                )}
             </Space>
         </AntdLayout.Header>
     );

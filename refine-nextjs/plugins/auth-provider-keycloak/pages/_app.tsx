@@ -186,9 +186,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
         }
 
         return (
-            <Layout Header={Header}>
+            <ThemedLayout Header={Header}>
                 <Component {...pageProps} />
-            </Layout>
+            </ThemedLayout>
         );
     };
 

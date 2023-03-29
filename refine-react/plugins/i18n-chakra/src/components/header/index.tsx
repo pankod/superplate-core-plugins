@@ -1,100 +1,159 @@
-  import { 
-    useGetIdentity,
-    useGetLocale,
-    useSetLocale,
-  } from "@refinedev/core";
-  import { 
-    Box,
-    IconButton,
-    HStack,
-    Text,
+import {
     Avatar,
+    Box,
+    HStack,
     Icon,
+    IconButton,
+    Text,
+    useColorMode,
+    useColorModeValue,
     Menu,
     MenuButton,
     MenuItem,
     MenuList,
-    useColorMode,
-  } from "@chakra-ui/react";
-  import { IconMoon, IconSun, IconLanguage } from "@tabler/icons";
+} from "@chakra-ui/react";
+import { RefineThemedLayoutHeaderProps } from "@refinedev/chakra-ui";
+import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
+import {
+    IconLayoutSidebarLeftCollapse,
+    IconLayoutSidebarLeftExpand,
+    IconMoon,
+    IconSun,
+    IconLanguage,
+} from "@tabler/icons";
 
-  import i18n from "i18n";
-  
-  type IUser = {
+import i18n from "i18n";
+
+type IUser = {
     id: number;
     name: string;
     avatar: string;
 };
 
-  export const Header: React.FC = () => {
+export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+    isSiderOpen,
+    onToggleSiderClick,
+    toggleSiderIcon: toggleSiderIconFromProps,
+}) => {
     const { data: user } = useGetIdentity<IUser>();
-    const showUserInfo = user && (user.name || user.avatar);
-  
+
     const { colorMode, toggleColorMode } = useColorMode();
+
+    const bgColor = useColorModeValue(
+        "refine.header.bg.light",
+        "refine.header.bg.dark",
+    );
 
     const changeLanguage = useSetLocale();
     const locale = useGetLocale();
     const currentLocale = locale();
-  
-    return (
-      <Box
-          py="2"
-          px="4"
-          display="flex"
-          justifyContent="flex-end"
-          gap={2}
-          w="full"
-          bg="chakra-body-bg"
-      >
-          <Menu>
-              <MenuButton
-                  as={IconButton}
-                  aria-label="Options"
-                  icon={<IconLanguage />}
-                  variant="ghost"
-              />
-              <MenuList>
-                  {[...(i18n.languages ?? [])].sort().map((lang: string) => (
-                    <MenuItem
-                      key={lang}
-                      onClick={() => {
-                        changeLanguage(lang);
-                      }}
-                      value={lang}
-                      color={lang === currentLocale ? "green" : undefined}
-                      icon={
-                        <Avatar
-                          src={`/images/flags/${lang}.svg`}
-                          h={18}
-                          w={18}
-                        />
-                      }
-                    >
-                      {lang === "en" ? "English" : "German"}
-                    </MenuItem>
-                  ))}
-              </MenuList>
-          </Menu>
-          <IconButton
-              variant="ghost"
-              aria-label="Toggle theme"
-              onClick={toggleColorMode}
-          >
-              <Icon
-                  as={colorMode === "light" ? IconMoon : IconSun}
-                  w="24px"
-                  h="24px"
-              />
-          </IconButton>
 
-          {showUserInfo && (
+    const hasSidebarToggle = Boolean(onToggleSiderClick);
+
+    return (
+        <Box
+            py="2"
+            pr="4"
+            pl="2"
+            display="flex"
+            alignItems="center"
+            justifyContent={
+                hasSidebarToggle
+                    ? { base: "flex-end", md: "space-between" }
+                    : "flex-end"
+            }
+            w="full"
+            height="64px"
+            bg={bgColor}
+            borderBottom="1px"
+            borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+        >
+            {hasSidebarToggle && (
+                <IconButton
+                    display={{ base: "none", md: "flex" }}
+                    backgroundColor="transparent"
+                    aria-label="sidebar-toggle"
+                    onClick={() => onToggleSiderClick?.()}
+                >
+                    {toggleSiderIconFromProps?.(Boolean(isSiderOpen)) ??
+                        (isSiderOpen ? (
+                            <Icon
+                                as={IconLayoutSidebarLeftCollapse}
+                                boxSize={"24px"}
+                            />
+                        ) : (
+                            <Icon
+                                as={IconLayoutSidebarLeftExpand}
+                                boxSize={"24px"}
+                            />
+                        ))}
+                </IconButton>
+            )}
+
             <HStack>
-                <Text size="sm" fontWeight="bold">
-                    {user?.name}
-                </Text>
-                <Avatar size="sm" name={user?.name} src={user?.avatar} />
+                <Menu>
+                    <MenuButton
+                        as={IconButton}
+                        aria-label="Options"
+                        icon={<IconLanguage />}
+                        variant="ghost"
+                    />
+                    <MenuList>
+                        {[...(i18n.languages ?? [])]
+                            .sort()
+                            .map((lang: string) => (
+                                <MenuItem
+                                    key={lang}
+                                    onClick={() => {
+                                        changeLanguage(lang);
+                                    }}
+                                    value={lang}
+                                    color={
+                                        lang === currentLocale
+                                            ? "green"
+                                            : undefined
+                                    }
+                                    icon={
+                                        <Avatar
+                                            src={`/images/flags/${lang}.svg`}
+                                            h={18}
+                                            w={18}
+                                        />
+                                    }
+                                >
+                                    {lang === "en" ? "English" : "German"}
+                                </MenuItem>
+                            ))}
+                    </MenuList>
+                </Menu>
+
+                <IconButton
+                    variant="ghost"
+                    aria-label="Toggle theme"
+                    onClick={toggleColorMode}
+                >
+                    <Icon
+                        as={colorMode === "light" ? IconMoon : IconSun}
+                        w="24px"
+                        h="24px"
+                    />
+                </IconButton>
+
+                {(user?.avatar || user?.name) && (
+                    <HStack>
+                        {user?.name && (
+                            <Text size="sm" fontWeight="bold">
+                                {user.name}
+                            </Text>
+                        )}
+                        <Avatar
+                            size="sm"
+                            name={user?.name}
+                            src={user?.avatar}
+                        />
+                    </HStack>
+                )}
             </HStack>
-          )}
-      </Box>
-  );
-  };    
+        </Box>
+    );
+};

@@ -50,8 +50,6 @@ export default function App() {
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
     return (
-
-    <MantineProvider theme={LightTheme} withGlobalStyles withNormalizeCSS>
       <html lang="en">
         <head>
           <StylesPlaceholder />
@@ -119,7 +117,6 @@ export default function App() {
           <LiveReload />
         </body>
       </html>
-    </MantineProvider>
     );
   }
 

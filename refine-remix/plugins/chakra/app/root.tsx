@@ -13,7 +13,7 @@ import { MetaFunction, LinksFunction } from '@remix-run/node' // Depends on the 
 import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import {ChakraProvider} from "@chakra-ui/react";
-    import {  refineTheme, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
+    import {  RefineThemes, <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import routerProvider, { UnsavedChangesNotifier } from "@refinedev/remix-router";
@@ -105,7 +105,8 @@ export default function App() {
   return (
     <Document>
       <GitHubBanner />
-      <ChakraProvider theme={refineTheme}>
+      {/* You can change the theme colors here. example: theme={RefineThemes.Magenta} */}
+      <ChakraProvider theme={RefineThemes.Blue}>
       <RefineKbarProvider>
       <%- top.join("\n") %>
         <Refine

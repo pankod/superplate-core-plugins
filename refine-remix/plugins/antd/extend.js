@@ -1,17 +1,13 @@
 const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
-        import: [
-            'import resetStyle from "@refinedev/antd/dist/reset.css";',
-        ],
+        import: ['import resetStyle from "@refinedev/antd/dist/reset.css";'],
         refineAntdImports: ["notificationProvider"],
         styleImport: ['{ rel: "stylesheet", href: resetStyle }'],
         wrapper: [
-            [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`]
+            [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`],
         ],
-        localImport: [
-            `import { ColorModeContextProvider } from "@contexts";`,
-        ],
+        localImport: [`import { ColorModeContextProvider } from "@contexts";`],
     },
 };
 

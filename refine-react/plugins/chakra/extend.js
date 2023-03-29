@@ -9,6 +9,10 @@ const base = {
             "ErrorComponent",
         ],
         wrapper: [
+            [
+                "{/* You can change the theme colors here. example: theme={RefineThemes.Magenta} */}",
+                "",
+            ],
             [`<ChakraProvider theme={RefineThemes.Blue}>`, "</ChakraProvider>"],
         ],
         localImport: [`import { Header } from "./components/header";`],

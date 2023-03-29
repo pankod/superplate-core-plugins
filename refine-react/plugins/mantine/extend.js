@@ -18,6 +18,10 @@ const base = {
                 "</ColorSchemeProvider>",
             ],
             [
+                "{/* You can change the theme colors here. example: theme={{ ...RefineThemes.Magenta, colorScheme:colorScheme }} */}",
+                "",
+            ],
+            [
                 `<MantineProvider theme={{ ...RefineThemes.Blue, colorScheme:colorScheme }} withNormalizeCSS withGlobalStyles>`,
                 "</MantineProvider>",
             ],

@@ -1,22 +1,20 @@
 const base = {
     _app: {
-        refineProps: [
-            "notificationProvider={notificationProvider}",
-        ],
-        import: [
-            `import { ChakraProvider } from "@chakra-ui/react";`,
-        ],
+        refineProps: ["notificationProvider={notificationProvider}"],
+        import: [`import { ChakraProvider } from "@chakra-ui/react";`],
         refineChakraImports: [
             "notificationProvider",
-            "refineTheme",
-            "Layout"
+            "RefineThemes",
+            "ThemedLayout",
         ],
         wrapper: [
-            [`<ChakraProvider theme={refineTheme}>`, "</ChakraProvider>"],
+            [
+                "{/* You can change the theme colors here. example: theme={RefineThemes.Magenta} */}",
+                "",
+            ],
+            [`<ChakraProvider theme={RefineThemes.Blue}>`, "</ChakraProvider>"],
         ],
-        localImport: [
-            `import { Header } from "@components/header"`,
-        ],
+        localImport: [`import { Header } from "@components/header"`],
     },
 };
 

@@ -2,37 +2,46 @@ const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
         import: [
-            `import { MantineProvider, Global, ColorScheme } from "@mantine/core";`,
+            `import { MantineProvider, Global, ColorScheme, ColorSchemeProvider} from "@mantine/core";`,
             `import { NotificationsProvider } from "@mantine/notifications";`,
             `import { useLocalStorage } from "@mantine/hooks";`,
-            `import { ColorSchemeProvider } from "@mantine/styles";`
         ],
         refineMantineImports: [
             "notificationProvider",
-            "Layout",
-            "DarkTheme",
-            "LightTheme",
+            "ThemedLayout",
+            "RefineThemes",
         ],
         wrapper: [
-            ["<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>", "</ColorSchemeProvider>"],
-            [`<MantineProvider theme={colorScheme === "dark" ? DarkTheme : LightTheme} withNormalizeCSS withGlobalStyles>`, "</MantineProvider>"],
+            [
+                "<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>",
+                "</ColorSchemeProvider>",
+            ],
+            [
+                "{/* You can change the theme colors here. example: theme={{ ...RefineThemes.Magenta, colorScheme:colorScheme }} */}",
+                "",
+            ],
+            [
+                `<MantineProvider theme={{ ...RefineThemes.Blue, colorScheme:colorScheme }} withNormalizeCSS withGlobalStyles>`,
+                "</MantineProvider>",
+            ],
             [`<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`],
-            [`<NotificationsProvider position="top-right">`, "</NotificationsProvider>"],
+            [
+                `<NotificationsProvider position="top-right">`,
+                "</NotificationsProvider>",
+            ],
         ],
         innerHooks: [
             `const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
                 key: "mantine-color-scheme",
                 defaultValue: "light",
                 getInitialValueInEffect: true,
-            });`
+            });`,
         ],
         inner: [
             `const toggleColorScheme = (value?: ColorScheme) =>
-                setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));`
+                setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));`,
         ],
-        localImport: [
-            `import { Header } from "@components/header"`,
-        ],
+        localImport: [`import { Header } from "@components/header"`],
     },
 };
 

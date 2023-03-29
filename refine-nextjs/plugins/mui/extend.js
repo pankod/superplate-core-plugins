@@ -4,17 +4,17 @@ const base = {
         refineMuiImports: [
             "notificationProvider",
             "RefineSnackbarProvider",
-            "Layout"
+            "ThemedLayout",
         ],
         wrapper: [
             ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],
             ["<CssBaseline />"],
-            [`<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`],
+            [
+                `<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`,
+            ],
             ["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"],
         ],
-        import: [
-            `import { CssBaseline, GlobalStyles } from "@mui/material";`,
-        ],
+        import: [`import { CssBaseline, GlobalStyles } from "@mui/material";`],
         localImport: [
             'import { ColorModeContextProvider } from "@contexts";',
             'import { Header } from "@components/header";',

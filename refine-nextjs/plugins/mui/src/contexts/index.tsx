@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { useMediaQuery } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import { DarkTheme, LightTheme } from "@refinedev/mui";
+import { RefineThemes } from "@refinedev/mui";
 import { parseCookies, setCookie } from "nookies";
 
 type ColorModeContextType = {
@@ -52,7 +52,12 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
                 mode,
             }}
         >
-            <ThemeProvider theme={mode === "light" ? LightTheme : DarkTheme}>
+            <ThemeProvider
+                // you can change the theme colors here. example: mode === "light" ? RefineThemes.Magenta : RefineThemes.MagentaDark
+                theme={
+                    mode === "light" ? RefineThemes.Blue : RefineThemes.BlueDark
+                }
+            >
                 {children}
             </ThemeProvider>
         </ColorModeContext.Provider>

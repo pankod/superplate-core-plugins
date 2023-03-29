@@ -19,27 +19,7 @@ const base = {
     },
 };
 module.exports = {
-    extend(answers) {
-        if (answers["ui-framework"] === "antd") {
-            base._app.refineAntdImports.push("WelcomePage");
-        }
-
-        if (answers["ui-framework"] === "mui") {
-            base._app.refineMuiImports.push("WelcomePage");
-        }
-
-        if (answers["ui-framework"] === "mantine") {
-            base._app.refineMantineImports.push("WelcomePage");
-        }
-
-        if (answers["ui-framework"] === "chakra") {
-            base._app.refineChakraImports.push("WelcomePage");
-        }
-
-        if (answers["ui-framework"] === "no") {
-            base._app.refineImports.push("WelcomePage");
-        }
-
+    extend() {
         return base;
     },
 };

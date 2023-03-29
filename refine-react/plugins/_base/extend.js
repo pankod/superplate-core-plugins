@@ -25,19 +25,28 @@ module.exports = {
 
         switch (uiFramework) {
             case "antd":
-                base._app.refineAntdImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
+                base._app.refineAntdImports.push([
+                    `AuthPage`,
+                    `ErrorComponent`,
+                ]);
                 break;
             case "mui":
-                base._app.refineMuiImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
+                base._app.refineMuiImports.push([`AuthPage`, `ErrorComponent`]);
                 break;
             case "mantine":
-                base._app.refineMantineImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
+                base._app.refineMantineImports.push([
+                    `AuthPage`,
+                    `ErrorComponent`,
+                ]);
                 break;
             case "chakra":
-                base._app.refineChakraImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
+                base._app.refineChakraImports.push([
+                    `AuthPage`,
+                    `ErrorComponent`,
+                ]);
                 break;
             default:
-                base._app.refineImports.push([`WelcomePage`, `AuthPage`, `ErrorComponent`]);
+                base._app.refineImports.push([`AuthPage`, `ErrorComponent`]);
                 break;
         }
 
@@ -46,10 +55,14 @@ module.exports = {
         }
 
         if (answers["auth-provider"] === "none") {
-            if (["data-provider-appwrite",
-                "data-provider-supabase",
-                "auth-provider-auth0",
-                "data-provider-strapi-v4"].includes(dataProvider)) {
+            if (
+                [
+                    "data-provider-appwrite",
+                    "data-provider-supabase",
+                    "auth-provider-auth0",
+                    "data-provider-strapi-v4",
+                ].includes(dataProvider)
+            ) {
                 base._app.isAuthRoutes = true;
             } else {
                 base._app.isNoAuthRoutes = true;
@@ -72,8 +85,6 @@ module.exports = {
         }
         // ## hasStrictMode
 
-
-
         // ## authPageProps
         let defaultValuePropsName = "initialValues";
         let defaultValues = `email: "demo@refine.dev", password: "demodemo"`;
@@ -87,7 +98,9 @@ module.exports = {
             defaultValuePropsName = "defaultValues";
         }
 
-        base._app.authPageProps = [`formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`];
+        base._app.authPageProps = [
+            `formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`,
+        ];
 
         // clear for headless
         if (uiFramework === "no") {
@@ -98,12 +111,19 @@ module.exports = {
         // ## localImport
         if (base._app.isAuthRoutes || base._app.isNoAuthRoutes) {
             // ignore this data providers
-            if (!["data-provider-graphql",
-                "data-provider-hasura",
-                "data-provider-medusa"].includes(dataProvider)) {
-
-                base._app.localImport.push(`import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "pages/blog-posts";`);
-                base._app.localImport.push(`import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`);
+            if (
+                ![
+                    "data-provider-graphql",
+                    "data-provider-hasura",
+                    "data-provider-medusa",
+                ].includes(dataProvider)
+            ) {
+                base._app.localImport.push(
+                    `import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "pages/blog-posts";`,
+                );
+                base._app.localImport.push(
+                    `import { CategoryList, CategoryCreate, CategoryEdit, CategoryShow } from "pages/categories";`,
+                );
             }
         }
         // ## localImport

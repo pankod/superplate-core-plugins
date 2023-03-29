@@ -35,6 +35,7 @@ export default function Login() {
 
                 <form id="login-form" action="/auth/keycloak/" method="post">
                     <Button
+                         style={{ width: "240px" }} 
                             type="primary"
                             size="middle"
                             onClick={() => {
@@ -78,7 +79,7 @@ export default function Login() {
                 />
 
                 <form id="login-form" action="/auth/keycloak/" method="post">
-                <Button onClick={() => {
+                <Button  style={{ width: "240px" }}  onClick={() => {
               (document.getElementById("login-form") as any).submit();
             }} variant="contained">Sign in</Button>
                 </form>
@@ -111,7 +112,8 @@ export default function Login() {
             <Space h="xl" />
 
             <form id="login-form" action="/auth/keycloak/" method="post">
-                <Button
+                <Button 
+                     style={{ width: "240px" }} 
                     type="submit"
                     variant="filled"
                     onClick={() => {
@@ -150,7 +152,7 @@ export default function Login() {
                 />
 
                 <form id="login-form" action="/auth/keycloak/" method="post">
-                    <Button colorScheme="blue" onClick={() => {
+                    <Button  style={{ width: "240px" }}  colorScheme="blue" onClick={() => {
                         (document.getElementById("login-form") as any).submit();
                         }}>
                         Sign in

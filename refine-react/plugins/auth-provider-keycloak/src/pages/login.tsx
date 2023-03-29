@@ -41,6 +41,7 @@ export const Login: React.FC = () => {
                 }}
                 />
                 <Button
+                    style={{ width: "240px" }}
                     type="primary"
                     size="middle"
                     onClick={() => login({})}
@@ -82,7 +83,7 @@ export const Login: React.FC = () => {
                 }}
                 />
 
-                <Button variant="contained" onClick={() => login({})}>
+                <Button style={{ width: "240px" }} variant="contained" onClick={() => login({})}>
                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                     {t("pages.login.signin", "Sign in")}
                     <%_ } else { _%>
@@ -117,6 +118,7 @@ export const Login: React.FC = () => {
             <Space h="xl" />
 
             <Button
+                style={{ width: "240px" }}
                 type="button"
                 variant="filled"
                 onClick={() => login({})}
@@ -154,7 +156,7 @@ export const Login: React.FC = () => {
                 }}
                 />
 
-                <Button colorScheme="blue" onClick={() => login({})}>
+                <Button style={{ width: "240px" }} colorScheme="blue" onClick={() => login({})}>
                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                     {t("pages.login.signin", "Sign in")}
                     <%_ } else { _%>

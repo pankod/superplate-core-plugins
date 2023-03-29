@@ -38,23 +38,6 @@ export default function Login() {
     const t = useTranslate();
     <%_ } _%>
 
-    const GoogleIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
-    </svg>
-  );
-
     <%_ if (answers["ui-framework"] === "antd") { _%>
         return (
             <Layout
@@ -84,7 +67,7 @@ export default function Login() {
                     <%_ } _%>
                 </Button>
                 <Typography.Text type="secondary">
-                Powered by <GoogleIcon /> Google
+                Powered by Google
                 </Typography.Text>
             </Space>
             </Layout>
@@ -123,7 +106,7 @@ export default function Login() {
                     <%_ } _%>
                 </Button>
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <GoogleIcon /> Google
+                Powered by Google
                 </Typography>
             </Box>
             </Container>
@@ -162,7 +145,7 @@ export default function Login() {
             </Button>
             <Space h="lg" />
             <Text fz="sm" color="gray">
-                Powered by <GoogleIcon /> Google
+                Powered by Google
             </Text>
             </Box>
         );
@@ -196,7 +179,7 @@ export default function Login() {
                 </Button>
 
                 <Text alignItems="center" display="inherit" fontSize="xs" color="gray">
-                Powered by <GoogleIcon /> Google
+                Powered by Google
                 </Text>
             </VStack>
             </Box>

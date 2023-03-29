@@ -61,23 +61,6 @@ export const Login: React.FC = () => {
         return <div ref={divRef} />;
     };
 
-     const GoogleIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
-    </svg>
-  );
-
 
     <%_ if (answers["ui-framework"] === "antd") { _%>
         return (
@@ -97,7 +80,7 @@ export const Login: React.FC = () => {
                 />
                 <GoogleButton />
                 <Typography.Text type="secondary">
-                Powered by <GoogleIcon /> Auth0
+                Powered by Auth0
                 </Typography.Text>
             </Space>
             </Layout>
@@ -131,7 +114,7 @@ export const Login: React.FC = () => {
                 <GoogleButton />
 
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <GoogleIcon /> Auth0
+                Powered by Auth0
                 </Typography>
             </Box>
             </Container>
@@ -161,7 +144,7 @@ export const Login: React.FC = () => {
 
             <Space h="lg" />
             <Text fz="sm" color="gray">
-                Powered by <GoogleIcon /> Auth0
+                Powered by Auth0
             </Text>
             </Box>
         );
@@ -189,7 +172,7 @@ export const Login: React.FC = () => {
                 <GoogleButton />
 
                 <Text alignItems="center" display="inherit" fontSize="xs" color="gray">
-                Powered by <GoogleIcon /> Auth0
+                Powered by Auth0
                 </Text>
             </VStack>
             </Box>

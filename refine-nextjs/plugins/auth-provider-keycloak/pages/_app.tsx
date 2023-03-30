@@ -185,11 +185,17 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
             return <Component {...pageProps} />;
         }
 
-        return (
-            <ThemedLayout Header={Header}>
+        <%_ if (answers["ui-framework"] === "no") { _%>
+            return (
                 <Component {...pageProps} />
-            </ThemedLayout>
-        );
+            );
+            <%_ } else {_%>
+            return (
+                <ThemedLayout Header={Header}>
+                    <Component {...pageProps} />
+                </ThemedLayout>
+            );
+        <%_ } _%>
     };
 
     return (

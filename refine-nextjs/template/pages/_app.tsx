@@ -44,11 +44,17 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             return <Component {...pageProps} />;
         }
 
-        return (
-            <ThemedLayout Header={Header}>
+        <%_ if (answers["ui-framework"] === "no") { _%>
+            return (
                 <Component {...pageProps} />
-            </ThemedLayout>
-        );
+            );
+            <%_ } else {_%>
+            return (
+                <ThemedLayout Header={Header}>
+                    <Component {...pageProps} />
+                </ThemedLayout>
+            );
+        <%_ } _%>
     };
 
     <%- (_app.innerHooks || []).join("\n") %>

@@ -14,6 +14,9 @@ import { ThemedTitle } from "@refinedev/mantine";
 import { Button, Box, Text, VStack } from "@chakra-ui/react";
 import { ThemedTitle } from "@refinedev/chakra-ui";
 <%_ } _%>
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+    import { AppIcon } from "@components/app-icon";
+<%_ } _%>
 
 export default function Login() {
     <%_ if (answers["ui-framework"] === "antd") { _%>
@@ -31,6 +34,12 @@ export default function Login() {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <form id="login-form" action="/auth/google/" method="post">
@@ -77,6 +86,12 @@ export default function Login() {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <form id="login-form" action="/auth/google/" method="post">
@@ -109,6 +124,12 @@ export default function Login() {
                 wrapperStyles={{
                 fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
             />
             <Space h="xl" />
 
@@ -150,6 +171,12 @@ export default function Login() {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <form id="login-form" action="/auth/google/" method="post">

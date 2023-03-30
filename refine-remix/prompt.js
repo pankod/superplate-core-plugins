@@ -173,5 +173,17 @@ module.exports = {
                 answers["data-provider"] === "data-provider-nhost",
             default: "none",
         },
-    ]
+    ],
+    ignores: [
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return (
+                    typeof answers["svg"] === "undefined" ||
+                    answers["ui-framework"] === "no"
+                );
+            },
+            pattern: ["app/components/app-icon/index.tsx"],
+        },
+    ],
 };

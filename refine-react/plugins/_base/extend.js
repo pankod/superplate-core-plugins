@@ -15,6 +15,9 @@ const base = {
         refineMuiImports: [],
         refineMantineImports: [],
     },
+    selectedTheme: "Blue",
+    selectedTitle: undefined,
+    selectedSvg: undefined,
 };
 
 module.exports = {
@@ -126,6 +129,24 @@ module.exports = {
                 );
             }
         }
+
+
+        // ## selected theme
+        const themeFromAnswers = answers["theme"];
+        if (themeFromAnswers) {
+            base.selectedTheme = themeFromAnswers;
+        }
+        // ## selected title
+        const titleFromAnswers = answers["title"];
+        if (titleFromAnswers) {
+            base.selectedTitle = titleFromAnswers;
+        }
+        // ## selected svg
+        const svgFromAnswers = answers["svg"];
+        if (svgFromAnswers) {
+            base.selectedSvg = svgFromAnswers;
+        }
+
         // ## localImport
         return base;
     },

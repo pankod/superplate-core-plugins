@@ -4,6 +4,9 @@ const base = {
         isAuthProviderCheck: false,
         loader: [],
     },
+    selectedTheme: "Blue",
+    selectedTitle: undefined,
+    selectedSvg: undefined,
 };
 
 module.exports = {
@@ -29,6 +32,22 @@ module.exports = {
             base._app.isAuthProviderCheck = true;
         }
         // ## isAuthProviderCheck
+
+        // ## selected theme
+        const themeFromAnswers = answers["theme"];
+        if (themeFromAnswers) {
+            base.selectedTheme = themeFromAnswers;
+        }
+        // ## selected title
+        const titleFromAnswers = answers["title"];
+        if (titleFromAnswers) {
+            base.selectedTitle = titleFromAnswers;
+        }
+        // ## selected svg
+        const svgFromAnswers = answers["svg"];
+        if (svgFromAnswers) {
+            base.selectedSvg = svgFromAnswers;
+        }
 
         return base;
     },

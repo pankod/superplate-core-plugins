@@ -8,19 +8,29 @@ const base = {
             "ThemedLayout",
             "ErrorComponent",
         ],
-        wrapper: [
-            [
-                "{/* You can change the theme colors here. example: theme={RefineThemes.Magenta} */}",
-                "",
-            ],
-            [`<ChakraProvider theme={RefineThemes.Blue}>`, "</ChakraProvider>"],
-        ],
         localImport: [`import { Header } from "./components/header";`],
     },
 };
 
 module.exports = {
-    extend() {
-        return base;
+    extend(answers) {
+        const selectedTheme = answers["theme"] ? answers["theme"] : "Blue";
+
+        return {
+            ...base,
+            _app: {
+                ...base._app,
+                wrapper: [
+                    [
+                        "{/* You can change the theme colors here. example: theme={RefineThemes.Magenta} */}",
+                        "",
+                    ],
+                    [
+                        `<ChakraProvider theme={RefineThemes.${selectedTheme}}>`,
+                        "</ChakraProvider>",
+                    ],
+                ],
+            },
+        };
     },
 };

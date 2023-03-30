@@ -1,13 +1,13 @@
+import { useMediaQuery } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { RefineThemes } from "@refinedev/mui";
+import { parseCookies, setCookie } from "nookies";
 import React, {
     PropsWithChildren,
     createContext,
     useEffect,
     useState,
 } from "react";
-import { useMediaQuery } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { RefineThemes } from "@refinedev/mui";
-import { parseCookies, setCookie } from "nookies";
 
 type ColorModeContextType = {
     mode: string;
@@ -44,8 +44,6 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
         setMode(nextTheme);
         setCookie(null, "theme", nextTheme);
     };
-
-    if (!isMounted) return null;
 
     return (
         <ColorModeContext.Provider

@@ -11,7 +11,7 @@ import {
 import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
 import { DarkModeOutlined, LightModeOutlined, Menu } from "@mui/icons-material";
 
-import { ColorModeContext } from "@contexts";
+import { ColorModeContext } from "~/contexts/ColorModeContext";
 
 type IUser = {
     id: number;

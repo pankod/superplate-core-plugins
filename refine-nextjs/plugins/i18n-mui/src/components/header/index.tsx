@@ -36,11 +36,12 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
     const hasSidebarToggle = Boolean(onToggleSiderClick);
 
     return (
-        <AppBar color="default" position="sticky">
+        <AppBar position="sticky">
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
                     {hasSidebarToggle && (
                         <IconButton
+                            color="inherit"
                             aria-label="open drawer"
                             onClick={() => onToggleSiderClick?.()}
                             edge="start"
@@ -105,6 +106,7 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                         </FormControl>
 
                         <IconButton
+                            color="inherit"
                             onClick={() => {
                                 setMode();
                             }}

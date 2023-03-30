@@ -160,7 +160,7 @@ export default function Login() {
                     </Button>
                 </form>
 
-                <Text alignItems="center" display="inherit" fontSize="xs" color="gray">
+                <Text justifyContent="center" display="inherit" fontSize="xs" color="gray">
                 Powered by Keycloak
                 </Text>
             </VStack>

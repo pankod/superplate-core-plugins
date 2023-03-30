@@ -2,6 +2,11 @@ const base = {
     _app: {
         isNextAuthCheck: false,
         isAuthProviderCheck: false,
+        refineAntdImports: [],
+        refineMantineImports: [],
+        refineMuiImports: [],
+        refineChakraImports: [],
+        localImport: ['import { AppIcon } from "src/components/app-icon";'],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -47,6 +52,31 @@ module.exports = {
         const svgFromAnswers = answers["svg"];
         if (svgFromAnswers) {
             base.selectedSvg = svgFromAnswers;
+        }
+
+        if (
+            answers["ui-framework"] !== "no" &&
+            (answers["title"] || answers["svg"])
+        ) {
+            if (answers["ui-framework"] === "antd") {
+                base._app.refineAntdImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "mantine") {
+                base._app.refineMantineImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "mui") {
+                base._app.refineMuiImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "chakra") {
+                base._app.refineChakraImports.push("ThemedTitle");
+            }
+        }
+
+        if (
+            answers["ui-framework"] !== "no" ||
+            (!answers["title"] && !answers["svg"])
+        ) {
+            base._app.localImport = [];
         }
 
         return base;

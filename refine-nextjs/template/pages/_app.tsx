@@ -45,7 +45,22 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
         }
 
         return (
-            <ThemedLayout Header={Header}>
+            <ThemedLayout
+                Header={Header}
+                <%_ if (selectedSvg || selectedIcon) { _%>
+                Title={({ collapsed }) => (
+                    <ThemedTitle
+                        collapsed={collapsed}
+                    <%_ if (selectedTitle) { _%>
+                        text={"<%= selectedTitle %>"}
+                    <%_ } _%>
+                    <%_ if (selectedSvg) { _%>
+                        icon={<AppIcon />}
+                    <%_ } _%>
+                    />
+                )}
+                <%_ } _%>
+            >
                 <Component {...pageProps} />
             </ThemedLayout>
         );

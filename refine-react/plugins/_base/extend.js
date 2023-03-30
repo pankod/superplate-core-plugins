@@ -8,7 +8,7 @@ const base = {
         authPageProps: [],
         loginPageProps: [],
         refineProps: [],
-        localImport: [],
+        localImport: ['import { AppIcon } from "components/app-icon";'],
         refineImports: [`Authenticated`],
         refineAntdImports: [],
         refineChakraImports: [],
@@ -145,6 +145,31 @@ module.exports = {
         const svgFromAnswers = answers["svg"];
         if (svgFromAnswers) {
             base.selectedSvg = svgFromAnswers;
+        }
+
+        if (
+            answers["ui-framework"] !== "no" &&
+            (answers["title"] || answers["svg"])
+        ) {
+            if (answers["ui-framework"] === "antd") {
+                base._app.refineAntdImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "mantine") {
+                base._app.refineMantineImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "mui") {
+                base._app.refineMuiImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "chakra") {
+                base._app.refineChakraImports.push("ThemedTitle");
+            }
+        }
+
+        if (
+            answers["ui-framework"] !== "no" ||
+            (!answers["title"] && !answers["svg"])
+        ) {
+            base._app.localImport = [];
         }
 
         // ## localImport

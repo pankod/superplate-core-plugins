@@ -6,7 +6,7 @@ const base = {
         refineMantineImports: [],
         refineMuiImports: [],
         refineChakraImports: [],
-        localImport: ['import { AppIcon } from "src/components/app-icon";'],
+        localImport: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -73,10 +73,12 @@ module.exports = {
         }
 
         if (
-            answers["ui-framework"] !== "no" ||
-            (!answers["title"] && !answers["svg"])
+            answers["ui-framework"] !== "no" &&
+            (answers["title"] || answers["svg"])
         ) {
-            base._app.localImport = [];
+            base._app.localImport.push(
+                'import { AppIcon } from "src/components/app-icon";',
+            );
         }
 
         return base;

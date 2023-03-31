@@ -1,7 +1,7 @@
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import {
     AuthPage,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/antd";
@@ -9,7 +9,7 @@ import {
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import {
     AuthPage,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/mui";
@@ -17,7 +17,7 @@ import {
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import {
     AuthPage,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/mantine";
@@ -25,7 +25,7 @@ import {
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
 import {
     AuthPage,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/chakra-ui";

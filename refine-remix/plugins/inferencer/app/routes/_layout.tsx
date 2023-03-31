@@ -2,7 +2,7 @@ import { Outlet } from "@remix-run/react";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import {
     ThemedLayout,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/antd";
@@ -10,7 +10,7 @@ import {
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import {
     ThemedLayout,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/mui";
@@ -18,7 +18,7 @@ import {
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import {
     ThemedLayout,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/mantine";
@@ -26,7 +26,7 @@ import {
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
 import {
     ThemedLayout,
-    <%_ if (selectedSvg || selectedIcon) { _%>
+    <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitle,
     <%_ } _%>
 } from "@refinedev/chakra-ui";
@@ -51,7 +51,7 @@ export default function BaseLayout() {
             <%_ } else { _%>
                 <ThemedLayout
                     Header={Header}
-                    <%_ if (selectedSvg || selectedIcon) { _%>
+                    <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
                         <ThemedTitle
                             collapsed={collapsed}

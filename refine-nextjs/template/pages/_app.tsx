@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             return (
                 <ThemedLayout
                     Header={Header}
-                    <%_ if (selectedSvg || selectedIcon) { _%>
+                    <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
                         <ThemedTitle
                             collapsed={collapsed}

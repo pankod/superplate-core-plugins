@@ -99,7 +99,7 @@ function App() {
                                 <%_ } else { _%>
                                     <ThemedLayout
                                         Header={Header}
-                                        <%_ if (selectedSvg || selectedIcon) { _%>
+                                        <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
                                             <ThemedTitle
                                                 collapsed={collapsed}
@@ -160,7 +160,7 @@ function App() {
                                 <%_ } else { _%>
                                     <ThemedLayout
                                         Header={Header}
-                                        <%_ if (selectedSvg || selectedIcon) { _%>
+                                        <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
                                             <ThemedTitle
                                                 collapsed={collapsed}
@@ -191,7 +191,7 @@ function App() {
                         element={(
                             <ThemedLayout
                                 Header={Header}
-                                <%_ if (selectedSvg || selectedIcon) { _%>
+                                <%_ if (selectedSvg || selectedTitle) { _%>
                                 Title={({ collapsed }) => (
                                     <ThemedTitle
                                         collapsed={collapsed}
@@ -233,7 +233,7 @@ function App() {
                         element={(
                             <ThemedLayout
                                 Header={Header}
-                                <%_ if (selectedSvg || selectedIcon) { _%>
+                                <%_ if (selectedSvg || selectedTitle) { _%>
                                 Title={({ collapsed }) => (
                                     <ThemedTitle
                                         collapsed={collapsed}

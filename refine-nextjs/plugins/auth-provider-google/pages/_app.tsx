@@ -193,7 +193,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
             return (
                 <ThemedLayout
                     Header={Header}
-                    <%_ if (selectedSvg || selectedIcon) { _%>
+                    <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
                         <ThemedTitle
                             collapsed={collapsed}

@@ -295,5 +295,15 @@ module.exports = {
             },
             pattern: ["src/utility/normalize.ts"],
         },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return (
+                    typeof answers["svg"] === "undefined" ||
+                    answers["ui-framework"] === "no"
+                );
+            },
+            pattern: ["src/components/app-icon/index.tsx"],
+        },
     ],
 };

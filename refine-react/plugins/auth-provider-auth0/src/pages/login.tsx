@@ -196,7 +196,7 @@ export const Login: React.FC = () => {
                     <%_ } _%>
                 </Button>
 
-                <Text alignItems="center" display="inherit" fontSize="xs" color="gray">
+                <Text justifyContent="center" display="inherit" fontSize="xs" color="gray">
                 Powered by Auth0
                 </Text>
             </VStack>

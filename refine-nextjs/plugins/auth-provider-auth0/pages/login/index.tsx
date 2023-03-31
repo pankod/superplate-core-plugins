@@ -58,7 +58,7 @@ export default function Login() {
                     fontSize: "22px",
                 }}
                 <%_ if (selectedTitle) { _%>
-                    text={"<%= selectedTitle %>"}
+                    text="<%= selectedTitle %>"
                 <%_ } _%>
                 <%_ if (selectedSvg) { _%>
                     icon={<AppIcon />}
@@ -107,7 +107,7 @@ export default function Login() {
                     justifyContent: "center",
                 }}
                 <%_ if (selectedTitle) { _%>
-                    text={"<%= selectedTitle %>"}
+                    text="<%= selectedTitle %>"
                 <%_ } _%>
                 <%_ if (selectedSvg) { _%>
                     icon={<AppIcon />}
@@ -146,7 +146,7 @@ export default function Login() {
                 fontSize: "22px",
                 }}
                 <%_ if (selectedTitle) { _%>
-                    text={"<%= selectedTitle %>"}
+                    text="<%= selectedTitle %>"
                 <%_ } _%>
                 <%_ if (selectedSvg) { _%>
                     icon={<AppIcon />}
@@ -192,7 +192,7 @@ export default function Login() {
                         fontSize: "22px",
                     }}
                 <%_ if (selectedTitle) { _%>
-                    text={"<%= selectedTitle %>"}
+                    text="<%= selectedTitle %>"
                 <%_ } _%>
                 <%_ if (selectedSvg) { _%>
                     icon={<AppIcon />}

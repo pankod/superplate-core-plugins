@@ -68,7 +68,7 @@ export default function Login() {
                 <ThemedTitle
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
-                        text={"<%= selectedTitle %>"}
+                        text="<%= selectedTitle %>"
                     <%_ } _%>
                     <%_ if (selectedSvg) { _%>
                         icon={<AppIcon />}

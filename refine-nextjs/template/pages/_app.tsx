@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     <ThemedTitle
                         collapsed={collapsed}
                     <%_ if (selectedTitle) { _%>
-                        text={"<%= selectedTitle %>"}
+                        text="<%= selectedTitle %>"
                     <%_ } _%>
                     <%_ if (selectedSvg) { _%>
                         icon={<AppIcon />}

@@ -104,7 +104,7 @@ function App() {
                                             <ThemedTitle
                                                 collapsed={collapsed}
                                             <%_ if (selectedTitle) { _%>
-                                                text={"<%= selectedTitle =%>"}
+                                                text="<%= selectedTitle %>"
                                             <%_ } _%>
                                             <%_ if (selectedSvg) { _%>
                                                 icon={<AppIcon />}
@@ -165,7 +165,7 @@ function App() {
                                             <ThemedTitle
                                                 collapsed={collapsed}
                                             <%_ if (selectedTitle) { _%>
-                                                text={"<%= selectedTitle =%>"}
+                                                text="<%= selectedTitle %>"
                                             <%_ } _%>
                                             <%_ if (selectedSvg) { _%>
                                                 icon={<AppIcon />}
@@ -196,7 +196,7 @@ function App() {
                                     <ThemedTitle
                                         collapsed={collapsed}
                                     <%_ if (selectedTitle) { _%>
-                                        text={"<%= selectedTitle =%>"}
+                                        text="<%= selectedTitle %>"
                                     <%_ } _%>
                                     <%_ if (selectedSvg) { _%>
                                         icon={<AppIcon />}
@@ -238,7 +238,7 @@ function App() {
                                     <ThemedTitle
                                         collapsed={collapsed}
                                     <%_ if (selectedTitle) { _%>
-                                        text={"<%= selectedTitle =%>"}
+                                        text="<%= selectedTitle %>"
                                     <%_ } _%>
                                     <%_ if (selectedSvg) { _%>
                                         icon={<AppIcon />}

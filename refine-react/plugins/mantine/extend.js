@@ -10,29 +10,6 @@ const base = {
             "notificationProvider",
             "RefineThemes",
             "ThemedLayout",
-            "ErrorComponent",
-        ],
-        wrapper: [
-            [
-                "<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>",
-                "</ColorSchemeProvider>",
-            ],
-            [
-                "{/* You can change the theme colors here. example: theme={{ ...RefineThemes.Magenta, colorScheme:colorScheme }} */}",
-                "",
-            ],
-            [
-                `<MantineProvider theme={{ ...RefineThemes.Blue, colorScheme:colorScheme }} withNormalizeCSS withGlobalStyles>`,
-                "</MantineProvider>",
-            ],
-            [
-                `<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`,
-                ``,
-            ],
-            [
-                `<NotificationsProvider position="top-right">`,
-                `</NotificationsProvider>`,
-            ],
         ],
         innerHooks: [
             `const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -50,7 +27,36 @@ const base = {
 };
 
 module.exports = {
-    extend() {
-        return base;
+    extend(answers) {
+        const selectedTheme = answers["theme"] ? answers["theme"] : "Blue";
+
+        return {
+            ...base,
+            _app: {
+                ...base._app,
+                wrapper: [
+                    [
+                        "<ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>",
+                        "</ColorSchemeProvider>",
+                    ],
+                    [
+                        "{/* You can change the theme colors here. example: theme={{ ...RefineThemes.Magenta, colorScheme:colorScheme }} */}",
+                        "",
+                    ],
+                    [
+                        `<MantineProvider theme={{ ...RefineThemes.${selectedTheme}, colorScheme:colorScheme }} withNormalizeCSS withGlobalStyles>`,
+                        "</MantineProvider>",
+                    ],
+                    [
+                        `<Global styles={{ body: { WebkitFontSmoothing: "auto" } }} />`,
+                        ``,
+                    ],
+                    [
+                        `<NotificationsProvider position="top-right">`,
+                        `</NotificationsProvider>`,
+                    ],
+                ],
+            },
+        };
     },
 };

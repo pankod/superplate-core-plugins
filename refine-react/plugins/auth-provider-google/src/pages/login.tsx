@@ -20,6 +20,10 @@ import { ThemedTitle } from "@refinedev/chakra-ui";
 
 import { CredentialResponse } from "../interfaces/google";
 
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+import { AppIcon } from "components/app-icon";
+<%_ } _%>    
+
 // Todo: Update your Google Client ID here
 const GOOGLE_CLIENT_ID = "1041339102270-jlljcjl19jo1hkgf695em3ibr7q2m734.apps.googleusercontent.com";
 
@@ -77,6 +81,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
                 <GoogleButton />
                 <Typography.Text type="secondary">
@@ -109,6 +119,12 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <GoogleButton />
@@ -137,6 +153,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                 fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
             />
             <Space h="xl" />
 
@@ -167,6 +189,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <GoogleButton />

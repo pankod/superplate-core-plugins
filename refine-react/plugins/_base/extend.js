@@ -15,6 +15,9 @@ const base = {
         refineMuiImports: [],
         refineMantineImports: [],
     },
+    selectedTheme: "Blue",
+    selectedTitle: undefined,
+    selectedSvg: undefined,
 };
 
 module.exports = {
@@ -74,7 +77,8 @@ module.exports = {
         if (
             answers["auth-provider"] === "auth-provider-auth0" ||
             answers["auth-provider"] === "auth-provider-google" ||
-            answers["auth-provider"] === "auth-provider-keycloak"
+            answers["auth-provider"] === "auth-provider-keycloak" ||
+            answers["auth-provider"] === "auth-provider-custom"
         ) {
             base._app.isCustomLoginPage = true;
         }
@@ -126,6 +130,50 @@ module.exports = {
                 );
             }
         }
+
+        // ## selected theme
+        const themeFromAnswers = answers["theme"];
+        if (themeFromAnswers) {
+            base.selectedTheme = themeFromAnswers;
+        }
+        // ## selected title
+        const titleFromAnswers = answers["title"];
+        if (titleFromAnswers) {
+            base.selectedTitle = titleFromAnswers;
+        }
+        // ## selected svg
+        const svgFromAnswers = answers["svg"];
+        if (svgFromAnswers) {
+            base.selectedSvg = svgFromAnswers;
+        }
+
+        if (
+            answers["ui-framework"] !== "no" &&
+            (answers["title"] || answers["svg"])
+        ) {
+            if (answers["ui-framework"] === "antd") {
+                base._app.refineAntdImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "mantine") {
+                base._app.refineMantineImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "mui") {
+                base._app.refineMuiImports.push("ThemedTitle");
+            }
+            if (answers["ui-framework"] === "chakra") {
+                base._app.refineChakraImports.push("ThemedTitle");
+            }
+        }
+
+        if (
+            answers["ui-framework"] !== "no" &&
+            (answers["title"] || answers["svg"])
+        ) {
+            base._app.localImport.push(
+                'import { AppIcon } from "components/app-icon";',
+            );
+        }
+
         // ## localImport
         return base;
     },

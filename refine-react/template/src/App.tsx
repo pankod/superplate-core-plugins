@@ -97,7 +97,22 @@ function App() {
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
                                     <Outlet />
                                 <%_ } else { _%>
-                                    <ThemedLayout Header={Header}>
+                                    <ThemedLayout
+                                        Header={Header}
+                                        <%_ if (selectedSvg || selectedTitle) { _%>
+                                        Title={({ collapsed }) => (
+                                            <ThemedTitle
+                                                collapsed={collapsed}
+                                            <%_ if (selectedTitle) { _%>
+                                                text="<%= selectedTitle %>"
+                                            <%_ } _%>
+                                            <%_ if (selectedSvg) { _%>
+                                                icon={<AppIcon />}
+                                            <%_ } _%>
+                                            />
+                                        )}
+                                        <%_ } _%>
+                                    >
                                         <Outlet />
                                     </ThemedLayout>
                                 <%_ } _%>
@@ -143,7 +158,22 @@ function App() {
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
                                     <Outlet />
                                 <%_ } else { _%>
-                                    <ThemedLayout Header={Header}>
+                                    <ThemedLayout
+                                        Header={Header}
+                                        <%_ if (selectedSvg || selectedTitle) { _%>
+                                        Title={({ collapsed }) => (
+                                            <ThemedTitle
+                                                collapsed={collapsed}
+                                            <%_ if (selectedTitle) { _%>
+                                                text="<%= selectedTitle %>"
+                                            <%_ } _%>
+                                            <%_ if (selectedSvg) { _%>
+                                                icon={<AppIcon />}
+                                            <%_ } _%>
+                                            />
+                                        )}
+                                        <%_ } _%>
+                                    >
                                         <Outlet />
                                     </ThemedLayout>
                                 <%_ } _%>
@@ -157,7 +187,28 @@ function App() {
 
                 <%_ if (_app.hasRoutes === true && _app.isNoAuthRoutes) { _%>
                 <Routes>
-                    <Route element={<ThemedLayout Header={Header}><Outlet /></ThemedLayout>}>
+                    <Route
+                        element={(
+                            <ThemedLayout
+                                Header={Header}
+                                <%_ if (selectedSvg || selectedTitle) { _%>
+                                Title={({ collapsed }) => (
+                                    <ThemedTitle
+                                        collapsed={collapsed}
+                                    <%_ if (selectedTitle) { _%>
+                                        text="<%= selectedTitle %>"
+                                    <%_ } _%>
+                                    <%_ if (selectedSvg) { _%>
+                                        icon={<AppIcon />}
+                                    <%_ } _%>
+                                    />
+                                )}
+                                <%_ } _%>
+                            >
+                                <Outlet />
+                            </ThemedLayout>
+                        )}
+                    >
                         <Route index element={
                             <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                                 <NavigateToResource resource="blog-posts" />
@@ -178,7 +229,28 @@ function App() {
                             <Route path="show/:id" element={<CategoryShow />} />
                         </Route>
                     </Route>
-                    <Route element={<ThemedLayout Header={Header}><Outlet /></ThemedLayout>}>
+                    <Route
+                        element={(
+                            <ThemedLayout
+                                Header={Header}
+                                <%_ if (selectedSvg || selectedTitle) { _%>
+                                Title={({ collapsed }) => (
+                                    <ThemedTitle
+                                        collapsed={collapsed}
+                                    <%_ if (selectedTitle) { _%>
+                                        text="<%= selectedTitle %>"
+                                    <%_ } _%>
+                                    <%_ if (selectedSvg) { _%>
+                                        icon={<AppIcon />}
+                                    <%_ } _%>
+                                    />
+                                )}
+                                <%_ } _%>
+                            >
+                                <Outlet />
+                            </ThemedLayout>
+                        )}
+                    >
                         <Route path="*" element={<ErrorComponent />} />
                     </Route>
                 </Routes> 

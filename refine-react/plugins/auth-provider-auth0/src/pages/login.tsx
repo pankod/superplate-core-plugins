@@ -20,6 +20,10 @@ import { ThemedTitle } from "@refinedev/chakra-ui";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+import { AppIcon } from "components/app-icon";
+<%_ } _%>
+
 export const Login: React.FC = () => {
     const { loginWithRedirect } = useAuth0();
 
@@ -42,6 +46,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
                 <Button
                     style={{ width: "240px" }}
@@ -85,6 +95,12 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <Button style={{ width: "240px" }} variant="contained" onClick={() => loginWithRedirect()}>
@@ -118,6 +134,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                 fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
             />
             <Space h="xl" />
 
@@ -158,6 +180,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <Button style={{ width: "240px" }} colorScheme="blue" onClick={() => loginWithRedirect()}>

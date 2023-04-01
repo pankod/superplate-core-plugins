@@ -274,4 +274,16 @@ module.exports = {
             skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
     ],
+    ignores: [
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return (
+                    typeof answers["svg"] === "undefined" ||
+                    answers["ui-framework"] === "no"
+                );
+            },
+            pattern: ["src/components/app-icon/index.tsx"],
+        },
+    ],
 };

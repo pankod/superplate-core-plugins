@@ -15,6 +15,9 @@ import { ThemedTitle } from "@refinedev/mantine";
 import { Button, Box, Text, VStack } from "@chakra-ui/react";
 import { ThemedTitle } from "@refinedev/chakra-ui";
 <%_ } _%>
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+import { AppIcon } from "components/app-icon";
+<%_ } _%>
 
 
 export const Login: React.FC = () => {
@@ -39,6 +42,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
                 <Button
                     style={{ width: "240px" }}
@@ -82,6 +91,12 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <Button style={{ width: "240px" }} variant="contained" onClick={() => login({})}>
@@ -115,6 +130,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                 fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
             />
             <Space h="xl" />
 
@@ -155,6 +176,12 @@ export const Login: React.FC = () => {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
+                <%_ if (selectedTitle) { _%>
+                    text="<%= selectedTitle %>"
+                <%_ } _%>
+                <%_ if (selectedSvg) { _%>
+                    icon={<AppIcon />}
+                <%_ } _%>
                 />
 
                 <Button style={{ width: "240px" }} colorScheme="blue" onClick={() => login({})}>

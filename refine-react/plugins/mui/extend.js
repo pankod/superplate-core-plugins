@@ -6,7 +6,6 @@ const base = {
             "notificationProvider",
             "RefineSnackbarProvider",
             "ThemedLayout",
-            "ErrorComponent",
         ],
         localImport: [
             `import { ColorModeContextProvider } from "./contexts/color-mode";`,

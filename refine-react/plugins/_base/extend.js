@@ -77,7 +77,8 @@ module.exports = {
         if (
             answers["auth-provider"] === "auth-provider-auth0" ||
             answers["auth-provider"] === "auth-provider-google" ||
-            answers["auth-provider"] === "auth-provider-keycloak"
+            answers["auth-provider"] === "auth-provider-keycloak" ||
+            answers["auth-provider"] === "auth-provider-custom"
         ) {
             base._app.isCustomLoginPage = true;
         }

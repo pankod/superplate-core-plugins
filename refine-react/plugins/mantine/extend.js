@@ -10,7 +10,6 @@ const base = {
             "notificationProvider",
             "RefineThemes",
             "ThemedLayout",
-            "ErrorComponent",
         ],
         innerHooks: [
             `const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({

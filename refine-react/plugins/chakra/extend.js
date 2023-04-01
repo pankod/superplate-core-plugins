@@ -6,7 +6,6 @@ const base = {
             "notificationProvider",
             "RefineThemes",
             "ThemedLayout",
-            "ErrorComponent",
         ],
         localImport: [`import { Header } from "./components/header";`],
     },

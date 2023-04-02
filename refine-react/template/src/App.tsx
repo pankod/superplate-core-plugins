@@ -149,7 +149,28 @@ function App() {
                         <%_ if (_app.isCustomLoginPage) { _%>
                             <Route path="/login" element={<Login />} <%- (_app.loginPageProps || []).join("\n") %> />
                         <%_ } else { _%>
-                            <Route path="/login" element={<AuthPage type="login" <%- (_app.authPageProps || []).join("\n") %> />} />
+                            <Route
+                                path="/login"
+                                element={(
+                                    <AuthPage
+                                        type="login"
+                                        <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
+                                        title={(
+                                            <ThemedTitle
+                                                collapsed={false}
+                                                <%_ if (selectedTitle) { _%>
+                                                    text="<%= selectedTitle %>"
+                                                <%_ } _%>
+                                                <%_ if (selectedSvg) { _%>
+                                                    icon={<AppIcon />}
+                                                <%_ } _%>
+                                            />
+                                        )}
+                                        <%_ } _%>
+                                        <%- (_app.authPageProps || []).join("\n") %>
+                                    />
+                                )}
+                            />
                         <%_ } _%>
                     </Route>
                     <Route

@@ -5,13 +5,8 @@ const base = {
             `import axios from "axios";`,
             `import { useKeycloak } from "@react-keycloak/web";`,
         ],
-        localImport: [
-            `import { Login } from "pages/login";`,
-            `import { authProvider } from "./auth-provider";`,
-        ],
-        innerHooks: [
-            `const { keycloak, initialized } = useKeycloak();`
-        ],
+        localImport: [`import { Login } from "pages/login";`],
+        innerHooks: [`const { keycloak, initialized } = useKeycloak();`],
         inner: [
             `
             if (!initialized) {
@@ -88,13 +83,13 @@ const base = {
                     return null;
                 },
             };
-            `
+            `,
         ],
         refineProps: ["authProvider={authProvider}"],
         mainWrapper: [
             [
                 `<ReactKeycloakProvider authClient={keycloak}>`,
-                `</ReactKeycloakProvider>`
+                `</ReactKeycloakProvider>`,
             ],
         ],
     },

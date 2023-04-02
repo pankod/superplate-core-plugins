@@ -5,12 +5,9 @@ const base = {
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
         ],
-        localImport: [
-            `import { Login } from "pages/login";`,
-            `import { authProvider } from "./auth-provider";`,
-        ],
+        localImport: [`import { Login } from "pages/login";`],
         innerHooks: [
-            `const { isLoading, user, logout, getIdTokenClaims } = useAuth0();`
+            `const { isLoading, user, logout, getIdTokenClaims } = useAuth0();`,
         ],
         inner: [
             `
@@ -73,7 +70,7 @@ const base = {
                     return null;
                 },
             };
-            `
+            `,
         ],
         refineProps: ["authProvider={authProvider}"],
         mainWrapper: [
@@ -83,7 +80,7 @@ const base = {
                     clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
                     redirectUri={window.location.origin}
                 >`,
-                `</Auth0Provider>`
+                `</Auth0Provider>`,
             ],
         ],
     },

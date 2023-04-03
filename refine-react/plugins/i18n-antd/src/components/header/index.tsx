@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
         >
             <Space>
                 <Dropdown overlay={menu}>
-                    <Button type="link">
+                    <Button type="text">
                         <Space>
                             <Avatar
                                 size={16}

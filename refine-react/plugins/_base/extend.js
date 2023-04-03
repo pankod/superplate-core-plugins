@@ -120,7 +120,7 @@ module.exports = {
                     "data-provider-graphql",
                     "data-provider-hasura",
                     "data-provider-medusa",
-                ].includes(dataProvider)
+                ].includes(dataProvider) && base._app.hasRoutes === true
             ) {
                 base._app.localImport.push(
                     `import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "pages/blog-posts";`,

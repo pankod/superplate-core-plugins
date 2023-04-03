@@ -22,8 +22,7 @@ const base = {
             "redirectUri: to ? `${ window.location.origin }${ to }` : undefined",
             `});
                     return {
-                        success: false,
-                        error: new Error("Login failed"),
+                        success: true,
                     };
                 },
                 logout: async () => {

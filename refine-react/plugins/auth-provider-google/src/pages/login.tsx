@@ -132,7 +132,12 @@ export const Login: React.FC = () => {
                 />
                 <GoogleButton style={{ marginBottom: "32px" }} />
                 <Typography.Text type="secondary">
-                Powered by <Icon /> Google
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+          />
+          Google
                 </Typography.Text>
             </Space>
             </Layout>
@@ -172,7 +177,12 @@ export const Login: React.FC = () => {
                 <GoogleButton />
 
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <Icon /> Google
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+          />
+          Google
                 </Typography>
             </Box>
             </Container>
@@ -208,7 +218,12 @@ export const Login: React.FC = () => {
 
             <Space h="xl" />
             <Text fz="sm" color="gray">
-                Powered by <Icon /> Google
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+          />
+          Google
             </Text>
             </Box>
         );
@@ -242,7 +257,12 @@ export const Login: React.FC = () => {
                 <GoogleButton />
 
                 <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by <Icon /> Google
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+          />
+          Google
                 </Text>
             </VStack>
             </Box>
@@ -262,7 +282,12 @@ export const Login: React.FC = () => {
             >
             <GoogleButton />   
              <p>
-                Powered by <Icon /> Google
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+          />
+          Google
             </p>            
             </div>
         );

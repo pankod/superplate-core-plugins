@@ -100,7 +100,12 @@ export const Login: React.FC = () => {
                     <%_ } _%>
                 </Button>
                 <Typography.Text type="secondary">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
                 </Typography.Text>
             </Space>
             </Layout>
@@ -145,7 +150,12 @@ export const Login: React.FC = () => {
                     <%_ } _%>
                 </Button>
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
                 </Typography>
             </Box>
             </Container>
@@ -191,7 +201,12 @@ export const Login: React.FC = () => {
             </Button>
             <Space h="xl" />
             <Text fz="sm" color="gray">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
             </Text>
             </Box>
         );
@@ -231,7 +246,12 @@ export const Login: React.FC = () => {
                 </Button>
 
                 <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
                 </Text>
             </VStack>
             </Box>
@@ -257,7 +277,12 @@ export const Login: React.FC = () => {
                 <%_ } _%>
             </button>   
             <p>
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
             </p>               
             </div>
         );

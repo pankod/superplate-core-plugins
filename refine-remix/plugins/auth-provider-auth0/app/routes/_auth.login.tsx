@@ -75,7 +75,12 @@ export default function Login() {
                 </form>
                 
                 <Typography.Text type="secondary">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
                 </Typography.Text>
             </Space>
             </Layout>
@@ -119,7 +124,12 @@ export default function Login() {
                 </form>
                 
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
                 </Typography>
             </Box>
             </Container>
@@ -166,7 +176,12 @@ export default function Login() {
             
             <Space h="xl" />
             <Text fz="sm" color="gray">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
             </Text>
             </Box>
         );
@@ -206,7 +221,12 @@ export default function Login() {
                 </form>
 
                 <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
                 </Text>
             </VStack>
             </Box>
@@ -227,7 +247,12 @@ export default function Login() {
             <form action="/auth/auth0/" method="post">
                 <button type="submit">Sign in</button>
             </form> 
-            <p>Powered by <Icon /> Auth0</p>              
+            <p>Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0</p>              
             </div>
         );
     <%_ } _%>

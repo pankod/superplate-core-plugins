@@ -19,6 +19,43 @@ import { ThemedTitle } from "@refinedev/chakra-ui";
 import { AppIcon } from "components/app-icon";
 <%_ } _%>
 
+const Icon = () => (
+  <span style={{ position: "relative", top: 3, padding: "0 3px" }}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="17"
+      height="16"
+      fill="currentColor"
+    >
+      <path
+        fill="currentColor"
+        fill-opacity=".3"
+        d="m4.167 8 2.666-4.334.667 1-2 3.333H4.167Z"
+      />
+      <path
+        fill="currentColor"
+        fill-opacity=".3"
+        d="m4.167 8 2.666 4.333H5.5l-2-3.334.667-1ZM8.833 4.666l2 3.333h1.334L9.5 12.333h1.333L13.5 7.999l-.667-1-.666 1L9.5 3.666l-.667 1Z"
+      />
+      <path
+        fill="currentColor"
+        fill-opacity=".15"
+        d="M9.5 3.666h1.333l.6 1H16.5v6.667h-5.067L13.5 7.999l-.667-1-.666 1L9.5 3.666ZM2.5 4.666h2.385L2.833 7.999 3.5 9l1.4 2.334H2.5l-2-3.334 2-3.333Z"
+      />
+      <path
+        fill="currentColor"
+        fill-opacity=".15"
+        d="M8.833 11.333H7.5l-.667 1-2.666-4.334H5.5l2-3.333h1.333l2 3.333-2 3.334Z"
+      />
+      <path
+        fill="currentColor"
+        fill-opacity=".45"
+        d="m4.5 1.333-2 3.333h2.385L2.833 8 3.5 9l.667-1 2.666-4.334.667 1h1.333l.667-1h1.333l.6 1h2.4l-2-3.333H4.5ZM8.833 11.333H7.5l-.667 1H5.5l-.6-1H2.5l2 3.333h7.333l2-3.333h-2.4l-.6 1H9.5L12.167 8h-1.334l-2 3.333Z"
+      />
+    </svg>
+  </span>
+);
+
 
 export const Login: React.FC = () => {
     const { mutate: login } = useLogin();
@@ -36,11 +73,12 @@ export const Login: React.FC = () => {
                 alignItems: "center",
             }}
             >
-            <Space direction="vertical" align="center" size="large">
+            <Space direction="vertical" align="center">
                 <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
+                    marginBottom: "36px",
                 }}
                 <%_ if (selectedTitle) { _%>
                     text="<%= selectedTitle %>"
@@ -62,7 +100,7 @@ export const Login: React.FC = () => {
                     <%_ } _%>
                 </Button>
                 <Typography.Text type="secondary">
-                Powered by Keycloak
+                Powered by <Icon /> Keycloak
                 </Typography.Text>
             </Space>
             </Layout>
@@ -81,7 +119,7 @@ export const Login: React.FC = () => {
             >
             <Box
                 display="flex"
-                gap="25px"
+                gap="36px"
                 justifyContent="center"
                 flexDirection="column"
             >
@@ -99,7 +137,7 @@ export const Login: React.FC = () => {
                 <%_ } _%>
                 />
 
-                <Button style={{ width: "240px" }} variant="contained" onClick={() => login({})}>
+                <Button style={{ width: "240px" }} size="large" variant="contained" onClick={() => login({})}>
                     <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
                     {t("pages.login.signin", "Sign in")}
                     <%_ } else { _%>
@@ -107,7 +145,7 @@ export const Login: React.FC = () => {
                     <%_ } _%>
                 </Button>
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by Keycloak
+                Powered by <Icon /> Keycloak
                 </Typography>
             </Box>
             </Container>
@@ -151,9 +189,9 @@ export const Login: React.FC = () => {
                     Sign in
                 <%_ } _%>
             </Button>
-            <Space h="lg" />
+            <Space h="xl" />
             <Text fz="sm" color="gray">
-                Powered by Keycloak
+                Powered by <Icon /> Keycloak
             </Text>
             </Box>
         );
@@ -170,7 +208,7 @@ export const Login: React.FC = () => {
                 alignItems: "center",
             }}
             >
-            <VStack spacing="8" align="stretch">
+            <VStack spacing="10" align="stretch">
                 <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
@@ -192,8 +230,8 @@ export const Login: React.FC = () => {
                     <%_ } _%>
                 </Button>
 
-                <Text justifyContent="center" display="inherit" fontSize="xs" color="gray">
-                Powered by Keycloak
+                <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
+                Powered by <Icon /> Keycloak
                 </Text>
             </VStack>
             </Box>
@@ -208,6 +246,7 @@ export const Login: React.FC = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    flexDirection: "column",
                 }}
             >
             <button onClick={() => login({})}>
@@ -216,7 +255,10 @@ export const Login: React.FC = () => {
                 <%_ } else { _%>
                     Sign in
                 <%_ } _%>
-            </button>               
+            </button>   
+            <p>
+                Powered by <Icon /> Keycloak
+            </p>               
             </div>
         );
     <%_ } _%>

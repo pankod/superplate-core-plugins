@@ -14,7 +14,7 @@
         "@refinedev/core": "^4.5.8",
         "@refinedev/nextjs-router": "^5.1.4",
         "@refinedev/inferencer": "^3.1.4",
-        "@refinedev/kbar": "^1.0.0",
+        "@refinedev/kbar": "^1.1.0",
         "next": "^13.0.6",
         "nookies": "^2.5.2",
         "react": "^18.0.0",

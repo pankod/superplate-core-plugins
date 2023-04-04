@@ -3,7 +3,7 @@
         "@refinedev/appwrite": "^6.0.0",
         "cookie": "^0.5.0",
         "js-cookie": "^3.0.1",
-        "@refinedev/kbar": "^1.0.0"
+        "@refinedev/kbar": "^1.1.0"
     },
     "devDependencies": {
         "@types/js-cookie": "^3.0.2"

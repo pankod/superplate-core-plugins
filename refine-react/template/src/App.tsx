@@ -148,6 +148,8 @@ function App() {
                     >
                         <%_ if (_app.isCustomLoginPage) { _%>
                             <Route path="/login" element={<Login />} <%- (_app.loginPageProps || []).join("\n") %> />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/forgot-password" element={<ForgotPassword />} />
                         <%_ } else { _%>
                             <Route
                                 path="/login"

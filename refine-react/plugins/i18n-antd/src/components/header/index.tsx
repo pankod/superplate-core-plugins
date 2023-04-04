@@ -6,10 +6,10 @@ import {
     Avatar,
     Typography,
     Switch,
-    Menu,
     Button,
     Dropdown,
     theme,
+    MenuProps,
 } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
@@ -35,26 +35,18 @@ export const Header: React.FC = () => {
 
     const currentLocale = locale();
 
-    const menu = (
-        <Menu selectedKeys={currentLocale ? [currentLocale] : []}>
-            {[...(i18n.languages || [])].sort().map((lang: string) => (
-                <Menu.Item
-                    key={lang}
-                    onClick={() => changeLanguage(lang)}
-                    icon={
-                        <span style={{ marginRight: 8 }}>
-                            <Avatar
-                                size={16}
-                                src={`/images/flags/${lang}.svg`}
-                            />
-                        </span>
-                    }
-                >
-                    {lang === "en" ? "English" : "German"}
-                </Menu.Item>
-            ))}
-        </Menu>
-    );
+    const menuItems: MenuProps["items"] = [...(i18n.languages || [])]
+        .sort()
+        .map((lang: string) => ({
+            key: lang,
+            onClick: () => changeLanguage(lang),
+            icon: (
+                <span style={{ marginRight: 8 }}>
+                    <Avatar size={16} src={`/images/flags/${lang}.svg`} />
+                </span>
+            ),
+            label: lang === "en" ? "English" : "German",
+        }));
 
     return (
         <AntdLayout.Header
@@ -68,7 +60,12 @@ export const Header: React.FC = () => {
             }}
         >
             <Space>
-                <Dropdown overlay={menu}>
+                <Dropdown
+                    menu={{
+                        items: menuItems,
+                        selectedKeys: currentLocale ? [currentLocale] : [],
+                    }}
+                >
                     <Button type="text">
                         <Space>
                             <Avatar

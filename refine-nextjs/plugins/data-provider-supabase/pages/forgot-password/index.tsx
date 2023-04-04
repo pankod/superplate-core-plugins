@@ -29,7 +29,7 @@ export default function ForgotPassword() {
     );
 }
 
-Login.noLayout = true;
+ForgotPassword.noLayout = true;
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     const { authenticated } = await authProvider.check(context);

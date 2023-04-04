@@ -66,7 +66,7 @@ export default function Register() {
     );
 }
 
-Login.noLayout = true;
+Register.noLayout = true;
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     <%_ if (_app.isAuthProviderCheck) { _%>

@@ -66,7 +66,7 @@ export default function ForgotPassword() {
     );
 }
 
-Login.noLayout = true;
+ForgotPassword.noLayout = true;
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     <%_ if (_app.isAuthProviderCheck) { _%>

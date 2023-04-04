@@ -57,9 +57,7 @@ export const authProvider: AuthBindings = {
         let token = undefined;
         const hasCookie = request.headers.get("Cookie");
         if (hasCookie) {
-            const parsedCookie = cookie.parse(
-                request.headers.get("Cookie"),
-            );
+            const parsedCookie = cookie.parse(request.headers.get("Cookie"));
             token = parsedCookie[TOKEN_KEY];
         } else {
             const parsedCookie = Cookies.get(TOKEN_KEY);
@@ -73,7 +71,6 @@ export const authProvider: AuthBindings = {
         const { pathname } = new URL(request.url);
         const query =
             pathname === "/" ? "" : `?to=${encodeURIComponent(pathname)}`;
-
 
         try {
             const session = await account.get();
@@ -92,10 +89,12 @@ export const authProvider: AuthBindings = {
             };
         }
 
-    
         return {
             authenticated: false,
-            error: new Error("Unauthorized"),
+            error: {
+                message: "Check failed",
+                name: "Unauthenticated",
+            },
             logout: true,
             redirectTo: `/login${query}`,
         };

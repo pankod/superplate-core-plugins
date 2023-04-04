@@ -1,7 +1,7 @@
 {
     "dependencies": {
-        "@refinedev/mantine": "^2.0.0",
-        "@refinedev/react-table": "^5.0.0",
+        "@refinedev/mantine": "^2.5.0",
+        "@refinedev/react-table": "^5.1.4",
         "@tabler/icons": "^1.1.0",
         "@mantine/core": "^5.10.4",
         "@mantine/hooks": "^5.10.4",

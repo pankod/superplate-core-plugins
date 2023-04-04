@@ -1,14 +1,14 @@
 <%_ if (answers["ui-framework"] === 'antd') { _%>
-     import { AuthPage } from "@refinedev/antd";
+     import { AuthPage, ThemedTitle } from "@refinedev/antd";
  <%_ } _%>
  <%_ if (answers["ui-framework"] === 'mui') { _%>
-     import { AuthPage } from "@refinedev/mui";
+     import { AuthPage, ThemedTitle } from "@refinedev/mui";
  <%_ } _%>
  <%_ if (answers["ui-framework"] === 'mantine') { _%>
-     import { AuthPage } from "@refinedev/mantine";
+     import { AuthPage, ThemedTitle } from "@refinedev/mantine";
  <%_ } _%>
  <%_ if (answers["ui-framework"] === 'chakra') { _%>
-     import { AuthPage } from "@refinedev/chakra-ui";
+     import { AuthPage, ThemedTitle } from "@refinedev/chakra-ui";
  <%_ } _%>
  <%_ if (answers[`ui-framework`] === "no") { _%>
     import { AuthPage } from "@refinedev/core";
@@ -18,23 +18,20 @@ export default function Login() {
     return (
         <AuthPage
             type="login"
-            <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
-                formProps={{
-                    initialValues: {
-                        email: "info@refine.dev",
-                        password: "refine-supabase",
-                    },
-                }}
+            <%- (_app.authPageProps || []).join("\n") %>
+            <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
+            title={(
+                <ThemedTitle
+                    collapsed={false}
+                    <%_ if (selectedTitle) { _%>
+                        text="<%= selectedTitle %>"
+                    <%_ } _%>
+                    <%_ if (selectedSvg) { _%>
+                        icon={<AppIcon />}
+                    <%_ } _%>
+                />
+            )}
             <%_ } _%>
-            <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
-                formProps={{
-                    defaultValues: {
-                        email: "info@refine.dev",
-                        password: "refine-supabase",
-                    },
-                }}
-            <%_ } _%>
-            
         />
     );
 }

@@ -1,14 +1,14 @@
 <%_ if (answers["ui-framework"] === 'antd') { _%>
-    import { AuthPage } from "@refinedev/antd";
+    import { AuthPage, ThemedTitle } from "@refinedev/antd";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { AuthPage } from "@refinedev/mui";
+    import { AuthPage, ThemedTitle } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { AuthPage } from "@refinedev/mantine";
+    import { AuthPage, ThemedTitle } from "@refinedev/mantine";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { AuthPage } from "@refinedev/chakra-ui";
+    import { AuthPage, ThemedTitle } from "@refinedev/chakra-ui";
 <%_ } _%>
 <%_ if (answers[`ui-framework`] === "no") { _%>
     import { AuthPage } from "@refinedev/core";
@@ -23,7 +23,21 @@ import { authProvider } from "src/authProvider";
 
 export default function Register() {
     return (
-        <AuthPage type="register" />
+        <AuthPage type="register"
+            <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
+            title={(
+                <ThemedTitle
+                    collapsed={false}
+                    <%_ if (selectedTitle) { _%>
+                        text="<%= selectedTitle %>"
+                    <%_ } _%>
+                    <%_ if (selectedSvg) { _%>
+                        icon={<AppIcon />}
+                    <%_ } _%>
+                />
+            )}
+            <%_ } _%>
+        />
     );
 }
 

@@ -38,22 +38,7 @@ export default function Login() {
     return (
         <AuthPage
             type="login"
-            <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
-                formProps={{
-                    initialValues: {
-                        email: "admin@refine.dev",
-                        password: "demodemo",
-                    },
-                }}
-            <%_ } _%>
-            <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
-                formProps={{
-                    defaultValues: {
-                        email: "admin@refine.dev",
-                        password: "demodemo",
-                    },
-                }}
-            <%_ } _%>
+            <%- (_app.authPageProps || []).join("\n") %>
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
                 <ThemedTitle

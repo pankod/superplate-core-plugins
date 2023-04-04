@@ -49,20 +49,7 @@ export default function Login() {
     return (
         <AuthPage
             type="login"
-            formProps={{
-                <%_ if (answers["ui-framework"] === 'antd' || answers["ui-framework"] === 'mantine') { _%>
-                    initialValues: {
-                        email: "demo@refine.dev",
-                        password: "demodemo",
-                    },
-                <%_ } _%>
-                <%_ if (answers["ui-framework"] === 'mui' || answers["ui-framework"] === 'chakra') { _%>
-                    defaultValues: {
-                        email: "demo@refine.dev",
-                        password: "demodemo",
-                    },
-                <%_ } _%>
-            }}
+            <%- (_app.authPageProps || []).join("\n") %>
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
                 <ThemedTitle

@@ -8,10 +8,10 @@ import {
     Avatar,
     Typography,
     Switch,
-    Menu,
     Button,
     Dropdown,
     theme,
+    MenuProps,
 } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { ColorModeContext } from "../../contexts";
@@ -35,27 +35,21 @@ export const Header: React.FC = () => {
     const { locales } = useRouter();
     const currentLocale = locale();
 
-    const menu = (
-        <Menu selectedKeys={currentLocale ? [currentLocale] : []}>
-            {[...(locales || [])].sort().map((lang: string) => (
-                <Menu.Item
-                    key={lang}
-                    icon={
-                        <span style={{ marginRight: 8 }}>
-                            <Avatar
-                                size={16}
-                                src={`/images/flags/${lang}.svg`}
-                            />
-                        </span>
-                    }
-                >
-                    <Link href="/" locale={lang}>
-                        {lang === "en" ? "English" : "German"}
-                    </Link>
-                </Menu.Item>
-            ))}
-        </Menu>
-    );
+    const menuItems: MenuProps["items"] = [...(locales || [])]
+        .sort()
+        .map((lang: string) => ({
+            key: lang,
+            icon: (
+                <span style={{ marginRight: 8 }}>
+                    <Avatar size={16} src={`/images/flags/${lang}.svg`} />
+                </span>
+            ),
+            label: (
+                <Link href="/" locale={lang}>
+                    {lang === "en" ? "English" : "German"}
+                </Link>
+            ),
+        }));
 
     return (
         <AntdLayout.Header
@@ -69,7 +63,12 @@ export const Header: React.FC = () => {
             }}
         >
             <Space>
-                <Dropdown overlay={menu}>
+                <Dropdown
+                    menu={{
+                        items: menuItems,
+                        selectedKeys: currentLocale ? [currentLocale] : [],
+                    }}
+                >
                     <Button type="text">
                         <Space>
                             <Avatar

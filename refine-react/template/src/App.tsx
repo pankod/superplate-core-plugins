@@ -210,24 +210,28 @@ function App() {
                 <Routes>
                     <Route
                         element={(
-                            <ThemedLayout
-                                Header={Header}
-                                <%_ if (selectedSvg || selectedTitle) { _%>
-                                Title={({ collapsed }) => (
-                                    <ThemedTitle
-                                        collapsed={collapsed}
-                                    <%_ if (selectedTitle) { _%>
-                                        text="<%= selectedTitle %>"
-                                    <%_ } _%>
-                                    <%_ if (selectedSvg) { _%>
-                                        icon={<AppIcon />}
-                                    <%_ } _%>
-                                    />
-                                )}
-                                <%_ } _%>
-                            >
+                            <%_ if (answers["ui-framework"] === 'no') { _%>
                                 <Outlet />
-                            </ThemedLayout>
+                            <%_ } else { _%>
+                                <ThemedLayout
+                                    Header={Header}
+                                    <%_ if (selectedSvg || selectedTitle) { _%>
+                                    Title={({ collapsed }) => (
+                                        <ThemedTitle
+                                            collapsed={collapsed}
+                                        <%_ if (selectedTitle) { _%>
+                                            text="<%= selectedTitle %>"
+                                        <%_ } _%>
+                                        <%_ if (selectedSvg) { _%>
+                                            icon={<AppIcon />}
+                                        <%_ } _%>
+                                        />
+                                    )}
+                                    <%_ } _%>
+                                >
+                                    <Outlet />
+                                </ThemedLayout>
+                            <%_ } _%>
                         )}
                     >
                         <Route index element={
@@ -252,24 +256,28 @@ function App() {
                     </Route>
                     <Route
                         element={(
-                            <ThemedLayout
-                                Header={Header}
-                                <%_ if (selectedSvg || selectedTitle) { _%>
-                                Title={({ collapsed }) => (
-                                    <ThemedTitle
-                                        collapsed={collapsed}
-                                    <%_ if (selectedTitle) { _%>
-                                        text="<%= selectedTitle %>"
-                                    <%_ } _%>
-                                    <%_ if (selectedSvg) { _%>
-                                        icon={<AppIcon />}
-                                    <%_ } _%>
-                                    />
-                                )}
-                                <%_ } _%>
-                            >
+                            <%_ if (answers["ui-framework"] === 'no') { _%>
                                 <Outlet />
-                            </ThemedLayout>
+                            <%_ } else { _%>
+                                <ThemedLayout
+                                    Header={Header}
+                                    <%_ if (selectedSvg || selectedTitle) { _%>
+                                    Title={({ collapsed }) => (
+                                        <ThemedTitle
+                                            collapsed={collapsed}
+                                        <%_ if (selectedTitle) { _%>
+                                            text="<%= selectedTitle %>"
+                                        <%_ } _%>
+                                        <%_ if (selectedSvg) { _%>
+                                            icon={<AppIcon />}
+                                        <%_ } _%>
+                                        />
+                                    )}
+                                    <%_ } _%>
+                                >
+                                    <Outlet />
+                                </ThemedLayout>
+                            <%_ } _%>
                         )}
                     >
                         <Route path="*" element={<ErrorComponent />} />

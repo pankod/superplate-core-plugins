@@ -42,7 +42,7 @@ export const authProvider: AuthBindings = {
             };
         }
         nookies.destroy(null, APPWRITE_TOKEN_KEY);
-        appwriteClient.setJWT(undefined);
+        appwriteClient.setJWT("");
         return {
             success: true,
             redirectTo: "/login",

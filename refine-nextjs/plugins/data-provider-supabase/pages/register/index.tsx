@@ -21,6 +21,10 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { authProvider } from "src/authProvider";
 
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+import { AppIcon } from "src/components/app-icon";
+<%_ } _%>
+
 export default function Register() {
     return (
         <AuthPage type="register" <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>

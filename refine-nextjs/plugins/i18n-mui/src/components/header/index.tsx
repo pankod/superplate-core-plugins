@@ -70,6 +70,12 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                 defaultValue={currentLocale}
                                 inputProps={{ "aria-label": "Without label" }}
                                 variant="standard"
+                                sx={{
+                                    color: "inherit",
+                                    "& .MuiSvgIcon-root": {
+                                        color: "inherit",
+                                    },
+                                }}
                             >
                                 {[...(locales ?? [])]
                                     .sort()

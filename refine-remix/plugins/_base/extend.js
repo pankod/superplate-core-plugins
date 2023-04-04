@@ -14,6 +14,7 @@ module.exports = {
     extend(answers) {
         const dataProvider = answers["data-provider"];
         const authProvider = answers["auth-provider"];
+        const uiFramework = answers["ui-framework"];
 
 
         // ## isNextAuthCheck

@@ -171,6 +171,14 @@ function App() {
                                     />
                                 )}
                             />
+                            <Route
+                                path="/register"
+                                element={<AuthPage type="register" />}
+                            />
+                            <Route
+                                path="/forgot-password"
+                                element={<AuthPage type="forgotPassword" />}
+                            />
                         <%_ } _%>
                     </Route>
                     <Route

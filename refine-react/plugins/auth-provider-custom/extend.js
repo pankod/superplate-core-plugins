@@ -7,7 +7,11 @@ const base = {
         refineMantineImports: [],
         refineMuiImports: [],
         refineChakraImports: [],
-        localImport: [`import { Login } from "pages/login";`],
+        localImport: [
+            `import { Login } from "pages/login";`,
+            `import { Register } from "pages/register";`,
+            `import { ForgotPassword } from "pages/forgotPassword";`,
+        ],
     },
 };
 

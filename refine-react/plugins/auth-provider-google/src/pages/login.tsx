@@ -89,7 +89,7 @@ export const Login: React.FC = () => {
                     icon={<AppIcon />}
                 <%_ } _%>
                 />
-                <GoogleButton style={{ marginBottom: "32px" }} />
+                <GoogleButton />
                 <Typography.Text type="secondary">
                 Powered by
           <img

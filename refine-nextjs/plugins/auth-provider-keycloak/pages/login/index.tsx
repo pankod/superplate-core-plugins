@@ -81,6 +81,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Keycloak"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
           Keycloak
@@ -131,6 +132,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Keycloak"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
           Keycloak
@@ -182,6 +184,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Keycloak"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
           Keycloak
@@ -227,6 +230,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Keycloak"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
           Keycloak
@@ -258,6 +262,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Keycloak"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
           Keycloak

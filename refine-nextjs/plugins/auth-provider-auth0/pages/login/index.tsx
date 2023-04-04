@@ -80,6 +80,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Auth0"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
           />
           Auth0
@@ -130,6 +131,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Auth0"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
           />
           Auth0
@@ -181,6 +183,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Auth0"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
           />
           Auth0
@@ -226,6 +229,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Auth0"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
           />
           Auth0
@@ -257,6 +261,7 @@ export default function Login() {
                 Powered by
           <img
             style={{ padding: "0 5px" }}
+            alt="Auth0"
             src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
           />
           Auth0

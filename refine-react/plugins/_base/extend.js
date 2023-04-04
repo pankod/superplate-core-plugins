@@ -106,9 +106,28 @@ module.exports = {
             `formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`,
         ];
 
-        // clear for headless
+        // update for headless
         if (uiFramework === "no") {
-            base._app.authPageProps = [];
+            base._app.authPageProps = [
+                `
+                renderContent={(content) => (
+                      <div>
+                        <p
+                          style={{
+                            padding: 10,
+                            color: "#004085",
+                            backgroundColor: "#cce5ff",
+                            borderColor: "#b8daff",
+                            textAlign: "center",
+                          }}
+                        >
+                          ${defaultValues.replace(/"/g, "").replace(/,/g, '<br/>')}
+                        </p>
+                        {content}
+                      </div>
+                    )}
+                `,
+            ];
         }
         // ## authPageProps
 

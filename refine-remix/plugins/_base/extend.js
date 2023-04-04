@@ -3,6 +3,7 @@ const base = {
         isNextAuthCheck: false,
         isAuthProviderCheck: false,
         loader: [],
+        authPageProps: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -32,6 +33,48 @@ module.exports = {
             base._app.isAuthProviderCheck = true;
         }
         // ## isAuthProviderCheck
+
+        // ## authPageProps
+        let defaultValuePropsName = "initialValues";
+        let defaultValues = `email: "demo@refine.dev", password: "demodemo"`;
+        // change supabase login credentials
+        if (dataProvider === "data-provider-supabase") {
+            defaultValues = `email: "info@refine.dev", password: "refine-supabase"`;
+        }
+
+        // mui || chakra
+        if (uiFramework === "mui" || uiFramework === "chakra") {
+            defaultValuePropsName = "defaultValues";
+        }
+
+        base._app.authPageProps = [
+            `formProps={{ ${defaultValuePropsName}:{ ${defaultValues} } }}`,
+        ];
+
+        // update for headless
+        if (uiFramework === "no") {
+            base._app.authPageProps = [
+                `
+                renderContent={(content) => (
+                      <div>
+                        <p
+                          style={{
+                            padding: 10,
+                            color: "#004085",
+                            backgroundColor: "#cce5ff",
+                            borderColor: "#b8daff",
+                            textAlign: "center",
+                          }}
+                        >
+                          ${defaultValues.replace(/"/g, "").replace(/,/g, '<br/>')}
+                        </p>
+                        {content}
+                      </div>
+                    )}
+                `,
+            ];
+        }
+        // ## authPageProps
 
         // ## selected theme
         const themeFromAnswers = answers["theme"];

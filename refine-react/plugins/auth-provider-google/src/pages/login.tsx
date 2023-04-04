@@ -90,7 +90,7 @@ export const Login: React.FC = () => {
                 />
                 <GoogleButton />
                 <Typography.Text type="secondary">
-                Powered by Auth0
+                Powered by Google
                 </Typography.Text>
             </Space>
             </Layout>
@@ -130,7 +130,7 @@ export const Login: React.FC = () => {
                 <GoogleButton />
 
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by Auth0
+                Powered by Google
                 </Typography>
             </Box>
             </Container>
@@ -166,7 +166,7 @@ export const Login: React.FC = () => {
 
             <Space h="lg" />
             <Text fz="sm" color="gray">
-                Powered by Auth0
+                Powered by Google
             </Text>
             </Box>
         );
@@ -200,7 +200,7 @@ export const Login: React.FC = () => {
                 <GoogleButton />
 
                 <Text justifyContent="center" display="inherit" fontSize="xs" color="gray">
-                Powered by Auth0
+                Powered by Google
                 </Text>
             </VStack>
             </Box>

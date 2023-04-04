@@ -34,23 +34,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 <%_ } _%>
 
-const Icon = () => (
-  <span style={{ position: "relative", top: 4 }}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="16"
-      fill="currentColor"
-    >
-      <path
-        fill="currentColor"
-        fill-opacity=".45"
-        d="M11.616 12.943 10.044 8l4.114-3.055H9.07L7.499 0h5.087l1.573 4.945c.912 2.867-.028 6.13-2.55 7.998h.007Zm-8.229 0L7.501 16l4.115-3.057L7.503 9.89l-4.116 3.054Zm-2.542-8c-.962 3.025.154 6.229 2.541 8.002v-.002L4.958 8 .845 4.943l5.086.002L7.499 0H2.41L.845 4.943Z"
-      />
-    </svg>
-  </span>
-);
-
 export default function Login() {
     const { mutate: login } = useLogin();
 
@@ -94,7 +77,12 @@ export default function Login() {
                     <%_ } _%>
                 </Button>
                 <Typography.Text type="secondary">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
                 </Typography.Text>
             </Space>
             </Layout>
@@ -139,7 +127,12 @@ export default function Login() {
                     <%_ } _%>
                 </Button>
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
                 </Typography>
             </Box>
             </Container>
@@ -185,7 +178,12 @@ export default function Login() {
             </Button>
             <Space h="xl" />
             <Text fz="sm" color="gray">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
             </Text>
             </Box>
         );
@@ -225,7 +223,12 @@ export default function Login() {
                 </Button>
 
                 <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
                 </Text>
             </VStack>
             </Box>
@@ -251,7 +254,12 @@ export default function Login() {
                 <%_ } _%>
             </button>        
             <p>
-                Powered by <Icon /> Auth0
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
+          />
+          Auth0
             </p>       
             </div>
         );

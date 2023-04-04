@@ -33,44 +33,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 <%_ } _%>
 
-const Icon = () => (
-  <span style={{ position: "relative", top: 3, padding: "0 3px" }}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="17"
-      height="16"
-      fill="currentColor"
-    >
-      <path
-        fill="currentColor"
-        fill-opacity=".3"
-        d="m4.167 8 2.666-4.334.667 1-2 3.333H4.167Z"
-      />
-      <path
-        fill="currentColor"
-        fill-opacity=".3"
-        d="m4.167 8 2.666 4.333H5.5l-2-3.334.667-1ZM8.833 4.666l2 3.333h1.334L9.5 12.333h1.333L13.5 7.999l-.667-1-.666 1L9.5 3.666l-.667 1Z"
-      />
-      <path
-        fill="currentColor"
-        fill-opacity=".15"
-        d="M9.5 3.666h1.333l.6 1H16.5v6.667h-5.067L13.5 7.999l-.667-1-.666 1L9.5 3.666ZM2.5 4.666h2.385L2.833 7.999 3.5 9l1.4 2.334H2.5l-2-3.334 2-3.333Z"
-      />
-      <path
-        fill="currentColor"
-        fill-opacity=".15"
-        d="M8.833 11.333H7.5l-.667 1-2.666-4.334H5.5l2-3.333h1.333l2 3.333-2 3.334Z"
-      />
-      <path
-        fill="currentColor"
-        fill-opacity=".45"
-        d="m4.5 1.333-2 3.333h2.385L2.833 8 3.5 9l.667-1 2.666-4.334.667 1h1.333l.667-1h1.333l.6 1h2.4l-2-3.333H4.5ZM8.833 11.333H7.5l-.667 1H5.5l-.6-1H2.5l2 3.333h7.333l2-3.333h-2.4l-.6 1H9.5L12.167 8h-1.334l-2 3.333Z"
-      />
-    </svg>
-  </span>
-);
-
-
 
 export default function Login() {
     const { mutate: login } = useLogin();
@@ -116,7 +78,12 @@ export default function Login() {
                     <%_ } _%>
                 </Button>
                 <Typography.Text type="secondary">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
                 </Typography.Text>
             </Space>
             </Layout>
@@ -161,7 +128,12 @@ export default function Login() {
                     <%_ } _%>
                 </Button>
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
                 </Typography>
             </Box>
             </Container>
@@ -207,7 +179,12 @@ export default function Login() {
             </Button>
             <Space h="xl" />
             <Text fz="sm" color="gray">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
             </Text>
             </Box>
         );
@@ -247,7 +224,12 @@ export default function Login() {
                 </Button>
 
                 <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
                 </Text>
             </VStack>
             </Box>
@@ -273,7 +255,12 @@ export default function Login() {
                 <%_ } _%>
             </button>
             <p>
-                Powered by <Icon /> Keycloak
+                Powered by
+          <img
+            style={{ padding: "0 5px" }}
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
+          />
+          Keycloak
             </p>   
             </div>
         );

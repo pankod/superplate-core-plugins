@@ -1,31 +1,31 @@
 {
-  "name": "<%= name %>",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
-    "build": "refine build",
-    "start": "refine start",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "refine": "refine"
-  },
-  "dependencies": {
-    "@refinedev/cli": "^2.0.0",
-    "@refinedev/core": "^4.0.0",
-    "@refinedev/nextjs-router": "^5.0.0",
-    "@refinedev/inferencer": "^3.0.0",
-    "@refinedev/kbar": "^1.0.0",
-    "next": "^13.0.6",
-    "nookies": "^2.5.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@types/node": "^12.20.11",
-    "@typescript-eslint/parser": "5.48.0",
-    "typescript": "^4.7.4",
-    "cross-env": "^7.0.3"
-  }
+    "name": "<%= name %>",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
+        "build": "refine build",
+        "start": "refine start",
+        "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+        "refine": "refine"
+    },
+    "dependencies": {
+        "@refinedev/cli": "^2.1.2",
+        "@refinedev/core": "^4.5.8",
+        "@refinedev/nextjs-router": "^5.1.4",
+        "@refinedev/inferencer": "^3.1.4",
+        "@refinedev/kbar": "^1.1.0",
+        "next": "^13.0.6",
+        "nookies": "^2.5.2",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "@types/node": "^12.20.11",
+        "@typescript-eslint/parser": "5.48.0",
+        "typescript": "^4.7.4",
+        "cross-env": "^7.0.3"
+    }
 }

@@ -276,6 +276,13 @@ module.exports = {
     ],
     ignores: [
         {
+            plugin: ["data-provider-appwrite"],
+            when: function (answers) {
+                return answers["ui-framework"] !== "antd";
+            },
+            pattern: ["src/utility/normalize.ts"],
+        },
+        {
             plugin: ["_base"],
             when: function (answers) {
                 return (

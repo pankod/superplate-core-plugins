@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "remix dev",
         "build": "remix build",
-        "start": "remix start",
+        "start": "remix-serve build",
         "refine": "refine"
     },
     "dependencies": {

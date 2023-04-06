@@ -46,7 +46,7 @@ jobs:
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
         env:
-          CURRENTS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
           FRAMEWORK: react
           DATA_PROVIDER: ${{ matrix.data_provider }}
           UI_FRAMEWORK: ${{ matrix.ui_framework }}
@@ -93,7 +93,7 @@ jobs:
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
         env:
-          CURRENTS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
           FRAMEWORK: nextjs
           DATA_PROVIDER: ${{ matrix.data_provider }}
           UI_FRAMEWORK: ${{ matrix.ui_framework }}
@@ -139,7 +139,7 @@ jobs:
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
         env:
-          CURRENTS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
           FRAMEWORK: remix
           DATA_PROVIDER: ${{ matrix.data_provider }}
           UI_FRAMEWORK: ${{ matrix.ui_framework }}

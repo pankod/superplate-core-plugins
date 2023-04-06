@@ -1,0 +1,147 @@
+name: e2e Tests
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  react:
+    runs-on: ubuntu-latest
+    name: react
+    strategy:
+      fail-fast: false
+      matrix:
+        data_provider:
+          [
+            custom-json-rest,
+            strapi-v4,
+            nestjsx-crud,
+            airtable,
+            supabase,
+            appwrite,
+          ]
+        ui_framework: [antd, chakra, mantine, mui, no]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install
+        run: npm install
+      - name: Build Examples
+        id: build_step
+        run: FRAMEWORK=react DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+      - name: Install Deps
+        run: |
+          cd ${{ steps.build_step.outputs.project_path }}
+          npm install
+          npm run build
+          npm install -g serve
+          serve -s build &
+      - name: Run Cypress on local
+        uses: cypress-io/github-action@v4
+        with:
+          command: npx cypress-cloud run --record --parallel --ci-build-id react-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          install: false
+          start: "npm ls"
+          wait-on: "http://0.0.0.0:3000"
+        env:
+          CURRENTS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          FRAMEWORK: react
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
+  nextjs:
+    runs-on: ubuntu-latest
+    name: nextjs
+    strategy:
+      fail-fast: false
+      matrix:
+        data_provider:
+          [
+            custom-json-rest,
+            strapi-v4,
+            nestjsx-crud,
+            airtable,
+            supabase,
+            appwrite,
+          ]
+        ui_framework: [antd, chakra, mantine, mui, no]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install
+        run: npm install
+      - name: Build Examples
+        id: build_step
+        run: FRAMEWORK=nextjs DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+      - name: Install Deps
+        run: |
+          rm -rf .eslintrc .prettierrc
+          cd ${{ steps.download_step.outputs.project_path }}
+          npm install
+          npm run build
+          npm run start &
+      - name: Run Cypress on local
+        uses: cypress-io/github-action@v4
+        with:
+          command: npx cypress-cloud run --record --parallel --ci-build-id nextjs-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          install: false
+          start: "npm ls"
+          wait-on: "http://0.0.0.0:3000"
+        env:
+          CURRENTS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          FRAMEWORK: nextjs
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
+  remix:
+    runs-on: ubuntu-latest
+    name: remix
+    strategy:
+      fail-fast: false
+      matrix:
+        data_provider:
+          [
+            custom-json-rest,
+            strapi-v4,
+            nestjsx-crud,
+            airtable,
+            supabase,
+            appwrite,
+          ]
+        ui_framework: [antd, chakra, mantine, mui, no]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install
+        run: npm install
+      - name: Build Examples
+        id: build_step
+        run: FRAMEWORK=remix DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+      - name: Install Deps
+        run: |
+          cd ${{ steps.download_step.outputs.project_path }}
+          npm install
+          npm run build
+          HOST=0.0.0.0 npm run start &
+      - name: Run Cypress on local
+        uses: cypress-io/github-action@v4
+        with:
+          command: npx cypress-cloud run --record --parallel --ci-build-id remix-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          install: false
+          start: "npm ls"
+          wait-on: "http://0.0.0.0:3000"
+        env:
+          CURRENTS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          FRAMEWORK: remix
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}

@@ -2,7 +2,6 @@ name: e2e Tests
 
 on:
   - push
-  - pull_request
 
 jobs:
   react:

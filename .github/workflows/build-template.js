@@ -68,7 +68,7 @@ const buildTemplate = async () => {
     const randomDir = randomString(10);
 
     fs.cpSync(
-        path.resolve(path.join(process.cwd(), `refine-${FRAMEWORK}}`)),
+        path.resolve(path.join(process.cwd(), `refine-${FRAMEWORK}`)),
         `tmp/${randomDir}/template`,
         {
             recursive: true,

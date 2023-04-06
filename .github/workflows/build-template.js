@@ -4,7 +4,6 @@ const fs = require("fs");
 const path = require("path");
 const core = require("@actions/core");
 const { api } = require("superplate-cli");
-const { randomString } = require("./random-string");
 
 const FRAMEWORK = process.env.FRAMEWORK;
 const DATA_PROVIDER = process.env.DATA_PROVIDER;

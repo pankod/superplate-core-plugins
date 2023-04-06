@@ -14,7 +14,9 @@ describe("build test", () => {
         cy.visit("http://localhost:3000");
 
         if (
-            ["keycloak", "google", "auth0"].includes(Cypress.env("AUTH_PROVIDER")))
+            ["keycloak", "google", "auth0"].includes(
+                Cypress.env("AUTH_PROVIDER"),
+            )
         ) {
             cy.contains("refine Project", { timeout: 10000 }).should("exist");
 
@@ -77,7 +79,7 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.contains("Blog Posts").should("exist");
+            cy.contains("Blog Posts", { matchCase: false }).should("exist");
 
             cy.contains("Categories").should("exist");
 

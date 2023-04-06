@@ -8,6 +8,7 @@ describe("build test", () => {
     beforeEach(() => {
         cy.clearAllCookies();
         cy.clearAllLocalStorage();
+        cy.clearAllSessionStorage();
     });
 
     it("should build", () => {
@@ -49,6 +50,11 @@ describe("build test", () => {
             cy.contains("Sign up for your account").should("exist");
 
             cy.contains("Sign in").click();
+
+            if (Cypress.env("UI_FRAMEWORK") === "no") {
+                cy.get("input[name='email']").type("demo@refine.dev");
+                cy.get("input[name='password']").type("demodemo");
+            }
 
             cy.wait(1000);
 

@@ -38,7 +38,7 @@ const buildRemote = async () => {
 
     const body = {
         projectName: "refine-project",
-        type: `refine-${FRAMEWORK}}`,
+        type: `refine-${FRAMEWORK}`,
         name: "refine-project",
         answers: {
             title: "refine Project",

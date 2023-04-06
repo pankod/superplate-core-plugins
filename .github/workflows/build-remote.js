@@ -48,7 +48,7 @@ const buildRemote = async () => {
             "ui-framework": UI_FRAMEWORK,
             [UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer"]:
                 UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer",
-            "auth-provider": AUTH_PROVIDER,
+            "auth-provider": `auth-provider-${AUTH_PROVIDER}`,
             [`i18n-${UI_FRAMEWORK}`]: "i18n",
         },
     };

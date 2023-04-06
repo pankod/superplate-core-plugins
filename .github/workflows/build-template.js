@@ -57,10 +57,8 @@ const buildTemplate = async () => {
             [UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer"]:
                 UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer",
             "auth-provider": `auth-provider-${AUTH_PROVIDER}`,
-            [UI_FRAMEWORK === "no" ? "i18n-headless" : `i18n-${UI_FRAMEWORK}`]:
-                UI_FRAMEWORK === "no"
-                    ? "i18n-headless"
-                    : `i18n-${UI_FRAMEWORK}`,
+            [`i18n-${UI_FRAMEWORK}`]:
+                UI_FRAMEWORK === "no" ? "i18n" : `i18n-${UI_FRAMEWORK}`,
         },
     };
 

@@ -19,7 +19,7 @@ describe("build test", () => {
                 Cypress.env("AUTH_PROVIDER"),
             )
         ) {
-            cy.contains("refine Project", { timeout: 10000 }).should("exist");
+            cy.contains("Powered by", { timeout: 10000 }).should("exist");
 
             cy.contains("Sign in").click();
 

@@ -1,4 +1,4 @@
-name: e2e Tests
+name: Local e2e tests
 
 on:
   - push

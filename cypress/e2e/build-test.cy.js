@@ -57,10 +57,10 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.url().should(
-                "eq",
+            cy.url().should("be.oneOf", [
                 "http://localhost:3000/login?to=%2Fi-dont-exist",
-            );
+                "http://localhost:3000/login?to=/i-dont-exist",
+            ]);
 
             cy.contains("Sign in to your account").should("exist");
 

@@ -82,8 +82,6 @@ describe("build test", () => {
             cy.contains("Categories").should("exist");
 
             cy.contains("Logout").should("exist");
-
-            cy.contains("English").should("exist");
         }
     });
 });

@@ -82,7 +82,10 @@ export const authProvider: AuthBindings = {
 
         return {
             authenticated: false,
-            error: new Error("Unauthenticated"),
+            error: {
+                message: "Check failed",
+                name: "Unauthenticated",
+            },
             logout: true,
             redirectTo: `/login?to=${pathname}`,
         };

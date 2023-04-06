@@ -10,10 +10,7 @@ const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
 export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
-        const { data, status } = await strapiAuthHelper.login(
-            email,
-            password,
-        );
+        const { data, status } = await strapiAuthHelper.login(email, password);
         if (status === 200) {
             localStorage.setItem(TOKEN_KEY, data.jwt);
 
@@ -29,7 +26,10 @@ export const authProvider: AuthBindings = {
         }
         return {
             success: false,
-            error: new Error("Invalid username or password"),
+            error: {
+                message: "Login failed",
+                name: "Invalid email or password",
+            },
         };
     },
     logout: async () => {
@@ -56,7 +56,10 @@ export const authProvider: AuthBindings = {
 
         return {
             authenticated: false,
-            error: new Error("Not authenticated"),
+            error: {
+                message: "Check failed",
+                name: "Token not found",
+            },
             logout: true,
             redirectTo: "/login",
         };

@@ -91,7 +91,10 @@ export const authProvider: AuthBindings = {
 
         return {
             authenticated: false,
-            error: new Error("Unauthorized"),
+            error: {
+                message: "Check failed",
+                name: "Unauthenticated",
+            },
             logout: true,
             redirectTo: `/login${query}`,
         };

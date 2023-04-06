@@ -7,10 +7,12 @@ const authProvider: AuthBindings = {
         // sign in with oauth
         try {
             if (providerName) {
-                const { data, error } =
-                    await supabaseClient.auth.signInWithOAuth({
-                        provider: providerName,
-                    });
+                const {
+                    data,
+                    error,
+                } = await supabaseClient.auth.signInWithOAuth({
+                    provider: providerName,
+                });
 
                 if (error) {
                     return {
@@ -22,17 +24,19 @@ const authProvider: AuthBindings = {
                 if (data?.url) {
                     return {
                         success: true,
-                        redirectTo: "/"
+                        redirectTo: "/",
                     };
                 }
             }
 
             // sign in with email and password
-            const { data, error } =
-                await supabaseClient.auth.signInWithPassword({
-                    email,
-                    password,
-                });
+            const {
+                data,
+                error,
+            } = await supabaseClient.auth.signInWithPassword({
+                email,
+                password,
+            });
 
             if (error) {
                 return {
@@ -44,7 +48,7 @@ const authProvider: AuthBindings = {
             if (data?.user) {
                 return {
                     success: true,
-                    redirectTo: "/"
+                    redirectTo: "/",
                 };
             }
         } catch (error: any) {
@@ -56,7 +60,10 @@ const authProvider: AuthBindings = {
 
         return {
             success: false,
-            error: new Error("Login failed"),
+            error: {
+                message: "Login failed",
+                name: "Invalid email or password",
+            },
         };
     },
     register: async ({ email, password }) => {
@@ -76,7 +83,7 @@ const authProvider: AuthBindings = {
             if (data) {
                 return {
                     success: true,
-                    redirectTo: "/"
+                    redirectTo: "/",
                 };
             }
         } catch (error: any) {
@@ -88,15 +95,20 @@ const authProvider: AuthBindings = {
 
         return {
             success: false,
-            error: new Error("Register failed"),
+            error: {
+                message: "Register failed",
+                name: "Invalid email or password",
+            },
         };
     },
     forgotPassword: async ({ email }) => {
         try {
-            const { data, error } =
-                await supabaseClient.auth.resetPasswordForEmail(email, {
-                    redirectTo: `${window.location.origin}/update-password`,
-                });
+            const {
+                data,
+                error,
+            } = await supabaseClient.auth.resetPasswordForEmail(email, {
+                redirectTo: `${window.location.origin}/update-password`,
+            });
 
             if (error) {
                 return {
@@ -119,7 +131,10 @@ const authProvider: AuthBindings = {
 
         return {
             success: false,
-            error: new Error("Forgot Password password failed"),
+            error: {
+                message: "Forgot password failed",
+                name: "Invalid email",
+            },
         };
     },
     updatePassword: async ({ password }) => {
@@ -149,7 +164,10 @@ const authProvider: AuthBindings = {
         }
         return {
             success: false,
-            error: new Error("Update Password password failed"),
+            error: {
+                message: "Update password failed",
+                name: "Invalid password",
+            },
         };
     },
     logout: async () => {
@@ -179,7 +197,10 @@ const authProvider: AuthBindings = {
             if (!session) {
                 return {
                     authenticated: false,
-                    error: new Error("Not authenticated"),
+                    error: {
+                        message: "Check failed",
+                        name: "Session not found",
+                    },
                     logout: true,
                     redirectTo: "/login",
                 };
@@ -187,7 +208,10 @@ const authProvider: AuthBindings = {
         } catch (error: any) {
             return {
                 authenticated: false,
-                error: error || new Error("Not authenticated"),
+                error: error || {
+                    message: "Check failed",
+                    name: "Not authenticated",
+                },
                 logout: true,
                 redirectTo: "/login",
             };

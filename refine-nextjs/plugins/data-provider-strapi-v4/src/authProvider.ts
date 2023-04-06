@@ -40,7 +40,10 @@ export const authProvider: AuthBindings = {
         }
         return {
             success: false,
-            error: new Error("Invalid email or password"),
+            error: {
+                message: "Login failed",
+                name: "Invalid email or password",
+            },
         };
     },
     logout: async () => {

@@ -34,7 +34,10 @@ export const authProvider: AuthBindings = {
 
         return {
             success: false,
-            error: new Error("Invalid email or password"),
+            error: {
+                message: "Login failed",
+                name: "Invalid email or password",
+            },
         };
     },
     logout: async () => {
@@ -69,7 +72,10 @@ export const authProvider: AuthBindings = {
         if (!user) {
             return {
                 authenticated: false,
-                error: new Error("Unauthenticated"),
+                error: {
+                    message: "Check failed",
+                    name: "Unauthenticated",
+                },
                 logout: true,
                 redirectTo: `/login?to=${pathname}`,
             };

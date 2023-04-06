@@ -81,7 +81,7 @@ jobs:
       - name: Install Deps
         run: |
           rm -rf .eslintrc .prettierrc
-          cd ${{ steps.download_step.outputs.project_path }}
+          cd ${{ steps.build_step.outputs.project_path }}
           npm install
           npm run build
           npm run start &
@@ -127,7 +127,7 @@ jobs:
         run: FRAMEWORK=remix DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
       - name: Install Deps
         run: |
-          cd ${{ steps.download_step.outputs.project_path }}
+          cd ${{ steps.build_step.outputs.project_path }}
           npm install
           npm run build
           HOST=0.0.0.0 npm run start &

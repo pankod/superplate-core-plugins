@@ -24,13 +24,17 @@ describe("build test", () => {
 
             cy.url().should("not.contain", "http://localhost:3000");
         } else {
-            cy.contains("refine Project", { timeout: 10000 }).should("exist");
+            cy.contains("Sign in to your account", { timeout: 10000 }).should(
+                "exist",
+            );
 
             cy.contains("Forgot password?").click();
 
             cy.url().should("contain", "/forgot-password");
 
             cy.contains("Sign in").click();
+
+            cy.url().should("contain", "/login");
 
             cy.contains("Sign up").click();
 

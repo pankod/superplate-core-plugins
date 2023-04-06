@@ -51,11 +51,6 @@ describe("build test", () => {
 
             cy.contains("Sign in").click();
 
-            if (Cypress.env("UI_FRAMEWORK") === "no") {
-                cy.get("input[name='email']").type("demo@refine.dev");
-                cy.get("input[name='password']").type("demodemo");
-            }
-
             cy.wait(1000);
 
             cy.visit("http://localhost:3000/i-dont-exist");
@@ -68,6 +63,11 @@ describe("build test", () => {
             );
 
             cy.contains("Sign in to your account").should("exist");
+
+            if (Cypress.env("UI_FRAMEWORK") === "no") {
+                cy.get("input[name='email']").type("demo@refine.dev");
+                cy.get("input[name='password']").type("demodemo");
+            }
 
             cy.get("form").submit();
 

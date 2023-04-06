@@ -14,7 +14,7 @@ describe("build test", () => {
         cy.visit("http://localhost:3000");
 
         if (
-            ["keycloak", "google", "auth0"].includes(process.env.AUTH_PROVIDER)
+            ["keycloak", "google", "auth0"].includes(Cypress.env("AUTH_PROVIDER")))
         ) {
             cy.contains("refine Project", { timeout: 10000 }).should("exist");
 

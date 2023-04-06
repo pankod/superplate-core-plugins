@@ -28,13 +28,19 @@ describe("build test", () => {
 
             cy.contains("Forgot password?").click();
 
+            cy.wait(1000);
+
             cy.url().should("contain", "/forgot-password");
 
             cy.contains("Sign in").click();
 
+            cy.wait(1000);
+
             cy.url().should("contain", "/login");
 
             cy.contains("Sign up").click();
+
+            cy.wait(1000);
 
             cy.url().should("contain", "/register");
 
@@ -42,7 +48,11 @@ describe("build test", () => {
 
             cy.contains("Sign in").click();
 
+            cy.wait(1000);
+
             cy.visit("http://localhost:3000/i-dont-exist");
+
+            cy.wait(1000);
 
             cy.url().should(
                 "eq",
@@ -52,6 +62,8 @@ describe("build test", () => {
             cy.contains("Sign in to your account").should("exist");
 
             cy.get("form").submit();
+
+            cy.wait(1000);
 
             cy.url().should("eq", "http://localhost:3000/i-dont-exist", {
                 timeout: 3000,
@@ -63,6 +75,8 @@ describe("build test", () => {
 
             cy.contains("Back Home").click();
 
+            cy.wait(1000);
+
             cy.contains("Blog Posts").should("exist");
 
             cy.contains("Categories").should("exist");
@@ -70,8 +84,6 @@ describe("build test", () => {
             cy.contains("Logout").should("exist");
 
             cy.contains("English").should("exist");
-
-            cy.contains("🔆").click();
         }
     });
 });

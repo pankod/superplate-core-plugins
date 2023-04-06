@@ -2,7 +2,6 @@ name: Remote e2e tests
 
 on:
   - workflow_dispatch
-  - push
 
 jobs:
   refine-react:

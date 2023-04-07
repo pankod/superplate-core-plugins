@@ -25,6 +25,12 @@ module.exports = {
         if (authProvider === "auth-provider-auth0") {
             base._app.isNextAuthCheck = true;
         }
+        if (authProvider === "auth-provider-google") {
+            base._app.isNextAuthCheck = true;
+        }
+        if (authProvider === "auth-provider-keycloak") {
+            base._app.isNextAuthCheck = true;
+        }
         // ## isNextAuthCheck
 
         // ## isAuthProviderCheck

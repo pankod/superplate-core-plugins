@@ -21,10 +21,7 @@ axiosInstance.interceptors.request.use((request) => {
 
 export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
-        const { data, status } = await strapiAuthHelper.login(
-            email,
-            password,
-        );
+        const { data, status } = await strapiAuthHelper.login(email, password);
         if (status === 200) {
             Cookies.set(TOKEN_KEY, data.jwt);
 
@@ -73,15 +70,18 @@ export const authProvider: AuthBindings = {
                 Authorization: `Bearer ${token}`,
             };
             return {
-                authenticated: true
+                authenticated: true,
             };
         }
-        
+
         const { pathname } = new URL(request.url);
 
         return {
             authenticated: false,
-            error: new Error("Unauthenticated"),
+            error: {
+                message: "Check failed",
+                name: "Unauthenticated",
+            },
             logout: true,
             redirectTo: `/login?to=${pathname}`,
         };

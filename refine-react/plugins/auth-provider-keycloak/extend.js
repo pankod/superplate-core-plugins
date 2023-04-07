@@ -60,7 +60,10 @@ const base = {
                                 authenticated: false,
                                 logout: true,
                                 redirectTo: "/login",
-                                error: new Error("Token not found"),
+                                error: {
+                                    message: "Check failed",
+                                    name: "Token not found",
+                                },
                             };
                         }
                     } catch (error) {
@@ -68,7 +71,10 @@ const base = {
                             authenticated: false,
                             logout: true,
                             redirectTo: "/login",
-                            error: new Error("Token not found"),
+                            error: error: {
+                                message: "Check failed",
+                                name: "Token not found",
+                            },
                         };
                     }
                 },

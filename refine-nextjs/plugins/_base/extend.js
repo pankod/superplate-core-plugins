@@ -22,13 +22,11 @@ module.exports = {
         const authProvider = answers["auth-provider"];
 
         // ## isNextAuthCheck
-        if (authProvider === "auth-provider-auth0") {
-            base._app.isNextAuthCheck = true;
-        }
-        if (authProvider === "auth-provider-google") {
-            base._app.isNextAuthCheck = true;
-        }
-        if (authProvider === "auth-provider-keycloak") {
+        if (
+            authProvider === "auth-provider-auth0" ||
+            authProvider === "auth-provider-google" ||
+            authProvider === "auth-provider-keycloak"
+        ) {
             base._app.isNextAuthCheck = true;
         }
         // ## isNextAuthCheck
@@ -76,7 +74,9 @@ module.exports = {
                             textAlign: "center",
                           }}
                         >
-                          ${defaultValues.replace(/"/g, "").replace(/,/g, '<br/>')}
+                          ${defaultValues
+                              .replace(/"/g, "")
+                              .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>

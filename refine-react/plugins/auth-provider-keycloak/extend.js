@@ -71,7 +71,7 @@ const base = {
                             authenticated: false,
                             logout: true,
                             redirectTo: "/login",
-                            error: error: {
+                            error: {
                                 message: "Check failed",
                                 name: "Token not found",
                             },

@@ -3,5 +3,13 @@
     "trailingComma": "all",
     "singleQuote": false,
     "printWidth": 80,
-    "tabWidth": 4
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": ["*.json", "*.yml", "*.yaml"],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
 }

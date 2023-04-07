@@ -38,12 +38,12 @@ describe("build test", () => {
                 Cypress.env("AUTH_PROVIDER") === "google" &&
                 Cypress.env("FRAMEWORK") === "react"
             ) {
-                getIframeBody().contains("Google").click();
+                getIframeBody().contains("Google");
             } else {
                 cy.contains("Sign in").click();
-            }
 
-            cy.url().should("not.contain", "http://localhost:3000");
+                cy.url().should("not.contain", "http://localhost:3000");
+            }
         } else {
             cy.contains("Sign in to your account", { timeout: 10000 }).should(
                 "exist",

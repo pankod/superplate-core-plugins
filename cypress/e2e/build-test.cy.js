@@ -4,6 +4,18 @@ Cypress.on("uncaught:exception", (err, runnable) => {
     return false;
 });
 
+const getIframeDocument = () => {
+    return cy.get("iframe").its("0.contentDocument").should("exist");
+};
+
+const getIframeBody = () => {
+    // get the document
+    return getIframeDocument()
+        .its("body")
+        .should("not.be.undefined")
+        .then(cy.wrap);
+};
+
 describe("build test", () => {
     beforeEach(() => {
         cy.clearAllCookies();
@@ -23,7 +35,11 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.contains("Sign in").click();
+            if (Cypress.env("AUTH_PROVIDER") === "google") {
+                getIframeBody().contains("Google").click();
+            } else {
+                cy.contains("Sign in").click();
+            }
 
             cy.url().should("not.contain", "http://localhost:3000");
         } else {
@@ -87,9 +103,11 @@ describe("build test", () => {
 
             cy.contains("Blog Posts", { matchCase: false }).should("exist");
 
-            cy.contains("Categories").should("exist");
+            if (Cypress.env("UI_FRAMEWORK") !== "no") {
+                cy.contains("Categories").should("exist");
 
-            cy.contains("Logout").should("exist");
+                cy.contains("Logout").should("exist");
+            }
         }
     });
 });

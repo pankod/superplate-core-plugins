@@ -80,6 +80,7 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                 {[...(locales ?? [])]
                                     .sort()
                                     .map((lang: string) => (
+                                        // @ts-expect-error
                                         <MenuItem
                                             component={Link}
                                             href={{ pathname, query }}

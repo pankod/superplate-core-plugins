@@ -36,7 +36,7 @@ describe("build test", () => {
 
             if (
                 Cypress.env("AUTH_PROVIDER") === "google" &&
-                Cypress.env("FRAMEWORK") !== "remix"
+                Cypress.env("FRAMEWORK") === "react"
             ) {
                 getIframeBody().contains("Google").click();
             } else {

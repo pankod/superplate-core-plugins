@@ -83,8 +83,13 @@ describe("build test", () => {
             cy.contains("Sign in to your account").should("exist");
 
             if (Cypress.env("UI_FRAMEWORK") === "no") {
-                cy.get("input[name='email']").type("demo@refine.dev");
-                cy.get("input[name='password']").type("demodemo");
+                if (Cypress.env("DATA_PROVIDER") === "supabase") {
+                    cy.get("input[name='email']").type("info@refine.dev");
+                    cy.get("input[name='password']").type("refine-supabase");
+                } else {
+                    cy.get("input[name='email']").type("demo@refine.dev");
+                    cy.get("input[name='password']").type("demodemo");
+                }
             }
 
             cy.get("form").submit();

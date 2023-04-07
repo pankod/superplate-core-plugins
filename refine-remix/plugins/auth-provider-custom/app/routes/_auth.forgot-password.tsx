@@ -30,6 +30,9 @@ import {
     <%_ } _%>
 } from "@refinedev/chakra-ui";
 <%_ } _%>
+<%_ if (answers[`ui-framework`] === "no") { _%>
+    import { AuthPage } from "@refinedev/core";
+<%_ } _%>
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
 import { AppIcon } from "app/components/app-icon";
 <%_ } _%>

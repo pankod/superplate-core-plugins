@@ -84,7 +84,7 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                 {[...(i18n.languages ?? [])]
                                     .sort()
                                     .map((lang: string) => (
-                                        // ts-expect-error
+                                        // @ts-expect-error
                                         <MenuItem
                                             selected={currentLocale === lang}
                                             key={lang}

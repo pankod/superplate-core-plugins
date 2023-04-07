@@ -18,14 +18,13 @@ const getIframeBody = () => {
 
 describe("build test", () => {
     beforeEach(() => {
+        cy.visit("http://localhost:3000");
         cy.clearAllCookies();
         cy.clearAllLocalStorage();
         cy.clearAllSessionStorage();
     });
 
     it("should build", () => {
-        cy.visit("http://localhost:3000");
-
         if (
             ["keycloak", "google", "auth0"].includes(
                 Cypress.env("AUTH_PROVIDER"),

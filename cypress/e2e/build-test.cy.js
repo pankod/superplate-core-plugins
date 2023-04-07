@@ -21,6 +21,8 @@ describe("build test", () => {
         ) {
             cy.contains("Powered by", { timeout: 10000 }).should("exist");
 
+            cy.wait(1000);
+
             cy.contains("Sign in").click();
 
             cy.url().should("not.contain", "http://localhost:3000");

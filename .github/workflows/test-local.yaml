@@ -41,7 +41,7 @@ jobs:
       - name: Run Cypress on local
         uses: cypress-io/github-action@v4
         with:
-          command: npx cypress-cloud run --record --parallel --env=UI_FRAMEWORK=${{ matrix.ui_framework }} --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }} --ci-build-id react-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          command: npx cypress-cloud run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }} --ci-build-id react-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
           install: false
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
@@ -88,7 +88,7 @@ jobs:
       - name: Run Cypress on local
         uses: cypress-io/github-action@v4
         with:
-          command: npx cypress-cloud run --record --parallel --env=UI_FRAMEWORK=${{ matrix.ui_framework }} --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }} --ci-build-id nextjs-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          command: npx cypress-cloud run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }} --ci-build-id nextjs-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
           install: false
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
@@ -130,7 +130,7 @@ jobs:
       - name: Run Cypress on local
         uses: cypress-io/github-action@v4
         with:
-          command: npx cypress-cloud run --record --parallel --env=UI_FRAMEWORK=${{ matrix.ui_framework }} --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }} --ci-build-id remix-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          command: npx cypress-cloud run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }} --ci-build-id remix-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
           install: false
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"

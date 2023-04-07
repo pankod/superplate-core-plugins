@@ -16,20 +16,22 @@ module.exports = {
         const authProvider = answers["auth-provider"];
         const uiFramework = answers["ui-framework"];
 
-
         // ## isNextAuthCheck
-        if (authProvider === "auth-provider-auth0") {
+        if (
+            authProvider === "auth-provider-auth0" ||
+            authProvider === "auth-provider-google" ||
+            authProvider === "auth-provider-keycloak"
+        ) {
             base._app.isNextAuthCheck = true;
         }
         // ## isNextAuthCheck
 
-
         // ## isAuthProviderCheck
         if (
-            authProvider === 'auth-provider-custom' ||
-            dataProvider === 'data-provider-supabase' ||
-            dataProvider === 'data-provider-strapi-v4' ||
-            dataProvider === 'data-provider-appwrite'
+            authProvider === "auth-provider-custom" ||
+            dataProvider === "data-provider-supabase" ||
+            dataProvider === "data-provider-strapi-v4" ||
+            dataProvider === "data-provider-appwrite"
         ) {
             base._app.isAuthProviderCheck = true;
         }
@@ -67,7 +69,9 @@ module.exports = {
                             textAlign: "center",
                           }}
                         >
-                          ${defaultValues.replace(/"/g, "").replace(/,/g, '<br/>')}
+                          ${defaultValues
+                              .replace(/"/g, "")
+                              .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>

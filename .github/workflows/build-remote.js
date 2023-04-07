@@ -15,8 +15,8 @@ const buildRemote = async () => {
     const dataProviderMap = {
         "custom-json-rest": ["keycloak", "custom"],
         "strapi-v4": "strapi",
-        "nestjsx-crud": "google",
-        airtable: "auth0",
+        "nestjsx-crud": ["google", "custom"],
+        airtable: ["auth0", "custom"],
         supabase: "supabase",
         appwrite: "appwrite",
     };

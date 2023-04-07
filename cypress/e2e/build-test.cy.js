@@ -34,7 +34,10 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            if (Cypress.env("AUTH_PROVIDER") === "google") {
+            if (
+                Cypress.env("AUTH_PROVIDER") === "google" &&
+                Cypress.env("FRAMEWORK") !== "remix"
+            ) {
                 getIframeBody().contains("Google").click();
             } else {
                 cy.contains("Sign in").click();

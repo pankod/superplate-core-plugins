@@ -4,6 +4,7 @@ const base = {
         isAuthProviderCheck: false,
         loader: [],
         authPageProps: [],
+        localimport: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,

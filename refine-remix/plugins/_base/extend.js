@@ -4,7 +4,7 @@ const base = {
         isAuthProviderCheck: false,
         loader: [],
         authPageProps: [],
-        localimport: [],
+        localImport: [],
         refineAntdImports: [],
         refineChakraImports: [],
         refineMuiImports: [],

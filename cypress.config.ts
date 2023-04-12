@@ -1,5 +1,5 @@
 import { defineConfig } from "cypress";
-const { cloudPlugin } = require("cypress-cloud/plugin");
+import { cloudPlugin } from "cypress-cloud/plugin";
 
 export default defineConfig({
     projectId: "superplate",

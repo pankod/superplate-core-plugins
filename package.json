@@ -37,6 +37,7 @@
     "cypress-cloud": "^1.7.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-cypress": "^2.13.2",
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "^4.3.7",
     "lint-staged": "^10.5.3",

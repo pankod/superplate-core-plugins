@@ -24,7 +24,7 @@ describe("build test", () => {
         cy.clearAllSessionStorage();
     });
 
-    it("should build", () => {
+    it("should build", async () => {
         if (
             ["keycloak", "google", "auth0"].includes(
                 Cypress.env("AUTH_PROVIDER"),
@@ -92,7 +92,7 @@ describe("build test", () => {
                 }
             }
 
-            cy.get("form").submit();
+            cy.wait(1000).get("form").submit();
 
             cy.wait(1000);
 

@@ -2,7 +2,7 @@
     import { AuthPage, ThemedTitle } from "@refinedev/antd";
  <%_ } _%>
  <%_ if (answers["ui-framework"] === 'mui') { _%>
-     import { AuthPage, ThemedTitle } from "@refinedev/mui";
+     import { AuthPage, <%- (_app.themedTitleTag || "ThemedTitle") %> } from "@refinedev/mui";
  <%_ } _%>
  <%_ if (answers["ui-framework"] === 'mantine') { _%>
      import { AuthPage, ThemedTitle } from "@refinedev/mantine";
@@ -21,7 +21,7 @@ export default function ForgotPassword() {
     return (
         <AuthPage type="forgotPassword" <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
-                <ThemedTitle
+                <<%- (_app.themedTitleTag || "ThemedTitle") %>
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
                         text="<%= selectedTitle %>"

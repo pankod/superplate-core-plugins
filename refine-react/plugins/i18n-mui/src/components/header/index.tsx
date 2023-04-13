@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
-import { DarkModeOutlined, LightModeOutlined, Menu } from "@mui/icons-material";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mui";
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import {
     AppBar,
     Avatar,
@@ -24,11 +24,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
-    isSiderOpen,
-    onToggleSiderClick,
-    toggleSiderIcon: toggleSiderIconFromProps,
-}) => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
     const { mode, setMode } = useContext(ColorModeContext);
 
     const { data: user } = useGetIdentity<IUser>();
@@ -37,30 +33,11 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
     const locale = useGetLocale();
     const currentLocale = locale();
 
-    const hasSidebarToggle = Boolean(onToggleSiderClick);
-
     return (
         <AppBar position="sticky">
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
-                    {hasSidebarToggle && (
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={() => onToggleSiderClick?.()}
-                            edge="start"
-                            sx={{
-                                mr: 2,
-                                display: { xs: "none", md: "flex" },
-                                ...(isSiderOpen && { display: "none" }),
-                            }}
-                        >
-                            {toggleSiderIconFromProps?.(
-                                Boolean(isSiderOpen),
-                            ) ?? <Menu />}
-                        </IconButton>
-                    )}
-
+                    <HamburgerMenu />
                     <Stack
                         direction="row"
                         width="100%"

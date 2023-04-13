@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useGetIdentity } from "@refinedev/core";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mui";
 import {
     AppBar,
     IconButton,
@@ -14,7 +14,7 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import { DarkModeOutlined, LightModeOutlined, Menu } from "@mui/icons-material";
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";
 
@@ -23,40 +23,17 @@ interface IUser {
     avatar: string;
 }
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
-    isSiderOpen,
-    onToggleSiderClick,
-    toggleSiderIcon: toggleSiderIconFromProps,
-}) => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
     const { mode, setMode } = useContext(ColorModeContext);
     const { locale: currentLocale, locales, pathname, query } = useRouter();
 
     const { data: user } = useGetIdentity<IUser>();
 
-    const hasSidebarToggle = Boolean(onToggleSiderClick);
-
     return (
         <AppBar position="sticky">
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
-                    {hasSidebarToggle && (
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={() => onToggleSiderClick?.()}
-                            edge="start"
-                            sx={{
-                                mr: 2,
-                                display: { xs: "none", md: "flex" },
-                                ...(isSiderOpen && { display: "none" }),
-                            }}
-                        >
-                            {toggleSiderIconFromProps?.(
-                                Boolean(isSiderOpen),
-                            ) ?? <Menu />}
-                        </IconButton>
-                    )}
-
+                    <HamburgerMenu />
                     <Stack
                         direction="row"
                         width="100%"

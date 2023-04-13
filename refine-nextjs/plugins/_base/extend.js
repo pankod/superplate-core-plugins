@@ -8,6 +8,8 @@ const base = {
         refineChakraImports: [],
         localImport: [],
         authPageProps: [],
+        themedLayoutTag: "ThemedLayout",
+        themedTitleTag: "ThemedTitle",
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -113,7 +115,7 @@ module.exports = {
                 base._app.refineMantineImports.push("ThemedTitle");
             }
             if (answers["ui-framework"] === "mui") {
-                base._app.refineMuiImports.push("ThemedTitle");
+                base._app.refineMuiImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "chakra") {
                 base._app.refineChakraImports.push("ThemedTitle");
@@ -128,6 +130,13 @@ module.exports = {
                 'import { AppIcon } from "src/components/app-icon";',
             );
         }
+
+        // ## ThemedLayout
+        if (uiFramework === "mui") {
+            base._app.themedLayoutTag = "ThemedLayoutV2";
+            base._app.themedTitleTag = "ThemedTitleV2";
+        }
+        // ## ThemedLayout
 
         return base;
     },

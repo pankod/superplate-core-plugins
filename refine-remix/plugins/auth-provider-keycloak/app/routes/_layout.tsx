@@ -11,9 +11,9 @@ import {
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import {
-    ThemedLayout,
+    <%- (_app.themedLayoutTag || "ThemedLayout") %>,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    <%- (_app.themedTitleTag || "ThemedTitle") %> ,
     <%_ } _%>
 } from "@refinedev/mui";
 <%_ } _%>
@@ -46,11 +46,11 @@ export default function BaseLayout() {
              <%_ if (answers["ui-framework"] === 'no') { _%>
                 <Outlet />
             <%_ } else { _%>
-                <ThemedLayout
+                <<%- (_app.themedLayoutTag || "ThemedLayout") %>
                     Header={Header}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
-                        <ThemedTitle
+                        <<%- (_app.themedTitleTag || "ThemedTitle") %>
                             collapsed={collapsed}
                         <%_ if (selectedTitle) { _%>
                             text="<%= selectedTitle %>"
@@ -63,7 +63,7 @@ export default function BaseLayout() {
                     <%_ } _%>
                 >
                     <Outlet />
-                </ThemedLayout>
+                </<%- (_app.themedLayoutTag || "ThemedLayout") %>>
             <%_ } _%>
         </>
     );

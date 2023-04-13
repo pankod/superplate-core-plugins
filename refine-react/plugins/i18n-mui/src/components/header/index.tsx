@@ -68,7 +68,7 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                         alignItems="center"
                         gap="16px"
                     >
-                        <FormControl sx={{ minWidth: 120 }}>
+                        <FormControl sx={{ minWidth: 64 }}>
                             <Select
                                 disableUnderline
                                 defaultValue={currentLocale}
@@ -78,6 +78,12 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                     color: "inherit",
                                     "& .MuiSvgIcon-root": {
                                         color: "inherit",
+                                    },
+                                    "& .MuiStack-root > .MuiTypography-root": {
+                                        display: {
+                                            xs: "none",
+                                            sm: "block",
+                                        },
                                     },
                                 }}
                             >
@@ -101,15 +107,13 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                             >
                                                 <Avatar
                                                     sx={{
-                                                        width: "16px",
-                                                        height: "16px",
+                                                        width: "24px",
+                                                        height: "24px",
                                                         marginRight: "5px",
                                                     }}
                                                     src={`/images/flags/${lang}.svg`}
                                                 />
-                                                {lang === "en"
-                                                    ? "English"
-                                                    : "German"}
+                                                <Typography>{lang === "en" ? "English" : "German"}</Typography>
                                             </Stack>
                                         </MenuItem>
                                     ))}
@@ -137,7 +141,12 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                 justifyContent="center"
                             >
                                 {user?.name && (
-                                    <Typography variant="subtitle2">
+                                    <Typography
+                                        sx={{
+                                            display: { xs: "none", md: "inline-block" },
+                                        }}
+                                        variant="subtitle2"
+                                    >
                                         {user?.name}
                                     </Typography>
                                 )}

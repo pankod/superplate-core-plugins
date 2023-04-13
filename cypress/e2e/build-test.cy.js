@@ -115,6 +115,22 @@ describe("build test", () => {
 
                 cy.contains("Logout").should("exist");
             }
+
+            // hide language name and name on mui custom-json-rest
+            if (
+                Cypress.env("UI_FRAMEWORK") === "mui" &&
+                Cypress.env("DATA_PROVIDER") === "custom-json-rest"
+            ) {
+                cy.contains("English");
+                cy.contains("John Doe");
+                cy.viewport(375, 667)
+                    // check language name
+                    .contains("English")
+                    .should("not.exist")
+                    // check name
+                    .contains("John Doe")
+                    .should("not.exist");
+            }
         }
     });
 });

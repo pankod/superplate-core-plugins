@@ -137,10 +137,10 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                 justifyContent="center"
                             >
                                 {user?.name && (
-                                    <Typography 
+                                    <Typography
                                         sx={{
-                                            display: { xs: "none", md: "inline-block" },
-                                        }} 
+                                            display: { xs: "none", sm: "inline-block" },
+                                        }}
                                         variant="subtitle2"
                                     >
                                         {user?.name}

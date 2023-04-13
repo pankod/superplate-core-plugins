@@ -86,7 +86,7 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
                                 {user?.name && (
                                     <Typography
                                         sx={{
-                                            display: { xs: "none", md: "inline-block" },
+                                            display: { xs: "none", sm: "inline-block" },
                                         }}
                                         variant="subtitle2"
                                     >

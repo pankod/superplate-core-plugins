@@ -7,8 +7,9 @@ import { Button, Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import { Box, Button, Container, Typography } from "@mui/material";
-import { ThemedTitle } from "@refinedev/mui";
+import { <%- (_app.themedTitleTag || "ThemedLayout") %> } from "@refinedev/mui";
 <%_ } _%>
+
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import { Button, Box, Space, Text } from "@mantine/core";
 import { ThemedTitle } from "@refinedev/mantine";
@@ -96,7 +97,7 @@ export const Login: React.FC = () => {
                 justifyContent="center"
                 flexDirection="column"
             >
-                <ThemedTitle
+                <<%- (_app.themedTitleTag || "ThemedTitle") %>
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",

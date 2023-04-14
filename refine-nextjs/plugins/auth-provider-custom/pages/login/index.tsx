@@ -10,7 +10,7 @@ import {
 import {
     AuthPage,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    <%- (_app.themedTitleTag || "ThemedTitle") %>,
     <%_ } _%>
 } from "@refinedev/mui";
 <%_ } _%>
@@ -52,7 +52,7 @@ export default function Login() {
             <%- (_app.authPageProps || []).join("\n") %>
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
-                <ThemedTitle
+                <<%- (_app.themedTitleTag || "ThemedTitle") %>
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
                         text="<%= selectedTitle %>"

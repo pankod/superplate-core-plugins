@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
     import { <%- (_app.refineAntdImports || []).join("\n,") _%> } from '@refinedev/antd';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
+    import { <%- (_app.themedLayoutTag || "ThemedLayout") %>, <%- (_app.themedTitleTag || "ThemedTitle") %>, <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
     import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
@@ -191,11 +191,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
             );
         <%_ } else {_%>
             return (
-                <ThemedLayout
+                <<%- (_app.themedLayoutTag || "ThemedLayout") %>
                     Header={Header}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
-                        <ThemedTitle
+                        <<%- (_app.themedTitleTag || "ThemedTitle") %>
                             collapsed={collapsed}
                         <%_ if (selectedTitle) { _%>
                             text="<%= selectedTitle %>"
@@ -208,7 +208,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
                     <%_ } _%>
                 >
                     <Component {...pageProps} />
-                </ThemedLayout>
+                </<%- (_app.themedLayoutTag || "ThemedLayout") %>>
             );
         <%_ } _%>
     };

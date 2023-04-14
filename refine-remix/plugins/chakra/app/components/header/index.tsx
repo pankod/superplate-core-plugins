@@ -10,12 +10,10 @@ import {
     useColorMode,
     useColorModeValue,
 } from "@chakra-ui/react";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/chakra-ui";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/chakra-ui";
 import {
     IconMoon,
     IconSun,
-    IconLayoutSidebarLeftCollapse,
-    IconLayoutSidebarLeftExpand,
 } from "@tabler/icons";
 
 type IUser = {
@@ -24,11 +22,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
-    isSiderOpen,
-    onToggleSiderClick,
-    toggleSiderIcon: toggleSiderIconFromProps,
-}) => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
     const { data: user } = useGetIdentity<IUser>();
 
     const { colorMode, toggleColorMode } = useColorMode();
@@ -38,8 +32,6 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
         "refine.header.bg.dark",
     );
 
-    const hasSidebarToggle = Boolean(onToggleSiderClick);
-
     return (
         <Box
             py="2"
@@ -47,38 +39,14 @@ export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
             pl="2"
             display="flex"
             alignItems="center"
-            justifyContent={
-                hasSidebarToggle
-                    ? { base: "flex-end", md: "space-between" }
-                    : "flex-end"
-            }
+            justifyContent="space-between"
             w="full"
             height="64px"
             bg={bgColor}
             borderBottom="1px"
             borderBottomColor={useColorModeValue("gray.200", "gray.700")}
         >
-            {hasSidebarToggle && (
-                <IconButton
-                    display={{ base: "none", md: "flex" }}
-                    backgroundColor="transparent"
-                    aria-label="sidebar-toggle"
-                    onClick={() => onToggleSiderClick?.()}
-                >
-                    {toggleSiderIconFromProps?.(Boolean(isSiderOpen)) ??
-                        (isSiderOpen ? (
-                            <Icon
-                                as={IconLayoutSidebarLeftCollapse}
-                                boxSize={"24px"}
-                            />
-                        ) : (
-                            <Icon
-                                as={IconLayoutSidebarLeftExpand}
-                                boxSize={"24px"}
-                            />
-                        ))}
-                </IconButton>
-            )}
+            <HamburgerMenu />
 
             <HStack>
                 <IconButton

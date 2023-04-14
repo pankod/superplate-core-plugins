@@ -117,19 +117,24 @@ describe("build test", () => {
             }
 
             // hide language name and name on mui custom-json-rest
-            if (
-                Cypress.env("UI_FRAMEWORK") === "mui" &&
-                Cypress.env("DATA_PROVIDER") === "custom-json-rest"
-            ) {
-                cy.contains("English");
-                cy.contains("John Doe");
+            if (Cypress.env("UI_FRAMEWORK") === "mui") {
+                cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
+                    "English",
+                );
                 cy.viewport(375, 667)
-                    // check language name
+                    .get(".MuiPaper-elevation4 > .MuiToolbar-root")
                     .contains("English")
-                    .should("not.exist")
-                    // check name
-                    .contains("John Doe")
-                    .should("not.exist");
+                    .should("have.css", "display", "none");
+
+                if (Cypress.env("DATA_PROVIDER") === "custom-json-rest") {
+                    cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
+                        "John Doe",
+                    );
+                    cy.viewport(375, 667)
+                        .get(".MuiPaper-elevation4 > .MuiToolbar-root")
+                        .contains("John Doe")
+                        .should("have.css", "display", "none");
+                }
             }
         }
     });

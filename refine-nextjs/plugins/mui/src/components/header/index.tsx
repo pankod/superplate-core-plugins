@@ -8,8 +8,8 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mui";
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
+import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
+import { DarkModeOutlined, LightModeOutlined, Menu } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";
 
@@ -19,10 +19,16 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+    isSiderOpen,
+    onToggleSiderClick,
+    toggleSiderIcon: toggleSiderIconFromProps,
+}) => {
     const { mode, setMode } = useContext(ColorModeContext);
 
     const { data: user } = useGetIdentity<IUser>();
+
+    const hasSidebarToggle = Boolean(onToggleSiderClick);
 
     return (
         <AppBar position="sticky">
@@ -33,7 +39,24 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                     justifyContent="flex-end"
                     alignItems="center"
                 >
-                    <HamburgerMenu />
+                    {hasSidebarToggle && (
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={() => onToggleSiderClick?.()}
+                            edge="start"
+                            sx={{
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                ...(isSiderOpen && { display: "none" }),
+                            }}
+                        >
+                            {toggleSiderIconFromProps?.(
+                                Boolean(isSiderOpen),
+                            ) ?? <Menu />}
+                        </IconButton>
+                    )}
+
                     <Stack
                         direction="row"
                         width="100%"
@@ -61,12 +84,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                 justifyContent="center"
                             >
                                 {user?.name && (
-                                    <Typography
-                                        sx={{
-                                            display: { xs: "none", sm: "inline-block" },
-                                        }}
-                                        variant="subtitle2"
-                                    >
+                                    <Typography variant="subtitle2">
                                         {user?.name}
                                     </Typography>
                                 )}

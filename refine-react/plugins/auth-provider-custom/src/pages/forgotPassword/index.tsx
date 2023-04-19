@@ -13,7 +13,7 @@ import {
 import {
     AuthPage,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    <%- (_app.themedTitleTag || "ThemedTitle") %> ,
+    ThemedTitle,
     <%_ } _%>
 } from "@refinedev/mui";
 <%_ } _%>
@@ -43,7 +43,7 @@ export const ForgotPassword = () => {
             type="forgotPassword"
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitle
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
                         text="<%= selectedTitle %>"

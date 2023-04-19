@@ -2,7 +2,7 @@
     import { AuthPage, ThemedTitle } from "@refinedev/antd";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { AuthPage, <%- (_app.themedTitleTag || "ThemedTitle") %> } from "@refinedev/mui";
+    import { AuthPage, ThemedTitle } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
     import { AuthPage, ThemedTitle } from "@refinedev/mantine";
@@ -31,7 +31,7 @@ export default function Login() {
             <%- (_app.authPageProps || []).join("\n") %>
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitle
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
                         text="<%= selectedTitle %>"

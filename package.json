@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "ejslint ./refine-*/**/*",
-    "prepare": "husky install",
-    "cypress": "cypress open --env=AUTH_PROVIDER=custom,UI_FRAMEWORK=mui,FRAMEWORK=react,DATA_PROVIDER=custom-json-rest"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",

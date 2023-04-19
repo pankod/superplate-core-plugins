@@ -4,7 +4,7 @@ import { Button, Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import { Box, Button, Container, Typography } from "@mui/material";
-    import { <%- (_app.themedTitleTag || "ThemedTitle") %> } from "@refinedev/mui";
+import { ThemedTitle } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import { Button, Box, Space, Text } from "@mantine/core";
@@ -107,7 +107,7 @@ export default function Login() {
                 justifyContent="center"
                 flexDirection="column"
             >
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",

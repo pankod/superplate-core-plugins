@@ -14,8 +14,6 @@ const base = {
         refineChakraImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
-        themedLayoutTag: "ThemedLayout",
-        themedTitleTag: "ThemedTitle",
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -179,7 +177,7 @@ module.exports = {
                 base._app.refineMantineImports.push("ThemedTitle");
             }
             if (answers["ui-framework"] === "mui") {
-                base._app.refineMuiImports.push("ThemedTitleV2");
+                base._app.refineMuiImports.push("ThemedTitle");
             }
             if (answers["ui-framework"] === "chakra") {
                 base._app.refineChakraImports.push("ThemedTitle");
@@ -196,13 +194,6 @@ module.exports = {
         }
 
         // ## localImport
-
-        // ## ThemedLayout
-        if (uiFramework === "mui") {
-            base._app.themedLayoutTag = "ThemedLayoutV2";
-            base._app.themedTitleTag = "ThemedTitleV2";
-        }
-        // ## ThemedLayout
         return base;
     },
 };

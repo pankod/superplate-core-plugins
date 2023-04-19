@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useGetIdentity } from "@refinedev/core";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mui";
+import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
 import {
     AppBar,
     IconButton,
@@ -14,7 +14,7 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
+import { DarkModeOutlined, LightModeOutlined, Menu } from "@mui/icons-material";
 
 import { ColorModeContext } from "@contexts";
 
@@ -23,17 +23,40 @@ interface IUser {
     avatar: string;
 }
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+    isSiderOpen,
+    onToggleSiderClick,
+    toggleSiderIcon: toggleSiderIconFromProps,
+}) => {
     const { mode, setMode } = useContext(ColorModeContext);
     const { locale: currentLocale, locales, pathname, query } = useRouter();
 
     const { data: user } = useGetIdentity<IUser>();
 
+    const hasSidebarToggle = Boolean(onToggleSiderClick);
+
     return (
         <AppBar position="sticky">
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
-                    <HamburgerMenu />
+                    {hasSidebarToggle && (
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={() => onToggleSiderClick?.()}
+                            edge="start"
+                            sx={{
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                ...(isSiderOpen && { display: "none" }),
+                            }}
+                        >
+                            {toggleSiderIconFromProps?.(
+                                Boolean(isSiderOpen),
+                            ) ?? <Menu />}
+                        </IconButton>
+                    )}
+
                     <Stack
                         direction="row"
                         width="100%"
@@ -41,7 +64,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                         alignItems="center"
                         gap="16px"
                     >
-                        <FormControl sx={{ minWidth: 64 }}>
+                        <FormControl sx={{ minWidth: 120 }}>
                             <Select
                                 disableUnderline
                                 defaultValue={currentLocale}
@@ -51,12 +74,6 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                     color: "inherit",
                                     "& .MuiSvgIcon-root": {
                                         color: "inherit",
-                                    },
-                                    "& .MuiStack-root > .MuiTypography-root": {
-                                        display: {
-                                            xs: "none",
-                                            sm: "block",
-                                        },
                                     },
                                 }}
                             >
@@ -80,13 +97,15 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                             >
                                                 <Avatar
                                                     sx={{
-                                                        width: "24px",
-                                                        height: "24px",
+                                                        width: "16px",
+                                                        height: "16px",
                                                         marginRight: "5px",
                                                     }}
                                                     src={`/images/flags/${lang}.svg`}
                                                 />
-                                                <Typography>{lang === "en" ? "English" : "German"}</Typography>
+                                                {lang === "en"
+                                                    ? "English"
+                                                    : "German"}
                                             </Stack>
                                         </MenuItem>
                                     ))}
@@ -114,12 +133,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                 justifyContent="center"
                             >
                                 {user?.name && (
-                                    <Typography
-                                        sx={{
-                                            display: { xs: "none", sm: "inline-block" },
-                                        }}
-                                        variant="subtitle2"
-                                    >
+                                    <Typography variant="subtitle2">
                                         {user?.name}
                                     </Typography>
                                 )}

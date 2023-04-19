@@ -191,7 +191,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
             );
             <%_ } else {_%>
             return (
-                <ThemedLayout
+                <ThemedLayoutV2
                     Header={Header}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
@@ -208,7 +208,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
                     <%_ } _%>
                 >
                     <Component {...pageProps} />
-                </ThemedLayout>
+                </ThemedLayoutV2>
             );
         <%_ } _%>
     };

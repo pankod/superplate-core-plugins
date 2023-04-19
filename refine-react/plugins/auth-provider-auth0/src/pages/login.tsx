@@ -2,21 +2,20 @@
 import { useTranslate } from "@refinedev/core";
 <%_ } _%>  
 <%_ if (answers["ui-framework"] === "antd") { _%>
-import { ThemedTitle } from "@refinedev/antd";
+import { ThemedTitleV2 } from "@refinedev/antd";
 import { Button, Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import { Box, Button, Container, Typography } from "@mui/material";
-import { <%- (_app.themedTitleTag || "ThemedLayout") %> } from "@refinedev/mui";
+import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
-
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import { Button, Box, Space, Text } from "@mantine/core";
-import { ThemedTitle } from "@refinedev/mantine";
+import { ThemedTitleV2 } from "@refinedev/mantine";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
 import { Button, Box, Text, VStack } from "@chakra-ui/react";
-import { ThemedTitle } from "@refinedev/chakra-ui";
+import { ThemedTitleV2 } from "@refinedev/chakra-ui";
 <%_ } _%>
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -42,7 +41,7 @@ export const Login: React.FC = () => {
             }}
             >
             <Space direction="vertical" align="center">
-                <ThemedTitle
+                <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
@@ -97,7 +96,7 @@ export const Login: React.FC = () => {
                 justifyContent="center"
                 flexDirection="column"
             >
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
@@ -143,7 +142,7 @@ export const Login: React.FC = () => {
                 alignItems: "center",
             }}
             >
-            <ThemedTitle
+            <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                 fontSize: "22px",
@@ -195,7 +194,7 @@ export const Login: React.FC = () => {
             }}
             >
             <VStack spacing="10" align="stretch">
-                <ThemedTitle
+                <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",

@@ -9,7 +9,7 @@ const base = {
         refineMantineImports: [
             "notificationProvider",
             "RefineThemes",
-            "ThemedLayout",
+            "ThemedLayoutV2",
         ],
         innerHooks: [
             `const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({

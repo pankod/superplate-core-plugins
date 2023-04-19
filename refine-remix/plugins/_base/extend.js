@@ -9,8 +9,6 @@ const base = {
         refineChakraImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
-        themedLayoutTag: "ThemedLayout",
-        themedTitleTag: "ThemedTitle",
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -77,8 +75,8 @@ module.exports = {
                           }}
                         >
                           ${defaultValues
-                              .replace(/"/g, "")
-                              .replace(/,/g, "<br/>")}
+                    .replace(/"/g, "")
+                    .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>
@@ -109,16 +107,16 @@ module.exports = {
             (answers["title"] || answers["svg"])
         ) {
             if (answers["ui-framework"] === "antd") {
-                base._app.refineAntdImports.push("ThemedTitle");
+                base._app.refineAntdImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "mantine") {
-                base._app.refineMantineImports.push("ThemedTitle");
+                base._app.refineMantineImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "mui") {
                 base._app.refineMuiImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "chakra") {
-                base._app.refineChakraImports.push("ThemedTitle");
+                base._app.refineChakraImports.push("ThemedTitleV2");
             }
         }
 
@@ -130,13 +128,6 @@ module.exports = {
                 'import { AppIcon } from "@components/app-icon";',
             );
         }
-
-        // ## ThemedLayout
-        if (uiFramework === "mui") {
-            base._app.themedLayoutTag = "ThemedLayoutV2";
-            base._app.themedTitleTag = "ThemedTitleV2";
-        }
-        // ## ThemedLayout
 
         return base;
     },

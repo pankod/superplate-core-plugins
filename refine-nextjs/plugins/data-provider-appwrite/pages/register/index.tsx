@@ -1,14 +1,14 @@
 <%_ if (answers["ui-framework"] === 'antd') { _%>
-    import { AuthPage, ThemedTitle } from "@refinedev/antd";
+    import { AuthPage, ThemedTitleV2 } from "@refinedev/antd";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { AuthPage, <%- (_app.themedTitleTag || "ThemedTitle") %> } from "@refinedev/mui";
+    import { AuthPage, ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { AuthPage, ThemedTitle } from "@refinedev/mantine";
+    import { AuthPage, ThemedTitleV2 } from "@refinedev/mantine";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { AuthPage, ThemedTitle } from "@refinedev/chakra-ui";
+    import { AuthPage, ThemedTitleV2 } from "@refinedev/chakra-ui";
 <%_ } _%>
 <%_ if (answers[`ui-framework`] === "no") { _%>
     import { AuthPage } from "@refinedev/core";
@@ -30,7 +30,7 @@ export default function Register() {
         <AuthPage type="register" 
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitleV2
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
                         text="<%= selectedTitle %>"

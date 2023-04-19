@@ -5,7 +5,7 @@ const base = {
         refineChakraImports: [
             "notificationProvider",
             "RefineThemes",
-            "ThemedLayout",
+            "ThemedLayoutV2",
         ],
         localImport: [`import { Header } from "@components/header"`],
     },

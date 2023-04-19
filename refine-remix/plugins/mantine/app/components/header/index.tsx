@@ -8,8 +8,10 @@ import {
     Avatar,
     useMantineColorScheme,
     useMantineTheme,
+    Flex,
 } from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
 
 type IUser = {
     id: number;
@@ -17,7 +19,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
     const { data: user } = useGetIdentity<IUser>();
 
     const theme = useMantineTheme();
@@ -37,13 +39,9 @@ export const Header: React.FC = () => {
                 borderBottom: `1px solid ${borderColor}`,
             }}
         >
-            <Group
-                position="right"
-                align="center"
-                sx={{
-                    height: "100%",
-                }}
-            >
+            <Flex justify="space-between">
+            <HamburgerMenu />
+            <Group>
                 <ActionIcon
                     variant="outline"
                     color={dark ? "yellow" : "primary"}
@@ -63,6 +61,7 @@ export const Header: React.FC = () => {
                     </Group>
                 )}
             </Group>
+            </Flex>
         </MantineHeader>
     );
 };

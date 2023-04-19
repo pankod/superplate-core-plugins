@@ -5,7 +5,7 @@
 import {
     AuthPage,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/antd";
 <%_ } _%>
@@ -13,7 +13,7 @@ import {
 import {
     AuthPage,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    <%- (_app.themedTitleTag || "ThemedTitle") %> ,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/mui";
 <%_ } _%>
@@ -21,7 +21,7 @@ import {
 import {
     AuthPage,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/mantine";
 <%_ } _%>
@@ -29,7 +29,7 @@ import {
 import {
     AuthPage,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/chakra-ui";
 <%_ } _%>
@@ -43,7 +43,7 @@ export const ForgotPassword = () => {
             type="forgotPassword"
             <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
             title={(
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitleV2
                     collapsed={false}
                     <%_ if (selectedTitle) { _%>
                         text="<%= selectedTitle %>"

@@ -3,33 +3,33 @@ import type { LoaderArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import {
-    ThemedLayout,
+    ThemedLayoutV2,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/antd";
     <%_ } _%>
     <%_ if (answers["ui-framework"] === 'mui') { _%>
 import {
-    <%- (_app.themedLayoutTag || "ThemedLayout") %>,
+    ThemedLayoutV2,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    <%- (_app.themedTitleTag || "ThemedTitle") %> ,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/mui";
     <%_ } _%>
     <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import {
-    ThemedLayout,
+    ThemedLayoutV2,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/mantine";
     <%_ } _%>
     <%_ if (answers["ui-framework"] === 'chakra') { _%>
 import {
-    ThemedLayout,
+    ThemedLayoutV2,
     <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitle,
+    ThemedTitleV2,
     <%_ } _%>
 } from "@refinedev/chakra-ui";
     <%_ } _%>
@@ -46,11 +46,11 @@ export default function BaseLayout() {
              <%_ if (answers["ui-framework"] === 'no') { _%>
                 <Outlet />
             <%_ } else { _%>
-                <<%- (_app.themedLayoutTag || "ThemedLayout") %>
+                <ThemedLayoutV2
                     Header={Header}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
-                        <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                        <ThemedTitleV2
                             collapsed={collapsed}
                         <%_ if (selectedTitle) { _%>
                             text="<%= selectedTitle %>"
@@ -63,7 +63,7 @@ export default function BaseLayout() {
                     <%_ } _%>
                 >
                     <Outlet />
-                </<%- (_app.themedLayoutTag || "ThemedLayout") %>>
+                </ThemedLayoutV2>
             <%_ } _%>
         </>
     );

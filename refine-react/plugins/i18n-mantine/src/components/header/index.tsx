@@ -8,8 +8,10 @@ import {
     useMantineColorScheme,
     useMantineTheme,
     Menu,
+    Flex,
 } from "@mantine/core";
 import { IconSun, IconMoonStars, IconLanguage } from "@tabler/icons";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
 
 import i18n from "i18n";
 
@@ -19,7 +21,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
     const { data: user } = useGetIdentity<IUser>();
 
     const changeLanguage = useSetLocale();
@@ -43,13 +45,10 @@ export const Header: React.FC = () => {
                 borderBottom: `1px solid ${borderColor}`,
             }}
         >
-            <Group
-                position="right"
-                align="center"
-                sx={{
-                    height: "100%",
-                }}
-            >
+            <Flex
+               justify="space-between">
+                <HamburgerMenu />
+            <Group>
                 <Menu shadow="md">
                     <Menu.Target>
                         <ActionIcon variant="outline">
@@ -106,6 +105,7 @@ export const Header: React.FC = () => {
                     </Group>
                 )}
             </Group>
+            </Flex>
         </MantineHeader>
     );
 };

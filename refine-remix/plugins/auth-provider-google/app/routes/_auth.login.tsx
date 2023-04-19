@@ -1,18 +1,18 @@
 <%_ if (answers["ui-framework"] === "antd") { _%>
-import { ThemedTitle } from "@refinedev/antd";
+import { ThemedTitleV2 } from "@refinedev/antd";
 import { Button, Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import { Box, Button, Container, Typography } from "@mui/material";
-import { <%- (_app.themedTitleTag || "ThemedTitle") %> } from "@refinedev/mui";
+import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
 import { Button, Box, Space, Text } from "@mantine/core";
-import { ThemedTitle } from "@refinedev/mantine";
+import { ThemedTitleV2 } from "@refinedev/mantine";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
 import { Button, Box, Text, VStack } from "@chakra-ui/react";
-import { ThemedTitle } from "@refinedev/chakra-ui";
+import { ThemedTitleV2 } from "@refinedev/chakra-ui";
 <%_ } _%>
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
     import { AppIcon } from "@components/app-icon";
@@ -29,7 +29,7 @@ export default function Login() {
             }}
             >
             <Space direction="vertical" align="center">
-                <ThemedTitle
+                <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
@@ -86,7 +86,7 @@ export default function Login() {
                 justifyContent="center"
                 flexDirection="column"
             >
-                <<%- (_app.themedTitleTag || "ThemedTitle") %>
+                <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
@@ -131,7 +131,7 @@ export default function Login() {
                 alignItems: "center",
             }}
             >
-            <ThemedTitle
+            <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                 fontSize: "22px",
@@ -184,7 +184,7 @@ export default function Login() {
             }}
             >
             <VStack spacing="10" align="stretch">
-                <ThemedTitle
+                <ThemedTitleV2
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",

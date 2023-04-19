@@ -10,9 +10,10 @@ import {
     Menu,
     useMantineColorScheme,
     useMantineTheme,
+    Flex,
 } from "@mantine/core";
 import { IconLanguage, IconMoonStars, IconSun } from "@tabler/icons";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu, Flex } from "@refinedev/mantine";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
 
 interface IUser {
     name: string;

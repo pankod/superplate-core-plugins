@@ -8,9 +8,10 @@ import {
     Avatar,
     useMantineColorScheme,
     useMantineTheme,
+    Flex,
 } from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu, Flex } from "@refinedev/mantine";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
 
 type IUser = {
     id: number;

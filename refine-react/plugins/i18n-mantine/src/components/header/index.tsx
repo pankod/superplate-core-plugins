@@ -8,9 +8,10 @@ import {
     useMantineColorScheme,
     useMantineTheme,
     Menu,
+    Flex,
 } from "@mantine/core";
 import { IconSun, IconMoonStars, IconLanguage } from "@tabler/icons";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu, Flex } from "@refinedev/mantine";
+import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
 
 import i18n from "i18n";
 

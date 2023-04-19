@@ -8,7 +8,7 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
+import { RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import { DarkModeOutlined, LightModeOutlined, Menu } from "@mui/icons-material";
 
 import { ColorModeContext } from "../../contexts/color-mode";
@@ -19,7 +19,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     isSiderOpen,
     onToggleSiderClick,
     toggleSiderIcon: toggleSiderIconFromProps,

@@ -97,11 +97,11 @@ function App() {
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
                                     <Outlet />
                                 <%_ } else { _%>
-                                    <ThemedLayout
+                                    <ThemedLayoutV2
                                         Header={Header}
                                         <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
-                                            <ThemedTitle
+                                            <ThemedTitleV2
                                                 collapsed={collapsed}
                                             <%_ if (selectedTitle) { _%>
                                                 text="<%= selectedTitle %>"
@@ -114,7 +114,7 @@ function App() {
                                         <%_ } _%>
                                     >
                                         <Outlet />
-                                    </ThemedLayout>
+                                    </ThemedLayoutV2>
                                 <%_ } _%>
                             </Authenticated>
                         }
@@ -160,7 +160,7 @@ function App() {
                                         type="login"
                                         <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
                                         title={(
-                                            <ThemedTitle
+                                            <ThemedTitleV2
                                                 collapsed={false}
                                                 <%_ if (selectedTitle) { _%>
                                                     text="<%= selectedTitle %>"
@@ -191,11 +191,11 @@ function App() {
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
                                     <Outlet />
                                 <%_ } else { _%>
-                                    <ThemedLayout
+                                    <ThemedLayoutV2
                                         Header={Header}
                                         <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
-                                            <ThemedTitle
+                                            <ThemedTitleV2
                                                 collapsed={collapsed}
                                             <%_ if (selectedTitle) { _%>
                                                 text="<%= selectedTitle %>"
@@ -208,7 +208,7 @@ function App() {
                                         <%_ } _%>
                                     >
                                         <Outlet />
-                                    </ThemedLayout>
+                                    </ThemedLayoutV2>
                                 <%_ } _%>
                             </Authenticated>
                         }
@@ -225,11 +225,11 @@ function App() {
                             <%_ if (answers["ui-framework"] === 'no') { _%>
                                 <Outlet />
                             <%_ } else { _%>
-                                <ThemedLayout
+                                <ThemedLayoutV2
                                     Header={Header}
                                     <%_ if (selectedSvg || selectedTitle) { _%>
                                     Title={({ collapsed }) => (
-                                        <ThemedTitle
+                                        <ThemedTitleV2
                                             collapsed={collapsed}
                                         <%_ if (selectedTitle) { _%>
                                             text="<%= selectedTitle %>"
@@ -242,7 +242,7 @@ function App() {
                                     <%_ } _%>
                                 >
                                     <Outlet />
-                                </ThemedLayout>
+                                </ThemedLayoutV2>
                             <%_ } _%>
                         )}
                     >
@@ -271,11 +271,11 @@ function App() {
                             <%_ if (answers["ui-framework"] === 'no') { _%>
                                 <Outlet />
                             <%_ } else { _%>
-                                <ThemedLayout
+                                <ThemedLayoutV2
                                     Header={Header}
                                     <%_ if (selectedSvg || selectedTitle) { _%>
                                     Title={({ collapsed }) => (
-                                        <ThemedTitle
+                                        <ThemedTitleV2
                                             collapsed={collapsed}
                                         <%_ if (selectedTitle) { _%>
                                             text="<%= selectedTitle %>"
@@ -288,7 +288,7 @@ function App() {
                                     <%_ } _%>
                                 >
                                     <Outlet />
-                                </ThemedLayout>
+                                </ThemedLayoutV2>
                             <%_ } _%>
                         )}
                     >

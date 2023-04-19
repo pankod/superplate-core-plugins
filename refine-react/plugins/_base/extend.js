@@ -171,16 +171,16 @@ module.exports = {
             (answers["title"] || answers["svg"])
         ) {
             if (answers["ui-framework"] === "antd") {
-                base._app.refineAntdImports.push("ThemedTitle");
+                base._app.refineAntdImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "mantine") {
-                base._app.refineMantineImports.push("ThemedTitle");
+                base._app.refineMantineImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "mui") {
-                base._app.refineMuiImports.push("ThemedTitle");
+                base._app.refineMuiImports.push("ThemedTitleV2");
             }
             if (answers["ui-framework"] === "chakra") {
-                base._app.refineChakraImports.push("ThemedTitle");
+                base._app.refineChakraImports.push("ThemedTitleV2");
             }
         }
 

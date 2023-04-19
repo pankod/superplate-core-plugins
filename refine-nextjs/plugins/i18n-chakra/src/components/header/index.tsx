@@ -1,5 +1,5 @@
 import { useGetIdentity, useGetLocale } from "@refinedev/core";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/chakra-ui";
+import { RefineThemedLayoutV2HeaderProps } from "@refinedev/chakra-ui";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import {
@@ -30,7 +30,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     isSiderOpen,
     onToggleSiderClick,
     toggleSiderIcon: toggleSiderIconFromProps,

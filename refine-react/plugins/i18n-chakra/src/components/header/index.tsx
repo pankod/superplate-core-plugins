@@ -12,7 +12,7 @@ import {
     MenuItem,
     MenuList,
 } from "@chakra-ui/react";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/chakra-ui";
+import { RefineThemedLayoutV2HeaderProps } from "@refinedev/chakra-ui";
 import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import {
     IconLayoutSidebarLeftCollapse,
@@ -30,7 +30,7 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     isSiderOpen,
     onToggleSiderClick,
     toggleSiderIcon: toggleSiderIconFromProps,

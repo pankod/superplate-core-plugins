@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useGetIdentity } from "@refinedev/core";
-import { RefineThemedLayoutHeaderProps } from "@refinedev/mui";
+import { RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
 import {
     AppBar,
     IconButton,
@@ -23,7 +23,7 @@ interface IUser {
     avatar: string;
 }
 
-export const Header: React.FC<RefineThemedLayoutHeaderProps> = ({
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     isSiderOpen,
     onToggleSiderClick,
     toggleSiderIcon: toggleSiderIconFromProps,

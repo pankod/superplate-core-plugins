@@ -5,7 +5,7 @@ const base = {
         refineMuiImports: [
             "notificationProvider",
             "RefineSnackbarProvider",
-            "ThemedLayout",
+            "ThemedLayoutV2",
         ],
         localImport: [
             `import { ColorModeContextProvider } from "./contexts/color-mode";`,

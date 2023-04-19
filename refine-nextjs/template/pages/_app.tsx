@@ -50,11 +50,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             );
             <%_ } else {_%>
             return (
-                <ThemedLayout
+                <ThemedLayoutV2
                     Header={Header}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
-                        <ThemedTitle
+                        <ThemedTitleV2
                             collapsed={collapsed}
                         <%_ if (selectedTitle) { _%>
                             text="<%= selectedTitle %>"
@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     <%_ } _%>
                 >
                     <Component {...pageProps} />
-                </ThemedLayout>
+                </ThemedLayoutV2>
             );
         <%_ } _%>
     };

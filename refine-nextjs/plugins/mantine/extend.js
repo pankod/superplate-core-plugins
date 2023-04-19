@@ -8,7 +8,7 @@ const base = {
         ],
         refineMantineImports: [
             "notificationProvider",
-            "ThemedLayout",
+            "ThemedLayoutV2",
             "RefineThemes",
         ],
         innerHooks: [

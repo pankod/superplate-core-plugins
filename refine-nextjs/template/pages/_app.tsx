@@ -132,6 +132,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                 options={{
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,
+                    <%- (_app.refineOptions || []).join("\n") %> 
                 }}
             >
                 {renderComponent()}

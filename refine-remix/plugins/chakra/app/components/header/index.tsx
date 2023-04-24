@@ -47,6 +47,9 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
             bg={bgColor}
             borderBottom="1px"
             borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+            position="sticky"
+            top="0"
+            zIndex="1"
         >
             <HamburgerMenu />
 

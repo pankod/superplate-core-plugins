@@ -102,6 +102,7 @@ export default function App() {
                         options={{
                             syncWithLocation: true,
                             warnWhenUnsavedChanges: true,
+                            <%- (_app.refineOptions || []).join("\n") %>
                         }}
                     >
                         <>

@@ -13,9 +13,7 @@ const base = {
                 },
             });`,
         ],
-        refineProps: [
-            `dataProvider={dataProvider(client)}`,
-        ],
+        refineProps: [`dataProvider={dataProvider(client)}`],
     },
 };
 module.exports = {

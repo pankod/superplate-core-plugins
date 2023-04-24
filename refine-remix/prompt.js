@@ -107,7 +107,6 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "data-provider-medusa",
             default: "no",
         },
@@ -130,7 +129,6 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] !== "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-hasura" ||
                 answers["data-provider"] === "data-provider-medusa",
             default: "no",
         },

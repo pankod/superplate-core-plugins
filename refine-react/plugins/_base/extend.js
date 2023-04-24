@@ -137,7 +137,6 @@ module.exports = {
             if (
                 ![
                     "data-provider-graphql",
-                    "data-provider-hasura",
                     "data-provider-medusa",
                 ].includes(dataProvider) && base._app.hasRoutes === true
             ) {

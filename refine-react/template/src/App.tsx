@@ -85,6 +85,7 @@ function App() {
                 options={{
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,
+                    <%- (_app.refineOptions || []).join("\n") %> 
                 }}
             >
                 <%_ if (_app.hasRoutes === true && _app.isAuthRoutes) { _%>

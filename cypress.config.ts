@@ -1,13 +1,8 @@
 import { defineConfig } from "cypress";
-import { cloudPlugin } from "cypress-cloud/plugin";
 
 export default defineConfig({
-    projectId: "superplate",
-    e2e: {
-        setupNodeEvents(on, config) {
-            return cloudPlugin(on, config);
-        },
-    },
+    projectId: "a7292t",
+    e2e: {},
     chromeWebSecurity: false,
     experimentalMemoryManagement: true,
     numTestsKeptInMemory: 1,

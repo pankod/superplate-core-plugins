@@ -7,6 +7,9 @@ jobs:
   react:
     runs-on: ubuntu-latest
     name: react
+    concurrency:
+      group: ${{ github.ref }}-react
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -54,6 +57,9 @@ jobs:
   nextjs:
     runs-on: ubuntu-latest
     name: nextjs
+    concurrency:
+      group: ${{ github.ref }}-nextjs
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -97,6 +103,9 @@ jobs:
   remix:
     runs-on: ubuntu-latest
     name: remix
+    concurrency:
+      group: ${{ github.ref }}-remix
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:

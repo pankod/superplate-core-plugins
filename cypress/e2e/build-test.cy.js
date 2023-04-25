@@ -24,7 +24,7 @@ describe("build test", () => {
         cy.clearAllSessionStorage();
     });
 
-    it("should build", async () => {
+    it("should build", () => {
         if (
             ["keycloak", "google", "auth0"].includes(
                 Cypress.env("AUTH_PROVIDER"),

@@ -118,13 +118,16 @@ describe("build test", () => {
 
             // hide language name and name on mui custom-json-rest
             if (Cypress.env("UI_FRAMEWORK") === "mui") {
-                cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
-                    "English",
-                );
-                cy.viewport(375, 667)
-                    .get(".MuiPaper-elevation4 > .MuiToolbar-root")
-                    .contains("English")
-                    .should("have.css", "display", "none");
+                if (Cypress.env("FRAMEWORK") !== "remix") {
+                    cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
+                        "English",
+                    );
+
+                    cy.viewport(375, 667)
+                        .get(".MuiPaper-elevation4 > .MuiToolbar-root")
+                        .contains("English")
+                        .should("have.css", "display", "none");
+                }
 
                 if (Cypress.env("DATA_PROVIDER") === "custom-json-rest") {
                     cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(

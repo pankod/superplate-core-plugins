@@ -1,26 +1,17 @@
 import { Outlet } from "@remix-run/react";
-<%_ if (answers["ui-framework"] === 'antd') { _%>
-    import { Layout } from "@refinedev/antd";
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { Layout } from "@refinedev/mui";
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { Layout } from "@refinedev/mantine";
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { Layout } from "@refinedev/chakra-ui";
-<%_ } _%>
-
 <%_ if (_app.isAuthProviderCheck) { _%>
 import type { LoaderArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { authProvider } from "~/authProvider";
 <%_ } _%>
 
+import { Layout } from "~/components/layout";
+
 export default function BaseLayout() {
     return (
-        <Outlet />
+        <Layout>
+            <Outlet />
+        </Layout>
     );
 }
 

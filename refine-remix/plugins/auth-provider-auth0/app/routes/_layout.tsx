@@ -48,13 +48,9 @@ export default function BaseLayout() {
     return (
         <>
              <%_ if (answers["ui-framework"] === 'no') { _%>
-                <%_ if (answers["inferencer-headless"] === "no") { _%>
+               <Layout>
                     <Outlet />
-                <%_ } else {_%>
-                    <Layout>
-                        <Outlet />
-                    </Layout>
-                <%_ } _%>
+                </Layout>
             <%_ } else { _%>
                 <ThemedLayoutV2
                     Header={Header}

@@ -191,7 +191,9 @@ function App() {
                         element={
                             <Authenticated>
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
-                                    <Outlet />
+                                    <Layout>
+                                        <Outlet />
+                                    </Layout>
                                 <%_ } else { _%>
                                     <ThemedLayoutV2
                                         Header={Header}
@@ -225,7 +227,9 @@ function App() {
                     <Route
                         element={(
                             <%_ if (answers["ui-framework"] === 'no') { _%>
-                                <Outlet />
+                                <Layout>
+                                    <Outlet />
+                                </Layout>
                             <%_ } else { _%>
                                 <ThemedLayoutV2
                                     Header={Header}
@@ -271,7 +275,9 @@ function App() {
                     <Route
                         element={(
                             <%_ if (answers["ui-framework"] === 'no') { _%>
-                                <Outlet />
+                                <Layout>
+                                    <Outlet />
+                                </Layout>
                             <%_ } else { _%>
                                 <ThemedLayoutV2
                                     Header={Header}

@@ -45,17 +45,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
         }
 
         <%_ if (answers["ui-framework"] === "no") { _%>
-            <%_ if (answers["inferencer-headless"] === "no") { _%>
-            return (
-                <Component {...pageProps} />
-            );
-            <%_ } else {_%>
             return (
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
             );
-            <%_ } _%>
             <%_ } else {_%>
             return (
                 <ThemedLayoutV2

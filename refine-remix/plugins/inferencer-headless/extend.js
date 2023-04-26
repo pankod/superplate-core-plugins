@@ -1,7 +1,6 @@
 const base = {
     _app: {
-        import: ['import styles from "~/global.css";'],
-        styleImport: ['{ rel: "stylesheet", href: styles }'],
+        import: [],
         refineProps: [],
         refineAntdImports: [],
         wrapper: [],

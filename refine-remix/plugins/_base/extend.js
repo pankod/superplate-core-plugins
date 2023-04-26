@@ -9,6 +9,7 @@ const base = {
         refineChakraImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
+        styleImport: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -129,22 +130,9 @@ module.exports = {
             );
         }
 
-        // Check has auth provider
-        if (answers["auth-provider"] === "none") {
-            if (
-                [
-                    "data-provider-appwrite",
-                    "data-provider-supabase",
-                    "auth-provider-auth0",
-                    "data-provider-strapi-v4",
-                ].includes(dataProvider)
-            ) {
-                base._app.isAuthRoutes = true;
-            } else {
-                base._app.isNoAuthRoutes = true;
-            }
-        } else {
-            base._app.isAuthRoutes = true;
+        if (answers["ui-framework"] === "no") {
+            base._app.localImport.push(`import styles from "~/global.css";`);
+            base._app.styleImport.push('{ rel: "stylesheet", href: styles }');
         }
 
         return base;

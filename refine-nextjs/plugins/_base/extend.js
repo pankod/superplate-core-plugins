@@ -129,22 +129,11 @@ module.exports = {
             );
         }
 
-        // Check has auth provider
-        if (answers["auth-provider"] === "none") {
-            if (
-                [
-                    "data-provider-appwrite",
-                    "data-provider-supabase",
-                    "auth-provider-auth0",
-                    "data-provider-strapi-v4",
-                ].includes(dataProvider)
-            ) {
-                base._app.isAuthRoutes = true;
-            } else {
-                base._app.isNoAuthRoutes = true;
-            }
-        } else {
-            base._app.isAuthRoutes = true;
+        if (answers["ui-framework"] === "no") {
+            base._app.localImport.push(
+                `import { Layout } from "@components/layout";`,
+            );
+            base._app.localImport.push(`import "@styles/global.css";`);
         }
 
         return base;

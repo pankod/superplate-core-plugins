@@ -4,10 +4,6 @@ const base = {
         refineProps: [],
         refineAntdImports: [],
         wrapper: [],
-        localImport: [
-            `import { Layout } from "@components/layout";`,
-            `import "@styles/global.css";`,
-        ],
         inferencer: {},
     },
 };

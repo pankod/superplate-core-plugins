@@ -75,8 +75,8 @@ module.exports = {
                           }}
                         >
                           ${defaultValues
-                    .replace(/"/g, "")
-                    .replace(/,/g, "<br/>")}
+                              .replace(/"/g, "")
+                              .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>
@@ -127,6 +127,24 @@ module.exports = {
             base._app.localImport.push(
                 'import { AppIcon } from "src/components/app-icon";',
             );
+        }
+
+        // Check has auth provider
+        if (answers["auth-provider"] === "none") {
+            if (
+                [
+                    "data-provider-appwrite",
+                    "data-provider-supabase",
+                    "auth-provider-auth0",
+                    "data-provider-strapi-v4",
+                ].includes(dataProvider)
+            ) {
+                base._app.isAuthRoutes = true;
+            } else {
+                base._app.isNoAuthRoutes = true;
+            }
+        } else {
+            base._app.isAuthRoutes = true;
         }
 
         return base;

@@ -1,12 +1,16 @@
-interface IProps {
-    children: React.ReactNode;
-    Header: React.FC;
-}
-export const Layout: React.FC<IProps> = ({ children, Header }) => {
+import { PropsWithChildren } from "react";
+
+import { Breadcrumb } from "../breadcrumb";
+import { Menu } from "../menu";
+
+export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
     return (
-        <div>
-            <Header />
-            {children}
+        <div className="layout">
+            <Menu />
+            <div className="content">
+                <Breadcrumb />
+                <div>{children}</div>
+            </div>
         </div>
     );
 };

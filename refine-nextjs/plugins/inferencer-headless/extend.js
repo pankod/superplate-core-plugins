@@ -6,7 +6,7 @@ const base = {
         wrapper: [],
         localImport: [
             `import { Layout } from "@components/layout";`,
-            `import { Header } from "@components/header";`,
+            `import "@styles/global.css";`,
         ],
         inferencer: {},
     },

@@ -95,7 +95,9 @@ function App() {
                                 fallback={<CatchAllNavigate to="/login" />}
                             >
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
-                                    <Outlet />
+                                    <Layout>
+                                        <Outlet />
+                                    </Layout>
                                 <%_ } else { _%>
                                     <ThemedLayoutV2
                                         Header={Header}

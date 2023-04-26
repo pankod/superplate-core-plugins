@@ -5,8 +5,10 @@ const base = {
         refineAntdImports: [],
         wrapper: [],
         inferencer: {},
-        localImport: [],
-        inferencer: {},
+        localImport: [
+            `import { Layout } from "./components/layout"`,
+            `import "./App.css";`,
+        ],
     },
 };
 

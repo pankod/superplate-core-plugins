@@ -1,6 +1,6 @@
 import type { AuthBindings } from "@refinedev/core";
-import Cookies from "js-cookie";
 import * as cookie from "cookie";
+import Cookies from "js-cookie";
 
 const mockUsers = [
     {
@@ -86,5 +86,12 @@ export const authProvider: AuthBindings = {
         };
     },
     getPermissions: async () => null,
-    getIdentity: async () => null,
+    getIdentity: async () => {
+        const parsedCookie = Cookies.get(COOKIE_NAME);
+        if (parsedCookie) {
+            const user = parsedCookie ? JSON.parse(parsedCookie) : undefined;
+            return user;
+        }
+        return null;
+    },
 };

@@ -1,26 +1,27 @@
-import { useGetIdentity, useGetLocale } from "@refinedev/core";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/chakra-ui";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import {
     Avatar,
     Box,
+    BoxProps,
     HStack,
     Icon,
     IconButton,
-    Text,
-    useColorMode,
-    useColorModeValue,
     Menu,
     MenuButton,
     MenuItem,
     MenuList,
+    Text,
+    useColorMode,
+    useColorModeValue,
 } from "@chakra-ui/react";
 import {
-    IconMoon,
-    IconSun,
-    IconLanguage,
-} from "@tabler/icons";
+    HamburgerMenu,
+    RefineThemedLayoutV2HeaderProps,
+} from "@refinedev/chakra-ui";
+import { useGetIdentity, useGetLocale } from "@refinedev/core";
+import { IconLanguage, IconMoon, IconSun } from "@tabler/icons";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
 
 type IUser = {
     id: number;
@@ -28,7 +29,9 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { data: user } = useGetIdentity<IUser>();
 
     const { colorMode, toggleColorMode } = useColorMode();
@@ -41,6 +44,15 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
     const locale = useGetLocale();
     const currentLocale = locale();
     const { locales } = useRouter();
+
+    let stickyProps: BoxProps = {};
+    if (isSticky) {
+        stickyProps = {
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+        };
+    }
 
     return (
         <Box
@@ -55,10 +67,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
             bg={bgColor}
             borderBottom="1px"
             borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-            // these properties will make the header stick to the top of the page
-            position="sticky"
-            top={0}
-            zIndex={1}
+            {...stickyProps}
         >
             <HamburgerMenu />
 

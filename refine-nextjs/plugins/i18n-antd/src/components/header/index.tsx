@@ -1,19 +1,20 @@
-import { useContext } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { DownOutlined } from "@ant-design/icons";
+import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/antd";
 import { useGetIdentity, useGetLocale } from "@refinedev/core";
 import {
-    Layout as AntdLayout,
-    Space,
     Avatar,
-    Typography,
-    Switch,
     Button,
     Dropdown,
-    theme,
+    Layout as AntdLayout,
     MenuProps,
+    Space,
+    Switch,
+    theme,
+    Typography,
 } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useContext } from "react";
 import { ColorModeContext } from "../../contexts";
 
 const { Text } = Typography;
@@ -25,7 +26,9 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { data: user } = useGetIdentity<IUser>();
 
     const { token } = useToken();
@@ -51,21 +54,23 @@ export const Header: React.FC = () => {
             ),
         }));
 
+    const headerStyles: React.CSSProperties = {
+        backgroundColor: token.colorBgElevated,
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        padding: "0px 24px",
+        height: "64px",
+    };
+
+    if (isSticky) {
+        headerStyles.position = "sticky";
+        headerStyles.top = 0;
+        headerStyles.zIndex = 1;
+    }
+
     return (
-        <AntdLayout.Header
-            style={{
-                backgroundColor: token.colorBgElevated,
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-                padding: "0px 24px",
-                height: "64px",
-                // these properties will make the header stick to the top of the page
-                position: "sticky",
-                top: 0,
-                zIndex: 1,
-            }}
-        >
+        <AntdLayout.Header style={headerStyles}>
             <Space>
                 <Dropdown
                     menu={{

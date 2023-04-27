@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
-import { useGetIdentity } from "@refinedev/core";
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import {
     AppBar,
-    IconButton,
     Avatar,
+    IconButton,
     Stack,
     Toolbar,
     Typography,
 } from "@mui/material";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mui";
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
-
+import { useGetIdentity } from "@refinedev/core";
+import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
+import React, { useContext } from "react";
 import { ColorModeContext } from "~/contexts/ColorModeContext";
 
 type IUser = {
@@ -19,13 +18,15 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky = true,
+}) => {
     const { mode, setMode } = useContext(ColorModeContext);
 
     const { data: user } = useGetIdentity<IUser>();
 
     return (
-        <AppBar position="sticky">
+        <AppBar position={isSticky ? "sticky" : "relative"}>
             <Toolbar>
                 <Stack
                     direction="row"
@@ -63,7 +64,10 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                 {user?.name && (
                                     <Typography
                                         sx={{
-                                            display: { xs: "none", sm: "inline-block" },
+                                            display: {
+                                                xs: "none",
+                                                sm: "inline-block",
+                                            },
                                         }}
                                         variant="subtitle2"
                                     >

@@ -7,8 +7,6 @@ jobs:
   react:
     runs-on: ubuntu-latest
     name: react
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-react
     strategy:
       fail-fast: false
       matrix:
@@ -57,8 +55,6 @@ jobs:
   nextjs:
     runs-on: ubuntu-latest
     name: nextjs
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-react
     strategy:
       fail-fast: false
       matrix:
@@ -103,8 +99,6 @@ jobs:
   remix:
     runs-on: ubuntu-latest
     name: remix
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-react
     strategy:
       fail-fast: false
       matrix:

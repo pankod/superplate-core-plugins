@@ -1,5 +1,5 @@
 import {
-    <%_ if (_app.isAuthRoutes) { _%>
+    <%_ if (_app.isAuthProviderCheck || _app.isNextAuthCheck) { _%>
      useLogout, 
     <%_ } _%>
      useMenu 
@@ -7,7 +7,7 @@ import {
 import Link from "next/link";
 
 export const Menu = () => {
-    <%_ if (_app.isAuthRoutes) { _%>
+    <%_ if (_app.isAuthProviderCheck || _app.isNextAuthCheck) { _%>
     const { mutate: logout } = useLogout();
     <%_ } _%>
     const { menuItems, selectedKey } = useMenu();
@@ -26,7 +26,7 @@ export const Menu = () => {
                     </li>
                 ))}
             </ul>
-            <%_ if (_app.isAuthRoutes) { _%>
+            <%_ if (_app.isAuthProviderCheck || _app.isNextAuthCheck) { _%>
             <button onClick={() => logout()}>
                 Logout
             </button>

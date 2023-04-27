@@ -43,11 +43,19 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
             px="sm"
             sx={{
                 borderBottom: `1px solid ${borderColor}`,
+               // these properties will make the header stick to the top of the page
+               position: "sticky",
+               top: 0,
+               zIndex: 1,
             }}
         >
             <Flex
-               justify="space-between">
-                <HamburgerMenu />
+               align="center"
+               justify="space-between"
+               sx={{
+                    height: "100%",
+                 }}>
+            <HamburgerMenu />
             <Group>
                 <Menu shadow="md">
                     <Menu.Target>

@@ -4,16 +4,22 @@ import Cookies from "js-cookie";
 
 const mockUsers = [
     {
+        name: "John Doe",
         email: "admin@refine.dev",
         roles: ["admin"],
+        avatar: "https://i.pravatar.cc/150?img=1",
     },
     {
+        name: "Jane Doe",
         email: "editor@refine.dev",
         roles: ["editor"],
+        avatar: "https://i.pravatar.cc/150?img=1",
     },
     {
+        name: "John Doe",
         email: "demo@refine.dev",
         roles: ["admin"],
+        avatar: "https://i.pravatar.cc/150?img=1",
     },
 ];
 

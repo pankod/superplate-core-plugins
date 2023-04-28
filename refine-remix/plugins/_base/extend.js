@@ -9,6 +9,7 @@ const base = {
         refineChakraImports: [],
         refineMuiImports: [],
         refineMantineImports: [],
+        styleImport: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -75,8 +76,8 @@ module.exports = {
                           }}
                         >
                           ${defaultValues
-                    .replace(/"/g, "")
-                    .replace(/,/g, "<br/>")}
+                              .replace(/"/g, "")
+                              .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>
@@ -127,6 +128,11 @@ module.exports = {
             base._app.localImport.push(
                 'import { AppIcon } from "@components/app-icon";',
             );
+        }
+
+        if (answers["ui-framework"] === "no") {
+            base._app.localImport.push(`import styles from "~/global.css";`);
+            base._app.styleImport.push('{ rel: "stylesheet", href: styles }');
         }
 
         return base;

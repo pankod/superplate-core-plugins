@@ -5,8 +5,6 @@ const base = {
         refineAntdImports: [],
         wrapper: [],
         inferencer: {},
-        localImport: [],
-        inferencer: {},
     },
 };
 

@@ -75,8 +75,8 @@ module.exports = {
                           }}
                         >
                           ${defaultValues
-                    .replace(/"/g, "")
-                    .replace(/,/g, "<br/>")}
+                              .replace(/"/g, "")
+                              .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>
@@ -127,6 +127,13 @@ module.exports = {
             base._app.localImport.push(
                 'import { AppIcon } from "src/components/app-icon";',
             );
+        }
+
+        if (answers["ui-framework"] === "no") {
+            base._app.localImport.push(
+                `import { Layout } from "@components/layout";`,
+            );
+            base._app.localImport.push(`import "@styles/global.css";`);
         }
 
         return base;

@@ -43,11 +43,17 @@ import { Header } from "@components/header";
 import { AppIcon } from "@components/app-icon";
 <%_ } _%>
 
+<%_ if (answers["ui-framework"] === 'no') { _%>
+import { Layout } from "~/components/layout";
+<%_ } _%>
+
 export default function BaseLayout() {
     return (
         <>
              <%_ if (answers["ui-framework"] === 'no') { _%>
-                <Outlet />
+                <Layout>
+                    <Outlet />
+                </Layout>
             <%_ } else { _%>
                 <ThemedLayoutV2
                     Header={Header}

@@ -305,5 +305,17 @@ module.exports = {
             },
             pattern: ["src/components/app-icon/index.tsx"],
         },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return answers["ui-framework"] !== "no";
+            },
+            pattern: [
+                "src/components/breadcrumb/index.tsx",
+                "src/components/layout/index.tsx",
+                "src/components/menu/index.tsx",
+                "src/App.css",
+            ],
+        },
     ],
 };

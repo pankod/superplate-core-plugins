@@ -121,7 +121,9 @@ module.exports = {
                             textAlign: "center",
                           }}
                         >
-                          ${defaultValues.replace(/"/g, "").replace(/,/g, '<br/>')}
+                          ${defaultValues
+                              .replace(/"/g, "")
+                              .replace(/,/g, "<br/>")}
                         </p>
                         {content}
                       </div>
@@ -139,7 +141,8 @@ module.exports = {
                     "data-provider-graphql",
                     "data-provider-hasura",
                     "data-provider-medusa",
-                ].includes(dataProvider) && base._app.hasRoutes === true
+                ].includes(dataProvider) &&
+                base._app.hasRoutes === true
             ) {
                 base._app.localImport.push(
                     `import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "pages/blog-posts";`,
@@ -191,6 +194,13 @@ module.exports = {
             base._app.localImport.push(
                 'import { AppIcon } from "components/app-icon";',
             );
+        }
+
+        if (answers["ui-framework"] === "no") {
+            base._app.localImport.push(
+                `import { Layout } from "./components/layout";`,
+            );
+            base._app.localImport.push(`import "./App.css";`);
         }
 
         // ## localImport

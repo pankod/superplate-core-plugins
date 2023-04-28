@@ -46,7 +46,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
         <%_ if (answers["ui-framework"] === "no") { _%>
             return (
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             );
             <%_ } else {_%>
             return (

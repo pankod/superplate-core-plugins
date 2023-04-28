@@ -192,5 +192,17 @@ module.exports = {
             },
             pattern: ["app/components/app-icon/index.tsx"],
         },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return answers["ui-framework"] !== "no";
+            },
+            pattern: [
+                "app/components/breadcrumb/index.tsx",
+                "app/components/layout/index.tsx",
+                "app/components/menu/index.tsx",
+                "app/global.css",
+            ],
+        },
     ],
 };

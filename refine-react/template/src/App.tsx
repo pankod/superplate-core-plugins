@@ -95,7 +95,9 @@ function App() {
                                 fallback={<CatchAllNavigate to="/login" />}
                             >
                                 <%_ if (answers["ui-framework"] === 'no') { _%>
-                                    <Outlet />
+                                    <Layout>
+                                        <Outlet />
+                                    </Layout>
                                 <%_ } else { _%>
                                     <ThemedLayoutV2
                                         Header={() => <Header isSticky={true} />}
@@ -138,6 +140,7 @@ function App() {
                             <Route path="edit/:id" element={<CategoryEdit />} />
                             <Route path="show/:id" element={<CategoryShow />} />
                         </Route>
+                        <Route path="*" element={<ErrorComponent />} />
                     </Route>
                     <Route
                         element={
@@ -185,36 +188,6 @@ function App() {
                             />
                         <%_ } _%>
                     </Route>
-                    <Route
-                        element={
-                            <Authenticated>
-                                <%_ if (answers["ui-framework"] === 'no') { _%>
-                                    <Outlet />
-                                <%_ } else { _%>
-                                    <ThemedLayoutV2
-                                        Header={() => <Header isSticky={true} />}
-                                        <%_ if (selectedSvg || selectedTitle) { _%>
-                                        Title={({ collapsed }) => (
-                                            <ThemedTitleV2
-                                                collapsed={collapsed}
-                                            <%_ if (selectedTitle) { _%>
-                                                text="<%= selectedTitle %>"
-                                            <%_ } _%>
-                                            <%_ if (selectedSvg) { _%>
-                                                icon={<AppIcon />}
-                                            <%_ } _%>
-                                            />
-                                        )}
-                                        <%_ } _%>
-                                    >
-                                        <Outlet />
-                                    </ThemedLayoutV2>
-                                <%_ } _%>
-                            </Authenticated>
-                        }
-                    >
-                        <Route path="*" element={<ErrorComponent />} />
-                    </Route>
                 </Routes>
                 <%_ } _%>
 
@@ -223,7 +196,9 @@ function App() {
                     <Route
                         element={(
                             <%_ if (answers["ui-framework"] === 'no') { _%>
-                                <Outlet />
+                                <Layout>
+                                    <Outlet />
+                                </Layout>
                             <%_ } else { _%>
                                 <ThemedLayoutV2
                                     Header={() => <Header isSticky={true} />}
@@ -265,33 +240,6 @@ function App() {
                             <Route path="edit/:id" element={<CategoryEdit />} />
                             <Route path="show/:id" element={<CategoryShow />} />
                         </Route>
-                    </Route>
-                    <Route
-                        element={(
-                            <%_ if (answers["ui-framework"] === 'no') { _%>
-                                <Outlet />
-                            <%_ } else { _%>
-                                <ThemedLayoutV2
-                                    Header={() => <Header isSticky={true} />}
-                                    <%_ if (selectedSvg || selectedTitle) { _%>
-                                    Title={({ collapsed }) => (
-                                        <ThemedTitleV2
-                                            collapsed={collapsed}
-                                        <%_ if (selectedTitle) { _%>
-                                            text="<%= selectedTitle %>"
-                                        <%_ } _%>
-                                        <%_ if (selectedSvg) { _%>
-                                            icon={<AppIcon />}
-                                        <%_ } _%>
-                                        />
-                                    )}
-                                    <%_ } _%>
-                                >
-                                    <Outlet />
-                                </ThemedLayoutV2>
-                            <%_ } _%>
-                        )}
-                    >
                         <Route path="*" element={<ErrorComponent />} />
                     </Route>
                 </Routes> 

@@ -192,7 +192,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
             <%_ } else {_%>
             return (
                 <ThemedLayoutV2
-                    Header={Header}
+                    Header={() => <Header isSticky={true} />}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
                         <ThemedTitleV2

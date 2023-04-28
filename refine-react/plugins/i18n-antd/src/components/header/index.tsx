@@ -1,19 +1,19 @@
-import { useContext } from "react";
+import { DownOutlined } from "@ant-design/icons";
+import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/antd";
 import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import {
-    Layout as AntdLayout,
-    Space,
     Avatar,
-    Typography,
-    Switch,
     Button,
     Dropdown,
-    theme,
+    Layout as AntdLayout,
     MenuProps,
+    Space,
+    Switch,
+    theme,
+    Typography,
 } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
-
 import { ColorModeContext } from "../../contexts/color-mode";
 
 const { Text } = Typography;
@@ -25,7 +25,9 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { token } = useToken();
     const { i18n } = useTranslation();
     const locale = useGetLocale();
@@ -48,17 +50,23 @@ export const Header: React.FC = () => {
             label: lang === "en" ? "English" : "German",
         }));
 
+    const headerStyles: React.CSSProperties = {
+        backgroundColor: token.colorBgElevated,
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        padding: "0px 24px",
+        height: "64px",
+    };
+
+    if (isSticky) {
+        headerStyles.position = "sticky";
+        headerStyles.top = 0;
+        headerStyles.zIndex = 1;
+    }
+
     return (
-        <AntdLayout.Header
-            style={{
-                backgroundColor: token.colorBgElevated,
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-                padding: "0px 24px",
-                height: "64px",
-            }}
-        >
+        <AntdLayout.Header style={headerStyles}>
             <Space>
                 <Dropdown
                     menu={{

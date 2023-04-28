@@ -1,17 +1,21 @@
-import React from "react";
-import { useGetIdentity } from "@refinedev/core";
 import {
     ActionIcon,
+    Avatar,
+    Flex,
     Group,
     Header as MantineHeader,
+    Sx,
     Title,
-    Avatar,
     useMantineColorScheme,
     useMantineTheme,
-    Flex,
 } from "@mantine/core";
-import { IconSun, IconMoonStars } from "@tabler/icons";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
+import { useGetIdentity } from "@refinedev/core";
+import {
+    HamburgerMenu,
+    RefineThemedLayoutV2HeaderProps,
+} from "@refinedev/mantine";
+import { IconMoonStars, IconSun } from "@tabler/icons";
+import React from "react";
 
 type IUser = {
     id: number;
@@ -19,7 +23,9 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { data: user } = useGetIdentity<IUser>();
 
     const theme = useMantineTheme();
@@ -29,6 +35,15 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
 
     const borderColor = dark ? theme.colors.dark[6] : theme.colors.gray[2];
 
+    let stickyStyles: Sx = {};
+    if (isSticky) {
+        stickyStyles = {
+            position: `sticky`,
+            top: 0,
+            zIndex: 1,
+        };
+    }
+
     return (
         <MantineHeader
             zIndex={199}
@@ -37,30 +52,43 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
             px="sm"
             sx={{
                 borderBottom: `1px solid ${borderColor}`,
+                ...stickyStyles,
             }}
         >
-            <Flex justify="space-between">
-            <HamburgerMenu />
-            <Group>
-                <ActionIcon
-                    variant="outline"
-                    color={dark ? "yellow" : "primary"}
-                    onClick={() => toggleColorScheme()}
-                    title="Toggle color scheme"
-                >
-                    {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
-                </ActionIcon>
-                {(user?.name || user?.avatar) && (
-                    <Group spacing="xs">
-                        {user?.name && <Title order={6}>{user?.name}</Title>}
-                        <Avatar
-                            src={user?.avatar}
-                            alt={user?.name}
-                            radius="xl"
-                        />
-                    </Group>
-                )}
-            </Group>
+            <Flex
+                align="center"
+                justify="space-between"
+                sx={{
+                    height: "100%",
+                }}
+            >
+                <HamburgerMenu />
+                <Group>
+                    <ActionIcon
+                        variant="outline"
+                        color={dark ? "yellow" : "primary"}
+                        onClick={() => toggleColorScheme()}
+                        title="Toggle color scheme"
+                    >
+                        {dark ? (
+                            <IconSun size={18} />
+                        ) : (
+                            <IconMoonStars size={18} />
+                        )}
+                    </ActionIcon>
+                    {(user?.name || user?.avatar) && (
+                        <Group spacing="xs">
+                            {user?.name && (
+                                <Title order={6}>{user?.name}</Title>
+                            )}
+                            <Avatar
+                                src={user?.avatar}
+                                alt={user?.name}
+                                radius="xl"
+                            />
+                        </Group>
+                    )}
+                </Group>
             </Flex>
         </MantineHeader>
     );

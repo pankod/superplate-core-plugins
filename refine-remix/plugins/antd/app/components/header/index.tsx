@@ -1,14 +1,15 @@
-import { useContext } from "react";
+import { ColorModeContext } from "@contexts";
+import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/antd";
 import { useGetIdentity } from "@refinedev/core";
 import {
+    Avatar,
     Layout as AntdLayout,
     Space,
-    Avatar,
-    Typography,
     Switch,
     theme,
+    Typography,
 } from "antd";
-import { ColorModeContext } from "@contexts";
+import React, { useContext } from "react";
 
 const { Text } = Typography;
 const { useToken } = theme;
@@ -19,22 +20,30 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { token } = useToken();
     const { data: user } = useGetIdentity<IUser>();
     const { mode, setMode } = useContext(ColorModeContext);
 
+    const headerStyles: React.CSSProperties = {
+        backgroundColor: token.colorBgElevated,
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        padding: "0px 24px",
+        height: "64px",
+    };
+
+    if (isSticky) {
+        headerStyles.position = "sticky";
+        headerStyles.top = 0;
+        headerStyles.zIndex = 1;
+    }
+
     return (
-        <AntdLayout.Header
-            style={{
-                backgroundColor: token.colorBgElevated,
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-                padding: "0px 24px",
-                height: "64px",
-            }}
-        >
+        <AntdLayout.Header style={headerStyles}>
             <Space>
                 <Switch
                     checkedChildren="🌛"

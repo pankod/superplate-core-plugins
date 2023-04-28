@@ -100,7 +100,7 @@ function App() {
                                     </Layout>
                                 <%_ } else { _%>
                                     <ThemedLayoutV2
-                                        Header={Header}
+                                        Header={() => <Header isSticky={true} />}
                                         <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
                                             <ThemedTitleV2
@@ -201,7 +201,7 @@ function App() {
                                 </Layout>
                             <%_ } else { _%>
                                 <ThemedLayoutV2
-                                    Header={Header}
+                                    Header={() => <Header isSticky={true} />}
                                     <%_ if (selectedSvg || selectedTitle) { _%>
                                     Title={({ collapsed }) => (
                                         <ThemedTitleV2

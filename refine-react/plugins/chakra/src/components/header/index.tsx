@@ -1,21 +1,21 @@
-import { useGetIdentity } from "@refinedev/core";
 import {
-    Box,
-    IconButton,
-    HStack,
-    Text,
     Avatar,
+    Box,
+    BoxProps,
+    HStack,
     Icon,
+    IconButton,
+    Text,
     useColorMode,
     useColorModeValue,
 } from "@chakra-ui/react";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/chakra-ui";
 import {
-    IconMoon,
-    IconSun,
-    IconLayoutSidebarLeftCollapse,
-    IconLayoutSidebarLeftExpand,
-} from "@tabler/icons";
+    HamburgerMenu,
+    RefineThemedLayoutV2HeaderProps,
+} from "@refinedev/chakra-ui";
+import { useGetIdentity } from "@refinedev/core";
+import { IconMoon, IconSun } from "@tabler/icons";
+import React from "react";
 
 type IUser = {
     id: number;
@@ -23,7 +23,9 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { data: user } = useGetIdentity<IUser>();
 
     const { colorMode, toggleColorMode } = useColorMode();
@@ -32,6 +34,15 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
         "refine.header.bg.light",
         "refine.header.bg.dark",
     );
+
+    let stickyProps: BoxProps = {};
+    if (isSticky) {
+        stickyProps = {
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+        };
+    }
 
     return (
         <Box
@@ -46,6 +57,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
             bg={bgColor}
             borderBottom="1px"
             borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+            {...stickyProps}
         >
             <HamburgerMenu />
 

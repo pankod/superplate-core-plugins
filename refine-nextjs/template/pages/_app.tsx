@@ -53,7 +53,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             <%_ } else {_%>
             return (
                 <ThemedLayoutV2
-                    Header={Header}
+                    Header={() => <Header isSticky={true} />}
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
                         <ThemedTitleV2

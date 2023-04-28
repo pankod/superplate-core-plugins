@@ -1,36 +1,37 @@
-import React, { useContext } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { useGetIdentity } from "@refinedev/core";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mui";
+import { ColorModeContext } from "@contexts";
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import {
     AppBar,
-    IconButton,
     Avatar,
-    Stack,
     FormControl,
+    IconButton,
     MenuItem,
     Select,
+    Stack,
     Toolbar,
     Typography,
 } from "@mui/material";
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
-
-import { ColorModeContext } from "@contexts";
+import { useGetIdentity } from "@refinedev/core";
+import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useContext } from "react";
 
 interface IUser {
     name: string;
     avatar: string;
 }
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky = true,
+}) => {
     const { mode, setMode } = useContext(ColorModeContext);
     const { locale: currentLocale, locales, pathname, query } = useRouter();
 
     const { data: user } = useGetIdentity<IUser>();
 
     return (
-        <AppBar position="sticky">
+        <AppBar position={isSticky ? "sticky" : "relative"}>
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
                     <HamburgerMenu />
@@ -86,7 +87,11 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                                     }}
                                                     src={`/images/flags/${lang}.svg`}
                                                 />
-                                                <Typography>{lang === "en" ? "English" : "German"}</Typography>
+                                                <Typography>
+                                                    {lang === "en"
+                                                        ? "English"
+                                                        : "German"}
+                                                </Typography>
                                             </Stack>
                                         </MenuItem>
                                     ))}
@@ -116,7 +121,10 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
                                 {user?.name && (
                                     <Typography
                                         sx={{
-                                            display: { xs: "none", sm: "inline-block" },
+                                            display: {
+                                                xs: "none",
+                                                sm: "inline-block",
+                                            },
                                         }}
                                         variant="subtitle2"
                                     >

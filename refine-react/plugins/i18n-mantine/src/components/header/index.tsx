@@ -1,19 +1,23 @@
-import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import {
     ActionIcon,
     Avatar,
+    Flex,
     Group,
     Header as MantineHeader,
+    Menu,
+    Sx,
     Title,
     useMantineColorScheme,
     useMantineTheme,
-    Menu,
-    Flex,
 } from "@mantine/core";
-import { IconSun, IconMoonStars, IconLanguage } from "@tabler/icons";
-import { RefineThemedLayoutV2HeaderProps, HamburgerMenu } from "@refinedev/mantine";
-
+import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
+import {
+    HamburgerMenu,
+    RefineThemedLayoutV2HeaderProps,
+} from "@refinedev/mantine";
+import { IconLanguage, IconMoonStars, IconSun } from "@tabler/icons";
 import i18n from "i18n";
+import React from "react";
 
 type IUser = {
     id: number;
@@ -21,7 +25,9 @@ type IUser = {
     avatar: string;
 };
 
-export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
+export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
+    isSticky,
+}) => {
     const { data: user } = useGetIdentity<IUser>();
 
     const changeLanguage = useSetLocale();
@@ -35,6 +41,15 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
 
     const borderColor = dark ? theme.colors.dark[6] : theme.colors.gray[2];
 
+    let stickyStyles: Sx = {};
+    if (isSticky) {
+        stickyStyles = {
+            position: `sticky`,
+            top: 0,
+            zIndex: 1,
+        };
+    }
+
     return (
         <MantineHeader
             zIndex={199}
@@ -43,68 +58,80 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = () => {
             px="sm"
             sx={{
                 borderBottom: `1px solid ${borderColor}`,
+                ...stickyStyles,
             }}
         >
             <Flex
-               justify="space-between">
+                align="center"
+                justify="space-between"
+                sx={{
+                    height: "100%",
+                }}
+            >
                 <HamburgerMenu />
-            <Group>
-                <Menu shadow="md">
-                    <Menu.Target>
-                        <ActionIcon variant="outline">
-                            <IconLanguage size={18} />
-                        </ActionIcon>
-                    </Menu.Target>
+                <Group>
+                    <Menu shadow="md">
+                        <Menu.Target>
+                            <ActionIcon variant="outline">
+                                <IconLanguage size={18} />
+                            </ActionIcon>
+                        </Menu.Target>
 
-                    <Menu.Dropdown>
-                        {[...(i18n.languages ?? [])]
-                            .sort()
-                            .map((lang: string) => (
-                                <Menu.Item
-                                    key={lang}
-                                    onClick={() => {
-                                        changeLanguage(lang);
-                                    }}
-                                    value={lang}
-                                    color={
-                                        lang === currentLocale
-                                            ? "primary"
-                                            : undefined
-                                    }
-                                    icon={
-                                        <Avatar
-                                            src={`/images/flags/${lang}.svg`}
-                                            size={18}
-                                            radius="lg"
-                                        />
-                                    }
-                                >
-                                    {lang === "en" ? "English" : "German"}
-                                </Menu.Item>
-                            ))}
-                    </Menu.Dropdown>
-                </Menu>
+                        <Menu.Dropdown>
+                            {[...(i18n.languages ?? [])]
+                                .sort()
+                                .map((lang: string) => (
+                                    <Menu.Item
+                                        key={lang}
+                                        onClick={() => {
+                                            changeLanguage(lang);
+                                        }}
+                                        value={lang}
+                                        color={
+                                            lang === currentLocale
+                                                ? "primary"
+                                                : undefined
+                                        }
+                                        icon={
+                                            <Avatar
+                                                src={`/images/flags/${lang}.svg`}
+                                                size={18}
+                                                radius="lg"
+                                            />
+                                        }
+                                    >
+                                        {lang === "en" ? "English" : "German"}
+                                    </Menu.Item>
+                                ))}
+                        </Menu.Dropdown>
+                    </Menu>
 
-                <ActionIcon
-                    variant="outline"
-                    color={dark ? "yellow" : "primary"}
-                    onClick={() => toggleColorScheme()}
-                    title="Toggle color scheme"
-                >
-                    {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
-                </ActionIcon>
+                    <ActionIcon
+                        variant="outline"
+                        color={dark ? "yellow" : "primary"}
+                        onClick={() => toggleColorScheme()}
+                        title="Toggle color scheme"
+                    >
+                        {dark ? (
+                            <IconSun size={18} />
+                        ) : (
+                            <IconMoonStars size={18} />
+                        )}
+                    </ActionIcon>
 
-                {(user?.name || user?.avatar) && (
-                    <Group spacing="xs">
-                        {user?.name && <Title order={6}>{user?.name}</Title>}
-                        <Avatar
-                            src={user?.avatar}
-                            alt={user?.name}
-                            radius="xl"
-                        />
-                    </Group>
-                )}
-            </Group>
+                    {(user?.name || user?.avatar) && (
+                        <Group spacing="xs">
+                            {user?.name && (
+                                <Title order={6}>{user?.name}</Title>
+                            )}
+                            <Avatar
+                                src={user?.avatar}
+                                alt={user?.name}
+                                radius="xl"
+                            />
+                        </Group>
+                    )}
+                </Group>
             </Flex>
         </MantineHeader>
     );

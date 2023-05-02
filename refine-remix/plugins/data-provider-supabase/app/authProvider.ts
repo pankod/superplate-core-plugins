@@ -15,6 +15,7 @@ export const authProvider: AuthBindings = {
         if (error) {
             return {
                 success: false,
+                error,
             };
         }
 

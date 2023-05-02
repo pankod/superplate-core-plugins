@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@refinedev/appwrite": "^6.0.0"
+    }
+}

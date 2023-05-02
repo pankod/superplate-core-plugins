@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "@refinedev/altogic": "^4.0.0",
+        "axios": "^0.26.1"
+    }
+}

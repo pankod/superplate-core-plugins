@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@refinedev/supabase": "^5.0.0"
+    }
+}

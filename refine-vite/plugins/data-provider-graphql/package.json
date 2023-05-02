@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "@refinedev/graphql": "^6.0.0",
+        "graphql": "^15.5.3",
+        "graphql-request": "^5.2.0"
+    }
+}

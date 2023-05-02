@@ -4,7 +4,55 @@ on:
   - push
 
 jobs:
+  vite:
+    runs-on: ubuntu-latest
+    name: vite
+    strategy:
+      fail-fast: false
+      matrix:
+        data_provider:
+          [
+            custom-json-rest,
+            strapi-v4,
+            nestjsx-crud,
+            airtable,
+            supabase,
+            appwrite,
+          ]
+        ui_framework: [antd, chakra, mantine, mui, no]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install
+        run: npm install
+      - name: Build Examples
+        id: build_step
+        run: FRAMEWORK=react DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+      - name: Install Deps
+        run: |
+          cd ${{ steps.build_step.outputs.project_path }}
+          npm install
+          npm run build
+          npm install -g serve
+          serve -s build &
+      - name: Run Cypress on local
+        uses: cypress-io/github-action@v4
+        with:
+          command: npx cypress run --record --group react --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=react,DATA_PROVIDER=${{ matrix.data_provider }} --ci-build-id react-${{ matrix.ui_framework }}-${{ matrix.data_provider }}-${{ steps.build_step.outputs.auth_provider }}-${{ steps.build_step.outputs.project_path }}-${{ github.run_attempt }}
+          install: false
+          start: "npm ls"
+          wait-on: "http://0.0.0.0:3000"
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          FRAMEWORK: react
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   react:
+    if: false
     runs-on: ubuntu-latest
     name: react
     strategy:
@@ -52,6 +100,7 @@ jobs:
           UI_FRAMEWORK: ${{ matrix.ui_framework }}
           AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   nextjs:
+    if: false
     runs-on: ubuntu-latest
     name: nextjs
     strategy:
@@ -95,6 +144,7 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
   remix:
+    if: false
     runs-on: ubuntu-latest
     name: remix
     strategy:

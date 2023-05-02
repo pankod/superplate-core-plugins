@@ -50,6 +50,41 @@ export const authProvider: AuthBindings = {
             redirectTo: "/login",
         };
     },
+    register: async ({ email, password }) => {
+        try {
+            const { data, error } = await supabaseClient.auth.signUp({
+                email,
+                password,
+            });
+            
+            if (error) {
+                return {
+                    success: false,
+                    error,
+                };
+            }
+            
+            if (data) {
+                return {
+                    success: true,
+                    redirectTo: "/",
+                };
+            }
+        } catch (error: any) {
+            return {
+                success: false,
+                error,
+            };
+        }
+        
+        return {
+            success: false,
+            error: {
+                message: "Register failed",
+                name: "Invalid email or password",
+            },
+        };
+    },
     onError: async (error) => {
         console.error(error);
         return { error };

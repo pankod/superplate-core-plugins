@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
-import i18n from "i18n";
+import i18n from "i18next";
 import React, { useContext } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
 

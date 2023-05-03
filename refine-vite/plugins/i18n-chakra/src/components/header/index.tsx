@@ -19,7 +19,7 @@ import {
 } from "@refinedev/chakra-ui";
 import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import { IconLanguage, IconMoon, IconSun } from "@tabler/icons";
-import i18n from "i18n";
+import i18n from "i18next";
 import React from "react";
 
 type IUser = {

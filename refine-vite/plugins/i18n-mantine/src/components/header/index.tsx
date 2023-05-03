@@ -16,7 +16,7 @@ import {
     RefineThemedLayoutV2HeaderProps,
 } from "@refinedev/mantine";
 import { IconLanguage, IconMoonStars, IconSun } from "@tabler/icons";
-import i18n from "i18n";
+import i18n from "i18next";
 import React from "react";
 
 type IUser = {

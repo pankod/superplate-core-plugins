@@ -52,7 +52,6 @@ jobs:
           UI_FRAMEWORK: ${{ matrix.ui_framework }}
           AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   react:
-    if: false
     runs-on: ubuntu-latest
     name: react
     strategy:
@@ -100,7 +99,6 @@ jobs:
           UI_FRAMEWORK: ${{ matrix.ui_framework }}
           AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   nextjs:
-    if: false
     runs-on: ubuntu-latest
     name: nextjs
     strategy:
@@ -144,7 +142,6 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
   remix:
-    if: false
     runs-on: ubuntu-latest
     name: remix
     strategy:

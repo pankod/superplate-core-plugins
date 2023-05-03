@@ -2,6 +2,7 @@
   "name": "<%= name %>",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@refinedev/cli": "^2.5.1",
     "@refinedev/core": "^4.5.8",

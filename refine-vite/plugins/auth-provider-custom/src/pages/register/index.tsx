@@ -34,7 +34,7 @@ import {
 } from "@refinedev/chakra-ui";
 <%_ } _%>
 <%_ if (selectedSvg && answers["ui-framework"] !== "no") { _%>
-import { AppIcon } from "../components/app-icon";
+import { AppIcon } from "../../components/app-icon";
 <%_ } _%>
 
 export const Register = () => {

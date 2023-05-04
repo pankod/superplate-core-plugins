@@ -21,7 +21,7 @@ import { ThemedTitleV2 } from "@refinedev/chakra-ui";
 import { useAuth0 } from "@auth0/auth0-react";
 
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "../components/app-icon";
+import { AppIcon } from "../../components/app-icon";
 <%_ } _%>
 
 export const Login: React.FC = () => {

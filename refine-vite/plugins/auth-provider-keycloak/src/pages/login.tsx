@@ -16,7 +16,7 @@ import { Button, Box, Text, VStack } from "@chakra-ui/react";
 import { ThemedTitleV2 } from "@refinedev/chakra-ui";
 <%_ } _%>
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "../components/app-icon";
+import { AppIcon } from "../../components/app-icon";
 <%_ } _%>
 
 export const Login: React.FC = () => {

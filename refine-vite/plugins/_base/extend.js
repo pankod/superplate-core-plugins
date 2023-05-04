@@ -192,7 +192,7 @@ module.exports = {
             (answers["title"] || answers["svg"])
         ) {
             base._app.localImport.push(
-                'import { AppIcon } from "../components/app-icon";',
+                'import { AppIcon } from "./components/app-icon";',
             );
         }
 

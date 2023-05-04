@@ -1,70 +1,30 @@
-import { useEffect, useRef } from "react";
-import { useLogin } from "@refinedev/core";
-
+import { useTranslate, useLogin } from "@refinedev/core";
 <%_ if (answers["ui-framework"] === "antd") { _%>
 import { ThemedTitleV2 } from "@refinedev/antd";
-import { Typography, Layout, Space } from "antd";
+import { Button, Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>
-import { Box, Space, Text } from "@mantine/core";
+import { Button, Box, Space, Text } from "@mantine/core";
 import { ThemedTitleV2 } from "@refinedev/mantine";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
-import { Box, Text, VStack } from "@chakra-ui/react";
+import { Button, Box, Text, VStack } from "@chakra-ui/react";
 import { ThemedTitleV2 } from "@refinedev/chakra-ui";
 <%_ } _%>
-
-import { CredentialResponse } from "../interfaces/google";
-
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "components/app-icon";
-<%_ } _%>    
-
-// Todo: Update your Google Client ID here
-const GOOGLE_CLIENT_ID = "1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com";
+import { AppIcon } from "../components/app-icon";
+<%_ } _%>
 
 export const Login: React.FC = () => {
-    const { mutate: login } = useLogin<CredentialResponse>();
+    const { mutate: login } = useLogin();
 
-    const GoogleButton = (): JSX.Element => {
-        const divRef = useRef<HTMLDivElement>(null);
-
-        useEffect(() => {
-            if (
-                typeof window === "undefined" ||
-                !window.google ||
-                !divRef.current
-            ) {
-                return;
-            }
-
-            try {
-                window.google.accounts.id.initialize({
-                    ux_mode: "popup",
-                    client_id: GOOGLE_CLIENT_ID,
-                    callback: async (res: CredentialResponse) => {
-                        if (res.credential) {
-                            login(res);
-                        }
-                    },
-                });
-                window.google.accounts.id.renderButton(divRef.current, {
-                    theme: "filled_blue",
-                    size: "medium",
-                    type: "standard",
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        }, []);
-
-        return <div ref={divRef} />;
-    };
-
+    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+    const t = useTranslate();
+    <%_ } _%>
 
     <%_ if (answers["ui-framework"] === "antd") { _%>
         return (
@@ -89,15 +49,26 @@ export const Login: React.FC = () => {
                     icon={<AppIcon />}
                 <%_ } _%>
                 />
-                <GoogleButton />
+                <Button
+                    style={{ width: "240px" }}
+                    type="primary"
+                    size="middle"
+                    onClick={() => login({})}
+                >
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                    <%_ } else { _%>
+                        Sign in
+                    <%_ } _%>
+                </Button>
                 <Typography.Text type="secondary">
                 Powered by
           <img
             style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+            alt="Keycloak"
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
-          Google
+          Keycloak
                 </Typography.Text>
             </Space>
             </Layout>
@@ -134,16 +105,21 @@ export const Login: React.FC = () => {
                 <%_ } _%>
                 />
 
-                <GoogleButton />
-
+                <Button style={{ width: "240px" }} size="large" variant="contained" onClick={() => login({})}>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                    <%_ } else { _%>
+                        Sign in
+                    <%_ } _%>
+                </Button>
                 <Typography align="center" color={"text.secondary"} fontSize="12px">
                 Powered by
           <img
             style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+            alt="Keycloak"
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
-          Google
+          Keycloak
                 </Typography>
             </Box>
             </Container>
@@ -175,17 +151,27 @@ export const Login: React.FC = () => {
             />
             <Space h="xl" />
 
-            <GoogleButton />
-
+            <Button
+                style={{ width: "240px" }}
+                type="button"
+                variant="filled"
+                onClick={() => login({})}
+            >
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                <%_ } else { _%>
+                    Sign in
+                <%_ } _%>
+            </Button>
             <Space h="xl" />
             <Text fz="sm" color="gray">
                 Powered by
           <img
             style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+            alt="Keycloak"
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
-          Google
+          Keycloak
             </Text>
             </Box>
         );
@@ -216,16 +202,22 @@ export const Login: React.FC = () => {
                 <%_ } _%>
                 />
 
-                <GoogleButton />
+                <Button style={{ width: "240px" }} colorScheme="blue" onClick={() => login({})}>
+                    <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                    {t("pages.login.signin", "Sign in")}
+                    <%_ } else { _%>
+                        Sign in
+                    <%_ } _%>
+                </Button>
 
                 <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
                 Powered by
           <img
             style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+            alt="Keycloak"
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
-          Google
+          Keycloak
                 </Text>
             </VStack>
             </Box>
@@ -243,16 +235,22 @@ export const Login: React.FC = () => {
                     flexDirection: "column",
                 }}
             >
-            <GoogleButton />   
-             <p>
+            <button onClick={() => login({})}>
+                <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
+                {t("pages.login.signin", "Sign in")}
+                <%_ } else { _%>
+                    Sign in
+                <%_ } _%>
+            </button>   
+            <p>
                 Powered by
           <img
             style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+            alt="Keycloak"
+            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fkeycloak.svg"
           />
-          Google
-            </p>            
+          Keycloak
+            </p>               
             </div>
         );
     <%_ } _%>

@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@refinedev/airtable": "^4.0.0"
+    }
+}

@@ -79,8 +79,8 @@ const base = {
         mainWrapper: [
             [
                 `<Auth0Provider
-                    domain="refine.eu.auth0.com"
-                    clientId="zHwgQ2SoYUDQo3Ng1Bdtyk5eGoa2ad7X"
+                    domain="dev-qg1ftdys736bk5i3.us.auth0.com"
+                    clientId="Be5vsLunFvpzPf4xfXtaMxrZUVBjjNPO"
                     redirectUri={window.location.origin}
                 >`,
                 `</Auth0Provider>`,

@@ -23,7 +23,7 @@ type IUser = {
 };
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky = true,
+    sticky = true,
 }) => {
     const { mode, setMode } = useContext(ColorModeContext);
 
@@ -34,7 +34,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     const currentLocale = locale();
 
     return (
-        <AppBar position={isSticky ? "sticky" : "relative"}>
+        <AppBar position={sticky ? "sticky" : "relative"}>
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
                     <HamburgerMenu />

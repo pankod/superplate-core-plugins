@@ -26,7 +26,7 @@ interface IUser {
 }
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky,
+    sticky,
 }) => {
     const { data: user } = useGetIdentity<IUser>();
 
@@ -40,7 +40,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     const { locales } = useRouter();
 
     let stickyStyles: Sx = {};
-    if (isSticky) {
+    if (sticky) {
         stickyStyles = {
             position: `sticky`,
             top: 0,

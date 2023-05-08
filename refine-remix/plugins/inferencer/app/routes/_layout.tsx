@@ -2,6 +2,7 @@ import { Outlet } from "@remix-run/react";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import {
     ThemedLayoutV2,
+    ThemedSiderV2,
     <%_ if (selectedSvg || selectedTitle) { _%>
     ThemedTitleV2,
     <%_ } _%>
@@ -57,6 +58,9 @@ export default function BaseLayout() {
             <%_ } else { _%>
                 <ThemedLayoutV2
                     Header={() => <Header isSticky={true} />}
+                    <%_ if (answers["ui-framework"] === 'antd') { _%>
+                    Sider={() => <ThemedSiderV2 fixed />}
+                    <%_ } _%>
                     <%_ if (selectedSvg || selectedTitle) { _%>
                     Title={({ collapsed }) => (
                         <ThemedTitleV2

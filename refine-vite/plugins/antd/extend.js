@@ -2,7 +2,11 @@ const base = {
     _app: {
         import: [],
         refineImports: [],
-        refineAntdImports: ["notificationProvider", "ThemedLayoutV2"],
+        refineAntdImports: [
+            "notificationProvider",
+            "ThemedLayoutV2",
+            "ThemedSiderV2",
+        ],
         refineProps: ["notificationProvider={notificationProvider}"],
         wrapper: [
             [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`],

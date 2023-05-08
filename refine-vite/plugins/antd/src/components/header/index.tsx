@@ -21,7 +21,7 @@ type IUser = {
 };
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky,
+    sticky,
 }) => {
     const { token } = useToken();
     const { data: user } = useGetIdentity<IUser>();
@@ -36,7 +36,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
         height: "64px",
     };
 
-    if (isSticky) {
+    if (sticky) {
         headerStyles.position = "sticky";
         headerStyles.top = 0;
         headerStyles.zIndex = 1;

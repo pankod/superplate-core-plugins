@@ -19,14 +19,14 @@ type IUser = {
 };
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky = true,
+    sticky = true,
 }) => {
     const { mode, setMode } = useContext(ColorModeContext);
 
     const { data: user } = useGetIdentity<IUser>();
 
     return (
-        <AppBar position={isSticky ? "sticky" : "relative"}>
+        <AppBar position={sticky ? "sticky" : "relative"}>
             <Toolbar>
                 <Stack
                     direction="row"

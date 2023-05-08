@@ -192,7 +192,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
         <%_ } else {_%>
             return (
                 <ThemedLayoutV2
-                    Header={() => <Header isSticky={true} />}
+                    Header={() => <Header sticky />}
                     <%_ if (answers["ui-framework"] === 'antd') { _%>
                     Sider={() => <ThemedSiderV2 fixed />}
                     <%_ } _%>

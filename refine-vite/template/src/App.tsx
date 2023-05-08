@@ -100,7 +100,7 @@ function App() {
                                     </Layout>
                                 <%_ } else { _%>
                                     <ThemedLayoutV2
-                                        Header={() => <Header isSticky={true} />}
+                                        Header={() => <Header sticky />}
                                         <%_ if (answers["ui-framework"] === 'antd') { _%>
                                         Sider={() => <ThemedSiderV2 fixed />}
                                         <%_ } _%>
@@ -204,7 +204,7 @@ function App() {
                                 </Layout>
                             <%_ } else { _%>
                                 <ThemedLayoutV2
-                                    Header={() => <Header isSticky={true} />}
+                                    Header={() => <Header sticky />}
                                     <%_ if (answers["ui-framework"] === 'antd') { _%>
                                     Sider={() => <ThemedSiderV2 fixed />}
                                     <%_ } _%></Routes>

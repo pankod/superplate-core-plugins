@@ -26,7 +26,7 @@ type IUser = {
 };
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky,
+    sticky,
 }) => {
     const { data: user } = useGetIdentity<IUser>();
 
@@ -42,7 +42,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     const borderColor = dark ? theme.colors.dark[6] : theme.colors.gray[2];
 
     let stickyStyles: Sx = {};
-    if (isSticky) {
+    if (sticky) {
         stickyStyles = {
             position: `sticky`,
             top: 0,

@@ -29,7 +29,7 @@ type IUser = {
 };
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky,
+    sticky,
 }) => {
     const { data: user } = useGetIdentity<IUser>();
 
@@ -45,7 +45,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     const currentLocale = locale();
 
     let stickyProps: BoxProps = {};
-    if (isSticky) {
+    if (sticky) {
         stickyProps = {
             position: "sticky",
             top: 0,

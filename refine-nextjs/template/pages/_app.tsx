@@ -53,7 +53,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
             <%_ } else {_%>
             return (
                 <ThemedLayoutV2
-                    Header={() => <Header isSticky={true} />}
+                    Header={() => <Header sticky />}
                     <%_ if (answers["ui-framework"] === 'antd') { _%>
                     Sider={() => <ThemedSiderV2 fixed />}
                     <%_ } _%>

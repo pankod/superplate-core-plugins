@@ -23,7 +23,7 @@ interface IUser {
 }
 
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
-    isSticky = true,
+    sticky = true,
 }) => {
     const { mode, setMode } = useContext(ColorModeContext);
     const { locale: currentLocale, locales, pathname, query } = useRouter();
@@ -31,7 +31,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     const { data: user } = useGetIdentity<IUser>();
 
     return (
-        <AppBar position={isSticky ? "sticky" : "relative"}>
+        <AppBar position={sticky ? "sticky" : "relative"}>
             <Toolbar>
                 <Stack direction="row" width="100%" alignItems="center">
                     <HamburgerMenu />

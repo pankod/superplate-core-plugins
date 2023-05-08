@@ -101,6 +101,9 @@ function App() {
                                 <%_ } else { _%>
                                     <ThemedLayoutV2
                                         Header={() => <Header sticky />}
+                                        <%_ if (answers["ui-framework"] === 'antd') { _%>
+                                        Sider={() => <ThemedSiderV2 fixed />}
+                                        <%_ } _%>
                                         <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
                                             <ThemedTitleV2
@@ -201,7 +204,10 @@ function App() {
                                 </Layout>
                             <%_ } else { _%>
                                 <ThemedLayoutV2
-                                Header={() => <Header sticky />}
+                                    Header={() => <Header sticky />}
+                                    <%_ if (answers["ui-framework"] === 'antd') { _%>
+                                    Sider={() => <ThemedSiderV2 fixed />}
+                                    <%_ } _%></Routes>
                                     <%_ if (selectedSvg || selectedTitle) { _%>
                                     Title={({ collapsed }) => (
                                         <ThemedTitleV2

@@ -13,6 +13,7 @@ const base = {
             "authProvider={authProvider}",
             "routerProvider={routerBindings}"
         ],
+        refineOptions: [`liveMode: "auto",`],
         refineImports: [
             `Authenticated`
         ],

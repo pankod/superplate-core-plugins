@@ -11,6 +11,10 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../api/auth/[...nextauth]";
 <%_ } _%>
 
+<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
+import { inferencerPredefinedMeta } from "src/inferencerPredefinedMeta";
+<%_ } _%>
+
 export default function BlogPostShow() {
     return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ShowInferencer 
 <%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
@@ -35,6 +39,9 @@ fieldTransformer={(field: any) => {
 
   return field;
 }}
+<%_ } _%>
+<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
+meta={inferencerPredefinedMeta}
 <%_ } _%>
 />;
 }

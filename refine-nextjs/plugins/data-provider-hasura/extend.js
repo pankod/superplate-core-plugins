@@ -4,18 +4,16 @@ const base = {
             `import dataProvider, { GraphQLClient } from "@refinedev/hasura";`,
         ],
         afterImport: [
-            `const API_URL = "https://your-hasura-url/graphql";`,
+            "",
+            `const API_URL = "https://flowing-mammal-24.hasura.app/v1/graphql";`,
             "",
             `const client = new GraphQLClient(API_URL, {
                 headers: {
                     "x-hasura-role": "public",
                 },
             });`,
-            "",
-            `const gqlDataProvider = dataProvider(client);`,
-            "",
         ],
-        refineProps: ["dataProvider={gqlDataProvider}"],
+        refineProps: [`dataProvider={dataProvider(client)}`],
     },
 };
 module.exports = {

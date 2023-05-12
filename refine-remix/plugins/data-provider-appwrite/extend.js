@@ -16,6 +16,7 @@ const base = {
             })}`,
             `authProvider={authProvider}`,
         ],
+        refineOptions: [`liveMode: "auto",`],
         refineAntdImports: [],
         refineMantineImports: [],
         refineMuiImports: [],

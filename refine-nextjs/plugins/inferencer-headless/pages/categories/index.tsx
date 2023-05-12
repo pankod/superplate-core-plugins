@@ -12,8 +12,16 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]";
 <%_ } _%>
 
+<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
+import { inferencerPredefinedMeta } from "src/inferencerPredefinedMeta";
+<%_ } _%>
+
 export default function CategoryList() {
-    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ListInferencer />;
+    return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ListInferencer
+    <%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
+    meta={inferencerPredefinedMeta}
+    <%_ } _%>
+    />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

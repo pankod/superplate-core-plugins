@@ -26,6 +26,7 @@ const buildTemplate = async () => {
         airtable: ["auth0", "custom"],
         supabase: "supabase",
         appwrite: "appwrite",
+        hasura: ["keycloak", "custom"],
     };
 
     let AUTH_PROVIDER = dataProviderMap[DATA_PROVIDER];

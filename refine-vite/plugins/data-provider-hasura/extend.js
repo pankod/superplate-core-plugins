@@ -1,10 +1,12 @@
 const base = {
     _app: {
         import: [
-            `import dataProvider, { GraphQLClient } from "@refinedev/hasura";`,
+            `import dataProvider, { GraphQLClient, graphqlWS, liveProvider } from "@refinedev/hasura";`,
         ],
         afterImport: [
-            `const API_URL = "https://your-hasura-url/graphql";`,
+            "",
+            `const API_URL = "https://flowing-mammal-24.hasura.app/v1/graphql";`,
+            `const WS_URL = "ws://flowing-mammal-24.hasura.app/v1/graphql";`,
             "",
             `const client = new GraphQLClient(API_URL, {
                 headers: {
@@ -12,20 +14,19 @@ const base = {
                 },
             });`,
             "",
-            `const gqlDataProvider = dataProvider(client);`,
-            "",
+            `const webSocketClient = graphqlWS.createClient({
+                url: WS_URL,
+            });`,
         ],
         refineProps: [
-            `dataProvider={gqlDataProvider}`,
+            `dataProvider={dataProvider(client)}`,
+            `liveProvider={liveProvider(webSocketClient)}`,
         ],
+        refineOptions: [`liveMode: "auto",`],
     },
 };
 module.exports = {
     extend() {
-        // clear routes
-        base._app.routes = [];
-
-
         return base;
     },
 };

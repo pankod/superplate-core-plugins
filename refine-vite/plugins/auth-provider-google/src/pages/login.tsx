@@ -7,6 +7,7 @@ import { Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";

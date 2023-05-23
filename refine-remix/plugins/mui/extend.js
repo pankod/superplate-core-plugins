@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             "import { withEmotionCache } from '@emotion/react';",
-            `import { unstable_useEnhancedEffect as useEnhancedEffect} from "@mui/material";`,
+            `import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material";`,
         ],
         refineProps: ["notificationProvider={notificationProvider}"],
         refineMuiImports: ["notificationProvider", "RefineSnackbarProvider"],

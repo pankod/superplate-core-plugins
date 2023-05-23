@@ -1,7 +1,10 @@
 const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
-        import: [`import { CssBaseline, GlobalStyles } from "@mui/material";`],
+        import: [
+            `import GlobalStyles from "@mui/material/GlobalStyles";`,
+            `import CssBaseline from "@mui/material/CssBaseline";`,
+        ],
         refineMuiImports: [
             "notificationProvider",
             "RefineSnackbarProvider",

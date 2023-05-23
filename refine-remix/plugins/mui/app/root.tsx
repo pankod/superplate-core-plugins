@@ -12,7 +12,8 @@ import {
 
 import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-    import { CssBaseline, GlobalStyles } from "@mui/material";
+    import GlobalStyles from "@mui/material/GlobalStyles";
+    import CssBaseline from "@mui/material/CssBaseline";
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 

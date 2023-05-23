@@ -4,7 +4,7 @@ import React, {
     useEffect,
     useState,
 } from "react";
-import { useMediaQuery } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider } from "@mui/material/styles";
 import { RefineThemes } from "@refinedev/mui";
 import { parseCookies, setCookie } from "nookies";

@@ -14,7 +14,10 @@ const base = {
             ],
             ["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"],
         ],
-        import: [`import { CssBaseline, GlobalStyles } from "@mui/material";`],
+        import: [
+            `import GlobalStyles from "@mui/material/GlobalStyles";`,
+            `import CssBaseline from "@mui/material/CssBaseline";`,
+        ],
         localImport: [
             'import { ColorModeContextProvider } from "@contexts";',
             'import { Header } from "@components/header";',

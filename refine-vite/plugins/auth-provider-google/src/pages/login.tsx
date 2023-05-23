@@ -6,7 +6,9 @@ import { ThemedTitleV2 } from "@refinedev/antd";
 import { Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
-import { Box, Container, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mantine') { _%>

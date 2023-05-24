@@ -141,9 +141,5 @@
     },
     "table": {
         "actions": "Aktionen"
-    },
-    "pagination": {
-        "go": "Gehen Sie zur Seite",
-        "show": "Zeigen"
     }
 }

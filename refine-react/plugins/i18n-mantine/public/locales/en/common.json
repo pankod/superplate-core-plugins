@@ -108,15 +108,23 @@
     "dashboard": {
         "title": "Dashboard"
     },
+    <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+    "blog-posts": {
+        "blog-posts": "Blog Posts",
+    <%_ } else { _%>
     "blog_posts": {
         "blog_posts": "Blog Posts",
+    <%_ } _%>
         "fields": {
             "id": "Id",
             "title": "Title",
             "content": "Content",
-            "status": "Status",
+            "status": "Status", 
             "category": "Category",
-            "createdAt": "Created At"
+            "categoryId" : "Category",
+            "category_id": "Category",
+            "createdAt": "Created At",
+            "created_at": "Created At"
         },
         "titles": {
             "create": "Create Blog Post",
@@ -130,7 +138,8 @@
         "fields": {
             "id": "Id",
             "title": "Title",
-            "createdAt": "Created At"
+            "createdAt": "Created At",
+            "created_at": "Created At"
         },
         "titles": {
             "create": "Create Category",

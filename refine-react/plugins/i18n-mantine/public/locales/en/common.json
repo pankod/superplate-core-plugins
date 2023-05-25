@@ -119,7 +119,7 @@
             "id": "Id",
             "title": "Title",
             "content": "Content",
-            "status": "Status", 
+            "status": "Status",
             "category": "Category",
             "categoryId" : "Category",
             "category_id": "Category",

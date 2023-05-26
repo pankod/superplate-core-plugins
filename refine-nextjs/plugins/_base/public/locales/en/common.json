@@ -120,11 +120,22 @@
             "title": "Title",
             "content": "Content",
             "status": "Status",
-            "category": "Category",
-            "categoryId" : "Category",
-            "category_id": "Category",
-            "createdAt": "Created At",
-            "created_at": "Created At",
+            <%_ if (answers["data-provider"] === "data-provider-appwrite" || answers["data-provider"] === "data-provider-supabase" || answers["data-provider"] === "data-provider-hasura") { _%>
+                "created_at": "Created At",
+            <%_ } else { _%>
+                "createdAt": "Created At",
+            <%_ } _%>
+            <%_ if (answers["data-provider"] === "data-provider-appwrite" || answers["data-provider"] === "data-provider-nestjsx-crud") { _%>
+                "updatedAt": "Updated At",
+            <%_ } _%>
+            <%_ if (answers["data-provider"] === "data-provider-supabase" || answers["data-provider"] === "data-provider-appwrite") { _%>
+                "categoryId": "Category"
+            <%_ } else if (answers["data-provider"] === "data-provider-hasura") { _%>
+                "category_id": "Category",
+                "category": "Category"
+            <%_ } else { _%>
+                "category": "Category"
+            <%_ } _%>
         },
         "titles": {
             "create": "Create Blog Post",
@@ -138,8 +149,17 @@
         "fields": {
             "id": "Id",
             "title": "Title",
-            "createdAt": "Created At",
-            "created_at": "Created At"
+            <%_ if (answers["data-provider"] === "data-provider-airtable") { _%>
+                "Posts": "Posts",
+            <%_ } _%>
+            <%_ if (answers["data-provider"] === "data-provider-appwrite" || answers["data-provider"] === "data-provider-nestjsx-crud") { _%>
+                "updatedAt": "Updated At",
+            <%_ } _%>
+            <%_ if (answers["data-provider"] === "data-provider-appwrite" || answers["data-provider"] === "data-provider-supabase" || answers["data-provider"] === "data-provider-hasura") { _%>
+                "created_at": "Created At"
+            <%_ } else { _%>
+                "createdAt": "Created At"
+            <%_ } _%>
         },
         "titles": {
             "create": "Create Category",

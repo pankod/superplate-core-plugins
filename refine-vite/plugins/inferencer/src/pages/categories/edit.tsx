@@ -12,7 +12,7 @@ export const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
     meta={inferencerPredefinedMeta}
     <%_ } _%>
     <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
-    fieldTransformer={(field: any) => {
+    fieldTransformer={(field) => {
     if (["locale", "updatedAt", "publishedAt"].includes(field.key)) {
         return false;
     }

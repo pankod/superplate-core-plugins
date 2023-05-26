@@ -315,5 +315,15 @@ module.exports = {
                 "src/App.css",
             ],
         },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return answers[`i18n-${answers["ui-framework"]}`] === "no";
+            },
+            pattern: [
+                "public/locales/de/common.json",
+                "public/locales/en/common.json",
+            ],
+        },
     ],
 };

@@ -9,7 +9,7 @@ import { inferencerPredefinedMeta } from "../../inferencerPredefinedMeta";
 export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
     return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>ListInferencer 
 <%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
-fieldTransformer={(field: any) => {
+fieldTransformer={(field) => {
   if (["$permissions", "$updatedAt"].includes(field.key)) {
     return false;
   }
@@ -23,7 +23,7 @@ fieldTransformer={(field: any) => {
 }}
 <%_ } _%>
 <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
-fieldTransformer={(field: any) => {
+fieldTransformer={(field) => {
   if (["locale", "updatedAt", "publishedAt"].includes(field.key)) {
     return false;
   }

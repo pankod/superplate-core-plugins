@@ -302,5 +302,17 @@ module.exports = {
                 "src/styles/global.css",
             ],
         },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                return answers[`i18n-${answers["ui-framework"]}`] === "no";
+            },
+            pattern: [
+                "public/locales/de/common.json",
+                "public/locales/en/common.json",
+                "public/images/flags/de.svg",
+                "public/images/flags/en.svg",
+            ],
+        },
     ],
 };

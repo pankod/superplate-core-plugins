@@ -310,6 +310,8 @@ module.exports = {
             pattern: [
                 "public/locales/de/common.json",
                 "public/locales/en/common.json",
+                "public/images/flags/de.svg",
+                "public/images/flags/en.svg",
             ],
         },
     ],

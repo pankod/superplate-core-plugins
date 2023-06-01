@@ -15,7 +15,7 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 <%_ if (answers["ui-framework"] === 'chakra') { _%>
     import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
 <%_ } _%>
-import routerProvider, { UnsavedChangesNotifier } from "@refinedev/nextjs-router";
+import routerProvider, { UnsavedChangesNotifier, DocumentTitleHandler } from "@refinedev/nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
 
@@ -143,6 +143,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                 {renderComponent()}
                 <RefineKbar />
                 <UnsavedChangesNotifier />
+                <DocumentTitleHandler />
             </Refine>
             <%- bottom.join("\n") %>
         </RefineKbarProvider>

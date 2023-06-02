@@ -14,7 +14,6 @@ fieldTransformer={(field) => {
 
   if (field.key === "$createdAt") {
     field.key = "created_at";
-    field.title = "Created At";
   }
 
   return field;

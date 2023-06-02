@@ -20,14 +20,9 @@ export default function BlogPostEdit() {
     return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>EditInferencer 
 <%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
 fieldTransformer={(field) => {
-  if (["$permissions", "$updatedAt"].includes(field.key)) {
+  if (["$permissions", "$updatedAt", "$createdAt"].includes(field.key)) {
     return false;
   }
-
-  if (field.key === "$createdAt") {
-    field.key = "created_at";
-  }
-
   return field;
 }}
 <%_ } _%>

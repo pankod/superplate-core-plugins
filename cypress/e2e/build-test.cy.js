@@ -113,7 +113,7 @@ describe("build test", () => {
             // document title check
             // ignore remix
             if (Cypress.env("FRAMEWORK") !== "remix") {
-                cy.title().should("eq", "Blog posts | refine").as("title");
+                cy.title().should("eq", "Blog Posts | refine").as("title");
                 cy.wait("@title");
             }
 

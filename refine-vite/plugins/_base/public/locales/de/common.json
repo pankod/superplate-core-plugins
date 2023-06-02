@@ -110,10 +110,10 @@
     },
     <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
     "blog-posts": {
-        "blog-posts": "Blogeinträge",
+        "blog-posts": "Blogbeiträge",
     <%_ } else { _%>
     "blog_posts": {
-        "blog_posts": "Blogeinträge",
+        "blog_posts": "Blogbeiträge",
     <%_ } _%>
         "fields": {
             "id": "Id",
@@ -166,6 +166,28 @@
             "edit": "Bearbeiten",
             "list": "Einträge",
             "show": "Eintrag zeigen"
+        }
+    },
+    "documentTitle": {
+        "default": "refine",
+        "suffix": " | refine",
+        <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+        "blog-posts": {
+        <%_ } else { _%>
+        "blog_posts": {
+        <%_ } _%>
+            "list": "Blogbeiträge | refine",
+            "show": "#{{id}} Show Blogeintrag | refine",
+            "edit": "#{{id}} Edit Blogeintrag | refine",
+            "create": "Create new Blogeintrag | refine",
+            "clone": "#{{id}} Clone Blogeintrag | refine"
+        },
+        "categories": {
+            "list": "Kategorien | refine",
+            "show": "#{{id}} Zeigen Kategorien | refine",
+            "edit": "#{{id}} Bearbeiten Kategorien | refine",
+            "create": "Neue Kategorie Erstellen | refine",
+            "clone": "#{{id}} Klon Kategorie | refine"
         }
     },
     "table": {

@@ -115,7 +115,7 @@ describe("build test", () => {
             if (Cypress.env("FRAMEWORK") !== "remix") {
                 cy.wait(1000);
                 // should be correct title on list page
-                cy.title().should("match", /blog post/i);
+                cy.title().should("eq", "Blog posts | refine");
             }
 
             if (Cypress.env("UI_FRAMEWORK") !== "no") {

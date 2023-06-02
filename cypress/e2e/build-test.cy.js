@@ -110,6 +110,13 @@ describe("build test", () => {
 
             cy.contains("Blog Posts", { matchCase: false }).should("exist");
 
+            // document title check
+            // ignore remix
+            if (Cypress.env("FRAMEWORK") !== "remix") {
+                // should be correct title on list page
+                cy.title().should("eq", "Blog posts | refine");
+            }
+
             if (Cypress.env("UI_FRAMEWORK") !== "no") {
                 cy.contains("Categories").should("exist");
 

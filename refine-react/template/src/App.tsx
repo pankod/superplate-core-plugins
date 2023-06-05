@@ -253,6 +253,7 @@ function App() {
                 <%_ } _%>
                 <RefineKbar />
                 <UnsavedChangesNotifier />
+                <DocumentTitleHandler />
             </Refine>
             <%- bottom.join("\n") %>
         </RefineKbarProvider>

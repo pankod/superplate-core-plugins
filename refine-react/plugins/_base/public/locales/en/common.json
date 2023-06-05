@@ -168,6 +168,29 @@
             "show": "Show Category"
         }
     },
+    "documentTitle": {
+        "default": "refine",
+        "suffix": " | refine",
+        <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
+        "blog-posts": {
+        <%_ } else { _%>
+        "blog_posts": {
+        <%_ } _%>
+            "list": "Blog Posts | refine",
+            "show": "#{{id}} Show Blog Post | refine",
+            "edit": "#{{id}} Edit Blog Post | refine",
+            "create": "Create new Blog Post | refine",
+            "clone": "#{{id}} Clone Blog Post | refine"
+        },
+        "categories": {
+            "list": "Categories | refine",
+            "show": "#{{id}} Show Category | refine",
+            "edit": "#{{id}} Edit Category | refine",
+            "create": "Create new Category | refine",
+            "clone": "#{{id}} Clone Category | refine"
+        }
+
+    },
     "table": {
         "actions": "Actions"
     <%_ if (answers["ui-framework"] === "no") { _%>

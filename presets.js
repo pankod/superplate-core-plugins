@@ -128,5 +128,16 @@ module.exports = {
                 "i18n-mui": "no",
             },
         },
+        {
+            name: 'refine-supabase',
+            type: 'refine-vite',
+            answers: {
+               'ui-framework': 'no',
+                'router-provider': 'react-router-v6',
+                'data-provider': 'data-provider-supabase',
+                'i18n-no': 'no',
+                'inferencer': 'no',
+            }
+        }
     ],
 };

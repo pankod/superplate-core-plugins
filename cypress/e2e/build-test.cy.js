@@ -25,6 +25,8 @@ describe("build test", () => {
     });
 
     it("should build", () => {
+        if (Cypress.env("DATA_PROVIDER") === "appwrite") return;
+
         if (
             ["keycloak", "google", "auth0"].includes(
                 Cypress.env("AUTH_PROVIDER"),

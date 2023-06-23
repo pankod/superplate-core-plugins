@@ -102,7 +102,7 @@ function App() {
                                     <ThemedLayoutV2
                                         Header={() => <Header sticky />}
                                         <%_ if (answers["ui-framework"] === 'antd') { _%>
-                                        Sider={() => <ThemedSiderV2 fixed />}
+                                        Sider={(props) => <ThemedSiderV2 {...props} fixed />}
                                         <%_ } _%>
                                         <%_ if (selectedSvg || selectedTitle) { _%>
                                         Title={({ collapsed }) => (
@@ -206,7 +206,7 @@ function App() {
                                 <ThemedLayoutV2
                                     Header={() => <Header sticky />}
                                     <%_ if (answers["ui-framework"] === 'antd') { _%>
-                                    Sider={() => <ThemedSiderV2 fixed />}
+                                    Sider={(props) => <ThemedSiderV2 {...props} fixed />}
                                     <%_ } _%>
                                     <%_ if (selectedSvg || selectedTitle) { _%>
                                     Title={({ collapsed }) => (

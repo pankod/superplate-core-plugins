@@ -1,9 +1,8 @@
-import { AuthBindings } from "@refinedev/core";
 import { AppwriteException } from "@refinedev/appwrite";
-import Cookies from "js-cookie";
+import { AuthBindings } from "@refinedev/core";
 import * as cookie from "cookie";
-
-import { account, TOKEN_KEY, appwriteClient } from "./utility";
+import Cookies from "js-cookie";
+import { account, appwriteClient, TOKEN_KEY } from "./utility";
 
 export const authProvider: AuthBindings = {
     login: async ({ email, password }) => {
@@ -47,6 +46,42 @@ export const authProvider: AuthBindings = {
             success: true,
             redirectTo: "/login",
         };
+    },
+    register: async ({ email, password }) => {
+        try {
+            await account.create(uuidv4(), email, password);
+        } catch (error) {
+            const { type, message, code } = error as AppwriteException;
+            return {
+                success: false,
+                error: {
+                    message,
+                    name: `${code} - ${type}`,
+                },
+            };
+        }
+
+        // If no error, try to login
+        try {
+            await account.createEmailSession(email, password);
+
+            const { jwt } = await account.createJWT();
+
+            if (jwt) {
+                Cookies.set(TOKEN_KEY, jwt);
+            }
+
+            return {
+                success: true,
+                redirectTo: "/",
+            };
+        } catch (err) {
+            // If login fails, redirect to login page
+            return {
+                success: true,
+                redirectTo: "/login",
+            };
+        }
     },
     onError: async (error) => {
         console.error(error);

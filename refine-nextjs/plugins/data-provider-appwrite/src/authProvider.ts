@@ -1,7 +1,6 @@
-import { AuthBindings } from "@refinedev/core";
 import { AppwriteException } from "@refinedev/appwrite";
+import { AuthBindings } from "@refinedev/core";
 import nookies from "nookies";
-
 import { account, appwriteClient, APPWRITE_TOKEN_KEY } from "./utility";
 
 export const authProvider: AuthBindings = {
@@ -47,6 +46,44 @@ export const authProvider: AuthBindings = {
             success: true,
             redirectTo: "/login",
         };
+    },
+    register: async ({ email, password }) => {
+        try {
+            await account.create(uuidv4(), email, password);
+        } catch (error) {
+            const { type, message, code } = error as AppwriteException;
+            return {
+                success: false,
+                error: {
+                    message,
+                    name: `${code} - ${type}`,
+                },
+            };
+        }
+
+        // If no error, try to login
+        try {
+            await account.createEmailSession(email, password);
+            const { jwt } = await account.createJWT();
+
+            if (jwt) {
+                nookies.set(null, APPWRITE_TOKEN_KEY, jwt, {
+                    maxAge: 30 * 24 * 60 * 60,
+                    path: "/",
+                });
+            }
+
+            return {
+                success: true,
+                redirectTo: "/",
+            };
+        } catch (error) {
+            // If login fails, redirect to login page
+            return {
+                success: true,
+                redirectTo: "/login",
+            };
+        }
     },
     onError: async (error) => {
         console.error(error);

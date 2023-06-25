@@ -1,7 +1,7 @@
-import { AuthBindings } from "@refinedev/core";
 import { AppwriteException } from "@refinedev/appwrite";
+import { AuthBindings } from "@refinedev/core";
 import nookies from "nookies";
-
+import { v4 as uuidv4 } from "uuid";
 import { account, appwriteClient, APPWRITE_TOKEN_KEY } from "./utility";
 
 export const authProvider: AuthBindings = {
@@ -47,6 +47,24 @@ export const authProvider: AuthBindings = {
             success: true,
             redirectTo: "/login",
         };
+    },
+    register: async ({ email, password }) => {
+        try {
+            await account.create(uuidv4(), email, password);
+            return {
+                success: true,
+                redirectTo: "/login",
+            };
+        } catch (error) {
+            const { type, message, code } = error as AppwriteException;
+            return {
+                success: false,
+                error: {
+                    message,
+                    name: `${code} - ${type}`,
+                },
+            };
+        }
     },
     onError: async (error) => {
         console.error(error);

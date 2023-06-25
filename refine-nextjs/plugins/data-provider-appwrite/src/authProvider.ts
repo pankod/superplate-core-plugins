@@ -1,6 +1,7 @@
 import { AppwriteException } from "@refinedev/appwrite";
 import { AuthBindings } from "@refinedev/core";
 import nookies from "nookies";
+import { v4 as uuidv4 } from "uuid";
 import { account, appwriteClient, APPWRITE_TOKEN_KEY } from "./utility";
 
 export const authProvider: AuthBindings = {

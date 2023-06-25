@@ -40,6 +40,10 @@ export const authProvider: AuthBindings = {
     register: async ({ email, password }) => {
         try {
             await account.create(uuidv4(), email, password);
+            return {
+                success: true,
+                redirectTo: "/login",
+            };
         } catch (error) {
             const { type, message, code } = error as AppwriteException;
             return {
@@ -48,21 +52,6 @@ export const authProvider: AuthBindings = {
                     message,
                     name: `${code} - ${type}`,
                 },
-            };
-        }
-
-        // If no error, try to login
-        try {
-            await account.createEmailSession(email, password);
-            return {
-                success: true,
-                redirectTo: "/",
-            };
-        } catch (err) {
-            // If login fails, redirect to login page
-            return {
-                success: true,
-                redirectTo: "/login",
             };
         }
     },

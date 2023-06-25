@@ -51,6 +51,10 @@ export const authProvider: AuthBindings = {
     register: async ({ email, password }) => {
         try {
             await account.create(uuidv4(), email, password);
+            return {
+                success: true,
+                redirectTo: "/login",
+            };
         } catch (error) {
             const { type, message, code } = error as AppwriteException;
             return {
@@ -59,30 +63,6 @@ export const authProvider: AuthBindings = {
                     message,
                     name: `${code} - ${type}`,
                 },
-            };
-        }
-
-        // If no error, try to login
-        try {
-            await account.createEmailSession(email, password);
-            const { jwt } = await account.createJWT();
-
-            if (jwt) {
-                nookies.set(null, APPWRITE_TOKEN_KEY, jwt, {
-                    maxAge: 30 * 24 * 60 * 60,
-                    path: "/",
-                });
-            }
-
-            return {
-                success: true,
-                redirectTo: "/",
-            };
-        } catch (error) {
-            // If login fails, redirect to login page
-            return {
-                success: true,
-                redirectTo: "/login",
             };
         }
     },

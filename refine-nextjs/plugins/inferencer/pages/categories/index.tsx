@@ -26,7 +26,6 @@ export default function CategoryList() {
     if (["locale", "updatedAt", "publishedAt"].includes(field.key)) {
         return false;
     }
-
     return field;
     }}
     <%_ } _%>

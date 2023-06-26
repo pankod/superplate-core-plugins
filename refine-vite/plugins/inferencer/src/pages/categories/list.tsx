@@ -23,7 +23,6 @@ export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     if (["locale", "updatedAt", "publishedAt"].includes(field.key)) {
         return false;
     }
-
     return field;
     }}
     <%_ } _%>

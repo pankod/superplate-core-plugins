@@ -19,5 +19,13 @@ export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     return field;
     }}
     <%_ } _%>
+    <%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
+        fieldTransformer={(field) => {
+        if (["$permissions", "$updatedAt", "$createdAt"].includes(field.key)) {
+            return false;
+        }
+        return field;
+        }}
+    <%_ } _%>
     />;
 };

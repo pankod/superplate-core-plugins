@@ -7,6 +7,14 @@ import { inferencerPredefinedMeta } from "../../inferencerPredefinedMeta";
 
 export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
     return <<%- ((_app.inferencer ? _app.inferencer.componentPrefix : "") || "") _%>CreateInferencer 
+    <%_ if (answers["data-provider"] === 'data-provider-appwrite') { _%>
+        fieldTransformer={(field) => {
+        if (["$permissions", "$updatedAt", "$createdAt"].includes(field.key)) {
+            return false;
+        }
+        return field;
+        }}
+    <%_ } _%>
     <%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
     meta={inferencerPredefinedMeta}
     <%_ } _%>
@@ -15,7 +23,6 @@ export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
     if (["locale", "updatedAt", "publishedAt"].includes(field.key)) {
         return false;
     }
-
     return field;
     }}
     <%_ } _%>

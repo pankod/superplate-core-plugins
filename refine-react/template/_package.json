@@ -3,9 +3,9 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@refinedev/cli": "^2.5.1",
-        "@refinedev/core": "^4.5.8",
-        "@refinedev/inferencer": "^4.0.0",
+        "@refinedev/cli": "^2.7.4",
+        "@refinedev/core": "^4.28.2",
+        "@refinedev/inferencer": "^4.3.2",
         "@refinedev/kbar": "^1.1.0",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",

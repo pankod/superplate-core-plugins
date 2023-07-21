@@ -38,5 +38,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  <%_ if (projectId !== '') { _%>
+  },
+  "refine": {
+      "projectId": "<%= projectId %>"
   }
+  <%_ } else { _%>
+  }
+  <%_ } _%>
 }

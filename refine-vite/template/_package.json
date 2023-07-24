@@ -38,7 +38,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  <%_ if (projectId !== '') { _%>
+  <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
   },
   "refine": {
       "projectId": "<%= projectId %>"

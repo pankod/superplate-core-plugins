@@ -102,7 +102,7 @@ export default function App() {
                         options={{
                             syncWithLocation: true,
                             warnWhenUnsavedChanges: true,
-                            <%_ if (projectId !== '') { _%>
+                            <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
                                 projectId: "<%= projectId %>",
                             <%_ } _%>
                             <%- (_app.refineOptions || []).join("\n") %>

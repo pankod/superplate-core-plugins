@@ -85,6 +85,10 @@ function App() {
                 options={{
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,
+                    <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
+                        projectId: "<%= projectId %>",
+                    <%_ } _%>
+                    <%- (_app.refineOptions || []).join("\n") %>
                 }}
             >
                 <%_ if (_app.hasRoutes === true && _app.isAuthRoutes) { _%>

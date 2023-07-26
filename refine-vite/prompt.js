@@ -301,7 +301,7 @@ module.exports = {
                     answers["ui-framework"] === "no"
                 );
             },
-            pattern: ["./components/app-icon/index.tsx"],
+            pattern: ["src/components/app-icon/index.tsx"],
         },
         {
             plugin: ["_base"],

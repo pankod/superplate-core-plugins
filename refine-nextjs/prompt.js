@@ -12,6 +12,11 @@ module.exports = {
                     hint: "Installs REST API Data Provider.",
                 },
                 {
+                    message: "NestJS Query",
+                    name: "data-provider-nestjs-query",
+                    hint: "Installs NestJS Query Data Provider.",
+                },
+                {
                     message: "GraphQL API",
                     name: "data-provider-graphql",
                     hint: "Installs GraphQL API Data Provider.",
@@ -107,7 +112,8 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-medusa",
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-nestjs-query",
             default: "no",
         },
         {
@@ -129,7 +135,8 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] !== "no" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-medusa",
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-nestjs-query",
             default: "no",
         },
         {
@@ -193,7 +200,7 @@ module.exports = {
         },
         {
             name: "i18n-antd",
-            message: "Do you need i18n (Internationalization) support?:",
+            message: "Do you need i18n (Internationalization) support?",
             type: "select",
             pageSize: 2,
             choices: [

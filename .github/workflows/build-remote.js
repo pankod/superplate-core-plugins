@@ -55,7 +55,7 @@ const buildRemote = async () => {
         },
     };
 
-    if (FRAMEWORK === "react") {
+    if (["react", "vite"].includes(FRAMEWORK)) {
         body.answers["router-provider"] = "react-router-v6";
     }
 

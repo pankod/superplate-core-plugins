@@ -67,7 +67,7 @@ const buildTemplate = async () => {
         body.answers["router-provider"] = "react-router-v6";
     }
 
-    const randomDir = randomString(10);
+    const randomDir = randomString(25);
 
     fs.cpSync(
         path.resolve(path.join(process.cwd(), `refine-${FRAMEWORK}`)),

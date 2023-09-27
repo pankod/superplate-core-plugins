@@ -98,6 +98,7 @@ function App() {
                         <Route
                             element={
                                 <Authenticated
+                                    key="authenticated-inner"
                                     fallback={<CatchAllNavigate to="/login" />}
                                 >
                                     <%_ if (answers["ui-framework"] === 'no') { _%>
@@ -153,7 +154,7 @@ function App() {
                         </Route>
                         <Route
                             element={
-                                <Authenticated fallback={<Outlet />}>
+                                <Authenticated key="authenticated-outer" fallback={<Outlet />}>
                                     <NavigateToResource />
                                 </Authenticated>
                             }

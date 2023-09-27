@@ -4,7 +4,7 @@
     "private": true,
     "sideEffects": false,
     "scripts": {
-        "dev": "remix dev",
+        "dev": "refine dev",
         "build": "remix build",
         "start": "remix-serve build",
         "refine": "refine"
@@ -12,6 +12,7 @@
     "dependencies": {
         "@refinedev/cli": "^2.7.4",
         "@refinedev/core": "^4.28.2",
+        "@refinedev/devtools": "^1.1.6",
         "@refinedev/remix-router": "^2.1.0",
         "@refinedev/inferencer": "^4.3.2",
         "@refinedev/kbar": "^1.1.2",

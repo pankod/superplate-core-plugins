@@ -150,9 +150,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     <UnsavedChangesNotifier />
                     <DocumentTitleHandler />
                 </Refine>
-                <%- bottom.join("\n") %>
                 <DevtoolsPanel />
             </DevtoolsProvider>
+                <%- bottom.join("\n") %>
         </RefineKbarProvider>
         </>
       );

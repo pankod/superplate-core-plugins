@@ -139,6 +139,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     options={{
                         syncWithLocation: true,
                         warnWhenUnsavedChanges: true,
+                        useNewQueryKeys: true,
                         <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
                             projectId: "<%= projectId %>",
                         <%_ } _%>

@@ -152,6 +152,7 @@ export default function App() {
             options={{
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
+                useNewQueryKeys: true,
             }}
         >
           <Outlet />

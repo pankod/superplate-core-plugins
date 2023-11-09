@@ -166,6 +166,7 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
                 options={{
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,
+                    useNewQueryKeys: true,
                 }}
             >
                 {props.children}

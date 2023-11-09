@@ -145,6 +145,9 @@ export default function App() {
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
                 useNewQueryKeys: true,
+                <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
+                  projectId: "<%= projectId %>",
+                <%_ } _%>
             }}
             >
               <Outlet />

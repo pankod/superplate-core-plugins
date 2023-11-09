@@ -167,6 +167,9 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
                     syncWithLocation: true,
                     warnWhenUnsavedChanges: true,
                     useNewQueryKeys: true,
+                    <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
+                        projectId: "<%= projectId %>",
+                    <%_ } _%>
                 }}
             >
                 {props.children}

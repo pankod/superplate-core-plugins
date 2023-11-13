@@ -18,7 +18,7 @@ export const Menu = () => {
                 {menuItems.map((item) => (
                     <li key={item.key}>
                         <NavLink
-                            to={item.route}
+                            to={item.route ?? "/"}
                         >
                             {item.label}
                         </NavLink>

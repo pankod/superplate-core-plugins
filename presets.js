@@ -132,10 +132,22 @@ module.exports = {
             name: 'refine-supabase',
             type: 'refine-vite',
             answers: {
-               'ui-framework': 'no',
+                'ui-framework': 'no',
                 'router-provider': 'react-router-v6',
                 'data-provider': 'data-provider-supabase',
                 'i18n-no': 'no',
+                'inferencer': 'no',
+            }
+        },
+        {
+            name: 'refine-appwrite',
+            type: 'refine-vite',
+            answers: {
+                'ui-framework': 'antd',
+                'router-provider': 'react-router-v6',
+                'data-provider': 'data-provider-appwrite',
+                "antd-example-pages": "no",
+                "i18n-antd": "no",
                 'inferencer': 'no',
             }
         }

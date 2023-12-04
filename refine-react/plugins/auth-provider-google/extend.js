@@ -15,7 +15,7 @@ const base = {
             '    config.headers["Authorization"] = `Bearer ${token}`;',
             "}",
             "",
-            "return request;",
+            "return config;",
             "});",
         ],
         inner: [

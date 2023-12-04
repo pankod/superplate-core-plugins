@@ -2,6 +2,9 @@
     "name": "<%= name %>",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": ">=18.0.0"
+    },
     "scripts": {
         "dev": "cross-env NODE_OPTIONS=--max_old_space_size=4096 refine dev",
         "build": "refine build",
@@ -10,9 +13,9 @@
         "refine": "refine"
     },
     "dependencies": {
-        "@refinedev/cli": "^2.7.4",
-        "@refinedev/core": "^4.28.2",
-        "@refinedev/devtools": "^1.1.6",
+        "@refinedev/cli": "latest",
+        "@refinedev/core": "latest",
+        "@refinedev/devtools": "latest",
         "@refinedev/nextjs-router": "^5.3.2",
         "@refinedev/inferencer": "^4.3.2",
         "@refinedev/kbar": "^1.1.2",
@@ -24,7 +27,7 @@
     "devDependencies": {
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
-        "@types/node": "^12.20.11",
+        "@types/node": "^18.0.0",
         "@typescript-eslint/parser": "5.48.0",
         "typescript": "^4.7.4",
         "cross-env": "^7.0.3"

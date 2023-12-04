@@ -1,7 +1,7 @@
 const base = {
     _app: {
         refineImports: [`AuthBindings`],
-        import: [`import axios, { AxiosRequestConfig } from "axios";`],
+        import: [`import axios from "axios";`],
         localImport: [
             `import { Login } from "./pages/login";`,
             `import { CredentialResponse } from "./interfaces/google";`,
@@ -9,17 +9,13 @@ const base = {
         ],
         afterImport: [
             "const axiosInstance = axios.create();",
-            "axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {",
+            "axiosInstance.interceptors.request.use((config) => {",
             'const token = localStorage.getItem("token");',
-            "if (request.headers) {",
-            '    request.headers["Authorization"] = `Bearer ${token}`;',
-            "} else {",
-            "    request.headers = {",
-            "        Authorization: `Bearer ${token}`,",
-            "    };",
+            "if (config.headers) {",
+            '    config.headers["Authorization"] = `Bearer ${token}`;',
             "}",
             "",
-            "return request;",
+            "return config;",
             "});",
         ],
         inner: [

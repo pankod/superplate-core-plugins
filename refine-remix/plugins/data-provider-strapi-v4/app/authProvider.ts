@@ -1,22 +1,19 @@
 import type { AuthBindings } from "@refinedev/core";
 import { AuthHelper } from "@refinedev/strapi-v4";
 import axios from "axios";
-import Cookies from "js-cookie";
 import * as cookie from "cookie";
-
-import { TOKEN_KEY, API_URL } from "~/constants";
+import Cookies from "js-cookie";
+import { API_URL, TOKEN_KEY } from "~/constants";
 
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
-axiosInstance.interceptors.request.use((request) => {
+axiosInstance.interceptors.request.use((config) => {
     const token = Cookies.get(TOKEN_KEY);
-    if (token) {
-        request.headers = {
-            Authorization: `Bearer ${token}`,
-        };
+    if (token && config.headers) {
+        config.headers["Authorization"] = `Bearer ${token}`;
     }
-    return request;
+    return config;
 });
 
 export const authProvider: AuthBindings = {

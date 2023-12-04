@@ -7,6 +7,9 @@ jobs:
   vite:
     runs-on: ubuntu-latest
     name: vite
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-vite-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -36,14 +39,14 @@ jobs:
           cd ${{ steps.build_step.outputs.project_path }}
           npm install
           npm run build
-          npm run preview -- --port 3000 &
+          npm run preview -- --port 3000 --host &
       - name: Run Cypress on local
         uses: cypress-io/github-action@v4
         with:
           command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=react,DATA_PROVIDER=${{ matrix.data_provider }}
           install: false
           start: "npm ls"
-          wait-on: "http://0.0.0.0:3000"
+          wait-on: "http://localhost:3000"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FRAMEWORK: react
@@ -53,6 +56,9 @@ jobs:
   react:
     runs-on: ubuntu-latest
     name: react
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-react-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -101,6 +107,9 @@ jobs:
   nextjs:
     runs-on: ubuntu-latest
     name: nextjs
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-nextjs-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -145,6 +154,9 @@ jobs:
   remix:
     runs-on: ubuntu-latest
     name: remix
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-remix-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:

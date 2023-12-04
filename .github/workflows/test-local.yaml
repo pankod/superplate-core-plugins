@@ -7,6 +7,9 @@ jobs:
   vite:
     runs-on: ubuntu-latest
     name: vite
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-vite
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -53,6 +56,9 @@ jobs:
   react:
     runs-on: ubuntu-latest
     name: react
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-react
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -101,6 +107,9 @@ jobs:
   nextjs:
     runs-on: ubuntu-latest
     name: nextjs
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-nextjs
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -145,6 +154,9 @@ jobs:
   remix:
     runs-on: ubuntu-latest
     name: remix
+    concurrency:
+      group: ${{ github.ref }}-e2e-local-remix
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:

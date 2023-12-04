@@ -7,6 +7,9 @@ jobs:
   refine-vite:
     runs-on: ubuntu-latest
     name: Vite
+    concurrency:
+      group: ${{ github.ref }}-e2e-remote-vite
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -51,6 +54,9 @@ jobs:
   refine-nextjs:
     runs-on: ubuntu-latest
     name: NextJS
+    concurrency:
+      group: ${{ github.ref }}-e2e-remote-nextjs
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -96,6 +102,9 @@ jobs:
   refine-remix:
     runs-on: ubuntu-latest
     name: Remix
+    concurrency:
+      group: ${{ github.ref }}-e2e-remote-remix
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:

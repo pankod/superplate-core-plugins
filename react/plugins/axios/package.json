@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "axios": "^1.6.2"
+        "axios": "^0.21.1"
     },
     "devDependencies": {
         "nock":"^13.0.11"

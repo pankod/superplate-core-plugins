@@ -40,14 +40,14 @@ jobs:
           cd ${{ steps.download_step.outputs.project_path }}
           npm install
           npm run build
-          npm run preview -- --port 3000 &
+          npm run preview -- --port 3000 --host &
       - name: Run Cypress on local
         uses: cypress-io/github-action@v4
         with:
           command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.download_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=react,DATA_PROVIDER=${{ matrix.data_provider }}
           install: false
           start: "npm ls"
-          wait-on: "http://0.0.0.0:3000"
+          wait-on: "http://localhost:3000"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}

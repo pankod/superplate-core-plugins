@@ -60,7 +60,7 @@ const buildRemote = async () => {
     }
 
     const createdBoilerplate = await axios.post(
-        "https://develop.connect.refine.dev/api/boilerplates",
+        "https://develop.cloud.refine.dev/.refine/boilerplates",
         body,
         {
             headers: {
@@ -74,7 +74,7 @@ const buildRemote = async () => {
         return new Promise((resolve, reject) => {
             const interval = setInterval(async () => {
                 const boilerplate = await axios.get(
-                    `https://develop.connect.refine.dev/api/boilerplates/${id}`,
+                    `https://develop.cloud.refine.dev/.refine/boilerplates/${id}`,
                     {
                         headers: {
                             "Content-Type": "application/json",
@@ -101,7 +101,7 @@ const buildRemote = async () => {
 
     console.log("Boilerplate download string: ", downloadString);
 
-    const downloadURL = `https://develop.connect.refine.dev/api/d/${downloadString}`;
+    const downloadURL = `https://develop.cloud.refine.dev/.refine/d/${downloadString}`;
 
     const examplePath = "tmp/examples";
 

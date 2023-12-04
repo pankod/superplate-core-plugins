@@ -1,7 +1,7 @@
 const base = {
     _app: {
         refineImports: [`AuthBindings`],
-        import: [`import axios, { AxiosRequestConfig } from "axios";`],
+        import: [`import axios from "axios";`],
         localImport: [
             `import { Login } from "./pages/login";`,
             `import { CredentialResponse } from "./interfaces/google";`,

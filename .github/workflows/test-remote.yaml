@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Vite
     concurrency:
-      group: ${{ github.ref }}-e2e-remote-vite
+      group: ${{ github.ref }}-e2e-remote-vite-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
       cancel-in-progress: true
     strategy:
       fail-fast: false
@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     name: NextJS
     concurrency:
-      group: ${{ github.ref }}-e2e-remote-nextjs
+      group: ${{ github.ref }}-e2e-remote-nextjs-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
       cancel-in-progress: true
     strategy:
       fail-fast: false
@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Remix
     concurrency:
-      group: ${{ github.ref }}-e2e-remote-remix
+      group: ${{ github.ref }}-e2e-remote-remix-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
       cancel-in-progress: true
     strategy:
       fail-fast: false

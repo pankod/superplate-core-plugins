@@ -10,7 +10,7 @@
 </div>
 <br/>
 
-This [refine](<%- refineGitUrl %>) project was generated with [create refine-app](<%- createRefineAppGitUrl %>).
+This [Refine](<%- refineGitUrl %>) project was generated with [create refine-app](<%- createRefineAppGitUrl %>).
 
 ## Getting Started
 
@@ -41,7 +41,7 @@ Refine's hooks and components simplifies the development process and eliminates 
 
 ## Learn More
 
-To learn more about **refine**, please check out the [Documentation](<%- refineDocsUrl %>)
+To learn more about **Refine**, please check out the [Documentation](<%- refineDocsUrl %>)
 
 <% const list = pluginsData.filter((plugin) => plugin.url.length > 0) -%>
 <% for (var i = 0; i < list.length; i++ ) { -%>

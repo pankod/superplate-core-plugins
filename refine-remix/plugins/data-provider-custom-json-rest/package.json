@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@refinedev/simple-rest": "^5.0.0"
+    "@refinedev/simple-rest": "^5.0.1"
   }
 }

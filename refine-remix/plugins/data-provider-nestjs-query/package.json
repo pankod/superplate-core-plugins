@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@refinedev/nestjs-query": "^1.0.0"
+        "@refinedev/nestjs-query": "^1.1.1"
     }
 }

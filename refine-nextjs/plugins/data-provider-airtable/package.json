@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@refinedev/airtable": "latest"
+        "@refinedev/airtable": "^4.4.6"
     }
 }

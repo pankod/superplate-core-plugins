@@ -33,11 +33,11 @@ import routerProvider, { UnsavedChangesNotifier } from "@refinedev/remix-router"
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
 
-export const meta: MetaFunction = () => ({
-    charset: "utf-8",
+export const meta: MetaFunction = () => ([
+  {
     title: "New Remix + Refine App",
-    viewport: "width=device-width,initial-scale=1",
-});
+  }
+]);
 
 
 interface DocumentProps {

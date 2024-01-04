@@ -1,48 +1,28 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider } from "@mui/material/styles";
 import { RefineThemes } from "@refinedev/mui";
-import { parseCookies, setCookie } from "nookies";
-import React, {
-    PropsWithChildren,
-    createContext,
-    useEffect,
-    useState,
-} from "react";
+import React from "react";
 
 type ColorModeContextType = {
     mode: string;
     setMode: () => void;
 };
 
-export const ColorModeContext = createContext<ColorModeContextType>(
+export const ColorModeContext = React.createContext<ColorModeContextType>(
     {} as ColorModeContextType,
 );
 
-export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
+export const ColorModeContextProvider: React.FC<React.PropsWithChildren> = ({
     children,
 }) => {
-    const [isMounted, setIsMounted] = useState(false);
-    const [mode, setMode] = useState("light");
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+    const [mode, setMode] = React.useState("light");
 
     const systemTheme = useMediaQuery(`(prefers-color-scheme: dark)`);
-
-    useEffect(() => {
-        if (isMounted) {
-            setMode(
-                parseCookies()["theme"] || (systemTheme ? "dark" : "light"),
-            );
-        }
-    }, [isMounted, systemTheme]);
 
     const toggleTheme = () => {
         const nextTheme = mode === "light" ? "dark" : "light";
 
         setMode(nextTheme);
-        setCookie(null, "theme", nextTheme);
     };
 
     return (

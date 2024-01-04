@@ -33,11 +33,11 @@ import routerProvider, { UnsavedChangesNotifier } from "@refinedev/remix-router"
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
 
-export const meta: MetaFunction = () => ({
-    charset: "utf-8",
-    title: "New Remix + Refine App",
-    viewport: "width=device-width,initial-scale=1",
-});
+export const meta: MetaFunction = () => ([
+  {
+      title: "New Remix + Refine App",
+  }
+]);
 
 
 createEmotionCache({ key: 'mantine' });
@@ -53,6 +53,8 @@ export default function App() {
       <html lang="en">
         <head>
           <StylesPlaceholder />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <Meta />
           <Links />
         </head>

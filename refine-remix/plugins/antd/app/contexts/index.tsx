@@ -1,37 +1,20 @@
-import React, {
-    PropsWithChildren,
-    createContext,
-    useEffect,
-    useState,
-} from "react";
+import React from "react";
 import { RefineThemes } from "@refinedev/antd";
 import { ConfigProvider, theme } from "antd";
-import { parseCookies, setCookie } from "nookies";
 
 type ColorModeContextType = {
     mode: string;
     setMode: (mode: string) => void;
 };
 
-export const ColorModeContext = createContext<ColorModeContextType>(
+export const ColorModeContext = React.createContext<ColorModeContextType>(
     {} as ColorModeContextType,
 );
 
-export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
+export const ColorModeContextProvider: React.FC<React.PropsWithChildren> = ({
     children,
 }) => {
-    const [isMounted, setIsMounted] = useState(false);
-    const [mode, setMode] = useState("light");
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    useEffect(() => {
-        if (isMounted) {
-            setMode(parseCookies()["theme"]);
-        }
-    }, [isMounted]);
+    const [mode, setMode] = React.useState("light");
 
     const setColorMode = () => {
         if (mode === "light") {

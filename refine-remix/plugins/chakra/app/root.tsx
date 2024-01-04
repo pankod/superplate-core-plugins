@@ -29,11 +29,11 @@ import { ServerStyleContext, ClientStyleContext } from './context'
 
 <%- (_app.afterImport || []).join("\n") _%>
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export const meta: MetaFunction = () => ([
+  {
+    title: 'New Remix App',
+  }
+]);
 
 <%
     var top = _app.wrapper.map(wrapper => wrapper[0] || "");
@@ -77,6 +77,8 @@ const Document = withEmotionCache(
     return (
       <html lang="en">
         <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <Meta />
           <Links />
           {serverStyleData?.map(({ key, ids, css }) => (

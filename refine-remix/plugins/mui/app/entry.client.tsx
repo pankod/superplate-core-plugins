@@ -1,23 +1,25 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { RemixBrowser } from "@remix-run/react";
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import { startTransition, StrictMode } from "react";
+import { hydrateRoot } from "react-dom/client";
 import { ClientStyleCacheProvider, ColorModeContextProvider } from "~/contexts";
 
 const hydrate = () => {
-    React.startTransition(() => {
-        ReactDOM.hydrateRoot(
+    startTransition(() => {
+        hydrateRoot(
             document,
-            <ClientStyleCacheProvider>
-                <ColorModeContextProvider>
-                    <CssBaseline />
-                    <GlobalStyles
-                        styles={{ html: { WebkitFontSmoothing: "auto" } }}
-                    />
-                    <RemixBrowser />
-                </ColorModeContextProvider>
-            </ClientStyleCacheProvider>,
+            <StrictMode>
+                <ClientStyleCacheProvider>
+                    <ColorModeContextProvider>
+                        <CssBaseline />
+                        <GlobalStyles
+                            styles={{ html: { WebkitFontSmoothing: "auto" } }}
+                        />
+                        <RemixBrowser />
+                    </ColorModeContextProvider>
+                </ClientStyleCacheProvider>
+            </StrictMode>,
         );
     });
 };

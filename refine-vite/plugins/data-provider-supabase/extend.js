@@ -3,23 +3,17 @@ const base = {
         import: [
             `import { dataProvider, liveProvider } from "@refinedev/supabase";`,
         ],
-        localImport: [
-            `import { supabaseClient } from "./utility";`,
-        ],
+        localImport: [`import { supabaseClient } from "./utility";`],
         relativeImport: [`import authProvider from "./authProvider";`],
         refineProps: [
             "dataProvider={dataProvider(supabaseClient)}",
             "liveProvider={liveProvider(supabaseClient)}",
             "authProvider={authProvider}",
-            "routerProvider={routerBindings}"
+            "routerProvider={routerBindings}",
         ],
-        refineImports: [
-            `Authenticated`
-        ],
+        refineImports: [`Authenticated`],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
-        refineChakraImports: [],
         wrapper: [],
     },
 };

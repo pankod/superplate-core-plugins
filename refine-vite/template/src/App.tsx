@@ -14,12 +14,6 @@ import "@refinedev/antd/dist/reset.css";
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
-<%_ } _%>
 
 <%- (_app.import || []).join("\n") _%>
 

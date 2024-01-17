@@ -12,14 +12,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-import { Box, Space, Text } from "@mantine/core";
-import { ThemedTitleV2 } from "@refinedev/mantine";
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-import { Box, Text, VStack } from "@chakra-ui/react";
-import { ThemedTitleV2 } from "@refinedev/chakra-ui";
-<%_ } _%>
 
 import { CredentialResponse } from "../interfaces/google";
 
@@ -150,88 +142,6 @@ export const Login: React.FC = () => {
                 </Typography>
             </Box>
             </Container>
-        );
-    <%_ } _%>
-
-    <%_ if (answers["ui-framework"] === 'mantine') { _%>
-        return (
-            <Box
-            sx={{
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-            >
-            <ThemedTitleV2
-                collapsed={false}
-                wrapperStyles={{
-                fontSize: "22px",
-                }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
-            />
-            <Space h="xl" />
-
-            <GoogleButton />
-
-            <Space h="xl" />
-            <Text fz="sm" color="gray">
-                Powered by
-          <img
-            style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
-          />
-          Google
-            </Text>
-            </Box>
-        );
-    <%_ } _%>
-
-    <%_ if (answers["ui-framework"] === 'chakra') { _%>
-        return (
-            <Box
-            sx={{
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-            >
-            <VStack spacing="10" align="stretch">
-                <ThemedTitleV2
-                collapsed={false}
-                wrapperStyles={{
-                    fontSize: "22px",
-                }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
-                />
-
-                <GoogleButton />
-
-                <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by
-          <img
-            style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
-          />
-          Google
-                </Text>
-            </VStack>
-            </Box>
         );
     <%_ } _%>
 

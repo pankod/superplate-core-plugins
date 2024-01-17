@@ -11,9 +11,7 @@ const base = {
         localImport: [],
         refineImports: [`Authenticated`],
         refineAntdImports: [],
-        refineChakraImports: [],
         refineMuiImports: [],
-        refineMantineImports: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
@@ -24,7 +22,6 @@ module.exports = {
     extend(answers) {
         const uiFramework = answers["ui-framework"];
         const dataProvider = answers["data-provider"];
-        const inferencer = answers["inferencer"];
 
         switch (uiFramework) {
             case "antd":
@@ -36,24 +33,16 @@ module.exports = {
             case "mui":
                 base._app.refineMuiImports.push([`AuthPage`, `ErrorComponent`]);
                 break;
-            case "mantine":
-                base._app.refineMantineImports.push([
-                    `AuthPage`,
-                    `ErrorComponent`,
-                ]);
-                break;
-            case "chakra":
-                base._app.refineChakraImports.push([
-                    `AuthPage`,
-                    `ErrorComponent`,
-                ]);
-                break;
             default:
                 base._app.refineImports.push([`AuthPage`, `ErrorComponent`]);
                 break;
         }
 
-        if (inferencer === "no" && answers["inferencer-headless"] === "no") {
+        if (
+            ["headless-example", "antd-example", "mui-example"].every(
+                (item) => answers[item] === "no",
+            )
+        ) {
             base._app.hasRoutes = false;
         }
 
@@ -97,8 +86,8 @@ module.exports = {
             defaultValues = `email: "info@refine.dev", password: "refine-supabase"`;
         }
 
-        // mui || chakra
-        if (uiFramework === "mui" || uiFramework === "chakra") {
+        // mui
+        if (uiFramework === "mui") {
             defaultValuePropsName = "defaultValues";
         }
 
@@ -137,10 +126,7 @@ module.exports = {
         if (base._app.isAuthRoutes || base._app.isNoAuthRoutes) {
             // ignore this data providers
             if (
-                ![
-                    "data-provider-graphql",
-                    "data-provider-medusa",
-                ].includes(dataProvider) &&
+                !["data-provider-graphql"].includes(dataProvider) &&
                 base._app.hasRoutes === true
             ) {
                 base._app.localImport.push(
@@ -175,14 +161,9 @@ module.exports = {
             if (answers["ui-framework"] === "antd") {
                 base._app.refineAntdImports.push("ThemedTitleV2");
             }
-            if (answers["ui-framework"] === "mantine") {
-                base._app.refineMantineImports.push("ThemedTitleV2");
-            }
+
             if (answers["ui-framework"] === "mui") {
                 base._app.refineMuiImports.push("ThemedTitleV2");
-            }
-            if (answers["ui-framework"] === "chakra") {
-                base._app.refineChakraImports.push("ThemedTitleV2");
             }
         }
 

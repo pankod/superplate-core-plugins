@@ -18,6 +18,39 @@ const randomString = (length) => {
     return result;
 };
 
+const getExampleProjectFromAnswers = (framework, uiFramework) => {
+    if (framework === "vite") {
+        const uiFrameworkToExampleMap = {
+            antd: "antd-example",
+            mui: "mui-example",
+            no: "headless-example",
+        };
+
+        return {
+            [uiFrameworkToExampleMap[uiFramework]]:
+                uiFrameworkToExampleMap[uiFramework],
+        };
+    }
+
+    return {
+        [uiFramework === "no" ? "inferencer-headless" : "inferencer"]:
+            uiFramework === "no" ? "inferencer-headless" : "inferencer",
+    };
+};
+
+const getI18nProjectFromAnswers = (framework, uiFramework) => {
+    if (framework === "vite") {
+        return {
+            [`i18n-${uiFramework}`]: "no",
+        };
+    }
+
+    return {
+        [`i18n-${uiFramework}`]:
+            uiFramework === "no" ? "i18n" : `i18n-${uiFramework}`,
+    };
+};
+
 const buildTemplate = async () => {
     const dataProviderMap = {
         "custom-json-rest": ["keycloak", "custom"],
@@ -55,11 +88,9 @@ const buildTemplate = async () => {
             icon: "refine.svg",
             "data-provider": `data-provider-${DATA_PROVIDER}`,
             "ui-framework": UI_FRAMEWORK,
-            [UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer"]:
-                UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer",
+            ...getExampleProjectFromAnswers(FRAMEWORK, UI_FRAMEWORK),
             "auth-provider": `auth-provider-${AUTH_PROVIDER}`,
-            [`i18n-${UI_FRAMEWORK}`]:
-                UI_FRAMEWORK === "no" ? "i18n" : `i18n-${UI_FRAMEWORK}`,
+            ...getI18nProjectFromAnswers(FRAMEWORK, UI_FRAMEWORK),
         },
     };
 
@@ -83,6 +114,8 @@ const buildTemplate = async () => {
         path.resolve(path.join(process.cwd(), "tmp", randomDir, "template")),
         body,
     );
+
+    console.log({ answers: body });
 
     core.setOutput("auth_provider", AUTH_PROVIDER);
     core.setOutput("project_path", `tmp/${randomDir}/refine-project`);

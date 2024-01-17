@@ -9,13 +9,9 @@ const base = {
             "authProvider={authProvider}",
             "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
         ],
-        refineImports: [
-            `Authenticated`
-        ],
+        refineImports: [`Authenticated`],
         refineAntdImports: [],
         refineMuiImports: [],
-        refineMantineImports: [],
-
     },
 };
 module.exports = {

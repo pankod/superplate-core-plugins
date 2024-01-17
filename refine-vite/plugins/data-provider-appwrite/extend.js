@@ -14,11 +14,8 @@ const base = {
             })}`,
             `authProvider={authProvider}`,
         ],
-        refineImports: [
-            `Authenticated`
-        ],
+        refineImports: [`Authenticated`],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
     },
 };

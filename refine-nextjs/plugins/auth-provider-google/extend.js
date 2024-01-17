@@ -3,9 +3,7 @@ const base = {
         localImport: [],
         refineProps: ["authProvider={authProvider}"],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
-        refineChakraImports: [],
     },
 };
 

@@ -19,7 +19,7 @@ const randomString = (length) => {
 };
 
 const getExampleProjectFromAnswers = (framework, uiFramework) => {
-    if (framework === "vite") {
+    if (framework === "vite" || framework === "nextjs") {
         const uiFrameworkToExampleMap = {
             antd: "antd-example",
             mui: "mui-example",
@@ -39,7 +39,7 @@ const getExampleProjectFromAnswers = (framework, uiFramework) => {
 };
 
 const getI18nProjectFromAnswers = (framework, uiFramework) => {
-    if (framework === "vite") {
+    if (framework === "vite" || framework === "nextjs") {
         return {
             [`i18n-${uiFramework}`]: "no",
         };

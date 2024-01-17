@@ -18,7 +18,6 @@ const base = {
         ],
         refineOptions: [`liveMode: "auto",`],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
     },
 };

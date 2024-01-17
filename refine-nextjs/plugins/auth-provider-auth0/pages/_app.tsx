@@ -11,12 +11,7 @@ import { useRouter } from "next/router";
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
-<%_ } _%>
+
 import routerProvider, { UnsavedChangesNotifier } from "@refinedev/nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
@@ -228,8 +223,4 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppPropsWit
 };
 
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-export default appWithTranslation(MyApp);
-<%_ } else {_%>
 export default MyApp;
-<%_ } _%>

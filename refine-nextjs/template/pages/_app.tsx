@@ -10,12 +10,6 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
-<%_ } _%>
 import routerProvider, { UnsavedChangesNotifier, DocumentTitleHandler } from "@refinedev/nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
@@ -89,7 +83,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                 <Refine 
                     routerProvider={routerProvider}
                     <%- (_app.refineProps || []).join("\n") %>
-                    <%_ if (answers["inferencer"] === 'inferencer' || answers["inferencer-headless"] === 'inferencer-headless') { _%>
+                    <%_ if (_app.hasRoutes === true) { _%>
                     resources={[
                         <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                         {
@@ -160,8 +154,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 };
 
 
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== 'no') { _%>
-export default appWithTranslation(MyApp);
-<%_ } else {_%>
 export default MyApp;
-<%_ } _%>

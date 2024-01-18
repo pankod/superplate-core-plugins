@@ -51,11 +51,6 @@ module.exports = {
                     name: "data-provider-hasura",
                     hint: "Installs Hasura Data Provider.",
                 },
-                {
-                    message: "Medusa",
-                    name: "data-provider-medusa",
-                    hint: "Installs Medusa Data Provider.",
-                },
             ],
             default: "data-provider-custom-json-rest",
         },
@@ -185,7 +180,6 @@ module.exports = {
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
                 answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-nhost",
             default: "none",
         },

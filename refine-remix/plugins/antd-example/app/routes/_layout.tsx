@@ -2,7 +2,7 @@ import { ThemedLayoutV2, ThemedSiderV2, ThemedTitleV2 } from "@refinedev/antd";
 import { Outlet } from "@remix-run/react";
 import { Header } from "~/components/header";
 
-export default function Layout() {
+export default function BaseLayout() {
     return (
         <ThemedLayoutV2
             Header={() => <Header sticky />}

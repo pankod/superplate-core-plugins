@@ -6,7 +6,7 @@ import {
 } from "@refinedev/core";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    import { CATEGORIES_QUERY } from "../src/queries/categories";
+    import { CATEGORIES_QUERY } from "../queries/categories";
 <%_ } _%>
 
 

@@ -21,6 +21,7 @@ jobs:
             airtable,
             supabase,
             appwrite,
+            hasura,
           ]
         ui_framework: [antd, mui, no]
     steps:

@@ -11,39 +11,6 @@ const UI_FRAMEWORK = process.env.UI_FRAMEWORK;
 const USER_AGENT = process.env.CI_USER_AGENT;
 const FRAMEWORK = process.env.FRAMEWORK;
 
-const getExampleProjectFromAnswers = (framework, uiFramework) => {
-    if (framework === "vite" || framework === "nextjs") {
-        const uiFrameworkToExampleMap = {
-            antd: "antd-example",
-            mui: "mui-example",
-            no: "headless-example",
-        };
-
-        return {
-            [uiFrameworkToExampleMap[uiFramework]]:
-                uiFrameworkToExampleMap[uiFramework],
-        };
-    }
-
-    return {
-        [uiFramework === "no" ? "inferencer-headless" : "inferencer"]:
-            uiFramework === "no" ? "inferencer-headless" : "inferencer",
-    };
-};
-
-const getI18nProjectFromAnswers = (framework, uiFramework) => {
-    if (framework === "vite" || framework === "nextjs") {
-        return {
-            [`i18n-${uiFramework}`]: "no",
-        };
-    }
-
-    return {
-        [`i18n-${uiFramework}`]:
-            uiFramework === "no" ? "i18n" : `i18n-${uiFramework}`,
-    };
-};
-
 const buildRemote = async () => {
     const dataProviderMap = {
         "custom-json-rest": ["keycloak", "custom"],
@@ -53,6 +20,12 @@ const buildRemote = async () => {
         supabase: "supabase",
         appwrite: "appwrite",
         hasura: ["keycloak", "custom"],
+    };
+
+    const uiFrameworkToExampleMap = {
+        antd: "antd-example",
+        mui: "mui-example",
+        no: "headless-example",
     };
 
     let AUTH_PROVIDER = dataProviderMap[DATA_PROVIDER];
@@ -80,9 +53,9 @@ const buildRemote = async () => {
             icon: "refine.svg",
             "data-provider": `data-provider-${DATA_PROVIDER}`,
             "ui-framework": UI_FRAMEWORK,
-            ...getExampleProjectFromAnswers(FRAMEWORK, UI_FRAMEWORK),
+            [uiFrameworkToExampleMap[UI_FRAMEWORK]]:
+                uiFrameworkToExampleMap[UI_FRAMEWORK],
             "auth-provider": `auth-provider-${AUTH_PROVIDER}`,
-            ...getI18nProjectFromAnswers(FRAMEWORK, UI_FRAMEWORK),
         },
     };
 

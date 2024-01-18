@@ -4,12 +4,6 @@
  <%_ if (answers["ui-framework"] === 'mui') { _%>
      import { AuthPage, ThemedTitleV2 } from "@refinedev/mui";
  <%_ } _%>
- <%_ if (answers["ui-framework"] === 'mantine') { _%>
-     import { AuthPage, ThemedTitleV2 } from "@refinedev/mantine";
- <%_ } _%>
- <%_ if (answers["ui-framework"] === 'chakra') { _%>
-     import { AuthPage, ThemedTitleV2 } from "@refinedev/chakra-ui";
- <%_ } _%>
  <%_ if (answers[`ui-framework`] === "no") { _%>
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>

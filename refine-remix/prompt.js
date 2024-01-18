@@ -80,21 +80,11 @@ module.exports = {
                     name: "mui",
                     hint: "Installs Material UI package.",
                 },
-                {
-                    message: "Mantine",
-                    name: "mantine",
-                    hint: "Installs Mantine package.",
-                },
-                {
-                    message: "Chakra UI",
-                    name: "chakra",
-                    hint: "Installs Chakra UI package.",
-                },
             ],
             default: "no",
         },
         {
-            name: "inferencer",
+            name: "antd-example",
             message: "Do you want to add example pages?:",
             type: "select",
             choices: [
@@ -105,19 +95,18 @@ module.exports = {
                 },
                 {
                     message: "Yes (Recommended)",
-                    name: "inferencer",
+                    name: "antd-example",
                     hint: "Installs example pages.",
                 },
             ],
             skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
+                answers["ui-framework"] !== "antd" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-medusa" ||
                 answers["data-provider"] === "data-provider-nestjs-query",
             default: "no",
         },
         {
-            name: "inferencer-headless",
+            name: "mui-example",
             message: "Do you want to add example pages?:",
             type: "select",
             choices: [
@@ -128,14 +117,36 @@ module.exports = {
                 },
                 {
                     message: "Yes (Recommended)",
-                    name: "inferencer-headless",
+                    name: "mui-example",
                     hint: "Installs example pages.",
                 },
             ],
             skip: ({ answers }) =>
-                answers["ui-framework"] !== "no" ||
+                answers["ui-framework"] !== "mui" ||
                 answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-nestjs-query",
+            default: "no",
+        },
+        {
+            name: "headless-example",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "headless-example",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "antd" ||
+                answers["ui-framework"] === "mui" ||
+                answers["data-provider"] === "data-provider-graphql" ||
                 answers["data-provider"] === "data-provider-nestjs-query",
             default: "no",
         },
@@ -208,6 +219,17 @@ module.exports = {
                 "app/components/menu/index.tsx",
                 "app/global.css",
             ],
+        },
+        {
+            plugin: ["data-provider-hasura"],
+            when: function (answers) {
+                return [
+                    "headless-example",
+                    "antd-example",
+                    "mui-example",
+                ].every((item) => answers[item] === "no");
+            },
+            pattern: ["app/queries/blog-posts.ts", "app/queries/categories.ts"],
         },
     ],
 };

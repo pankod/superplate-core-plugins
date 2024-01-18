@@ -2,13 +2,12 @@ const base = {
     _app: {
         isNextAuthCheck: false,
         isAuthProviderCheck: false,
+        hasRoutes: true,
         loader: [],
         authPageProps: [],
         localImport: [],
         refineAntdImports: [],
-        refineChakraImports: [],
         refineMuiImports: [],
-        refineMantineImports: [],
         styleImport: [],
     },
     selectedTheme: "Blue",
@@ -51,8 +50,8 @@ module.exports = {
             defaultValues = `email: "info@refine.dev", password: "refine-supabase"`;
         }
 
-        // mui || chakra
-        if (uiFramework === "mui" || uiFramework === "chakra") {
+        // mui
+        if (uiFramework === "mui") {
             defaultValuePropsName = "defaultValues";
         }
 
@@ -85,7 +84,15 @@ module.exports = {
                 `,
             ];
         }
-        // ## authPageProps
+
+        // ## hasRoutes
+        if (
+            ["headless-example", "antd-example", "mui-example"].every(
+                (item) => answers[item] === "no",
+            )
+        ) {
+            base._app.hasRoutes = false;
+        }
 
         // ## selected theme
         const themeFromAnswers = answers["theme"];
@@ -110,14 +117,8 @@ module.exports = {
             if (answers["ui-framework"] === "antd") {
                 base._app.refineAntdImports.push("ThemedTitleV2");
             }
-            if (answers["ui-framework"] === "mantine") {
-                base._app.refineMantineImports.push("ThemedTitleV2");
-            }
             if (answers["ui-framework"] === "mui") {
                 base._app.refineMuiImports.push("ThemedTitleV2");
-            }
-            if (answers["ui-framework"] === "chakra") {
-                base._app.refineChakraImports.push("ThemedTitleV2");
             }
         }
 

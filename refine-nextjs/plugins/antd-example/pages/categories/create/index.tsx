@@ -8,7 +8,7 @@ import { authProvider } from "src/authProvider";
 <%_ } _%>
 <%_ if (_app.isNextAuthCheck) { _%>
     import { getServerSession } from "next-auth";
-    import { authOptions } from "../api/auth/[...nextauth]";
+    import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../../../src/queries/categories";

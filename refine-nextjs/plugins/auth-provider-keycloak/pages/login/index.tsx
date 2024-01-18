@@ -22,7 +22,7 @@ import { AppIcon } from "src/components/app-icon";
 
 <%_ if (_app.isNextAuthCheck) { _%>
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]";
+import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
 
 

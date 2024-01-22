@@ -55,6 +55,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
           CYPRESS_FRAMEWORK: vite
           CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
           CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
@@ -112,6 +113,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
           CYPRESS_FRAMEWORK: nextjs
           CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
           CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
@@ -169,6 +171,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
           CYPRESS_FRAMEWORK: remix
           CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
           CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}

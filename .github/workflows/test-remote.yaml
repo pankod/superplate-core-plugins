@@ -34,7 +34,12 @@ jobs:
         run: npm install
       - name: Download Example
         id: download_step
-        run: FRAMEWORK=vite CI_USER_AGENT=${{secrets.CI_USER_AGENT}} DATA_PROVIDER=${{matrix.data_provider}} UI_FRAMEWORK=${{matrix.ui_framework}} node ./.github/workflows/build-remote.js
+        run: node ./.github/workflows/build-remote.js
+        env:
+          FRAMEWORK: vite
+          CI_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
       - name: Install & Build Deps
         run: |
           cd ${{ steps.download_step.outputs.project_path }}
@@ -42,15 +47,21 @@ jobs:
           npm run build
           npm run preview -- --port 3000 --host &
       - name: Run Cypress on local
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.download_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=react,DATA_PROVIDER=${{ matrix.data_provider }}
           install: false
+          record: true
           start: "npm ls"
           wait-on: "http://localhost:3000"
+          group: e2e-remote-vite-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.download_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          CYPRESS_FRAMEWORK: vite
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.download_step.outputs.auth_provider }}
   refine-nextjs:
     runs-on: ubuntu-latest
     name: NextJS
@@ -81,7 +92,12 @@ jobs:
         run: npm install
       - name: Download Example
         id: download_step
-        run: FRAMEWORK=nextjs CI_USER_AGENT=${{secrets.CI_USER_AGENT}} DATA_PROVIDER=${{matrix.data_provider}} UI_FRAMEWORK=${{matrix.ui_framework}} node ./.github/workflows/build-remote.js
+        run: node ./.github/workflows/build-remote.js
+        env:
+          FRAMEWORK: nextjs
+          CI_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
       - name: Install & Build Deps
         run: |
           rm -rf .eslintrc .prettierrc
@@ -90,15 +106,21 @@ jobs:
           npm run build
           npm run start &
       - name: Run Cypress on local
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
           install: false
-          command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.download_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=nextjs,DATA_PROVIDER=${{ matrix.data_provider }}
+          record: true
           start: "npm ls"
-          wait-on: "http://0.0.0.0:3000"
+          wait-on: "http://localhost:3000"
+          group: e2e-remote-nextjs-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.download_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          CYPRESS_FRAMEWORK: nextjs
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.download_step.outputs.auth_provider }}
   refine-remix:
     runs-on: ubuntu-latest
     name: Remix
@@ -129,7 +151,12 @@ jobs:
         run: npm install
       - name: Download Example
         id: download_step
-        run: FRAMEWORK=remix CI_USER_AGENT=${{secrets.CI_USER_AGENT}} DATA_PROVIDER=${{matrix.data_provider}} UI_FRAMEWORK=${{matrix.ui_framework}} node ./.github/workflows/build-remote.js
+        run: node ./.github/workflows/build-remote.js
+        env:
+          FRAMEWORK: remix
+          CI_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
       - name: Install & Build Deps
         run: |
           cd ${{ steps.download_step.outputs.project_path }}
@@ -137,12 +164,18 @@ jobs:
           npm run build
           HOST=0.0.0.0 npm run start &
       - name: Run Cypress on local
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
           install: false
-          command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.download_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=remix,DATA_PROVIDER=${{ matrix.data_provider }}
+          record: true
           start: "npm ls"
-          wait-on: "http://0.0.0.0:3000"
+          wait-on: "http://localhost:3000"
+          group: e2e-remote-remix-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.download_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          CYPRESS_FRAMEWORK: remix
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.download_step.outputs.auth_provider }}

@@ -155,7 +155,11 @@ module.exports = {
         } else if (dataProvider === "data-provider-nestjs-query") {
             base.blogPostCategoryFormField = `"categoryId"`;
         } else {
-            base.blogPostCategoryFormField = `["category", "id"]`;
+            if (uiFramework === "mui" || uiFramework === "no") {
+                base.blogPostCategoryFormField = `"category.id"`;
+            } else {
+                base.blogPostCategoryFormField = `["category", "id"]`;
+            }
         }
 
         // ## blogPostCategoryTableField

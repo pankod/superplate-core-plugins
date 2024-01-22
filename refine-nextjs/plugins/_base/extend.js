@@ -149,13 +149,18 @@ module.exports = {
         ) {
             base.isGraphQL = true;
         }
+
         // ## blogPostCategoryFormField
         if (dataProvider === "data-provider-hasura") {
             base.blogPostCategoryFormField = `"category_id"`;
         } else if (dataProvider === "data-provider-nestjs-query") {
             base.blogPostCategoryFormField = `"categoryId"`;
         } else {
-            base.blogPostCategoryFormField = `["category", "id"]`;
+            if (uiFramework === "mui" || uiFramework === "no") {
+                base.blogPostCategoryFormField = `"category.id"`;
+            } else {
+                base.blogPostCategoryFormField = `["category", "id"]`;
+            }
         }
 
         // ## blogPostCategoryTableField

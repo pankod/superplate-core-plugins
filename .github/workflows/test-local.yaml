@@ -55,10 +55,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          FRAMEWORK: vite
-          DATA_PROVIDER: ${{ matrix.data_provider }}
-          UI_FRAMEWORK: ${{ matrix.ui_framework }}
-          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
+          CYPRESS_FRAMEWORK: vite
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   nextjs:
     runs-on: ubuntu-latest
     name: nextjs
@@ -112,10 +112,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          FRAMEWORK: nextjs
-          DATA_PROVIDER: ${{ matrix.data_provider }}
-          UI_FRAMEWORK: ${{ matrix.ui_framework }}
-          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
+          CYPRESS_FRAMEWORK: nextjs
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   remix:
     runs-on: ubuntu-latest
     name: remix
@@ -165,10 +165,11 @@ jobs:
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
           group: e2e-local-remix-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
+          env:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          FRAMEWORK: remix
-          DATA_PROVIDER: ${{ matrix.data_provider }}
-          UI_FRAMEWORK: ${{ matrix.ui_framework }}
-          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
+          CYPRESS_FRAMEWORK: remix
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}

@@ -170,7 +170,7 @@ module.exports = {
                 base.blogPostCategoryTableField = `"category"`;
             }
         } else {
-            base.blogPostCategoryTableField = `category`;
+            base.blogPostCategoryTableField = `"category"`;
         }
 
         // ## blogPostStatusOptions

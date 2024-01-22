@@ -159,6 +159,7 @@ export default function BlogPostList() {
         queryOptions: {
             enabled: !!tableData?.data,
         },
+    });
         
         setOptions((prev) => ({
             ...prev,

@@ -139,7 +139,8 @@ export default function BlogPostCreate() {
                         <span style={{ color: "red" }}>
                             {(errors as any)?.category?.id?.message as string}
                         </span>
-                        <label>
+                    </label>
+                    <label>
                         <span style={{ marginRight: "8px" }}>Status</span>
                         <select
                             defaultValue={<%- blogPostStatusDefaultValue %>}

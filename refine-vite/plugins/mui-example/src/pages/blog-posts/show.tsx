@@ -45,7 +45,7 @@ export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
 <%_ if (!isGraphQL) { _%>
         const { data: categoryData, isLoading: categoryIsLoading } = useOne({
             resource: "categories",
-            id: record?.category?.id || "",
+            id: record?.<%- blogPostCategoryFieldName %>?.id || "",
             queryOptions: {
                 enabled: !!record,
             },
@@ -76,7 +76,7 @@ export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
                     {"Category"}
                 </Typography>
 <%_ if (isGraphQL) { _%>  
-                    <div>{record?.category?.title}</div>
+                    <div>{record?.<%- blogPostCategoryFieldName %>?.title}</div>
 <%_ } else { _%>
                     {categoryIsLoading ? (
                         <>Loading...</>

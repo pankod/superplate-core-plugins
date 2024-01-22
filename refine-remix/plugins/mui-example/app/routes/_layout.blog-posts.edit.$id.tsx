@@ -136,9 +136,9 @@ export default function BlogPostEdit() {
                                     label={"Category"}
                                     margin="normal"
                                     variant="outlined"
-                                    error={!!(errors as any)?.category?.id}
+                                    error={!!(errors as any)?.<%- blogPostCategoryFieldName %>?.id}
                                     helperText={
-                                        (errors as any)?.category?.id?.message
+                                        (errors as any)?.<%- blogPostCategoryFieldName %>?.id?.message
                                     }
                                     required
                                 />

@@ -135,7 +135,7 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
                             ))}
                         </select>
                         <span style={{ color: "red" }}>
-                            {(errors as any)?.category?.id?.message as string}
+                            {(errors as any)?.<%- blogPostCategoryFieldName %>?.id?.message as string}
                         </span>
                     </label>
                     <label>

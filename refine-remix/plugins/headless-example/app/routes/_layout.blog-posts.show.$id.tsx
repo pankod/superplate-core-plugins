@@ -45,7 +45,7 @@ export default function BlogPostShow() {
 <%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useOne({
         resource: "categories",
-        id: record?.category?.id || "",
+        id: record?.<%- blogPostCategoryFieldName %>?.id || "",
         queryOptions: {
             enabled: !!record,
         },
@@ -85,7 +85,7 @@ export default function BlogPostShow() {
                 <div style={{ marginTop: "6px" }}>
                     <h5>{"Category"}</h5>
 <%_ if (isGraphQL) { _%>  
-                    <div>{record?.category?.title}</div>
+                    <div>{record?.<%- blogPostCategoryFieldName %>?.title}</div>
 <%_ } else { _%>
                     <div>
                         {categoryIsLoading ? (

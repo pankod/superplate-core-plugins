@@ -86,7 +86,7 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
                 minWidth: 300,
                 <%_ if (isGraphQL) { _%>
                 valueGetter: ({ row }) => {
-                      const value = row?.category?.title
+                      const value = row?.<%- blogPostCategoryFieldName %>?.title
                        return value
                 },
                 <%_ } else { _%>

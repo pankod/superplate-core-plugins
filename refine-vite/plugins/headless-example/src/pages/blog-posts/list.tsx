@@ -156,13 +156,6 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
             },
         },
 <%_ } _%>
-<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
-        refineCoreProps: {
-            meta: {
-                select: '*, categories(id,title)',
-            },
-        },
-<%_ } _%>
     });
 
 

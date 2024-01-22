@@ -186,9 +186,9 @@ module.exports = {
             }
         } else {
             if (dataProvider === "data-provider-supabase") {
-                base.blogPostCategoryFieldName = `"categories"`;
+                base.blogPostCategoryTableField = `"categories"`;
             } else {
-                base.blogPostCategoryFieldName = `"category"`;
+                base.blogPostCategoryTableField = `"category"`;
             }
         }
 

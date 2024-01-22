@@ -34,7 +34,11 @@ jobs:
         run: npm install
       - name: Build Examples
         id: build_step
-        run: FRAMEWORK=vite DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+        run: node ./.github/workflows/build-template.js
+        env:
+          FRAMEWORK: vite
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
       - name: Install Deps
         run: |
           cd ${{ steps.build_step.outputs.project_path }}
@@ -42,18 +46,21 @@ jobs:
           npm run build
           npm run preview -- --port 3000 --host &
       - name: Run Cypress on local
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=react,DATA_PROVIDER=${{ matrix.data_provider }}
           install: false
+          record: true
           start: "npm ls"
           wait-on: "http://localhost:3000"
+          group: e2e-local-vite-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          FRAMEWORK: react
-          DATA_PROVIDER: ${{ matrix.data_provider }}
-          UI_FRAMEWORK: ${{ matrix.ui_framework }}
-          AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
+          CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          CYPRESS_FRAMEWORK: vite
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   nextjs:
     runs-on: ubuntu-latest
     name: nextjs
@@ -84,7 +91,11 @@ jobs:
         run: npm install
       - name: Build Examples
         id: build_step
-        run: FRAMEWORK=nextjs DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+        run: node ./.github/workflows/build-template.js
+        env:
+          FRAMEWORK: nextjs
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
       - name: Install Deps
         run: |
           rm -rf .eslintrc .prettierrc
@@ -93,14 +104,21 @@ jobs:
           npm run build
           npm run start &
       - name: Run Cypress on local
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=nextjs,DATA_PROVIDER=${{ matrix.data_provider }}
           install: false
+          record: true
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
+          group: e2e-local-nextjs-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          CYPRESS_FRAMEWORK: nextjs
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}
   remix:
     runs-on: ubuntu-latest
     name: remix
@@ -131,7 +149,11 @@ jobs:
         run: npm install
       - name: Build Examples
         id: build_step
-        run: FRAMEWORK=remix DATA_PROVIDER=${{ matrix.data_provider }} UI_FRAMEWORK=${{ matrix.ui_framework }} node ./.github/workflows/build-template.js
+        run: node ./.github/workflows/build-template.js
+        env:
+          FRAMEWORK: remix
+          DATA_PROVIDER: ${{ matrix.data_provider }}
+          UI_FRAMEWORK: ${{ matrix.ui_framework }}
       - name: Install Deps
         run: |
           cd ${{ steps.build_step.outputs.project_path }}
@@ -139,11 +161,19 @@ jobs:
           npm run build
           HOST=0.0.0.0 npm run start &
       - name: Run Cypress on local
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --record --parallel --env=AUTH_PROVIDER=${{ steps.build_step.outputs.auth_provider }},UI_FRAMEWORK=${{ matrix.ui_framework }},FRAMEWORK=remix,DATA_PROVIDER=${{ matrix.data_provider }}
           install: false
+          record: true
           start: "npm ls"
           wait-on: "http://0.0.0.0:3000"
+          group: e2e-local-remix-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
+          env:
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_USER_AGENT: ${{ secrets.CI_USER_AGENT }}
+          CYPRESS_FRAMEWORK: remix
+          CYPRESS_DATA_PROVIDER: ${{ matrix.data_provider }}
+          CYPRESS_UI_FRAMEWORK: ${{ matrix.ui_framework }}
+          CYPRESS_AUTH_PROVIDER: ${{ steps.build_step.outputs.auth_provider }}

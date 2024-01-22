@@ -127,49 +127,49 @@ export default function BlogPostList() {
     );
 };
 
-export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-    <%_ if (_app.isNextAuthCheck) { _%>
-      const session = await getServerSession(
-        context.req,
-        context.res,
-        authOptions,
-    );
-    <%_ } _%>
+// export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
+//     <%_ if (_app.isNextAuthCheck) { _%>
+//       const session = await getServerSession(
+//         context.req,
+//         context.res,
+//         authOptions,
+//     );
+//     <%_ } _%>
 
-    <%_ if (_app.isAuthProviderCheck) { _%>
-    const { authenticated, redirectTo } = await authProvider.check(context);
-    <%_ } _%>
+//     <%_ if (_app.isAuthProviderCheck) { _%>
+//     const { authenticated, redirectTo } = await authProvider.check(context);
+//     <%_ } _%>
 
-    <%_ if (_app.isNextAuthCheck) { _%>
-    if (!session) {
-        return {
-            props: {
-            },
-            redirect: {
-                destination: `/login?to=${encodeURIComponent("/blog-posts")}`,
-                permanent: false,
-            },
-        };
-    }
-    <%_ } _%>
+//     <%_ if (_app.isNextAuthCheck) { _%>
+//     if (!session) {
+//         return {
+//             props: {
+//             },
+//             redirect: {
+//                 destination: `/login?to=${encodeURIComponent("/blog-posts")}`,
+//                 permanent: false,
+//             },
+//         };
+//     }
+//     <%_ } _%>
 
-    <%_ if (_app.isAuthProviderCheck) { _%>
-    if (!authenticated) {
-        return {
-            props: {
+//     <%_ if (_app.isAuthProviderCheck) { _%>
+//     if (!authenticated) {
+//         return {
+//             props: {
          
-            },
-            redirect: {
-                destination: `${redirectTo}?to=${encodeURIComponent("/blog-posts")}`,
-                permanent: false,
-            },
-        };
-    }
-    <%_ } _%>
+//             },
+//             redirect: {
+//                 destination: `${redirectTo}?to=${encodeURIComponent("/blog-posts")}`,
+//                 permanent: false,
+//             },
+//         };
+//     }
+//     <%_ } _%>
 
-    return {
-        props: {
+//     return {
+//         props: {
          
-        },
-    };
-};
+//         },
+//     };
+// };

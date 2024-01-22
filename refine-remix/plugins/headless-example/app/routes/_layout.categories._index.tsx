@@ -5,6 +5,9 @@ import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
 import { CATEGORIES_QUERY } from "../queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORIES_LIST_QUERY } from "../queries/categories";
+<%_ } _%>
 
 export default function CategoryList() {
     const columns = React.useMemo<ColumnDef<any>[]>(
@@ -75,6 +78,13 @@ export default function CategoryList() {
         refineCoreProps: {
             meta: {
                 fields: CATEGORIES_QUERY,
+            },
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlQuery: CATEGORIES_LIST_QUERY,
             },
         },
 <%_ } _%>

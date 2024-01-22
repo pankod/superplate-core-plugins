@@ -19,12 +19,20 @@ import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../../src/queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORIES_LIST_QUERY } from  "../../src/queries/categories";
+<%_ } _%>
 
 export default function CategoryList() {
     const { dataGridProps } = useDataGrid({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
-            fields: CATEGORIES_QUERY,
+            gqlQuery: CATEGORIES_QUERY,
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: CATEGORIES_LIST_QUERY,
         },
 <%_ } _%>
     });

@@ -8,12 +8,20 @@ import {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORY_SHOW_QUERY } from "../queries/categories";
+<%_ } _%>
 
 export default function CategoryShow() {
     const { queryResult } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
                 fields: CATEGORIES_QUERY,
+            },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+            meta: {
+                    gqlQuery: CATEGORY_SHOW_QUERY,
             },
 <%_ } _%>
     });

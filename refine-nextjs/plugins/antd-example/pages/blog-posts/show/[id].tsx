@@ -1,24 +1,29 @@
-import { Stack, Typography } from "@mui/material";
-import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
 import {
     DateField,
     MarkdownField,
     NumberField,
     Show,
-    TextFieldComponent as TextField,
-} from "@refinedev/mui";
+    TextField,
+} from "@refinedev/antd";
+import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
+import { Typography } from "antd";
+import React from "react";
 import { GetServerSideProps } from "next";
 <%_ if (_app.isAuthProviderCheck) { _%>
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 <%_ if (_app.isNextAuthCheck) { _%>
-import { getServerSession } from "next-auth";
-import { authOptions } from "pages/api/auth/[...nextauth]";
+    import { getServerSession } from "next-auth";
+    import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../../../src/queries/blog-posts";
+    import { BLOG_POSTS_QUERY } from "../../../src/queries/blog-posts";
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_SHOW_QUERY } from '../../../src/queries/blog-posts'
 <%_ } _%>
 
+const { Title } = Typography;
 
 export default function BlogPostShow() {
     const { queryResult } = useShow({
@@ -32,65 +37,52 @@ export default function BlogPostShow() {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: POST_SHOW_QUERY,
+        },
+<%_ } _%>
     });
-
     const { data, isLoading } = queryResult;
 
     const record = data?.data;
 
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useOne({
         resource: "categories",
         id: record?.category?.id || "",
         queryOptions: {
             enabled: !!record,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-            meta: {
-                fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-            },
-<%_ } _%>
     });
+<%_ } _%>
 
     return (
         <Show isLoading={isLoading}>
-            <Stack gap={1}>
-                <Typography variant="body1" fontWeight="bold">
-                    {"ID"}
-                </Typography>
-                <NumberField value={record?.id ?? ""} />
-
-                <Typography variant="body1" fontWeight="bold">
-                    {"Title"}
-                </Typography>
-                <TextField value={record?.title} />
-
-                <Typography variant="body1" fontWeight="bold">
-                    {"Content"}
-                </Typography>
-                <MarkdownField value={record?.content} />
-
-                <Typography variant="body1" fontWeight="bold">
-                    {"Category"}
-                </Typography>
-                {categoryIsLoading ? (
-                    <>Loading...</>
-                ) : (
-                    <>{categoryData?.data?.title}</>
-                )}
-
-                <Typography variant="body1" fontWeight="bold">
-                    {"Status"}
-                </Typography>
-                <TextField value={record?.status} />
-
-                <Typography variant="body1" fontWeight="bold">
-                    {"CreatedAt"}
-                </Typography>
-                <DateField value={record?.createdAt} />
-            </Stack>
+            <Title level={5}>{"ID"}</Title>
+            <NumberField value={record?.id ?? ""} />
+            <Title level={5}>{"Title"}</Title>
+            <TextField value={record?.title} />
+            <Title level={5}>{"Content"}</Title>
+            <MarkdownField value={record?.content} />
+            <Title level={5}>{"Category"}</Title>
+<%_ if (isGraphQL) { _%>  
+            <TextField value={record?.category?.title} />
+<%_ } else { _%>
+            <TextField value={categoryIsLoading ? (
+                <>Loading...</>
+            ) : (
+                <>{categoryData?.data?.title}</>
+            )} />
+<%_ } _%>  
+            <Title level={5}>{"Status"}</Title>
+            <TextField value={record?.status} />
+            <Title level={5}>{"CreatedAt"}</Title>
+            <DateField value={record?.createdAt} />
         </Show>
     );
 };
+
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
     <%_ if (_app.isNextAuthCheck) { _%>

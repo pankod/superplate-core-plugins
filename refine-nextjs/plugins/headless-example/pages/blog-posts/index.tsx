@@ -16,7 +16,10 @@ import { authProvider } from "src/authProvider";
     import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../../src/queries/blog-posts";
+import { BLOG_POSTS_QUERY } from "../../src/queries/blog-posts";
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POSTS_LIST_QUERY } from  "../../src/queries/blog-posts";
 <%_ } _%>
 
 export default function BlogPostList() {
@@ -40,22 +43,24 @@ export default function BlogPostList() {
             {
                 id: "category",
                 header: "Category",
-                accessorKey: "category.id",
-                cell: function render({ getValue, table }) {
-                    const meta = table.options.meta as {
-                        categoryData: GetManyResponse;
-                    };
-
-                    try {
-                        const category = meta.categoryData?.data?.find(
-                            (item) => item.id == getValue<any>(),
-                        );
-
-                        return category?.title ?? "Loading...";
-                    } catch (error) {
-                        return null;
-                    }
-                },
+                accessorKey: <%- blogPostCategoryTableField %>,
+                <%_ if (!isGraphQL) { _%>
+                    cell: function render({ getValue, table }) {
+                        const meta = table.options.meta as {
+                            categoryData: GetManyResponse;
+                        };
+    
+                        try {
+                            const category = meta.categoryData?.data?.find(
+                                (item) => item.id == getValue<any>(),
+                            );
+    
+                            return category?.title ?? "Loading...";
+                        } catch (error) {
+                            return null;
+                        }
+                    },
+                <%_ } _%>
             },
             {
                 id: "status",
@@ -145,19 +150,22 @@ export default function BlogPostList() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlQuery: POSTS_LIST_QUERY,
+            },
+        },
+<%_ } _%>
     });
 
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData } = useMany({
         resource: "categories",
         ids: tableData?.data?.map((item) => item?.category?.id).filter(Boolean) ?? [],
         queryOptions: {
             enabled: !!tableData?.data,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-            meta: {
-                fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-            },
-<%_ } _%>
     });
 
     setOptions((prev) => ({
@@ -167,6 +175,7 @@ export default function BlogPostList() {
             categoryData,
         },
     }));
+<%_ } _%>
 
     return (
         <div style={{ padding: "16px" }}>

@@ -4,6 +4,10 @@ import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORY_CREATE_MUTATION } from  "../queries/categories";
+<%_ } _%>
+
 
 export default function CategoryCreate() {
     const { list } = useNavigation();
@@ -18,6 +22,13 @@ export default function CategoryCreate() {
         refineCoreProps: {
             meta: {
                 fields: CATEGORIES_QUERY,
+            },
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlMutation: CATEGORY_CREATE_MUTATION,
             },
         },
 <%_ } _%>

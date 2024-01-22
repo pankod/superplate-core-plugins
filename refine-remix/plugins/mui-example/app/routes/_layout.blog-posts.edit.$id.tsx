@@ -8,6 +8,9 @@ import { Controller } from "react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../queries/blog-posts";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from "../queries/blog-posts";
+<%_ } _%>
 
 export default function BlogPostEdit() {
     const {
@@ -32,6 +35,13 @@ export default function BlogPostEdit() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlMutation: POST_EDIT_MUTATION,
+            },
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
@@ -44,32 +54,16 @@ export default function BlogPostEdit() {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
         },
 <%_ } _%>
-
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: CATEGORIES_SELECT_QUERY,
+        },
+<%_ } _%>
     });
 
 
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    // hasura expects category_id instead of category
-    // so we need to remove category from the data and add category_id
-    const onSubmitHandler = () => {
-        handleSubmit((data) =>
-        onFinish({
-            ...data,
-            category: undefined,
-            category_id: data?.category?.id,
-        })
-        )()
-    }
-<%_ } _%>
-
     return (
-        <Edit isLoading={formLoading} 
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
-        saveButtonProps={{ ...saveButtonProps, onClick: onSubmitHandler }}       
-<%_ } else { _%>
-        saveButtonProps={saveButtonProps}
-<%_ } _%>        
-        >
+        <Edit isLoading={formLoading} saveButtonProps={saveButtonProps}>
             <Box
                 component="form"
                 sx={{ display: "flex", flexDirection: "column" }}
@@ -88,9 +82,23 @@ export default function BlogPostEdit() {
                     label={"Title"}
                     name="title"
                 />
+                <TextField
+                    {...register("content", {
+                        required: "This field is required",
+                    })}
+                    error={!!(errors as any)?.content}
+                    helperText={(errors as any)?.content?.message}
+                    margin="normal"
+                    fullWidth
+                    InputLabelProps={{ shrink: true }}
+                    multiline
+                    label={"Content"}
+                    name="content"
+                    rows={4}
+                />
                 <Controller
                     control={control}
-                    name="category"
+                    name={<%- blogPostCategoryFormField %>}
                     rules={{ required: "This field is required" }}
                     // eslint-disable-next-line
                     defaultValue={null as any}
@@ -99,21 +107,22 @@ export default function BlogPostEdit() {
                             {...categoryAutocompleteProps}
                             {...field}
                             onChange={(_, value) => {
-                                field.onChange(value);
+                                field.onChange(value.id)
                             }}
                             getOptionLabel={(item) => {
                                 return (
-                                    categoryAutocompleteProps?.options?.find(
-                                        (p) =>
-                                            p?.id?.toString() ===
-                                            item?.id?.toString(),
-                                    )?.title ?? ""
-                                );
+                                  categoryAutocompleteProps?.options?.find((p) => {
+                                    const itemId = typeof item === 'object' ? item?.id?.toString() : item?.toString()
+                                    const pId = p?.id?.toString()
+                                    return itemId === pId
+                                  })?.title ?? ''
+                                )
+                              }}
+                            isOptionEqualToValue={(option, value) => {
+                                const optionId = option?.id?.toString()
+                                const valueId = typeof value === 'object' ? value?.id?.toString() : value?.toString()
+                                return value === undefined || optionId === valueId
                             }}
-                            isOptionEqualToValue={(option, value) =>
-                                value === undefined ||
-                                option?.id?.toString() === value?.id?.toString()
-                            }
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
@@ -135,33 +144,13 @@ export default function BlogPostEdit() {
                     control={control}
                     render={({ field }) => {
                         return (
-                            <Select
-                                {...field}
-                                value={field?.value || "draft"}
-                                label={"Status"}
-                            >
-                                <MenuItem value={"draft"}>Draft</MenuItem>
-                                <MenuItem value={"published"}>
-                                    Published
-                                </MenuItem>
-                                <MenuItem value={"rejected"}>Rejected</MenuItem>
+                            <Select {...field} value={field?.value || <%- blogPostStatusDefaultValue %>} label={'Status'}>
+                                <MenuItem value='<%- blogPostStatusOptions[0].value%>'><%- blogPostStatusOptions[0].label%></MenuItem>
+                                <MenuItem value='<%- blogPostStatusOptions[1].value%>'><%- blogPostStatusOptions[1].label%></MenuItem>
+                                <MenuItem value='<%- blogPostStatusOptions[2].value%>'><%- blogPostStatusOptions[2].label%></MenuItem>
                             </Select>
                         );
                     }}
-                />
-                <TextField
-                    {...register("content", {
-                        required: "This field is required",
-                    })}
-                    error={!!(errors as any)?.content}
-                    helperText={(errors as any)?.content?.message}
-                    margin="normal"
-                    fullWidth
-                    InputLabelProps={{ shrink: true }}
-                    multiline
-                    label={"Content"}
-                    name="content"
-                    rows={4}
                 />
             </Box>
         </Edit>

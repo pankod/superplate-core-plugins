@@ -20,7 +20,10 @@ import { authProvider } from "src/authProvider";
 <%_ } _%>
     
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../../src/queries/blog-posts";
+import { BLOG_POSTS_QUERY } from "../../src/queries/blog-posts";
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POSTS_LIST_QUERY } from  "../../src/queries/blog-posts";
 <%_ } _%>
 
 export default function BlogPostList() {
@@ -36,20 +39,21 @@ export default function BlogPostList() {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: POSTS_LIST_QUERY,
+        },
+<%_ } _%>
     });
 
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useMany({
         resource: "categories",
         ids: tableProps?.dataSource?.map((item) => item?.category?.id).filter(Boolean) ?? [],
         queryOptions: {
             enabled: !!tableProps?.dataSource,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-        meta: {
-            fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-        },
 <%_ } _%>
-    });
 
     return (
         <List>
@@ -65,17 +69,19 @@ export default function BlogPostList() {
                     }}
                 />
                 <Table.Column
-                    dataIndex={["category", "id"]}
+                    dataIndex={<%- blogPostCategoryTableField %>}
                     title={"Category"}
+                    <%_ if (!isGraphQL) { _%>
                     render={(value) =>
-                        categoryIsLoading ? (
-                            <>Loading...</>
-                        ) : (
-                            categoryData?.data?.find(
-                                (item) => item.id === value,
-                            )?.title
-                        )
+                            categoryIsLoading ? (
+                                <>Loading...</>
+                            ) : (
+                                categoryData?.data?.find(
+                                    (item) => item.id === value,
+                                )?.title
+                            )
                     }
+                    <%_ } _%>
                 />
                 <Table.Column dataIndex="status" title={"Status"} />
                 <Table.Column

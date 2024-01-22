@@ -16,6 +16,9 @@ import { authProvider } from "src/authProvider";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../../../src/queries/blog-posts";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from "../../../src/queries/blog-posts";
+<%_ } _%>
 
 
 export default function BlogPostCreate() {
@@ -42,6 +45,13 @@ export default function BlogPostCreate() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlMutation: POST_EDIT_MUTATION,
+            },
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
@@ -54,15 +64,15 @@ export default function BlogPostCreate() {
                 fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
             },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+            meta: {
+                gqlQuery: CATEGORIES_SELECT_QUERY,
+            },
+<%_ } _%>
     });
 
     React.useEffect(() => {
-<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
-    setValue("category_id", blogPostsData?.category?.id);
-<%_ } else { _%>
-    setValue("category.id", blogPostsData?.category?.id);
-<%_ } _%>
-
+        setValue(<%- blogPostCategoryFormField %>, blogPostsData?.category?.id);
     }, [categoryOptions]);
 
     return (
@@ -116,15 +126,9 @@ export default function BlogPostCreate() {
                     <label>
                         <span style={{ marginRight: "8px" }}>Category</span>
                         <select
-<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
-                            {...register("category_id", {
-                                required: "This field is required",
-                            })}
-<%_ } else { _%>
-                            {...register("category.id", {
-                                required: "This field is required",
-                            })}
-<%_ } _%>
+                        {...register(<%- blogPostCategoryFormField %>, {
+                            required: "This field is required",
+                        })}
                         >
                             {categoryOptions?.map((option) => (
                                 <option value={option.value} key={option.value}>
@@ -135,18 +139,17 @@ export default function BlogPostCreate() {
                         <span style={{ color: "red" }}>
                             {(errors as any)?.category?.id?.message as string}
                         </span>
-                    </label>
-                    <label>
+                        <label>
                         <span style={{ marginRight: "8px" }}>Status</span>
                         <select
-                            defaultValue="draft"
-                            {...register("status", {
+                            defaultValue={<%- blogPostStatusDefaultValue %>}
+                            {...register(<%- blogPostStatusDefaultValue %>, {
                                 required: "This field is required",
                             })}
                         >
-                            <option value="draft">Draft</option>
-                            <option value="published">Published</option>
-                            <option value="rejected">Rejected</option>
+                            <option value='<%- blogPostStatusOptions[0].value%>'><%- blogPostStatusOptions[0].label%></option>
+                            <option value='<%- blogPostStatusOptions[1].value%>'><%- blogPostStatusOptions[1].label%></option>
+                            <option value='<%- blogPostStatusOptions[2].value%>'><%- blogPostStatusOptions[2].label%></option>
                         </select>
                         <span style={{ color: "red" }}>
                             {(errors as any)?.status?.message as string}

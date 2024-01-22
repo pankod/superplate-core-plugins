@@ -1,6 +1,7 @@
 import {
     IResourceComponentsProps,
     useNavigation,
+    useOne,
     useResource,
     useShow,
 } from "@refinedev/core";
@@ -13,28 +14,46 @@ import { authProvider } from "src/authProvider";
     import { getServerSession } from "next-auth";
     import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
-import { Controller } from "react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../../../src/queries/blog-posts";
+    import { BLOG_POSTS_QUERY } from "../../../src/queries/blog-posts";
 <%_ } _%>
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    import { CATEGORIES_QUERY } from "../../../src/queries/categories";
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_SHOW_QUERY } from  "../../../src/queries/blog-posts";
 <%_ } _%>
 
-
-export default function CategoryShow() {
+export default function BlogPostShow() {
     const { edit, list } = useNavigation();
     const { id } = useResource();
     const { queryResult } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
-                fields: CATEGORIES_QUERY,
+                fields: BLOG_POSTS_QUERY,
+            },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-strapi-v4") { _%>
+            meta: {
+                populate: ['category'],
+            },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+            meta: {
+                gqlQuery: POST_SHOW_QUERY,
             },
 <%_ } _%>
     });
     const { data } = queryResult;
 
     const record = data?.data;
+
+<%_ if (!isGraphQL) { _%>
+    const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+        resource: "categories",
+        id: record?.category?.id || "",
+        queryOptions: {
+            enabled: !!record,
+        },
+    });
+<%_ } _%>
 
     return (
         <div style={{ padding: "16px" }}>
@@ -45,22 +64,58 @@ export default function CategoryShow() {
                     justifyContent: "space-between",
                 }}
             >
-                <h1>Show</h1>
+                <h1>{"Show"}</h1>
                 <div style={{ display: "flex", gap: "8px" }}>
-                    <button onClick={() => list("categories")}>List</button>
-                    <button onClick={() => edit("categories", id ?? "")}>
-                        Edit
+                    <button onClick={() => list("blog_posts")}>{"List"}</button>
+                    <button onClick={() => edit("blog_posts", id ?? "")}>
+                        {"Edit"}
                     </button>
                 </div>
             </div>
             <div>
                 <div style={{ marginTop: "6px" }}>
-                    <h5>ID</h5>
+                    <h5>{"ID"}</h5>
                     <div>{record?.id ?? ""}</div>
                 </div>
                 <div style={{ marginTop: "6px" }}>
-                    <h5>Title</h5>
+                    <h5>{"Title"}</h5>
                     <div>{record?.title}</div>
+                </div>
+                <div style={{ marginTop: "6px" }}>
+                    <h5>{"Content"}</h5>
+                    <p>{record?.content}</p>
+                </div>
+                <div style={{ marginTop: "6px" }}>
+                    <h5>{"Category"}</h5>
+<%_ if (isGraphQL) { _%>  
+                    <div>{record?.category?.title}</div>
+<%_ } else { _%>
+                    <div>
+                        {categoryIsLoading ? (
+                            <>Loading...</>
+                        ) : (
+                            <>{categoryData?.data?.title}</>
+                        )}
+                    </div>
+<%_ } _%>  
+                </div>
+                <div style={{ marginTop: "6px" }}>
+                    <h5>{"Status"}</h5>
+                    <div>{record?.status}</div>
+                </div>
+                <div style={{ marginTop: "6px" }}>
+                    <h5>{"Created at"}</h5>
+                    <div>
+<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
+                    {new Date(record?.created_at).toLocaleString(undefined, {
+                            timeZone: "UTC",
+                    })}
+<%_ } else { _%>
+                    {new Date(record?.createdAt).toLocaleString(undefined, {
+                        timeZone: "UTC",
+                    })}
+<%_ } _%>      
+                    </div>
                 </div>
             </div>
         </div>

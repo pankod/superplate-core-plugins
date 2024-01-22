@@ -6,9 +6,12 @@ import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
+<%_ } _%>
 
 export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
-    const { formProps, saveButtonProps, queryResult } = useForm({
+    const { formProps, saveButtonProps, queryResult, formLoading } = useForm({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -19,6 +22,11 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    meta: {
+        gqlMutation: POST_EDIT_MUTATION,
+    },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
@@ -26,16 +34,25 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",
         defaultValue: blogPostsData?.category?.id,
+        queryOptions: {
+            enabled: !!blogPostsData?.category?.id,
+        },
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: CATEGORIES_SELECT_QUERY,
+        },
+<%_ } _%>
     });
 
     return (
-        <Edit saveButtonProps={saveButtonProps}>
-            <Form {...formProps} layout="vertical">
+        <Edit saveButtonProps={saveButtonProps} isLoading={formLoading}>
+            <Form {...formProps} 
+            layout="vertical">
                 <Form.Item
                     label={"Title"}
                     name={["title"]}
@@ -60,11 +77,8 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
-                    name="category_id"
-<%_ } else { _%>
-                    name={["category", "id"]}
-<%_ } _%>
+                    name={<%- blogPostCategoryFormField %>}
+                    initialValue={formProps?.initialValues?.category?.id}
                     rules={[
                         {
                             required: true,
@@ -76,7 +90,7 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
                 <Form.Item
                     label={"Status"}
                     name={["status"]}
-                    initialValue={'draft'}
+                    initialValue={<%- blogPostStatusDefaultValue %>}
                     rules={[
                         {
                             required: true,
@@ -84,13 +98,9 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                     <Select
-                        defaultValue='draft'
+                        defaultValue={<%- blogPostStatusDefaultValue %>}
+                        options={<%- blogPostStatusOptions %>}
                         style={{ width: 120 }}
-                        options={[
-                        { value: 'draft', label: 'Draft' },
-                        { value: 'published', label: 'Published' },
-                        { value: 'rejected', label: 'Rejected' },
-                        ]}
                     />
                 </Form.Item>
             </Form>

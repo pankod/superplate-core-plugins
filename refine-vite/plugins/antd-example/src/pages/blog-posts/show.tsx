@@ -9,9 +9,11 @@ import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
 import { Typography } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from './queries'
+    import { BLOG_POSTS_QUERY } from './queries'
 <%_ } _%>
-    
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_SHOW_QUERY } from './queries'
+<%_ } _%>
 
 const { Title } = Typography;
 
@@ -27,23 +29,26 @@ export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: POST_SHOW_QUERY,
+        },
+<%_ } _%>
     });
     const { data, isLoading } = queryResult;
 
     const record = data?.data;
 
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useOne({
         resource: "categories",
         id: record?.category?.id || "",
         queryOptions: {
             enabled: !!record,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-        meta: {
-            fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-        },
-<%_ } _%>
     });
+<%_ } _%>
+
 
     return (
         <Show isLoading={isLoading}>
@@ -54,11 +59,15 @@ export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
             <Title level={5}>{"Content"}</Title>
             <MarkdownField value={record?.content} />
             <Title level={5}>{"Category"}</Title>
-            {categoryIsLoading ? (
+<%_ if (isGraphQL) { _%>  
+            <TextField value={record?.category?.title} />
+<%_ } else { _%>
+            <TextField value={categoryIsLoading ? (
                 <>Loading...</>
             ) : (
                 <>{categoryData?.data?.title}</>
-            )}
+            )} />
+<%_ } _%>  
             <Title level={5}>{"Status"}</Title>
             <TextField value={record?.status} />
             <Title level={5}>{"CreatedAt"}</Title>

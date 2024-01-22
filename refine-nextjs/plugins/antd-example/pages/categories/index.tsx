@@ -19,6 +19,9 @@ import { authProvider } from "src/authProvider";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../../src/queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORIES_LIST_QUERY } from "../../src/queries/categories";
+<%_ } _%>
 
 
 export default function CategoryList() {
@@ -27,6 +30,11 @@ export default function CategoryList() {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: CATEGORIES_QUERY,
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: CATEGORIES_LIST_QUERY,
         },
 <%_ } _%>
     });

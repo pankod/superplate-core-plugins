@@ -16,6 +16,10 @@ import { Controller } from "react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../../../src/queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORY_EDIT_MUTATION } from "../../../src/queries/categories";
+<%_ } _%>
+
 
 export default function CategoryEdit() {
     const { list } = useNavigation();
@@ -30,6 +34,13 @@ export default function CategoryEdit() {
         refineCoreProps: {
             meta: {
                 fields: CATEGORIES_QUERY,
+            },
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlMutation: CATEGORY_EDIT_MUTATION,
             },
         },
 <%_ } _%>

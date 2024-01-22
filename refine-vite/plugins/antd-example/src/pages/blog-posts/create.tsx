@@ -6,6 +6,9 @@ import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_CREATE_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
+<%_ } _%>
 
 export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm({
@@ -14,13 +17,24 @@ export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
             fields: BLOG_POSTS_QUERY,
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlMutation: POST_CREATE_MUTATION,
+        },
+<%_ } _%>
     });
+
 
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: CATEGORIES_SELECT_QUERY,
         },
 <%_ } _%>
     });
@@ -52,11 +66,8 @@ export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
-                    name="category_id"
-<%_ } else { _%>
-                    name={["category", "id"]}
-<%_ } _%>
+                    name={<%- blogPostCategoryFormField %>}
+                    initialValue={formProps?.initialValues?.category?.id}
                     rules={[
                         {
                             required: true,
@@ -68,7 +79,7 @@ export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
                 <Form.Item
                     label={"Status"}
                     name={["status"]}
-                    initialValue={'draft'}
+                    initialValue={<%- blogPostStatusDefaultValue %>}
                     rules={[
                         {
                             required: true,
@@ -76,13 +87,9 @@ export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
                     ]}
                 >
                 <Select
-                    defaultValue='draft'
+                    defaultValue={<%- blogPostStatusDefaultValue %>}
+                    options={<%- blogPostStatusOptions %>}
                     style={{ width: 120 }}
-                    options={[
-                        { value: 'draft', label: 'Draft' },
-                        { value: 'published', label: 'Published' },
-                        { value: 'rejected', label: 'Rejected' },
-                    ]}
                 />
                 </Form.Item>
             </Form>

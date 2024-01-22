@@ -11,36 +11,41 @@ import { BaseRecord, IResourceComponentsProps, useMany } from "@refinedev/core";
 import { Space, Table } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../queries/blog-posts";
+import { BLOG_POSTS_QUERY } from "../queries/blog-posts";
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POSTS_LIST_QUERY } from "../queries/blog-posts";
 <%_ } _%>
 
 export default function BlogPostList() {
   const { tableProps } = useTable({
       syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-      meta: {
-          fields: BLOG_POSTS_QUERY,
-      },
+    meta: {
+      fields: BLOG_POSTS_QUERY,
+    },
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-strapi-v4") { _%>
-      meta: {
-          populate: ['category'],
-      },
+    meta: {
+        populate: ['category'],
+    },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    meta: {
+        gqlQuery: POSTS_LIST_QUERY,
+    },
 <%_ } _%>
   });
 
+<%_ if (!isGraphQL) { _%>
   const { data: categoryData, isLoading: categoryIsLoading } = useMany({
       resource: "categories",
       ids: tableProps?.dataSource?.map((item) => item?.category?.id).filter(Boolean) ?? [],
       queryOptions: {
           enabled: !!tableProps?.dataSource,
       },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-      meta: {
-          fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-      },
-<%_ } _%>
   });
+<%_ } _%>
 
   return (
       <List>
@@ -55,19 +60,21 @@ export default function BlogPostList() {
                       return <MarkdownField value={value.slice(0, 80) + '...'} />
                   }}
               />
-              <Table.Column
-                  dataIndex={["category", "id"]}
-                  title={"Category"}
-                  render={(value) =>
-                      categoryIsLoading ? (
-                          <>Loading...</>
-                      ) : (
-                          categoryData?.data?.find(
-                              (item) => item.id === value,
-                          )?.title
-                      )
-                  }
-              />
+                <Table.Column
+                    dataIndex={<%- blogPostCategoryTableField %>}
+                    title={"Category"}
+                    <%_ if (!isGraphQL) { _%>
+                    render={(value) =>
+                            categoryIsLoading ? (
+                                <>Loading...</>
+                            ) : (
+                                categoryData?.data?.find(
+                                    (item) => item.id === value,
+                                )?.title
+                            )
+                    }
+                    <%_ } _%>
+                />
               <Table.Column dataIndex="status" title={"Status"} />
               <Table.Column
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  

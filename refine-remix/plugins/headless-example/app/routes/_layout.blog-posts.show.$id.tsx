@@ -7,7 +7,10 @@ import {
 } from "@refinedev/core";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../queries/blog-posts";
+    import { BLOG_POSTS_QUERY } from "../queries/blog-posts";
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_SHOW_QUERY } from   "../queries/blog-posts";
 <%_ } _%>
 
 export default function BlogPostShow() {
@@ -24,23 +27,25 @@ export default function BlogPostShow() {
                 populate: ['category'],
             },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+            meta: {
+                gqlQuery: POST_SHOW_QUERY,
+            },
+<%_ } _%>
     });
     const { data } = queryResult;
 
     const record = data?.data;
-
+    
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useOne({
         resource: "categories",
         id: record?.category?.id || "",
         queryOptions: {
             enabled: !!record,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-        meta: {
-            fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-        },
-<%_ } _%>
     });
+<%_ } _%>
 
     return (
         <div style={{ padding: "16px" }}>
@@ -74,6 +79,9 @@ export default function BlogPostShow() {
                 </div>
                 <div style={{ marginTop: "6px" }}>
                     <h5>{"Category"}</h5>
+<%_ if (isGraphQL) { _%>  
+                    <div>{record?.category?.title}</div>
+<%_ } else { _%>
                     <div>
                         {categoryIsLoading ? (
                             <>Loading...</>
@@ -81,6 +89,7 @@ export default function BlogPostShow() {
                             <>{categoryData?.data?.title}</>
                         )}
                     </div>
+<%_ } _%>  
                 </div>
                 <div style={{ marginTop: "6px" }}>
                     <h5>{"Status"}</h5>

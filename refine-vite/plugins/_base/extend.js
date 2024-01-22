@@ -16,6 +16,11 @@ const base = {
     selectedTheme: "Blue",
     selectedTitle: undefined,
     selectedSvg: undefined,
+    isGraphQL: false,
+    blogPostCategoryTableField: "",
+    blogPostCategoryFormField: "",
+    blogPostStatusOptions: [],
+    blogPostStatusDefaultValue: "",
 };
 
 module.exports = {
@@ -181,6 +186,63 @@ module.exports = {
                 `import { Layout } from "./components/layout";`,
             );
             base._app.localImport.push(`import "./App.css";`);
+        }
+
+        // ## isGraphQL
+        if (
+            ["data-provider-hasura", "data-provider-nestjs-query"].includes(
+                dataProvider,
+            )
+        ) {
+            base.isGraphQL = true;
+        }
+        // ## blogPostCategoryFormField
+        if (dataProvider === "data-provider-hasura") {
+            base.blogPostCategoryFormField = `"category_id"`;
+        } else if (dataProvider === "data-provider-nestjs-query") {
+            base.blogPostCategoryFormField = `"categoryId"`;
+        } else {
+            base.blogPostCategoryFormField = `["category", "id"]`;
+        }
+
+        // ## blogPostCategoryTableField
+        if (base.isGraphQL) {
+            if (uiFramework === "no") {
+                base.blogPostCategoryTableField = `"category.title"`;
+            }
+            if (uiFramework === "antd") {
+                base.blogPostCategoryTableField = `['category', 'title']`;
+            }
+            if (uiFramework === "mui") {
+                base.blogPostCategoryTableField = `"category"`;
+            }
+        } else {
+            base.blogPostCategoryTableField = `category`;
+        }
+
+        // ## blogPostStatusOptions
+        if (dataProvider === "data-provider-nestjs-query") {
+            base.blogPostStatusOptions = JSON.stringify([
+                { value: "DRAFT", label: "Draft" },
+                { value: "PUBLISHED", label: "Published" },
+                { value: "REJECTED", label: "Rejected" },
+            ]);
+        } else {
+            base.blogPostStatusOptions = JSON.stringify([
+                { value: "draft", label: "Draft" },
+                { value: "published", label: "Published" },
+                { value: "rejected", label: "Rejected" },
+            ]);
+        }
+        if (uiFramework === "no" || uiFramework === "mui") {
+            base.blogPostStatusOptions = JSON.parse(base.blogPostStatusOptions);
+        }
+
+        // ## blogPostStatusDefaultValue
+        if (dataProvider === "data-provider-nestjs-query") {
+            base.blogPostStatusDefaultValue = `"DRAFT"`;
+        } else {
+            base.blogPostStatusDefaultValue = `"draft"`;
         }
 
         // ## localImport

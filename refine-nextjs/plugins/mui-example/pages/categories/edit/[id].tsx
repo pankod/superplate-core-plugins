@@ -1,43 +1,65 @@
-import { Edit, useForm } from "@refinedev/antd";
+import { Box, TextField } from "@mui/material";
 import { IResourceComponentsProps } from "@refinedev/core";
-import { Form, Input } from "antd";
-import React from "react";
+import { Edit } from "@refinedev/mui";
+import { useForm } from "@refinedev/react-hook-form";
 import { GetServerSideProps } from "next";
 <%_ if (_app.isAuthProviderCheck) { _%>
 import { authProvider } from "src/authProvider";
 <%_ } _%>
 <%_ if (_app.isNextAuthCheck) { _%>
-    import { getServerSession } from "next-auth";
-    import { authOptions } from "pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { CATEGORIES_QUERY } from "../../../src/queries/categories";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORY_EDIT_MUTATION } from "../../../src/queries/categories";
+<%_ } _%>
 
 export default function CategoryEdit() {
-    const { formProps, saveButtonProps } = useForm({
+    const {
+        saveButtonProps,
+        register,
+        formState: { errors },
+    } = useForm({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-        meta: {
-            fields: CATEGORIES_QUERY,
+        refineCoreProps: {
+            meta: {
+                fields: CATEGORIES_QUERY,
+            },
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlMutation: CATEGORY_EDIT_MUTATION,
+            },
         },
 <%_ } _%>
     });
 
     return (
         <Edit saveButtonProps={saveButtonProps}>
-            <Form {...formProps} layout="vertical">
-                <Form.Item
+            <Box
+                component="form"
+                sx={{ display: "flex", flexDirection: "column" }}
+                autoComplete="off"
+            >
+                <TextField
+                    {...register("title", {
+                        required: "This field is required",
+                    })}
+                    error={!!(errors as any)?.title}
+                    helperText={(errors as any)?.title?.message}
+                    margin="normal"
+                    fullWidth
+                    InputLabelProps={{ shrink: true }}
+                    type="text"
                     label={"Title"}
-                    name={["title"]}
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-            </Form>
+                    name="title"
+                />
+            </Box>
         </Edit>
     );
 };

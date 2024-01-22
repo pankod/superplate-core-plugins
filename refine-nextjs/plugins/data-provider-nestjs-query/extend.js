@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [
             `import dataProvider, { GraphQLClient, liveProvider } from "@refinedev/nestjs-query";`,
-            `import { createClient } from "graphql-ws";`
+            `import { createClient } from "graphql-ws";`,
         ],
         afterImport: [
             "",

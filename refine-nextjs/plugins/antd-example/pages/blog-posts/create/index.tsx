@@ -13,12 +13,20 @@ import { authProvider } from "src/authProvider";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from  "../../../src/queries/blog-posts";
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_CREATE_MUTATION, CATEGORIES_SELECT_QUERY } from  '../../../src/queries/blog-posts'
+<%_ } _%>
 
 export default function BlogPostCreate() {
     const { formProps, saveButtonProps } = useForm({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlMutation: POST_CREATE_MUTATION,
         },
 <%_ } _%>
     });
@@ -28,6 +36,11 @@ export default function BlogPostCreate() {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: CATEGORIES_SELECT_QUERY,
         },
 <%_ } _%>
     });
@@ -59,11 +72,7 @@ export default function BlogPostCreate() {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-<%_ if (answers["data-provider"] === 'data-provider-hasura') { _%>
-                    name="category_id"
-<%_ } else { _%>
-                    name={["category", "id"]}
-<%_ } _%>
+                    name={<%- blogPostCategoryFormField %>}
                     rules={[
                         {
                             required: true,
@@ -75,7 +84,7 @@ export default function BlogPostCreate() {
                 <Form.Item
                     label={"Status"}
                     name={["status"]}
-                    initialValue={'draft'}
+                    initialValue={<%- blogPostStatusDefaultValue %>}
                     rules={[
                         {
                             required: true,
@@ -83,13 +92,9 @@ export default function BlogPostCreate() {
                     ]}
                 >
                 <Select
-                    defaultValue='draft'
+                    defaultValue={<%- blogPostStatusDefaultValue %>}
+                    options={<%- blogPostStatusOptions %>}
                     style={{ width: 120 }}
-                    options={[
-                        { value: 'draft', label: 'Draft' },
-                        { value: 'published', label: 'Published' },
-                        { value: 'rejected', label: 'Rejected' },
-                    ]}
                 />
                 </Form.Item>
             </Form>

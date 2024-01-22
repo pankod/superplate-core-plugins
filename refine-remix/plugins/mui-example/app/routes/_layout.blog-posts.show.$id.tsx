@@ -10,7 +10,10 @@ import {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../queries/blog-posts";
 <%_ } _%>
-
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_SHOW_QUERY } from "../queries/blog-posts";
+<%_ } _%>
+    
 
 export default function BlogPostShow() {
     const { queryResult } = useShow({
@@ -24,24 +27,25 @@ export default function BlogPostShow() {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: POST_SHOW_QUERY,
+        },
+<%_ } _%>
     });
 
     const { data, isLoading } = queryResult;
 
     const record = data?.data;
 
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useOne({
         resource: "categories",
         id: record?.category?.id || "",
         queryOptions: {
             enabled: !!record,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-            meta: {
-                fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-            },
 <%_ } _%>
-    });
 
     return (
         <Show isLoading={isLoading}>
@@ -61,24 +65,26 @@ export default function BlogPostShow() {
                 </Typography>
                 <MarkdownField value={record?.content} />
 
-                <Typography variant="body1" fontWeight="bold">
-                    {"Category"}
-                </Typography>
-                {categoryIsLoading ? (
-                    <>Loading...</>
-                ) : (
-                    <>{categoryData?.data?.title}</>
-                )}
+<%_ if (isGraphQL) { _%>  
+                    <div>{record?.category?.title}</div>
+<%_ } else { _%>
+                    {categoryIsLoading ? (
+                        <>Loading...</>
+                    ) : (
+                        <>{categoryData?.data?.title}</>
+                    )}
+<%_ } _%>  
 
                 <Typography variant="body1" fontWeight="bold">
                     {"Status"}
                 </Typography>
                 <TextField value={record?.status} />
 
-                <Typography variant="body1" fontWeight="bold">
-                    {"CreatedAt"}
-                </Typography>
+<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
+                <DateField value={record?.created_at} />
+<%_ } else { _%>
                 <DateField value={record?.createdAt} />
+<%_ } _%>      
             </Stack>
         </Show>
     );

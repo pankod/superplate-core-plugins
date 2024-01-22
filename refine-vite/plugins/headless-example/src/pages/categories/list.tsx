@@ -5,6 +5,10 @@ import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
 import { CATEGORIES_QUERY } from './queries'
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { CATEGORIES_LIST_QUERY } from './queries'
+<%_ } _%>
+
 
 export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     const columns = React.useMemo<ColumnDef<any>[]>(
@@ -75,6 +79,13 @@ export const CategoryList: React.FC<IResourceComponentsProps> = () => {
         refineCoreProps: {
             meta: {
                 fields: CATEGORIES_QUERY,
+            },
+        },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        refineCoreProps: {
+            meta: {
+                gqlQuery: CATEGORIES_LIST_QUERY,
             },
         },
 <%_ } _%>

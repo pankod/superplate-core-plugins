@@ -10,7 +10,9 @@ import {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
-
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POST_SHOW_QUERY } from './queries'
+<%_ } _%>
 
 export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
     const { queryResult } = useShow({
@@ -24,24 +26,28 @@ export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    meta: {
+        gqlQuery: POST_SHOW_QUERY,
+    },
+<%_ } _%>
     });
 
     const { data, isLoading } = queryResult;
 
     const record = data?.data;
 
-    const { data: categoryData, isLoading: categoryIsLoading } = useOne({
-        resource: "categories",
-        id: record?.category?.id || "",
-        queryOptions: {
-            enabled: !!record,
-        },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-            meta: {
-                fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
+<%_ if (!isGraphQL) { _%>
+        const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+            resource: "categories",
+            id: record?.category?.id || "",
+            queryOptions: {
+                enabled: !!record,
             },
+        });
 <%_ } _%>
-    });
+
+
 
     return (
         <Show isLoading={isLoading}>
@@ -64,21 +70,27 @@ export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
                 <Typography variant="body1" fontWeight="bold">
                     {"Category"}
                 </Typography>
-                {categoryIsLoading ? (
-                    <>Loading...</>
-                ) : (
-                    <>{categoryData?.data?.title}</>
-                )}
-
+<%_ if (isGraphQL) { _%>  
+                    <div>{record?.category?.title}</div>
+<%_ } else { _%>
+                    {categoryIsLoading ? (
+                        <>Loading...</>
+                    ) : (
+                        <>{categoryData?.data?.title}</>
+                    )}
+<%_ } _%>  
                 <Typography variant="body1" fontWeight="bold">
                     {"Status"}
                 </Typography>
                 <TextField value={record?.status} />
-
                 <Typography variant="body1" fontWeight="bold">
                     {"CreatedAt"}
                 </Typography>
+<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
+                <DateField value={record?.created_at} />
+<%_ } else { _%>
                 <DateField value={record?.createdAt} />
+<%_ } _%>      
             </Stack>
         </Show>
     );

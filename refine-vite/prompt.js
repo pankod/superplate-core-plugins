@@ -96,8 +96,7 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["ui-framework"] !== "antd" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-nestjs-query",
+                answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
         {
@@ -118,8 +117,7 @@ module.exports = {
             ],
             skip: ({ answers }) =>
                 answers["ui-framework"] !== "mui" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-nestjs-query",
+                answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
         {
@@ -141,8 +139,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "antd" ||
                 answers["ui-framework"] === "mui" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-nestjs-query",
+                answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
         {
@@ -229,6 +226,20 @@ module.exports = {
         },
         {
             plugin: ["data-provider-hasura"],
+            when: function (answers) {
+                return [
+                    "headless-example",
+                    "antd-example",
+                    "mui-example",
+                ].every((item) => answers[item] === "no");
+            },
+            pattern: [
+                "src/pages/blog-posts/queries.ts",
+                "src/pages/categories/queries.ts",
+            ],
+        },
+        {
+            plugin: ["data-provider-nestjs-query"],
             when: function (answers) {
                 return [
                     "headless-example",

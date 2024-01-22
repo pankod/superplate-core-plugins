@@ -19,9 +19,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "pages/api/auth/[...nextauth]";
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from "../../src/queries/blog-posts";
+import { BLOG_POSTS_QUERY } from "../../src/queries/blog-posts";
 <%_ } _%>
-
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    import { POSTS_LIST_QUERY } from "../../src/queries/blog-posts";
+<%_ } _%>
     
 export default function BlogPostList() {
     const { dataGridProps } = useDataGrid({
@@ -36,20 +38,22 @@ export default function BlogPostList() {
             populate: ['category'],
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlQuery: POSTS_LIST_QUERY,
+        },
+<%_ } _%>
     });
 
+<%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useMany({
         resource: "categories",
         ids: dataGridProps?.rows?.map((item: any) => item?.category?.id).filter(Boolean) ?? [],
         queryOptions: {
             enabled: !!dataGridProps?.rows,
         },
-<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-            meta: {
-                fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
-            },
-<%_ } _%>
     });
+<%_ } _%>
 
     const columns = React.useMemo<GridColDef[]>(
         () => [
@@ -78,23 +82,28 @@ export default function BlogPostList() {
                 },
             },
             {
-                field: "category",
+                field:  <%- blogPostCategoryTableField %>,
                 flex: 1,
                 headerName: "Category",
+                minWidth: 300,
+                <%_ if (isGraphQL) { _%>
+                valueGetter: ({ row }) => {
+                      const value = row?.category?.title
+                       return value
+                },
+                <%_ } else { _%>
                 valueGetter: ({ row }) => {
                     const value = row?.category?.id;
-
                     return value;
                 },
-                minWidth: 300,
                 renderCell: function render({ value }) {
                     return categoryIsLoading ? (
                         <>Loading...</>
                     ) : (
-                        categoryData?.data?.find((item) => item.id === value)
-                            ?.title
-                    );
-                },
+                        categoryData?.data?.find((item) => item.id === value)?.title
+                        );
+                    },
+                <%_ } _%>
             },
             {
                 field: "status",
@@ -133,7 +142,11 @@ export default function BlogPostList() {
                 minWidth: 80,
             },
         ],
-        [categoryData?.data],
+        <%_ if (isGraphQL) { _%>
+            [],
+        <%_ } else { _%>
+            [categoryData],
+        <%_ } _%>
     );
 
     return (

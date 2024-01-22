@@ -46,6 +46,7 @@ export default function BlogPostShow() {
       queryOptions: {
           enabled: !!record,
       },
+  });
 <%_ } _%>
 
   return (

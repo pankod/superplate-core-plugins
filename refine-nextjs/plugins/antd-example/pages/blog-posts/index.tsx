@@ -53,6 +53,7 @@ export default function BlogPostList() {
         queryOptions: {
             enabled: !!tableProps?.dataSource,
         },
+    });
 <%_ } _%>
 
     return (

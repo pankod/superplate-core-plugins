@@ -43,7 +43,8 @@ export default function BlogPostList() {
         ids: dataGridProps?.rows?.map((item: any) => item?.category?.id).filter(Boolean) ?? [],
         queryOptions: {
             enabled: !!dataGridProps?.rows,
-        },
+        }, 
+    });
 <%_ } _%>
 
     const columns = React.useMemo<GridColDef[]>(

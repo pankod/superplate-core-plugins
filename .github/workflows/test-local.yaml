@@ -53,6 +53,7 @@ jobs:
           wait-on: "http://localhost:3000"
           group: e2e-local-vite-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FRAMEWORK: vite
           DATA_PROVIDER: ${{ matrix.data_provider }}
@@ -109,6 +110,7 @@ jobs:
           wait-on: "http://0.0.0.0:3000"
           group: e2e-local-nextjs-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FRAMEWORK: nextjs
           DATA_PROVIDER: ${{ matrix.data_provider }}
@@ -164,6 +166,7 @@ jobs:
           wait-on: "http://0.0.0.0:3000"
           group: e2e-local-remix-${{ matrix.data_provider }}-${{ matrix.ui_framework }}-${{ steps.build_step.outputs.auth_provider }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           FRAMEWORK: remix
           DATA_PROVIDER: ${{ matrix.data_provider }}

@@ -27,7 +27,7 @@ export default function CategoryList() {
     const { dataGridProps } = useDataGrid({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
-            gqlQuery: CATEGORIES_QUERY,
+            fields: CATEGORIES_QUERY,
         },
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>

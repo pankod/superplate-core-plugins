@@ -36,12 +36,7 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            if (
-                Cypress.env("AUTH_PROVIDER") === "google" &&
-                Cypress.env("FRAMEWORK") === "vite"
-            ) {
-                getIframeBody().contains("Google");
-            } else {
+            if (Cypress.env("AUTH_PROVIDER") !== "google") {
                 cy.contains("Sign in").click();
 
                 cy.url().should("not.contain", "http://localhost:3000");

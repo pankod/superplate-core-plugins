@@ -52,13 +52,20 @@ export default function BlogPostCreate() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+        refineCoreProps: {
+            meta: {
+                select: '*, categories(id,title)',
+            },
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { options: categoryOptions } = useSelect({
         resource: "categories",
-        defaultValue: blogPostsData?.category?.id,
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
                 fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
@@ -72,7 +79,7 @@ export default function BlogPostCreate() {
     });
 
     React.useEffect(() => {
-        setValue(<%- blogPostCategoryFormField %>, blogPostsData?.category?.id);
+        setValue(<%- blogPostCategoryIdFormField %>, blogPostsData?.<%- blogPostCategoryFieldName %>?.id);
     }, [categoryOptions]);
 
     return (
@@ -126,7 +133,7 @@ export default function BlogPostCreate() {
                     <label>
                         <span style={{ marginRight: "8px" }}>Category</span>
                         <select
-                        {...register(<%- blogPostCategoryFormField %>, {
+                        {...register(<%- blogPostCategoryIdFormField %>, {
                             required: "This field is required",
                         })}
                         >
@@ -144,7 +151,7 @@ export default function BlogPostCreate() {
                         <span style={{ marginRight: "8px" }}>Status</span>
                         <select
                             defaultValue={<%- blogPostStatusDefaultValue %>}
-                            {...register(<%- blogPostStatusDefaultValue %>, {
+                            {...register("status", {
                                 required: "This field is required",
                             })}
                         >

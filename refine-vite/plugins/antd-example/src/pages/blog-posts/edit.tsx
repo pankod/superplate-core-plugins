@@ -27,15 +27,20 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
         gqlMutation: POST_EDIT_MUTATION,
     },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+    meta: {
+        select: '*, categories(id,title)',
+    },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",
-        defaultValue: blogPostsData?.category?.id,
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
         queryOptions: {
-            enabled: !!blogPostsData?.category?.id,
+            enabled: !!blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
         },
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
@@ -77,8 +82,8 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-                    name={<%- blogPostCategoryFormField %>}
-                    initialValue={formProps?.initialValues?.category?.id}
+                    name={<%- blogPostCategoryIdFormField %>}
+                    initialValue={formProps?.initialValues?.<%- blogPostCategoryFieldName %>?.id}
                     rules={[
                         {
                             required: true,

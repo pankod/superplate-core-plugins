@@ -35,11 +35,18 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
         },
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-    refineCoreProps: {
-        meta: {
-            gqlMutation: POST_EDIT_MUTATION,
+        refineCoreProps: {
+            meta: {
+                gqlMutation: POST_EDIT_MUTATION,
+            },
         },
-    },
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+        refineCoreProps: {
+            meta: {
+                select: '*, categories(id,title)',
+            },
+        },
 <%_ } _%>
     });
 
@@ -47,7 +54,7 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
 
     const { autocompleteProps: categoryAutocompleteProps } = useAutocomplete({
         resource: "categories",
-        defaultValue: blogPostsData?.category?.id,
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
@@ -97,7 +104,7 @@ export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
                 />
                 <Controller
                     control={control}
-                    name={<%- blogPostCategoryFormField %>}
+                    name={<%- blogPostCategoryIdFormField %>}
                     rules={{ required: "This field is required" }}
                     // eslint-disable-next-line
                     defaultValue={null as any}

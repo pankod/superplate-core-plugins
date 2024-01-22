@@ -94,7 +94,7 @@ export default function BlogPostCreate() {
                 />
              <Controller
                     control={control}
-                    name={<%- blogPostCategoryFormField %>}
+                    name={<%- blogPostCategoryIdFormField %>}
                     rules={{ required: "This field is required" }}
                     // eslint-disable-next-line
                     defaultValue={null as any}

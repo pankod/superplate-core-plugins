@@ -34,13 +34,18 @@ export default function BlogPostEdit() {
             gqlMutation: POST_EDIT_MUTATION,
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+        meta: {
+            select: '*, categories(id,title)',
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",
-        defaultValue: blogPostsData?.category?.id,
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
@@ -80,8 +85,8 @@ export default function BlogPostEdit() {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-                    name={<%- blogPostCategoryFormField %>}
-                    initialValue={formProps?.initialValues?.category?.id}
+                    name={<%- blogPostCategoryIdFormField %>}
+                    initialValue={formProps?.initialValues?.<%- blogPostCategoryFieldName %>?.id}
                     rules={[
                         {
                             required: true,

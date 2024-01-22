@@ -35,12 +35,17 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
             gqlQuery: POSTS_LIST_QUERY,
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+        meta: {
+            select: '*, categories(id,title)',
+        },
+<%_ } _%>
     });
 
 <%_ if (!isGraphQL) { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useMany({
         resource: "categories",
-        ids: tableProps?.dataSource?.map((item) => item?.category?.id).filter(Boolean) ?? [],
+        ids: tableProps?.dataSource?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
             enabled: !!tableProps?.dataSource,
         },
@@ -70,7 +75,7 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
                                 <>Loading...</>
                             ) : (
                                 categoryData?.data?.find(
-                                    (item) => item.id === value,
+                                    (item) => item.id === value?.id,
                                 )?.title    
                             )
                     }

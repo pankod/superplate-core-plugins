@@ -72,7 +72,7 @@ export default function BlogPostCreate() {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-                    name={<%- blogPostCategoryFormField %>}
+                    name={<%- blogPostCategoryIdFormField %>}
                     rules={[
                         {
                             required: true,

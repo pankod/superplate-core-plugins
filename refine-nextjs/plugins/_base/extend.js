@@ -12,10 +12,11 @@ const base = {
     selectedTitle: undefined,
     selectedSvg: undefined,
     isGraphQL: false,
-    blogPostCategoryTableField: "",
-    blogPostCategoryFormField: "",
+    blogPostCategoryFieldName: "category",
+    blogPostCategoryTableField: `"category"`,
+    blogPostCategoryIdFormField: `["category", "id"]`,
     blogPostStatusOptions: [],
-    blogPostStatusDefaultValue: "",
+    blogPostStatusDefaultValue: `"draft"`,
 };
 
 module.exports = {
@@ -150,16 +151,25 @@ module.exports = {
             base.isGraphQL = true;
         }
 
-        // ## blogPostCategoryFormField
+        // ## blogPostCategoryFieldName
+        if (dataProvider === "data-provider-supabase") {
+            base.blogPostCategoryFieldName = "categories";
+        } else {
+            base.blogPostCategoryFieldName = "category";
+        }
+
+        // ## blogPostCategoryIdFormField
         if (dataProvider === "data-provider-hasura") {
-            base.blogPostCategoryFormField = `"category_id"`;
+            base.blogPostCategoryIdFormField = `"category_id"`;
         } else if (dataProvider === "data-provider-nestjs-query") {
-            base.blogPostCategoryFormField = `"categoryId"`;
+            base.blogPostCategoryIdFormField = `"categoryId"`;
+        } else if (dataProvider === "data-provider-supabase") {
+            base.blogPostCategoryIdFormField = `"categoryId"`;
         } else {
             if (uiFramework === "mui" || uiFramework === "no") {
-                base.blogPostCategoryFormField = `"category.id"`;
+                base.blogPostCategoryIdFormField = `"category.id"`;
             } else {
-                base.blogPostCategoryFormField = `["category", "id"]`;
+                base.blogPostCategoryIdFormField = `["category", "id"]`;
             }
         }
 
@@ -175,7 +185,11 @@ module.exports = {
                 base.blogPostCategoryTableField = `"category"`;
             }
         } else {
-            base.blogPostCategoryTableField = `"category"`;
+            if (dataProvider === "data-provider-supabase") {
+                base.blogPostCategoryFieldName = `"categories"`;
+            } else {
+                base.blogPostCategoryFieldName = `"category"`;
+            }
         }
 
         // ## blogPostStatusOptions

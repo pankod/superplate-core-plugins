@@ -66,8 +66,7 @@ export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
                 </Form.Item>
                 <Form.Item
                     label={"Category"}
-                    name={<%- blogPostCategoryFormField %>}
-                    initialValue={formProps?.initialValues?.category?.id}
+                    name={<%- blogPostCategoryIdFormField %>}
                     rules={[
                         {
                             required: true,

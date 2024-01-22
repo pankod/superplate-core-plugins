@@ -52,7 +52,7 @@ export default function BlogPostList() {
     
                         try {
                             const category = meta.categoryData?.data?.find(
-                                (item) => item.id == getValue<any>(),
+                                (item) => item.id == getValue<any>()?.id,
                             );
     
                             return category?.title ?? "Loading...";
@@ -157,12 +157,19 @@ export default function BlogPostList() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+        refineCoreProps: {
+            meta: {
+                select: '*, categories(id,title)',
+            },
+        },
+<%_ } _%>
     });
 
 <%_ if (!isGraphQL) { _%>
     const { data: categoryData } = useMany({
         resource: "categories",
-        ids: tableData?.data?.map((item) => item?.category?.id).filter(Boolean) ?? [],
+        ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
             enabled: !!tableData?.data,
         },

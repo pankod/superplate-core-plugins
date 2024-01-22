@@ -103,7 +103,7 @@ export default function BlogPostCreate() {
                     <label>
                         <span style={{ marginRight: "8px" }}>Category</span>
                         <select
-                        {...register(<%- blogPostCategoryFormField %>, {
+                        {...register(<%- blogPostCategoryIdFormField %>, {
                             required: "This field is required",
                         })}
                         >
@@ -121,7 +121,7 @@ export default function BlogPostCreate() {
                         <span style={{ marginRight: "8px" }}>Status</span>
                         <select
                             defaultValue={<%- blogPostStatusDefaultValue %>}
-                            {...register(<%- blogPostStatusDefaultValue %>, {
+                            {...register("status", {
                                 required: "This field is required",
                             })}
                         >

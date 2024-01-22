@@ -34,6 +34,11 @@ export default function BlogPostShow() {
           gqlQuery: POST_SHOW_QUERY,
       },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+      meta: {
+          select: '*, categories(id,title)',
+      },
+<%_ } _%>
   });
   const { data, isLoading } = queryResult;
 

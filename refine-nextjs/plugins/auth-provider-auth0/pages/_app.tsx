@@ -111,7 +111,7 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
             <Refine 
                 routerProvider={routerProvider}
                 <%- (_app.refineProps || []).join("\n") %>
-                <%_ if (answers["inferencer"] === 'inferencer' || answers["inferencer-headless"] === 'inferencer-headless') { _%>
+                <%_ if (_app.hasRoutes === true) { _%>
                 resources={[
                     <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                     {

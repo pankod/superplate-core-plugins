@@ -93,10 +93,9 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.url().should("be.oneOf", [
-                "http://localhost:3000/login?to=%2Fi-dont-exist",
-                "http://localhost:3000/login?to=/i-dont-exist",
-            ]);
+            cy.url().should("eq", "http://localhost:3000/i-dont-exist", {
+                timeout: 3000,
+            });
 
             cy.contains("Sorry, the page you visited does not exist.").should(
                 "exist",

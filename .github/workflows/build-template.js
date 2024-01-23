@@ -88,8 +88,6 @@ const buildTemplate = async () => {
         body,
     );
 
-    console.log({ answers: body });
-
     core.setOutput("auth_provider", AUTH_PROVIDER);
     core.setOutput("project_path", `tmp/${randomDir}/refine-project`);
 };

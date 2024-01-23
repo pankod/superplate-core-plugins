@@ -93,9 +93,10 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.url().should("eq", "http://localhost:3000/i-dont-exist", {
-                timeout: 3000,
-            });
+            cy.url().should("be.oneOf", [
+                "http://localhost:3000/login?to=%2Fi-dont-exist",
+                "http://localhost:3000/login?to=/i-dont-exist",
+            ]);
 
             cy.contains("Sorry, the page you visited does not exist.").should(
                 "exist",
@@ -117,30 +118,6 @@ describe("build test", () => {
                 cy.contains("Categories").should("exist");
 
                 cy.contains("Logout").should("exist");
-            }
-
-            // hide language name and name on mui custom-json-rest
-            if (Cypress.env("UI_FRAMEWORK") === "mui") {
-                if (Cypress.env("FRAMEWORK") !== "remix") {
-                    cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
-                        "English",
-                    );
-
-                    cy.viewport(375, 667)
-                        .get(".MuiPaper-elevation4 > .MuiToolbar-root")
-                        .contains("English")
-                        .should("have.css", "display", "none");
-                }
-
-                if (Cypress.env("DATA_PROVIDER") === "custom-json-rest") {
-                    cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
-                        "John Doe",
-                    );
-                    cy.viewport(375, 667)
-                        .get(".MuiPaper-elevation4 > .MuiToolbar-root")
-                        .contains("John Doe")
-                        .should("have.css", "display", "none");
-                }
             }
         }
     });

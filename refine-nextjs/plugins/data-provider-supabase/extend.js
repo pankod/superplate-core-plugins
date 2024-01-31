@@ -1,16 +1,16 @@
 const base = {
     _app: {
-        import: [`import { dataProvider } from "@refinedev/supabase";`],
+        import: [],
         localImport: [
-            `import { authProvider } from "src/authProvider";`,
-            `import { supabaseClient } from "src/utility";`,
+            'import { authProvider } from "@providers/auth-provider";',
+            'import { dataProvider } from "@providers/data-provider";',
+        ],
+        refineProps: [
+            "authProvider={authProvider}",
+            "dataProvider={dataProvider}",
         ],
         refineAntdImports: [],
         refineMuiImports: [],
-        refineProps: [
-            "dataProvider={dataProvider(supabaseClient)}",
-            "authProvider={authProvider}",
-        ],
     },
 };
 module.exports = {

@@ -1,7 +1,11 @@
 {
-    "dependencies": {
-        "@refinedev/antd": "^5.37.1",
-        "antd": "^5.0.5",
-        "@ant-design/icons": "^5.0.1"
-    }
+  "dependencies": {
+    "@refinedev/antd": "5.37.3-alpha.0",
+    "@ant-design/icons": "^5.0.1",
+    "antd": "^5.0.5",
+    "js-cookie": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6"
+  }
 }

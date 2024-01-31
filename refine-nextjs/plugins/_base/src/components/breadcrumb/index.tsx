@@ -1,3 +1,5 @@
+"use client";
+
 import { useBreadcrumb } from "@refinedev/core";
 import Link from "next/link";
 

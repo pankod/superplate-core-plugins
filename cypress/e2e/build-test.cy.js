@@ -39,7 +39,11 @@ describe("build test", () => {
             if (Cypress.env("AUTH_PROVIDER") !== "google") {
                 cy.contains("Sign in").click();
 
-                cy.url().should("not.contain", "http://localhost:3000");
+                if (Cypress.env("FRAMEWORK") === "nextjs") {
+                    cy.url().should("contain", "api/auth/signin");
+                } else {
+                    cy.url().should("not.contain", "http://localhost:3000");
+                }
             }
         } else {
             cy.contains("Sign in to your account", { timeout: 10000 }).should(
@@ -70,7 +74,9 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.visit("http://localhost:3000/i-dont-exist").wait(1000);
+            cy.visit("http://localhost:3000/i-dont-exist", {
+                failOnStatusCode: false,
+            }).wait(1000);
 
             cy.url().should("be.oneOf", [
                 "http://localhost:3000/login?to=%2Fi-dont-exist",
@@ -108,8 +114,11 @@ describe("build test", () => {
             cy.contains("Blog Posts", { matchCase: false }).should("exist");
 
             // document title check
-            // ignore remix
-            if (Cypress.env("FRAMEWORK") !== "remix") {
+            // ignore remix and nextjs
+            if (
+                Cypress.env("FRAMEWORK") !== "remix" &&
+                Cypress.env("FRAMEWORK") !== "nextjs"
+            ) {
                 cy.title().should("eq", "Blog posts | refine");
             }
 

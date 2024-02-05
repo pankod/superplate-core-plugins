@@ -1,5 +1,8 @@
 const base = {
     _app: {
+        nextjsInner: [],
+        nextjsImport: [],
+        refineContextProps: [],
         isNextAuthCheck: false,
         isAuthProviderCheck: false,
         hasRoutes: true,
@@ -140,6 +143,24 @@ module.exports = {
                 `import { Layout } from "@components/layout";`,
             );
             base._app.localImport.push(`import "@styles/global.css";`);
+        }
+
+        // this impementation required for getting default ColorModeContextProvider's theme from cookie
+        if (answers["ui-framework"] !== "no") {
+            base._app.nextjsInner.push(
+                `const cookieStore = cookies();`,
+                `const theme = cookieStore.get("theme");`,
+                `const defaultMode = theme?.value === "dark" ? "dark" : "light";`,
+            );
+            base._app.nextjsImport.push(
+                `import { cookies } from "next/headers";`,
+            );
+
+            // this means RefineContext is seperated from layout.tsx file to wrap with SessionProvider
+            // so we need to pass defaultMode to RefineContext
+            if (base._app.isNextAuthCheck === true) {
+                base._app.refineContextProps.push("defaultMode={defaultMode}");
+            }
         }
 
         // ## isGraphQL

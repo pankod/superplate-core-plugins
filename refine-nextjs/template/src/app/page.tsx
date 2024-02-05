@@ -3,12 +3,15 @@
 import { Suspense } from 'react'
 
 <%_ if (_app.hasRoutes === true) { _%>
-import { NavigateToResource } from "@refinedev/nextjs-router/app";
+import { NavigateToResource } from "@refinedev/nextjs-router";
+import { Authenticated } from "@refinedev/core";
 
 export default function IndexPage() {
   return (
     <Suspense>
-      <NavigateToResource />
+      <Authenticated key="home-page">
+          <NavigateToResource />
+      </Authenticated>
     </Suspense>
   )
 }
@@ -20,7 +23,7 @@ import { WelcomePage } from '@refinedev/core'
 export default function IndexPage() {
   return (
     <Suspense>
-      <NavigateToResource />
+      <WelcomePage />
     </Suspense>
   )
 }

@@ -19,11 +19,15 @@ export const ColorModeContext = createContext<ColorModeContextType>(
     {} as ColorModeContextType,
 );
 
-export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
-    children,
-}) => {
+type ColorModeContextProviderProps = {
+    defaultMode?: string;
+};
+
+export const ColorModeContextProvider: React.FC<
+    PropsWithChildren<ColorModeContextProviderProps>
+> = ({ children, defaultMode }) => {
     const [isMounted, setIsMounted] = useState(false);
-    const [mode, setMode] = useState("light");
+    const [mode, setMode] = useState(defaultMode || "light");
 
     useEffect(() => {
         setIsMounted(true);

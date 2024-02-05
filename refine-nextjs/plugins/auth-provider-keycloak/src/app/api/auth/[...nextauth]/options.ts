@@ -1,12 +1,21 @@
-import GoogleProvider from "next-auth/providers/google";
+import KeycloakProvider from "next-auth/providers/keycloak";
 
 const authOptions = {
     // Configure one or more authentication providers
     providers: [
         // !!! Should be stored in .env file.
-        GoogleProvider({
-            clientId: `1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com`,
-            clientSecret: `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`,
+        KeycloakProvider({
+            clientId: `refine-demo`,
+            clientSecret: `refine`,
+            issuer: `https://lemur-0.cloud-iam.com/auth/realms/refine`,
+            profile(profile) {
+                return {
+                    id: profile.sub,
+                    name: profile.name ?? profile.preferred_username,
+                    email: profile.email,
+                    image: `https://faces-img.xcdn.link/thumb-lorem-face-6312_thumb.jpg`,
+                };
+            },
         }),
     ],
     secret: `UItTuD1HcGXIj8ZfHUswhYdNd40Lc325R8VlxQPUoR0=`,

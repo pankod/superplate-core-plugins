@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+<%- (_app.nextjsImport || []).join("\n") _%>
 import React, { Suspense } from 'react'
 import { Refine, GitHubBanner, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 import { DevtoolsProvider } from '@providers/devtools'
@@ -9,7 +10,7 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
-import routerProvider from "@refinedev/nextjs-router/app";
+import routerProvider from "@refinedev/nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
 
@@ -40,6 +41,7 @@ export default function RootLayout({
 
     <%- (_app.innerHooks || []).join("\n") %>
     <%- (_app.inner || []).join("\n") %>
+    <%- (_app.nextjsInner || []).join("\n") %>
 
     return (
         <html lang="en">

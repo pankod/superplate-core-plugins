@@ -3,7 +3,10 @@ const base = {
         refineProps: ["notificationProvider={notificationProvider}"],
         refineMuiImports: ["notificationProvider", "RefineSnackbarProvider"],
         wrapper: [
-            ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],
+            [
+                "<ColorModeContextProvider defaultMode={defaultMode}>",
+                "</ColorModeContextProvider>",
+            ],
 
             ["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"],
         ],

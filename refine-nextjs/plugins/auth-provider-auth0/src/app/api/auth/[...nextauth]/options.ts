@@ -1,21 +1,13 @@
-import KeycloakProvider from "next-auth/providers/keycloak";
+import Auth0Provider from "next-auth/providers/auth0";
 
 const authOptions = {
     // Configure one or more authentication providers
     providers: [
         // !!! Should be stored in .env file.
-        KeycloakProvider({
-            clientId: `refine-demo`,
-            clientSecret: `refine`,
-            issuer: `https://lemur-0.cloud-iam.com/auth/realms/refine`,
-            profile(profile) {
-                return {
-                    id: profile.sub,
-                    name: profile.name ?? profile.preferred_username,
-                    email: profile.email,
-                    image: `https://faces-img.xcdn.link/thumb-lorem-face-6312_thumb.jpg`,
-                };
-            },
+        Auth0Provider({
+            clientId: `Be5vsLunFvpzPf4xfXtaMxrZUVBjjNPO`,
+            clientSecret: `08F9X84FvzpsimV16CQvlQuwJOlqk-GqQgEdcq_3xzrn1K3UHnTCcRgMCwBW7api`,
+            issuer: `https://dev-qg1ftdys736bk5i3.us.auth0.com`,
         }),
     ],
     secret: `UItTuD1HcGXIj8ZfHUswhYdNd40Lc325R8VlxQPUoR0=`,

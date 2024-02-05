@@ -1,6 +1,7 @@
 import { Metadata } from "next";
+<%- (_app.nextjsImport || []).join("\n") _%>
 import React, { Suspense } from "react";
-import { App } from "./_app";
+import { RefineContext } from "./_refine_context";
 
 export const metadata: Metadata = {
     title: "Refine",
@@ -15,11 +16,17 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    
+    <%- (_app.nextjsInner || []).join("\n") %>
+
     return (
         <html lang="en">
             <body>
                 <Suspense>
-                    <App>{children}</App>
+                    <RefineContext  <%- (_app.refineContextProps || []).join("\n") %>
+                    >
+                        {children}
+                    </RefineContext>
                 </Suspense>
             </body>
         </html>

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React from "react";
 import { Refine, GitHubBanner, AuthBindings, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
@@ -11,7 +11,8 @@ import { usePathname } from 'next/navigation'
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
-import routerProvider from "@refinedev/nextjs-router/app";
+
+import routerProvider from "@refinedev/nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
 
@@ -26,16 +27,27 @@ import routerProvider from "@refinedev/nextjs-router/app";
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
 
- 
-export const App = (props: React.PropsWithChildren) => {
+type RefineContextProps = {
+    <%_ if (answers["ui-framework"] !== 'no') { _%>
+        defaultMode?: string;
+    <%_ } _%>  
+};
+
+export const RefineContext = (props: React.PropsWithChildren<RefineContextProps>) => {
     return (
       <SessionProvider>
-        <MyApp {...props} />
+        <App {...props} />
       </SessionProvider>
     )
-}
+  }
 
-const MyApp = (props: React.PropsWithChildren) => {
+type AppProps = {
+    <%_ if (answers["ui-framework"] !== 'no') { _%>
+        defaultMode?: string;
+    <%_ } _%>  
+};
+
+const App = (props: React.PropsWithChildren<AppProps>) => {
     <%- (_app.innerHooks || []).join("\n") %>
     
     const { data, status } = useSession();
@@ -49,7 +61,7 @@ const MyApp = (props: React.PropsWithChildren) => {
 
     const authProvider: AuthBindings = {
         login: async () => {
-            signIn("google", {
+            signIn("auth0", {
                     callbackUrl: to ? to.toString() : "/",
                     redirect: true,
                 });
@@ -106,6 +118,11 @@ const MyApp = (props: React.PropsWithChildren) => {
             return null;
         },
     };
+
+
+    <%_ if (answers["ui-framework"] !== 'no') { _%>
+         const defaultMode = props?.defaultMode
+    <%_ } _%>  
 
     return (
         <>
@@ -179,7 +196,3 @@ const MyApp = (props: React.PropsWithChildren) => {
         </>
       );
 };
-
-
- 
-

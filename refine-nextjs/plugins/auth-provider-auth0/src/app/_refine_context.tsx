@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation'
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
 
-import routerProvider from "@refinedev/nextjs-router/app";
+import routerProvider from "@refinedev/nextjs-router";
 
 <%- (_app.import || []).join("\n") _%>
 

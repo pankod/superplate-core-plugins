@@ -61,7 +61,7 @@ const App = (props: React.PropsWithChildren<AppProps>) => {
 
     const authProvider: AuthBindings = {
         login: async () => {
-            signIn("auth0", {
+            signIn("keycloak", {
                     callbackUrl: to ? to.toString() : "/",
                     redirect: true,
                 });

@@ -39,11 +39,7 @@ describe("build test", () => {
             if (Cypress.env("AUTH_PROVIDER") !== "google") {
                 cy.contains("Sign in").click();
 
-                if (Cypress.env("FRAMEWORK") === "nextjs") {
-                    cy.url().should("contain", "api/auth/signin");
-                } else {
-                    cy.url().should("not.contain", "http://localhost:3000");
-                }
+                cy.url().should("not.contain", "http://localhost:3000");
             }
         } else {
             cy.contains("Sign in to your account", { timeout: 10000 }).should(

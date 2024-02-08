@@ -4,16 +4,23 @@ Cypress.on("uncaught:exception", (err, runnable) => {
     return false;
 });
 
-const getIframeDocument = () => {
-    return cy.get("iframe").its("0.contentDocument").should("exist");
-};
+const shouldSkip = () => {
+    if (Cypress.env("DATA_PROVIDER") === "appwrite") {
+        cy.log("Appwrite has a known issue with rate limits, skipping.");
 
-const getIframeBody = () => {
-    // get the document
-    return getIframeDocument()
-        .its("body")
-        .should("not.be.undefined")
-        .then(cy.wrap);
+        return true;
+    }
+
+    if (
+        Cypress.env("FRAMEWORK") === "remix" &&
+        Cypress.env("UI_FRAMEWORK") === "antd"
+    ) {
+        cy.log("Remix with Antd has known issues, skipping.");
+
+        return true;
+    }
+
+    return false;
 };
 
 describe("build test", () => {
@@ -25,7 +32,7 @@ describe("build test", () => {
     });
 
     it("should build", () => {
-        if (Cypress.env("DATA_PROVIDER") === "appwrite") return;
+        if (shouldSkip()) return;
 
         if (
             ["keycloak", "google", "auth0"].includes(

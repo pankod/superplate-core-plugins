@@ -11,9 +11,6 @@ import { ReactKeycloakProvider } from "@react-keycloak/web";
 
 
 import App from "./App";
-<%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-import "./i18n";
-<%_ } _%>
 
 <%_ if (answers["auth-provider"] === "auth-provider-keycloak") { _%>
 const keycloak = new Keycloak({
@@ -37,15 +34,9 @@ root.render(
     <%_ if (_app.hasStrictMode === true) { _%>
         <React.StrictMode>
     <%_ } _%>
-        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        <React.Suspense fallback="loading">
-        <%_ } _%>
             <%- top.join("\n") %>
                 <App />
             <%- bottom.join("\n") %>
-        <%_ if (answers[`i18n-${answers["ui-framework"]}`] !== "no") { _%>
-        </React.Suspense>
-        <%_ } _%>
     <%_ if (_app.hasStrictMode === true) { _%>
     </React.StrictMode>
     <%_ } _%>

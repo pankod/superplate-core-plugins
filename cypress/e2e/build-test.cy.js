@@ -77,7 +77,9 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.visit("http://localhost:3000/i-dont-exist").wait(1000);
+            cy.visit("http://localhost:3000/i-dont-exist", {
+                failOnStatusCode: false,
+            }).wait(1000);
 
             cy.url().should("be.oneOf", [
                 "http://localhost:3000/login?to=%2Fi-dont-exist",
@@ -115,39 +117,18 @@ describe("build test", () => {
             cy.contains("Blog Posts", { matchCase: false }).should("exist");
 
             // document title check
-            // ignore remix
-            if (Cypress.env("FRAMEWORK") !== "remix") {
-                cy.title().should("eq", "Blog Posts | refine");
+            // ignore remix and nextjs
+            if (
+                Cypress.env("FRAMEWORK") !== "remix" &&
+                Cypress.env("FRAMEWORK") !== "nextjs"
+            ) {
+                cy.title().should("eq", "Blog posts | refine");
             }
 
             if (Cypress.env("UI_FRAMEWORK") !== "no") {
                 cy.contains("Categories").should("exist");
 
                 cy.contains("Logout").should("exist");
-            }
-
-            // hide language name and name on mui custom-json-rest
-            if (Cypress.env("UI_FRAMEWORK") === "mui") {
-                if (Cypress.env("FRAMEWORK") !== "remix") {
-                    cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
-                        "English",
-                    );
-
-                    cy.viewport(375, 667)
-                        .get(".MuiPaper-elevation4 > .MuiToolbar-root")
-                        .contains("English")
-                        .should("have.css", "display", "none");
-                }
-
-                if (Cypress.env("DATA_PROVIDER") === "custom-json-rest") {
-                    cy.get(".MuiPaper-elevation4 > .MuiToolbar-root").contains(
-                        "John Doe",
-                    );
-                    cy.viewport(375, 667)
-                        .get(".MuiPaper-elevation4 > .MuiToolbar-root")
-                        .contains("John Doe")
-                        .should("have.css", "display", "none");
-                }
             }
         }
     });

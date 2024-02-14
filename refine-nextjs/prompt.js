@@ -51,11 +51,6 @@ module.exports = {
                     name: "data-provider-hasura",
                     hint: "Installs Hasura Data Provider.",
                 },
-                {
-                    message: "Medusa",
-                    name: "data-provider-medusa",
-                    hint: "Installs Medusa Data Provider.",
-                },
             ],
             default: "data-provider-custom-json-rest",
         },
@@ -80,21 +75,11 @@ module.exports = {
                     name: "mui",
                     hint: "Installs Material UI package.",
                 },
-                {
-                    message: "Mantine",
-                    name: "mantine",
-                    hint: "Installs Mantine package.",
-                },
-                {
-                    message: "Chakra UI",
-                    name: "chakra",
-                    hint: "Installs Chakra UI package.",
-                },
             ],
             default: "no",
         },
         {
-            name: "inferencer",
+            name: "antd-example",
             message: "Do you want to add example pages?:",
             type: "select",
             choices: [
@@ -105,19 +90,17 @@ module.exports = {
                 },
                 {
                     message: "Yes (Recommended)",
-                    name: "inferencer",
+                    name: "antd-example",
                     hint: "Installs example pages.",
                 },
             ],
             skip: ({ answers }) =>
-                answers["ui-framework"] === "no" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-nestjs-query",
+                answers["ui-framework"] !== "antd" ||
+                answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
         {
-            name: "inferencer-headless",
+            name: "mui-example",
             message: "Do you want to add example pages?:",
             type: "select",
             choices: [
@@ -128,15 +111,35 @@ module.exports = {
                 },
                 {
                     message: "Yes (Recommended)",
-                    name: "inferencer-headless",
+                    name: "mui-example",
                     hint: "Installs example pages.",
                 },
             ],
             skip: ({ answers }) =>
-                answers["ui-framework"] !== "no" ||
-                answers["data-provider"] === "data-provider-graphql" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-nestjs-query",
+                answers["ui-framework"] !== "mui" ||
+                answers["data-provider"] === "data-provider-graphql",
+            default: "no",
+        },
+        {
+            name: "headless-example",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "headless-example",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "antd" ||
+                answers["ui-framework"] === "mui" ||
+                answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
         {
@@ -173,110 +176,8 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-medusa" ||
-                answers["data-provider"] === "data-provider-nhost",
+                answers["data-provider"] === "data-provider-appwrite",
             default: "none",
-        },
-        {
-            name: "i18n-no",
-            message: "Do you need i18n (Internationalization) support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No i18n packages will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "i18n",
-                    hint: "Installs i18n packages.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "no",
-        },
-        {
-            name: "i18n-antd",
-            message: "Do you need i18n (Internationalization) support?",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No i18n packages will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "i18n-antd",
-                    hint: "Installs i18n packages.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "antd",
-        },
-        {
-            name: "i18n-mui",
-            message: "Do you need i18n (Internationalization) support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No i18n packages will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "i18n-mui",
-                    hint: "Installs i18n packages.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mui",
-        },
-        {
-            name: "i18n-mantine",
-            message: "Do you need i18n (Internationalization) support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No i18n packages will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "i18n-mantine",
-                    hint: "Installs i18n packages.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
-        },
-        {
-            name: "i18n-chakra",
-            message: "Do you need i18n (Internationalization) support?:",
-            type: "select",
-            pageSize: 2,
-            choices: [
-                {
-                    message: "No",
-                    name: "no",
-                    hint: "No i18n packages will be installed.",
-                },
-                {
-                    message: "Yes",
-                    name: "i18n-chakra",
-                    hint: "Installs i18n packages.",
-                },
-            ],
-            default: "no",
-            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
     ],
     ignores: [
@@ -310,16 +211,54 @@ module.exports = {
             ],
         },
         {
+            plugin: ["data-provider-hasura"],
+            when: function (answers) {
+                return [
+                    "headless-example",
+                    "antd-example",
+                    "mui-example",
+                ].every((item) => answers[item] === "no");
+            },
+            pattern: ["src/queries/blog-posts.ts", "src/queries/categories.ts"],
+        },
+        {
+            plugin: ["data-provider-nestjs-query"],
+            when: function (answers) {
+                return [
+                    "headless-example",
+                    "antd-example",
+                    "mui-example",
+                ].every((item) => answers[item] === "no");
+            },
+            pattern: ["src/queries/blog-posts.ts", "src/queries/categories.ts"],
+        },
+        {
             plugin: ["_base"],
             when: function (answers) {
-                return answers[`i18n-${answers["ui-framework"]}`] === "no";
+                if (
+                    [
+                        "data-provider-supabase",
+                        "data-provider-strapi-v4",
+                        "data-provider-appwrite",
+                    ].includes(answers["data-provider"])
+                ) {
+                    return false;
+                }
+
+                if (
+                    [
+                        "none",
+                        "auth-provider-google",
+                        "auth-provider-auth0",
+                        "auth-provider-keycloak",
+                    ].includes(answers["auth-provider"])
+                ) {
+                    return true;
+                }
+
+                return false;
             },
-            pattern: [
-                "public/locales/de/common.json",
-                "public/locales/en/common.json",
-                "public/images/flags/de.svg",
-                "public/images/flags/en.svg",
-            ],
+            pattern: ["src/components/auth-page/index.tsx"],
         },
     ],
 };

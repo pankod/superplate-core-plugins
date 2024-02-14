@@ -6,8 +6,6 @@ const base = {
             `import { supabaseClient } from "~/utility";`,
         ],
         refineAntdImports: [],
-        refineMantineImports: [],
-        refineChakraImports: [],
         refineMuiImports: [],
         refineProps: [
             "dataProvider={dataProvider(supabaseClient)}",
@@ -25,13 +23,6 @@ module.exports = {
             base._app.refineMuiImports.push("AuthPage");
         }
 
-        if (answers["ui-framework"] === "mantine") {
-            base._app.refineMantineImports.push("AuthPage");
-        }
-
-        if (answers["ui-framework"] === "chakra") {
-            base._app.refineChakraImports.push("AuthPage");
-        }
         return base;
     },
 };

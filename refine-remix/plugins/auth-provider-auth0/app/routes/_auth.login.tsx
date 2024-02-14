@@ -9,14 +9,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-import { Button, Box, Space, Text } from "@mantine/core";
-import { ThemedTitleV2 } from "@refinedev/mantine";
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-import { Button, Box, Text, VStack } from "@chakra-ui/react";
-import { ThemedTitleV2 } from "@refinedev/chakra-ui";
-<%_ } _%>
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
 import { AppIcon } from "@components/app-icon";
 <%_ } _%>
@@ -121,105 +113,6 @@ export default function Login() {
                 </Typography>
             </Box>
             </Container>
-        );
-    <%_ } _%>
-
-    <%_ if (answers["ui-framework"] === 'mantine') { _%>
-        return (
-            <Box
-            sx={{
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-            >
-            <ThemedTitleV2
-                collapsed={false}
-                wrapperStyles={{
-                fontSize: "22px",
-                }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
-            />
-            <Space h="xl" />
-
-            <form id="login-form" action="/auth/auth0/" method="post">
-                <Button
-                     style={{ width: "240px" }} 
-                    type="submit"
-                    variant="filled"
-                    onClick={() => {
-              (document.getElementById("login-form") as any).submit();
-            }}
-                >
-                    Sign in
-                </Button>
-            </form>
-            
-            <Space h="xl" />
-            <Text fz="sm" color="gray">
-                Powered by
-          <img
-            style={{ padding: "0 5px" }}
-            alt="Auth0"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
-          />
-          Auth0
-            </Text>
-            </Box>
-        );
-    <%_ } _%>
-
-    <%_ if (answers["ui-framework"] === 'chakra') { _%>
-        return (
-            <Box
-            sx={{
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-            >
-            <VStack spacing="10" align="stretch">
-                <ThemedTitleV2
-                collapsed={false}
-                wrapperStyles={{
-                    fontSize: "22px",
-                }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
-                />
-
-                <form id="login-form" action="/auth/auth0/" method="post">
-                    <Button  style={{ width: "240px" }}  colorScheme="blue" onClick={() => {
-                        (document.getElementById("login-form") as any).submit();
-                        }}>
-                        Sign in
-                    </Button>
-                </form>
-
-                <Text justifyContent="center" display="inherit" fontSize="12px" color="gray">
-                Powered by
-          <img
-            style={{ padding: "0 5px" }}
-            alt="Auth0"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fauth0-2.svg"
-          />
-          Auth0
-                </Text>
-            </VStack>
-            </Box>
         );
     <%_ } _%>
 

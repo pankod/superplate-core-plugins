@@ -1,5 +1,6 @@
-import { PropsWithChildren } from "react";
+"use client";
 
+import { PropsWithChildren } from "react";
 import { Breadcrumb } from "../breadcrumb";
 import { Menu } from "../menu";
 

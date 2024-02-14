@@ -1,5 +1,8 @@
 {
-    "dependencies": {
-        "nookies": "^2.5.2"
-    }
+  "dependencies": {
+    "js-cookie": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6"
+  }
 }

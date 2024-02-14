@@ -1,6 +1,0 @@
-{
-    "dependencies": {
-        "@refinedev/strapi-v4": "^6.0.1",
-        "axios": "^1.6.2"
-    }
-}

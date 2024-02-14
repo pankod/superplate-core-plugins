@@ -18,22 +18,6 @@ import {
     <%_ } _%>
 } from "@refinedev/mui";
  <%_ } _%>
- <%_ if (answers["ui-framework"] === 'mantine') { _%>
-import {
-    ThemedLayoutV2,
-    <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitleV2,
-    <%_ } _%>
-} from "@refinedev/mantine";
- <%_ } _%>
- <%_ if (answers["ui-framework"] === 'chakra') { _%>
-import {
-    ThemedLayoutV2,
-    <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitleV2,
-    <%_ } _%>
-} from "@refinedev/chakra-ui";
- <%_ } _%>
 
 import { Header } from "@components/header";
 import { authenticator } from "~/utils/auth.server";
@@ -100,3 +84,5 @@ export const loader = async ({ request }: LoaderArgs) => {
 
     return {};
 };
+
+

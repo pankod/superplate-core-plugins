@@ -4,9 +4,7 @@ const base = {
         refineProps: ["authProvider={authProvider}"],
         refineImports: [`Authenticated`],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
-        refineChakraImports: [],
         localImport: [
             `import { Login } from "./pages/login";`,
             `import { Register } from "./pages/register";`,

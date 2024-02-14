@@ -1,9 +1,7 @@
 import { AuthBindings } from "@refinedev/core";
 import { AuthHelper } from "@refinedev/strapi-v4";
-
-import { TOKEN_KEY, API_URL } from "./constants";
-
 import axios from "axios";
+import { API_URL, TOKEN_KEY } from "./constants";
 
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");

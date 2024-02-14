@@ -1,6 +1,9 @@
 {
-    "dependencies": {
-        "@refinedev/supabase": "^5.7.4",
-        "nookies": "^2.5.2"
-    }
+  "dependencies": {
+    "@refinedev/supabase": "^5.7.4",
+    "js-cookie": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6"
+  }
 }

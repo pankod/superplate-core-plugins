@@ -1,16 +1,15 @@
 const base = {
     _app: {
-        import: [`import { DataProvider } from "@refinedev/strapi-v4";`],
+        import: [],
         localImport: [
-            `import { authProvider, axiosInstance } from "src/authProvider";`,
-            `import { API_URL } from "src/constants";`,
+            'import { authProvider } from "@providers/auth-provider";',
+            'import { dataProvider } from "@providers/data-provider";',
         ],
         refineProps: [
             "authProvider={authProvider}",
-            "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
+            "dataProvider={dataProvider}",
         ],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
     },
 };

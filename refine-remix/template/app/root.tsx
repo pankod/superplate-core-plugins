@@ -17,12 +17,6 @@ import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { <%- (_app.refineMuiImports || []).join("\n,") _%> } from '@refinedev/mui';
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'mantine') { _%>
-    import { <%- (_app.refineMantineImports || []).join("\n,") _%> } from '@refinedev/mantine';
-<%_ } _%>
-<%_ if (answers["ui-framework"] === 'chakra') { _%>
-    import { <%- (_app.refineChakraImports || []).join("\n,") _%> } from '@refinedev/chakra-ui';
-<%_ } _%>
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import routerProvider, { UnsavedChangesNotifier } from "@refinedev/remix-router";
 
@@ -66,7 +60,7 @@ export default function App() {
                         <Refine
                             routerProvider={routerProvider}
                             <%- (_app.refineProps || []).join("\n") %>
-                            <%_ if (answers["inferencer"] === 'inferencer' || answers["inferencer-headless"] === 'inferencer-headless') { _%>
+                            <%_ if (_app.hasRoutes === true) { _%>
                             resources={[
                                 <%_ if (answers["data-provider"] === 'data-provider-strapi-v4') { _%>
                                 {

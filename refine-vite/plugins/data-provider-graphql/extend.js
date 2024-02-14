@@ -14,8 +14,6 @@ const base = {
         refineImports: [],
         refineAntdImports: [],
         refineMuiImports: [],
-        refineMantineImports: [],
-        refineChakraImports: [],
     },
 };
 module.exports = {

@@ -10,7 +10,6 @@ const base = {
             "dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}",
         ],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
     },
 };
@@ -24,9 +23,6 @@ module.exports = {
             base._app.refineMuiImports.push("AuthPage");
         }
 
-        if (answers["ui-framework"] === "mantine") {
-            base._app.refineMantineImports.push("AuthPage");
-        }
         return base;
     },
 };

@@ -1,24 +1,31 @@
 const base = {
     _app: {
+        nextjsInner: [],
+        nextjsImport: [],
+        refineContextProps: [],
         isNextAuthCheck: false,
         isAuthProviderCheck: false,
+        hasRoutes: true,
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
-        refineChakraImports: [],
         localImport: [],
         authPageProps: [],
     },
     selectedTheme: "Blue",
     selectedTitle: undefined,
     selectedSvg: undefined,
+    isGraphQL: false,
+    blogPostCategoryFieldName: "category",
+    blogPostCategoryTableField: `"category"`,
+    blogPostCategoryIdFormField: `["category", "id"]`,
+    blogPostStatusOptions: [],
+    blogPostStatusDefaultValue: `"draft"`,
 };
 
 module.exports = {
     extend(answers) {
         const uiFramework = answers["ui-framework"];
         const dataProvider = answers["data-provider"];
-        const inferencer = answers["inferencer"];
         const authProvider = answers["auth-provider"];
 
         // ## isNextAuthCheck
@@ -50,8 +57,8 @@ module.exports = {
             defaultValues = `email: "info@refine.dev", password: "refine-supabase"`;
         }
 
-        // mui || chakra
-        if (uiFramework === "mui" || uiFramework === "chakra") {
+        // mui
+        if (uiFramework === "mui") {
             defaultValuePropsName = "defaultValues";
         }
 
@@ -84,7 +91,15 @@ module.exports = {
                 `,
             ];
         }
-        // ## authPageProps
+
+        // ## hasRoutes
+        if (
+            ["headless-example", "antd-example", "mui-example"].every(
+                (item) => answers[item] === "no",
+            )
+        ) {
+            base._app.hasRoutes = false;
+        }
 
         // ## selected theme
         const themeFromAnswers = answers["theme"];
@@ -109,14 +124,8 @@ module.exports = {
             if (answers["ui-framework"] === "antd") {
                 base._app.refineAntdImports.push("ThemedTitleV2");
             }
-            if (answers["ui-framework"] === "mantine") {
-                base._app.refineMantineImports.push("ThemedTitleV2");
-            }
             if (answers["ui-framework"] === "mui") {
                 base._app.refineMuiImports.push("ThemedTitleV2");
-            }
-            if (answers["ui-framework"] === "chakra") {
-                base._app.refineChakraImports.push("ThemedTitleV2");
             }
         }
 
@@ -134,6 +143,99 @@ module.exports = {
                 `import { Layout } from "@components/layout";`,
             );
             base._app.localImport.push(`import "@styles/global.css";`);
+        }
+
+        // this impementation required for getting default ColorModeContextProvider's theme from cookie
+        if (answers["ui-framework"] !== "no") {
+            base._app.nextjsInner.push(
+                `const cookieStore = cookies();`,
+                `const theme = cookieStore.get("theme");`,
+                `const defaultMode = theme?.value === "dark" ? "dark" : "light";`,
+            );
+            base._app.nextjsImport.push(
+                `import { cookies } from "next/headers";`,
+            );
+
+            // this means RefineContext is seperated from layout.tsx file to wrap with SessionProvider
+            // so we need to pass defaultMode to RefineContext
+            if (base._app.isNextAuthCheck === true) {
+                base._app.refineContextProps.push("defaultMode={defaultMode}");
+            }
+        }
+
+        // ## isGraphQL
+        if (
+            ["data-provider-hasura", "data-provider-nestjs-query"].includes(
+                dataProvider,
+            )
+        ) {
+            base.isGraphQL = true;
+        }
+
+        // ## blogPostCategoryFieldName
+        if (dataProvider === "data-provider-supabase") {
+            base.blogPostCategoryFieldName = "categories";
+        } else {
+            base.blogPostCategoryFieldName = "category";
+        }
+
+        // ## blogPostCategoryIdFormField
+        if (dataProvider === "data-provider-hasura") {
+            base.blogPostCategoryIdFormField = `"category_id"`;
+        } else if (dataProvider === "data-provider-nestjs-query") {
+            base.blogPostCategoryIdFormField = `"categoryId"`;
+        } else if (dataProvider === "data-provider-supabase") {
+            base.blogPostCategoryIdFormField = `"categoryId"`;
+        } else {
+            if (uiFramework === "mui" || uiFramework === "no") {
+                base.blogPostCategoryIdFormField = `"category.id"`;
+            } else {
+                base.blogPostCategoryIdFormField = `["category", "id"]`;
+            }
+        }
+
+        // ## blogPostCategoryTableField
+        if (base.isGraphQL) {
+            if (uiFramework === "no") {
+                base.blogPostCategoryTableField = `"category.title"`;
+            }
+            if (uiFramework === "antd") {
+                base.blogPostCategoryTableField = `['category', 'title']`;
+            }
+            if (uiFramework === "mui") {
+                base.blogPostCategoryTableField = `"category"`;
+            }
+        } else {
+            if (dataProvider === "data-provider-supabase") {
+                base.blogPostCategoryTableField = `"categories"`;
+            } else {
+                base.blogPostCategoryTableField = `"category"`;
+            }
+        }
+
+        // ## blogPostStatusOptions
+        if (dataProvider === "data-provider-nestjs-query") {
+            base.blogPostStatusOptions = JSON.stringify([
+                { value: "DRAFT", label: "Draft" },
+                { value: "PUBLISHED", label: "Published" },
+                { value: "REJECTED", label: "Rejected" },
+            ]);
+        } else {
+            base.blogPostStatusOptions = JSON.stringify([
+                { value: "draft", label: "Draft" },
+                { value: "published", label: "Published" },
+                { value: "rejected", label: "Rejected" },
+            ]);
+        }
+        if (uiFramework === "no" || uiFramework === "mui") {
+            base.blogPostStatusOptions = JSON.parse(base.blogPostStatusOptions);
+        }
+
+        // ## blogPostStatusDefaultValue
+        if (dataProvider === "data-provider-nestjs-query") {
+            base.blogPostStatusDefaultValue = `"DRAFT"`;
+        } else {
+            base.blogPostStatusDefaultValue = `"draft"`;
         }
 
         return base;

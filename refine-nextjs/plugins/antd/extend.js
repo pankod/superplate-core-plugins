@@ -2,21 +2,19 @@ const base = {
     _app: {
         refineProps: ["notificationProvider={useNotificationProvider}"],
         import: [
-            `import { App as AntdApp } from "antd"`,
+            `import { AntdRegistry } from "@ant-design/nextjs-registry";`,
             'import "@refinedev/antd/dist/reset.css";',
         ],
-        refineAntdImports: [
-            "useNotificationProvider",
-            "ThemedLayoutV2",
-            "ThemedSiderV2",
-        ],
+        refineAntdImports: ["useNotificationProvider"],
         wrapper: [
-            [`<ColorModeContextProvider>`, `</ColorModeContextProvider>`],
-            [`<AntdApp>`, `</AntdApp>`],
+            [`<AntdRegistry>`, `</AntdRegistry>`],
+            [
+                `<ColorModeContextProvider defaultMode={defaultMode}>`,
+                `</ColorModeContextProvider>`,
+            ],
         ],
         localImport: [
-            `import { Header } from "@components/header"`,
-            `import { ColorModeContextProvider } from "@contexts";`,
+            `import { ColorModeContextProvider } from "@contexts/color-mode";`,
         ],
     },
 };

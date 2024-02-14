@@ -3,9 +3,7 @@ const base = {
         localImport: ['import { authProvider } from "~/authProvider";'],
         refineProps: ["authProvider={authProvider}"],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
-        refineChakraImports: [],
     },
 };
 

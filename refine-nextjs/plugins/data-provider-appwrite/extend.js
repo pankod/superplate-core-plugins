@@ -1,24 +1,17 @@
 const base = {
     _app: {
-        import: [
-            `import { dataProvider, liveProvider } from "@refinedev/appwrite";`,
-        ],
+        import: [],
         localImport: [
-            `import { authProvider } from "src/authProvider";`,
-            `import { appwriteClient } from "src/utility";`,
+            'import { authProvider } from "@providers/auth-provider";',
+            'import { dataProvider, liveProvider } from "@providers/data-provider";',
         ],
         refineProps: [
-            `dataProvider={dataProvider(appwriteClient, {
-                databaseId: "database",
-            })}`,
-            `liveProvider={liveProvider(appwriteClient, {
-                databaseId: "database",
-            })}`,
+            `dataProvider={dataProvider}`,
+            `liveProvider={liveProvider}`,
             `authProvider={authProvider}`,
         ],
         refineOptions: [`liveMode: "auto",`],
         refineAntdImports: [],
-        refineMantineImports: [],
         refineMuiImports: [],
     },
 };

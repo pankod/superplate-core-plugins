@@ -1,7 +1,10 @@
 {
-    "dependencies": {
-        "@refinedev/strapi-v4": "^6.0.1",
-        "axios": "^1.6.2",
-        "nookies": "^2.5.2"
-    }
+  "dependencies": {
+    "@refinedev/strapi-v4": "^6.0.1",
+    "axios": "^1.6.2",
+    "js-cookie": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6"
+  }
 }

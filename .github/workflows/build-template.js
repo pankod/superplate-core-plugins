@@ -29,6 +29,12 @@ const buildTemplate = async () => {
         hasura: ["keycloak", "custom"],
     };
 
+    const uiFrameworkToExampleMap = {
+        antd: "antd-example",
+        mui: "mui-example",
+        no: "headless-example",
+    };
+
     let AUTH_PROVIDER = dataProviderMap[DATA_PROVIDER];
 
     if (Array.isArray(AUTH_PROVIDER)) {
@@ -55,11 +61,9 @@ const buildTemplate = async () => {
             icon: "refine.svg",
             "data-provider": `data-provider-${DATA_PROVIDER}`,
             "ui-framework": UI_FRAMEWORK,
-            [UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer"]:
-                UI_FRAMEWORK === "no" ? "inferencer-headless" : "inferencer",
+            [uiFrameworkToExampleMap[UI_FRAMEWORK]]:
+                uiFrameworkToExampleMap[UI_FRAMEWORK],
             "auth-provider": `auth-provider-${AUTH_PROVIDER}`,
-            [`i18n-${UI_FRAMEWORK}`]:
-                UI_FRAMEWORK === "no" ? "i18n" : `i18n-${UI_FRAMEWORK}`,
         },
     };
 

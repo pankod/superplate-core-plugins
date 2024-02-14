@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@refinedev/hasura": "^6.4.12",
-    "graphql": "^15.6.1",
-    "graphql-request": "^5.2.0",
-    "graphql-tag": "^2.12.6"
-  }
-}

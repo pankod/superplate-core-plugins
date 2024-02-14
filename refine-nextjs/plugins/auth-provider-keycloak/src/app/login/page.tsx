@@ -13,8 +13,8 @@ import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 import { useLogin } from "@refinedev/core";
     
-<%_ if (answers["ui-framework"] !== "no" && (selectedSvg || selectedTitle)) { _%>
-import { AppIcon } from "src/components/app-icon";
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+import { AppIcon } from "@components/app-icon";
 <%_ } _%>
 
 export default function Login() {

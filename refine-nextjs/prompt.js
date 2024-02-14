@@ -192,9 +192,8 @@ module.exports = {
             plugin: ["_base"],
             when: function (answers) {
                 return (
-                    answers["ui-framework"] !== "no" &&
-                    (typeof answers["title"] !== "undefined" ||
-                        typeof answers["svg"] !== "undefined")
+                    typeof answers["svg"] === "undefined" ||
+                    answers["ui-framework"] === "no"
                 );
             },
             pattern: ["src/components/app-icon/index.tsx"],

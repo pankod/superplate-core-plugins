@@ -18,7 +18,7 @@ import {
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "app/components/app-icon";
+import { AppIcon } from "@components/app-icon";
 <%_ } _%>
 
 export default function ForgotPassword() {

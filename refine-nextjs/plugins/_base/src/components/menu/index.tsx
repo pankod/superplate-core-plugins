@@ -1,3 +1,5 @@
+'use client'
+
 import {
     <%_ if (_app.isAuthProviderCheck || _app.isNextAuthCheck) { _%>
      useLogout, 

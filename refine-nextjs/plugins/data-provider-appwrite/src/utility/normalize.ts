@@ -1,3 +1,5 @@
+"use client";
+
 import { UploadFile } from "antd";
 
 interface UploadResponse {

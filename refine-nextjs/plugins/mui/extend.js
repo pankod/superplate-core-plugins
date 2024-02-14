@@ -1,25 +1,18 @@
 const base = {
     _app: {
         refineProps: ["notificationProvider={notificationProvider}"],
-        refineMuiImports: [
-            "notificationProvider",
-            "RefineSnackbarProvider",
-            "ThemedLayoutV2",
-        ],
+        refineMuiImports: ["notificationProvider", "RefineSnackbarProvider"],
         wrapper: [
-            ["<ColorModeContextProvider>", "</ColorModeContextProvider>"],
-            ["<CssBaseline />"],
             [
-                `<GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />`,
+                "<ColorModeContextProvider defaultMode={defaultMode}>",
+                "</ColorModeContextProvider>",
             ],
+
             ["<RefineSnackbarProvider>", "</RefineSnackbarProvider>"],
         ],
-        import: [
-            `import GlobalStyles from "@mui/material/GlobalStyles";`,
-            `import CssBaseline from "@mui/material/CssBaseline";`,
-        ],
+        import: [],
         localImport: [
-            'import { ColorModeContextProvider } from "@contexts";',
+            'import { ColorModeContextProvider } from "@contexts/color-mode";',
             'import { Header } from "@components/header";',
         ],
     },

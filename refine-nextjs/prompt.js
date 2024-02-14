@@ -176,8 +176,7 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["data-provider"] === "data-provider-supabase" ||
                 answers["data-provider"] === "data-provider-strapi-v4" ||
-                answers["data-provider"] === "data-provider-appwrite" ||
-                answers["data-provider"] === "data-provider-nhost",
+                answers["data-provider"] === "data-provider-appwrite",
             default: "none",
         },
     ],
@@ -232,6 +231,34 @@ module.exports = {
                 ].every((item) => answers[item] === "no");
             },
             pattern: ["src/queries/blog-posts.ts", "src/queries/categories.ts"],
+        },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                if (
+                    [
+                        "data-provider-supabase",
+                        "data-provider-strapi-v4",
+                        "data-provider-appwrite",
+                    ].includes(answers["data-provider"])
+                ) {
+                    return false;
+                }
+
+                if (
+                    [
+                        "none",
+                        "auth-provider-google",
+                        "auth-provider-auth0",
+                        "auth-provider-keycloak",
+                    ].includes(answers["auth-provider"])
+                ) {
+                    return true;
+                }
+
+                return false;
+            },
+            pattern: ["src/components/auth-page/index.tsx"],
         },
     ],
 };

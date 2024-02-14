@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
     
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+<%_ if (answers["ui-framework"] !== "no" && (selectedSvg || selectedTitle)) { _%>
 import { AppIcon } from "src/components/app-icon";
 <%_ } _%>
 

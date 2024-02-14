@@ -19,7 +19,7 @@
   import { AuthPage as AuthPageBase } from "@refinedev/core";
   <%_ } _%>
   import type { AuthPageProps } from '@refinedev/core'
-  <%_ if (selectedSvg && answers["ui-framework"] !== "no") { _%>
+  <%_ if (answers["ui-framework"] !== "no" && (selectedSvg || selectedTitle)) { _%>
   import { AppIcon } from '@components/app-icon'
   <%_ } _%>
   

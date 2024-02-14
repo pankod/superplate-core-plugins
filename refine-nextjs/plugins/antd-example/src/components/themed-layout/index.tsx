@@ -8,6 +8,9 @@ import {
         <%_ } _%>
 } from "@refinedev/antd";
 import React from "react";
+<%_ if (selectedSvg) { _%>
+    import { AppIcon } from "@components/app-icon";
+<%_ } _%>
 
 export const ThemedLayout = ({ children }: React.PropsWithChildren) => {
     return (

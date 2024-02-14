@@ -13,7 +13,7 @@ import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 import { useLogin } from "@refinedev/core";
 <%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "src/components/app-icon";
+import { AppIcon } from "@components/app-icon";
 <%_ } _%>
 
 

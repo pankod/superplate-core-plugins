@@ -1,5 +1,4 @@
 import {
-    IResourceComponentsProps,
     useNavigation,
     useOne,
     useResource,

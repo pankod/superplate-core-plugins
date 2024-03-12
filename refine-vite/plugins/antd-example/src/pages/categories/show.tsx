@@ -1,5 +1,5 @@
 import { NumberField, Show, TextField } from "@refinedev/antd";
-import { IResourceComponentsProps, useShow } from "@refinedev/core";
+import { useShow } from "@refinedev/core";
 import { Typography } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -11,7 +11,7 @@ import React from "react";
 
 const { Title } = Typography;
 
-export const CategoryShow: React.FC<IResourceComponentsProps> = () => {
+export const CategoryShow = () => {
     const { queryResult } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {

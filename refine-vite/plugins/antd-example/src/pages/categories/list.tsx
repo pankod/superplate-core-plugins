@@ -5,7 +5,7 @@ import {
     ShowButton,
     useTable,
 } from "@refinedev/antd";
-import { BaseRecord, IResourceComponentsProps } from "@refinedev/core";
+import { BaseRecord } from "@refinedev/core";
 import { Space, Table } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -16,7 +16,7 @@ import React from "react";
 <%_ } _%>
 
 
-export const CategoryList: React.FC<IResourceComponentsProps> = () => {
+export const CategoryList = () => {
     const { tableProps } = useTable({
         syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

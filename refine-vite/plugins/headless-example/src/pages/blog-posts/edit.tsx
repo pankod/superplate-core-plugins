@@ -1,8 +1,4 @@
-import {
-    IResourceComponentsProps,
-    useNavigation,
-    useSelect,
-} from "@refinedev/core";
+import { useNavigation, useSelect } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -12,7 +8,7 @@ import React from "react";
     import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostEdit = () => {
     const { list } = useNavigation();
 
     const {

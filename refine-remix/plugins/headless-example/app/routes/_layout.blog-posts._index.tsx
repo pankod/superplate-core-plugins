@@ -1,6 +1,5 @@
 import {
     GetManyResponse,
-    IResourceComponentsProps,
     useMany,
     useNavigation,
 } from "@refinedev/core";

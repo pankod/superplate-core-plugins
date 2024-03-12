@@ -1,4 +1,4 @@
-import { IResourceComponentsProps, useNavigation } from "@refinedev/core";
+import { useNavigation } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

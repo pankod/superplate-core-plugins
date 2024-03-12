@@ -1,6 +1,5 @@
 import { Autocomplete, Box, Select, TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Edit, useAutocomplete } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";

@@ -1,6 +1,5 @@
 import { Autocomplete, Box, Select, TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Edit, useAutocomplete } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
@@ -12,7 +11,7 @@ import { Controller } from "react-hook-form";
     import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostEdit: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostEdit = () => {
     const {
         saveButtonProps,
         refineCore: { queryResult, formLoading },

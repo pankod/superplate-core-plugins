@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberField, Show, TextField } from "@refinedev/antd";
-import { IResourceComponentsProps, useShow } from "@refinedev/core";
+import { useShow } from "@refinedev/core";
 import { Typography } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

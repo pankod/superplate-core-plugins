@@ -9,7 +9,7 @@ import {
     ShowButton,
     useTable,
 } from "@refinedev/antd";
-import { BaseRecord, IResourceComponentsProps, useMany } from "@refinedev/core";
+import { BaseRecord, useMany } from "@refinedev/core";
 import { Space, Table } from "antd";
 import React from "react";
     

@@ -1,5 +1,4 @@
 import { Box, TextField } from "@mui/material";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -9,7 +8,7 @@ import { useForm } from "@refinedev/react-hook-form";
     import { CATEGORY_EDIT_MUTATION } from './queries'
 <%_ } _%>
 
-export const CategoryEdit: React.FC<IResourceComponentsProps> = () => {
+export const CategoryEdit = () => {
     const {
         saveButtonProps,
         register,

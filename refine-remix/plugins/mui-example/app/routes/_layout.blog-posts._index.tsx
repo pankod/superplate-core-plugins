@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { IResourceComponentsProps, useMany } from "@refinedev/core";
+import { useMany } from "@refinedev/core";
 import {
     DateField,
     DeleteButton,

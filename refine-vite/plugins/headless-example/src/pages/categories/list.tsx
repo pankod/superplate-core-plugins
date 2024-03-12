@@ -1,4 +1,4 @@
-import { IResourceComponentsProps, useNavigation } from "@refinedev/core";
+import { useNavigation } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
 import React from "react";
@@ -10,7 +10,7 @@ import { CATEGORIES_QUERY } from './queries'
 <%_ } _%>
 
 
-export const CategoryList: React.FC<IResourceComponentsProps> = () => {
+export const CategoryList = () => {
     const columns = React.useMemo<ColumnDef<any>[]>(
         () => [
             {

@@ -1,6 +1,5 @@
 import {
     GetManyResponse,
-    IResourceComponentsProps,
     useMany,
     useNavigation,
 } from "@refinedev/core";
@@ -14,7 +13,7 @@ import { BLOG_POSTS_QUERY } from './queries'
     import { POSTS_LIST_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostList = () => {
     const columns = React.useMemo<ColumnDef<any>[]>(
         () => [
             {

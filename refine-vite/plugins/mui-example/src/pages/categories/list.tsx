@@ -1,5 +1,4 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { IResourceComponentsProps } from "@refinedev/core";
 import {
     DeleteButton,
     EditButton,
@@ -15,7 +14,7 @@ import React from "react";
     import { CATEGORIES_LIST_QUERY } from './queries'
 <%_ } _%>
 
-export const CategoryList: React.FC<IResourceComponentsProps> = () => {
+export const CategoryList = () => {
     const { dataGridProps } = useDataGrid({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {

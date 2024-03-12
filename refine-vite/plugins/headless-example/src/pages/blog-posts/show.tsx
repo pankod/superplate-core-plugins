@@ -1,5 +1,4 @@
 import {
-    IResourceComponentsProps,
     useNavigation,
     useOne,
     useResource,
@@ -13,7 +12,7 @@ import React from "react";
     import { POST_SHOW_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostShow = () => {
     const { edit, list } = useNavigation();
     const { id } = useResource();
     const { queryResult } = useShow({

@@ -1,7 +1,6 @@
 "use client";
 
 import { Edit, useForm, useSelect } from "@refinedev/antd";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Form, Input, Select } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

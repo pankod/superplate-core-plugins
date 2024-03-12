@@ -1,5 +1,4 @@
 import {
-    IResourceComponentsProps,
     useNavigation,
     useResource,
     useShow,
@@ -12,7 +11,7 @@ import React from "react";
     import { CATEGORY_SHOW_QUERY } from './queries'
 <%_ } _%>
 
-export const CategoryShow: React.FC<IResourceComponentsProps> = () => {
+export const CategoryShow = () => {
     const { edit, list } = useNavigation();
     const { id } = useResource();
     const { queryResult } = useShow({

@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { IResourceComponentsProps, useMany } from "@refinedev/core";
+import { useMany } from "@refinedev/core";
 import {
     DateField,
     DeleteButton,
@@ -18,7 +18,7 @@ import React from "react";
 <%_ } _%>
 
     
-export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostList = () => {
     const { dataGridProps } = useDataGrid({
         syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

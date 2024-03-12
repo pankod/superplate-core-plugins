@@ -1,8 +1,4 @@
-import {
-    IResourceComponentsProps,
-    useNavigation,
-    useSelect,
-} from "@refinedev/core";
+import { useNavigation, useSelect } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -13,7 +9,7 @@ import React from "react";
 <%_ } _%>
 
 
-export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostCreate = () => {
     const { list } = useNavigation();
 
     const {

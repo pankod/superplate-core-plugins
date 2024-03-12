@@ -7,7 +7,7 @@ import {
     ShowButton,
     useTable,
 } from "@refinedev/antd";
-import { BaseRecord, IResourceComponentsProps, useMany } from "@refinedev/core";
+import { BaseRecord, useMany } from "@refinedev/core";
 import { Space, Table } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -17,7 +17,7 @@ import { BLOG_POSTS_QUERY } from './queries'
     import { POSTS_LIST_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostList = () => {
     const { tableProps } = useTable({
         syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

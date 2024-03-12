@@ -2,7 +2,7 @@
 
 
 import { Stack, Typography } from "@mui/material";
-import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
+import { useOne, useShow } from "@refinedev/core";
 import {
     DateField,
     MarkdownField,

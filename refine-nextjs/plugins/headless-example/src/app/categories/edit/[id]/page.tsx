@@ -1,6 +1,6 @@
 "use client"
 
-import { IResourceComponentsProps, useNavigation } from "@refinedev/core";
+import { useNavigation } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
 import { Controller } from "react-hook-form";

@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { IResourceComponentsProps, useShow } from "@refinedev/core";
+import { useShow } from "@refinedev/core";
 import {
     NumberField,
     Show,
@@ -12,7 +12,7 @@ import {
     import { CATEGORY_SHOW_QUERY } from './queries'
 <%_ } _%>
 
-export const CategoryShow: React.FC<IResourceComponentsProps> = () => {
+export const CategoryShow = () => {
     const { queryResult } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {

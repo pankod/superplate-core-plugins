@@ -1,7 +1,7 @@
 "use client"
 
 import { Stack, Typography } from "@mui/material";
-import { IResourceComponentsProps, useShow } from "@refinedev/core";
+import { useShow } from "@refinedev/core";
 import {
     NumberField,
     Show,

@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, TextField } from "@mui/material";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Create } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

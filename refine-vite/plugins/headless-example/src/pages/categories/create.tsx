@@ -1,4 +1,4 @@
-import { IResourceComponentsProps, useNavigation } from "@refinedev/core";
+import { useNavigation } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -8,7 +8,7 @@ import React from "react";
     import { CATEGORY_CREATE_MUTATION } from './queries'
 <%_ } _%>
 
-export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
+export const CategoryCreate = () => {
     const { list } = useNavigation();
 
     const {

@@ -1,5 +1,4 @@
 import { Autocomplete, Box, MenuItem, Select, TextField } from '@mui/material'
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Create, useAutocomplete } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import React from "react";
@@ -11,7 +10,7 @@ import { Controller } from "react-hook-form";
     import { POST_CREATE_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostCreate = () => {
     const {
         saveButtonProps,
         refineCore: {  formLoading },

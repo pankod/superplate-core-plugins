@@ -1,5 +1,4 @@
 import { Create, useForm, useSelect } from "@refinedev/antd";
-import { IResourceComponentsProps } from "@refinedev/core";
 import MDEditor from "@uiw/react-md-editor";
 import { Form, Input, Select } from "antd";
 import React from "react";
@@ -10,7 +9,7 @@ import React from "react";
     import { POST_CREATE_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostCreate: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostCreate = () => {
     const { formProps, saveButtonProps } = useForm({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {

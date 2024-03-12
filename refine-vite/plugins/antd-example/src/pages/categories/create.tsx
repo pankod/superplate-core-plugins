@@ -1,5 +1,4 @@
 import { Create, useForm } from "@refinedev/antd";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Form, Input } from "antd";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -9,7 +8,7 @@ import React from "react";
     import { CATEGORY_CREATE_MUTATION } from './queries'
 <%_ } _%>
 
-export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
+export const CategoryCreate = () => {
     const { formProps, saveButtonProps } = useForm({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {

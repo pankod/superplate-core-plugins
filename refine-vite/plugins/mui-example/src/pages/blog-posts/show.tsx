@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
+import { useOne, useShow } from "@refinedev/core";
 import {
     DateField,
     MarkdownField,
@@ -14,7 +14,7 @@ import {
     import { POST_SHOW_QUERY } from './queries'
 <%_ } _%>
 
-export const BlogPostShow: React.FC<IResourceComponentsProps> = () => {
+export const BlogPostShow = () => {
     const { queryResult } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {

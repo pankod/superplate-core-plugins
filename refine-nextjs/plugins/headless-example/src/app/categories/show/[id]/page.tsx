@@ -1,11 +1,6 @@
 "use client"
 
-import {
-    IResourceComponentsProps,
-    useNavigation,
-    useResource,
-    useShow,
-} from "@refinedev/core";
+import { useNavigation, useResource, useShow } from "@refinedev/core";
 import React from "react";
 import { Controller } from "react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

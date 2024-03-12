@@ -1,5 +1,4 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { IResourceComponentsProps } from "@refinedev/core";
 import {
     DeleteButton,
     EditButton,

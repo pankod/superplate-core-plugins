@@ -1,7 +1,6 @@
 "use client"
 
 import {
-    IResourceComponentsProps,
     useNavigation,
     useOne,
     useResource,

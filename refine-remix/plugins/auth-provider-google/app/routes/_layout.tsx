@@ -4,26 +4,17 @@ import { redirect } from "@remix-run/node";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import {
     ThemedLayoutV2,
-    <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitleV2,
-    <%_ } _%>
     ThemedSiderV2,
 } from "@refinedev/antd";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'mui') { _%>
 import {
     ThemedLayoutV2,
-    <%_ if (selectedSvg || selectedTitle) { _%>
-    ThemedTitleV2,
-    <%_ } _%>
 } from "@refinedev/mui";
 <%_ } _%>
 
 import { Header } from "@components/header";
 import { authenticator } from "~/utils/auth.server";
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "@components/app-icon";
-<%_ } _%>
 <%_ if (answers["ui-framework"] === 'no') { _%>
 import { Layout } from "~/components/layout";
 <%_ } _%>
@@ -40,19 +31,6 @@ export default function BaseLayout() {
                     Header={() => <Header sticky />}
                     <%_ if (answers["ui-framework"] === 'antd') { _%>
                     Sider={(props) => <ThemedSiderV2 {...props} fixed />}
-                    <%_ } _%>
-                    <%_ if (selectedSvg || selectedTitle) { _%>
-                    Title={({ collapsed }) => (
-                        <ThemedTitleV2
-                            collapsed={collapsed}
-                        <%_ if (selectedTitle) { _%>
-                            text="<%= selectedTitle %>"
-                        <%_ } _%>
-                        <%_ if (selectedSvg) { _%>
-                            icon={<AppIcon />}
-                        <%_ } _%>
-                        />
-                    )}
                     <%_ } _%>
                 >
                     <Outlet />

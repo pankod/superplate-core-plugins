@@ -53,9 +53,9 @@ module.exports = {
         },
         {
             name: "test-title-option",
-            type: "refine-vite",
+            type: "refine-nextjs",
             answers: {
-                "title": "Refine Vite",
+                "title": "Refine Nextjs",
                 "svg": "<div style={{ width: 24, height: 24, background: 'red' }} />",
                 "ui-framework": "antd",
                 "data-provider": "data-provider-custom-json-rest",

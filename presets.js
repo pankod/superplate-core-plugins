@@ -53,9 +53,9 @@ module.exports = {
         },
         {
             name: "test-title-option",
-            type: "refine-nextjs",
+            type: "refine-vite",
             answers: {
-                "title": "Refine Next.js",
+                "title": "Refine Vite",
                 "svg": "<div style={{ width: 24, height: 24, background: 'red' }} />",
             }
         },

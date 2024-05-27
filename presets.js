@@ -59,7 +59,7 @@ module.exports = {
                 "svg": "<div style={{ width: 24, height: 24, background: 'red' }} />",
                 "ui-framework": "antd",
                 "data-provider": "data-provider-custom-json-rest",
-                "auth-provider": "none",
+                "auth-provider": "auth-provider-custom",
                 "antd-example": "antd-example",
                 "mui-example": "no",
                 "headless-example": "no",

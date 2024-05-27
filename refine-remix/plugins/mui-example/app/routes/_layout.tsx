@@ -2,13 +2,13 @@ import { ThemedLayoutV2, ThemedSiderV2, ThemedTitleV2 } from "@refinedev/mui";
 import { Outlet } from "@remix-run/react";
 import { Header } from "~/components/header";
 <%_ if (_app.isAuthProviderCheck) { _%>
-    import type { LoaderArgs } from "@remix-run/node";
+    import type { LoaderFunctionArgs } from "@remix-run/node";
     import { redirect } from "@remix-run/node";
     import { authProvider } from "~/authProvider";
 <%_ } _%>
 
 <%_ if (_app.isNextAuthCheck) { _%>
-    import type { LoaderArgs } from "@remix-run/node";
+    import type { LoaderFunctionArgs } from "@remix-run/node";
     import { redirect } from "@remix-run/node";
     import { authenticator } from "~/utils/auth.server";
 <%_ } _%>
@@ -44,7 +44,7 @@ export default function BaseLayout() {
      * If not, we're redirecting the user to the login page.
      * This is applied for all routes that are nested under this layout (_protected).
      */
-    export async function loader({ request }: LoaderArgs) {
+    export async function loader({ request }: LoaderFunctionArgs) {
     const { authenticated, redirectTo } = await authProvider.check(request);
     
     if (!authenticated) {
@@ -61,7 +61,7 @@ export default function BaseLayout() {
  * If not, we're redirecting the user to the login page.
  * This is applied for all routes that are nested under this layout (_protected).
  */
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
     const session = await authenticator.isAuthenticated(request);
     const pathname = new URL(request.url).pathname;
 

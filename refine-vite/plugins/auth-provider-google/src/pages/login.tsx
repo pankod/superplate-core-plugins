@@ -13,11 +13,7 @@ import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 
-import { CredentialResponse } from "../interfaces/google";
-
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "../components/app-icon";
-<%_ } _%>    
+import { CredentialResponse } from "../interfaces/google"; 
 
 // Todo: Update your Google Client ID here
 const GOOGLE_CLIENT_ID = "1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com";
@@ -77,12 +73,6 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     marginBottom: "36px",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
                 <GoogleButton />
                 <Typography.Text type="secondary">
@@ -121,12 +111,6 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
 
                 <GoogleButton />

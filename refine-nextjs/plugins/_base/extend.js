@@ -238,6 +238,21 @@ module.exports = {
             base.blogPostStatusDefaultValue = `"draft"`;
         }
 
+        // ## Refine options.title
+        if (
+            answers["ui-framework"] !== "no" &&
+            (answers["title"] || answers["svg"])
+        ) {
+            if (!base._app.refineOptions) {
+                base._app.refineOptions = [];
+            }
+            const textLine = answers["title"] ? `text: "${answers["title"]}",` : "";
+            const iconLine = answers["svg"] ? `icon: <AppIcon />,` : "";
+            const template = `title: { ${textLine} ${iconLine} },`;
+            
+            base._app.refineOptions.push(template);
+        }
+
         return base;
     },
 };

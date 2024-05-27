@@ -186,6 +186,7 @@ const App = (props: React.PropsWithChildren<AppProps>) => {
                     <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
                         projectId: "<%= projectId %>",
                     <%_ } _%>
+                    <%- (_app.refineOptions || []).join("\n") %>
                 }}
             >
                 {props.children}

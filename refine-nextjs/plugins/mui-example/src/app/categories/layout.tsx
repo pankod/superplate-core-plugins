@@ -1,5 +1,6 @@
 import React from "react";
-import { ThemedLayout } from "@components/themed-layout";
+import { ThemedLayoutV2 } from "@refinedev/mui";
+import { Header } from "@components/header";
 <%_ if (_app.isNextAuthCheck) { _%>
     import authOptions from "@app/api/auth/[...nextauth]/options";
     import { getServerSession } from 'next-auth/next'
@@ -28,7 +29,7 @@ export default async function Layout({ children }: React.PropsWithChildren) {
 
     <%_ } _%>
 
-    return <ThemedLayout>{children}</ThemedLayout>;
+    return <ThemedLayoutV2 Header={Header}>{children}</ThemedLayoutV2>;
 }
 
 

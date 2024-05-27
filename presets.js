@@ -52,20 +52,6 @@ module.exports = {
             },
         },
         {
-            name: "test-title-option",
-            type: "refine-remix",
-            answers: {
-                "title": "Refine Remix",
-                "svg": "<div style={{ width: 24, height: 24, background: 'red' }} />",
-                "ui-framework": "antd",
-                "data-provider": "data-provider-custom-json-rest",
-                "auth-provider": "auth-provider-custom",
-                "antd-example": "antd-example",
-                "mui-example": "no",
-                "headless-example": "no",
-            }
-        },
-        {
             name: "refine-antd-nextjs",
             type: "refine-nextjs",
             answers: {

@@ -57,7 +57,7 @@ export default function BlogPostShow() {
   return (
       <Show isLoading={isLoading}>
           <Title level={5}>{"ID"}</Title>
-          <NumberField value={record?.id ?? ""} />
+          <TextField value={record?.id} />
           <Title level={5}>{"Title"}</Title>
           <TextField value={record?.title} />
           <Title level={5}>{"Content"}</Title>

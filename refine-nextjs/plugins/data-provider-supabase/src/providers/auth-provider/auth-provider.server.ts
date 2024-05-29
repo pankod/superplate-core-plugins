@@ -1,12 +1,21 @@
-import { AuthBindings } from "@refinedev/core";
-import { cookies } from "next/headers";
+import type { AuthProvider } from "@refinedev/core";
+import { createSupabaseServerClient } from "@utils/supabase/server";
 
-export const authProviderServer: Pick<AuthBindings, "check"> = {
+export const authProviderServer: Pick<AuthProvider, "check"> = {
     check: async () => {
-        const cookieStore = cookies();
-        const auth = cookieStore.get("token");
+        const { data, error } =
+            await createSupabaseServerClient().auth.getUser();
+        const { user } = data;
 
-        if (auth) {
+        if (error) {
+            return {
+                authenticated: false,
+                logout: true,
+                redirectTo: "/login",
+            };
+        }
+
+        if (user) {
             return {
                 authenticated: true,
             };

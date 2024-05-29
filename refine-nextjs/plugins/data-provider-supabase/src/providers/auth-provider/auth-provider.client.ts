@@ -1,15 +1,15 @@
 "use client";
 
-import { AuthBindings } from "@refinedev/core";
-import { supabaseClient } from "@utility/supabase-client";
-import Cookies from "js-cookie";
+import type { AuthProvider } from "@refinedev/core";
+import { supabaseBrowserClient } from "@utils/supabase/client";
 
-export const authProvider: AuthBindings = {
+export const authProviderClient: AuthProvider = {
     login: async ({ email, password }) => {
-        const { data, error } = await supabaseClient.auth.signInWithPassword({
-            email,
-            password,
-        });
+        const { data, error } =
+            await supabaseBrowserClient.auth.signInWithPassword({
+                email,
+                password,
+            });
 
         if (error) {
             return {
@@ -19,10 +19,7 @@ export const authProvider: AuthBindings = {
         }
 
         if (data?.session) {
-            Cookies.set("token", data.session.access_token, {
-                expires: 30, // 30 days
-                path: "/",
-            });
+            await supabaseBrowserClient.auth.setSession(data.session);
 
             return {
                 success: true,
@@ -40,8 +37,7 @@ export const authProvider: AuthBindings = {
         };
     },
     logout: async () => {
-        Cookies.remove("token", { path: "/" });
-        const { error } = await supabaseClient.auth.signOut();
+        const { error } = await supabaseBrowserClient.auth.signOut();
 
         if (error) {
             return {
@@ -57,7 +53,7 @@ export const authProvider: AuthBindings = {
     },
     register: async ({ email, password }) => {
         try {
-            const { data, error } = await supabaseClient.auth.signUp({
+            const { data, error } = await supabaseBrowserClient.auth.signUp({
                 email,
                 password,
             });
@@ -91,9 +87,16 @@ export const authProvider: AuthBindings = {
         };
     },
     check: async () => {
-        const token = Cookies.get("token");
-        const { data } = await supabaseClient.auth.getUser(token);
+        const { data, error } = await supabaseBrowserClient.auth.getUser();
         const { user } = data;
+
+        if (error) {
+            return {
+                authenticated: false,
+                redirectTo: "/login",
+                logout: true,
+            };
+        }
 
         if (user) {
             return {
@@ -107,7 +110,7 @@ export const authProvider: AuthBindings = {
         };
     },
     getPermissions: async () => {
-        const user = await supabaseClient.auth.getUser();
+        const user = await supabaseBrowserClient.auth.getUser();
 
         if (user) {
             return user.data.user?.role;
@@ -116,7 +119,7 @@ export const authProvider: AuthBindings = {
         return null;
     },
     getIdentity: async () => {
-        const { data } = await supabaseClient.auth.getUser();
+        const { data } = await supabaseBrowserClient.auth.getUser();
 
         if (data?.user) {
             return {

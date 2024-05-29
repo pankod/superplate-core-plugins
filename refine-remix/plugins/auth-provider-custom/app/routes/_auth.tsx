@@ -1,6 +1,6 @@
 import { Outlet } from "@remix-run/react";
 import { redirect } from "@remix-run/node";
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
 
 import { authProvider } from "~/authProvider";
 
@@ -14,7 +14,7 @@ export default function AuthLayout() {
  * Alternatively, we could also use the `Authenticated` component inside the `AuthLayout` to handle the redirect.
  * But, server-side redirects are more performant.
  */
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
     const { authenticated, redirectTo } = await authProvider.check(request);
 
     if (authenticated) {

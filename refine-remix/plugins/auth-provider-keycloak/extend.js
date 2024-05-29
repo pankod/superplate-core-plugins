@@ -1,7 +1,7 @@
 const base = {
     _app: {
         localImport: [
-            `import type { LoaderArgs } from "@remix-run/node";`,
+            `import type { LoaderFunctionArgs } from "@remix-run/node";`,
             `import { json } from "@remix-run/node";`,
             `import { authenticator } from "~/utils/auth.server";`,
         ],
@@ -10,7 +10,7 @@ const base = {
         refineAntdImports: [],
         refineMuiImports: [],
         loader: [
-            `export const loader = async ({ request }: LoaderArgs) => {
+            `export const loader = async ({ request }: LoaderFunctionArgs) => {
                 const profile = await authenticator.isAuthenticated(request);
                 const to = new URL(request.url).searchParams.get("to");
                 return json({ profile, to });

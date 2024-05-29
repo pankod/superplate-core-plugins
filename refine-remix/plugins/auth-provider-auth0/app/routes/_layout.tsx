@@ -1,5 +1,5 @@
 import { Outlet } from "@remix-run/react";
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 <%_ if (answers["ui-framework"] === 'antd') { _%>
 import {
@@ -46,7 +46,7 @@ export default function BaseLayout() {
  * If not, we're redirecting the user to the login page.
  * This is applied for all routes that are nested under this layout (_protected).
  */
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
     const session = await authenticator.isAuthenticated(request);
     const pathname = new URL(request.url).pathname;
 

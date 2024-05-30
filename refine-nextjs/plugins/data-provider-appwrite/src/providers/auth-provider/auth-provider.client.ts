@@ -70,7 +70,10 @@ export const authProviderClient: AuthProvider = {
         }
     },
     onError: async (error: AppwriteException) => {
-        return { logout: true, redirectTo: "/login", error };
+        if (error.code === 401) {
+            return { logout: true, redirectTo: "/login", error };
+        }
+        return { error };
     },
     check: async () => {
         const appwriteJWT = Cookies.get(APPWRITE_JWT_KEY);

@@ -28,7 +28,7 @@
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
         "eslint": "^8.24.0",
-        "typescript": "^4.7.4"
+        "typescript": "^5.4.2"
     <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
     },
     "refine": {

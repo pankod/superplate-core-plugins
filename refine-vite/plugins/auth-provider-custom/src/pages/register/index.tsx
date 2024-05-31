@@ -1,4 +1,4 @@
-<%_ if (answers[`ui-framework`] === "no") { _%>
+<%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
 <%_ if (answers["ui-framework"] === 'antd') { _%>

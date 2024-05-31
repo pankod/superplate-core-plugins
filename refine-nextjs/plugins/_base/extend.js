@@ -27,6 +27,8 @@ module.exports = {
         const uiFramework = answers["ui-framework"];
         const dataProvider = answers["data-provider"];
         const authProvider = answers["auth-provider"];
+        const isHeadless =
+            uiFramework === "no" || uiFramework === "tailwindcss";
 
         // ## isNextAuthCheck
         if (
@@ -67,7 +69,7 @@ module.exports = {
         ];
 
         // update for headless
-        if (uiFramework === "no") {
+        if (isHeadless) {
             base._app.authPageProps = [
                 `
                 renderContent={(content) => (
@@ -117,10 +119,7 @@ module.exports = {
             base.selectedSvg = svgFromAnswers;
         }
 
-        if (
-            answers["ui-framework"] !== "no" &&
-            (answers["title"] || answers["svg"])
-        ) {
+        if (!isHeadless && (answers["title"] || answers["svg"])) {
             if (answers["ui-framework"] === "antd") {
                 base._app.refineAntdImports.push("ThemedTitleV2");
             }
@@ -129,16 +128,13 @@ module.exports = {
             }
         }
 
-        if (
-            answers["ui-framework"] !== "no" &&
-            (answers["title"] || answers["svg"])
-        ) {
+        if (!isHeadless && (answers["title"] || answers["svg"])) {
             base._app.localImport.push(
                 'import { AppIcon } from "@components/app-icon";',
             );
         }
 
-        if (answers["ui-framework"] === "no") {
+        if (isHeadless) {
             base._app.localImport.push(
                 `import { Layout } from "@components/layout";`,
             );
@@ -146,7 +142,7 @@ module.exports = {
         }
 
         // this impementation required for getting default ColorModeContextProvider's theme from cookie
-        if (answers["ui-framework"] !== "no") {
+        if (!isHeadless) {
             base._app.nextjsInner.push(
                 `const cookieStore = cookies();`,
                 `const theme = cookieStore.get("theme");`,
@@ -187,7 +183,7 @@ module.exports = {
         } else if (dataProvider === "data-provider-supabase") {
             base.blogPostCategoryIdFormField = `"categoryId"`;
         } else {
-            if (uiFramework === "mui" || uiFramework === "no") {
+            if (uiFramework === "mui" || isHeadless) {
                 base.blogPostCategoryIdFormField = `"category.id"`;
             } else {
                 base.blogPostCategoryIdFormField = `["category", "id"]`;
@@ -196,7 +192,7 @@ module.exports = {
 
         // ## blogPostCategoryTableField
         if (base.isGraphQL) {
-            if (uiFramework === "no") {
+            if (isHeadless) {
                 base.blogPostCategoryTableField = `"category.title"`;
             }
             if (uiFramework === "antd") {
@@ -227,7 +223,7 @@ module.exports = {
                 { value: "rejected", label: "Rejected" },
             ]);
         }
-        if (uiFramework === "no" || uiFramework === "mui") {
+        if (isHeadless || uiFramework === "mui") {
             base.blogPostStatusOptions = JSON.parse(base.blogPostStatusOptions);
         }
 
@@ -239,17 +235,16 @@ module.exports = {
         }
 
         // ## Refine options.title
-        if (
-            answers["ui-framework"] !== "no" &&
-            (answers["title"] || answers["svg"])
-        ) {
+        if (!isHeadless && (answers["title"] || answers["svg"])) {
             if (!base._app.refineOptions) {
                 base._app.refineOptions = [];
             }
-            const textLine = answers["title"] ? `text: "${answers["title"]}",` : "";
+            const textLine = answers["title"]
+                ? `text: "${answers["title"]}",`
+                : "";
             const iconLine = answers["svg"] ? `icon: <AppIcon />,` : "";
             const template = `title: { ${textLine} ${iconLine} },`;
-            
+
             base._app.refineOptions.push(template);
         }
 

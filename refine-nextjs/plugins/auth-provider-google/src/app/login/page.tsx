@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 import { useLogin } from "@refinedev/core";
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
+<%_ if (selectedSvg && answers["ui-framework"] !== "no" && answers["ui-framework"] !== "tailwindcss") { _%>
 import { AppIcon } from "@components/app-icon";
 <%_ } _%>
 
@@ -111,7 +111,7 @@ export default function Login() {
         );
     <%_ } _%>
 
-    <%_ if (answers["ui-framework"] === "no") { _%>
+    <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
         return(
             <div
                 style={{

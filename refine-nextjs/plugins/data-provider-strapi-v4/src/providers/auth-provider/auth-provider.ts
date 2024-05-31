@@ -1,6 +1,6 @@
 "use client";
 
-import { type AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { AuthHelper } from "@refinedev/strapi-v4";
 import { axiosInstance } from "@utility/axios-instance";
 import { API_URL, TOKEN_KEY } from "@utility/constants";

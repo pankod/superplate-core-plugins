@@ -1,5 +1,5 @@
 import { AppwriteException } from "@refinedev/appwrite";
-import { type AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { v4 as uuidv4 } from "uuid";
 import { account } from "./utility";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { type AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import Cookies from "js-cookie";
 
 const mockUsers = [

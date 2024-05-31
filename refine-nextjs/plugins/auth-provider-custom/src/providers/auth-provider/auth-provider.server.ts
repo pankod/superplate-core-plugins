@@ -1,4 +1,4 @@
-import { type AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { cookies } from "next/headers";
 
 export const authProviderServer: Pick<AuthProvider, "check"> = {

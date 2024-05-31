@@ -1,5 +1,5 @@
 import { AppwriteException } from "@refinedev/appwrite";
-import { type AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import * as cookie from "cookie";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";

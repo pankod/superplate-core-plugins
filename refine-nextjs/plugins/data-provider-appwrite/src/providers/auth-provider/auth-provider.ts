@@ -2,12 +2,12 @@
 
 import { account, appwriteClient } from "@providers/data-provider";
 import { AppwriteException } from "@refinedev/appwrite";
-import { AuthBindings } from "@refinedev/core";
+import { type AuthProvider } from "@refinedev/core";
 import { APPWRITE_TOKEN_KEY } from "@utility/constants";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 
-export const authProvider: AuthBindings = {
+export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
         try {
             await account.createEmailSession(email, password);

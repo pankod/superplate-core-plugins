@@ -1,7 +1,7 @@
 'use client'
 
 import React, {
-    PropsWithChildren,
+    type PropsWithChildren,
     createContext,
     useEffect,
     useState,

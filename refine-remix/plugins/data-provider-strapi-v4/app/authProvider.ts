@@ -1,4 +1,4 @@
-import type { AuthBindings } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { AuthHelper } from "@refinedev/strapi-v4";
 import axios from "axios";
 import * as cookie from "cookie";
@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use((config) => {
     return config;
 });
 
-export const authProvider: AuthBindings = {
+export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
         const { data, status } = await strapiAuthHelper.login(email, password);
         if (status === 200) {

@@ -1,6 +1,6 @@
 import { useNavigation } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
-import { ColumnDef, flexRender } from "@tanstack/react-table";
+import { type ColumnDef, flexRender } from "@tanstack/react-table";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
 import { CATEGORIES_QUERY } from './queries'

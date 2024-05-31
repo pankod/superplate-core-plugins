@@ -1,4 +1,4 @@
-import { AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { getSessionClient } from "@utils/appwrite/server";
 
 export const authProviderServer: Pick<AuthProvider, "check"> = {

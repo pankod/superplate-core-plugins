@@ -1,7 +1,7 @@
 "use client";
 
 import { AppwriteException } from "@refinedev/appwrite";
-import { AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { appwriteAccount, appwriteClient } from "@utils/appwrite/client";
 import { APPWRITE_JWT_KEY } from "@utils/constants";
 import Cookies from "js-cookie";

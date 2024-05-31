@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 <%- (_app.nextjsImport || []).join("\n") _%>
 import React, { Suspense } from "react";
 import { RefineContext } from "./_refine_context";

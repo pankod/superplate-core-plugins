@@ -1,8 +1,8 @@
-import { AuthBindings } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 
 export const TOKEN_KEY = "refine-auth";
 
-export const authProvider: AuthBindings = {
+export const authProvider: AuthProvider = {
     login: async ({ username, email, password }) => {
         if ((username || email) && password) {
             localStorage.setItem(TOKEN_KEY, username);
@@ -24,20 +24,20 @@ export const authProvider: AuthBindings = {
         localStorage.removeItem(TOKEN_KEY);
         return {
             success: true,
-            redirectTo: "/login"
+            redirectTo: "/login",
         };
     },
     check: async () => {
         const token = localStorage.getItem(TOKEN_KEY);
         if (token) {
             return {
-                authenticated: true
+                authenticated: true,
             };
         }
 
         return {
             authenticated: false,
-            redirectTo: "/login"
+            redirectTo: "/login",
         };
     },
     getPermissions: async () => null,

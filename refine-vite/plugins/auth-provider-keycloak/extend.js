@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        refineImports: [`Authenticated`, `AuthBindings`],
+        refineImports: [`Authenticated`, `AuthProvider`],
         import: [
             `import axios from "axios";`,
             `import { useKeycloak } from "@react-keycloak/web";`,
@@ -14,7 +14,7 @@ const base = {
             }
             `,
             `
-            const authProvider: AuthBindings = {
+            const authProvider: AuthProvider = {
                 login: async () => {
                     const urlSearchParams = new URLSearchParams(window.location.search);
                     const { to } = Object.fromEntries(urlSearchParams.entries());

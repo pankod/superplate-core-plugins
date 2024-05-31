@@ -1,4 +1,4 @@
-import { AuthProvider } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { API_URL, TOKEN_KEY } from "@utility/constants";
 import { cookies } from "next/headers";
 

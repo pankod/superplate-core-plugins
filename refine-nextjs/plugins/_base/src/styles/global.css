@@ -1,104 +1,88 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+    margin: 0px;
+}
 
-/* 
-* These styles were added to improve the appearance of the example pages.
-* It is safe to delete them, and they are not intended to be used by Refine components.
-*/
-@layer components {
-    input {
-        @apply border border-gray-300 rounded-sm;
-    }
+table {
+    border-spacing: 0;
+    border: 1px solid black;
+}
 
-    input[type="submit"] {
-        @apply bg-[#EFEFEF];
-    }
+table th,
+td {
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
 
-    button {
-        @apply border border-gray-300 px-2 rounded-sm bg-[#EFEFEF];
-    }
+table tr:last-child td {
+    border-bottom: 0;
+}
 
-    h1 {
-        @apply text-2xl font-bold my-6;
-    }
+table th,
+td {
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
 
-    ul {
-        @apply list-disc my-4;
-    }
+table th:last-child,
+td:last-child {
+    border-right: 0;
+}
 
-    a {
-        @apply text-blue-700 underline;
-    }
+.layout {
+    display: flex;
+    gap: 16px;
+}
 
-    label {
-        @apply text-sm font-medium;
-    }
-
-    body {
-        @apply m-0;
-    }
-
-    table {
-        @apply border border-black border-collapse;
-    }
-
-    table th,
-    table td {
-        @apply m-0 p-2 border-b border-r border-black;
-    }
-
-    table tr:last-child td {
-        @apply border-b-0;
-    }
-
-    table th:last-child,
-    table td:last-child {
-        @apply border-r-0;
-    }
-
+@media screen and (max-width: 751px) {
     .layout {
-        @apply flex gap-4;
+        display: block;
     }
+}
 
-    @media (max-width: 751px) {
-        .layout {
-            @apply block;
-        }
-    }
+.layout .content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
 
-    .layout .content {
-        @apply flex flex-col flex-grow;
-    }
+.breadcrumb {
+    display: flex;
+    gap: 24px;
+    list-style-type: "/  ";
+    padding: 8px 16px;
+    border-bottom: 1px solid lightgray;
+}
 
-    .breadcrumb {
-        @apply flex gap-6 p-2 px-4 border-b border-gray-300;
-        list-style-type: "/ ";
-    }
+.breadcrumb a {
+    color: blue;
+    text-decoration: none;
+}
 
-    .breadcrumb a {
-        @apply text-blue-700 no-underline;
-    }
+.menu {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-right: 1px solid lightgray;
+}
 
+.menu a {
+    color: black;
+}
+
+.menu .active {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 751px) {
     .menu {
-        @apply flex-shrink-0 p-2 pr-4 border-r border-gray-300;
+        border-right: none;
+        border-bottom: 1px solid lightgray;
     }
+}
 
-    .menu a {
-        @apply text-black;
-    }
-
-    .menu .active {
-        @apply font-bold;
-    }
-
-    @media (max-width: 751px) {
-        .menu {
-            @apply border-r-0 border-b border-gray-300;
-        }
-    }
-
-    .menu ul {
-        @apply pl-4;
-    }
+.menu ul {
+    padding-left: 16px;
 }

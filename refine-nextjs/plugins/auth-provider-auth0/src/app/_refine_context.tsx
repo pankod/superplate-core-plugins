@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { Refine, GitHubBanner, AuthBindings, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
+import { Refine, GitHubBanner, type AuthProvider, <%- (_app.refineImports || []).join("\n,") _%> } from '@refinedev/core';
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { SessionProvider, useSession, signOut, signIn } from "next-auth/react";
 import { usePathname } from 'next/navigation'
@@ -59,7 +59,7 @@ const App = (props: React.PropsWithChildren<AppProps>) => {
         return <span>loading...</span>;
     }
 
-    const authProvider: AuthBindings = {
+    const authProvider: AuthProvider = {
         login: async () => {
             signIn("auth0", {
                     callbackUrl: to ? to.toString() : "/",

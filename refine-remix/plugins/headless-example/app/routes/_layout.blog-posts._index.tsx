@@ -1,10 +1,10 @@
 import {
-    GetManyResponse,
+    type GetManyResponse,
     useMany,
     useNavigation,
 } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
-import { ColumnDef, flexRender } from "@tanstack/react-table";
+import { type ColumnDef, flexRender } from "@tanstack/react-table";
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
 import { BLOG_POSTS_QUERY } from "../queries/blog-posts";

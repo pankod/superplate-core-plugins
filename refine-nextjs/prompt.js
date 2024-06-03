@@ -191,7 +191,7 @@ module.exports = {
             when: function (answers) {
                 return answers["ui-framework"] !== "antd";
             },
-            pattern: ["src/utility/normalize.ts"],
+            pattern: ["src/utils/normalize.ts"],
         },
         {
             plugin: ["_base"],

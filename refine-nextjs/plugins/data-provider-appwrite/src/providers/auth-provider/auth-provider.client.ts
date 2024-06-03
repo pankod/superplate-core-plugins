@@ -1,20 +1,24 @@
 "use client";
 
-import { account, appwriteClient } from "@providers/data-provider";
 import { AppwriteException } from "@refinedev/appwrite";
-import { AuthBindings } from "@refinedev/core";
-import { APPWRITE_TOKEN_KEY } from "@utility/constants";
+import type { AuthProvider } from "@refinedev/core";
+import { appwriteAccount, appwriteClient } from "@utils/appwrite/client";
+import { APPWRITE_JWT_KEY } from "@utils/constants";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 
-export const authProvider: AuthBindings = {
+export const authProviderClient: AuthProvider = {
     login: async ({ email, password }) => {
         try {
-            await account.createEmailSession(email, password);
-            const { jwt } = await account.createJWT();
+            Cookies.remove(APPWRITE_JWT_KEY, { path: "/" });
+            appwriteClient.setJWT("");
+
+            await appwriteAccount.createEmailSession(email, password);
+            const { jwt } = await appwriteAccount.createJWT();
+            appwriteClient.setJWT(jwt);
 
             if (jwt) {
-                Cookies.set(APPWRITE_TOKEN_KEY, jwt, {
+                Cookies.set(APPWRITE_JWT_KEY, jwt, {
                     expires: 30, // 30 days
                     path: "/",
                 });
@@ -37,14 +41,10 @@ export const authProvider: AuthBindings = {
     },
     logout: async () => {
         try {
-            await account.deleteSession("current");
-        } catch (error: any) {
-            return {
-                success: false,
-                error,
-            };
-        }
-        Cookies.remove(APPWRITE_TOKEN_KEY, { path: "/" });
+            await appwriteAccount.deleteSessions();
+        } catch (error) {}
+
+        Cookies.remove(APPWRITE_JWT_KEY, { path: "/" });
         appwriteClient.setJWT("");
         return {
             success: true,
@@ -53,7 +53,7 @@ export const authProvider: AuthBindings = {
     },
     register: async ({ email, password }) => {
         try {
-            await account.create(uuidv4(), email, password);
+            await appwriteAccount.create(uuidv4(), email, password);
             return {
                 success: true,
                 redirectTo: "/login",
@@ -69,18 +69,20 @@ export const authProvider: AuthBindings = {
             };
         }
     },
-    onError: async (error) => {
-        console.error(error);
+    onError: async (error: AppwriteException) => {
+        if (error.code === 401) {
+            return { logout: true, redirectTo: "/login", error };
+        }
         return { error };
     },
     check: async () => {
-        const appwriteJWT = Cookies.get(APPWRITE_TOKEN_KEY);
+        const appwriteJWT = Cookies.get(APPWRITE_JWT_KEY);
         if (appwriteJWT) {
             appwriteClient.setJWT(appwriteJWT);
         }
 
         try {
-            const session = await account.get();
+            const session = await appwriteAccount.get();
 
             if (session) {
                 return {
@@ -108,7 +110,7 @@ export const authProvider: AuthBindings = {
     },
     getPermissions: async () => null,
     getIdentity: async () => {
-        const user = await account.get();
+        const user = await appwriteAccount.get();
 
         if (user) {
             return user;

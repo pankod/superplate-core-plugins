@@ -1,4 +1,4 @@
-import { AuthBindings } from "@refinedev/core";
+import type { AuthProvider } from "@refinedev/core";
 import { AuthHelper } from "@refinedev/strapi-v4";
 import axios from "axios";
 import { API_URL, TOKEN_KEY } from "./constants";
@@ -6,7 +6,7 @@ import { API_URL, TOKEN_KEY } from "./constants";
 export const axiosInstance = axios.create();
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
-export const authProvider: AuthBindings = {
+export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
         const { data, status } = await strapiAuthHelper.login(email, password);
         if (status === 200) {

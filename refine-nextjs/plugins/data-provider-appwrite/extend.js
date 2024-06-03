@@ -2,13 +2,13 @@ const base = {
     _app: {
         import: [],
         localImport: [
-            'import { authProvider } from "@providers/auth-provider";',
-            'import { dataProvider, liveProvider } from "@providers/data-provider";',
+            'import { authProviderClient } from "@providers/auth-provider";',
+            'import { appwriteDataProvider, appwriteLiveProvider } from "@providers/data-provider";',
         ],
         refineProps: [
-            `dataProvider={dataProvider}`,
-            `liveProvider={liveProvider}`,
-            `authProvider={authProvider}`,
+            "dataProvider={appwriteDataProvider}",
+            "liveProvider={appwriteLiveProvider}",
+            "authProvider={authProviderClient}",
         ],
         refineOptions: [`liveMode: "auto",`],
         refineAntdImports: [],

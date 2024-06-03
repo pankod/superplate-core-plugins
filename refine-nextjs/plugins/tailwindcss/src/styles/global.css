@@ -6,7 +6,7 @@
 * These styles were added to improve the appearance of the example pages.
 * It is safe to delete them, and they are not intended to be used by Refine components.
 */
-@layer components {
+@layer base {
     input {
         @apply border border-gray-300 rounded-sm;
     }

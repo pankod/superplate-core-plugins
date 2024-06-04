@@ -1,3 +1,5 @@
+'use client'
+
 import { ColorModeContext } from "@contexts/color-mode";
 import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";

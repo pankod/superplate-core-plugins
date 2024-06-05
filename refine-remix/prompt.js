@@ -75,6 +75,11 @@ module.exports = {
                     name: "mui",
                     hint: "Installs Material UI package.",
                 },
+                {
+                    message: "Tailwind CSS",
+                    name: "tailwindcss",
+                    hint: "Installs Tailwind CSS package.",
+                },
             ],
             default: "no",
         },
@@ -194,7 +199,8 @@ module.exports = {
             when: function (answers) {
                 return (
                     typeof answers["svg"] === "undefined" ||
-                    answers["ui-framework"] === "no"
+                    answers["ui-framework"] === "no" ||
+                    answers["ui-framework"] === "tailwindcss"
                 );
             },
             pattern: ["app/components/app-icon/index.tsx"],
@@ -202,7 +208,10 @@ module.exports = {
         {
             plugin: ["_base"],
             when: function (answers) {
-                return answers["ui-framework"] !== "no";
+                return (
+                    answers["ui-framework"] !== "no" &&
+                    answers["ui-framework"] !== "tailwindcss"
+                );
             },
             pattern: [
                 "app/components/breadcrumb/index.tsx",

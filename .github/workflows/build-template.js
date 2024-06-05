@@ -33,6 +33,7 @@ const buildTemplate = async () => {
         antd: "antd-example",
         mui: "mui-example",
         no: "headless-example",
+        tailwindcss: "headless-example",
     };
 
     let AUTH_PROVIDER = dataProviderMap[DATA_PROVIDER];

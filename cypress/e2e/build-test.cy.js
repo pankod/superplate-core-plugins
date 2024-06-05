@@ -88,7 +88,10 @@ describe("build test", () => {
 
             cy.contains("Sign in to your account").should("exist");
 
-            if (Cypress.env("UI_FRAMEWORK") === "no") {
+            if (
+                Cypress.env("UI_FRAMEWORK") === "no" ||
+                Cypress.env("UI_FRAMEWORK") === "tailwindcss"
+            ) {
                 if (Cypress.env("DATA_PROVIDER") === "supabase") {
                     cy.get("input[name='email']").type("info@refine.dev");
                     cy.get("input[name='password']").type("refine-supabase");
@@ -125,7 +128,10 @@ describe("build test", () => {
                 cy.title().should("eq", "Blog posts | Refine");
             }
 
-            if (Cypress.env("UI_FRAMEWORK") !== "no") {
+            if (
+                Cypress.env("UI_FRAMEWORK") !== "no" &&
+                Cypress.env("UI_FRAMEWORK") !== "tailwindcss"
+            ) {
                 cy.contains("Categories").should("exist");
 
                 cy.contains("Logout").should("exist");

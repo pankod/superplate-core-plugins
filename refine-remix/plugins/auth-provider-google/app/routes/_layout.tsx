@@ -15,14 +15,14 @@ import {
 
 import { Header } from "@components/header";
 import { authenticator } from "~/utils/auth.server";
-<%_ if (answers["ui-framework"] === 'no') { _%>
+<%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
 import { Layout } from "~/components/layout";
 <%_ } _%>
 
 export default function BaseLayout() {
     return (
         <>
-             <%_ if (answers["ui-framework"] === 'no') { _%>
+             <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
                 <Layout>
                     <Outlet />
                 </Layout>

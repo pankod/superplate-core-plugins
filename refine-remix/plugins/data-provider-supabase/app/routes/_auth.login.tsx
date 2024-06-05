@@ -4,7 +4,7 @@
  <%_ if (answers["ui-framework"] === 'mui') { _%>
      import { AuthPage } from "@refinedev/mui";
  <%_ } _%>
- <%_ if (answers[`ui-framework`] === "no") { _%>
+ <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
 

@@ -96,7 +96,7 @@ function App() {
                                     key="authenticated-inner"
                                     fallback={<CatchAllNavigate to="/login" />}
                                 >
-                                    <%_ if (answers["ui-framework"] === 'no') { _%>
+                                    <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
                                         <Layout>
                                             <Outlet />
                                         </Layout>
@@ -174,7 +174,7 @@ function App() {
                     <Routes>
                         <Route
                             element={(
-                                <%_ if (answers["ui-framework"] === 'no') { _%>
+                                <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
                                     <Layout>
                                         <Outlet />
                                     </Layout>

@@ -99,5 +99,42 @@ module.exports = {
                 "headless-example": "no",
             },
         },
+        {
+            name: "refine-vite-tailwind",
+            type: "refine-vite",
+            answers: {
+                "ui-framework": "tailwindcss",
+                "router-provider": "react-router-v6",
+                "data-provider": "data-provider-custom-json-rest",
+                "auth-provider": "none",
+                "antd-example": "no",
+                "mui-example": "no",
+                "headless-example": "no",
+            },
+        },
+        {
+            name: "refine-nextjs-tailwind",
+            type: "refine-nextjs",
+            answers: {
+                "ui-framework": "tailwindcss",
+                "data-provider": "data-provider-custom-json-rest",
+                "auth-provider": "none",
+                "antd-example": "no",
+                "mui-example": "no",
+                "headless-example": "no",
+            },
+        },
+        {
+            name: "refine-remix-tailwind",
+            type: "refine-remix",
+            answers: {
+                "ui-framework": "tailwindcss",
+                "data-provider": "data-provider-custom-json-rest",
+                "auth-provider": "none",
+                "antd-example": "no",
+                "mui-example": "no",
+                "headless-example": "no",
+            },
+        },
     ],
 };

@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 <%_ if (answers["ui-framework"] === 'mui') { _%>
     import { ErrorComponent } from "@refinedev/mui";
 <%_ } _%>
-<%_ if (answers["ui-framework"] === 'no') { _%>
+<%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
     import { ErrorComponent } from "@refinedev/core";
 <%_ } _%>
 import { Authenticated } from '@refinedev/core'

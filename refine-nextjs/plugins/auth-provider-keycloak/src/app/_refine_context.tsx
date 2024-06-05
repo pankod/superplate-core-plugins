@@ -28,7 +28,7 @@ import routerProvider from "@refinedev/nextjs-router";
 %>
 
 type RefineContextProps = {
-    <%_ if (answers["ui-framework"] !== 'no') { _%>
+    <%_ if (answers["ui-framework"] !== "no" && answers["ui-framework"] !== "tailwindcss") { _%>
         defaultMode?: string;
     <%_ } _%>  
 };
@@ -42,7 +42,7 @@ export const RefineContext = (props: React.PropsWithChildren<RefineContextProps>
   }
 
 type AppProps = {
-    <%_ if (answers["ui-framework"] !== 'no') { _%>
+    <%_ if (answers["ui-framework"] !== "no" && answers["ui-framework"] !== "tailwindcss") { _%>
         defaultMode?: string;
     <%_ } _%>  
 };
@@ -120,7 +120,7 @@ const App = (props: React.PropsWithChildren<AppProps>) => {
     };
 
 
-    <%_ if (answers["ui-framework"] !== 'no') { _%>
+    <%_ if (answers["ui-framework"] !== "no" && answers["ui-framework"] !== "tailwindcss") { _%>
          const defaultMode = props?.defaultMode
     <%_ } _%>  
 

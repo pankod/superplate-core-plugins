@@ -8,7 +8,7 @@ module.exports = {
                 "router-provider": "react-router-v6",
                 "data-provider": "data-provider-custom-json-rest",
                 "auth-provider": "none",
-                "antd-example": "no",
+                "antd-example": "antd-example",
                 "mui-example": "no",
                 "headless-example": "no",
             },

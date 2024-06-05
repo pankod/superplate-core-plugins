@@ -102,22 +102,9 @@ function App() {
                                         </Layout>
                                     <%_ } else { _%>
                                         <ThemedLayoutV2
-                                            Header={() => <Header sticky />}
+                                            Header={Header}
                                             <%_ if (answers["ui-framework"] === 'antd') { _%>
                                             Sider={(props) => <ThemedSiderV2 {...props} fixed />}
-                                            <%_ } _%>
-                                            <%_ if (selectedSvg || selectedTitle) { _%>
-                                            Title={({ collapsed }) => (
-                                                <ThemedTitleV2
-                                                    collapsed={collapsed}
-                                                <%_ if (selectedTitle) { _%>
-                                                    text="<%= selectedTitle %>"
-                                                <%_ } _%>
-                                                <%_ if (selectedSvg) { _%>
-                                                    icon={<AppIcon />}
-                                                <%_ } _%>
-                                                />
-                                            )}
                                             <%_ } _%>
                                         >
                                             <Outlet />
@@ -166,19 +153,6 @@ function App() {
                                     element={(
                                         <AuthPage
                                             type="login"
-                                            <%_ if ((selectedSvg || selectedTitle) && answers["ui-framework"] !== "no") { _%>
-                                            title={(
-                                                <ThemedTitleV2
-                                                    collapsed={false}
-                                                    <%_ if (selectedTitle) { _%>
-                                                        text="<%= selectedTitle %>"
-                                                    <%_ } _%>
-                                                    <%_ if (selectedSvg) { _%>
-                                                        icon={<AppIcon />}
-                                                    <%_ } _%>
-                                                />
-                                            )}
-                                            <%_ } _%>
                                             <%- (_app.authPageProps || []).join("\n") %>
                                         />
                                     )}
@@ -209,19 +183,6 @@ function App() {
                                         Header={() => <Header sticky />}
                                         <%_ if (answers["ui-framework"] === 'antd') { _%>
                                         Sider={(props) => <ThemedSiderV2 {...props} fixed />}
-                                        <%_ } _%>
-                                        <%_ if (selectedSvg || selectedTitle) { _%>
-                                        Title={({ collapsed }) => (
-                                            <ThemedTitleV2
-                                                collapsed={collapsed}
-                                            <%_ if (selectedTitle) { _%>
-                                                text="<%= selectedTitle %>"
-                                            <%_ } _%>
-                                            <%_ if (selectedSvg) { _%>
-                                                icon={<AppIcon />}
-                                            <%_ } _%>
-                                            />
-                                        )}
                                         <%_ } _%>
                                     >
                                         <Outlet />

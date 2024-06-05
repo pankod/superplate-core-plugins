@@ -9,9 +9,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "@components/app-icon";
-<%_ } _%>
 
 export default function Login() {
     <%_ if (answers["ui-framework"] === "antd") { _%>
@@ -30,12 +27,6 @@ export default function Login() {
                     fontSize: "22px",
                     marginBottom: "36px",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
 
                 <form id="login-form" action="/auth/auth0/" method="post">
@@ -88,12 +79,6 @@ export default function Login() {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
 
                 <form id="login-form" action="/auth/auth0/" method="post">

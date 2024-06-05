@@ -122,7 +122,7 @@ describe("build test", () => {
                 Cypress.env("FRAMEWORK") !== "remix" &&
                 Cypress.env("FRAMEWORK") !== "nextjs"
             ) {
-                cy.title().should("eq", "Blog posts | refine");
+                cy.title().should("eq", "Blog posts | Refine");
             }
 
             if (Cypress.env("UI_FRAMEWORK") !== "no") {

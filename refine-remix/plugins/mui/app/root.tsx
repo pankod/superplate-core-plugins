@@ -148,6 +148,7 @@ export default function App() {
                 <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
                   projectId: "<%= projectId %>",
                 <%_ } _%>
+                <%- (_app.refineOptions || []).join("\n") %>
             }}
             >
               <Outlet />

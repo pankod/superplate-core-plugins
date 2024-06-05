@@ -12,10 +12,6 @@ import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 import { useLogin } from "@refinedev/core";
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "@components/app-icon";
-<%_ } _%>
-
 
 export default function Login() {
     const { mutate: login } = useLogin();
@@ -35,12 +31,6 @@ export default function Login() {
                 wrapperStyles={{
                     fontSize: "22px",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
                 <Button
                     style={{ width: "240px", marginBottom: "32px" }}
@@ -86,14 +76,7 @@ export default function Login() {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
-
                 <Button style={{ width: "240px" }} variant="contained" size="large" onClick={() => login({})}>
                       Sign in
                 </Button>

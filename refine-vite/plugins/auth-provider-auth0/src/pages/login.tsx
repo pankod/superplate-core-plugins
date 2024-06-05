@@ -10,12 +10,7 @@ import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 <%_ } _%>
 
-
 import { useAuth0 } from "@auth0/auth0-react";
-
-<%_ if (selectedSvg && answers["ui-framework"] !== "no" ) { _%>
-import { AppIcon } from "../components/app-icon";
-<%_ } _%>
 
 export const Login: React.FC = () => {
     const { loginWithRedirect } = useAuth0();
@@ -36,12 +31,6 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     marginBottom: "36px",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
                 <Button
                     style={{ width: "240px", marginBottom: "32px" }}
@@ -87,12 +76,6 @@ export const Login: React.FC = () => {
                     fontSize: "22px",
                     justifyContent: "center",
                 }}
-                <%_ if (selectedTitle) { _%>
-                    text="<%= selectedTitle %>"
-                <%_ } _%>
-                <%_ if (selectedSvg) { _%>
-                    icon={<AppIcon />}
-                <%_ } _%>
                 />
 
                 <Button style={{ width: "240px" }} size="large" variant="contained" onClick={() => loginWithRedirect()}>

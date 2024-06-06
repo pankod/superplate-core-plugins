@@ -100,7 +100,7 @@ module.exports = {
             },
         },
         {
-            name: "vite-tailwind",
+            name: "vite-tailwindcss",
             type: "refine-vite",
             answers: {
                 "ui-framework": "tailwindcss",
@@ -113,7 +113,7 @@ module.exports = {
             },
         },
         {
-            name: "nextjs-tailwind",
+            name: "nextjs-tailwindcss",
             type: "refine-nextjs",
             answers: {
                 "ui-framework": "tailwindcss",
@@ -125,7 +125,7 @@ module.exports = {
             },
         },
         {
-            name: "remix-tailwind",
+            name: "remix-tailwindcss",
             type: "refine-remix",
             answers: {
                 "ui-framework": "tailwindcss",

@@ -44,7 +44,7 @@ jobs:
           cd ${{ steps.build_step.outputs.project_path }}
           npm install
           npm run build
-          npm run preview -- --port 3000 --host &
+          npm run start -- --port 3000 --host &
       - name: Run Cypress on local
         uses: cypress-io/github-action@v6
         with:

@@ -28,7 +28,7 @@
   "scripts": {
     "dev": "refine dev",
     "build": "tsc && refine build",
-    "preview": "refine start",
+    "start": "refine start",
     "refine": "refine"
   },
   "browserslist": {

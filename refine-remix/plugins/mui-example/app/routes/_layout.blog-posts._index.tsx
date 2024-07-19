@@ -69,7 +69,7 @@ export default function BlogPostList() {
             {
                 field: "content",
                 flex: 1,
-                headerName: "content",
+                headerName: "Content",
                 minWidth: 250,
                 renderCell: function render({ value }) {
                     if (!value) return '-'

@@ -183,7 +183,7 @@ module.exports = {
         } else if (dataProvider === "data-provider-supabase") {
             base.blogPostCategoryIdFormField = `"categoryId"`;
         } else if (dataProvider === "data-provider-appwrite") {
-            base.blogPostCategoryIdFormField = "category";
+            base.blogPostCategoryIdFormField = `"category"`;
         } else {
             if (uiFramework === "mui" || isHeadless) {
                 base.blogPostCategoryIdFormField = `"category.id"`;

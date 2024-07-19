@@ -43,7 +43,7 @@ export const BlogPostList = () => {
 <%_ } _%>
     });
 
-<%_ if (!isGraphQL) { _%>
+<%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useMany({
         resource: "categories",
         ids: dataGridProps?.rows?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
@@ -84,7 +84,7 @@ export const BlogPostList = () => {
                 flex: 1,
                 headerName: "Category",
                 minWidth: 300,
-                <%_ if (isGraphQL) { _%>
+                <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
                 valueGetter: ({ row }) => {
                       const value = row?.<%- blogPostCategoryFieldName %>?.title
                        return value
@@ -111,7 +111,9 @@ export const BlogPostList = () => {
             },
             {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
-                    field: "created_at",       
+                    field: "created_at",   
+<%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
+                    field: "$createdAt",   
 <%_ } else { _%>
                     field: "createdAt",
 <%_ } _%>        
@@ -140,7 +142,7 @@ export const BlogPostList = () => {
                 minWidth: 80,
             },
         ],
-        <%_ if (isGraphQL) { _%>
+        <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
             [],
         <%_ } else { _%>
             [categoryData],

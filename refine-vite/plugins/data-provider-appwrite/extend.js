@@ -7,10 +7,10 @@ const base = {
         relativeImport: [`import { authProvider } from "./authProvider";`],
         refineProps: [
             `dataProvider={dataProvider(appwriteClient, {
-                databaseId: "database",
+                databaseId: "default",
             })}`,
             `liveProvider={liveProvider(appwriteClient, {
-                databaseId: "database",
+                databaseId: "default",
             })}`,
             `authProvider={authProvider}`,
         ],

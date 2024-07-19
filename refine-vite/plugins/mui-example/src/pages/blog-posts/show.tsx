@@ -42,7 +42,7 @@ export const BlogPostShow = () => {
 
     const record = data?.data;
 
-<%_ if (!isGraphQL) { _%>
+<%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
         const { data: categoryData, isLoading: categoryIsLoading } = useOne({
             resource: "categories",
             id: record?.<%- blogPostCategoryFieldName %>?.id || "",
@@ -75,7 +75,7 @@ export const BlogPostShow = () => {
                 <Typography variant="body1" fontWeight="bold">
                     {"Category"}
                 </Typography>
-<%_ if (isGraphQL) { _%>  
+<%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>  
                     <div>{record?.<%- blogPostCategoryFieldName %>?.title}</div>
 <%_ } else { _%>
                     {categoryIsLoading ? (
@@ -93,6 +93,8 @@ export const BlogPostShow = () => {
                 </Typography>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
                 <DateField value={record?.created_at} />
+<%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
+                <DateField value={record?.["$createdAt"]} />
 <%_ } else { _%>
                 <DateField value={record?.createdAt} />
 <%_ } _%>      

@@ -182,6 +182,8 @@ module.exports = {
             base.blogPostCategoryIdFormField = `"categoryId"`;
         } else if (dataProvider === "data-provider-supabase") {
             base.blogPostCategoryIdFormField = `"categoryId"`;
+        } else if (dataProvider === "data-provider-appwrite") {
+            base.blogPostCategoryIdFormField = "category";
         } else {
             if (uiFramework === "mui" || isHeadless) {
                 base.blogPostCategoryIdFormField = `"category.id"`;
@@ -191,7 +193,7 @@ module.exports = {
         }
 
         // ## blogPostCategoryTableField
-        if (base.isGraphQL) {
+        if (base.isGraphQL || dataProvider === "data-provider-appwrite") {
             if (isHeadless) {
                 base.blogPostCategoryTableField = `"category.title"`;
             }

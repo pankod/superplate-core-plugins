@@ -31,16 +31,35 @@ export const BlogPostEdit = () => {
         select: '*, categories(id,title)',
     },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+    queryOptions: {
+        select: ({ data }) => {
+          return {
+            data: {
+              ...data,
+              category: data.category.$id,
+            },
+          };
+        },
+    },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
         defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
         queryOptions: {
             enabled: !!blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
         },
+<%_ } else { _%>
+    defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>,
+    queryOptions: {
+        enabled: !!blogPostsData?.<%- blogPostCategoryFieldName %>,
+    },
+<%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
@@ -82,7 +101,11 @@ export const BlogPostEdit = () => {
                 <Form.Item
                     label={"Category"}
                     name={<%- blogPostCategoryIdFormField %>}
-                    initialValue={formProps?.initialValues?.<%- blogPostCategoryFieldName %>?.id}
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+                    initialValue={formProps?.initialValues?.<%- blogPostCategoryFieldName %>}
+<%_ } else { _%>
+    initialValue={formProps?.initialValues?.<%- blogPostCategoryFieldName %>?.id}
+<%_ } _%>
                     rules={[
                         {
                             required: true,

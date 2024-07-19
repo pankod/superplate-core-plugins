@@ -35,7 +35,7 @@ export const BlogPostList = () => {
                 id: "category",
                 header: "Category",
                 accessorKey: <%- blogPostCategoryTableField %>,
-                <%_ if (!isGraphQL) { _%>
+                <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
                     cell: function render({ getValue, table }) {
                         const meta = table.options.meta as {
                             categoryData: GetManyResponse;
@@ -62,6 +62,8 @@ export const BlogPostList = () => {
                 id: "createdAt",
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
                     accessorKey: "created_at",
+<%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
+                    accessorKey: "$createdAt",
 <%_ } else { _%>
                     accessorKey: "createdAt",
 <%_ } _%>      

@@ -30,13 +30,29 @@ export default function BlogPostEdit() {
             select: '*, categories(id,title)',
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        queryOptions: {
+            select: ({ data }) => {
+            return {
+                data: {
+                ...data,
+                category: data.category.$id,
+                },
+            };
+            },
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>,
+<%_ } else { _%>
         defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
+<%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,

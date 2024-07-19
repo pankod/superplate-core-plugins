@@ -41,7 +41,7 @@ export default function BlogPostShow() {
 
     const record = data?.data;
     
-<%_ if (!isGraphQL) { _%>
+<%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useOne({
         resource: "categories",
         id: record?.<%- blogPostCategoryFieldName %>?.id || "",
@@ -83,7 +83,7 @@ export default function BlogPostShow() {
                 </div>
                 <div style={{ marginTop: "6px" }}>
                     <h5>{"Category"}</h5>
-<%_ if (isGraphQL) { _%>  
+<%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>  
                     <div>{record?.<%- blogPostCategoryFieldName %>?.title}</div>
 <%_ } else { _%>
                     <div>
@@ -105,6 +105,10 @@ export default function BlogPostShow() {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
                     {new Date(record?.created_at).toLocaleString(undefined, {
                             timeZone: "UTC",
+                    })}
+<%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
+                    {new Date(record?.["$createdAt"]).toLocaleString(undefined, {
+                        timeZone: "UTC",
                     })}
 <%_ } else { _%>
                     {new Date(record?.createdAt).toLocaleString(undefined, {

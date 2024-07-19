@@ -115,10 +115,17 @@ export default function BlogPostCreate() {
                                     label={"Category"}
                                     margin="normal"
                                     variant="outlined"
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+                                    error={!!(errors as any)?.<%- blogPostCategoryFieldName %>}
+                                    helperText={
+                                        (errors as any)?.<%- blogPostCategoryFieldName %>?.message
+                                    }
+<%_ } else { _%>
                                     error={!!(errors as any)?.<%- blogPostCategoryFieldName %>?.id}
                                     helperText={
                                         (errors as any)?.<%- blogPostCategoryFieldName %>?.id?.message
                                     }
+<%_ } _%>
                                     required
                                 />
                             )}

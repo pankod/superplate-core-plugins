@@ -94,7 +94,7 @@ export const BlogPostShow = () => {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
                 <DateField value={record?.created_at} />
 <%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
-                <DateField value={record?.["$createdAt"]} />
+                <DateField value={record?.$createdAt} />
 <%_ } else { _%>
                 <DateField value={record?.createdAt} />
 <%_ } _%>      

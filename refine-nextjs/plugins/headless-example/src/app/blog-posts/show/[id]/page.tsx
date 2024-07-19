@@ -109,7 +109,7 @@ export default function BlogPostShow() {
                             timeZone: "UTC",
                     })}
 <%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
-                    {new Date(record?.["$createdAt"]).toLocaleString(undefined, {
+                    {new Date(record?.$createdAt).toLocaleString(undefined, {
                         timeZone: "UTC",
                     })}
 <%_ } else { _%>

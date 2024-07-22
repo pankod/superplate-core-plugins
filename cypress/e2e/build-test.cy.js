@@ -5,11 +5,11 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 });
 
 const shouldSkip = () => {
-    // if (Cypress.env("DATA_PROVIDER") === "appwrite") {
-    //     cy.log("Appwrite has a known issue with rate limits, skipping.");
+    if (Cypress.env("DATA_PROVIDER") === "appwrite") {
+        cy.log("Appwrite has a known issue with rate limits, skipping.");
 
-    //     return true;
-    // }
+        return true;
+    }
 
     if (
         Cypress.env("FRAMEWORK") === "remix" &&

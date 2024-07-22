@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@refinedev/appwrite": "^6.4.6",
+        "@refinedev/appwrite": "^7.0.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {

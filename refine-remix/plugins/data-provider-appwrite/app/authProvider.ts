@@ -8,7 +8,7 @@ import { account, appwriteClient, TOKEN_KEY } from "./utility";
 export const authProvider: AuthProvider = {
     login: async ({ email, password }) => {
         try {
-            await account.createEmailSession(email, password);
+            await account.createEmailPasswordSession(email, password);
 
             const { jwt } = await account.createJWT();
 

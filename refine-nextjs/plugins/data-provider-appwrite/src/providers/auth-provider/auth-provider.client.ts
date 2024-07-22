@@ -13,7 +13,7 @@ export const authProviderClient: AuthProvider = {
             Cookies.remove(APPWRITE_JWT_KEY, { path: "/" });
             appwriteClient.setJWT("");
 
-            await appwriteAccount.createEmailSession(email, password);
+            await appwriteAccount.createEmailPasswordSession(email, password);
             const { jwt } = await appwriteAccount.createJWT();
             appwriteClient.setJWT(jwt);
 

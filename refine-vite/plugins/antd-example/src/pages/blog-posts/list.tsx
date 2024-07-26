@@ -42,7 +42,7 @@ export const BlogPostList = () => {
 <%_ } _%>
     });
 
-<%_ if (!isGraphQL) { _%>
+<%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
     const { data: categoryData, isLoading: categoryIsLoading } = useMany({
         resource: "categories",
         ids: tableProps?.dataSource?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
@@ -69,7 +69,7 @@ export const BlogPostList = () => {
                 <Table.Column
                     dataIndex={<%- blogPostCategoryTableField %>}
                     title={"Category"}
-                    <%_ if (!isGraphQL) { _%>
+                    <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
                     render={(value) =>
                             categoryIsLoading ? (
                                 <>Loading...</>
@@ -85,6 +85,8 @@ export const BlogPostList = () => {
                 <Table.Column
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
                     dataIndex={["created_at"]}  
+<%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
+                    dataIndex={["$createdAt"]}  
 <%_ } else { _%>
                     dataIndex={["createdAt"]}
 <%_ } _%>        

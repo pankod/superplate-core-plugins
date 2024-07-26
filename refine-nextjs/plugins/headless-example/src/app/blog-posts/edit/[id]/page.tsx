@@ -49,13 +49,31 @@ export default function BlogPostCreate() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        refineCoreProps: {
+            queryOptions: {
+                select: ({ data }) => {
+                return {
+                    data: {
+                    ...data,
+                    category: data.category.$id,
+                    },
+                };
+                },
+            },
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { options: categoryOptions } = useSelect({
         resource: "categories",
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>,
+<%_ } else { _%>
         defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
+<%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
                 fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
@@ -69,7 +87,11 @@ export default function BlogPostCreate() {
     });
 
     React.useEffect(() => {
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        setValue(<%- blogPostCategoryIdFormField %>, blogPostsData?.<%- blogPostCategoryFieldName %>);
+<%_ } else { _%>
         setValue(<%- blogPostCategoryIdFormField %>, blogPostsData?.<%- blogPostCategoryFieldName %>?.id);
+<%_ } _%>
     }, [categoryOptions]);
 
     return (
@@ -134,7 +156,11 @@ export default function BlogPostCreate() {
                             ))}
                         </select>
                         <span style={{ color: "red" }}>
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+                            {(errors as any)?.<%- blogPostCategoryFieldName %>?.message as string}
+<%_ } else { _%>
                             {(errors as any)?.<%- blogPostCategoryFieldName %>?.id?.message as string}
+<%_ } _%>
                         </span>
                     </label>
                     <label>

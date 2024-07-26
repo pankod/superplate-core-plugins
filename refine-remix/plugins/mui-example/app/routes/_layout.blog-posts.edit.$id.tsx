@@ -48,13 +48,31 @@ export default function BlogPostEdit() {
             },
         },
 <%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        refineCoreProps: {
+            queryOptions: {
+                select: ({ data }) => {
+                return {
+                    data: {
+                    ...data,
+                    category: data.category.$id,
+                    },
+                };
+                },
+            },
+        },
+<%_ } _%>
     });
 
     const blogPostsData = queryResult?.data?.data;
 
     const { autocompleteProps: categoryAutocompleteProps } = useAutocomplete({
         resource: "categories",
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+        defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>,
+<%_ } else { _%>
         defaultValue: blogPostsData?.<%- blogPostCategoryFieldName %>?.id,
+<%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
@@ -135,10 +153,17 @@ export default function BlogPostEdit() {
                                     label={"Category"}
                                     margin="normal"
                                     variant="outlined"
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+                                    error={!!(errors as any)?.<%- blogPostCategoryFieldName %>}
+                                    helperText={
+                                        (errors as any)?.<%- blogPostCategoryFieldName %>?.message
+                                    }
+<%_ } else { _%>
                                     error={!!(errors as any)?.<%- blogPostCategoryFieldName %>?.id}
                                     helperText={
                                         (errors as any)?.<%- blogPostCategoryFieldName %>?.id?.message
                                     }
+<%_ } _%>
                                     required
                                 />
                             )}

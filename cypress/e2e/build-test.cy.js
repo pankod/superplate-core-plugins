@@ -11,15 +11,6 @@ const shouldSkip = () => {
         return true;
     }
 
-    if (
-        Cypress.env("FRAMEWORK") === "remix" &&
-        Cypress.env("UI_FRAMEWORK") === "antd"
-    ) {
-        cy.log("Remix with Antd has known issues, skipping.");
-
-        return true;
-    }
-
     return false;
 };
 
@@ -120,11 +111,8 @@ describe("build test", () => {
             cy.contains("Blog Posts", { matchCase: false }).should("exist");
 
             // document title check
-            // ignore remix and nextjs
-            if (
-                Cypress.env("FRAMEWORK") !== "remix" &&
-                Cypress.env("FRAMEWORK") !== "nextjs"
-            ) {
+            // ignore nextjs
+            if (Cypress.env("FRAMEWORK") !== "nextjs") {
                 cy.title().should("eq", "Blog posts | Refine");
             }
 

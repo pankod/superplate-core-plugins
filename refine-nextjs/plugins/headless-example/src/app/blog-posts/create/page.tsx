@@ -111,7 +111,11 @@ export default function BlogPostCreate() {
                             ))}
                         </select>
                         <span style={{ color: "red" }}>
+<%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+                            {(errors as any)?.<%- blogPostCategoryFieldName %>?.message as string}
+<%_ } else { _%>
                             {(errors as any)?.<%- blogPostCategoryFieldName %>?.id?.message as string}
+<%_ } _%>
                         </span>
                     </label>
                     <label>

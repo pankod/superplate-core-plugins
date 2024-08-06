@@ -40,18 +40,6 @@ module.exports = {
             },
         },
         {
-            name: "refine-headless-remix",
-            type: "refine-remix",
-            answers: {
-                "ui-framework": "no",
-                "data-provider": "data-provider-custom-json-rest",
-                "auth-provider": "none",
-                "antd-example": "no",
-                "mui-example": "no",
-                "headless-example": "no",
-            },
-        },
-        {
             name: "refine-antd-nextjs",
             type: "refine-nextjs",
             answers: {
@@ -115,18 +103,6 @@ module.exports = {
         {
             name: "nextjs-tailwindcss",
             type: "refine-nextjs",
-            answers: {
-                "ui-framework": "tailwindcss",
-                "data-provider": "data-provider-custom-json-rest",
-                "auth-provider": "none",
-                "antd-example": "no",
-                "mui-example": "no",
-                "headless-example": "no",
-            },
-        },
-        {
-            name: "remix-tailwindcss",
-            type: "refine-remix",
             answers: {
                 "ui-framework": "tailwindcss",
                 "data-provider": "data-provider-custom-json-rest",

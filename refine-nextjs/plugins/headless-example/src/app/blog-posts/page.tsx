@@ -37,7 +37,7 @@ export default function BlogPostList() {
                 id: "category",
                 header: "Category",
                 accessorKey: <%- blogPostCategoryTableField %>,
-                <%_ if (!isGraphQL) { _%>
+                <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
                     cell: function render({ getValue, table }) {
                         const meta = table.options.meta as {
                             categoryData: GetManyResponse;
@@ -63,9 +63,11 @@ export default function BlogPostList() {
             {
                 id: "createdAt",
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
-                    accessorKey: "created_at",
+                accessorKey: "created_at",
+<%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
+                accessorKey: "$createdAt",
 <%_ } else { _%>
-                    accessorKey: "createdAt",
+                accessorKey: "createdAt",
 <%_ } _%>      
                 header: "Created At",
                 cell: function render({ getValue }) {
@@ -159,7 +161,7 @@ export default function BlogPostList() {
 <%_ } _%>
     });
 
-<%_ if (!isGraphQL) { _%>
+<%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
     const { data: categoryData } = useMany({
         resource: "categories",
         ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],

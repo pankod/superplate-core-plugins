@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "@refinedev/antd": "^5.37.4",
-    "@ant-design/icons": "^5.0.1",
-    "antd": "^5.0.5",
+    "@refinedev/antd": "^5.44.0",
+    "@ant-design/icons": "^5.5.1",
+    "antd": "^5.17.0",
     "js-cookie": "^3.0.5",
     "@ant-design/nextjs-registry": "^1.0.0"
   },

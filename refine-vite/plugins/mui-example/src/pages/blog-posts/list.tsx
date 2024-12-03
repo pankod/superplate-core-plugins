@@ -5,10 +5,10 @@ import {
     DeleteButton,
     EditButton,
     List,
-    MarkdownField,
     ShowButton,
     useDataGrid,
 } from "@refinedev/mui";
+import { Typography } from '@mui/material'
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     import { BLOG_POSTS_QUERY } from './queries'
@@ -20,7 +20,6 @@ import React from "react";
     
 export const BlogPostList = () => {
     const { dataGridProps } = useDataGrid({
-        syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -60,37 +59,43 @@ export const BlogPostList = () => {
                 headerName: "ID",
                 type: "number",
                 minWidth: 50,
+                display: "flex",
+                align: 'left',
+                headerAlign: 'left',
             },
             {
                 field: "title",
-                flex: 1,
                 headerName: "Title",
                 minWidth: 200,
+                display: "flex",
             },
             {
                 field: "content",
                 flex: 1,
                 headerName: "Content",
                 minWidth: 250,
+                display: "flex",
                 renderCell: function render({ value }) {
                     if (!value) return '-'
                     return (
-                        <MarkdownField value={value?.slice(0, 80) + "..." || ""} />
+                        <Typography component='p' whiteSpace='pre' overflow='hidden' textOverflow='ellipsis'>
+                            {value}
+                        </Typography>
                     );
                 },
             },
             {
                 field:  <%- blogPostCategoryTableField %>,
-                flex: 1,
                 headerName: "Category",
-                minWidth: 300,
+                minWidth: 160,
+                display: "flex",
                 <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
-                valueGetter: ({ row }) => {
+                valueGetter: (_, row) => {
                       const value = row?.<%- blogPostCategoryFieldName %>?.title
                        return value
                 },
                 <%_ } else { _%>
-                valueGetter: ({ row }) => {
+                valueGetter: (_, row) => {
                     const value = row?.<%- blogPostCategoryFieldName %>;
                     return value;
                 },
@@ -105,9 +110,9 @@ export const BlogPostList = () => {
             },
             {
                 field: "status",
-                flex: 1,
                 headerName: "Status",
-                minWidth: 200,
+                minWidth: 80,
+                display: "flex",
             },
             {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
@@ -117,17 +122,21 @@ export const BlogPostList = () => {
 <%_ } else { _%>
                     field: "createdAt",
 <%_ } _%>        
-                flex: 1,
                 headerName: "Created at",
-                minWidth: 250,
+                minWidth: 120,
+                display: "flex",
                 renderCell: function render({ value }) {
                     return <DateField value={value} />;
                 },
             },
             {
-                field: "actions",
-                headerName: "Actions",
+                field: 'actions',
+                headerName: 'Actions',
+                align: 'right',
+                headerAlign: 'right',
+                minWidth: 120,
                 sortable: false,
+                display: 'flex',
                 renderCell: function render({ row }) {
                     return (
                         <>
@@ -137,15 +146,12 @@ export const BlogPostList = () => {
                         </>
                     );
                 },
-                align: "center",
-                headerAlign: "center",
-                minWidth: 80,
             },
         ],
         <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
             [],
         <%_ } else { _%>
-            [categoryData],
+            [categoryData, categoryIsLoading],
         <%_ } _%>
 
         
@@ -153,7 +159,7 @@ export const BlogPostList = () => {
 
     return (
         <List>
-            <DataGrid {...dataGridProps} columns={columns} autoHeight />
+            <DataGrid {...dataGridProps} columns={columns} />
         </List>
     );
 };

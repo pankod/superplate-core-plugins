@@ -33,21 +33,29 @@ export default function CategoryList() {
     const columns = React.useMemo<GridColDef[]>(
         () => [
             {
-                field: "id",
-                headerName: "ID",
-                type: "number",
+                field: 'id',
+                headerName: 'ID',
+                type: 'number',
                 minWidth: 50,
+                display: 'flex',
+                align: 'left',
+                headerAlign: 'left',
             },
             {
                 field: "title",
                 flex: 1,
                 headerName: "Title",
                 minWidth: 200,
+                display: "flex",
             },
             {
-                field: "actions",
-                headerName: "Actions",
+                field: 'actions',
+                headerName: 'Actions',
+                align: 'right',
+                headerAlign: 'right',
+                minWidth: 120,
                 sortable: false,
+                display: 'flex',
                 renderCell: function render({ row }) {
                     return (
                         <>
@@ -57,9 +65,6 @@ export default function CategoryList() {
                         </>
                     );
                 },
-                align: "center",
-                headerAlign: "center",
-                minWidth: 80,
             },
         ],
         [],
@@ -67,7 +72,7 @@ export default function CategoryList() {
 
     return (
         <List>
-            <DataGrid {...dataGridProps} columns={columns} autoHeight />
+            <DataGrid {...dataGridProps} columns={columns} />
         </List>
     );
 };

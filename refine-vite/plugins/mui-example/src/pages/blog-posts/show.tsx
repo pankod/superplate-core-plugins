@@ -15,7 +15,7 @@ import {
 <%_ } _%>
 
 export const BlogPostShow = () => {
-    const { queryResult } = useShow({
+    const { query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -38,7 +38,7 @@ export const BlogPostShow = () => {
 <%_ } _%>
     });
 
-    const { data, isLoading } = queryResult;
+    const { data, isLoading } = query;
 
     const record = data?.data;
 

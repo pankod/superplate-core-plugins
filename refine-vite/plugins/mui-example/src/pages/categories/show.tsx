@@ -13,7 +13,7 @@ import {
 <%_ } _%>
 
 export const CategoryShow = () => {
-    const { queryResult } = useShow({
+    const { query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
                 fields: CATEGORIES_QUERY,
@@ -25,7 +25,7 @@ export const CategoryShow = () => {
         },
 <%_ } _%>
     });
-    const { data, isLoading } = queryResult;
+    const { data, isLoading } = query;
 
     const record = data?.data;
 

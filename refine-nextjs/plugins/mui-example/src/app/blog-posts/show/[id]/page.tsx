@@ -19,7 +19,7 @@ import { BLOG_POSTS_QUERY } from "@queries/blog-posts";
 
 
 export default function BlogPostShow() {
-    const { queryResult } = useShow({
+    const { query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -42,7 +42,7 @@ export default function BlogPostShow() {
 <%_ } _%>
     });
 
-    const { data, isLoading } = queryResult;
+    const { data, isLoading } = query;
 
     const record = data?.data;
 

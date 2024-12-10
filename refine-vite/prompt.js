@@ -153,12 +153,12 @@ module.exports = {
             type: "select",
             choices: [
                 {
-                    message: "React Router v6",
-                    name: "react-router-v6",
-                    hint: "React Router v6 will be used as router.",
+                    message: "React Router",
+                    name: "react-router",
+                    hint: "React Router will be used as router.",
                 },
             ],
-            default: "react-router-v6",
+            default: "react-router",
             skip: () => true,
         },
         {

@@ -69,7 +69,7 @@ const buildTemplate = async () => {
     };
 
     if (["react", "vite"].includes(FRAMEWORK)) {
-        body.answers["router-provider"] = "react-router-v6";
+        body.answers["router-provider"] = "react-router";
     }
 
     const randomDir = randomString(25);

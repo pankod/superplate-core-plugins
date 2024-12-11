@@ -2,7 +2,7 @@ const base = {
     _app: {
         import: [],
         localImport: [
-            'import { authProviderClient } from "@providers/auth-provider";',
+            'import { authProviderClient } from "@providers/auth-provider/auth-provider.client";',
             'import { appwriteDataProvider, appwriteLiveProvider } from "@providers/data-provider";',
         ],
         refineProps: [

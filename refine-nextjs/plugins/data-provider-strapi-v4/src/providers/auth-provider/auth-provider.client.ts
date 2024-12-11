@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 
 const strapiAuthHelper = AuthHelper(API_URL + "/api");
 
-export const authProvider: AuthProvider = {
+export const authProviderClient: AuthProvider = {
     login: async ({ email, password }) => {
         const { data, status } = await strapiAuthHelper.login(email, password);
         if (status === 200) {

@@ -2,11 +2,11 @@ const base = {
     _app: {
         import: [],
         localImport: [
-            'import { authProvider } from "@providers/auth-provider";',
+            'import { authProviderClient } from "@providers/auth-provider/auth-provider.client";',
             'import { dataProvider } from "@providers/data-provider";',
         ],
         refineProps: [
-            "authProvider={authProvider}",
+            "authProvider={authProviderClient}",
             "dataProvider={dataProvider}",
         ],
         refineAntdImports: [],

@@ -7,10 +7,10 @@ import {
     DeleteButton,
     EditButton,
     List,
-    MarkdownField,
     ShowButton,
     useDataGrid,
 } from "@refinedev/mui";
+import { Typography } from '@mui/material'
 import React from "react";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
 import { BLOG_POSTS_QUERY } from  "@queries/blog-posts";
@@ -54,105 +54,112 @@ export default function BlogPostList() {
     });
 <%_ } _%>
 
-    const columns = React.useMemo<GridColDef[]>(
-        () => [
-            {
-                field: "id",
-                headerName: "ID",
-                type: "number",
-                minWidth: 50,
+const columns = React.useMemo<GridColDef[]>(
+    () => [
+        {
+            field: "id",
+            headerName: "ID",
+            type: "number",
+            minWidth: 50,
+            display: "flex",
+            align: 'left',
+            headerAlign: 'left',
+        },
+        {
+            field: "title",
+            headerName: "Title",
+            minWidth: 200,
+            display: "flex",
+        },
+        {
+            field: "content",
+            flex: 1,
+            headerName: "Content",
+            minWidth: 250,
+            display: "flex",
+            renderCell: function render({ value }) {
+                if (!value) return '-'
+                return (
+                    <Typography component='p' whiteSpace='pre' overflow='hidden' textOverflow='ellipsis'>
+                        {value}
+                    </Typography>
+                );
             },
-            {
-                field: "title",
-                flex: 1,
-                headerName: "Title",
-                minWidth: 200,
+        },
+        {
+            field:  <%- blogPostCategoryTableField %>,
+            headerName: "Category",
+            minWidth: 160,
+            display: "flex",
+            <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
+            valueGetter: (_, row) => {
+                  const value = row?.<%- blogPostCategoryFieldName %>?.title
+                   return value
             },
-            {
-                field: "content",
-                flex: 1,
-                headerName: "Content",
-                minWidth: 250,
-                renderCell: function render({ value }) {
-                    if (!value) return '-'
-                    return (
-                        <MarkdownField value={value?.slice(0, 80) + "..." || ""} />
+            <%_ } else { _%>
+            valueGetter: (_, row) => {
+                const value = row?.<%- blogPostCategoryFieldName %>;
+                return value;
+            },
+            renderCell: function render({ value }) {
+                return categoryIsLoading ? (
+                    <>Loading...</>
+                ) : (
+                    categoryData?.data?.find((item) => item.id === value?.id)?.title
                     );
                 },
-            },
-            {
-                field:  <%- blogPostCategoryTableField %>,
-                flex: 1,
-                headerName: "Category",
-                minWidth: 300,
-                <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
-                valueGetter: ({ row }) => {
-                      const value = row?.<%- blogPostCategoryFieldName %>?.title
-                       return value
-                },
-                <%_ } else { _%>
-                valueGetter: ({ row }) => {
-                    const value = row?.<%- blogPostCategoryFieldName %>;
-                    return value;
-                },
-                renderCell: function render({ value }) {
-                    return categoryIsLoading ? (
-                        <>Loading...</>
-                    ) : (
-                        categoryData?.data?.find((item) => item.id === value?.id)?.title
-                        );
-                    },
-                <%_ } _%>
-            },
-            {
-                field: "status",
-                flex: 1,
-                headerName: "Status",
-                minWidth: 200,
-            },
-            {
+            <%_ } _%>
+        },
+        {
+            field: "status",
+            headerName: "Status",
+            minWidth: 80,
+            display: "flex",
+        },
+        {
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
-                    field: "created_at",   
+                field: "created_at",   
 <%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
-                    field: "$createdAt",   
+                field: "$createdAt",   
 <%_ } else { _%>
-                    field: "createdAt",
+                field: "createdAt",
 <%_ } _%>        
-                flex: 1,
-                headerName: "Created at",
-                minWidth: 250,
-                renderCell: function render({ value }) {
-                    return <DateField value={value} />;
-                },
+            headerName: "Created at",
+            minWidth: 120,
+            display: "flex",
+            renderCell: function render({ value }) {
+                return <DateField value={value} />;
             },
-            {
-                field: "actions",
-                headerName: "Actions",
-                sortable: false,
-                renderCell: function render({ row }) {
-                    return (
-                        <>
-                            <EditButton hideText recordItemId={row.id} />
-                            <ShowButton hideText recordItemId={row.id} />
-                            <DeleteButton hideText recordItemId={row.id} />
-                        </>
-                    );
-                },
-                align: "center",
-                headerAlign: "center",
-                minWidth: 80,
+        },
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            align: 'right',
+            headerAlign: 'right',
+            minWidth: 120,
+            sortable: false,
+            display: 'flex',
+            renderCell: function render({ row }) {
+                return (
+                    <>
+                        <EditButton hideText recordItemId={row.id} />
+                        <ShowButton hideText recordItemId={row.id} />
+                        <DeleteButton hideText recordItemId={row.id} />
+                    </>
+                );
             },
-        ],
-        <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
-            [],
-        <%_ } else { _%>
-            [categoryData],
-        <%_ } _%>
+        },
+    ],
+    <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
+        [],
+    <%_ } else { _%>
+        [categoryData, categoryIsLoading],
+    <%_ } _%>
     );
 
     return (
         <List>
-            <DataGrid {...dataGridProps} columns={columns} autoHeight />
+            <DataGrid {...dataGridProps} columns={columns} />
         </List>
     );
 };

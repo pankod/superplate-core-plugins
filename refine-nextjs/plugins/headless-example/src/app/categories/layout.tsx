@@ -6,7 +6,7 @@ import { Layout as BaseLayout } from "@components/layout";
     import { redirect } from 'next/navigation' 
 <%_ } _%>
 <%_ if (_app.isAuthProviderCheck) { _%>
-    import { authProviderServer } from '@providers/auth-provider'
+    import { authProviderServer } from '@providers/auth-provider/auth-provider.server'
     import { redirect } from 'next/navigation' 
 <%_ } _%>
 

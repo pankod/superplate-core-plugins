@@ -61,7 +61,7 @@ const buildRemote = async () => {
     };
 
     if (["react", "vite"].includes(FRAMEWORK)) {
-        body.answers["router-provider"] = "react-router-v6";
+        body.answers["router-provider"] = "react-router";
     }
 
     const createdBoilerplate = await axios.post(

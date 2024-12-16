@@ -5,7 +5,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "antd",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-custom-json-rest",
                 "auth-provider": "none",
                 "antd-example": "antd-example",
@@ -18,7 +18,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "no",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-custom-json-rest",
                 "auth-provider": "none",
                 "antd-example": "no",
@@ -31,7 +31,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "mui",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-custom-json-rest",
                 "auth-provider": "none",
                 "antd-example": "no",
@@ -56,7 +56,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "antd",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-supabase",
                 "antd-example": "no",
                 "mui-example": "no",
@@ -68,7 +68,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "no",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-supabase",
                 "antd-example": "no",
                 "mui-example": "no",
@@ -80,7 +80,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "antd",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-appwrite",
                 "antd-example": "no",
                 "mui-example": "no",
@@ -92,7 +92,7 @@ module.exports = {
             type: "refine-vite",
             answers: {
                 "ui-framework": "tailwindcss",
-                "router-provider": "react-router-v6",
+                "router-provider": "react-router",
                 "data-provider": "data-provider-custom-json-rest",
                 "auth-provider": "none",
                 "antd-example": "no",

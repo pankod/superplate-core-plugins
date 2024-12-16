@@ -4,7 +4,7 @@ import {
     <%_ } _%>
      useMenu 
 } from "@refinedev/core";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 
 export const Menu = () => {
     <%_ if (_app.isAuthRoutes) { _%>

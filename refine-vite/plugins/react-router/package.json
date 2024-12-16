@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@refinedev/react-router": "^1.0.0"
+    }
+}

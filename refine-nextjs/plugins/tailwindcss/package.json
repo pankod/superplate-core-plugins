@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "postcss": "^8"
   }
 }

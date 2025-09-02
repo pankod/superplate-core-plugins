@@ -4,8 +4,8 @@ const base = {
         refineImports: [],
         refineAntdImports: [
             "useNotificationProvider",
-            "ThemedLayoutV2",
-            "ThemedSiderV2",
+            "ThemedLayout",
+            "ThemedSider",
         ],
         refineProps: ["notificationProvider={useNotificationProvider}"],
         wrapper: [

@@ -81,7 +81,6 @@ function App() {
                     options={{
                         syncWithLocation: true,
                         warnWhenUnsavedChanges: true,
-                        useNewQueryKeys: true,
                         <%_ if (typeof projectId !== 'undefined' && projectId !== '') { _%>
                             projectId: "<%= projectId %>",
                         <%_ } _%>
@@ -101,14 +100,14 @@ function App() {
                                             <Outlet />
                                         </Layout>
                                     <%_ } else { _%>
-                                        <ThemedLayoutV2
+                                        <ThemedLayout
                                             Header={Header}
                                             <%_ if (answers["ui-framework"] === 'antd') { _%>
-                                            Sider={(props) => <ThemedSiderV2 {...props} fixed />}
+                                            Sider={(props) => <ThemedSider {...props} fixed />}
                                             <%_ } _%>
                                         >
                                             <Outlet />
-                                        </ThemedLayoutV2>
+                                        </ThemedLayout>
                                     <%_ } _%>
                                 </Authenticated>
                             }
@@ -179,14 +178,14 @@ function App() {
                                         <Outlet />
                                     </Layout>
                                 <%_ } else { _%>
-                                    <ThemedLayoutV2
+                                    <ThemedLayout
                                         Header={() => <Header sticky />}
                                         <%_ if (answers["ui-framework"] === 'antd') { _%>
-                                        Sider={(props) => <ThemedSiderV2 {...props} fixed />}
+                                        Sider={(props) => <ThemedSider {...props} fixed />}
                                         <%_ } _%>
                                     >
                                         <Outlet />
-                                    </ThemedLayoutV2>
+                                    </ThemedLayout>
                                 <%_ } _%>
                             )}
                         >

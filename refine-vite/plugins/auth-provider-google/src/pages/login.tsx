@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLogin } from "@refinedev/core";
 
 <%_ if (answers["ui-framework"] === "antd") { _%>
-import { ThemedTitleV2 } from "@refinedev/antd";
+import { ThemedTitle } from "@refinedev/antd";
 import { Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { ThemedTitleV2 } from "@refinedev/mui";
+import { ThemedTitle } from "@refinedev/mui";
 <%_ } _%>
 
 import { CredentialResponse } from "../interfaces/google"; 
@@ -67,7 +67,7 @@ export const Login: React.FC = () => {
             }}
             >
             <Space direction="vertical" align="center">
-                <ThemedTitleV2
+                <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
@@ -105,7 +105,7 @@ export const Login: React.FC = () => {
                 justifyContent="center"
                 flexDirection="column"
             >
-                <ThemedTitleV2
+                <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",

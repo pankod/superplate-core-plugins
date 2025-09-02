@@ -121,10 +121,10 @@ module.exports = {
 
         if (!isHeadless && (answers["title"] || answers["svg"])) {
             if (answers["ui-framework"] === "antd") {
-                base._app.refineAntdImports.push("ThemedTitleV2");
+                base._app.refineAntdImports.push("ThemedTitle");
             }
             if (answers["ui-framework"] === "mui") {
-                base._app.refineMuiImports.push("ThemedTitleV2");
+                base._app.refineMuiImports.push("ThemedTitle");
             }
         }
 

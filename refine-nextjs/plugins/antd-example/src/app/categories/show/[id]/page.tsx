@@ -15,7 +15,7 @@ import React from "react";
 const { Title } = Typography;
 
 export default function CategoryShow() {
-    const { queryResult } = useShow({
+    const { result: record, query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: CATEGORIES_QUERY,
@@ -27,10 +27,8 @@ export default function CategoryShow() {
         },
 <%_ } _%>
     });
-    const { data, isLoading } = queryResult;
+    const { isLoading } = query;
  
-    const record = data?.data;
-
     return (
         <Show isLoading={isLoading}>
             <Title level={5}>{"ID"}</Title>

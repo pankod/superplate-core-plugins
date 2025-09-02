@@ -14,7 +14,7 @@ import React from "react";
 export const CategoryShow = () => {
     const { edit, list } = useNavigation();
     const { id } = useResource();
-    const { queryResult } = useShow({
+    const { result: record } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
                 fields: CATEGORIES_QUERY,
@@ -26,9 +26,6 @@ export const CategoryShow = () => {
             },
 <%_ } _%>
     });
-    const { data } = queryResult;
-
-    const record = data?.data;
 
     return (
         <div style={{ padding: "16px" }}>

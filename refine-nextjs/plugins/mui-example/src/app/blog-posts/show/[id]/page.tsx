@@ -19,7 +19,7 @@ import { BLOG_POSTS_QUERY } from "@queries/blog-posts";
 
 
 export default function BlogPostShow() {
-    const { query } = useShow({
+    const { result: record, query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -42,12 +42,10 @@ export default function BlogPostShow() {
 <%_ } _%>
     });
 
-    const { data, isLoading } = query;
-
-    const record = data?.data;
+    const { isLoading } = query;
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+    const { result: category, query: { isLoading: categoryIsLoading } } = useOne({
         resource: "categories",
         id: record?.<%- blogPostCategoryFieldName %>?.id || "",
         queryOptions: {
@@ -83,7 +81,7 @@ export default function BlogPostShow() {
                 {categoryIsLoading ? (
                     <>Loading...</>
                 ) : (
-                    <>{categoryData?.data?.title}</>
+                    <>{category?.title}</>
                 )}
 <%_ } _%>  
                 <Typography variant="body1" fontWeight="bold">

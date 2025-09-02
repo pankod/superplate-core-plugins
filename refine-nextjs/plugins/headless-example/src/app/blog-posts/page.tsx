@@ -115,20 +115,22 @@ export default function BlogPostList() {
     const { edit, show, create } = useNavigation();
 
     const {
-        getHeaderGroups,
-        getRowModel,
-        setOptions,
         refineCore: {
-            tableQueryResult: { data: tableData },
+            result: { data: tableData },
         },
-        getState,
-        setPageIndex,
-        getCanPreviousPage,
-        getPageCount,
-        getCanNextPage,
-        nextPage,
-        previousPage,
-        setPageSize,
+        reactTable: {
+            getHeaderGroups,
+            getRowModel,
+            setOptions,
+            getState,
+            setPageIndex,
+            getCanPreviousPage,
+            getPageCount,
+            getCanNextPage,
+            nextPage,
+            previousPage,
+            setPageSize,
+        }
     } = useTable({
         columns,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -162,7 +164,7 @@ export default function BlogPostList() {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData } = useMany({
+    const { result: { data: categoryData } } = useMany({
         resource: "categories",
         ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {

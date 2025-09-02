@@ -20,7 +20,7 @@ import { BLOG_POSTS_QUERY } from  "@queries/blog-posts";
 <%_ } _%>
     
 export default function BlogPostList() {
-    const { dataGridProps } = useDataGrid({
+    const { result, dataGridProps } = useDataGrid({
         syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
@@ -45,11 +45,11 @@ export default function BlogPostList() {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData, isLoading: categoryIsLoading } = useMany({
+    const { result: { data: categoryData }, query: { isLoading: categoryIsLoading } } = useMany({
         resource: "categories",
-        ids: dataGridProps?.rows?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
+        ids: result?.data?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
-            enabled: !!dataGridProps?.rows,
+            enabled: !!result?.data,
         },
     });
 <%_ } _%>

@@ -21,7 +21,7 @@ const GOOGLE_CLIENT_ID = "1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.go
 export const Login: React.FC = () => {
     const { mutate: login } = useLogin<CredentialResponse>();
 
-    const GoogleButton = (): JSX.Element => {
+    const GoogleButton = () => {
         const divRef = useRef<HTMLDivElement>(null);
 
         useEffect(() => {

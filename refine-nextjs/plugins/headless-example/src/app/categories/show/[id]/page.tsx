@@ -1,6 +1,6 @@
 "use client"
 
-import { useNavigation, useResource, useShow } from "@refinedev/core";
+import { useNavigation, useResourceParams, useShow } from "@refinedev/core";
 import React from "react";
 import { Controller } from "react-hook-form";
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -14,7 +14,7 @@ import { Controller } from "react-hook-form";
 
 export default function CategoryShow() {
     const { edit, list } = useNavigation();
-    const { id } = useResource();
+    const { id } = useResourceParams();
     const { result: record } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {

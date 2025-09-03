@@ -3,7 +3,7 @@
 import {
     useNavigation,
     useOne,
-    useResource,
+    useResourceParams,
     useShow,
 } from "@refinedev/core";
 import React from "react";
@@ -16,7 +16,7 @@ import React from "react";
 
 export default function BlogPostShow() {
     const { edit, list } = useNavigation();
-    const { id } = useResource();
+    const { id } = useResourceParams();
     const { result: record } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {

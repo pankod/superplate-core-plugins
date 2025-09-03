@@ -105,7 +105,7 @@ const columns = React.useMemo<GridColDef[]>(
                 return categoryIsLoading ? (
                     <>Loading...</>
                 ) : (
-                    categoryData?.data?.find((item) => item.id === value?.id)?.title
+                    categoryData?.find((item) => item.id === value?.id)?.title
                     );
                 },
             <%_ } _%>

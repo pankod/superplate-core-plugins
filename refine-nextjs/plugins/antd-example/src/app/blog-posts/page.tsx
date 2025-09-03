@@ -76,7 +76,7 @@ export default function BlogPostList() {
                             categoryIsLoading ? (
                                 <>Loading...</>
                             ) : (
-                                categoryData?.data?.find(
+                                categoryData?.find(
                                     (item) => item.id === value?.id,
                                 )?.title
                             )

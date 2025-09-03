@@ -45,7 +45,7 @@ export default function BlogPostList() {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { result: { data: categoryData }, query: { isLoading: categoryIsLoading } } = useMany({
+    const { result: { data: categories }, query: { isLoading: categoryIsLoading } } = useMany({
         resource: "categories",
         ids: result?.data?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
@@ -105,7 +105,7 @@ const columns = React.useMemo<GridColDef[]>(
                 return categoryIsLoading ? (
                     <>Loading...</>
                 ) : (
-                    categoryData?.find((item) => item.id === value?.id)?.title
+                    categories?.find((item) => item.id === value?.id)?.title
                     );
                 },
             <%_ } _%>
@@ -153,7 +153,7 @@ const columns = React.useMemo<GridColDef[]>(
     <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
         [],
     <%_ } else { _%>
-        [categoryData, categoryIsLoading],
+        [categories, categoryIsLoading],
     <%_ } _%>
     );
 

@@ -46,7 +46,7 @@ export default function BlogPostList() {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { result: { data: categoryData }, query: { isLoading: categoryIsLoading } } = useMany({
+    const { result: { data: categories }, query: { isLoading: categoryIsLoading } } = useMany({
         resource: "categories",
         ids: result?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
@@ -76,7 +76,7 @@ export default function BlogPostList() {
                             categoryIsLoading ? (
                                 <>Loading...</>
                             ) : (
-                                categoryData?.find(
+                                categories?.find(
                                     (item) => item.id === value?.id,
                                 )?.title
                             )

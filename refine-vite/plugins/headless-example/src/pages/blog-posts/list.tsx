@@ -38,11 +38,11 @@ export const BlogPostList = () => {
                 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
                     cell: function render({ getValue, table }) {
                         const meta = table.options.meta as {
-                            categoryData: GetManyResponse;
+                            categories: GetManyResponse["data"];
                         };
     
                         try {
-                            const category = meta.categoryData?.data?.find(
+                            const category = meta.categories?.find(
                                 (item) => item.id == getValue<any>()?.id,
                             );
     
@@ -164,7 +164,7 @@ export const BlogPostList = () => {
 
 
 <%_ if (!isGraphQL) { _%>
-    const { result: { data: categoryData } } = useMany({
+    const { result: { data: categories } } = useMany({
             resource: "categories",
             ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
             queryOptions: {
@@ -176,7 +176,7 @@ export const BlogPostList = () => {
         ...prev,
         meta: {
             ...prev.meta,
-                categoryData,
+            categories,
         },
     }));
 <%_ } _%>

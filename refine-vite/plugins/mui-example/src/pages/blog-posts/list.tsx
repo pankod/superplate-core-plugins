@@ -43,7 +43,7 @@ export const BlogPostList = () => {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { result: { data: categoryData }, query: { isLoading: categoryIsLoading } } = useMany({
+    const { result: { data: categories }, query: { isLoading: categoryIsLoading } } = useMany({
         resource: "categories",
         ids: result?.data?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
@@ -103,7 +103,7 @@ export const BlogPostList = () => {
                     return categoryIsLoading ? (
                         <>Loading...</>
                     ) : (
-                        categoryData?.data?.find((item) => item.id === value?.id)?.title
+                        categories?.find((item) => item.id === value?.id)?.title
                         );
                     },
                 <%_ } _%>
@@ -151,7 +151,7 @@ export const BlogPostList = () => {
         <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
             [],
         <%_ } else { _%>
-            [categoryData, categoryIsLoading],
+            [categories, categoryIsLoading],
         <%_ } _%>
 
         

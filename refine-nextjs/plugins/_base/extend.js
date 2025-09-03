@@ -144,7 +144,7 @@ module.exports = {
         // this impementation required for getting default ColorModeContextProvider's theme from cookie
         if (!isHeadless) {
             base._app.nextjsInner.push(
-                `const cookieStore = cookies();`,
+                `const cookieStore = await cookies();`,
                 `const theme = cookieStore.get("theme");`,
                 `const defaultMode = theme?.value === "dark" ? "dark" : "light";`,
             );

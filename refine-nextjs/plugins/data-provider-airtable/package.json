@@ -1,5 +1,5 @@
 {
-    "dependencies": {
-        "@refinedev/airtable": "^4.4.6"
-    }
+  "dependencies": {
+    "@refinedev/airtable": "^5.0.0"
+  }
 }

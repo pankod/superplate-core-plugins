@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@refinedev/nestjsx-crud": "^5.0.1"
+    "@refinedev/nestjsx-crud": "^6.0.0"
   }
 }

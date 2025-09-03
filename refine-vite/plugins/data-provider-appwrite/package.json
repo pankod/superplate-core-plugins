@@ -1,9 +1,9 @@
 {
-    "dependencies": {
-        "@refinedev/appwrite": "^7.0.0",
-        "uuid": "^9.0.0"
-    },
-    "devDependencies": {
-        "@types/uuid": "^9.0.2"
-    }
+  "dependencies": {
+    "@refinedev/appwrite": "^8.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.2"
+  }
 }

@@ -12,7 +12,7 @@ export const BlogPostEdit = () => {
     const { list } = useNavigation();
 
     const {
-        refineCore: { onFinish, queryResult },
+        refineCore: { onFinish, query },
         register,
         handleSubmit,
         setValue,
@@ -62,7 +62,7 @@ export const BlogPostEdit = () => {
 <%_ } _%>
     });
 
-    const blogPostsData = queryResult?.data?.data;
+    const blogPostsData = query?.data?.data;
 
     const { options: categoryOptions } = useSelect({
         resource: "categories",

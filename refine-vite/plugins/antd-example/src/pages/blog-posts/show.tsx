@@ -18,7 +18,7 @@ import React from "react";
 const { Title } = Typography;
 
 export const BlogPostShow = () => {
-    const { result: record, query } = useShow({
+    const { result: record, query: { isLoading } } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -40,7 +40,6 @@ export const BlogPostShow = () => {
         },
 <%_ } _%>
     });
-    const { isLoading } = queryResult;
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
     const { result: category, query: { isLoading: categoryIsLoading } } = useOne({

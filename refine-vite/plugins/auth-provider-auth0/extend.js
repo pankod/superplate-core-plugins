@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        refineImports: [`Authenticated`, `AuthBindings`],
+        refineImports: [`Authenticated`, `AuthProvider`],
         import: [
             `import axios from "axios";`,
             `import { useAuth0 } from "@auth0/auth0-react";`,
@@ -15,7 +15,7 @@ const base = {
                 return <span>loading...</span>
             }`,
             `
-            const authProvider: AuthBindings = {
+            const authProvider: AuthProvider = {
                 login: async () => {
                     return {
                         success: true,

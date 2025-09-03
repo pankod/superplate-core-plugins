@@ -1,18 +1,15 @@
-import { AuthBindings } from "@refinedev/core";
-
+import { AuthProvider } from "@refinedev/core";
 import { supabaseClient } from "./utility";
 
-const authProvider: AuthBindings = {
+const authProvider: AuthProvider = {
     login: async ({ email, password, providerName }) => {
         // sign in with oauth
         try {
             if (providerName) {
-                const {
-                    data,
-                    error,
-                } = await supabaseClient.auth.signInWithOAuth({
-                    provider: providerName,
-                });
+                const { data, error } =
+                    await supabaseClient.auth.signInWithOAuth({
+                        provider: providerName,
+                    });
 
                 if (error) {
                     return {
@@ -30,13 +27,11 @@ const authProvider: AuthBindings = {
             }
 
             // sign in with email and password
-            const {
-                data,
-                error,
-            } = await supabaseClient.auth.signInWithPassword({
-                email,
-                password,
-            });
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+                    email,
+                    password,
+                });
 
             if (error) {
                 return {
@@ -103,12 +98,10 @@ const authProvider: AuthBindings = {
     },
     forgotPassword: async ({ email }) => {
         try {
-            const {
-                data,
-                error,
-            } = await supabaseClient.auth.resetPasswordForEmail(email, {
-                redirectTo: `${window.location.origin}/update-password`,
-            });
+            const { data, error } =
+                await supabaseClient.auth.resetPasswordForEmail(email, {
+                    redirectTo: `${window.location.origin}/update-password`,
+                });
 
             if (error) {
                 return {

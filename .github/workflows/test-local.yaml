@@ -9,7 +9,7 @@ jobs:
     name: vite
     concurrency:
       group: ${{ github.ref }}-e2e-local-vite-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
-      cancel-in-progress: true
+      cancel-in-progress: false
     strategy:
       fail-fast: false
       matrix:
@@ -66,7 +66,7 @@ jobs:
     name: nextjs
     concurrency:
       group: ${{ github.ref }}-e2e-local-nextjs-${{ matrix.data_provider }}-${{ matrix.ui_framework }}
-      cancel-in-progress: true
+      cancel-in-progress: false
     strategy:
       fail-fast: false
       matrix:

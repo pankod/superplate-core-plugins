@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@refinedev/react-hook-form": "^5.0.0",
-    "@refinedev/nextjs-router": "^6.0.0",
+    "@refinedev/nextjs-router": "^7.0.0",
     "@refinedev/react-table": "^6.0.0",
     "@tanstack/react-table": "^8.2.6"
   }

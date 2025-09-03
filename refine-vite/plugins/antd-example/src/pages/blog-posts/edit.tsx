@@ -10,7 +10,7 @@ import React from "react";
 <%_ } _%>
 
 export const BlogPostEdit = () => {
-    const { formProps, saveButtonProps, queryResult, formLoading } = useForm({
+    const { formProps, saveButtonProps, query, formLoading } = useForm({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -45,7 +45,7 @@ export const BlogPostEdit = () => {
 <%_ } _%>
     });
 
-    const blogPostsData = queryResult?.data?.data;
+    const blogPostsData = query?.data?.data;
 
     const { selectProps: categorySelectProps } = useSelect({
         resource: "categories",

@@ -3,7 +3,7 @@
 import { useLogin } from "@refinedev/core";
 
 <%_ if (answers["ui-framework"] === "antd") { _%>
-import { ThemedTitleV2 } from "@refinedev/antd";
+import { ThemedTitle } from "@refinedev/antd";
 import { Button, Typography, Layout, Space } from "antd";
 <%_ } _%> 
 <%_ if (answers["ui-framework"] === 'mui') { _%>
@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { ThemedTitleV2 } from "@refinedev/mui";
+import { ThemedTitle } from "@refinedev/mui";
 <%_ } _%>
     
 export default function Login() {
@@ -27,7 +27,7 @@ export default function Login() {
             }}
             >
             <Space direction="vertical" align="center">
-                <ThemedTitleV2
+                <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",
@@ -72,7 +72,7 @@ export default function Login() {
                 justifyContent="center"
                 flexDirection="column"
             >
-                <ThemedTitleV2
+                <ThemedTitle
                 collapsed={false}
                 wrapperStyles={{
                     fontSize: "22px",

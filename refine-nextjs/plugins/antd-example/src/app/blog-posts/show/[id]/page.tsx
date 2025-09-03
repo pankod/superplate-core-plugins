@@ -20,7 +20,7 @@ import React from "react";
 const { Title } = Typography;
 
 export default function BlogPostShow() {
-    const { queryResult } = useShow({
+    const { result: record, query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -42,12 +42,11 @@ export default function BlogPostShow() {
         },
 <%_ } _%>
     });
-    const { data, isLoading } = queryResult;
+    const { isLoading } = query;
 
-    const record = data?.data;
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+    const { result: category, query: { isLoading: categoryIsLoading } } = useOne({
         resource: "categories",
         id: record?.<%- blogPostCategoryFieldName %>?.id || "",
         queryOptions: {
@@ -71,7 +70,7 @@ export default function BlogPostShow() {
             <TextField value={categoryIsLoading ? (
                 <>Loading...</>
             ) : (
-                <>{categoryData?.data?.title}</>
+                <>{category?.title}</>
             )} />
 <%_ } _%>  
             <Title level={5}>{"Status"}</Title>

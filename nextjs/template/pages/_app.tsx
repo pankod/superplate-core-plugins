@@ -7,7 +7,7 @@ import { AppProps } from "next/app";
     var bottom = _app.wrapper.map(wrapper => wrapper[1] || "").reverse();
 %>
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+function MyApp({ Component, pageProps }: AppProps) {
     <%- _app.inner.join("\n") %>
     return (
         <%- top.join("\n") %>

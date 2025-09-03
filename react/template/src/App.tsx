@@ -7,7 +7,7 @@
 import Home from "pages";
 
 
-function App(): JSX.Element {
+function App() {
     <%- _app.inner.join("\n") %>
     return (
         <%- top.join("\n") %>

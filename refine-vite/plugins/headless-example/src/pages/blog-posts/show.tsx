@@ -1,7 +1,7 @@
 import {
     useNavigation,
     useOne,
-    useResource,
+    useResourceParams,
     useShow,
 } from "@refinedev/core";
 import React from "react";
@@ -14,8 +14,8 @@ import React from "react";
 
 export const BlogPostShow = () => {
     const { edit, list } = useNavigation();
-    const { id } = useResource();
-    const { queryResult } = useShow({
+    const { id } = useResourceParams();
+    const { result: record, query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
             meta: {
                 fields: BLOG_POSTS_QUERY,
@@ -37,12 +37,9 @@ export const BlogPostShow = () => {
             },
 <%_ } _%>
     });
-    const { data } = queryResult;
-
-    const record = data?.data;
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+    const { result: category, query: { isLoading: categoryIsLoading } } = useOne({
         resource: "categories",
         id: record?.<%- blogPostCategoryFieldName %>?.id || "",
         queryOptions: {
@@ -90,7 +87,7 @@ export const BlogPostShow = () => {
                         {categoryIsLoading ? (
                             <>Loading...</>
                         ) : (
-                            <>{categoryData?.data?.title}</>
+                            <>{category?.title}</>
                         )}
                     </div>
 <%_ } _%>  

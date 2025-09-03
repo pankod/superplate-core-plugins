@@ -38,11 +38,11 @@ export const BlogPostList = () => {
                 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
                     cell: function render({ getValue, table }) {
                         const meta = table.options.meta as {
-                            categoryData: GetManyResponse;
+                            categories: GetManyResponse["data"];
                         };
     
                         try {
-                            const category = meta.categoryData?.data?.find(
+                            const category = meta.categories?.find(
                                 (item) => item.id == getValue<any>()?.id,
                             );
     
@@ -113,20 +113,23 @@ export const BlogPostList = () => {
     const { edit, show, create } = useNavigation();
 
     const {
-        getHeaderGroups,
-        getRowModel,
-        setOptions,
+      
         refineCore: {
-            tableQueryResult: { data: tableData },
+            result: { data: tableData }
         },
-        getState,
-        setPageIndex,
-        getCanPreviousPage,
-        getPageCount,
-        getCanNextPage,
-        nextPage,
-        previousPage,
-        setPageSize,
+        reactTable: {
+            getHeaderGroups,
+            getRowModel,
+            setOptions,
+            getState,
+            setPageIndex,
+            getCanPreviousPage,
+            getPageCount,
+            getCanNextPage,
+            nextPage,
+            previousPage,
+            setPageSize,
+        }
     } = useTable({
         columns,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
@@ -161,11 +164,11 @@ export const BlogPostList = () => {
 
 
 <%_ if (!isGraphQL) { _%>
-    const { data: categoryData } = useMany({
+    const { result: { data: categories } } = useMany({
             resource: "categories",
-            ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
+            ids: tableData?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
             queryOptions: {
-                enabled: !!tableData?.data,
+                enabled: !!tableData,
              },
     });
 
@@ -173,7 +176,7 @@ export const BlogPostList = () => {
         ...prev,
         meta: {
             ...prev.meta,
-                categoryData,
+            categories,
         },
     }));
 <%_ } _%>

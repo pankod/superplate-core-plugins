@@ -43,7 +43,7 @@ export const BlogPostShow = () => {
     const record = data?.data;
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-        const { data: categoryData, isLoading: categoryIsLoading } = useOne({
+        const { result: category, query: { isLoading: categoryIsLoading } } = useOne({
             resource: "categories",
             id: record?.<%- blogPostCategoryFieldName %>?.id || "",
             queryOptions: {
@@ -81,7 +81,7 @@ export const BlogPostShow = () => {
                     {categoryIsLoading ? (
                         <>Loading...</>
                     ) : (
-                        <>{categoryData?.data?.title}</>
+                        <>{category?.title}</>
                     )}
 <%_ } _%>  
                 <Typography variant="body1" fontWeight="bold">

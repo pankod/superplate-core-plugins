@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        refineImports: [`AuthBindings`],
+        refineImports: [`AuthProvider`],
         import: [`import axios from "axios";`],
         localImport: [
             `import { Login } from "./pages/login";`,
@@ -20,7 +20,7 @@ const base = {
         ],
         inner: [
             `
-            const authProvider: AuthBindings = {
+            const authProvider: AuthProvider = {
                 login: async ({ credential }: CredentialResponse) => {
                     const profileObj = credential ? parseJwt(credential) : null;
 

@@ -19,7 +19,7 @@ import React from "react";
 
     
 export const BlogPostList = () => {
-    const { dataGridProps } = useDataGrid({
+    const { result, dataGridProps } = useDataGrid({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -43,11 +43,11 @@ export const BlogPostList = () => {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData, isLoading: categoryIsLoading } = useMany({
+    const { result: { data: categories }, query: { isLoading: categoryIsLoading } } = useMany({
         resource: "categories",
-        ids: dataGridProps?.rows?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
+        ids: result?.data?.map((item: any) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
-            enabled: !!dataGridProps?.rows,
+            enabled: !!result?.data,
         },
     });
 <%_ } _%>
@@ -103,7 +103,7 @@ export const BlogPostList = () => {
                     return categoryIsLoading ? (
                         <>Loading...</>
                     ) : (
-                        categoryData?.data?.find((item) => item.id === value?.id)?.title
+                        categories?.find((item) => item.id === value?.id)?.title
                         );
                     },
                 <%_ } _%>
@@ -151,7 +151,7 @@ export const BlogPostList = () => {
         <%_ if (isGraphQL || answers["data-provider"] === "data-provider-appwrite") { _%>
             [],
         <%_ } else { _%>
-            [categoryData, categoryIsLoading],
+            [categories, categoryIsLoading],
         <%_ } _%>
 
         

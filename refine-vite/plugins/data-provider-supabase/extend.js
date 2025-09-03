@@ -9,7 +9,7 @@ const base = {
             "dataProvider={dataProvider(supabaseClient)}",
             "liveProvider={liveProvider(supabaseClient)}",
             "authProvider={authProvider}",
-            "routerProvider={routerBindings}",
+            "routerProvider={routerProvider}",
         ],
         refineImports: [`Authenticated`],
         refineAntdImports: [],

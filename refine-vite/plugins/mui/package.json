@@ -1,13 +1,13 @@
 {
   "dependencies": {
-    "@refinedev/mui": "^6.0.0",
-    "@refinedev/react-hook-form": "^4.8.14",
+    "@refinedev/mui": "^7.0.0",
+    "@refinedev/react-hook-form": "^5.0.0",
     "@mui/icons-material": "^6.1.6",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/lab": "^6.0.0-beta.14",
     "@mui/material": "^6.1.7",
-    "@mui/x-data-grid": "^7.22.2",
-    "react-hook-form": "^7.30.0"
+    "@mui/x-data-grid": "^7.23.5",
+    "react-hook-form": "^7.57.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@refinedev/supabase": "^5.7.4",
+    "@refinedev/supabase": "^6.0.0",
     "@supabase/ssr": "^0.3.0",
     "js-cookie": "^3.0.5"
   },

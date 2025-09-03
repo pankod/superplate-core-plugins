@@ -12,7 +12,7 @@ import React from "react";
 const { Title } = Typography;
 
 export const CategoryShow = () => {
-    const { queryResult } = useShow({
+    const { result: record, query } = useShow({
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: CATEGORIES_QUERY,
@@ -24,9 +24,7 @@ export const CategoryShow = () => {
         },
 <%_ } _%>
     });
-    const { data, isLoading } = queryResult;
-
-    const record = data?.data;
+    const { isLoading } = query;
 
     return (
         <Show isLoading={isLoading}>

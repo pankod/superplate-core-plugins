@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 export const authProviderServer: Pick<AuthProvider, "check"> = {
     check: async () => {
-        const cookieStore = cookies();
+        const cookieStore = await cookies();
         const token = cookieStore.get(TOKEN_KEY);
         const url = new URL("/api/users/me", API_URL);
 

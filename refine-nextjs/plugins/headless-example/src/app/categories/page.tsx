@@ -63,17 +63,19 @@ export default function CategoryList() {
     const { edit, show, create } = useNavigation();
 
     const {
-        getHeaderGroups,
-        getRowModel,
-        setOptions,
-        getState,
-        setPageIndex,
-        getCanPreviousPage,
-        getPageCount,
-        getCanNextPage,
-        nextPage,
-        previousPage,
-        setPageSize,
+        reactTable: {
+            getHeaderGroups,
+            getRowModel,
+            setOptions,
+            getState,
+            setPageIndex,
+            getCanPreviousPage,
+            getPageCount,
+            getCanNextPage,
+            nextPage,
+            previousPage,
+            setPageSize,
+        }
     } = useTable({
         columns,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>

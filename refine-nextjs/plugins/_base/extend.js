@@ -121,10 +121,10 @@ module.exports = {
 
         if (!isHeadless && (answers["title"] || answers["svg"])) {
             if (answers["ui-framework"] === "antd") {
-                base._app.refineAntdImports.push("ThemedTitleV2");
+                base._app.refineAntdImports.push("ThemedTitle");
             }
             if (answers["ui-framework"] === "mui") {
-                base._app.refineMuiImports.push("ThemedTitleV2");
+                base._app.refineMuiImports.push("ThemedTitle");
             }
         }
 
@@ -144,7 +144,7 @@ module.exports = {
         // this impementation required for getting default ColorModeContextProvider's theme from cookie
         if (!isHeadless) {
             base._app.nextjsInner.push(
-                `const cookieStore = cookies();`,
+                `const cookieStore = await cookies();`,
                 `const theme = cookieStore.get("theme");`,
                 `const defaultMode = theme?.value === "dark" ? "dark" : "light";`,
             );

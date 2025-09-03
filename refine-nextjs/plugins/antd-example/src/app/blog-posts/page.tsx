@@ -21,7 +21,7 @@ import { BLOG_POSTS_QUERY } from "@queries/blog-posts";
 <%_ } _%>
 
 export default function BlogPostList() {
-    const { tableProps } = useTable({
+    const { result, tableProps } = useTable({
         syncWithLocation: true,
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
@@ -46,11 +46,11 @@ export default function BlogPostList() {
     });
 
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: categoryData, isLoading: categoryIsLoading } = useMany({
+    const { result: { data: categories }, query: { isLoading: categoryIsLoading } } = useMany({
         resource: "categories",
-        ids: tableProps?.dataSource?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
+        ids: result?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
-            enabled: !!tableProps?.dataSource,
+            enabled: !!result?.data,
         },
     });
 <%_ } _%>
@@ -76,7 +76,7 @@ export default function BlogPostList() {
                             categoryIsLoading ? (
                                 <>Loading...</>
                             ) : (
-                                categoryData?.data?.find(
+                                categories?.find(
                                     (item) => item.id === value?.id,
                                 )?.title
                             )

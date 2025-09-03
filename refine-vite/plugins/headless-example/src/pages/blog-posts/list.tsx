@@ -166,9 +166,9 @@ export const BlogPostList = () => {
 <%_ if (!isGraphQL) { _%>
     const { result: { data: categories } } = useMany({
             resource: "categories",
-            ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
+            ids: tableData?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
             queryOptions: {
-                enabled: !!tableData?.data,
+                enabled: !!tableData,
              },
     });
 

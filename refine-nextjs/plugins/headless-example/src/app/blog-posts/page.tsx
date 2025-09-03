@@ -166,9 +166,9 @@ export default function BlogPostList() {
 <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
     const { result: { data: categories } } = useMany({
         resource: "categories",
-        ids: tableData?.data?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
+        ids: tableData?.map((item) => item?.<%- blogPostCategoryFieldName %>?.id).filter(Boolean) ?? [],
         queryOptions: {
-            enabled: !!tableData?.data,
+            enabled: !!tableData,
         },
     });
 

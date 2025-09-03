@@ -6,9 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import type { RefineThemedLayoutHeaderProps } from "@refinedev/antd";
 import { useGetIdentity } from "@refinedev/core";
-import { HamburgerMenu } from "@refinedev/mui";
+import { HamburgerMenu, RefineThemedLayoutHeaderProps } from "@refinedev/mui";
 import React, { useContext } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
 

@@ -71,9 +71,10 @@ export default function BlogPostList() {
 <%_ } _%>      
                 header: "Created At",
                 cell: function render({ getValue }) {
-                    return new Date(getValue<any>()).toLocaleString(undefined, {
+                    const dateValue = getValue<any>();
+                    return dateValue ? new Date(dateValue).toLocaleString(undefined, {
                         timeZone: "UTC",
-                    });
+                    }) : "-";
                 },
             },
             {

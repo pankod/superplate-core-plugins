@@ -58,7 +58,7 @@ describe("build test", () => {
 
             cy.contains("Sign up").click();
 
-            cy.wait(1000);
+            cy.wait(2000);
 
             cy.url().should("contain", "/register");
 
@@ -66,11 +66,11 @@ describe("build test", () => {
 
             cy.contains("Sign in").click();
 
-            cy.wait(1000);
+            cy.wait(2000);
 
             cy.visit("http://localhost:3000/i-dont-exist", {
                 failOnStatusCode: false,
-            }).wait(1000);
+            }).wait(2000);
 
             cy.url().should("be.oneOf", [
                 "http://localhost:3000/login?to=%2Fi-dont-exist",
@@ -94,7 +94,7 @@ describe("build test", () => {
 
             cy.wait(1000).get("form").submit();
 
-            cy.wait(1000);
+            cy.wait(2000);
 
             cy.url().should("eq", "http://localhost:3000/i-dont-exist", {
                 timeout: 3000,

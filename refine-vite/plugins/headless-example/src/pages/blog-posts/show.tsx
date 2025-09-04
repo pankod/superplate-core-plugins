@@ -100,17 +100,17 @@ export const BlogPostShow = () => {
                     <h5>{"Created at"}</h5>
                     <div>
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>  
-                    {new Date(record?.created_at).toLocaleString(undefined, {
+                    {record?.created_at ? new Date(record?.created_at).toLocaleString(undefined, {
                             timeZone: "UTC",
-                    })}
+                    }) : "-"}
 <%_ } else if (answers["data-provider"] === "data-provider-appwrite") { _%>  
-                    {new Date(record?.$createdAt).toLocaleString(undefined, {
+                    {record?.$createdAt ? new Date(record?.$createdAt).toLocaleString(undefined, {
                         timeZone: "UTC",
-                    })}
+                    }) : "-"}
 <%_ } else { _%>
-                    {new Date(record?.createdAt).toLocaleString(undefined, {
+                    {record?.createdAt ? new Date(record?.createdAt).toLocaleString(undefined, {
                         timeZone: "UTC",
-                    })}
+                    }) : "-"}
 <%_ } _%>      
                     </div>
                 </div>

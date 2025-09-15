@@ -81,7 +81,7 @@ jobs:
             appwrite,
             hasura,
           ]
-        ui_framework: [tailwindcss, antd, mui, no]
+        ui_framework: [shadcn, tailwindcss, antd, mui, no]
     steps:
       - name: Checkout
         uses: actions/checkout@v3

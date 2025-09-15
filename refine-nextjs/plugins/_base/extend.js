@@ -28,7 +28,9 @@ module.exports = {
         const dataProvider = answers["data-provider"];
         const authProvider = answers["auth-provider"];
         const isHeadless =
-            uiFramework === "no" || uiFramework === "tailwindcss";
+            uiFramework === "no" ||
+            uiFramework === "tailwindcss" ||
+            uiFramework === "shadcn";
 
         // ## isNextAuthCheck
         if (
@@ -50,6 +52,18 @@ module.exports = {
             base._app.isAuthProviderCheck = true;
         }
         // ## isAuthProviderCheck
+
+        // ## isCustomLoginPage
+        if (
+            authProvider === "auth-provider-auth0" ||
+            authProvider === "auth-provider-google" ||
+            authProvider === "auth-provider-keycloak" ||
+            authProvider === "auth-provider-custom" ||
+            uiFramework === "shadcn"
+        ) {
+            base._app.isCustomLoginPage = true;
+        }
+        // ## isCustomLoginPage
 
         // ## authPageProps
         let defaultValuePropsName = "initialValues";
@@ -96,9 +110,12 @@ module.exports = {
 
         // ## hasRoutes
         if (
-            ["headless-example", "antd-example", "mui-example"].every(
-                (item) => answers[item] === "no",
-            )
+            [
+                "headless-example",
+                "antd-example",
+                "mui-example",
+                "shadcn-example",
+            ].every((item) => answers[item] === "no")
         ) {
             base._app.hasRoutes = false;
         }
@@ -135,10 +152,14 @@ module.exports = {
         }
 
         if (isHeadless) {
-            base._app.localImport.push(
-                `import { Layout } from "@components/layout";`,
-            );
-            base._app.localImport.push(`import "@styles/global.css";`);
+            // Only add generic layout for non-shadcn headless frameworks
+            // shadcn handles its own Layout import in shadcn/extend.js
+            if (uiFramework !== "shadcn") {
+                base._app.localImport.push(
+                    `import { Layout } from "@components/layout";`,
+                );
+                base._app.localImport.push(`import "@styles/global.css";`);
+            }
         }
 
         // this impementation required for getting default ColorModeContextProvider's theme from cookie

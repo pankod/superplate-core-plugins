@@ -99,6 +99,10 @@ function App() {
                                         <Layout>
                                             <Outlet />
                                         </Layout>
+                                    <%_ } else if (answers["ui-framework"] === "shadcn") { _%>
+                                        <Layout>
+                                            <Outlet />
+                                        </Layout>
                                     <%_ } else { _%>
                                         <ThemedLayout
                                             Header={Header}
@@ -142,7 +146,7 @@ function App() {
                         >
                             <%_ if (_app.isCustomLoginPage) { _%>
                                 <Route path="/login" element={<Login />} <%- (_app.loginPageProps || []).join("\n") %> />
-                                <%_ if (answers["auth-provider"] === 'auth-provider-custom') { _%>
+                                <%_ if (answers["auth-provider"] === 'auth-provider-custom' || answers["ui-framework"] === 'shadcn') { _%>
                                     <Route path="/register" element={<Register />} />
                                     <Route path="/forgot-password" element={<ForgotPassword />} />
                                 <%_ } _%>
@@ -174,6 +178,10 @@ function App() {
                         <Route
                             element={(
                                 <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
+                                    <Layout>
+                                        <Outlet />
+                                    </Layout>
+                                <%_ } else if (answers["ui-framework"] === "shadcn") { _%>
                                     <Layout>
                                         <Outlet />
                                     </Layout>
@@ -217,6 +225,9 @@ function App() {
                         <Routes>
                             <Route index element={<WelcomePage />} />
                         </Routes>
+                    <%_ } _%>
+                    <%_ if (answers["ui-framework"] === "shadcn") { _%>
+                    <Toaster />
                     <%_ } _%>
                     <RefineKbar />
                     <UnsavedChangesNotifier />

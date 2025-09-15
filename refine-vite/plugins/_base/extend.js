@@ -144,9 +144,7 @@ module.exports = {
             // ignore this data providers
             if (
                 !["data-provider-graphql"].includes(dataProvider) &&
-                base._app.hasRoutes === true &&
-                // Don't import if specific example plugins will handle it
-                ["antd-example", "mui-example", "shadcn-example"].every((plugin) => answers[plugin] === "no")
+                base._app.hasRoutes === true
             ) {
                 base._app.localImport.push(
                     `import { BlogPostList, BlogPostCreate, BlogPostEdit, BlogPostShow } from "./pages/blog-posts";`,

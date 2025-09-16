@@ -159,7 +159,17 @@ describe("build test", () => {
             ) {
                 cy.contains("Categories").should("exist");
 
-                cy.contains("Logout").should("exist");
+                if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                    // For shadcn, logout is in a dropdown menu
+                    // First click the avatar button to open dropdown
+                    cy.get('button:has([data-slot="avatar"])').click();
+
+                    // Then verify the logout option is visible in the dropdown
+                    cy.contains("Logout").should("exist");
+                } else {
+                    // For other UI frameworks, logout is directly visible
+                    cy.contains("Logout").should("exist");
+                }
             }
         }
     });

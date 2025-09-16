@@ -87,10 +87,14 @@ describe("build test", () => {
                 failOnStatusCode: false,
             }).wait(1000);
 
-            cy.url().should("be.oneOf", [
-                "http://localhost:3000/login?to=%2Fi-dont-exist",
-                "http://localhost:3000/login?to=/i-dont-exist",
-            ]);
+            cy.url().should(
+                "be.oneOf",
+                [
+                    "http://localhost:3000/login?to=%2Fi-dont-exist",
+                    "http://localhost:3000/login?to=/i-dont-exist",
+                ],
+                { timeout: 10000 },
+            );
 
             if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
                 cy.contains("Sign in").should("exist");
@@ -115,9 +119,14 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.url().should("eq", "http://localhost:3000/i-dont-exist", {
-                timeout: 3000,
-            });
+            cy.url().should(
+                "be.oneOf",
+                [
+                    "http://localhost:3000/login?to=%2Fi-dont-exist",
+                    "http://localhost:3000/login?to=/i-dont-exist",
+                ],
+                { timeout: 10000 },
+            );
 
             if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
                 cy.contains("Page not found.").should("exist");

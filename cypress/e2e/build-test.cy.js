@@ -58,7 +58,7 @@ describe("build test", () => {
             cy.url().should("contain", "/forgot-password");
 
             if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
-                cy.contains("Back").should("exist");
+                cy.contains("Back").click();
             } else {
                 cy.contains("Sign in").click();
             }

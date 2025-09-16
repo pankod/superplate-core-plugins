@@ -1,7 +1,7 @@
 import { useForm } from '@refinedev/react-hook-form'
 import { useSelect } from '@refinedev/core'
 import { useNavigate } from 'react-router'
-import MDEditor from '@uiw/react-md-editor'
+import { Textarea } from "@/components/ui/textarea";
 
 import { EditView } from '@/components/refine-ui/views/edit-view'
 import { Button } from '@/components/ui/button'
@@ -115,7 +115,12 @@ export const BlogPostEdit = () => {
               <FormItem>
                 <FormLabel>Content</FormLabel>
                 <FormControl>
-                  <MDEditor data-color-mode='light' {...field} value={field.value || ''} />
+                  <Textarea
+                    {...field}
+                    value={field.value || ""}
+                    placeholder="Enter content"
+                    rows={10}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

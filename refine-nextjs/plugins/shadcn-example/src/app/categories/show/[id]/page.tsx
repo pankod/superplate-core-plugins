@@ -11,10 +11,10 @@ import {
 import { useShow } from "@refinedev/core";
 
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { CATEGORIES_QUERY } from '../../queries/categories'
+import { CATEGORIES_QUERY } from '@queries/categories'
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-import { CATEGORY_SHOW_QUERY } from '../../queries/categories'
+import { CATEGORY_SHOW_QUERY } from '@queries/categories'
 <%_ } _%>
 
 export default function CategoryShow() {

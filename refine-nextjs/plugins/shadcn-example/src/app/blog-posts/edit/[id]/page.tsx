@@ -12,10 +12,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from '../../queries/blog-posts'
+import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from '@queries/blog-posts'
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from '../../queries/blog-posts'
+import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from '@queries/blog-posts'
 <%_ } _%>
 
 export default function BlogPostEdit() {

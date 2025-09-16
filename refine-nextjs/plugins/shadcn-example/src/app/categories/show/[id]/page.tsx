@@ -36,15 +36,15 @@ export default function CategoryShow() {
         <ShowView>
             <Card>
                 <CardHeader>
-                    <CardTitle>{result?.title}</CardTitle>
-                    <CardDescription>Category ID: {result?.id}</CardDescription>
+                    <CardTitle>{record?.title}</CardTitle>
+                    <CardDescription>Category ID: {record?.id}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-4">
                         <div>
                             <h4 className="text-sm font-medium mb-2">Title</h4>
                             <p className="text-sm text-muted-foreground">
-                                {result?.title || "-"}
+                                {record?.title || "-"}
                             </p>
                         </div>
                     </div>

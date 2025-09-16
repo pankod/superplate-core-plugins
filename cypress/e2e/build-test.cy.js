@@ -73,7 +73,11 @@ describe("build test", () => {
 
             cy.url().should("contain", "/register");
 
-            cy.contains("Sign up for your account").should("exist");
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Sign up").click();
+            } else {
+                cy.contains("Sign up for your account").should("exist");
+            }
 
             cy.contains("Sign in").click();
 

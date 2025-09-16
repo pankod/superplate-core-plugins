@@ -96,7 +96,7 @@ export default function Login() {
         );
     <%_ } _%>
 
-    <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
+    <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss" || answers["ui-framework"] === "shadcn") { _%>
         return(
             <div
                 style={{

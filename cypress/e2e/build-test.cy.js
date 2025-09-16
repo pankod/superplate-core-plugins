@@ -104,8 +104,7 @@ describe("build test", () => {
 
             if (
                 Cypress.env("UI_FRAMEWORK") === "no" ||
-                Cypress.env("UI_FRAMEWORK") === "tailwindcss" ||
-                Cypress.env("UI_FRAMEWORK") === "shadcn"
+                Cypress.env("UI_FRAMEWORK") === "tailwindcss"
             ) {
                 if (Cypress.env("DATA_PROVIDER") === "supabase") {
                     cy.get("input[name='email']").type("info@refine.dev");
@@ -113,6 +112,16 @@ describe("build test", () => {
                 } else {
                     cy.get("input[name='email']").type("demo@refine.dev");
                     cy.get("input[name='password']").type("demodemo");
+                }
+            }
+
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                if (Cypress.env("DATA_PROVIDER") === "supabase") {
+                    cy.get("#email").type("info@refine.dev");
+                    cy.get("input[type='password']").type("refine-supabase");
+                } else {
+                    cy.get("#email").type("demo@refine.dev");
+                    cy.get("input[type='password']").type("demodemo");
                 }
             }
 

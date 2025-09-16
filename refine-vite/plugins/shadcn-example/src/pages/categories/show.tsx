@@ -12,7 +12,7 @@ import { CATEGORY_SHOW_QUERY } from './queries'
 <%_ } _%>
 
 export const CategoryShow = () => {
-    const { data: record, isLoading } = useShow({
+    const { result: record, query } = useShow({
         <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: CATEGORIES_QUERY,
@@ -24,6 +24,7 @@ export const CategoryShow = () => {
         },
         <%_ } _%>
     });
+    const { isLoading } = query;
 
     return (
         <ShowView>

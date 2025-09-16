@@ -14,7 +14,7 @@ import { POST_SHOW_QUERY } from './queries'
 <%_ } _%>
 
 export const BlogPostShow = () => {
-    const { data: record, isLoading } = useShow({
+    const { result: record, query } = useShow({
         <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
         meta: {
             fields: BLOG_POSTS_QUERY,
@@ -38,7 +38,7 @@ export const BlogPostShow = () => {
     });
 
     <%_ if (!isGraphQL && answers["data-provider"] !== "data-provider-appwrite") { _%>
-    const { data: category, isLoading: categoryIsLoading } = useOne({
+    const { result: category, query: { isLoading: categoryIsLoading } } = useOne({
         resource: "categories",
         id: record?.<%- blogPostCategoryFieldName %>?.id || "",
         queryOptions: {
@@ -46,6 +46,7 @@ export const BlogPostShow = () => {
         },
     });
     <%_ } _%>
+    const { isLoading } = query;
 
     return (
         <ShowView>

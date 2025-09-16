@@ -47,8 +47,11 @@ describe("build test", () => {
                     timeout: 10000,
                 }).should("exist");
             }
-
-            cy.contains("Forgot password?").click();
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Forgot password").click();
+            } else {
+                cy.contains("Forgot password?").click();
+            }
 
             cy.wait(1000);
 

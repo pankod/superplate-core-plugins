@@ -23,6 +23,7 @@ export const BlogPostEdit = () => {
     refineCore: { onFinish, query },
     ...form
   } = useForm({
+    refineCoreProps: {
     <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     meta: {
       fields: BLOG_POSTS_QUERY,
@@ -55,6 +56,7 @@ export const BlogPostEdit = () => {
       },
     },
     <%_ } _%>
+    },
   })
 
   const blogPostsData = query?.data?.data

@@ -20,16 +20,18 @@ export const CategoryEdit = () => {
     refineCore: { onFinish },
     ...form
   } = useForm({
-    <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    meta: {
-      fields: CATEGORIES_QUERY,
+    refineCoreProps: {
+      <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+      meta: {
+        fields: CATEGORIES_QUERY,
+      },
+      <%_ } _%>
+      <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+      meta: {
+        gqlMutation: CATEGORY_EDIT_MUTATION,
+      },
+      <%_ } _%>
     },
-    <%_ } _%>
-    <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-    meta: {
-      gqlMutation: CATEGORY_EDIT_MUTATION,
-    },
-    <%_ } _%>
   })
 
   function onSubmit(values: Record<string, string>) {

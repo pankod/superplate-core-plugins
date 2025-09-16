@@ -23,30 +23,32 @@ export const BlogPostCreate = () => {
     refineCore: { onFinish },
     ...form
   } = useForm({
-    <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    meta: {
-      fields: BLOG_POSTS_QUERY,
-    },
-    <%_ } _%>
-    <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-    meta: {
-      gqlMutation: POST_CREATE_MUTATION,
-    },
-    <%_ } _%>
-  })
+    refineCoreProps: {
+      <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+      meta: {
+        fields: BLOG_POSTS_QUERY,
+      },
+      <%_ } _%>
+      <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+      meta: {
+        gqlMutation: POST_CREATE_MUTATION,
+      },
+      <%_ } _%>
+    })
 
-  const { options: categoryOptions } = useSelect({
-    resource: 'categories',
-    <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-    meta: {
-      fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
+    const { options: categoryOptions } = useSelect({
+      resource: 'categories',
+      <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+      meta: {
+        fields: BLOG_POSTS_CATEGORIES_SELECT_QUERY,
+      },
+      <%_ } _%>
+      <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+      meta: {
+        gqlQuery: CATEGORIES_SELECT_QUERY,
+      },
+      <%_ } _%>
     },
-    <%_ } _%>
-    <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-    meta: {
-      gqlQuery: CATEGORIES_SELECT_QUERY,
-    },
-    <%_ } _%>
   })
 
   function onSubmit(values: Record<string, string>) {

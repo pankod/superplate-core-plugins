@@ -14,13 +14,33 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "@refinedev/react-hook-form";
 import { useRouter } from "next/navigation";
 
+<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+import { CATEGORIES_QUERY } from './queries'
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+import { CATEGORY_EDIT_MUTATION } from './queries'
+<%_ } _%>
+
 export default function CategoryEdit() {
     const router = useRouter();
 
     const {
         refineCore: { onFinish },
         ...form
-    } = useForm({});
+    } = useForm({
+        refineCoreProps: {
+        <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+        meta: {
+            fields: CATEGORIES_QUERY,
+        },
+        <%_ } _%>
+        <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+        meta: {
+            gqlMutation: CATEGORY_EDIT_MUTATION,
+        },
+        <%_ } _%>
+        },
+    })
 
     function onSubmit(values: Record<string, string>) {
         onFinish(values);

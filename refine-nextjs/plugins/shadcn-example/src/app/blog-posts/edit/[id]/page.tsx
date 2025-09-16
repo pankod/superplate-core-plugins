@@ -11,13 +11,55 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 
+<%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+import { BLOG_POSTS_QUERY, BLOG_POSTS_CATEGORIES_SELECT_QUERY } from './queries'
+<%_ } _%>
+<%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+import { POST_EDIT_MUTATION, CATEGORIES_SELECT_QUERY } from './queries'
+<%_ } _%>
+
 export default function BlogPostEdit() {
   const router = useRouter()
 
   const {
     refineCore: { onFinish, query },
     ...form
-  } = useForm({})
+  } = useForm({
+    refineCoreProps: {
+    <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
+    meta: {
+      fields: BLOG_POSTS_QUERY,
+    },
+    <%_ } _%>
+    <%_ if (answers["data-provider"] === "data-provider-strapi-v4") { _%>
+    meta: {
+      populate: ['category'],
+    },
+    <%_ } _%>
+    <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
+    meta: {
+      gqlMutation: POST_EDIT_MUTATION,
+    },
+    <%_ } _%>
+    <%_ if (answers["data-provider"] === "data-provider-supabase") { _%>
+    meta: {
+      select: '*, categories(id,title)',
+    },
+    <%_ } _%>
+    <%_ if (answers["data-provider"] === "data-provider-appwrite") { _%>
+    queryOptions: {
+      select: ({ data }) => {
+        return {
+          data: {
+            ...data,
+            category: data.category.$id,
+          },
+        };
+      },
+    },
+    <%_ } _%>
+    },
+  })
 
   const blogPostsData = query?.data?.data
 

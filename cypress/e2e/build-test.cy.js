@@ -104,7 +104,8 @@ describe("build test", () => {
 
             if (
                 Cypress.env("UI_FRAMEWORK") === "no" ||
-                Cypress.env("UI_FRAMEWORK") === "tailwindcss"
+                Cypress.env("UI_FRAMEWORK") === "tailwindcss" ||
+                Cypress.env("UI_FRAMEWORK") === "shadcn"
             ) {
                 if (Cypress.env("DATA_PROVIDER") === "supabase") {
                     cy.get("input[name='email']").type("info@refine.dev");
@@ -119,14 +120,9 @@ describe("build test", () => {
 
             cy.wait(1000);
 
-            cy.url().should(
-                "be.oneOf",
-                [
-                    "http://localhost:3000/login?to=%2Fi-dont-exist",
-                    "http://localhost:3000/login?to=/i-dont-exist",
-                ],
-                { timeout: 10000 },
-            );
+            cy.url().should("eq", "http://localhost:3000/i-dont-exist", {
+                timeout: 3000,
+            });
 
             if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
                 cy.contains("Page not found.").should("exist");

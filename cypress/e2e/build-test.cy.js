@@ -40,9 +40,13 @@ describe("build test", () => {
                 cy.url().should("not.contain", "http://localhost:3000");
             }
         } else {
-            cy.contains("Sign in to your account", { timeout: 10000 }).should(
-                "exist",
-            );
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Sign in", { timeout: 10000 }).should("exist");
+            } else {
+                cy.contains("Sign in to your account", {
+                    timeout: 10000,
+                }).should("exist");
+            }
 
             cy.contains("Forgot password?").click();
 
@@ -77,7 +81,11 @@ describe("build test", () => {
                 "http://localhost:3000/login?to=/i-dont-exist",
             ]);
 
-            cy.contains("Sign in to your account").should("exist");
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Sign in").should("exist");
+            } else {
+                cy.contains("Sign in to your account").should("exist");
+            }
 
             if (
                 Cypress.env("UI_FRAMEWORK") === "no" ||

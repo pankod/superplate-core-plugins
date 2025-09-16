@@ -49,8 +49,7 @@ export const BlogPostCreate = () => {
         gqlQuery: CATEGORIES_SELECT_QUERY,
       },
       <%_ } _%>
-    },
-  })
+    })
 
   function onSubmit(values: Record<string, string>) {
     onFinish(values)

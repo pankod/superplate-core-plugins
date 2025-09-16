@@ -51,7 +51,6 @@ export default function BlogPostCreate() {
       gqlQuery: CATEGORIES_SELECT_QUERY,
     },
     <%_ } _%>
-  },
   })
 
   function onSubmit(values: Record<string, string>) {

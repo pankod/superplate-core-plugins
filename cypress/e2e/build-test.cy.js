@@ -119,11 +119,15 @@ describe("build test", () => {
                 timeout: 3000,
             });
 
-            cy.contains("Sorry, the page you visited does not exist.").should(
-                "exist",
-            );
-
-            cy.contains("Back Home").click();
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Page not found.").should("exist");
+                cy.contains("Back to homepage").click();
+            } else {
+                cy.contains(
+                    "Sorry, the page you visited does not exist.",
+                ).should("exist");
+                cy.contains("Back Home").click();
+            }
 
             cy.wait(1000);
 

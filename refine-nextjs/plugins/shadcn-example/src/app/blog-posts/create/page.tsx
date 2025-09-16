@@ -36,6 +36,7 @@ export default function BlogPostCreate() {
       gqlMutation: POST_CREATE_MUTATION,
     },
     <%_ } _%>
+    },
   })
 
   const { options: categoryOptions } = useSelect({

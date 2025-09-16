@@ -2,9 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import useEmblaCarousel, {
-    type UseEmblaCarouselType,
-} from "embla-carousel-react";
+import useEmblaCarousel, { UseEmblaCarouselType } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import * as React from "react";
 

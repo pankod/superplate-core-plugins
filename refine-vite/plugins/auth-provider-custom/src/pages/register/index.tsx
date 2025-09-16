@@ -1,3 +1,6 @@
+<%_ if (answers["ui-framework"] === "shadcn") { _%>
+import { SignUpForm } from "@/components/refine-ui/form/sign-up-form";
+<%_ } _%>
 <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
@@ -13,9 +16,9 @@ import {
 <%_ } _%>
 
 export const Register = () => {
-    return (
-        <AuthPage
-            type="register"
-        />
-    );
+ <%_ if (answers["ui-framework"] === "shadcn") { _%>
+     return <SignUpForm />;
+ <%_ } else { _%>
+     return <AuthPage type="register" />;
+ <%_ } _%>
 };

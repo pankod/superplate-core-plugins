@@ -1,3 +1,6 @@
+<%_ if (answers["ui-framework"] === "shadcn") { _%>
+import { SignInForm } from "@/components/refine-ui/form/sign-in-form";
+<%_ } _%>
 <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
     import { AuthPage } from "@refinedev/core";
 <%_ } _%>
@@ -13,10 +16,11 @@ import {
 <%_ } _%>
 
 export const Login = () => {
-    return (
-        <AuthPage
-            type="login"
-            <%- (_app.authPageProps || []).join("\n") %>
-        />
-    );
+
+    <%_ if (answers["ui-framework"] === "shadcn") { _%>
+        return <SignInForm />;
+    <%_ } else { _%>
+        return <AuthPage type="login" <%- (_app.authPageProps || []).join("\n") %> />;
+    <%_ } _%>
+
 };

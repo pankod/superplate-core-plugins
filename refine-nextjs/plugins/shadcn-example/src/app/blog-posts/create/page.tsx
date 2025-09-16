@@ -25,6 +25,7 @@ export default function BlogPostCreate() {
     refineCore: { onFinish },
     ...form
   } = useForm({
+    refineCoreProps: {
     <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
     meta: {
       fields: BLOG_POSTS_QUERY,
@@ -49,6 +50,7 @@ export default function BlogPostCreate() {
       gqlQuery: CATEGORIES_SELECT_QUERY,
     },
     <%_ } _%>
+  },
   })
 
   function onSubmit(values: Record<string, string>) {

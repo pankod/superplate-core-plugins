@@ -8,10 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY } from './queries'
+import { BLOG_POSTS_QUERY } from '../../queries/blog-posts'
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-import { POST_SHOW_QUERY } from './queries'
+import { POST_SHOW_QUERY } from '../../queries/blog-posts'
 <%_ } _%>
 
 

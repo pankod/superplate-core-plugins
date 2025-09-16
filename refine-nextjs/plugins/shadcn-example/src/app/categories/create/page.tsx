@@ -15,10 +15,10 @@ import { useForm } from "@refinedev/react-hook-form";
 import { useRouter } from "next/navigation";
 
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { CATEGORIES_QUERY } from './queries'
+import { CATEGORIES_QUERY } from '../../queries/categories'
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-import { CATEGORY_CREATE_MUTATION } from './queries'
+import { CATEGORY_CREATE_MUTATION } from '../../queries/categories'
 <%_ } _%>
 
 export default function CategoryCreate() {

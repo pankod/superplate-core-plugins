@@ -13,10 +13,10 @@ import { ShowButton } from "@/components/refine-ui/buttons/show";
 import { DeleteButton } from "@/components/refine-ui/buttons/delete";
 
 <%_ if (answers["data-provider"] === "data-provider-hasura") { _%>
-import { BLOG_POSTS_QUERY } from './queries'
+import { BLOG_POSTS_QUERY } from '../../queries/blog-posts'
 <%_ } _%>
 <%_ if (answers["data-provider"] === "data-provider-nestjs-query") { _%>
-import { POSTS_LIST_QUERY } from './queries'
+import { POSTS_LIST_QUERY } from  '../../queries/blog-posts'
 <%_ } _%>
 
 type BlogPost = {

@@ -10,6 +10,9 @@ import { Suspense } from 'react'
 <%_ if (answers["ui-framework"] === "no" || answers["ui-framework"] === "tailwindcss") { _%>
     import { ErrorComponent } from "@refinedev/core";
 <%_ } _%>
+<%_ if (answers["ui-framework"] === "shadcn") { _%>
+        import { ErrorComponent } from "@/components/refine-ui/layout/error-component";
+<%_ } _%>
 import { Authenticated } from '@refinedev/core'
 
 export default function NotFound() {

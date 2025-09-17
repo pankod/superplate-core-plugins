@@ -80,6 +80,11 @@ module.exports = {
                     name: "tailwindcss",
                     hint: "Installs Tailwind CSS package.",
                 },
+                {
+                    message: "shadcn/ui",
+                    name: "shadcn",
+                    hint: "Installs shadcn/ui package.",
+                },
             ],
             default: "no",
         },
@@ -144,6 +149,28 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "antd" ||
                 answers["ui-framework"] === "mui" ||
+                answers["ui-framework"] === "shadcn" ||
+                answers["data-provider"] === "data-provider-graphql",
+            default: "no",
+        },
+        {
+            name: "shadcn-example",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "shadcn-example",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] !== "shadcn" ||
                 answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
@@ -240,6 +267,7 @@ module.exports = {
                     "headless-example",
                     "antd-example",
                     "mui-example",
+                    "shadcn-example",
                 ].every((item) => answers[item] === "no");
             },
             pattern: [
@@ -254,6 +282,7 @@ module.exports = {
                     "headless-example",
                     "antd-example",
                     "mui-example",
+                    "shadcn-example",
                 ].every((item) => answers[item] === "no");
             },
             pattern: [

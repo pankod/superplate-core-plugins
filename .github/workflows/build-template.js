@@ -34,6 +34,7 @@ const buildTemplate = async () => {
         mui: "mui-example",
         no: "headless-example",
         tailwindcss: "headless-example",
+        shadcn: "shadcn-example",
     };
 
     let AUTH_PROVIDER = dataProviderMap[DATA_PROVIDER];

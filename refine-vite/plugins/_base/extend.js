@@ -29,7 +29,9 @@ module.exports = {
         const uiFramework = answers["ui-framework"];
         const dataProvider = answers["data-provider"];
         const isHeadless =
-            uiFramework === "no" || uiFramework === "tailwindcss";
+            uiFramework === "no" ||
+            uiFramework === "tailwindcss" ||
+            uiFramework === "shadcn";
 
         switch (uiFramework) {
             case "antd":
@@ -41,15 +43,21 @@ module.exports = {
             case "mui":
                 base._app.refineMuiImports.push([`AuthPage`, `ErrorComponent`]);
                 break;
+            case "shadcn":
+                // shadcn uses local components, no external imports needed
+                break;
             default:
                 base._app.refineImports.push([`AuthPage`, `ErrorComponent`]);
                 break;
         }
 
         if (
-            ["headless-example", "antd-example", "mui-example"].every(
-                (item) => answers[item] === "no",
-            )
+            [
+                "headless-example",
+                "antd-example",
+                "mui-example",
+                "shadcn-example",
+            ].every((item) => answers[item] === "no")
         ) {
             base._app.hasRoutes = false;
         }
@@ -75,7 +83,8 @@ module.exports = {
             answers["auth-provider"] === "auth-provider-auth0" ||
             answers["auth-provider"] === "auth-provider-google" ||
             answers["auth-provider"] === "auth-provider-keycloak" ||
-            answers["auth-provider"] === "auth-provider-custom"
+            answers["auth-provider"] === "auth-provider-custom" ||
+            answers["ui-framework"] === "shadcn"
         ) {
             base._app.isCustomLoginPage = true;
         }
@@ -169,10 +178,14 @@ module.exports = {
         }
 
         if (isHeadless) {
-            base._app.localImport.push(
-                `import { Layout } from "./components/layout";`,
-            );
-            base._app.localImport.push(`import "./App.css";`);
+            // Only add generic layout for non-shadcn headless frameworks
+            // shadcn handles its own Layout import in shadcn/extend.js
+            if (uiFramework !== "shadcn") {
+                base._app.localImport.push(
+                    `import { Layout } from "./components/layout";`,
+                );
+                base._app.localImport.push(`import "./App.css";`);
+            }
         }
 
         // ## isGraphQL
@@ -199,7 +212,7 @@ module.exports = {
         } else if (dataProvider === "data-provider-supabase") {
             base.blogPostCategoryIdFormField = `"categoryId"`;
         } else if (dataProvider === "data-provider-appwrite") {
-            base.blogPostCategoryIdFormField = `"category"`;   
+            base.blogPostCategoryIdFormField = `"category"`;
         } else {
             if (uiFramework === "mui" || isHeadless) {
                 base.blogPostCategoryIdFormField = `"category.id"`;

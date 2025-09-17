@@ -111,6 +111,9 @@ export default async function RootLayout({
                         }}
                     >
                         {children}
+                        <%_ if (answers["ui-framework"] === "shadcn") { _%>
+                        <Toaster />
+                        <%_ } _%>
                         <RefineKbar />
                     </Refine>
                 </DevtoolsProvider>

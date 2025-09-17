@@ -112,5 +112,19 @@ module.exports = {
                 "headless-example": "no",
             },
         },
+        {
+            name: "vite-shadcn",
+            type: "refine-vite",
+            answers: {
+                "ui-framework": "shadcn",
+                "router-provider": "react-router",
+                "data-provider": "data-provider-custom-json-rest",
+                "auth-provider": "none",
+                "antd-example": "no",
+                "mui-example": "no",
+                "headless-example": "no",
+                "shadcn-example": "shadcn-example",
+            },
+        },
     ],
 };

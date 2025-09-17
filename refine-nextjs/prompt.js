@@ -80,6 +80,11 @@ module.exports = {
                     name: "tailwindcss",
                     hint: "Installs Tailwind CSS package.",
                 },
+                {
+                    message: "shadcn/ui",
+                    name: "shadcn",
+                    hint: "Installs shadcn/ui with Tailwind CSS.",
+                },
             ],
             default: "no",
         },
@@ -144,6 +149,28 @@ module.exports = {
             skip: ({ answers }) =>
                 answers["ui-framework"] === "antd" ||
                 answers["ui-framework"] === "mui" ||
+                answers["ui-framework"] === "shadcn" ||
+                answers["data-provider"] === "data-provider-graphql",
+            default: "no",
+        },
+        {
+            name: "shadcn-example",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "shadcn-example",
+                    hint: "Installs example pages with shadcn/ui components.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] !== "shadcn" ||
                 answers["data-provider"] === "data-provider-graphql",
             default: "no",
         },
@@ -199,7 +226,8 @@ module.exports = {
                 return (
                     typeof answers["svg"] === "undefined" ||
                     answers["ui-framework"] === "no" ||
-                    answers["ui-framework"] === "tailwindcss"
+                    answers["ui-framework"] === "tailwindcss" ||
+                    answers["ui-framework"] === "shadcn"
                 );
             },
             pattern: ["src/components/app-icon/index.tsx"],
@@ -209,7 +237,8 @@ module.exports = {
             when: function (answers) {
                 return (
                     answers["ui-framework"] !== "no" &&
-                    answers["ui-framework"] !== "tailwindcss"
+                    answers["ui-framework"] !== "tailwindcss" &&
+                    answers["ui-framework"] !== "shadcn"
                 );
             },
             pattern: [
@@ -226,6 +255,7 @@ module.exports = {
                     "headless-example",
                     "antd-example",
                     "mui-example",
+                    "shadcn-example",
                 ].every((item) => answers[item] === "no");
             },
             pattern: ["src/queries/blog-posts.ts", "src/queries/categories.ts"],
@@ -237,6 +267,7 @@ module.exports = {
                     "headless-example",
                     "antd-example",
                     "mui-example",
+                    "shadcn-example",
                 ].every((item) => answers[item] === "no");
             },
             pattern: ["src/queries/blog-posts.ts", "src/queries/categories.ts"],
@@ -268,6 +299,22 @@ module.exports = {
                 return false;
             },
             pattern: ["src/components/auth-page/index.tsx"],
+        },
+        {
+            plugin: ["_base"],
+            when: function (answers) {
+                if (answers["ui-framework"] === "shadcn") {
+                    return true;
+                }
+
+                return false;
+            },
+            pattern: [
+                "src/components/auth-page/index.tsx",
+                "src/components/breadcrumb/index.tsx",
+                "src/components/layout/index.tsx",
+                "src/components/menu/index.tsx",
+            ],
         },
     ],
 };

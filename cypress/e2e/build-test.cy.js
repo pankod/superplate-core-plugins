@@ -40,17 +40,28 @@ describe("build test", () => {
                 cy.url().should("not.contain", "http://localhost:3000");
             }
         } else {
-            cy.contains("Sign in to your account", { timeout: 10000 }).should(
-                "exist",
-            );
-
-            cy.contains("Forgot password?").click();
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Sign in", { timeout: 10000 }).should("exist");
+            } else {
+                cy.contains("Sign in to your account", {
+                    timeout: 10000,
+                }).should("exist");
+            }
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Forgot password").click();
+            } else {
+                cy.contains("Forgot password?").click();
+            }
 
             cy.wait(1000);
 
             cy.url().should("contain", "/forgot-password");
 
-            cy.contains("Sign in").click();
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Back").click();
+            } else {
+                cy.contains("Sign in").click();
+            }
 
             cy.wait(1000);
 
@@ -62,7 +73,11 @@ describe("build test", () => {
 
             cy.url().should("contain", "/register");
 
-            cy.contains("Sign up for your account").should("exist");
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Sign up").click();
+            } else {
+                cy.contains("Sign up for your account").should("exist");
+            }
 
             cy.contains("Sign in").click();
 
@@ -72,12 +87,20 @@ describe("build test", () => {
                 failOnStatusCode: false,
             }).wait(1000);
 
-            cy.url().should("be.oneOf", [
-                "http://localhost:3000/login?to=%2Fi-dont-exist",
-                "http://localhost:3000/login?to=/i-dont-exist",
-            ]);
+            cy.url().should(
+                "be.oneOf",
+                [
+                    "http://localhost:3000/login?to=%2Fi-dont-exist",
+                    "http://localhost:3000/login?to=/i-dont-exist",
+                ],
+                { timeout: 10000 },
+            );
 
-            cy.contains("Sign in to your account").should("exist");
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Sign in").should("exist");
+            } else {
+                cy.contains("Sign in to your account").should("exist");
+            }
 
             if (
                 Cypress.env("UI_FRAMEWORK") === "no" ||
@@ -92,6 +115,16 @@ describe("build test", () => {
                 }
             }
 
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                if (Cypress.env("DATA_PROVIDER") === "supabase") {
+                    cy.get("#email").type("info@refine.dev");
+                    cy.get("input[type='password']").type("refine-supabase");
+                } else {
+                    cy.get("#email").type("demo@refine.dev");
+                    cy.get("input[type='password']").type("demodemo");
+                }
+            }
+
             cy.wait(1000).get("form").submit();
 
             cy.wait(1000);
@@ -100,11 +133,15 @@ describe("build test", () => {
                 timeout: 3000,
             });
 
-            cy.contains("Sorry, the page you visited does not exist.").should(
-                "exist",
-            );
-
-            cy.contains("Back Home").click();
+            if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                cy.contains("Page not found.").should("exist");
+                cy.contains("Back to homepage").click();
+            } else {
+                cy.contains(
+                    "Sorry, the page you visited does not exist.",
+                ).should("exist");
+                cy.contains("Back Home").click();
+            }
 
             cy.wait(1000);
 
@@ -122,7 +159,17 @@ describe("build test", () => {
             ) {
                 cy.contains("Categories").should("exist");
 
-                cy.contains("Logout").should("exist");
+                if (Cypress.env("UI_FRAMEWORK") === "shadcn") {
+                    // For shadcn, logout is in a dropdown menu
+                    // First click the avatar button to open dropdown
+                    cy.get('button:has([data-slot="avatar"])').click();
+
+                    // Then verify the logout option is visible in the dropdown
+                    cy.contains("Logout").should("exist");
+                } else {
+                    // For other UI frameworks, logout is directly visible
+                    cy.contains("Logout").should("exist");
+                }
             }
         }
     });

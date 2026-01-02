@@ -1,2 +1,4 @@
-<%- (_constants && _constants.export ? _constants.export.join("\n") : "") %>
+<%_ if (typeof _constants !== 'undefined' && _constants && _constants.export) { _%>
+<%- _constants.export.join("\n") %>
+<%_ } _%>
 

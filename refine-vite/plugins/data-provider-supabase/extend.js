@@ -1,12 +1,13 @@
 const base = {
     _app: {
-        import: [
-            `import { dataProvider, liveProvider } from "@refinedev/supabase";`,
+        import: [`import { liveProvider } from "@refinedev/supabase";`],
+        localImport: [
+            `import { supabaseClient } from "./providers/supabase-client";`,
+            `import { dataProvider } from "./providers/data";`,
         ],
-        localImport: [`import { supabaseClient } from "./utility";`],
-        relativeImport: [`import authProvider from "./authProvider";`],
+        relativeImport: [`import authProvider from "./providers/auth";`],
         refineProps: [
-            "dataProvider={dataProvider(supabaseClient)}",
+            "dataProvider={dataProvider}",
             "liveProvider={liveProvider(supabaseClient)}",
             "authProvider={authProvider}",
             "routerProvider={routerProvider}",

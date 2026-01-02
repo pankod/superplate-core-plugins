@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        relativeImport: ['import { authProvider } from "./authProvider";'],
+        relativeImport: ['import { authProvider } from "./providers/auth";'],
         refineProps: ["authProvider={authProvider}"],
         refineImports: [`Authenticated`],
         refineAntdImports: [],

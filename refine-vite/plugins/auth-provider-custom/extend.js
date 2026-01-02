@@ -11,6 +11,9 @@ const base = {
             `import { ForgotPassword } from "./pages/forgotPassword";`,
         ],
     },
+    _constants: {
+        export: ['export const TOKEN_KEY = "refine-auth";'],
+    },
 };
 
 module.exports = {

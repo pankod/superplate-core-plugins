@@ -1,8 +1,14 @@
 const base = {
     _app: {
-        import: [`import dataProvider from "@refinedev/simple-rest";`],
-        refineProps: [
-            `dataProvider={dataProvider("https://api.fake-rest.refine.dev")}`,
+        localImport: [`import { dataProvider } from "./providers/data";`],
+        refineProps: [`dataProvider={dataProvider}`],
+    },
+    _env: {
+        variables: ["VITE_API_URL=https://api.fake-rest.refine.dev"],
+    },
+    _constants: {
+        export: [
+            'export const API_URL = import.meta.env.VITE_API_URL || "https://api.fake-rest.refine.dev";',
         ],
     },
 };

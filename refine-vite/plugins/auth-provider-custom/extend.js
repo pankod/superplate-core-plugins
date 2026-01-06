@@ -1,6 +1,6 @@
 const base = {
     _app: {
-        relativeImport: ['import { authProvider } from "./authProvider";'],
+        relativeImport: ['import { authProvider } from "./providers/auth";'],
         refineProps: ["authProvider={authProvider}"],
         refineImports: [`Authenticated`],
         refineAntdImports: [],
@@ -10,6 +10,9 @@ const base = {
             `import { Register } from "./pages/register";`,
             `import { ForgotPassword } from "./pages/forgotPassword";`,
         ],
+    },
+    _constants: {
+        export: ['export const TOKEN_KEY = "refine-auth";'],
     },
 };
 

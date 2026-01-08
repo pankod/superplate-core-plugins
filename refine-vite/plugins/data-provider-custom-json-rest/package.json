@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@refinedev/rest": "^2.0.0"
+    "@refinedev/rest": "^2.0.3"
   }
 }

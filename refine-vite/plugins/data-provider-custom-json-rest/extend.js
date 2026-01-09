@@ -7,9 +7,7 @@ const base = {
         variables: ["VITE_API_URL=https://api.fake-rest.refine.dev"],
     },
     _constants: {
-        export: [
-            'export const API_URL = import.meta.env.VITE_API_URL || "https://api.fake-rest.refine.dev";',
-        ],
+        export: ['export const API_URL = "https://api.fake-rest.refine.dev";'],
     },
 };
 
